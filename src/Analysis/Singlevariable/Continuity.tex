@@ -18,9 +18,27 @@ Equivalently,
     \lim_{x \to x_0} f(x) = f(x_0)
 \]
 
+To solve continuity problems the general approach is to:
+
+\begin{enumerate}
+
+    \item Write down the definition.
+
+    \item Substitute \(f\) for the concrete function into the definition.
+
+    \item Modify the expression with the concrete \(f\) \(|f(x) - f(y)|\) in way that you get 
+          \(| x - y|\) inside the expression.
+    
+    \item Choose a \(\delta\) if not given. On the one side it is often \(\delta = |x - y |\) and then 
+          substitute into the expression. On the other side if \(\delta\) is given make an approximation 
+          which is greater than the current expression and then simplify. In both cases after simplifying 
+          you should get a \(\varepsilon\) is the function is continuous. 
+
+\end{enumerate}
+
 \textbf{Example:} 
 
-\(\varepsilon \delta\) Exercise for \(f(x) = \frac{1}{x}\) at \(x_0 > 0\)
+\(\varepsilon-\delta\) Exercise for \(f(x) = \frac{1}{x}\) at \(x_0 > 0\)
 
 We want to find \(\delta\) such that:
 
@@ -134,15 +152,15 @@ Given \(f: [a, b] \to [a, b]\), to prove existence and convergence:
 
 \begin{enumerate}
 
-    \item \textbf{Show monotonicity:} \(f\) is increasing or decreasing.
+    \item Show monotonicity: \(f\) is increasing or decreasing.
 
-    \item \textbf{Check interval preservation:} \(f([a, b]) \subseteq [a, b]\)
+    \item Check interval preservation: \(f([a, b]) \subseteq [a, b]\)
 
-    \item \textbf{Check Lipschitz continuity:} Find \(L < 1\)
+    \item Check Lipschitz continuity: Find \(L < 1\)
 
-    \item \textbf{Fixed point iteration:} Choose \(x_0\), compute \(x_{n+1} = f(x_n)\)
+    \item Fixed point iteration: Choose \(x_0\), compute \(x_{n+1} = f(x_n)\)
 
-    \item \textbf{Apply a priori or a posteriori bound}
+    \item Apply a priori or a posteriori bound
 
 \end{enumerate}
 

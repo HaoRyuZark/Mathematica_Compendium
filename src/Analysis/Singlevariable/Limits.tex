@@ -157,10 +157,11 @@ The number \(e\) is defined as:
 More generally:
 
 \[
-    \lim_{n \to \infty} {\left(1 + \frac{a}{bn} \right)}^n = e^{a/b}
+    \lim_{n \to \infty} {\left(1 + \frac{a}{b n^d}\right)}^{n^d} = e^{\frac{a}{b}}
 \]
 
-\textbf{Example of a limit using e}
+
+\textbf{Example I:}
 
 \[
     \lim_{x \to \infty}{\left(\frac{x^2 + 1}{x^2 +2}\right)}^{x^2}
@@ -176,6 +177,29 @@ More generally:
 
 \[
     \lim_{x \to \infty} {\left(\frac{e}{e^2}\right)}^x = {\left(\frac{1}{e}\right)}^x = 0
+\]
+
+\textbf{Example II:}
+
+\[
+    \lim_{x \to \infty}\left( 1 + \frac{1}{x}\right)^{x^2}
+\]
+
+\[
+    \lim_{x \to \infty} \left(\left( 1 + \frac{1}{x}\right)^{x^2}\right)^\frac{x}{x}
+\]
+
+\[
+    \lim_{x \to \infty} \left(\left( 1 + \frac{1}{x}\right)^{x}\right)^x
+\]
+
+\[
+    \lim_{x \to \infty} \left(\lim_{n \to \infty} \left( 1 + \frac{1}{x}\right)^{x}\right)^x
+\]
+
+
+\[
+    \lim_{x \to \infty} \left( e \right)^x = \infty
 \]
 
 \subsection{Limits of \texorpdfstring{\(\arctan\)}{arctan}}

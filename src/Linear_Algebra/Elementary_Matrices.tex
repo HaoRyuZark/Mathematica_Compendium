@@ -7,55 +7,54 @@ Operations on the \emph{Identity Matrix} and call them \emph{Elementary Matrices
 \emph{C1: Row Addition}
 
 \[
-       C_1 := 
-       \begin{bmatrix}
-       1      &        &        &        &        \\
-              & \ddots &        &        &        \\
-              &        & 1      &        &        \\
-              &        & \lambda & 1     &        \\
-              &        &        &        & \ddots \\
-       \end{bmatrix}
-       \in K^{n \times n}
-       \quad \text{or} \quad
-       C_1 := 
-       \begin{bmatrix}
-       1      &        &        &        &        \\
-              & \ddots &        &        &        \\
-              &        & 1      & \lambda &        \\
-              &        &        & 1      &        \\
-              &        &        &        & \ddots \\
-       \end{bmatrix}
-       \in K^{n \times n}
+    C_1 :=
+    \begin{bmatrix}
+        1 &        &         &   &        \\
+          & \ddots &         &   &        \\
+          &        & 1       &   &        \\
+          &        & \lambda & 1 &        \\
+          &        &         &   & \ddots \\
+    \end{bmatrix}
+    \in \Field^{n \times n}
+    \quad \text{or} \quad
+    C_1 :=
+    \begin{bmatrix}
+        1 &        &   &         &        \\
+          & \ddots &   &         &        \\
+          &        & 1 & \lambda &        \\
+          &        &   & 1       &        \\
+          &        &   &         & \ddots \\
+    \end{bmatrix}
+    \in \Field^{n \times n}
 \]
 
 \emph{C2: Row swap}
 
 \[
-       C_2 := 
-       \begin{bmatrix}
-       1      &        &        &        &         &    \\
-              & \ddots &        &        &         &    \\
-              &        & 0      & 1      &         &    \\
-              &        & 1      & 0      &         &    \\
-              &        &        &        & \ddots  &    \\
-              &        &        &        &         & 1  \\
-
-       \end{bmatrix}
-       \in K^{n \times n}
+    C_2 :=
+    \begin{bmatrix}
+        1 &        &   &   &        &   \\
+          & \ddots &   &   &        &   \\
+          &        & 0 & 1 &        &   \\
+          &        & 1 & 0 &        &   \\
+          &        &   &   & \ddots &   \\
+          &        &   &   &        & 1 \\
+    \end{bmatrix}
+    \in \Field^{n \times n}
 \]
 
 \emph{C3: Row Scaling}
 
 \[
-       C_3 := 
-       \begin{bmatrix}
-       1      &        &        &        &        \\
-              & \ddots &        &        &        \\
-              &        & \lambda &       &        \\
-              &        &        & \ddots &        \\
-              &        &        &        & 1      \\
-       \end{bmatrix}
-       \in K^{n \times n}
+    C_3 :=
+    \begin{bmatrix}
+        1 &        &         &        &   \\
+          & \ddots &         &        &   \\
+          &        & \lambda &        &   \\
+          &        &         & \ddots &   \\
+          &        &         &        & 1 \\
+    \end{bmatrix}
+    \in \Field^{n \times n}
 \]
 
 Each of them also encodes the row Operations from where they came from.
@@ -71,8 +70,8 @@ Elementary Matrices are invertible and thy also represented that inverted row op
 The determinants corresponding to each matrix are:
 
 \begin{align*}
-       &\det C1 = 1\\
-       &\det C2 = -1\\
-       &\det C3 = \lambda
+     & \det C1 = 1       \\
+     & \det C2 = -1      \\
+     & \det C3 = \lambda
 \end{align*}
 

@@ -1,18 +1,18 @@
 \newpage
 \section{Linear Systems of Equations}
 
-In this section, we will discuss the solution of linear systems of equations. A linear system of 
+In this section, we will discuss the solution of linear systems of equations. A linear system of
 equations is a set of equations that can be expressed in the form:
 
 \begin{align*}
-	a_{11}x_1 + a_{12}x_2 + \cdots + a_{1n}x_n & = b_1  \\
-	a_{21}x_1 + a_{22}x_2 + \cdots + a_{2n}x_n & = b_2  \\
-	& \vdots \\
-	a_{m1}x_1 + a_{m2}x_2 + \cdots + a_{mn}x_n & = b_m,
+    a_{11}x_1 + a_{12}x_2 + \cdots + a_{1n}x_n & = b_1  \\
+    a_{21}x_1 + a_{22}x_2 + \cdots + a_{2n}x_n & = b_2  \\
+                                               & \vdots \\
+    a_{m1}x_1 + a_{m2}x_2 + \cdots + a_{mn}x_n & = b_m,
 \end{align*}
 
-where \( a_{ij} \) are the coefficients of the variables \( x_j \), and \( b_i \) are the constants 
-on the right-hand side of the equations. The goal is to find the values of \( x_1, x_2, \ldots, x_n \) 
+where \( a_{ij} \) are the coefficients of the variables \( x_j \), and \( b_i \) are the constants
+on the right-hand side of the equations. The goal is to find the values of \( x_1, x_2, \ldots, x_n \)
 that satisfy all equations simultaneously.
 
 \subsection{Matrix Representation}
@@ -20,46 +20,46 @@ that satisfy all equations simultaneously.
 A linear system can be represented in matrix form as:
 
 \[
-	A x = b
+    A x = b
 \]
 
-Where \(A\) is the coefficient matrix, \(x\) is the vector of variables, and \(b\) is the vector 
-of constants. The coefficient matrix \(A\) is an \( m \times n \) matrix, where \( m \) is the number 
-of equations and \(n\) is the number of variables. The vector \(x\) is an \( n \times 1 \) column 
-vector, and the vector \(b\) is an \( m \times 1 \) column vector. 
+Where \(A\) is the coefficient matrix, \(x\) is the vector of variables, and \(b\) is the vector
+of constants. The coefficient matrix \(A\) is an \( m \times n \) matrix, where \( m \) is the number
+of equations and \(n\) is the number of variables. The vector \(x\) is an \( n \times 1 \) column
+vector, and the vector \(b\) is an \( m \times 1 \) column vector.
 
 \subsection{Solution Set of a Linear System}
 
-In the context of Definition 6.1, the solution set \( L(A, b) \) of the system of equations associated 
+In the context of Definition 6.1, the solution set \( L(A, b) \) of the system of equations associated
 with \( (A, b) \) is defined as
 
 \[
-	L(A, b) := \{ x \in K^n \mid Ax = b \}.
+    L(A, b) := \{ x \in \Field^n \mid Ax = b \}.
 \]
 
 \subsection{Equality of the Rank \texorpdfstring{\(\operatorname{rg}(A) = \operatorname{rg}_S(A)\)}{}}
 
 We have \(\operatorname{rg}(A) = \operatorname{rg}_S(A)\).
 
-\textbf{Proof:} 
+\textbf{Proof:}
 
-For \(x = {(x_1, \ldots, x_n)}^T \in K^n\), it holds that
+For \(x = {(x_1, \ldots, x_n)}^T \in \Field^n\), it holds that
 
 \[
-	Ax = \sum_{i=1}^{n} x_i a_i.
+    Ax = \sum_{i=1}^{n} x_i a_i.
 \]
 
 It follows that
 
 \[
-	\operatorname{rg}(A) = \operatorname{rg}(L_A) = \dim(\img(L_A))
-	= \dim\left(\{L_A(x) \mid x \in K^n\}\right)
-	= \dim\left(\{Ax \mid x \in K^n\}\right)
+    \operatorname{rg}(A) = \operatorname{rg}(L_A) = \dim(\img(L_A))
+    = \dim\left(\{L_A(x) \mid x \in \Field^n\}\right)
+    = \dim\left(\{Ax \mid x \in \Field^n\}\right)
 \]
 
 \[
-	= \dim\left\{ \sum_{i=1}^{n} x_i a_i \,\middle|\, x_i \in K \right\}
-	= \dim(L(a_1, \ldots, a_n)) = \operatorname{rg}_S(A).
+    = \dim\left\{ \sum_{i=1}^{n} x_i a_i \,\middle|\, x_i \in K \right\}
+    = \dim(L(a_1, \ldots, a_n)) = \operatorname{rg}_S(A).
 \]
 
 \subsection{Solvability of the Linear System \texorpdfstring{\(Ax = b\)}{}}
@@ -67,131 +67,131 @@ It follows that
 The linear system \(Ax = b\) is solvable if and only if
 
 \[
-	\operatorname{rg}(a_1, \ldots, a_n) = \operatorname{rg}(a_1, \ldots, a_n, b).
+    \operatorname{rg}(a_1, \ldots, a_n) = \operatorname{rg}(a_1, \ldots, a_n, b).
 \]
 
 More concisely, we write
 
 \[
-	\operatorname{rg}(A) = \operatorname{rg}(A, b).
+    \operatorname{rg}(A) = \operatorname{rg}(A, b).
 \]
 
-\textbf{Proof:} 
+\textbf{Proof:}
 
 We have
 
 \[
-	Ax = (a_1, \ldots, a_n)x = x_1 a_1 + \cdots + x_n a_n = b.
+    Ax = (a_1, \ldots, a_n)x = x_1 a_1 + \cdots + x_n a_n = b.
 \]
 
 Therefore, a solution vector \(x\) exists if and only if
 
 \[
-	b \in L(a_1, \ldots, a_n) \quad \Leftrightarrow \quad \operatorname{rg}(A) = \operatorname{rg}(A, b),
+    b \in L(a_1, \ldots, a_n) \quad \Leftrightarrow \quad \operatorname{rg}(A) = \operatorname{rg}(A, b),
 \]
 
 where \(L(a_1, \ldots, a_n)\) denotes the linear span of \(a_1, \ldots, a_n\).
 
 \subsection{Solution Set of the Linear System \texorpdfstring{\(Ax = b\)}{}}
 
-Let \(x_s \in K^n\) be a solution of \(Ax = b\). Then the solution set is given by
+Let \(x_s \in \Field^n\) be a solution of \(Ax = b\). Then the solution set is given by
 
 \[
-	L(A, b) = x_s + \ker(A) = \{x_s + x \mid x \in \ker(A)\}.
+    L(A, b) = x_s + \ker(A) = \{x_s + x \mid x \in \ker(A)\}.
 \]
 
 \textbf{Proof:}
 
 \[
-	x \in \ker(A) \;\Leftrightarrow\; Ax = 0 \;\Leftrightarrow\; A(x_s + x) = Ax_s + Ax = Ax_s = b.
+    x \in \ker(A) \;\Leftrightarrow\; Ax = 0 \;\Leftrightarrow\; A(x_s + x) = Ax_s + Ax = Ax_s = b.
 \]
 
 \subsection{Free Variables}
 
-In a system of linear equations, a \emph{free variable} is a variable whose column in the coefficient 
-matrix does not correspond to a pivot column after row reduction. Free variables are not directly solved by 
-any equation in the system; instead, they can take any real value, and the values of the leading 
-(or dependent) variables are expressed in terms of them. 
+In a system of linear equations, a \emph{free variable} is a variable whose column in the coefficient
+matrix does not correspond to a pivot column after row reduction. Free variables are not directly solved by
+any equation in the system; instead, they can take any real value, and the values of the leading
+(or dependent) variables are expressed in terms of them.
 
-Free variables arise naturally in systems with infinitely many solutions and play a key role in 
-describing the solution set. Given a system of with \(p\) equations and \(q\) unknowns then if 
+Free variables arise naturally in systems with infinitely many solutions and play a key role in
+describing the solution set. Given a system of with \(p\) equations and \(q\) unknowns then if
 \(q > p\) then there are \(q - p\) free variables.
 
-\textbf{Example:} 
+\textbf{Example:}
 
 Consider the system
 
 \[
-	\begin{cases}
-	x_1 + 2x_2 - x_3 = 4 \\
-	3x_1 + 6x_2 - 3x_3 = 12
-	\end{cases}
+    \begin{cases}
+        x_1 + 2x_2 - x_3 = 4 \\
+        3x_1 + 6x_2 - 3x_3 = 12
+    \end{cases}
 \]
 
 which row reduces to
 
 \[
-	\begin{bmatrix}
-	1 & 2 & -1 \\
-	0 & 0 & 0
-	\end{bmatrix}.
+    \begin{bmatrix}
+        1 & 2 & -1 \\
+        0 & 0 & 0
+    \end{bmatrix}.
 \]
 
-Here, the pivot is in the first column corresponding to \( x_1 \), while \( x_2 \) and \( x_3 \) are free 
-variables. Assigning parameters to \( x_2 \) and \( x_3 \), the general solution can be expressed in terms 
+Here, the pivot is in the first column corresponding to \( x_1 \), while \( x_2 \) and \( x_3 \) are free
+variables. Assigning parameters to \( x_2 \) and \( x_3 \), the general solution can be expressed in terms
 of these free variables.
 
 \subsection{Gaussian Elimination}
 
-Gaussian elimination is a method for solving linear systems by transforming the system into an upper 
+Gaussian elimination is a method for solving linear systems by transforming the system into an upper
 triangular form. The steps involved in Gaussian elimination are:
 
 \begin{enumerate}
-	
-	\item Forward elimination: Transform the system into an upper triangular form by eliminating the 
-	      variables from the equations.
-	
-		  \item Back substitution: Solve for the variables starting from the last equation and substituting 
-	      back into the previous equations.
+
+    \item Forward elimination: Transform the system into an upper triangular form by eliminating the
+          variables from the equations.
+
+    \item Back substitution: Solve for the variables starting from the last equation and substituting
+          back into the previous equations.
 
 \end{enumerate}
 
-The forward elimination process involves performing row operations on the augmented matrix 
+The forward elimination process involves performing row operations on the augmented matrix
 \([A | \mathbf{b}]\) to create zeros below the diagonal. The row operations include:
 
 \begin{itemize}
 
-	\item Swapping two rows
+    \item Swapping two rows
 
-	\item Multiplying a row by a non-zero scalar
+    \item Multiplying a row by a non-zero scalar
 
-	\item Adding or subtracting a multiple of one row from another row
+    \item Adding or subtracting a multiple of one row from another row
 
 \end{itemize}
 
-Once the matrix is in upper triangular form, back substitution is used to find the values of the 
-variables. The last equation gives the value of the last variable, which can then be substituted into 
+Once the matrix is in upper triangular form, back substitution is used to find the values of the
+variables. The last equation gives the value of the last variable, which can then be substituted into
 the previous equations to find the other variables.
 
 \subsection{Gauss-Jordan Elimination}
 
-Gauss-Jordan elimination is an extension of Gaussian elimination that transforms the matrix into 
-reduced row echelon form (RREF). In RREF, each leading entry in a row is 1, and all entries above and 
+Gauss-Jordan elimination is an extension of Gaussian elimination that transforms the matrix into
+reduced row echelon form (RREF). In RREF, each leading entry in a row is 1, and all entries above and
 below the leading entry are zeros. The steps involved in Gauss-Jordan elimination are:
 
 \begin{enumerate}
 
-	\item Forward elimination: Transform the system into an upper triangular form.
+    \item Forward elimination: Transform the system into an upper triangular form.
 
-	\item Back substitution: Transform the upper triangular matrix into RREF by eliminating the entries 
-		  above the leading 1s.
+    \item Back substitution: Transform the upper triangular matrix into RREF by eliminating the entries
+          above the leading 1s.
 
-	\item Solve for the variables directly from the RREF matrix.
+    \item Solve for the variables directly from the RREF matrix.
 
 \end{enumerate}
 
 The Gauss-Jordan elimination method is particularly useful for finding the inverse of a matrix, as it 7
-can be applied to the augmented matrix \([A | I]\), where \(I\) is the identity matrix. If the left side 
+can be applied to the augmented matrix \([A | I]\), where \(I\) is the identity matrix. If the left side
 of the augmented matrix becomes \(I\), then the right side will be the inverse of \(A\).
 
 \textbf{Example:}
@@ -199,100 +199,100 @@ of the augmented matrix becomes \(I\), then the right side will be the inverse o
 Solve the following system of equations using Gaussian elimination:
 
 \begin{align*}
-	2x + 3y + z  & = 1 \\
-	4x + y - z   & = 2 \\
-	-2x + y + 3z & = 3
+    2x + 3y + z  & = 1 \\
+    4x + y - z   & = 2 \\
+    -2x + y + 3z & = 3
 \end{align*}
 
 \textbf{Solution:} The augmented matrix for the system is:
 
 \[
-	\begin{bmatrix}
-		2  & 3 & 1  & | & 1 \\
-		4  & 1 & -1 & | & 2 \\
-		-2 & 1 & 3  & | & 3
-	\end{bmatrix}
+    \begin{bmatrix}
+        2  & 3 & 1  & | & 1 \\
+        4  & 1 & -1 & | & 2 \\
+        -2 & 1 & 3  & | & 3
+    \end{bmatrix}
 \]
 
 Performing row operations to eliminate the variables, we can transform the matrix into upper triangular form:
 
 \[
-	\begin{bmatrix}
-		1 & \frac{3}{2} & \frac{1}{2} & | & \frac{1}{2} \\
-		0 & -5          & -3          & | & 0           \\
-		0 & 0           & 1           & | & 1
-	\end{bmatrix}
+    \begin{bmatrix}
+        1 & \frac{3}{2} & \frac{1}{2} & | & \frac{1}{2} \\
+        0 & -5          & -3          & | & 0           \\
+        0 & 0           & 1           & | & 1
+    \end{bmatrix}
 \]
 
 Now, we can perform back substitution to find the values of \(x\), \(y\), and \(z\):
 
 \begin{align*}
-	z           & = 1                           \\
-	-5y - 3z    & = 0 \implies y = -\frac{3}{5} \\
-	2x + 3y + z & = 1 \implies x = \frac{1}{5}
+    z           & = 1                           \\
+    -5y - 3z    & = 0 \implies y = -\frac{3}{5} \\
+    2x + 3y + z & = 1 \implies x = \frac{1}{5}
 \end{align*}
 
 Thus, the solution to the system is:
 
 \begin{align*}
-	x & = \frac{1}{5}  \\
-	y & = -\frac{3}{5} \\
-	z & = 1
+    x & = \frac{1}{5}  \\
+    y & = -\frac{3}{5} \\
+    z & = 1
 \end{align*}
 
 \subsection{Homogeneous Linear Equations}
 
-A linear equation is said to be \emph{homogeneous} if its constant term is zero. That is, it 
+A linear equation is said to be \emph{homogeneous} if its constant term is zero. That is, it
 can be written in the form:
 
 \[
-	a_1 x_1 + a_2 x_2 + \cdots + a_n x_n = 0
+    a_1 x_1 + a_2 x_2 + \cdots + a_n x_n = 0
 \]
 
 Such equations always have at least the trivial solution \(x_1 = x_2 = \cdots = x_n = 0\).
 
 \subsection{Particular Solution}
 
-A particular solution to a linear system of equations is a specific solution that satisfies the system. 
-It can be found using various methods, including substitution, elimination, or matrix methods. A 
+A particular solution to a linear system of equations is a specific solution that satisfies the system.
+It can be found using various methods, including substitution, elimination, or matrix methods. A
 particular solution is not unique; there may be multiple particular solutions depending on the system.
-A particular solution can be found by substituting specific values for the variables and solving for the 
+A particular solution can be found by substituting specific values for the variables and solving for the
 remaining variables. For example, in the system
 
 \begin{align*}
-	2x + 3y & = 5 \\
-	4x - y  & = 1
+    2x + 3y & = 5 \\
+    4x - y  & = 1
 \end{align*}
 
 we can substitute \(x = 1\) into the first equation to find \(y\):
 
 \begin{align*}
-	2(1) + 3y & = 5 \\
-	3y        & = 3 \\
-	y         & = 1
+    2(1) + 3y & = 5 \\
+    3y        & = 3 \\
+    y         & = 1
 \end{align*}
 
-Thus, \((x, y) = (1, 1)\) is a particular solution to the system. However, this is not the only solution; 
+Thus, \((x, y) = (1, 1)\) is a particular solution to the system. However, this is not the only solution;
 other values of \(x\) may yield different values of \(y\).
 
 \subsection{General = Particular + Homogeneous}
 
-The general solution of a linear system of equations is the complete set of solutions that satisfy the 
-system. It can be expressed as the sum of a particular solution and the general solution of the associated 
+The general solution of a linear system of equations is the complete set of solutions that satisfy the
+system. It can be expressed as the sum of a particular solution and the general solution of the associated
 homogeneous system.
 
 The general solution can be written as:
 
 \[
-	x = x_p + x_h
+    x = x_p + x_h
 \]
 
-Where \( x_p \) is a particular solution to the non-homogeneous system, and \( x_h \) is the general 
-solution to the homogeneous system. The homogeneous system is obtained by setting the right-hand side 
+Where \( x_p \) is a particular solution to the non-homogeneous system, and \( x_h \) is the general
+solution to the homogeneous system. The homogeneous system is obtained by setting the right-hand side
 of the equations to zero:
 
 \[
-	A x = 0
+    A x = 0
 \]
 
 The theorem says:
@@ -300,13 +300,13 @@ The theorem says:
 Any linear system's solution set has the form:
 
 \[
-	\left\{ \vec{p} + c_1\vec{\beta}_1 + \cdots + c_k\vec{\beta}_k \;\middle|\; c_1, \ldots, c_k \in 
-	\Reals \right\},
+    \left\{ \vec{p} + c_1\vec{\beta}_1 + \cdots + c_k\vec{\beta}_k \;\middle|\; c_1, \ldots, c_k \in
+    \Reals \right\},
 \]
 
-where \(\vec{p}\) is a particular solution to the system, and the vectors \(\vec{\beta}_1, 
-\ldots, \vec{\beta}_k\) form a basis of the solution space to the corresponding homogeneous system. 
-The number \(k\) equals the number of \textbf{free variables} the system has after applying Gaussian 
+where \(\vec{p}\) is a particular solution to the system, and the vectors \(\vec{\beta}_1,
+\ldots, \vec{\beta}_k\) form a basis of the solution space to the corresponding homogeneous system.
+The number \(k\) equals the number of \textbf{free variables} the system has after applying Gaussian
 elimination.
 
 \subsection{Linear Combination Lemma}
@@ -318,72 +318,72 @@ Any linear combination of linear combinations is a linear combination.
 Consider the following system of linear equations:
 
 \begin{align*}
-	x_1 + 2x_2 + x_3 + x_4   & = 4  \\
-	2x_1 + 5x_2 + x_3 + 3x_4 & = 10 \\
-	x_1 + 3x_2 + 2x_3 + 2x_4 & = 7
+    x_1 + 2x_2 + x_3 + x_4   & = 4  \\
+    2x_1 + 5x_2 + x_3 + 3x_4 & = 10 \\
+    x_1 + 3x_2 + 2x_3 + 2x_4 & = 7
 \end{align*}
 
 \textbf{Step 1: Augmented Matrix}
 
 \[
-	\begin{bmatrix}
-		1 & 2 & 1 & 1 & 4  \\
-		2 & 5 & 1 & 3 & 10 \\
-		1 & 3 & 2 & 2 & 7  \\
-	\end{bmatrix}
+    \begin{bmatrix}
+        1 & 2 & 1 & 1 & 4  \\
+        2 & 5 & 1 & 3 & 10 \\
+        1 & 3 & 2 & 2 & 7  \\
+    \end{bmatrix}
 \]
 
 \textbf{Step 2: Eliminate below pivot in column 1}
 
 \begin{itemize}
-	\item Row 2 \(=\) Row 2 \(-\) 2 \(\times\) Row 1
-	\item Row 3 \(=\) Row 3 \(-\) Row 1
+    \item Row 2 \(=\) Row 2 \(-\) 2 \(\times\) Row 1
+    \item Row 3 \(=\) Row 3 \(-\) Row 1
 \end{itemize}
 
 \[
-	\begin{bmatrix}
-		1 & 2 & 1  & 1 & 4 \\
-		0 & 1 & -1 & 1 & 2 \\
-		0 & 1 & 1  & 1 & 3 \\
-	\end{bmatrix}
+    \begin{bmatrix}
+        1 & 2 & 1  & 1 & 4 \\
+        0 & 1 & -1 & 1 & 2 \\
+        0 & 1 & 1  & 1 & 3 \\
+    \end{bmatrix}
 \]
 
 \textbf{Step 3: Eliminate below pivot in column 2}
 
 \begin{itemize}
-	\item Row 3 \(=\) Row 3 \(-\) Row 2
+    \item Row 3 \(=\) Row 3 \(-\) Row 2
 \end{itemize}
 
 \[
-	\begin{bmatrix}
-		1 & 2 & 1  & 1 & 4 \\
-		0 & 1 & -1 & 1 & 2 \\
-		0 & 0 & 2  & 0 & 1 \\
-	\end{bmatrix}
+    \begin{bmatrix}
+        1 & 2 & 1  & 1 & 4 \\
+        0 & 1 & -1 & 1 & 2 \\
+        0 & 0 & 2  & 0 & 1 \\
+    \end{bmatrix}
 \]
 
 \textbf{Step 4: Back Substitution}
 
 From Row 3:
 \[
-	2x_3 = 1 \Rightarrow x_3 = \frac{1}{2}
+    2x_3 = 1 \Rightarrow x_3 = \frac{1}{2}
 \]
 
 From Row 2:
 \[
-	x_2 - x_3 + x_4 = 2 \Rightarrow x_2 = 2 + x_3 - x_4 = 2 + \frac{1}{2} - x_4 = \frac{5}{2} - x_4
+    x_2 - x_3 + x_4 = 2 \Rightarrow x_2 = 2 + x_3 - x_4 = 2 + \frac{1}{2} - x_4 = \frac{5}{2} - x_4
 \]
 
 From Row 1:
 \[
-	x_1 + 2x_2 + x_3 + x_4 = 4
-	\Rightarrow x_1 = 4 - 2x_2 - x_3 - x_4
+    x_1 + 2x_2 + x_3 + x_4 = 4
+    \Rightarrow x_1 = 4 - 2x_2 - x_3 - x_4
 \]
 Substitute:
 \[
-	x_1 = 4 - 2\left( \frac{5}{2} - x_4 \right) - \frac{1}{2} - x_4
-	= 4 - 5 + 2x_4 - \frac{1}{2} - x_4
-	= -1 - \frac{1}{2} + x_4 = -\frac{3}{2} + x_4
+    x_1 = 4 - 2\left( \frac{5}{2} - x_4 \right) - \frac{1}{2} - x_4
+    = 4 - 5 + 2x_4 - \frac{1}{2} - x_4
+    = -1 - \frac{1}{2} + x_4 = -\frac{3}{2} + x_4
 \]
 
 \textbf{General Solution}
@@ -391,52 +391,52 @@ Substitute:
 Let \(x_4 = t\) (free variable), then:
 
 \[
-	\begin{aligned}
-		x_1 & = -\frac{3}{2} + t \\
-		x_2 & = \frac{5}{2} - t  \\
-		x_3 & = \frac{1}{2}      \\
-		x_4 & = t
-	\end{aligned}
-	\quad \text{with } t \in \Reals
+    \begin{aligned}
+        x_1 & = -\frac{3}{2} + t \\
+        x_2 & = \frac{5}{2} - t  \\
+        x_3 & = \frac{1}{2}      \\
+        x_4 & = t
+    \end{aligned}
+    \quad \text{with } t \in \Reals
 \]
 
 \textbf{Solution Set:}
 
 \[
-	\left\{
-	\begin{bmatrix}
-		-\frac{3}{2} \\ \frac{5}{2} \\ \frac{1}{2} \\ 0
-	\end{bmatrix}
-	+ t \cdot
-	\begin{bmatrix}
-		1 \\ -1 \\ 0 \\ 1
-	\end{bmatrix}
-	\;\middle|\; t \in \Reals
-	\right\}
+    \left\{
+    \begin{bmatrix}
+        -\frac{3}{2} \\ \frac{5}{2} \\ \frac{1}{2} \\ 0
+    \end{bmatrix}
+    + t \cdot
+    \begin{bmatrix}
+        1 \\ -1 \\ 0 \\ 1
+    \end{bmatrix}
+    \;\middle|\; t \in \Reals
+    \right\}
 \]
 
 \subsection{The Determinant, the cross product and the solutions of linear Systems of Equations}
 A linear system of three equation has the following properties:
 
 \begin{itemize}
-	
-	\item There is a unique solution if the determinant of the coefficient matrix is non-zero. 
-	
-	\[
-		\langle (a \times b), c\rangle = \det(a,b,c) \ne 0
-	\]
-	
-	\item There are infinitely many solutions if the determinant of the coefficient matrix is zero.
-	
-	\[
-		\langle (a \times b), c\rangle = \det(a,b,c) = 0
-	\]
-	
-	\item There is no solution if the determinant of the coefficient matrix is zero and the system is inconsistent.
-	
-	\[
-		\langle (a \times b), c\rangle = 0
-	\]
+
+    \item There is a unique solution if the determinant of the coefficient matrix is non-zero.
+
+          \[
+              \langle (a \times b), c\rangle = \det(a,b,c) \ne 0
+          \]
+
+    \item There are infinitely many solutions if the determinant of the coefficient matrix is zero.
+
+          \[
+              \langle (a \times b), c\rangle = \det(a,b,c) = 0
+          \]
+
+    \item There is no solution if the determinant of the coefficient matrix is zero and the system is inconsistent.
+
+          \[
+              \langle (a \times b), c\rangle = 0
+          \]
 
 \end{itemize}
 
@@ -446,7 +446,7 @@ A linear system of three equation has the following properties:
     % Nodes
     \node [terminator] (start) {Linear \(n \times n\) System};
     \node [decision, below=of start] (decision1) {\(\det(A) = 0?\)};
-	\node [decision, below=of decision1] (decision2) {\(\rank(A) = \rank(A,b)?\)};
+    \node [decision, below=of decision1] (decision2) {\(\rank(A) = \rank(A,b)?\)};
     \node [terminator, left=of decision1] (oneS) {Exactly one solution};
     \node [terminator, below left=of decision2] (inS) {Inf. sol. with \((n - \rank(A))\) parameters};
     \node [terminator, below=of decision2] (noS) {No solution};
@@ -480,150 +480,150 @@ A linear system of three equation has the following properties:
 
 \subsection{Proof of the Gaussian Elimination}
 
-The row operations do not change the solution set. 
+The row operations do not change the solution set.
 
 \textbf{Proof:}
 
-A linear system of equations of the form \(Ax = b\), \(A \in K^{m \times n}\) with some solution
-\(x\) can be multiplied by some elementary matrix \(C_1, C_2, C_3\) which correspond to a row 
+A linear system of equations of the form \(Ax = b\), \(A \in \Field^{m \times n}\) with some solution
+\(x\) can be multiplied by some elementary matrix \(C_1, C_2, C_3\) which correspond to a row
 operation \(CAx = Cb\).
 
 The Equality is kept and therefore, \(L(A,b) \subset L(CA, Cb)\). If \(x \in L(CA, Cb)\) then
 
 \[
-	CAx = Cb \implies C^{-1}CAx = C^{-1}Cb \implies Ax = b
+    CAx = Cb \implies C^{-1}CAx = C^{-1}Cb \implies Ax = b
 \]
 
 Because of the invertibility of elementary matrices we can be sure that  \(L(CA, Cb) \subset L(A,b) \).
 
-Now for the case that \(L(A,b) = \emptyset\). If we assume that \(L(CA,CB) \ne \emptyset \), then 
-there would be some \(x \in L(CA,CB)\) with \(CAx = Cb\). By multiplying both side by \(C^{-1}\) we 
+Now for the case that \(L(A,b) = \emptyset\). If we assume that \(L(CA,CB) \ne \emptyset \), then
+there would be some \(x \in L(CA,CB)\) with \(CAx = Cb\). By multiplying both side by \(C^{-1}\) we
 get \(Ax = b\) and therefore, \(L(A, b) \ne \emptyset \),  which is a contradiction to our original
 assumption  \(L(A,b) = \emptyset\).
 
 \QED
 
-Now we only have to prove that each regular matrix can be transformed in the reduced echelon form or 
+Now we only have to prove that each regular matrix can be transformed in the reduced echelon form or
 even row reduced echelon form. This is the equivalent of saying that the row operations do not change
 the rank of the matrix.
 
 \textbf{Proof:}
 
-If \(C\) is an elementary matrix and \(A \in K^{m \times n}\) some matrix. The statement \(rg(CA) = rg(A)\) 
+If \(C\) is an elementary matrix and \(A \in \Field^{m \times n}\) some matrix. The statement \(rg(CA) = rg(A)\)
 is true because of the invertibility of the elementary matrices and the isomorphism in vector spaces.
 
-Given \(A = (a_1, a_2, \dots, a_n)\). The exchange of two columns preserves \(L := L(a_1, \dots, a_n)\), 
-and also the \(rg_s (A)\). Concerning the scaling of a column by some \(\lambda \) \(L := L(a_1, \dots, \lambda a_k, \dots, a_n)\) 
-also preserves \(dim(L) = rg_s(A)\). And finally, the addition \(L = L(a_1, \dots, a_i + \lambda a_k, \dots, a_n)\) also preserves 
+Given \(A = (a_1, a_2, \dots, a_n)\). The exchange of two columns preserves \(L := L(a_1, \dots, a_n)\),
+and also the \(rg_s (A)\). Concerning the scaling of a column by some \(\lambda \) \(L := L(a_1, \dots, \lambda a_k, \dots, a_n)\)
+also preserves \(dim(L) = rg_s(A)\). And finally, the addition \(L = L(a_1, \dots, a_i + \lambda a_k, \dots, a_n)\) also preserves
 \(rg_s (A) = rg(A)\). Thus, \(rg(CA) = rg(A)\).
 
 \QED
 
-The only part left is to prove that if \(A\) has an inverse, then with use of the row operations we can 
+The only part left is to prove that if \(A\) has an inverse, then with use of the row operations we can
 transform it in to a matrix with an upper triangular with also no zero element on the main diagonal.
 
 \textbf{Proof:}
 
 First we eliminate all the elements under the main diagonal for all columns until the column \(k - 1\).
-With this, we have created a new matrix \(A^(\ell) = C_{\ell} \dot \cdots \dot C_1 A \) which looks 
-like: 
+With this, we have created a new matrix \(A^(\ell) = C_{\ell} \dot \cdots \dot C_1 A \) which looks
+like:
 
 \[
-	A^{(\ell)} =
-	\begin{bmatrix}
-	a^{(\ell)}_{11} & \cdots & a^{(\ell)}_{1,k-1} & a^{(\ell)}_{1k} & a^{(\ell)}_{1,k+1} & \cdots & a^{(\ell)}_{1n} \\
-	\vdots & \ddots & \vdots & \vdots & \vdots & \ddots & \vdots \\
-	0 & \cdots & a^{(\ell)}_{k-1,k-1} & a^{(\ell)}_{k-1,k} & a^{(\ell)}_{k-1,k+1} & \cdots & a^{(\ell)}_{k-1,n} \\
-	0 & \cdots & 0 & a^{(\ell)}_{kk} & a^{(\ell)}_{k,k+1} & \cdots & a^{(\ell)}_{kn} \\
-	0 & \cdots & 0 & \vdots & a^{(\ell)}_{k+1,k+1} & \cdots & a^{(\ell)}_{k+1,n} \\
-	\vdots & \ddots & \vdots & \vdots & \vdots & \ddots & \vdots \\
-	0 & \cdots & 0 & a^{(\ell)}_{nk} & \cdots & \cdots & a^{(\ell)}_{nn}
-	\end{bmatrix}
+    A^{(\ell)} =
+    \begin{bmatrix}
+        a^{(\ell)}_{11} & \cdots & a^{(\ell)}_{1,k-1}   & a^{(\ell)}_{1k}    & a^{(\ell)}_{1,k+1}   & \cdots & a^{(\ell)}_{1n}    \\
+        \vdots          & \ddots & \vdots               & \vdots             & \vdots               & \ddots & \vdots             \\
+        0               & \cdots & a^{(\ell)}_{k-1,k-1} & a^{(\ell)}_{k-1,k} & a^{(\ell)}_{k-1,k+1} & \cdots & a^{(\ell)}_{k-1,n} \\
+        0               & \cdots & 0                    & a^{(\ell)}_{kk}    & a^{(\ell)}_{k,k+1}   & \cdots & a^{(\ell)}_{kn}    \\
+        0               & \cdots & 0                    & \vdots             & a^{(\ell)}_{k+1,k+1} & \cdots & a^{(\ell)}_{k+1,n} \\
+        \vdots          & \ddots & \vdots               & \vdots             & \vdots               & \ddots & \vdots             \\
+        0               & \cdots & 0                    & a^{(\ell)}_{nk}    & \cdots               & \cdots & a^{(\ell)}_{nn}
+    \end{bmatrix}
 \]
 
-Because of \(rg(A) = rg(A^{(\ell)})\), \(a^{(\ell)}_{ii} \ne 0\) for \(1 \le i < k\). All of these 
-elements will not change for the rest of the Gaussian Elimination. Now we want to build another matrix 
-with row operations \(A^{(\mu)}\) where \(a^{(\mu)}_{kk} \ne 0\) and \(a^{(\mu)}_{ik} = 0\) for 
-\(i > k\). If \(a^{(\ell)}_{kk} \ne 0\) then \((i,k)\)-th element will become 0 by subtracting 
-\(\frac{a^{(\ell)}_{ik}}{a^{(\ell)}_{kk}}\) time the \(k\)-th row of the \(i\)-th row. So can the \(k\)-th 
-column be transformed with a series of row operations to the desired form. But if \(a^{(\ell)}_{kk} = 0\), 
-then you have to swap it with another row under it. This is the critical point of the algorithm: What 
+Because of \(rg(A) = rg(A^{(\ell)})\), \(a^{(\ell)}_{ii} \ne 0\) for \(1 \le i < k\). All of these
+elements will not change for the rest of the Gaussian Elimination. Now we want to build another matrix
+with row operations \(A^{(\mu)}\) where \(a^{(\mu)}_{kk} \ne 0\) and \(a^{(\mu)}_{ik} = 0\) for
+\(i > k\). If \(a^{(\ell)}_{kk} \ne 0\) then \((i,k)\)-th element will become 0 by subtracting
+\(\frac{a^{(\ell)}_{ik}}{a^{(\ell)}_{kk}}\) time the \(k\)-th row of the \(i\)-th row. So can the \(k\)-th
+column be transformed with a series of row operations to the desired form. But if \(a^{(\ell)}_{kk} = 0\),
+then you have to swap it with another row under it. This is the critical point of the algorithm: What
 if there is no row, also \(a^{(\ell)}_{ik} = 0\) for \(i \ge k\)? Then \(A^{(\ell)}\) would be:
 
 \[
-	A^{(\ell)} =
-	\begin{bmatrix}
-	a^{(\ell)}_{11} & \cdots & a^{(\ell)}_{1,k-1} & a^{(\ell)}_{1k} & a^{(\ell)}_{1,k+1} & \cdots & a^{(\ell)}_{1n} \\
-	\vdots & \ddots & \vdots & \vdots & \vdots & \ddots & \vdots \\
-	0 & \cdots & a^{(\ell)}_{k-1,k-1} & a^{(\ell)}_{k-1,k} & a^{(\ell)}_{k-1,k+1} & \cdots & a^{(\ell)}_{k-1,n} \\
-	0 & \cdots & 0 & 0 & a^{(\ell)}_{k,k+1} & \cdots & a^{(\ell)}_{kn} \\
-	0 & \cdots & 0 & \vdots & a^{(\ell)}_{k+1,k+1} & \cdots & a^{(\ell)}_{k+1,n} \\
-	\vdots & \ddots & \vdots & \vdots & \vdots & \ddots & \vdots \\
-	0 & \cdots & 0 & 0 & \cdots & \cdots & a^{(\ell)}_{nn}
-	\end{bmatrix}
+    A^{(\ell)} =
+    \begin{bmatrix}
+        a^{(\ell)}_{11} & \cdots & a^{(\ell)}_{1,k-1}   & a^{(\ell)}_{1k}    & a^{(\ell)}_{1,k+1}   & \cdots & a^{(\ell)}_{1n}    \\
+        \vdots          & \ddots & \vdots               & \vdots             & \vdots               & \ddots & \vdots             \\
+        0               & \cdots & a^{(\ell)}_{k-1,k-1} & a^{(\ell)}_{k-1,k} & a^{(\ell)}_{k-1,k+1} & \cdots & a^{(\ell)}_{k-1,n} \\
+        0               & \cdots & 0                    & 0                  & a^{(\ell)}_{k,k+1}   & \cdots & a^{(\ell)}_{kn}    \\
+        0               & \cdots & 0                    & \vdots             & a^{(\ell)}_{k+1,k+1} & \cdots & a^{(\ell)}_{k+1,n} \\
+        \vdots          & \ddots & \vdots               & \vdots             & \vdots               & \ddots & \vdots             \\
+        0               & \cdots & 0                    & 0                  & \cdots               & \cdots & a^{(\ell)}_{nn}
+    \end{bmatrix}
 \]
 
-But, that would imply that the \(k\)-th column is a linear combination of the other \(k - 1\) columns, 
-and then \(rg(A^{(\ell)}) \le n - 1\) which is a contradiction to the assumption  \(rg(A^{(\ell)}) = n\) 
+But, that would imply that the \(k\)-th column is a linear combination of the other \(k - 1\) columns,
+and then \(rg(A^{(\ell)}) \le n - 1\) which is a contradiction to the assumption  \(rg(A^{(\ell)}) = n\)
 
 \QED
 
 \subsection{Alternative Method for finding the Rank of a matrix}
 
-For a matrix \(A \in K^{(m \times n)}\). The biggest submatrix of the size \(r \times r\) with a 
+For a matrix \(A \in \Field^{(m \times n)}\). The biggest submatrix of the size \(r \times r\) with a
 non-zero determinant gives us the \emph{rank} of the matrix. \(rg(A) = r\).
 
 \subsection{Cramer's Rule}
 
-For a square matrix \(A = (a_1, \dots, a_n)\) and \(x,b \in K^{n}\) with \(Ax = b\) with \(\det A \ne 0\) 
+For a square matrix \(A = (a_1, \dots, a_n)\) and \(x,b \in \Field^{n}\) with \(Ax = b\) with \(\det A \ne 0\)
 then
 
 \[
-	A_i = (a_1, \dots, a_{i - 1}, b, a_{i + 1}, \dots, a_n), i = 1,\dots,n.
+    A_i = (a_1, \dots, a_{i - 1}, b, a_{i + 1}, \dots, a_n), i = 1,\dots,n.
 \]
 
 The solution \(i\) is then
 
 \[
-	x_i = \frac{\det(A_i)}{\det(A)}
+    x_i = \frac{\det(A_i)}{\det(A)}
 \]
 
 \textbf{Proof:}
 
-Given a matrix \(X_i \in K^{n \times n}\) by
+Given a matrix \(X_i \in \Field^{n \times n}\) by
 
 \[
-	\begin{bmatrix}
-		1  &  &\cdots     & x_1    & &\cdots \\
-	\vdots &  &\ddots     & \vdots & & 0     \\
-		&  &x_{i - 1}  &        & &       \\
-		&0 & x_i 	  &		   & &       \\
-		&  & x_{i + 1} &        & &       \\
-		&  & \vdots    & \ddots & &       \\
-		&  & x_n       &        & &    1   
-	\end{bmatrix}
+    \begin{bmatrix}
+        1      &   & \cdots    & x_1    &  & \cdots \\
+        \vdots &   & \ddots    & \vdots &  & 0      \\
+               &   & x_{i - 1} &        &  &        \\
+               & 0 & x_i       &        &  &        \\
+               &   & x_{i + 1} &        &  &        \\
+               &   & \vdots    & \ddots &  &        \\
+               &   & x_n       &        &  & 1
+    \end{bmatrix}
 \]
 
-\(X_i = (e_1, \dots, e_{i - 1}, e_i, e_{i + 1}, \dots, e_n)\). By using an \(n\)-times the 
+\(X_i = (e_1, \dots, e_{i - 1}, e_i, e_{i + 1}, \dots, e_n)\). By using an \(n\)-times the
 Laplace formula in the first row shows \(|X_i| = x_i\).
 
 \begin{align*}
-	A X_i &= A (e_1, \dots, e_{i - 1}, e_i, e_{i + 1}, \dots, e_n)\\
-	A X_i &= A (a_1, \dots, a_{i - 1}, Ax, a_{i + 1}, \dots, a_n)\\
-	A X_i &= A (a_1, \dots, a_{i - 1}, b, a_{i + 1}, \dots, a_n) = A_i
+    A X_i & = A (e_1, \dots, e_{i - 1}, e_i, e_{i + 1}, \dots, e_n)     \\
+    A X_i & = A (a_1, \dots, a_{i - 1}, Ax, a_{i + 1}, \dots, a_n)      \\
+    A X_i & = A (a_1, \dots, a_{i - 1}, b, a_{i + 1}, \dots, a_n) = A_i
 \end{align*}
 
 This implies \(|A_i| = |AX_i| = |A||X_i|\) therefore, \(x_i = \frac{|A_i|}{A}\).
 
 \QED
 
-Another way of thinking about this in a more geometric way is to first think at the determinant as 
-the area/volume/etc. that is spanned by the basis vector and the stretching factor of the transformation 
-\(\det(A)\). Now visualize your matrix \(A\) as a linear transformation with 
-a non-zero determinant and think about \(\det(A_i)\) as the area/volume/etc. which is spanned by the 
+Another way of thinking about this in a more geometric way is to first think at the determinant as
+the area/volume/etc. that is spanned by the basis vector and the stretching factor of the transformation
+\(\det(A)\). Now visualize your matrix \(A\) as a linear transformation with
+a non-zero determinant and think about \(\det(A_i)\) as the area/volume/etc. which is spanned by the
 basis vector but with one of the vector substituted by \(b\).
 
-Now in two dimensions, think of the area spanned by the basis vectors \(A = xy\). 
-The signed area of the original parallelogram gets 
-stretched by \(\det(A)\) this gives us \(Area = \det(A)y \Rightarrow y = \frac{Area}{\det(A)}\). This 
+Now in two dimensions, think of the area spanned by the basis vectors \(A = xy\).
+The signed area of the original parallelogram gets
+stretched by \(\det(A)\) this gives us \(Area = \det(A)y \Rightarrow y = \frac{Area}{\det(A)}\). This
 also works for \(x\).

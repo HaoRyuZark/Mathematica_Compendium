@@ -71,6 +71,41 @@ and we write \( V \cong W \).
 
 \end{itemize}
 
+\subsection{Linear Extension Theorem}
+
+Let \(\beta = \{v_1, \dots, v_n\}\) be a basis of the finite dimensional vector space \(V\) and 
+\(w_1, \dots, w_n\) be arbitrary vector in \(W\). Then \(!\exists L\) with \(L : V \to W\) such 
+that \(T(v_i) = w_i\).
+
+\textbf{Proof:}
+
+Define \(T\) as follows: Whenever \(a = \lambda_1 v_1 + \cdots + \lambda_n v_n\) then 
+\(T(a) = \lambda_1 w_1 + \cdots + \lambda_n w_n\).
+
+We know it is unique because for
+\(\lambda_1, \dots, \lambda_n \ne \gamma_1, \dots, \gamma_n\) if we assume \(a - b = \vec{0}\) then:
+
+\[
+    a - b = (\lambda_1  - \gamma_1) v_1 + \cdots + (\lambda_n - \gamma_n) v_n = \vec{0}
+\]
+
+If and only if \(\lambda_1, \dots, \lambda_n = \gamma_1, \dots, \gamma_n\). Thus, it works uniquely 
+for each vector.
+    
+For the linearity, using the definition of linearity and \(T\) this part becomes trivial.
+
+Finally, for the uniqueness of \(T\) itself, let us assume there is a map \(U\) which 
+\(U(v_i) = T(v_i)\). Because we can write a vector a linear combination we will arrive at the 
+fact that 
+
+\[
+    U(x) = \lambda_1U(v_1) + \dots + \lambda_n U(v_n) =  \lambda_1Tv_1) + \dots + \lambda_n T(v_n) 
+\]
+
+Therefore, \(U = T\).
+
+\QED
+
 \subsection{The Kernel of a Linear Map}
 
 The kernel of a linear map \( f: V \to W \) is the set of all vectors in \( V \) that are mapped to 

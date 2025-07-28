@@ -1,28 +1,28 @@
 % Long Division for Polynomials
 \makeatletter
 \def\pld@CF@loop#1+{%
-    \ifx\relax#1\else
-        \begingroup
-          \pld@AccuSetX11%
-          \def\pld@frac{{}{}}\let\pld@symbols\@empty\let\pld@vars\@empty
-          \pld@false
-          #1%
-          \let\pld@temp\@empty
-          \pld@AccuIfOne{}{\pld@AccuGet\pld@temp
-                            \edef\pld@temp{\noexpand\pld@R\pld@temp}}%
-           \pld@if \pld@Extend\pld@temp{\expandafter\pld@F\pld@frac}\fi
-           \expandafter\pld@CF@loop@\pld@symbols\relax\@empty
-           \expandafter\pld@CF@loop@\pld@vars\relax\@empty
-           \ifx\@empty\pld@temp
-               \def\pld@temp{\pld@R11}%
-           \fi
-          \global\let\@gtempa\pld@temp
-        \endgroup
-        \ifx\@empty\@gtempa\else
-            \pld@ExtendPoly\pld@tempoly\@gtempa
-        \fi
-        \expandafter\pld@CF@loop
-    \fi}
+\ifx\relax#1\else
+    \begingroup
+    \pld@AccuSetX11%
+    \def\pld@frac{{}{}}\let\pld@symbols\@empty\let\pld@vars\@empty
+    \pld@false
+    #1%
+    \let\pld@temp\@empty
+    \pld@AccuIfOne{}{\pld@AccuGet\pld@temp
+        \edef\pld@temp{\noexpand\pld@R\pld@temp}}%
+    \pld@if \pld@Extend\pld@temp{\expandafter\pld@F\pld@frac}\fi
+\expandafter\pld@CF@loop@\pld@symbols\relax\@empty
+\expandafter\pld@CF@loop@\pld@vars\relax\@empty
+\ifx\@empty\pld@temp
+    \def\pld@temp{\pld@R11}%
+\fi
+\global\let\@gtempa\pld@temp
+\endgroup
+\ifx\@empty\@gtempa\else
+    \pld@ExtendPoly\pld@tempoly\@gtempa
+\fi
+\expandafter\pld@CF@loop
+\fi}
 \def\pld@CMAddToTempoly{%
     \pld@AccuGet\pld@temp\edef\pld@temp{\noexpand\pld@R\pld@temp}%
     \pld@CondenseMonomials\pld@false\pld@symbols
@@ -31,13 +31,13 @@
     \fi
     \ifx\pld@temp\@empty \else
         \pld@if
-            \expandafter\pld@IfSum\expandafter{\pld@temp}%
-                {\expandafter\def\expandafter\pld@temp\expandafter
-                    {\expandafter\pld@F\expandafter{\pld@temp}{}}}%
-                {}%
-        \fi
-        \pld@ExtendPoly\pld@tempoly\pld@temp
-        \pld@Extend\pld@tempoly{\pld@monom}%
+        \expandafter\pld@IfSum\expandafter{\pld@temp}%
+        {\expandafter\def\expandafter\pld@temp\expandafter
+            {\expandafter\pld@F\expandafter{\pld@temp}{}}}%
+        {}%
+    \fi
+    \pld@ExtendPoly\pld@tempoly\pld@temp
+    \pld@Extend\pld@tempoly{\pld@monom}%
     \fi}
 \makeatother
 
@@ -51,6 +51,7 @@
 \newcommand{\img}{\text{img}}
 \newcommand{\geo}{\text{geo}}
 \newcommand{\alg}{\text{alg}}
+\newcommand{\Field}{\mathbb{F}}
 \tikzstyle{terminator} = [rectangle, rounded corners, minimum width=3.5cm, minimum height=1cm, text centered, draw=black, fill=red!30]
 \tikzstyle{decision} = [diamond, aspect=2, minimum width=3.5cm, text centered, draw=black, fill=blue!30, inner sep=1pt]
 \tikzstyle{connector} = [draw, -latex']

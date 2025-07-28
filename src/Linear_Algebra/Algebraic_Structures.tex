@@ -17,10 +17,10 @@ An \emph{internal composition law} is a binary operation that takes two elements
 An \emph{external composition law} involves a second set acting on the structure, such as scalar multiplication in vector spaces:
 
 \[
-  \cdot: K \times V \rightarrow V
+  \cdot: \Field \times V \rightarrow V
 \]
 
-where \(K\) is a field and \(V\) is a vector space.
+where \(\Field\) is a field and \(V\) is a vector space.
 
 \subsection{Properties of Operations}
 
@@ -125,24 +125,24 @@ A \emph{commutative ring} is a ring where multiplication is also \emph{commutati
 
 This is the kind of ring most often encountered in basic algebra, such as the integers \(\Integers\).
 
-\subsubsection{Field \texorpdfstring{\((K, \oplus, \odot)\)}{}}
+\subsubsection{Field \texorpdfstring{\((\Field, \oplus, \odot)\)}{}}
 A \emph{field} is a commutative ring where every nonzero element has a \emph{multiplicative inverse}:
 
 \[
-    (K \setminus \{0\}, \odot) \text{ is an Abelian group}.
+    (\Field \setminus \{0\}, \odot) \text{ is an Abelian group}.
 \]
 
 Fields like \(\Rationals\), \(\Reals\), and \(\Complex\) allow division (except by zero), enabling the full range of arithmetic operations.
 
 \subsubsection{Vector Space \texorpdfstring{\((V, \oplus, \cdot)\)}{}}
 
-A \emph{vector space} over a field \(K\) consists of:
+A \emph{vector space} over a field \(\Field\) consists of:
 
 \begin{itemize}
 
     \item An Abelian group \((V, \oplus)\) for vector addition.
 
-    \item A scalar multiplication \(\cdot: K \times V \to V\) satisfying:
+    \item A scalar multiplication \(\cdot: \Field \times V \to V\) satisfying:
 
     \begin{itemize}
 
