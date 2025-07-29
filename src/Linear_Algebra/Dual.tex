@@ -359,22 +359,88 @@ Given a dual space \(V^* = L(V, \Field) \) then
 \]
 
 
-Also a linear functional \(\hat{v} \in V^{**}\) is defined by \(\hat{v}(f) = f(v)\) for all \(f \in V^*\).
+We also define the linear functional \(\varphi: V \to V^{**}\) where \(\varphi(x) = \hat{x}\) and \(\hat{x}(f) = f(x)\) for all \(f \in V\).
+
 
 \subsubsection{Isomorphism of the Dual Space}
 
 If \(V\) is finite dimensional then \(V^{**}\) and \(V\) are isomorphic. 
 
-\textbf{Proof:}
-
-Let \(\phi: V \to V^{**}\). It takes an input \(v \in V\) and outputs a linear functional \(\hat{v}\) defined by 
-\(\hat(v): V^* \to \Field\). 
-
 \subsubsection{Isomorphism from \(V\) to \(V^{**}\)}
 
 If \(V\) is finite dimensional then the map \(\phi: V \to V^{**}\) is isomorphic. 
 
+\subsection{Basis Theorem for the Dual Space}
 
+Every basis \(\beta^*\) of \(V^*\) is the dual basis of some basis \(\beta\) of \(V\).
+
+\textbf{Proof:}
+
+Let \(\beta^* = \{f_1, \dots, f_n\}\) be a basis of \(V^*\). We can define a basis \(\beta\) of \(V\) with help of the following:
+
+Let us find a basis \(\beta^{**} = \{\mathcal{F}_1, \dots, \mathcal{F}_n\}\) of \(V^{**}\). The functional \(\varphi: V \to V^{**}\) is 
+an isomorphism and \(\mathcal{F}_i = \hat{v}_i\) for some \(v_i \in V\). 
+
+Let us choose a basis \(\beta = \{v_1, \dots, v_n\}\) of \(V\) and use \(\beta^*\). By definition 
+
+\[
+    f_i(v_j) = \begin{cases}
+        1 & \text{ if } j = i   \\
+        0 & \text{ if } j \ne i
+    \end{cases} = \delta_{ij}
+\]
+
+Using the isomorphism \(\varphi\) we get
+
+\[
+    f_j(v_i) = \hat{v}_i(f_j) = \mathcal{F}_i(f_j) = \begin{cases}
+        1 & \text{ if } j = i   \\
+        0 & \text{ if } j \ne i
+    \end{cases} = \delta_{ij} 
+\]
+
+\QED
+
+\subsection{Transpose of the Transpose is T}
+
+We define \(T^{TT} V^{**} \to W^{**}\) by 
+
+\[
+    T^{TT}(\hat{x}) = \hat{x}(T^T)
+\]
+
+and claim \(T^{TT} = T\).
+
+\textbf{Proof:}
+
+In this proof we know that \(T^T: W^* \to V^*\). Now let us declare our basis \(\beta = \{v_1, \dots, v_n\}\) for \(V\), \(\gamma = \{w_1, \dots, w_n\} \) for \(W\), 
+\(\beta^* = \{f_1, \dots, f_n\}\) for \(V^*\), \(\gamma^* = \{g_1, \dots, g_n\}\) for \(W^*\), \(\beta^{**} =\{\mathcal{F}_1, \dots, \mathcal{F}_n\}\) for \(V^{**}\) and finally \(\gamma^{**} = 
+\{\mathcal{G}_1, \dots, \mathcal{G}_n\}\) for \(W^**\).
+
+
+ When we evaluate at \(g: W \to \Field\) we get 
+
+\begin{align*}
+    T^{TT} (\hat{x})(g) & = \hat{x}(T^T)(g)  \\ 
+                        & = \hat{x} (T^T(g)) \text{ by associativity }\\
+                        & =  T^T (g) (x)     \text{ using the definition of } \hat{x} \\ 
+                        & = g(T)(x)          \text{ by associativity }\\
+                        & = g(T(x))          \\ 
+                        & = \hat{T(x)} (g)
+\end{align*}
+
+Here \(\hat{T(x)} \in W^{**}\). Finally 
+
+\begin{align*} 
+    T^{TT} (\hat{x})(g) & = \hat{T(x)} (g) \\ 
+    T^{TT}(\hat{x}) &= \hat{T(x)} \\ 
+    T^{TT}          &= \hat{T} \\
+    T^TT &= T \text{ by ignoring the hats }
+\end{align*}
+
+They are not strictly the same, but because of the isomorphism we can set them equal.
+
+\QED
 
 
 
