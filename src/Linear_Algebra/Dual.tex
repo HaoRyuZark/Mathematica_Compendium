@@ -435,10 +435,128 @@ Here \(\hat{T(x)} \in W^{**}\). Finally
     T^{TT} (\hat{x})(g) & = \hat{T(x)} (g) \\ 
     T^{TT}(\hat{x}) &= \hat{T(x)} \\ 
     T^{TT}          &= \hat{T} \\
-    T^TT &= T \text{ by ignoring the hats }
+    T^{TT} &= T \text{ by ignoring the hats }
 \end{align*}
 
 They are not strictly the same, but because of the isomorphism we can set them equal.
+
+\QED
+
+\subsection{The Annihilator}
+
+We define the \emph{Annihilator} of a subspace of \(V\) as 
+
+\[
+    W^{\circ} = \{f \in V^{*} \mid f(w) = 0, \forall w \in W\}
+\]
+
+We also get the following formula 
+
+\[
+    \dim(W^{\circ}) + \dim(W) = \dim(V)
+\]
+
+whose proof is similar to the one of the rank nullity theorem.
+
+\textbf{Proof:}
+
+Let \( \{w_1, \dots, w_{k - 1}, w_{k}, w_{k + 1}, \dots, w_n\}\) be a basis of \(W\) with dimension \(k\). 
+Let us extend the basis to a basis of \(V\) by \(\beta = \{w_1, \dots, w_{k - 1}, w_{k}, w_{k + 1}, \dots, w_n\}\) with dimension \(n\)
+
+Now let us claim that the vector \(f_{k + 1}, \dots, f_{n}\) is a basis of \(W^{\circ}\). This implies that for every linear combination of vector from \(v_1\) to 
+\(v_k\) which equals \(w\). 
+
+\[
+    f_{k + 1}(w) = \sum_{i = 1}^{k} f_{k + 1}(\lambda_i v_i) = 0
+\]
+
+Therefore, \(f_{k + 1}, \dots, f_{n}\) are in \(W^{\circ}\). Now we have to show that they are linearly independent.
+
+For \(f \in W^{\circ}\)
+
+\[
+    f(x) = \sum_{i = 0}^{n} f(v_i)f_i(x) = f(v_{k + 1})f_{k + 1}(x) + \dots f(v_n)f_n(x)
+\]
+
+Therefore we get that for some \(f\) in the annihilator we get a linear combination of the our chosen basis. 
+
+\QED
+
+\subsection{The Duality Argument}
+
+\[
+    T \text{ is surjective } \iff T^{T} \text{ is injective }
+\]
+
+\textbf{Proof:}
+
+Let us assume the opposite
+
+\[
+    \neg T \text{ is surjective } \iff \neg T^{T} \text{ is injective }
+\]
+
+If \(T\) is not surjective we can assume that the image of it is a strict subset of \(W\) which we will call \(W'\). We can also define a function 
+\(g \in W^*\) which is not 0 everywhere except for the vector in \(W'\). 
+
+Then if we use the definition of \(T^{T}\) which tells us that when evaluating at \(g\) which is not the zero functional gives us 
+
+\[
+    T^T(g)(x) = g(T(x)) = 0 \text{ beacause } T(x) \in W'
+\]
+
+This concludes the proof in one way because we have found some some linear combination for the zero vector different from the trivial solution.
+
+For the other way of the if and only if, we know that \(T^T\) is not injective. This means that multiple vector get transformed into the zero vector under \(T^T\).  
+Therefore, if suppose \(T\) is surjective and 
+
+\begin{align*}
+    T^T(g)(x) &= 0 \text{ for some } g \ne 0\\ 
+        g(T(x)) &= 0, \quad \forall x \in V 
+\end{align*}
+
+Then for \(y = T(x)\) is always 0 but because we have assume that \(g \ne 0\) we have a contradiction. \(T\) must not surjective and by getting rid of 
+the negation on both sides we have proven the statement.
+
+\QED
+
+\subsection{The Rank A transpose is equal to the rank of A}
+
+For this proof we will claim:
+
+\[
+    \null(T^T) = (\img(T))^{\circ}
+\]
+
+The right part tell us that for some \(g \in \null(T^T)\), \(T^T(g) = f_0\). But because we can write 
+
+\[
+    T^T(g)(x) = g(T(x)) = 0 \text{ where } T(x) \in \img(T) 
+\]
+
+We know that \(g\) is in the annihilator of the image of \(T\). 
+
+With this knowledge we can know proof \(\rank(A) = \rank(A^T)\) using the rank nullity theorem 
+
+\begin{align*}
+    \dim(\null(T^T)) + \dim(\img(T^T)) &= \dim(W^*) = \dim(W) \\ 
+    \dim((\img(T^{\circ})) + \dim(\img(T^T)) &= \dim(W) \\ 
+\end{align*}
+
+For \(\dim(W)\) we get 
+
+\begin{align*}
+    \dim((\img(T)^{\circ})) + \dim(\img(T)) &=  \dim(W) \\  
+    \dim((\img(T)^{\circ})) &=  \dim(W) - \dim(\img(T)) 
+\end{align*}
+
+By substituting back into the original equation 
+
+\begin{align*} 
+    \dim((\img(T)^{\circ})) + \dim(\img(T^T)) &= \dim(W) \\ 
+    \dim(W) - \dim(\img(T))  + \dim(\img(T^T)) &= \dim(W)\\ 
+    \dim(\img(T^T))  &=  \dim(\img(T))  
+\end{align*}
 
 \QED
 
