@@ -16,16 +16,16 @@ The total Arclength is going to be the sum of all of these sectors
     L =  \sum_{i = 1}^{n}\sqrt{{(\Delta i)}^2 + {(\Delta j)}^2 + {(\Delta k)}^2}
 \]
 
-if we use a clever one we get
+if we use a clever one \( \left(\frac{\Delta t}{\Delta t}\right)^2 \) we get
 
 \[
-    L =  \sum_{i = 1}^{n}\sqrt{\frac{{\left(\frac{\Delta i}{\Delta t}\right)}^2 + {\left(\frac{\Delta j}{\Delta t}\right)}^2 + {\left(\frac{\Delta k}{\Delta t}\right)}^2}{\Delta t}}
+    L =  \sum_{i = 1}^{n} \sqrt{{\left(\frac{\Delta i}{\Delta t}\right)}^2 + {\left(\frac{\Delta j}{\Delta t}\right)}^2 + {\left(\frac{\Delta k}{\Delta t}\right)}^2}\Delta t
 \]
 
 Now if we take the limit we get
 
 \[
-    L =  \lim_{n\to \infty}\sum_{i = 1}^{n}\sqrt{\frac{{\left(\frac{\Delta i}{\Delta t}\right)}^2 + {\left(\frac{\Delta j}{\Delta t}\right)}^2 + {\left(\frac{\Delta k}{\Delta t}\right)}^2}{\Delta t}}
+    L =  \lim_{n \to \infty} \sum_{i = 1}^{n} \sqrt{\left(\frac{\Delta i}{\Delta t}\right)}^2 + {\left(\frac{\Delta j}{\Delta t}\right)}^2 + {\left(\frac{\Delta k}{\Delta t}\right)^2}\Delta t
 \]
 
 which is 
