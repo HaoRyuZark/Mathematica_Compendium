@@ -49,13 +49,19 @@ smooth curve parametrized by \( \vec{r}(t) \), \( t \in [a, b] \).
 The \emph{line integral} of \(F\) along \( \gamma \) is:
 
 \[
-    \int_\gamma \langle \vec{F}(\vec{r}(t)), \frac{d\vec{r}(t)}{dt} \rangle dt = 
-    \int_a^b \langle \vec{F}(\vec{r}(t)), \frac{\vec{dr}}{dt} \rangle dt = \vec{F}(\vec{r}(b)) 
+    \int_\gamma \left\langle \vec{F}(\vec{r}(t)), \frac{d\vec{r}(t)}{dt} \right\rangle dt = 
+    \int_a^b \left\langle \vec{F}(\vec{r}(t)), \frac{\vec{dr}}{dt} \right\rangle dt = \vec{F}(\vec{r}(b)) 
     - \vec{F}(\vec{r}(a))
 \]
 
 In the context of physics this integral measures the work done by the field \( \vec{F} \) 
 along the path \( \gamma \), such as force over distance.
+
+In compact form 
+
+\[
+    \int_\gamma \langle \vec{F}, d\vec{r} \rangle
+\]
 
 \textbf{Example: Line Integral over a Vector Field}
 
@@ -185,7 +191,7 @@ Now, given a field \(\vec{F}(x,y) = M(x,y)\imath + N(x,y)\jmath\) and the curve
  \(\vec{r}(t) = g(t)\imath + h(t)\jmath\). The line integral of \(\vec{F}\) along \(C\) is 
 
 \[
-    \int_\gamma \langle \nabla \vec{F}, \frac{\vec{r}}{dt} \rangle dt
+    \int_\gamma \left\langle \nabla \vec{F}, \frac{\vec{r(t)}}{dt} \right\rangle dt
 \]
 
 \[
@@ -202,14 +208,19 @@ These two integrals give us both the integral with respect to \(x\) and \(y\).
 
 \textbf{Example:}
 
-Curve \(C\) is a portion of the parabola \(y = x^2\)that goes through the points (1,1) to (2,4)
+Curve \(C\) is a portion of the parabola \(y = x^2\) that goes through the points (1,1) to (2,4)
 
 Compute: \(\int_{a}^{b} \frac{x}{y} dy\)
 
-\textbf{Step 1: Parametrize \(C\)}
+\textbf{Step 1: Parameterize \(C\)}
+
+The trick for this cases where the curve is the graph of a function is to set \(x = t\) and them solve for 
+\(y\) in terms of \(x\).
+
+In this case we get
 
 \[
-    \vec{r}(t) = t\imath + t^2 \jmath \text{ with } 1 \ge i \ge 2
+    \vec{r}(t) = t\imath + t^2 \jmath \text{ with } 1 \le t \le 2
 \]
 
 \textbf{Step 2: Substitute into the integral}
@@ -222,49 +233,187 @@ Compute: \(\int_{a}^{b} \frac{x}{y} dy\)
     \int_{a}^{b} \frac{t}{t^2} 2tdt = \int_{1}^{2} \frac{1}{t} 2tdt = 2 
 \]
 
-\subsection{Potential Function}
 
-A vector field \( \vec{F} : \Reals^n \to \Reals^n \) is called \emph{conservative} if there exists a 
-scalar function \( \phi : \Reals^n \to \Reals \) such that:
+\subsection{Flow and Circulation}
+
+For velocity \(\vec{F} = M(x,y)\hat{i} + N(x,y)\hat{j}\) and a smooth curve \(C\) parameterized by \(\vec{r}(t)\)
 
 \[
-    \vec{F} = \nabla \phi
+    Flow = \int_C \langle \vec{F}, \vec{T} \rangle ds
 \]
 
-The function \( \phi \) is then called a \emph{potential function} of \( \vec{F} \).
 
-\textbf{Properties:}
+If the curve \(C\) is closed, the it is called \emph{Circulation}. 
+
+\[
+    Circulation = \oint_C \langle \vec{F}, \vec{T} \rangle ds
+\]
+
+\emph{Flow} is a measurement of the degree of which a curve goes along the vector field.
+
+\subsubsection{Circulation Density}
+
+The \emph{circulation density} of a vector field \(\vec{F}(x,y) = M(x,y)\hat{i} + N(x,y)\hat{j}\) is given by 
+
+\[
+    CD = \left(\frac{\partial N}{\partial x}- \frac{\partial M}{\partial y}\right)
+\]
+
+It derives from imagining having a square as our curve where from our starting point \((x,y)\) we move \((x + \Delta x, y), (x + \Delta x, y + \Delta y), 
+(x, y + \Delta y)\) generating four different curves. Therefore our total circulation is given by 
+
+\[
+    \oint_C \langle \vec{F}, d\vec{r} \rangle = \sum_{i = 1}^{4} \int_{C_i} \langle \vec{F}, \vec{T} \rangle d\vec{r}
+\]
+
+The dot products are given by 
 
 \begin{itemize}
 
-    \item The line integral of \( \vec{F} \) over any path depends only on the endpoints:
+    \item Bottom: \(\langle \vec{F}(x,y) \Delta x \hat{i}\rangle = M(x,y)\Delta x\)
+    
+    \item Right: \(\langle \vec{F}(x + \Delta x, y ) \Delta y \hat{j}\rangle = N(x + \Delta x, y)\Delta y \)
 
-        \[
-            \int_\gamma \langle \vec{F}, d\vec{r} \rangle = \phi(B) - \phi(A)
-        \]
+    \item Top: \(\langle \vec{F}(x,y + \Delta y) -\Delta x \hat{i}\rangle = -M(x,y + \Delta y)\Delta x\)
 
-    \item The line integral over a closed path is zero:
-
-        \[
-            \oint_\gamma \langle \vec{F}, d\vec{r} \rangle = 0
-        \]
-
-    \item \( \vec{F} \) is conservative \( \Leftrightarrow \) \( \vec{F} \) has zero curl in a 
-    simply connected region.
+    \item Left: \(\langle \vec{F}(x, y) -\Delta y \hat{j}\rangle = N(x , y)\Delta y\)
 
 \end{itemize}
 
-\subsubsection{Finding the Potential Function of a Vector Field}
-
-To find the potential function \( \phi(x, y) \) of a vector field \( \vec{F}(x, y) = (P(x, y), Q(x, y)) \), 
-we must check if the field is conservative and then integrate accordingly. A vector field is conservative 
-if there exists a scalar potential function \( \phi \) such that:
+Then the Top minus Bottom is \(- (M(x ,y + \Delta y) - M(x,y)\Delta x)\) and notice that inside the parenthesis we have something 
+similar to the partial 
 
 \[
-    \vec{F} = \nabla \phi = 
+    \frac{\partial M}{\partial y} = \lim_{\Delta y \to 0} \frac{M(x,y + \Delta y) - M(x,y)}{\Delta y}
+\]
+
+Thus, by multiplying a clever one \(\frac{\Delta y}{\Delta y}\) we get \(- \frac{\partial M}{\partial y} \Delta y \Delta x \). Similarly, we 
+get for the Right minus left case \(\frac{\partial N}{\partial x} \Delta y \Delta x\) 
+
+Finally by putting all together 
+
+\[
+     \oint_C \langle \vec{F}, d\vec{r} \rangle =  - \frac{\partial M}{\partial y} \Delta y \Delta x + \frac{\partial N}{\partial x} \Delta y \Delta x = 
+     \left(-\frac{\partial M}{\partial y} + \frac{\partial N}{\partial x}\right) \Delta y \Delta x  
+\]
+
+\(\Delta y \Delta x\) is the area of the rectangle.
+
+\subsection{Flux}
+
+For a continuous field \(\vec{F} = M(x,y)\hat{i} + N(x,y)\hat{j}\), a smooth curve with no intersections \(C\) and \(\vec{n}\) the outward normal 
+
+\[
+    Flux = \oint_C \langle \vec{F}, \vec{n} \rangle ds
+\]
+
+The derivation of the formula for actually computing the \emph{flux} goes as follows: First, we find ourselves is 2 dimensions 
+and we want to find a normal vector to the curve. We can pretend that we are in 3 dimensions and define a vector \(\vec{k}\) with points in the \(z\) 
+coordinate. 
+
+This gives us \(\vec{n} = \vec{T} \times \vec{k}\). Now either by using the determinant trick or formally computing the cross product we get 
+
+\[
+    \vec{n} = \begin{bmatrix} \frac{dy}{ds} \\ \frac{dx}{ds} \\ 0 \end{bmatrix}
+\]
+
+The final formula is then 
+
+\[
+    Flux = \oint_C \langle \vec{F}, \vec{n} \rangle ds = \oint_C \left\langle \vec{F}, \begin{bmatrix} \frac{dy}{ds} \\ \frac{dx}{ds} \\ 0 \end{bmatrix} \right\rangle ds = 
+    \int_{a}^{b} M dy - \int_{a}^{b} N dx
+\]
+
+One extra note about the derivation is that if the curve goes counter clockwise we use 
+\(\vec{n} = \vec{T} \times \vec{k}\) but if it goes clockwise \(\vec{n} = \vec{k} \times \vec{T}\) because of the right-hand-rule.
+
+\subsection{Conservative Vectors Fields}
+
+A field \(\vec{F}\) is \emph{conservative} on an open domain if 
+
+\[
+    \int_C \langle \vec{F}, d\vec{r} \rangle
+\]
+
+is the same for all paths \(C\) between points \(A\) and \(B\) in the domain. In other words it 
+only depends on the endpoints.
+
+\subsection{The Potential Function}
+
+A vector field \( \vec{F} : \Reals^n \to \Reals^n \) is called \emph{conservative} if there exists a 
+scalar function \( f : \Reals^n \to \Reals \) such that:
+
+\[
+    \vec{F} = \nabla f
+\]
+
+The function \( f \) is then called a \emph{potential function} of \( \vec{F} \) and also 
+
+\[
+    \int_C \langle \vec{F}, d\vec{r} \rangle = f(B) - f(A) 
+\]
+
+\textbf{Proof:}
+
+\[
+    \int_C \langle \vec{F}, d\vec{r} \rangle = \int_{a}^{b} \left\langle \vec{F}(\vec{r}(t)), \frac{d\vec{r}(t)}{dt} \right\rangle dt
+\]
+
+By assumption 
+
+\[
+    = \int_{a}^{b} \left\langle \nabla f(\vec{r}(t)), \frac{d\vec{r}(t)}{dt} \right\rangle dt
+\]
+
+This this like the chain rule. Therefore, 
+
+\[
+    \left\langle \nabla f (\vec{r}(t)), \frac{d\vec{r}(t)}{dt} \right\rangle =
+    \frac{\partial f}{\partial x_1} \frac{\partial x_1}{\partial t} + \cdots
+    \frac{\partial f}{\partial x_n} \frac{\partial x_n}{\partial t} = \frac{d}{dt}f(\vec{r}(t))
+\]
+
+\[
+    = \int_{a}^{b} \frac{d}{dt} \phi(\vec{r}(t))dt
+\]
+
+By the fundamental theorem of calculus 
+
+\[
+    = f(B) - f(A)
+\]
+
+\QED
+
+\subsubsection{Check if a vector field is conservative}
+
+Using the definition \(\vec{F} = \nabla f\) and by writing 
+
+\begin{align*}
+    \vec{F} &= f_1(x_1,x_2,\dots)\hat{i}_1 + f_2(x_1, x_2, \dots)\hat{i}_2 + \cdots + f_n(x_1, x_2, \dots)\hat{i}_n \\ 
+            &= \frac{\partial f}{\partial x_1}\hat{i}_1 + \frac{\partial f}{\partial x_2}\hat{i}_2 + \cdots \frac{\partial f}{\partial x_n}\hat{i}_n  
+\end{align*}
+
+We get the following and reducing to 3 variables and dimensions for the sake of simplicity
+
+\[
+    \frac{\partial f_1}{\partial y} = \frac{\partial}{\partial y} \frac{\partial f}{\partial x} = 
+    \frac{\partial}{\partial x} \frac{\partial f}{\partial y} = \frac{\partial f_2}{\partial x}
+\]
+
+We can also keep making pairs like this, but checking one is enough. 
+
+\subsubsection{Finding the Potential Function of a Vector Field}
+
+To find the potential function \( f(x, y) \) of a vector field \( \vec{F}(x, y) = (P(x, y), Q(x, y)) \), 
+we must check if the field is conservative and then integrate accordingly. A vector field is conservative 
+if there exists a scalar potential function \( f \) such that:
+
+\[
+    \vec{F} = \nabla f = 
     \begin{bmatrix}
-        \frac{\partial \phi}{\partial x} \\ 
-        \frac{\partial \phi}{\partial y}
+        \frac{\partial f}{\partial x} \\ 
+        \frac{\partial f}{\partial y}
     \end{bmatrix} 
 \]
 
@@ -296,15 +445,15 @@ Since \( \frac{\partial P}{\partial y} = \frac{\partial Q}{\partial x} \), the f
 \textbf{Step 1: Integrate \( P(x, y) \) with respect to \(x\):}
 
 \[
-    \phi(x, y) = \int (2xy + e^x)\,dx = x^2y + e^x + h(y)
+    f(x, y) = \int (2xy + e^x)\,dx = x^2y + e^x + h(y)
 \]
 
 Here, \( h(y) \) is a function of \(y\) only.
 
-\textbf{Step 2: Differentiate \( \phi(x, y) \) with respect to \(y\):}
+\textbf{Step 2: Differentiate \( f(x, y) \) with respect to \(y\):}
 
 \[
-    \frac{\partial \phi}{\partial y} = x^2 + h'(y)
+    \frac{\partial f}{\partial y} = x^2 + h'(y)
 \]
 
 Set this equal to \( Q(x, y) = x^2 + \frac{1}{2\sqrt{y}} \), so:
@@ -322,7 +471,7 @@ Set this equal to \( Q(x, y) = x^2 + \frac{1}{2\sqrt{y}} \), so:
 Therefore, the potential function is:
 
 \[
-    \phi(x, y) = x^2y + e^x + \sqrt{y} + C
+    f(x, y) = x^2y + e^x + \sqrt{y} + C
 \]
 
 \subsection{Double Integral over a Rectangular Region}

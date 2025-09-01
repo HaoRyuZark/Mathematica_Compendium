@@ -50,9 +50,37 @@ Let \( f : U \subseteq \Reals^n \to \Reals \) be differentiable at \( \vec{X}_0 
 
 The angle of the maximal slope is \(\phi = \frac{\pi}{2}\). This comes from the fact that 
 the directional derivative which is defined as \(\langle \nabla f, \vec{v}\rangle = \|\nabla f\| 
-\|\vec{v}\| \cos(\phi)\) is orthogonal to the gradient and this happens at that specific angle. 
+\|\vec{v}\| \cos(\phi)\) is orthogonal to the gradient. And for smallest slope \(\phi = \frac{3 \pi}{4}\). 
+Also, the \emph{gradient} forms a vector field. 
 
-And for smallest slope \(\phi = \frac{3 \pi}{4}\). Also, the \emph{gradient} forms a vector field. 
+Formally, we have a vector \(d^*\) which points in the direction of the max slope defined by 
+
+\[
+    d^* = \text{arg}_{\|d\| = 1} \text{max} D_{\vec{v}}f(\vec{x})
+\]
+
+where \(\vec{v}\) is a unit vector. 
+
+The directional derivative written as the inner product wit the gradient gives us 
+
+\[
+    d^* = \text{arg}_{\|d\| = 1} \text{max} \langle \nabla f, \vec{v} \rangle 
+\]
+
+Then using the definition of the dot product
+
+\[
+    d^* = \text{arg}_{\|d\| = 1} \text{max} \|\nabla f\| \|\vec{v}\| \cos(\phi) 
+\]
+
+Finally, because the magnitude of \(\vec{v}\) is one and to maximize cosine we set \(\phi = \frac{\pi}{2}\) 
+
+\[
+    d^* = \|\nabla f\|
+\]
+
+Therefore, the magnitude of the gradient is the maximal slope. 
+
 
 \subsubsection{Origin of the formula}
 
