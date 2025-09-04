@@ -418,7 +418,7 @@ By the fundamental theorem of calculus
 
 \QED
 
-\subsubsection{Check if a vector field is conservative}
+\subsubsection{Check for conservative vector fields}
 
 Using the definition \(\vec{F} = \nabla f\) and by writing 
 
@@ -1131,8 +1131,8 @@ We can make use of triple integration to calculate the center of mass of a body 
 respect to \(x\), \(y\) or \(z\) with the following formulas:
 
 \begin{align*}
-    x_s &= \iiint_V xp(x,z,y)dz\ dy \ dx\\
-    y_s &= \iiint_V yp(x,z,y)dz\ dy \ dx\\
+    x_s &= \iiint_V xp(x,z,y)dz\ dy \ dx \\
+    y_s &= \iiint_V yp(x,z,y)dz\ dy \ dx \\
     z_s &= \iiint_V zp(x,z,y)dz\ dy \ dx
 \end{align*}
 
@@ -1171,7 +1171,7 @@ where \(a \le u \le b\) and \(c \le v \le d\).
 
 For the example we take the cone formed by the function \(z = \sqrt{x^{2} + y^{2}}\) which is in the explicit form. 
 
-The implicit form is then \(0 = z - \sqrt{x^{2} = y^{2}}\) and the parametric form can be described very naturally by 
+The implicit form is then \(0 = z - \sqrt{x^{2} + y^{2}}\) and the parametric form can be described very naturally by 
 
 \[
     \vec{r}(r,\theta) = r \cos(\theta) \hat{i} + r \sin(\theta) \hat{j} + r \hat{k}
@@ -1190,7 +1190,7 @@ Continuing with the surfaces in 3d we can compute the area using the following f
 Notice that we are using the fact that the length of a cross product is the area of the parallelogram formed by vectors 
 it is orthogonal to. Using the this on a small scale with the partial of \(u\) and \(v\) and then adding up results in the formula.
 
-\textbf{Example: Area of the sphere}
+\textbf{Example I: Area of the sphere}
 
 We want to compute the surface area of a sphere of radius \(a\) and show that it equals \(4\pi a^{2}\). Let us proceed step by step.
 
@@ -1280,3 +1280,212 @@ Thus, the surface area of the sphere is
 \]
 
 \QED
+
+\textbf{Example II:}
+
+Compute the surface area of the intersection of the plane \(z = -x\) and the cylinder \(x^2 + y^2 = 4\). 
+
+We will use polar coordinates because the intersection is circular. 
+
+\[
+    \vec{r}(r, \theta) = 
+    \begin{bmatrix}
+       r \cos(\theta) \\ 
+       r \sin(\theta) \\ 
+       - r \cos(\theta)
+    \end{bmatrix}
+\]
+
+Take the partials 
+
+\[
+    \vec{r}_r 
+    = 
+    \begin{bmatrix}
+       \cos(\theta) \\ 
+       \sin(\theta) \\ 
+       -\cos(\theta)
+    \end{bmatrix}
+\]
+
+\[
+    \vec{r}_{\theta} 
+    =
+    \begin{bmatrix}
+       -r\sin(\theta) \\ 
+       r\cos(\theta) \\ 
+       r\sin(\theta)
+    \end{bmatrix}
+\]
+
+Compute the cross product:
+
+\[
+    \vec{r}_r \times \vec{r}_{\theta}
+    = 
+    \begin{bmatrix}
+       r \\ 0 \\ r
+    \end{bmatrix},
+    \qquad
+    \bigl\lVert \vec{r}_r \times \vec{r}_\theta \bigr\rVert
+    = \sqrt{r^2 + r^2} = \sqrt{2}\,r
+\]
+
+Now integrate over the disk \(0 \leq r \leq 2,\ 0 \leq \theta \leq 2\pi\):
+
+\[
+    \text{Area} 
+    = \int_{0}^{2\pi}\int_{0}^{2} \sqrt{2}\, r \, dr\, d\theta
+    = \int_{0}^{2\pi} \left[ \tfrac{\sqrt{2}}{2} r^2 \right]_{0}^{2} d\theta
+    = \int_{0}^{2\pi} 2\sqrt{2}\, d\theta
+    = 4\pi \sqrt{2}.
+\]
+
+The final result is 
+
+\[
+    4 \pi \sqrt{2}
+\]
+
+\subsection{Implicit Surface Area}
+
+Given a smooth, continuous surface \(F(x,y,z) = c\) where \(\langle \nabla F , \vec{p} \rangle \neq 0\) the surface area 
+is given by 
+
+\[
+    SA = \iint_{R} \frac{\|\nabla F\|}{ | \langle \nabla F, \vec{p}\rangle|} dA
+\]
+
+\(\vec{p}\) can be \(\hat{i}, \hat{j}\) or \(\hat{k}\).
+
+\subsection{Explicit Surface Area}
+
+Given a smooth, continuous surface \(F(x,y,z) = f(x,y) - z = 0\) where \(\nabla F = f_x \hat{i} + f_y \hat{j} - \hat{k} \), 
+\(  | \langle \nabla F , \hat{k} \rangle | = |-1| = 1\) and \( \| \nabla F \| = \sqrt{f_{x}^{2} + f_{y}^{2} + 1} \)
+
+\[
+    SA = \iint_{R}  \sqrt{f_{x}^{2} + f_{y}^{2} + 1} dA
+\]
+
+\subsection{Surface Integrals}
+
+We define a function \(G(x,y,z)\) define on a smooth surface \(S\) with an area \(d\sigma\) whose integral is  
+
+\[
+    SI = \iint_R G(x,y,z) d\sigma
+\]
+
+The function \(G\) associates each point on the surface to a value in a higher dimension.
+
+Surface integral in different forms:
+
+\emph{Parametric}
+
+\[
+    SI = \iint_{R} G(f(u,v), g(u,v), h(u,v))\left\| \frac{\partial \vec{r}}{\partial u} \times \frac{\partial \vec{r}}{\partial v} \right\| \, du \, dv.
+\]
+
+\emph{Explicit}
+
+\[
+    SI = \iint_{R} G(x,y,z) \sqrt{f_{x}^{2} + f_{y}^{2} + 1} dA
+\]
+
+\emph{Implicit}
+
+\[
+    SI = \iint_{R} G(x,y, f(x,y)) \frac{\|\nabla F\|}{|\langle \nabla F, \vec{p}\rangle|} dA
+\]
+
+\subsection{The Orientation of a Surface}
+
+A smooth surface is \emph{orientable} if there exists a continuous field of unit normal vectors to the surface.
+
+
+
+\subsection{The Flux of a Surface}
+
+For a continuous field \( \vec{F} \) on a smooth surface \( S \) oriented with normal unit vectors \( \vec{n} \), 
+
+\[
+    Flux = \iint_{S} \langle \vec{F}, \vec{n} \rangle d \sigma 
+\]
+
+where \( \sigma \) is the surface area in the corresponding form. And the normal unit \( \vec{n} \) is for parametric forms 
+
+\[
+    \vec{n} = \frac{ \frac{ \partial \vec{r} }{ \partial u } \times \frac{ \partial \vec{r} }{ \partial v}}
+    { \| \frac{ \partial \vec{r} }{ \partial u } \times \frac{ \partial \vec{r} }{ \partial v} \| }
+\]
+
+and for the implicit surfaces 
+
+\[
+    \vec{n} = \frac{ \nabla g}{ \| \nabla g \| }
+\]
+
+\subsection{Curl}
+
+Let \( \vec{F} = (F_1, F_2, F_3) : \Reals^3 \to \Reals^3 \) be a vector field.
+
+\[
+    \operatorname{curl} \vec{F} = \nabla \times \vec{F} = \begin{bmatrix}
+    \frac{\partial F_3}{\partial x_2} - \frac{\partial F_2}{\partial x_3} \\
+    \frac{\partial F_1}{\partial x_3} - \frac{\partial F_3}{\partial x_1} \\
+    \frac{\partial F_2}{\partial x_1} - \frac{\partial F_1}{\partial x_2}
+    \end{bmatrix}
+\]
+
+These describe how the field spreads or rotates around a point. 
+As a side not, the curl of the gradient of \(f\) is 0 if \(f\) has continuous mixed second derivatives.
+
+There exists a connection between the curl and conservative vector fields. Notice that the components of the curl vector 
+are the conditions similar to the conditions for a vector field to be conservative. Therefore, a conservative vector field has no curl because 
+if the conditions are true then the curl is the zero-vector.
+
+A point where \(\operatorname{curl}\vec{f} \ne  0\) is called a whirlpool. 
+
+\subsection{Stokes's Theorem}
+
+For \(S\) a piecewise smooth oriented surface with piecewise smooth boundary \(C\) and \(\vec{F}\) a field wit continuous 
+first partials for each component on an open region containing \(S\). The circulation around the curve is equal to 
+
+\[
+    C = \oint_C \langle \vec{F}, d\vec{r} \rangle = \iint_S \langle (\nabla \times F), \vec{n} \rangle d\sigma
+\]
+
+\subsection{Divergence}
+
+We define \emph{divergence} as 
+
+\[
+    \operatorname{div} \vec{F} = \langle\nabla, \vec{F}\rangle = \frac{\partial F_1}{\partial x_1} + 
+    \frac{\partial F_2}{\partial x_2} + \frac{\partial F_3}{\partial x_3}
+\]
+
+
+A point where \( \operatorname{div}\vec{f} > 0\) is a called a source.
+
+\subsection{The Divergence Theorem}
+
+For \(S\) a piecewise smooth oriented, closed surface with piecewise smooth boundary \(C\) and \(\vec{F}\) a field wit continuous 
+first partials for each component on an open region containing \(S\). The flux around the curve is equal to 
+
+\[
+    \iint_{S} \langle \vec{F}, \vec{n}\rangle ds = \iiint_D \langle \nabla, \vec{F} \rangle dV 
+\]
+
+\subsection{Unified View of Vector Calculus}
+
+Integrating a differential operator acting on a field over a domain is the same as adding the field components along the boundary.
+
+Formally: 
+
+The integral of a differential form over a boundary \(\partial \Omega\) of some orientable mainfold \(\Omega\) is equal to the integral of its exterior 
+derivative over the whole of \(\Omega\).
+
+\[
+    \int_{\partial \Omega} w = \int_{\Omega} dw
+\]
+
+

@@ -1,11 +1,27 @@
 \newpage
 \section{Modular Arithmetic}
 
-This is basically Wheel Math or division with residual \(b : n \text{residual} = a\)
+We define an equivalence relation 
 
 \[
     a \cong b \mod n \iff n | (a - b) \land  a,b \in \Integers
 \]
+
+Means that both have the same residual when divided by \(n\). 
+
+\subsection{Residual-class  and Residual-class Rings}
+
+Because we have an equivalence relation we can classify the partitions of our set \(\Integers\) into classes which we will 
+call \emph{Residual-classes}. 
+
+\textbf{Example:}
+
+\[
+    [13]_7 + \{m \in \Integers \mid m \cong 13 \mod 7\}
+\]
+
+The set of all Residual-classes can be written as \(\Integers / n \Integers\) where \(n\) is the modulo. 
+
 
 \subsection{Properties}
 

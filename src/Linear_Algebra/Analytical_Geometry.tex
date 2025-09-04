@@ -55,7 +55,7 @@ A plane is defined by a point \(\vec{P}\) and a normal vector \(\vec{n}\):
 	P: \vec{x} = \vec{s} + \lambda_1 \vec{v_1} + \lambda_2 \vec{v_2}
 \]
 
-\subsection{Scalar (Dot) Product}
+\subsection{Dot Product}
 
 The inner product of vectors \(\vec{a}\) and \(\vec{b}\) is a function \(\langle x, y\rangle :=V \times V \rightarrow \mathbb{K}\)
 with the following properties:
@@ -63,10 +63,15 @@ with the following properties:
 \(\forall \vec{a}, \vec{b} \in V\):
 
 \begin{itemize}
-	\item \(\langle\vec{a}, \vec{b}\rangle = \langle\vec{b}, \vec{a}\rangle \)
-	\item \(\langle\vec{a}, \vec{b} + \vec{c}\rangle = \langle\vec{a}, \vec{b}\rangle + \langle\vec{a}, \vec{c}\rangle\)
-	\item \(\langle\vec{a}, \lambda \vec{b}\rangle = \lambda \langle\vec{a}, \vec{b}\rangle\)
-	\item \(\langle\vec{a}, \vec{b}\rangle = 0 \Leftrightarrow \vec{a} = \vec{0} \vee \vec{b} = \vec{0}\)
+
+    \item \(\langle\vec{a}, \vec{b}\rangle = \langle\vec{b}, \vec{a}\rangle \)
+	
+    \item \(\langle\vec{a}, \vec{b} + \vec{c}\rangle = \langle\vec{a}, \vec{b}\rangle + \langle\vec{a}, \vec{c}\rangle\)
+	
+    \item \(\langle\vec{a}, \lambda \vec{b}\rangle = \lambda \langle\vec{a}, \vec{b}\rangle\)
+	
+    \item \(\langle\vec{a}, \vec{b}\rangle = 0 \Leftrightarrow \vec{a} = \vec{0} \vee \vec{b} = \vec{0}\)
+
 \end{itemize}
 
 Formula:
@@ -116,7 +121,10 @@ And with that information we can prove that
 Only if the Dot Product is equal to zero so, like that we have also proved that
 only orthogonal vector have a dot product of zero.
 
-\subsection{Length (Norm) of a Vector}
+The dot product of two vectors can be 
+interpreted as projecting one onto another and then multiplying the length of the projecting to the magnitude of the other.
+
+\subsection{Norm of a Vector}
 
 The norm of a vector \(\vec{a}\) is described by different norms:
 
@@ -354,7 +362,61 @@ The cross product is not distributive over scalar multiplication:
 	\lambda(\vec{a} \times \vec{b}) \neq (\lambda\vec{a}) \times \vec{b}
 \]
 
-The length of the cross product in \(\Reals^3\) is the area of the parallelogram spanned by the two vectors:
+The length of the cross product in \(\Reals^3\) is the area of the parallelogram spanned by the two vectors.
+
+\subsubsection{Determinant Trick}
+
+For two vectors \(\vec{a}\) \(\vec{b}\) in \(\Complex^3\) we can compute the cross product by: 
+
+\[
+    \vec{n} = 
+    \begin{bmatrix}
+        \hat{i} & \hat{j} & \hat{k} \\ 
+        a_1 & a_2 & a_3 \\ 
+        b_1 & b_2 & b_3 
+    \end{bmatrix}
+\]
+
+\subsubsection{Origin of the formula for Cross Products}
+
+We want to define a linear transformation \(f\) which relates the volume of the parallelepiped formed by three vectors, the determinant; and 
+the dot product of a input vector of the transformation with some vector \(\vec{p}\).  
+
+\[
+    f \left(
+    \begin{bmatrix}
+       x \\ y \\ z 
+    \end{bmatrix}
+    \right)
+    = \det 
+    \left(
+        \begin{bmatrix}
+            x & v_1 & w_1 \\ 
+            y & v_2 & w_2 \\ 
+            z & v_3 & w_3 
+        \end{bmatrix}
+    \right)
+    =
+    \left\langle
+    \begin{bmatrix}
+       p_1 \\ p_2 \\ p_3 
+    \end{bmatrix}
+    ,
+    \begin{bmatrix}
+       x \\ y \\ z 
+    \end{bmatrix}
+    \right\rangle
+\]
+
+This gives us another version of the determinant trick view previously and we know that this gives us a vector perpendicular to \(\vec{v}\) and 
+\(\vec{w}\). The motivation behind this weird formula is that if you compute both sides of the equation you will get the coordinates \(\vec{p}\) 
+from the determinant trick. 
+
+This whole equality can be related to the geometric meaning of the cross product. Remember that the dot product of two vectors can be 
+interpreted as projecting one onto another and then multiplying the length of the projecting to the magnitude of the other. This is exactly the same 
+as projecting our input vector to a line which is perpendicular to the parallelogram and then multiplying it by the area which will gives us the 
+volume. 
+
 
 \subsection{Orthogonal vectors in \texorpdfstring{\(\Reals^2\ \Reals^3\)}{}}
 
