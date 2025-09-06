@@ -121,8 +121,27 @@ And with that information we can prove that
 Only if the Dot Product is equal to zero so, like that we have also proved that
 only orthogonal vector have a dot product of zero.
 
-The dot product of two vectors can be 
-interpreted as projecting one onto another and then multiplying the length of the projecting to the magnitude of the other.
+\subsubsection{Dot Product as Projection}
+
+The dot product of two vectors can be interpreted as projecting one onto another and 
+then multiplying the length of the projecting to the magnitude of the other. For real vectors.
+
+This comes from the fact that taking a dot product of real vectors is the same as 
+multiplying one of them with the linear transformation formed by the transpose version of the other vector. 
+
+The transformation will take a vector from our space and take it to the number line and it is also 
+linear. In our case,
+
+\[
+    \operatorname{Proj} =
+    \begin{bmatrix}
+        u_{x_1} & u_{x_2} & \cdots & u_{x_n} 
+    \end{bmatrix}
+\]
+
+is defined this way because when we project our basis vector \(\vec{b}_i\) onto the line our vector \(\vec{u}\) 
+because of the symmetry we will get the same value as if we were projecting \(\vec{u}\) onto 
+the line \(\vec{b}_i\) lives in.
 
 \subsection{Norm of a Vector}
 
