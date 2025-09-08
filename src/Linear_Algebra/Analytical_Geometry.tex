@@ -396,7 +396,7 @@ For two vectors \(\vec{a}\) \(\vec{b}\) in \(\Complex^3\) we can compute the cro
     \end{bmatrix}
 \]
 
-\subsubsection{Origin of the formula for Cross Products}
+\subsubsection{Connection to the Volume of the Parallelepiped}
 
 We want to define a linear transformation \(f\) which relates the volume of the parallelepiped formed by three vectors, the determinant; and 
 the dot product of a input vector of the transformation with some vector \(\vec{p}\).  
@@ -436,6 +436,47 @@ interpreted as projecting one onto another and then multiplying the length of th
 as projecting our input vector to a line which is perpendicular to the parallelogram and then multiplying it by the area which will gives us the 
 volume. 
 
+\subsubsection{Derivation of the formula}
+
+We define \(\vec{n}\) as a vector perpendicular to \(\vec{v}\) and \(\vec{w}\). Therefore, 
+
+\[
+    \vec{v} \cdot \vec{n} = 0 \quad \text{and} \quad \vec{w} \cdot \vec{n} = 0
+\]
+
+Writing this out in components, let \(\vec{v} = (v_1, v_2, v_3)\), \(\vec{w} = (w_1, w_2, w_3)\), and \(\vec{n} = (n_1, n_2, n_3)\). Then:
+
+\[
+    v_1 n_1 + v_2 n_2 + v_3 n_3 = 0
+\]
+\[
+    w_1 n_1 + w_2 n_2 + w_3 n_3 = 0 
+\]
+
+Now we multiply the first equation by \(-w_1\), the second by \(v_1\) and add them 
+
+\[
+    n_2(w_2 v_1 - v_2 w_1) + n_3(w_3 v_1 - v_3 w_1) = 0  
+\]
+
+We know that the equation \(p c_1 + q c_2 = 0\) has the results \(c_1 = -q\) and \(c_2 = p\). Thus, 
+
+\[
+    n_2 =  v_3 w_1 + w_3 v_1
+\]
+\[
+    n_3 = v_1 w_2 - w_1 v_2  
+\]
+
+Finally, by substituting into the original equation and solving we get 
+
+\[
+    n_1 = v_2 w_3 - v_3 w_2 
+\]
+
+Thus, we have gotten the formula for the cross product. 
+
+\QED
 
 \subsection{Orthogonal vectors in \texorpdfstring{\(\Reals^2\ \Reals^3\)}{}}
 
