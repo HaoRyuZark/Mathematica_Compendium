@@ -140,6 +140,34 @@ If \(g(x) \le f(x) \le h(x)\) near \(a\), and:
     \Rightarrow \lim_{x \to a} f(x) = L
 \]
 
+\textbf{Proof:}
+
+We know that \(g(x) \le f(x) \le h(x)\) therefore, for \(g(x)\) and \(h(x)\) we 
+can define the following inequalities. 
+
+\begin{align*}
+    |g(x)_{N_1} - L| &< \varepsilon \\ 
+    |h(x)_{N_2} - L| &< \varepsilon 
+\end{align*}
+
+Then let us define \(n = \operatorname{max}(N_1, N_2)\). And we can also write 
+
+\begin{align*}
+    - \varepsilon &< g(x)_{n} - L < \varepsilon \\ 
+    - \varepsilon &< h(x)_{n} - L < \varepsilon 
+\end{align*}
+
+Now, we write the following because we are assuming they all have the same limit 
+
+\begin{align*}
+    - \varepsilon &< g(x)_{n} - L \le f(x)_n - L \le h(x)_{n} - L < \varepsilon \\ 
+    - \varepsilon &< \le f(x)_n - L < \varepsilon 
+\end{align*}
+
+from our original inequality. Thus, there has been no contradiction.
+
+\QED
+
 \textbf{Example:}
 
 \[
