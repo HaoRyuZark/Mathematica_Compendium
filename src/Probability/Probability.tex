@@ -9,9 +9,9 @@ A probability experiment is considered ideal if and only the following propertie
    
     \item We know the possible outcomes. 
 
-    \item We can replicate the experiment. 
+    \item It can be repeated multiple times under the same conditions.
 
-    \item TODO
+    \item It will be executed under strict conditions.
 
 \end{itemize}
 
@@ -20,9 +20,28 @@ A probability experiment is considered ideal if and only the following propertie
 The set of all possible results of an experiment is denoted as \(\Omega\) and its cardinality 
 is the number of possible outcomes.
 
-\subsubsection{Probability}
+For experiments with \(\Omega\) as the result set of one repetition then we define 
 
-\(E\) is the event we are studying and \(|\Omega|\) the total. Example \(\frac{1}{2}\)
+\[
+    \Omega = \Omega \times \cdots \times \Omega  
+\]
+
+As the \emph{result set} of the experiment.
+
+Finally, each subset of \(\Omega\) is called an \emph{outcome}, each subset with 
+only one element in it is called an \emph{elemental outcome} The set of all possible outcomes is 
+\(\mathcal{P}(\Omega)\)
+
+\subsubsection{Laplace Distribution and Experiment}
+
+A \emph{Laplace distribution} is a probability experiment with finite outcomes where 
+each elemental outcome has the same probability of occurring.
+
+\[
+    P(\omega) = \frac{\omega}{|\Omega|}
+\]
+
+Then an experiment with this property is considered a \emph{Laplace experiment}.
 
 \[
     P(E) = \frac{E}{|\Omega|}
