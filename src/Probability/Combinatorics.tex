@@ -68,6 +68,25 @@ the number of occurrences of the object \(i\), then we can imagine using \(|\) a
 and \(\dot\) as the separator between each set of \(|\). For each possible combination we have \(k\) lines, \(k + n - 1\) 
 positions, and \(n - 1\) points. Therefore, the question becomes How many ways are there of putting \(k\) lines into  \(k + n - 1\) positions.
 
+\subsection{Multinomial Coefficients}
+
+When using the binomial coefficient repeatedly one after the other we can abbreviate 
+this consecutive uses as 
+
+\[
+    \binom{n}{k_1, \dots, k_n}
+\]
+
+This is like from \(n\) choose \(k_1\) then from \(n - k_1\) choose \(k_2\) and so on.
+
+\subsubsection{Multinomial Theorem}
+
+Given \(x_1, \dots, x_p \in \Reals\) and \(\Naturals\) then 
+
+\[
+    (x_1 + \cdots, x_n)^n = \sum_{k_1 + \cdots + k_{p = n}}  \binom{n}{k_1, \dots, k_p} x_{1}^{k_1} \cdots x_{p}^{k_p}
+\]
+
 \subsection{Disarray}
 
 Number of permutation in which no object ends in the same initial spot. Also, know as the 

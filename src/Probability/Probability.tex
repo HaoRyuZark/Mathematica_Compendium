@@ -47,6 +47,7 @@ Then an experiment with this property is considered a \emph{Laplace experiment}.
     P(E) = \frac{E}{|\Omega|}
 \]
 
+
 \subsubsection{Expected Result}
 
 Here \(p\) represents the probability of something and \(x\) the expected reward
@@ -54,6 +55,99 @@ Here \(p\) represents the probability of something and \(x\) the expected reward
 \[
     E(x) = p_1 x_1 + \cdots + p_n x_n
 \]
+
+\subsection{Sigma Algebra}
+
+Given a non-empty set \(\Omega\) and \(\mathcal{A} \subseteq \mathcal{P}(\Omaga)\) a set 
+of subsets of \(Omega\). \(\mathcal{A}\) is a \(\sigma\)-Algebra if and only if 
+
+\begin{enumerate}[I]
+    
+    \item \Omega \in \mathcal{A} \\ 
+
+    \item A \int \mathcal{{A}} \implies A^c \mathcal{A} \\ 
+
+    \item A_1, A_2, A_3, \dots \in \mathcal{A} \implies \bigcup_{n \in Naturals} A_n \in \mathcal{A}
+
+\end{enumerate}
+
+\subsubsection{The Power-set is a Sigma Algebra}
+
+This proof is pretty straight forward. 
+
+For the first axiom, we know that \(\Omega \in \mathcal{P}\). 
+
+For the second axiom, if \(A\) is a subset of the power-set then \(\Omega \forwardslash A\) is also 
+int the power-set.
+
+And lastly, for a sequence of sets in the power-set their, union is also in the power-set, because the power-set 
+contains all subsets of \(\Omega\).
+
+\QED
+
+\subsubsection{Properties of Sigma Algebras}
+
+If \(\mathcal{A}\) is a sigma algebra then 
+
+\begin{itemize}{label=\(-\)}
+    
+    \item \(\emptyset \in \mathcal{A}\) 
+
+    \item \(A_1, A_2, \dots \in \mathcal{A} \implies \bigcap_{n \in \Naturals} A_n \in \mathcal{A}\)
+
+    \item \(A, B \in \mathcal{A} \implies A \forwardslash B \in \mathcal{A}\)
+
+\end{itemize}
+
+\textbf{Proof:}
+
+For the first, because \(\mathcal{A}\) is a subset of the power-set of \(\Omega\) and the empty set is 
+always a subset of a collection, this is trivial. 
+
+Given a number of sets in \(\mathcal{A}\), using the laws of De Morgan we get 
+
+\[
+    \bigcap_{n \in \Naturals} A_n = \bigcup A_{n}^{c}
+\]
+
+and we know that the complements are part of \(mathcal{A}\) by definition. 
+
+For the last part, \(A \forwardslash B = A \cap B^c\), because \(B^c \in \mathcal{A}\) we can apply De Morgan 
+\((A^c \cup (B^c)^c)^c = (A^c \cup B)^c\) Now because this is the union of two sets in the sigma algebra and we know by definition 
+that their union if also in the set.
+
+\QED
+
+\subsection{Probability Measurement}
+
+Given a non-empty set \(\Omega\) and \(\mathcal{A} \subseteq \mathcal{P}\) a sigma algebra. We define 
+the function \(\mathbb{P}:\mathcal{A} \to \Reals\) as a \emph{probability measurement} if 
+
+\begin{enumerate}[I]
+    
+    \item \(\forall A \in \mathcal{A}: \mathbb{P}(A) \ge 0\)
+
+    \item \(\mathbb{P}(\Omega) = 1\) 
+
+    \item \(A_n \in \mathcal{A}, n \in \Naturals \text{ disjunctive in pairs } \implies \mathbb{P}\left(\bigcup_{n \in \Naturals} A_n\right) = \sum_{n \in \Naturals} \mathbb{P}(A_n)\) 
+
+\end{enumerate}
+
+Also the triplet \(\Omega, \mathcal{A}, \mathbb{P}\) is called a \emph{probability space}.
+
+\subsubsection{Probability space of the Power-set}
+
+We want to prove that the probability space with the power-set of omega and \(\mathbb{P}(A) = \frac{|A|}{|\Omega|}\) is in fact a probability space 
+
+\begin{itemize}
+    
+    \item \(\mathbb{P}(A) = \frac{|A|}{|\Omega|}\) is always greater or equal to zero.
+    
+    \item \(\mathbb{P}(\Omega) = \frac{|\Omega|}{|\Omega|} = 1\) 
+
+    \item 
+
+\end{itemize}
 
 \subsection{Standard Deviation}
 
