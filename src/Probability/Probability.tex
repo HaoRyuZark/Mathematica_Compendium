@@ -58,16 +58,16 @@ Here \(p\) represents the probability of something and \(x\) the expected reward
 
 \subsection{Sigma Algebra}
 
-Given a non-empty set \(\Omega\) and \(\mathcal{A} \subseteq \mathcal{P}(\Omaga)\) a set 
+Given a non-empty set \(\Omega\) and \(\mathcal{A} \subseteq \mathcal{P}(\Omega)\) a set 
 of subsets of \(Omega\). \(\mathcal{A}\) is a \(\sigma\)-Algebra if and only if 
 
-\begin{enumerate}[I]
+\begin{enumerate}[label=\Roman*.]
     
-    \item \Omega \in \mathcal{A} \\ 
+    \item \(\Omega \in \mathcal{A} \) 
 
-    \item A \int \mathcal{{A}} \implies A^c \mathcal{A} \\ 
+    \item \(A \in \mathcal{A} \implies A^c \in \mathcal{A} \)
 
-    \item A_1, A_2, A_3, \dots \in \mathcal{A} \implies \bigcup_{n \in Naturals} A_n \in \mathcal{A}
+    \item \(A_1, A_2, A_3, \dots \in \mathcal{A} \implies \bigcup_{n \in \Naturals} A_n \in \mathcal{A} \)
 
 \end{enumerate}
 
@@ -77,7 +77,7 @@ This proof is pretty straight forward.
 
 For the first axiom, we know that \(\Omega \in \mathcal{P}\). 
 
-For the second axiom, if \(A\) is a subset of the power-set then \(\Omega \forwardslash A\) is also 
+For the second axiom, if \(A\) is a subset of the power-set then \(\Omega \setminus A\) is also 
 int the power-set.
 
 And lastly, for a sequence of sets in the power-set their, union is also in the power-set, because the power-set 
@@ -89,13 +89,13 @@ contains all subsets of \(\Omega\).
 
 If \(\mathcal{A}\) is a sigma algebra then 
 
-\begin{itemize}{label=\(-\)}
+\begin{itemize}
     
     \item \(\emptyset \in \mathcal{A}\) 
 
     \item \(A_1, A_2, \dots \in \mathcal{A} \implies \bigcap_{n \in \Naturals} A_n \in \mathcal{A}\)
 
-    \item \(A, B \in \mathcal{A} \implies A \forwardslash B \in \mathcal{A}\)
+    \item \(A, B \in \mathcal{A} \implies A \setminus B \in \mathcal{A}\)
 
 \end{itemize}
 
@@ -112,7 +112,7 @@ Given a number of sets in \(\mathcal{A}\), using the laws of De Morgan we get
 
 and we know that the complements are part of \(mathcal{A}\) by definition. 
 
-For the last part, \(A \forwardslash B = A \cap B^c\), because \(B^c \in \mathcal{A}\) we can apply De Morgan 
+For the last part, \(A \setminus B = A \cap B^c\), because \(B^c \in \mathcal{A}\) we can apply De Morgan 
 \((A^c \cup (B^c)^c)^c = (A^c \cup B)^c\) Now because this is the union of two sets in the sigma algebra and we know by definition 
 that their union if also in the set.
 
@@ -123,7 +123,7 @@ that their union if also in the set.
 Given a non-empty set \(\Omega\) and \(\mathcal{A} \subseteq \mathcal{P}\) a sigma algebra. We define 
 the function \(\mathbb{P}:\mathcal{A} \to \Reals\) as a \emph{probability measurement} if 
 
-\begin{enumerate}[I]
+\begin{enumerate}[label=\Roman*.]
     
     \item \(\forall A \in \mathcal{A}: \mathbb{P}(A) \ge 0\)
 
@@ -145,9 +145,265 @@ We want to prove that the probability space with the power-set of omega and \(\m
     
     \item \(\mathbb{P}(\Omega) = \frac{|\Omega|}{|\Omega|} = 1\) 
 
-    \item 
+    \item If all of our subsets in the power-set are pairwise disjunctive this mean that their intersection is the empty-set. In other wise there 
+          therefore, their independent from each other which means that their probabilities are also independent.
 
 \end{itemize}
+
+\subsubsection{Discrete Probability Spaces}
+
+A probability space \(\Omega, \mathcal{P}(\Omega), \mathbb{P}\) is considered \emph{discrete} if 
+\(\Omega\) is finite or infinite countable. In that case \(\Omega = \{\omega_i : i \in I\}\) for \(I = \{1, \dots, n\}\) 
+
+For \(A \in \mathcal{A}\)
+
+\[
+    \mathbb{P}(A) = \mathbb{P}\left( \bigcup_{i \in I: \omega_i \in A} \{\omega_i\}\right) = 
+    \sum_{i \in I: \omega_i \in A} \mathbb{P}(\{\omega_i\}) = \sum_{i \in I: \omega_i \in A} p(\omega_i)
+\]
+
+The function \(\mathbb{P}(\{\omega_i\}) = p(\omega_i)\) is called a \emph{probability function}
+
+To test if specific function or distribution is actually a probability one we have to check.
+
+\begin{itemize}
+    
+    \item \(\forall p(\omega) \ge 0 \mid \omega \in \Omega\) 
+
+    \item \(\sum_{\omega \in \Omega} p(\omega) = 1\)
+
+\end{itemize}
+
+\subsubsection{Properties of Probability-Measurements}
+
+Given \((\Omega, \mathcal{A}, \mathbb{P})\) and \(A,B \in \mathcal{A}\)
+
+
+\begin{itemize}
+
+    \item \( \mathbb{P}(\emptyset) = 0 \)
+    
+    \item \( A_1, \ldots, A_n \in \mathcal{A} \) pairwise disjoint: \( \mathbb{P}\left(\bigcup_{i=1}^n A_i\right) = \sum_{i=1}^n \mathbb{P}(A_i) \)
+    
+    \item \( \mathbb{P}(B \setminus A) = \mathbb{P}(B) - \mathbb{P}(A \cap B) \)
+    
+    \item \( \mathbb{P}(A \cup B) = \mathbb{P}(A) + \mathbb{P}(B) - \mathbb{P}(A \cap B) \)
+    
+    \item \( \mathbb{P}(A^c) = 1 - \mathbb{P}(A) \)
+    
+    \item If \( A \subset B \), then \( \mathbb{P}(A) \le \mathbb{P}(B) \)
+    
+    \item \( 0 \le \mathbb{P}(A) \le 1 \)
+
+    \item \( A_1, \ldots, A_n \in \mathcal{A} \): \( \mathbb{P}\left(\bigcup_{i=1}^n A_i\right) \le \sum_{i=1}^n \mathbb{P}(A_i) \)
+    
+    \item \( A_1, A_2, \ldots \in \mathcal{A} \): \( \mathbb{P}\left(\bigcup_{i=1}^{\infty} A_i\right) \le \sum_{i=1}^{\infty} \mathbb{P}(A_i) \)
+
+\end{itemize}
+
+\textbf{Proof:}
+
+\begin{itemize}
+
+    \item Define \(A_n = \emptyset\) and by the properties of the probability spaces we know that  
+    \(A_n \in \mathcal{A}, n \in \Naturals \text{ disjunctive in pairs } \implies \mathbb{P}\left(\bigcup_{n \in \Naturals} A_n\right) = \sum_{n \in \Naturals} \mathbb{P}(A_n)\) 
+    
+    Therefore, \(\mathbb{P}(\emptyset) = \sum_{i = 1}^{n} \mathbb{P}(A_i)\) and the only real number with the property \(x + x = x\) is 0.
+    
+    \item By definition  
+   
+    \item \(B = (A \cap B) \cup B \setminus A\) and by the definition of the addition of probabilities 
+    \[
+	\mathbb{P}(B) = \mathbb{P}(B \setminus A) - \mathbb{P}(A \cap B)
+    \]
+    
+    \item Using the addition property and by writing the union as \((A \setminus B) \cup (B \setminus A) \cup (A \cap B)\)we get that 
+
+    \[
+	\mathbb{P}(A \cup B) = \mathbb{P}(B) - \mathbb{P}(A \cap B) + \mathbb{P}(A) - \mathbb{P}(A \cap B) + \mathbb{P}(A \cup B)	
+    \]
+
+    which results in \( \mathbb{P}(A \cup B) = \mathbb{P}(A) + \mathbb{P}(B) - \mathbb{P}(A \cap B) \)
+ 
+    \item \(\Omega = A^c \cup A\) and \(1 = \mathbb{P}(\Omega)\), thus by the addition \(P(A) + P(A^c) = 1\) 
+    
+    \item Given that if \(A = B\) then the equality holds the case where \(A\) is a subset of \(B\) comes 
+    from the fact that it is a strict subset of the other then its cardinality is smaller.
+    
+    \item By the definition that \(\mathbb{P}(\Omega) = 1\) and the property \(\mathbb{P}(\emptyset) = 0\) 
+    we are given an upper and lower bound for our probability distribution. Therefore, every subset of \(\Omega\) will 
+    have a probability less or equal to it. For the lower bound the logic is that it has no other subset with less elements than it but 
+    it is part of sets with more elements.
+    
+    \item Let us define \(B_n = A_n \setminus \bigcap{i = 1}_{n - 1} A_i\) which are pairwise disjoint. 
+    
+    \[
+	\mathbb{P}\left(\bigcup A_n\right) = \mathbb{P}\left(\bigcup B_n\right) = \sum \mathbb{P}\left(B_i\right) \le \sum \mathbb{P}\left(A_i\right)
+    \]
+    
+    Due to the fact that the \(B_i\) are pairwise disjoint.
+
+    \item This is practically the same but for an infinite case.  
+
+\end{itemize}
+
+\QED
+
+\subsection{Inclusion-Exclusion Formula for Two Non-Disjoint Sets}
+
+Let \( |A \cap B| = k \), then:
+
+\[
+	|A \cup B| = |A| + |B| - |A \cap B| = n + m - k \quad \text{(since we do not count the intersection 
+	twice)}
+\]
+
+\subsection{Inclusion-Exclusion Formula for Three Non-Disjoint Sets}
+
+\begin{align*}
+	|A \cup B \cup C| &= |(A \cup B) \cup C| \\ 
+	&= |A \cup B| + |C| - |(A \cup B) \cap C| \\
+ 	&= |A| + |B| - |A \cap B| + |C| - |(A \cap C) \cup (B \cap C)|\\
+	&= |A| + |B| + |C| - |A \cap B| - |A \cap C| - |B \cap C| + |A \cap B \cap C|
+\end{align*}
+
+\subsection{General Formula for the Cardinality of the union of sets}
+
+\[
+	\left\vert \bigcup_{i = 1}^n M_i \right\vert  = \sum_{I \subseteq \{1, \dots, n\}, I \neq \emptyset}
+	{(-1)}^{|I| - 1} \left\vert \bigcap_{i \in I} M_i \right\vert
+\]
+
+
+\subsection{Stochastic Independence} 
+
+Two results \(A, B \in \mathcal{A}\) are considered \emph{independent} if 
+
+\[
+    \mathbb{P}(A \cap B) = \mathbb{P}(A) \cdot \mathbb{P}(B) 
+\]
+
+\textbf{Example:}
+
+When throwing two times a dice is the probability of throwing during the first throw an even 
+number and when throwing the second dice the sum gives us an even number. 
+
+\[
+    \Omega = \{1, \dots, 6\}^2 \quad A = \{2,4,6\} \times \{1, \dots, 6\} \quad B = \{2,4,6\} \cup \{1,3,5\}^2
+\]
+
+Therefore, 
+
+\[
+    \mathbb{P}(A) = \frac{|A|}{|\Omega|} = \frac{18}{36} = \frac{1}{2}
+\]
+
+\[
+    \mathbb{P}(B) = \frac{|B|}{|\Omega|} = \frac{18}{36} = \frac{1}{2}
+\]
+
+And  
+
+\[
+    \mathbb{P}(A \cap B) = \frac{| \{2,4,6\}^2| }{|\Omega|} = \frac{1}{4}
+\]
+
+This is just \(\mathbb{P}(A) \cdot \mathbb{P}(B)\). Therefore, they are independent.
+
+\QED 
+
+\subsubsection{Independence for multiple results}
+
+\[
+    \mathbb{P}(A_1 \cap A_2 \cap \cdots \cap A_n) = \mathbb{P}(A_1) \cdot \mathbb{P}(A_2) \cdots \mathbb{P}(A_n) 
+\]
+
+For all pairs \(A_i, A_j\) where \(i \le j\) 
+
+\subsubsection{Independence in Laplace Distribution}
+
+Give a Laplace distribution \(\mathbb{P} = \frac{|A|}{|\Omega|}\) with two independent results 
+\(A\) and \(B\). 
+
+\[
+    \frac{|A \cap B|}{|A| = \frac{B}{|\Omega|}}
+\]
+
+This means that \(B\) is a probable in \(A\) as in the greater picture.
+
+\subsubsection{Complement Property}
+
+Given the probability space \((\Omega, \mathcal{A} \mathbb{P})\) and \(A, B \in \mathcal{A}\) as two 
+independent results. Then \(A^c\) and \(B\) are also independent.
+
+\textbf{Proof:}
+
+The sets \(A \cap B\) and \(A^c \cap B\) are disjoint and their union is 
+
+\[
+    B = (A \cap B) \cup  (A^c \cap B)
+\]
+
+If we calculate the probability 
+
+\[
+    \mathbb{B} = \mathbb{P}(A \cap B) +  \mathbb{P}(A^c \cap B)
+\]
+
+This gives us 
+
+\[
+    \mathbb{P}(A^c \cap B) = \mathbb{P}(A) - \mathbb{P}(A \cap B)
+\]
+
+Using the Independence of \(A\) and \(B\)
+
+\[
+    \mathbb{P}(A^c \cap B) = \mathbb{P}(B) - \mathbb{P}(A)\mathbb{P}(B) = \mathbb{P}(B) (1 - \mathbb{P}(A))
+\]
+
+\[
+    \mathbb{P}(B) = \mathbb{P}(B) (1 - \mathbb{P}(A)) = \mathbb{P}(B) \cdot \mathbb{A^c}
+\]
+
+\QED 
+
+\subsubsection{Independence of Blocks} 
+
+Given \(A_1, \dots, A_n\) independent events, divided into two blocks \(A_1, \dots, A_{k}\) and \(A_{k + 1}, \dots, A_n\). Let 
+\(B\) and \(C\) be events resulted of the union, intersection or complement of the first two blocks. Then this results are 
+independent
+
+\subsection{The Product Space}
+
+Given two or more probability spaces with their respective tuples of two independent experiments. We define their 
+combined probability space as the \emph{product space} where 
+
+\[
+    \Omega := \Omega_1 \times \cdots \times \Omega_n
+\]
+
+and
+
+\[
+    p(\omega_1, dots, \omega_n) = p(\omega_1) \cdot \dots \cdots p(\omega_n)
+\]
+
+An example is throwing two dices at the same time.
+
+\subsection{The Product Space of Discrete Probability Spaces}
+
+Given the product space \((\Omega, \mathcal{P}(\Omega), \mathbb{P})\) of the spaces \((\Omega_i, \mathcal{P}(\Omega_i), \mathbb{P}_i)\) and 
+\(A_i \in \mathcal{P}(\Omega_i)\).We define 
+
+\begin{align*}
+    A_{i}^{'} &:= \{\omega \in \Omega : \omega_i \in A_i\} \\ 
+	      &= \{(w_1, \dots, w_n) : \omega_j \in \Omega_j, \text{ for } j \neq i \text{ and }\omega_i \in A_i\} \\
+	      &= \Omega_1 \times \cdots \times \Omega_{i - 1} \times A_i \times \Omega_{i + 1} \times \cdots \times \Omega_n
+\end{align*}
+
+For \(i = 1, \dots, n\). Then it holds that \(\mathbb{P}(A_{i}^{'}) = \mathbb{P}_i(A_i)\) and the events \(A_{i}^{'}\) are 
+independent.
 
 \subsection{Standard Deviation}
 
