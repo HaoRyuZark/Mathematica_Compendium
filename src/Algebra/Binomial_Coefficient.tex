@@ -39,6 +39,75 @@ with \(n\) and \(k\) as natural numbers (for the moment).
 \subsection{The binomial Theorem}
 
 \[
-    (a + b)^n =\sum_{k = 0}^{n} \binom{n}{k}a^k b^{n - k}
+    (a + b)^n =\sum_{k = 0}^{n} \binom{n}{k}a^{n - k}b^k
 \]
 
+
+\textbf{Proof:}
+
+We will prove that the inequality holds for any \(n\). 
+
+For \(n\) we have \( (a + b)^n =\sum_{k = 0}^{n} \binom{n}{k}a^{n - k}b^k\)
+
+For \(n + 1\) we get 
+
+\[
+    (a + b)^{n + 1} =\sum_{k = 0}^{n + 1} \binom{n + 1}{k}a^{n + 1 - k}b^k
+\]
+
+Now let us manipulate the expression to demonstrate our theorem.
+Assume that the statement is true for some integer \(n \ge 0\), i.e.
+
+\[
+    (a+b)^n = \sum_{k=0}^n \binom{n}{k} a^{\,n-k} b^{\,k}.
+\]
+
+Now for some greater \(n\)
+
+\[
+    (a+b)^{n+1} = (a+b)(a+b)^n.
+\]
+
+Using the induction hypothesis,
+
+\[
+    (a+b)^{n+1} = (a+b) \sum_{k=0}^n \binom{n}{k} a^{\,n-k} b^{\,k}.
+\]
+
+Distribute:
+
+\[
+    (a+b)^{n+1} = \sum_{k=0}^n \binom{n}{k} a^{\,n+1-k} b^{\,k}
+    + \sum_{k=0}^n \binom{n}{k} a^{\,n-k} b^{\,k+1}.
+\]
+
+In the second sum, change the index of summation by setting $j = k + 1$, then rename $j$ back to $k$:
+
+\[
+    \sum_{k=0}^n \binom{n}{k} a^{\,n-k} b^{\,k+1}
+    = \sum_{k=1}^{n+1} \binom{n}{k-1} a^{\,n+1-k} b^{\,k}.
+\]
+
+Now combine both sums:
+
+\[
+    (a+b)^{n+1} = \sum_{k=0}^{n+1} 
+    \left( \binom{n}{k} + \binom{n}{k-1} \right)
+    a^{\,n+1-k} b^{\,k},
+\]
+
+where we use the convention \(\binom{n}{k} = 0$ for $k < 0$ or $k > n\).
+
+By \emph{Pascal’s Identity},
+
+\[
+    \binom{n}{k} + \binom{n}{k-1} = \binom{n+1}{k}.
+\]
+
+Therefore,
+
+\[
+    (a+b)^{n+1} = \sum_{k=0}^{n+1} \binom{n+1}{k} a^{\,n+1-k} b^{\,k}.
+\]
+
+\QED

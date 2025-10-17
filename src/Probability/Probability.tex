@@ -113,7 +113,7 @@ Given a number of sets in \(\mathcal{A}\), using the laws of De Morgan we get
 and we know that the complements are part of \(mathcal{A}\) by definition. 
 
 For the last part, \(A \setminus B = A \cap B^c\), because \(B^c \in \mathcal{A}\) we can apply De Morgan 
-\((A^c \cup (B^c)^c)^c = (A^c \cup B)^c\) Now because this is the union of two sets in the sigma algebra and we know by definition 
+\((A^c \cup (B^c)^c)^c = (A^c \cup B)^c\) Now because this is the union of two sets in the sigma algebra, and we know by definition 
 that their union if also in the set.
 
 \QED
@@ -133,7 +133,7 @@ the function \(\mathbb{P}:\mathcal{A} \to \Reals\) as a \emph{probability measur
 
 \end{enumerate}
 
-Also the triplet \(\Omega, \mathcal{A}, \mathbb{P}\) is called a \emph{probability space}.
+Also, the triplet \(\Omega, \mathcal{A}, \mathbb{P}\) is called a \emph{probability space}.
 
 \subsubsection{Probability space of the Power-set}
 
@@ -146,7 +146,7 @@ We want to prove that the probability space with the power-set of omega and \(\m
     \item \(\mathbb{P}(\Omega) = \frac{|\Omega|}{|\Omega|} = 1\) 
 
     \item If all of our subsets in the power-set are pairwise disjunctive this mean that their intersection is the empty-set. In other wise there 
-          therefore, their independent from each other which means that their probabilities are also independent.
+          therefore, their independent of each other which means that their probabilities are also independent.
 
 \end{itemize}
 
@@ -228,17 +228,17 @@ Given \((\Omega, \mathcal{A}, \mathbb{P})\) and \(A,B \in \mathcal{A}\)
     \item \(\Omega = A^c \cup A\) and \(1 = \mathbb{P}(\Omega)\), thus by the addition \(P(A) + P(A^c) = 1\) 
     
     \item Given that if \(A = B\) then the equality holds the case where \(A\) is a subset of \(B\) comes 
-    from the fact that it is a strict subset of the other then its cardinality is smaller.
+    from the fact that it is a strict subset of the other than its cardinality is smaller.
     
     \item By the definition that \(\mathbb{P}(\Omega) = 1\) and the property \(\mathbb{P}(\emptyset) = 0\) 
     we are given an upper and lower bound for our probability distribution. Therefore, every subset of \(\Omega\) will 
-    have a probability less or equal to it. For the lower bound the logic is that it has no other subset with less elements than it but 
+    have a probability less or equal to it. For the lower bound the logic is that it has no other subset with fewer elements than it, but 
     it is part of sets with more elements.
     
     \item Let us define \(B_n = A_n \setminus \bigcap{i = 1}_{n - 1} A_i\) which are pairwise disjoint. 
     
     \[
-	\mathbb{P}\left(\bigcup A_n\right) = \mathbb{P}\left(\bigcup B_n\right) = \sum \mathbb{P}\left(B_i\right) \le \sum \mathbb{P}\left(A_i\right)
+	    \mathbb{P}\left(\bigcup A_n\right) = \mathbb{P}\left(\bigcup B_n\right) = \sum \mathbb{P}\left(B_i\right) \le \sum \mathbb{P}\left(A_i\right)
     \]
     
     Due to the fact that the \(B_i\) are pairwise disjoint.
@@ -405,7 +405,29 @@ Given the product space \((\Omega, \mathcal{P}(\Omega), \mathbb{P})\) of the spa
 For \(i = 1, \dots, n\). Then it holds that \(\mathbb{P}(A_{i}^{'}) = \mathbb{P}_i(A_i)\) and the events \(A_{i}^{'}\) are 
 independent.
 
-\subsection{Standard Deviation}
+\subsection{Bernoulli-Experiments}
+
+An experiment where \(\Omega = \{0,1\}, \mathbb{P}(\{1\}) = p\) and \(\mathbb{P}(\{0\}) = 1 - p\) for 
+\(p \in (0, 1)\) is called a \emph{Bernoulli-Experiment}.
+
+\subsubsection{Bernoulli Schema}
+
+If we perform a Bernoulli-Experiment \(n\)-times with a success probability of \(p\). Where 
+\(\mathbb{P}(A_i) = p\). We define 
+
+\[
+    C_k = \bigcup_{I \in \{1, \dots, n\} \land |I| = k} \left(\bigcap_{i \in I} A_i \cap \bigcap_{i \in I} A_{i}^{c}\right)
+\]
+
+For the probability we get 
+
+\[
+    \mathbb{P}(C_k) = \sum_{I \in \{1, \dots, n\} \land |I| = k} \mathbb{P} \left(\bigcap_{i \in I} A_i \cap \bigcap_{i \notin I} A_{i}^{c}\right) = 
+    \sum_{I \in \{1, \dots, n\} \land |I| = k} \prod_{i \in I} \mathbb{P}(A_i) \prod_{i \notin I} = \binom{n}{k} p^k (1 - p)^{n - k}
+\]
+
+
+\subsubsection{Standard Deviation}
 
 \[
     \sigma = \sqrt{ \frac{ {(\overline{x} - x_1)}^2 + \cdots + {(\overline{x} - x_n)}^2 }{ n } }
@@ -463,6 +485,158 @@ independent.
 
 \end{itemize}
 
+\subsection{Conditional Probability}
+
+Given the events \(A\) and \(B\) where \(\mathbb{P}(A) > 0\). The \emph{conditional probability} 
+of \(B\) under the condition \(A\) is defined as 
+
+\[
+    \mathbb{P}(B \mid A) = \frac{\mathbb{P}(A \cap B)}{\mathbb{P}(A)}
+\]
+
+From this definition we can also derive these two statements which are also equivalent. 
+
+\[
+    \mathbb{P}(B \mid A) = \mathbb{B} \iff A \text{ and } B \text{ are independent}
+\]
+
+\textbf{Proof:}
+
+\begin{align*}	
+    \mathbb{P}(B \cap A) = \mathbb{P}(A)\mathbb{P}(B) &= \mathbb{P}(A \cap B){\mathbb{P}(A)}\\ 
+    &= \mathbb{P}(B)	
+\end{align*}
+
+\QED 
+
+\subsubsection{Conditional Probability of a Subset} 
+
+Given the events \(A\) and \(B\) where \(\mathbb{P}(A) > 0\). If \(A \subset B\) then 
+\(\mathbb{P}(B \mid A) = 1\)
+
+\textbf{Proof:}
+
+\(A \subset B \implies A \cap B = A \) therefore 
+
+\[
+    \mathbb{P}(B \mid A) = \frac{\mathbb{P}(A)}{\mathbb{P}(A)} = 1
+\]
+
+\QED 
+
+\subsubsection{Probability Measurement of Conditional Probability}
+
+Given the probability space \((\Omega, \mathcal{A}, \mathbb{P})\) and \(A \in \mathcal{A}\) where 
+\(\mathbb{P}(A) > 0\). The map \(B \to \mathbb{P}(B \mid A)\) is a probability measurement with 
+the following properties.
+
+\begin{itemize}
+    
+    \item \(\forall \in \mathcal{A}: \mathbb{P}(B \mid A) \ge 0\)	
+    
+    \item \(\mathbb{P}(\Omega \mid A) = 1\)
+
+    \item \(B_n \in A, n \in \Naturals\) pairwise disjoint \(\implies \mathbb{P}\left(\bigcup_{n \in \Naturals} B _n \mid A\right) 
+	    = \sum_{n \in \Naturals} \mathbb{P}(B_n \mid A)\)
+
+\end{itemize}
+
+We also get 
+
+\[
+    \mathbb{P}(\emptyset \mid A) = 0 
+\]
+
+\[
+    \mathbb{P}(B^c \mid A) = 1 - \mathbb{P}(B \mid A)
+\]
+
+\textbf{Proof:}
+
+\begin{itemize}
+
+    \item Because our sets do not have negative cardinalities and the lowest we can reach is 
+	  the probability of the empty-set we can not get below 0.
+
+    \item Similar to another proof we get \(\frac{\mathbb{P}(A)}{\mathbb{P}(A)}\) 
+
+    \item By the definition of probability space.
+	
+\end{itemize}
+
+\QED
+
+\subsubsection{Multiplication Theorem}
+
+Given \(A_1, dots, A_n\) events with \(\mathbb{P}(A_1 \cap \cdots \cap A_{n - 1}) \ne 0\). Then 
+
+\[
+    \mathbb{P}(A_1 \cap \cdots \cap A_n) = \mathbb{P}(A_1)\cdot\mathbb{P}(A_2 \mid A_1) \cdot \dots \cdot \mathbb(A_n \mid A_1 \cap \dots \cap A_{n - 1})
+\]
+
+\subsubsection{Theorem of the Total Probability}
+
+Given our standard probability space, the disjoint partitions of \(\Omega\), \(B_1, \dots, B_n\) where 
+\(B_1 \cup \dots \cup B_n = \Omega\) and \(\mathbb{P}(B_i) > 0\) then 
+
+\[
+    \sum_{i = 1}^{n}\mathbb{P} (A \mid B_i )\mathbb{P}(B_i) \forall A \in \mathcal{A}
+\]
+
+\subsection{Multistage Random Experiments}
+
+Let \(\Omega_1, \ldots, \Omega_n\) be discrete sample spaces of \(n\) sub-experiments, and let \(\Omega = \Omega_1 \times \cdots \times \Omega_n\).
+Furthermore, let an initial distribution be given by the probability function \(p_1\) with
+
+\[
+    \sum_{\omega_1 \in \Omega_1} p_1(\omega_1) = 1
+\]
+
+and transition probabilities \(p_j\) for \(j = 2, \ldots, n\) satisfying
+
+\[
+    \sum_{\omega_j \in \Omega_j} p_j(\omega_j \mid \omega_1, \ldots, \omega_{j-1}) = 1,
+\]
+
+for \((\omega_1, \ldots, \omega_{j-1}) \in \Omega_1 \times \cdots \times \Omega_{j-1}\).
+
+This is used in the case when we model our experiment as a tree of probabilities.
+
+For the multistage random experiment, the following two \emph{path rules} apply:
+
+\begin{enumerate}
+
+    \item Let \((\omega_1, \ldots, \omega_n) \in \Omega\). Then we have:
+	\[
+	    p(\omega_1, \ldots, \omega_n)
+	    = p_1(\omega_1) \cdot p_2(\omega_2 \mid \omega_1) \cdot \ldots \cdot p_n(\omega_n \mid \omega_1, \ldots, \omega_{n-1})
+	\]
+
+    \item For \(A \subset \Omega\), it holds that
+	\[
+	    \mathbb{P}(A) = \sum_{(\omega_1, \ldots, \omega_n) \in A} p(\omega_1, \ldots, \omega_n)
+	\]
+\end{enumerate}
+
+Note that for independent sub-experiments, we obtain the product space with
+
+\[
+    p(\omega_1, \ldots, \omega_n)
+    = p_1(\omega_1) \cdot p_2(\omega_2) \cdot \ldots \cdot p_n(\omega_n).
+\]
+
+\subsection{Bayes Theorem}
+
+Let \((\Omega, \mathcal{A}, \mathbb{P})\) be a probability space. 
+Furthermore, let \(B_1, \ldots, B_n\) be a disjoint partition of the sample space \(\Omega\) with \(\mathbb{P}(B_i) > 0\) for all \(i = 1, \ldots, n\).
+Then, for every event \(A \in \mathcal{A}\), the following holds:
+
+\[
+    \mathbb{P}(B_i \mid A)
+    = \frac{\mathbb{P}(A \mid B_i)\,\mathbb{P}(B_i)}{\mathbb{P}(A)}
+    = \frac{\mathbb{P}(A \mid B_i)\,\mathbb{P}(B_i)}{\sum_{k=1}^{n} \mathbb{P}(A \mid B_k)\,\mathbb{P}(B_k)}.
+\]
+
 \subsection{Normal Distribution}
 
 \begin{itemize}
@@ -478,24 +652,10 @@ independent.
 
 \end{itemize}
 
-\subsection{Conditional Probability}
-
-Probability of \(a\) under the condition \(b\).
-
-\[
-    P_b (a) = \frac{P(b \cap a)}{P(b)}
-\]
-
 \subsubsection{Formula for the Total Probability}
 
 \[
     P(a) = P_b (a) P(b) + P_{\neg b}(a) P(\neg b)
-\]
-
-\subsection{Bayes Theorem}
-
-\[
-    P(a | b) = \frac{P(b | a) P(a)}{P(b)}
 \]
 
 \subsection{Hyper-geometric Distribution}
