@@ -637,6 +637,103 @@ Then, for every event \(A \in \mathcal{A}\), the following holds:
     = \frac{\mathbb{P}(A \mid B_i)\,\mathbb{P}(B_i)}{\sum_{k=1}^{n} \mathbb{P}(A \mid B_k)\,\mathbb{P}(B_k)}.
 \]
 
+
+\subsection{Random Variables}
+
+Given a probability space \((\Omega, \mathcal{A}, \mathbb{P})\), we call a function \(f: \Omega \to \Reals\) \emph{measurable} if 
+for all \(z \in \Reals\) the following applies 
+
+\[
+    f^{-1} ((- \infty, z ]) = \{\omega \in \Omega : f(\omega) \le z \} \in \mathcal{A}
+\]
+
+This measurable function \(X: \Omega \to \Reals\) is a \emph{random variable}.
+
+Note that for discrete probability spaces \(\{\omega: X(\omega) \le z\} \subseteq \Omega \in \mathcal{P}\)
+
+Also, it considered discrete if it has only a finite or an infinite countable number of values.
+
+\subsubsection{Operations with Random Variables}
+
+Given two R.V. \(X\),\(Y\) and some number \(\alpha \in \Reals\), then
+
+\begin{itemize}
+
+    \item \(X + Y\) 
+
+    \item \(X - Y\) 
+
+    \item \(X \cdot Y\) 
+
+    \item \(\text{max}(X,Y)\)
+
+    \item \(\text{min}(X,Y)\)
+
+    \item \(\alpha X\) or \(\alpha Y\)
+
+\end{itemize}
+
+are also R.V.
+
+\subsection{Distributions}
+
+Given our probability space and a R.V. \(X\). The probability measurement \(\mathbb{P}_X\) to 
+\(\Reals\) defined by 
+
+\[
+    \mathbb{P}_X (A) := \mathbb{P}(\{\omega: X(w) \in A\}), \text{ for } A \subseteq \Reals
+\]
+
+is called as the \emph{distribution} of \(X\). Also we write \(\mathbb{P}(X \in A)\) as a abbreviation for
+\(\mathbb{P}(\{\omega: X(w) \in A\}) \).
+
+\subsection{Distribution Function}
+
+Given a probability space, a probability variable and a distribution \(\mathbb{P}_X\) we define 
+the function 
+
+\[
+    F_X (x) = \mathbb{P}(X \le x) = \mathbb{P}(\{\omega: X(w) \le x\})
+\]
+
+as the \emph{distribution function}.
+
+\subsubsection{Properties of Distribution Functions}
+
+\begin{itemize}
+    
+    \item \(F_X\) is monotonic growing 
+
+    \item It is right-sided continuous 
+
+    \item \(\lim_{x \to - \infty} F_X (x) = 0\) and \(\lim_{x \to \infty} F_X = 1 \)
+
+\end{itemize}
+
+\subsection{Uniform Distribution}
+
+A random variable \(X \in \{1, 2, \dots, n\}\) with 
+\(\mathbb{P}(X = i) = \frac{1}{n}\) for \(i = 1, \dots, n\) is uniformly distributed. 
+The distribution \(\mathbb{P}_X\) is called the (discrete) \emph{uniform distribution}.
+
+Notation: \(X \sim U\{1,2,\dots,n\}\).
+
+\subsection{Normal Distribution}
+
+A random variable \(X \in \mathbb{N}_0\) with 
+\(\mathbb{P}(X = n) = p(1 - p)^n\) for some \(p \in (0, 1)\) and \(n \in \mathbb{N}_0\) 
+is geometrically distributed. The distribution \(\mathbb{P}_X\) is called the \emph{geometric distribution}.
+
+\subsection{Poisson Distribution}
+
+A random variable \(X \in \mathbb{N}_0\) with 
+
+\[
+    \mathbb{P}(X = n) = \frac{\lambda^n}{n!} e^{-\lambda}, \quad \text{for some } \lambda > 0,
+\] 
+
+is Poisson distributed. The distribution \(\mathbb{P}_X\) is called the \emph{Poisson distribution}.
+
 \subsection{Normal Distribution}
 
 \begin{itemize}

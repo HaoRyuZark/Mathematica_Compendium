@@ -164,6 +164,32 @@ Hence \(x \notin A\) therefore, for every \(x \in B^c\) we conclude \(B^c \subse
 
 \QED
 
+\subsection{Equality of Sets}
+
+To prove that two sets are equal the following property is very useful.
+
+\[
+	A = B \iff A \subseteq B \land B \subseteq A
+\]
+
+\textbf{Proof:}
+
+For the case \(A \subseteq B\)
+
+\[
+	x \in A \implies x \in B 
+\]
+
+Also for the case \(B \subseteq A \)
+
+\[
+	x \in B \implies x \in A 
+\]
+
+If both statements are true on the same time then every element in \(A\) is also in \(B\) and vice versa.
+The other way of the equivalence is trivial.
+
+\QED
 
 \subsection{Axioms of Set Theory (Zermelo Fraenkel)}
 
@@ -242,6 +268,56 @@ The general Cartesian product of \(n\) sets can be written as:
 	M^n                   & := M \times M \times \cdots \times M = X_{i = 1}^{n} M \quad \text{with} \quad M^1 = M
 \end{align*}
 
+\subsubsection{Ordered Pair}
+
+Let \(A\) and \(B\) be two non-empty sets and \(m \in A, n \in B\). We define 
+
+\[
+	(m,n) := \{\{m, n\}, {m}\}	
+\]
+
+and 
+
+\[
+	(n,m) := \{\{m, n\}, {n}\}	
+\]
+
+as ordered pairs which are elements of \(A \times B\) and \(B \times A\) respectively.
+
+\subsubsection{Distributive Law for the Cartesian Product}
+
+Let \(A, A' \subseteq X\) and \(B, B' \subseteq Y\). Then
+
+\[
+	(A \times B) \cap (A' \times B') = (A \cap A') \times (B \cap B').
+\]
+
+We prove the equality by showing both inclusions.
+
+1. Direction: \((A \times B) \cap (A' \times B') \subseteq (A \cap A') \times (B \cap B')\).
+
+\begin{align*}
+	&\text{Let } (x,y) \in (A \times B) \cap (A' \times B'). \\
+	&\Rightarrow (x,y) \in A \times B \text{ and } (x,y) \in A' \times B' \\
+	&\Rightarrow x \in A,\, y \in B \text{ and } x \in A',\, y \in B' \\
+	&\Rightarrow x \in A \cap A' \text{ and } y \in B \cap B' \\
+	&\Rightarrow (x,y) \in (A \cap A') \times (B \cap B').
+\end{align*}
+
+2. Direction: \((A \cap A') \times (B \cap B') \subseteq (A \times B) \cap (A' \times B')\).
+
+\begin{align*}
+	&\text{Let } (x,y) \in (A \cap A') \times (B \cap B'). \\
+	&\Rightarrow x \in A \cap A' \text{ and } y \in B \cap B' \\
+	&\Rightarrow x \in A,\, x \in A' \text{ and } y \in B,\, y \in B' \\
+	&\Rightarrow (x,y) \in A \times B \text{ and } (x,y) \in A' \times B' \\
+	&\Rightarrow (x,y) \in (A \times B) \cap (A' \times B').
+\end{align*}
+
+Thus, both inclusions hold and the equality follows.
+
+\QED 
+
 \subsection{Laws of Set Algebra}
 
 Let \(X\) be the universal set and \(A, B, C \subseteq X\).
@@ -277,7 +353,46 @@ Let \(X\) be the universal set and \(A, B, C \subseteq X\).
 	
 	\item \(\overline{\overline{A}} = A\)
 
+	\item \((A \setminus B) \cup (B \setminus) A = A \Delta B\)
+
+	\item \(A \setminus (B \cup C) = (A \setminus B) \cap (A \setminus C) \)
+	
+	\item \(A \setminus (B \cap C) = (A \setminus B) \cup (A \setminus C) \)
+
 \end{itemize}
+
+\subsubsection{Proof of the Distributive Law}
+
+\begin{align*}
+	&\text{Let } x \in A \cap (B \cup C). \\
+	&\Rightarrow x \in A \text{ and } x \in B \cup C \\
+	&\Rightarrow x \in A \text{ and } (x \in B \text{ or } x \in C) \\
+	&\Rightarrow (x \in A \text{ and } x \in B) \text{ or } (x \in A \text{ and } x \in C) \\
+	&\Rightarrow x \in A \cap B \text{ or } x \in A \cap C \\
+	&\Rightarrow x \in (A \cap B) \cup (A \cap C).
+\end{align*}
+
+Thus,
+
+\[
+	A \cap (B \cup C) \subseteq (A \cap B) \cup (A \cap C).
+\]
+
+\begin{align*}
+	&\text{Conversely, let } x \in (A \cap B) \cup (A \cap C). \\
+	&\Rightarrow x \in A \cap B \text{ or } x \in A \cap C \\
+	&\Rightarrow (x \in A \text{ and } x \in B) \text{ or } (x \in A \text{ and } x \in C) \\
+	&\Rightarrow x \in A \text{ and } (x \in B \text{ or } x \in C) \\
+	&\Rightarrow x \in A \text{ and } x \in B \cup C \\
+	&\Rightarrow x \in A \cap (B \cup C).
+\end{align*}
+
+Thus,
+\[
+	(A \cap B) \cup (A \cap C) \subseteq A \cap (B \cup C).
+\]
+
+\QED
 
 \subsubsection{Proof of De Morgans's Law for sets and logic}
 
@@ -400,6 +515,7 @@ Here, \( I = \{ 1, 2, 3, \dots, n \} \) and \( J = \{ 1, 2, 3, \dots, m \} \). T
 &= \{ (1, 1), (1, 2), \dots, (1, m), (2, 1), (2, 2), \dots, (2, m), \dots, (n, 1), (n, 2), \dots, (n, m) \}
 \end{align*}
 
+
 \subsection{Cardinality}
 
 The cardinality of a set is the number of elements in that set.
@@ -464,15 +580,29 @@ Let \( |A \cap B| = k \), then:
 The Power Set of a set is the set of all subsets of a given set 
 
 \[
-	P(x):= \{ M: M \subset X\}
+	\mathcal{P}(x):= \{ M: M \subseteq X\}
 \]
 
 Its cardinality is \(2^n\) with \(n\) being the number of elements in the original set \(X\).
 
-\subsection{Family of Subsets}
+\subsection{Set System}
 
 Let \(X\) be a non-empty set. A subset \(\mathscr{F}\) of the power set of \(X\) is called a 
-set system of \(X\)
+\emph{set system} of \(X\). 
+
+We also define 
+
+\[
+	\bigcap_{i \in I} T_i := \{x \in X \mid \forall i \in I: x \in T_i\}
+\]
+
+and 
+
+\[
+	\bigcup_{i \in I} T_i := \{x \in X \mid \exists i \in I: x \in T_i\}
+\]
+
+where \(T_i \in \mathcal{P}(X)\) as the \emph{intersection} and \emph{union} of the set system.
 
 \subsection{Partition}
 
