@@ -326,14 +326,14 @@ Give a Laplace distribution \(\mathbb{P} = \frac{|A|}{|\Omega|}\) with two indep
 \(A\) and \(B\). 
 
 \[
-    \frac{|A \cap B|}{|A| = \frac{B}{|\Omega|}}
+    \frac{|A \cap B|}{|A|} = \frac{B}{|\Omega|}
 \]
 
 This means that \(B\) is a probable in \(A\) as in the greater picture.
 
 \subsubsection{Complement Property}
 
-Given the probability space \((\Omega, \mathcal{A} \mathbb{P})\) and \(A, B \in \mathcal{A}\) as two 
+Given the probability space \((\Omega, \mathcal{A}, \mathbb{P})\) and \(A, B \in \mathcal{A}\) as two 
 independent results. Then \(A^c\) and \(B\) are also independent.
 
 \textbf{Proof:}
@@ -347,7 +347,7 @@ The sets \(A \cap B\) and \(A^c \cap B\) are disjoint and their union is
 If we calculate the probability 
 
 \[
-    \mathbb{B} = \mathbb{P}(A \cap B) +  \mathbb{P}(A^c \cap B)
+    \mathbb{P}(B) = \mathbb{P}(A \cap B) +  \mathbb{P}(A^c \cap B)
 \]
 
 This gives us 
@@ -363,7 +363,7 @@ Using the Independence of \(A\) and \(B\)
 \]
 
 \[
-    \mathbb{P}(B) = \mathbb{P}(B) (1 - \mathbb{P}(A)) = \mathbb{P}(B) \cdot \mathbb{A^c}
+    \mathbb{P}(B) = \mathbb{P}(B) (1 - \mathbb{P}(A)) = \mathbb{P}(B) \cdot \mathbb{P}(A^c)
 \]
 
 \QED 
@@ -386,7 +386,7 @@ combined probability space as the \emph{product space} where
 and
 
 \[
-    p(\omega_1, dots, \omega_n) = p(\omega_1) \cdot \dots \cdots p(\omega_n)
+    p(\omega_1, \dots, \omega_n) = p(\omega_1) \cdot \dots \cdots p(\omega_n)
 \]
 
 An example is throwing two dices at the same time.
@@ -423,7 +423,7 @@ For the probability we get
 
 \[
     \mathbb{P}(C_k) = \sum_{I \in \{1, \dots, n\} \land |I| = k} \mathbb{P} \left(\bigcap_{i \in I} A_i \cap \bigcap_{i \notin I} A_{i}^{c}\right) = 
-    \sum_{I \in \{1, \dots, n\} \land |I| = k} \prod_{i \in I} \mathbb{P}(A_i) \prod_{i \notin I} = \binom{n}{k} p^k (1 - p)^{n - k}
+    \sum_{I \in \{1, \dots, n\} \land |I| = k} \prod_{i \in I} \mathbb{P}(A_i) = \prod_{i \notin I} = \binom{n}{k} p^k (1 - p)^{n - k}
 \]
 
 
