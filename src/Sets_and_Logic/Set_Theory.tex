@@ -604,6 +604,47 @@ and
 
 where \(T_i \in \mathcal{P}(X)\) as the \emph{intersection} and \emph{union} of the set system.
 
+\textbf{Example:}
+
+Let \(M \neq M\), if \(\mathcal{U} :=  \emptyset \subseteq \mathcal{P}(M)\) then 
+
+\[
+	\bigcap_{T \in \mathcal{U}} T = M \text{ and } \bigcup_{T \in \mathcal{U}} T = \emptyset
+\]
+
+\textbf{Proof:}
+
+The set intersection of the empty-set gives us the set of all elements that are in every set of the empty-set. 
+We have defined our definition 
+
+\[
+	\bigcap_{i \in I} T_i := \{x \in X \mid \forall i \in I: x \in T_i\}
+\]
+
+for our case 
+
+\begin{align*}
+	\bigcap_{T \in \mathcal{U}} T &= \{m \in M \mid \forall T \in \mathcal{U} : m \in T\} \\ 
+								  &= \{m \in M \mid T \in \mathcal{U} \implies m \in T\} \\ 
+								  &= M
+\end{align*}
+
+Because the statement \(T \in \mathcal{U}\) in the implication \(T \in \mathcal{U} \implies m \in T\) is 
+always true. In other words, the condition says, for all elements of an empty-set, \(m \in T\) holds true, but there are no 
+elements in the empty-set therefore there is no counter example. Ergo the condition is true.
+
+For the union 
+
+\begin{align*}
+	\bigcup_{T \in \mathcal{U}} T &= \{m \in M \mid \exists T \in \mathcal{U} : m \in T \} \\ 
+
+\end{align*}
+
+The condition is that there exists an element in \(T\) such that, that element is also in every other set. Therefore, the only 
+element which satisfies such a requirement is the empty-set.
+
+\QED
+
 \subsection{Partition}
 
 Let \(X\) be a non-empty set. A subset \(\mathscr{F}\) of the power set of \(X\) is called a 
@@ -614,7 +655,7 @@ partition if:
 	\item \(M \neq  \emptyset\ \forall M \in \mathscr{F}\)
  
 	\item \(\bigcap \mathscr{F} = X\)
- 
+	
 	\item \(M_1 \bigcap M_2 \ne \emptyset \implies M_1 = M_2\ \forall\ M_1, M_2 \in \mathscr{F} \) 
 
 \end{enumerate}
