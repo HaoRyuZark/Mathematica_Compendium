@@ -21,7 +21,7 @@ Here is a list of common symbols for set theory.
 \begin{itemize}
 
 	\item \emph{Empty set (\(\emptyset\))}: The set that contains no elements. It is the unique set with 
-	      zero elements.
+	      zero elements. Every statement with \(\forall x \in \emptyset\) is true, because there are no counterexamples.
 
 	\item \(A \subseteq B\): Set \(A\) is a subset of \(B\). This means every element of 
 		  \(A\) is also in \(B\).
@@ -575,6 +575,26 @@ Let \( |A \cap B| = k \), then:
 	{(-1)}^{|I| - 1} \left\vert \bigcap_{i \in I} M_i \right\vert
 \]
 
+\subsection{Definition of Countable and Non-countable}
+
+A set \(A\) is \emph{infinite countable} or just \emph{countable} if there exist a bijection from \(\Naturals\) to 
+\(A\). If \(A\) has infinite elements and there is no such bijection, we call it \emph{non-countable}
+
+\subsection{Countable Union}
+
+Given \(A_n, n \in \Naturals\) countable sets, then 
+
+\[
+	M := \bigcup_{n \in \Naturals} A_n 
+\]
+
+is also countable.
+
+\subsection{Countability of Subsets}
+
+Given \(A \subseteq B\), where \(B\) is countable. Then \(A\) is also countable. The other case is 
+that if \(A\) is non-countable then \(B\) must be non-countable as well.
+
 \subsection{The Power Set}
 
 The Power Set of a set is the set of all subsets of a given set 
@@ -635,10 +655,9 @@ elements in the empty-set therefore there is no counter example. Ergo the condit
 
 For the union 
 
-\begin{align*}
-	\bigcup_{T \in \mathcal{U}} T &= \{m \in M \mid \exists T \in \mathcal{U} : m \in T \} \\ 
-
-\end{align*}
+\[
+	\bigcup_{T \in \mathcal{U}} T = \{m \in M \mid \exists T \in \mathcal{U} : m \in T \}
+\]
 
 The condition is that there exists an element in \(T\) such that, that element is also in every other set. Therefore, the only 
 element which satisfies such a requirement is the empty-set.
@@ -694,3 +713,10 @@ Let \(\mathscr{F}\) be a system of sets (a family of subsets) on the set \(X\). 
 \[
 	\bigcap_{M \in F} M := \bigcap F := \{ x \in X : x \in M \text{ for all } M \in F \} .
 \]
+
+\subsection{Pigeon Principle}
+
+For \(g: A \to B\) and \(|A| = n + 1\), \(|B| = n\) then there exists \(b \in B\) such that \(|g^{-1}(\{ b \})| \ge 2\). 
+
+In other words if you have \(n\) boxes and \(n + 1\) objects, then at least one of those boxes will have more than 2 elements.
+

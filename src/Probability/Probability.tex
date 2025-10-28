@@ -15,7 +15,19 @@ A probability experiment is considered ideal if and only the following propertie
 
 \end{itemize}
 
-\subsubsection{The Result Set}
+\subsection{The Birthday Paradox}
+
+This is a small question that says: What is the probability of at least two people having 
+their birthday on the same day in a group of \(x\) persons.
+
+\[
+    \Prob(x) = 1 - \prod_{n = 0}^{x} \frac{365 - n}{365}
+\]
+
+This formula gives us the probability of total minus all persons having it on different days. Which
+what we are looking for.
+
+\subsection{The Result Set}
 
 The set of all possible results of an experiment is denoted as \(\Omega\) and its cardinality 
 is the number of possible outcomes.
@@ -32,28 +44,19 @@ Finally, each subset of \(\Omega\) is called an \emph{outcome}, each subset with
 only one element in it is called an \emph{elemental outcome} The set of all possible outcomes is 
 \(\mathcal{P}(\Omega)\)
 
-\subsubsection{Laplace Distribution and Experiment}
+\subsection{Laplace Distribution and Experiment}
 
 A \emph{Laplace distribution} is a probability experiment with finite outcomes where 
 each elemental outcome has the same probability of occurring.
 
 \[
-    P(\omega) = \frac{\omega}{|\Omega|}
+    \Prob(\omega) = \frac{\omega}{|\Omega|}
 \]
 
 Then an experiment with this property is considered a \emph{Laplace experiment}.
 
 \[
-    P(E) = \frac{E}{|\Omega|}
-\]
-
-
-\subsubsection{Expected Result}
-
-Here \(p\) represents the probability of something and \(x\) the expected reward
-
-\[
-    E(x) = p_1 x_1 + \cdots + p_n x_n
+    \Prob(E) = \frac{E}{|\Omega|}
 \]
 
 \subsection{Sigma Algebra}
@@ -435,6 +438,8 @@ of \(B\) under the condition \(A\) is defined as
     \Prob(B \mid A) = \frac{\Prob(A \cap B)}{\Prob(A)}
 \]
 
+\textbf{Example:}
+
 In words, what is the probability of \(B\) if we limit ourself only to the case where \(A\) happens. Also what is the ratio between \(A \cap B\) and \(A\).
 From this definition we can also derive these two statements which are also equivalent. 
 
@@ -522,7 +527,41 @@ Given our standard probability space, the disjoint partitions of \(\Omega\), \(B
 \(B_1 \cup \dots \cup B_n = \Omega\), \(B_i \cap B_j = \emptyset\) for \(i \neq j\) and \(\Prob(B_i) > 0\) then 
 
 \[
-    \sum_{i = 1}^{n}\Prob (A \mid B_i )\Prob(B_i) \forall A \in \mathcal{A}
+    \Prob (A) = \sum_{i = 1}^{n} \Prob(A \cap B_i) = \sum_{i = 1}^{n}\Prob (A \mid B_i )\Prob(B_i) \forall A \in \mathcal{A}
+\]
+
+\textbf{Example:}
+
+You are given three bags 
+
+\begin{itemize}
+	
+    \item Bag A has 2 red balls and 3 green balls 
+
+    \item Bag B has 3 red balls and 2 green balls 
+
+    \item Bag C has 1 red ball and 4 green balls
+
+\end{itemize}
+
+What is the probability of a ball being red? 
+
+The answer is given by
+
+\[
+    \Prob(R) = \Prob (R \cap A) + \Prob (R \cap B) + \Prob (R \cap C) 
+\]
+
+Which gives us 
+
+\[
+    \Prob(R) = \Prob (R \mid A)\Prob (A) + \Prob (R \mid B) \Prob(B) + \Prob (R \mid C) \Prob(C)
+\]
+
+Finally we plug in the individual numbers 
+
+\[
+    \Prob(R) = \frac{1}{3} \left(\frac{2}{5} + \frac{3}{2} + \frac{1}{4} \right) = \frac{6}{15}
 \]
 
 \subsection{Multistage Random Experiments}
@@ -581,7 +620,7 @@ Then, for every event \(A \in \mathcal{A}\), the following holds:
 
 In words and by changing \(A\) with \(E\) of evidence and \(B\) with \(H\) of hypothesis, we want to know how much the actual evidence changes 
 our initial belief. The process can be described as: you have a hypothesis, you have observed some evidence and finally, you want to know 
-the probability that you hypothesis is true given the observed evidence.
+the probability that your hypothesis is true given the observed evidence.
 
 \[
     \Prob(H \mid E) = \frac{\Prob(E \mid H) \Prob(H)}{\Prob(H)\Prob(E \mid H) + \Prob(\neg H)\Prob(E \mid \neg H)}
@@ -607,9 +646,35 @@ With this knowledge, breaking down the formula is very intuitive
     \item \(\Prob(H)\Prob(E \mid H)\) is the proportion of our hypothesis in the sample being true times the actual proportion of the fitting samples inside our hypothesis. 
 
     \item \(\Prob(H)\Prob(E \mid H) + \Prob(\neg H)\Prob(E \mid \neg H) \) consist of our expression above plus the proportion of the counter hypothesis times the proportion of the 
-    representatives of our hypothesis will show in the evidence in the other group.
+    representatives of our hypothesis which will show up in the evidence in the counter group.
 
 \end{itemize}
+
+\textbf{Example:}
+
+A disease affects 1 percent of the population and you were tested positive with a test which has a 99.9 percent accuracy. What is 
+the probability for you truly being infected? 
+
+\[
+    \Prob ( I \mid + ) = \frac{\Prob(I)\Prob(+ \mid I)}{\Prob(I)\Prob(+ \mid I) + \Prob( \neg I) \Prob( + | \neg I)}
+\]
+
+Our numbers are: 
+
+\begin{itemize}
+	
+    \item \(\Prob(I) = 0.001 \)
+
+    \item \(\Prob (+ \mid I) = 0.99\) 
+    
+    \item \(\Prob(\neg I) =  0.999\)
+
+    \item \(\Prob (+ \mid \neg I) = 0.1\)  
+    
+\end{itemize}
+
+Thus, our formula gives us a 9 percent chance of actually being infected.
+
 
 \subsection{Random Variables}
 
@@ -690,13 +755,47 @@ as the \emph{distribution function}.
 
 \end{itemize}
 
+\subsection{Formulas for Distributions}
+
+\begin{itemize}
+
+    \item \(\Prob(X = a) = \Prob(X = a)\)
+
+    \item \(\Prob(X \le a) = \Prob(X \le a)\)
+
+    \item \(\Prob(X < a) = \Prob(X \le a - 1)\)
+
+    \item \(\Prob(X > a) = 1 - \Prob(X \le a)\)
+
+    \item \(\Prob(X \ge a) = 1 - \Prob(X \le - 1)\)
+
+    \item \(\Prob(a \le X \le b) = \Prob(X \le b) - \Prob(X \le a)\)
+
+\end{itemize}
+
 \subsection{Uniform Distribution}
 
 A random variable \(X \in \{1, 2, \dots, n\}\) with 
 \(\Prob(X = i) = \frac{1}{n}\) for \(i = 1, \dots, n\) is uniformly distributed. 
 The distribution \(\Prob_X\) is called the (discrete) \emph{uniform distribution}.
 
-Notation: \(X \sim U\{1,2,\dots,n\}\).
+\[
+    \frac{1}{n}
+\]
+
+The expected value is given by 
+
+\[
+    \mathbb{E}(X) = \frac{n + 1}{2}
+\]
+
+and the standard deviation is given by
+
+\[
+    \sigma = \frac{n^2 - 1}{12}
+\]
+
+where \(a\) and \(b\) are the boundaries of our distribution.
 
 \subsection{Binomial Distribution}
 
@@ -708,11 +807,11 @@ Distribution for discrete binary experiments. Either an event occurs or it does 
 
     \item \emph{Probability: } \(\Prob(X = k) = \binom{n}{k} p^k {(1 - p)}^{n - k}\)
 
-    \item \emph{Expected Result: } \(\text{E}(X) = n * p\)
+    \item \emph{Expected Result: } \(\mathbb{E}(X) = np\)
 
-    \item \emph{Standard Deviation: } \(\sqrt{\text{E}(X)(1-p)}\)
+    \item  \emph{Variance: } \(\text{var}(X) = \mathbb{E}(x)(1-p)\)
 
-    \item  \emph{Variance: } \(\text{E}(x)(1-p)\)
+    \item \emph{Standard Deviation: } \(\sigma = \sqrt{\mathbb{E}(X)(1-p)}\)
 
 \end{itemize}
 
@@ -726,24 +825,6 @@ We also get the standard deviation and our distribution function
 \[
     \mathbb{F}_X = \sum_{i = P(X=k)}^{P(X=n) (P(X=i))}
 \]
-
-\textbf{Formulas: }
-
-\begin{itemize}
-
-    \item \(P(X = a) = P(X = a)\)
-
-    \item \(P(X \le a) = P(X \le a)\)
-
-    \item \(P(X < a) = P(X \le a - 1)\)
-
-    \item \(P(X > a) = 1 - P(X \le a)\)
-
-    \item \(P(X \ge a) = 1 - P(X \le - 1)\)
-
-    \item \(P(a \le X \le b) = P(X \le b) - P(X \le a)\)
-
-\end{itemize}
 
 \subsubsection{Sigma Rules}
 
@@ -759,6 +840,11 @@ We also get the standard deviation and our distribution function
 
 \subsection{Geometric Distribution}
 
+A random variable \(X \in \mathbb{N}_0\) with 
+\(\Prob(X = n) = p(1 - p)^n\) for some \(p \in (0, 1)\) and \(n \in \mathbb{N}_0\) 
+is geometrically distributed. The distribution \(\Prob_X\) is called the \emph{geometric distribution}.
+
+
 Similar to the binomial distribution, the \emph{geometric} distribution is used for an experiment with two 
 outcomes and we we want to know the probability of \(k - 1\) non-successes until a success happens  
 
@@ -769,7 +855,7 @@ outcomes and we we want to know the probability of \(k - 1\) non-successes until
 We also get
 
 \[
-    \text{E}(X) = \mu = \frac{1}{p}
+    \mathbb{E}(X) = \mu = \frac{1 - p}{p}
 \]
 
 \[
@@ -781,12 +867,6 @@ and
 \[
     \sigma = \sqrt{\text{Var}(X)}
 \]
-
-\subsection{Normal Distribution}
-
-A random variable \(X \in \mathbb{N}_0\) with 
-\(\Prob(X = n) = p(1 - p)^n\) for some \(p \in (0, 1)\) and \(n \in \mathbb{N}_0\) 
-is geometrically distributed. The distribution \(\Prob_X\) is called the \emph{geometric distribution}.
 
 \subsection{Poisson Distribution}
 
@@ -905,14 +985,113 @@ elements we are not interested in.
 
 \end{itemize}
 
-\subsection{The Birthday Paradox}
+\subsection{The Expected Result}
 
-This is a small question that says: What is the probability of at least two people having 
-their birthday on the same day in a group of \(x\) persons.
+Given \(\Omega, \mathcal{A}, \Prob\), a probability space and \(X\) a discrete random variable. We 
+define the \emph{expected result} as 
 
 \[
-    \Prob(x) = 1 - \prod_{n = 0}^{x} \frac{365 - n}{365}
+    \mathbb{E}(x) = \sum_{x \in X(\Omega)} x \Prob(X = x)
 \]
 
-This formula gives us the probability of total minus all persons having it on different days. Which
-what we are looking for.
+which exists only if 
+
+\[
+    \sum_{x \in X(\Omega)} |x| \Prob(X = x) < \infty
+\]
+\subsubsection{Transformation of the Expected Result}
+
+Given \(u: X(\Omega) \to \Reals\) where \(\sum_{x \in X(\Omega)} |u(x)|p(x) < \infty\) then 
+
+\[
+    \mathbb{E}[u(X)] = \sum_{x \in X(\Omega)} u(x)\Prob(X = x)
+\]
+
+\subsection{Triangle Inequality for Expected Results}
+
+\[
+    |\mathbb{E}[X]| \le \mathbb{E}[|X|]
+\]
+
+\textbf{Proof:}
+
+\begin{align*}	
+    |\mathbb{E}[X]| &= \left| \sum_{x \in X(\Omega)} x \Prob(X = x) \right| \le \sum_{x \in X(\Omega)} |x \Prob(X = x)| \\ 
+		    &= \sum_{x \in X(\Omega)} |x| \Prob(X = x) = \mathbb{E} [|X|]
+\end{align*}
+
+\QED
+
+\subsubsection{Properties of Expected Results}
+
+Given two random variables \(X\) and \(Y\), if both have an expected results then 
+
+\begin{itemize}
+	
+    \item \(\mathbb{E}[\alpha X] = \alpha \mathbb{E}[X]\)
+
+    \item \(\mathbb{E}[X + Y] = \mathbb{E}[X] + \mathbb{E}[Y]\)
+
+    \item \(\mathbb{E}[b] = b\)
+    
+    \item \(X \le Y = \mathbb{E}[X] \le \mathbb{E}[Y]\)
+
+\end{itemize}
+
+\subsection{Variance}
+
+Given a random variable \(X\) for which \(\mathbb{E}[(X - \mathbb{E})^2]\) exists. The we define 
+the \emph{variance} of \(X\) as 
+
+\[
+        \text{var}(X) = \mathbb{E}[(X - \mathbb{E})^2]
+\]
+
+And its root is the \emph{standard deviation}.
+
+\subsubsection{Properties of the Variance}
+
+Let \( X \) be a (discrete) random variable for which the variance exists.  
+Then the following hold:
+
+\begin{itemize}
+
+    \item \(\text{var}(aX + b) = a^2 \, \mathrm{var}(X)\), for \( a, b \in \mathbb{R} \)
+    
+    \item \(\text{var}(X) = \mathbb{E}[X^2] - (\mathbb{E}[X])^2\)
+    
+    \item For \( a \in \Reals \), we have  \(\mathbb{E}[(X - a)^2] = \text{var}(X) + (\mathbb{E}[X] - a)^2\),  
+    and in particular, \(\mathbb{E}[(X - a)^2] \ge \text{var}(X)\).  
+    Equality holds if and only if \( a = \mathbb{E}[X] \).
+
+\end{itemize}
+
+\subsection{Momentum}
+
+For a random variable \(X\), we define \(k\). \emph{momentum} as \(\mathbb{E}[X^k]\)
+
+\subsubsection{Markov Inequality}
+
+Given a random variable \(X\), \(a \in \Reals\) and \(h: D \to [0, \infty)\) a monotonic growing 
+function with the properties \(h(a) > 0\) and \(X(\Omega) \subseteq D\) then 
+
+\[
+    \Prob(X \ge a) \le \frac{\mathbb{E}[h(X)]}{h(a)}
+\]
+
+There is a special case for \(Y = |X|, a > 0\) and \(h(x) = x\) 
+
+\[    
+    \Prob(X \ge a) \le \frac{\mathbb{E}[h(X)]}{a}
+\]
+
+\subsubsection{Chebychev Inequality}
+
+Given a random variable \(X\) with a variance and \(a > 0\) then 
+
+\[
+    \Prob(|X - \mathbb{E}[X]| \ge a) \le \frac{\text{var}(X)}{a^2}
+\]
+
+
+

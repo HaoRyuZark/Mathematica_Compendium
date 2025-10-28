@@ -1,6 +1,39 @@
 \newpage
 \section{Relations, Maps and Functions}
 
+
+\subsection{Map Definition}
+
+A \emph{map} for two sets \(A\) and \(B\) is defined as a subset of \(A \times B\). And it is denoted by 
+
+\[
+	f: A \to B \subseteq \{(a, b) \mid (a,b) \in A \times B\}
+\]
+
+\subsection{The Set of All Maps}
+
+For the sets \(M\) and \(N\), we define the sets off all maps \(f: M \to N\) as 
+
+\[
+	N^M := \{f \mid f: M \to N\}
+\]
+
+\subsection{The Characteristic Map}
+
+Given \(T \subseteq M\) we define the \emph{characteristic map} as 
+
+\[
+	\mathcal{X}_T: M \to \{0,1\} : m \to \begin{cases} 
+		1, &m \in T \\ 
+		0, &m \notin T
+	\end{cases}
+\]
+
+This map tell us if an element is in the subset. Also each map \(\alpha : M \to \{0, 1\}\) defines a 
+unique subset \(T\) of \(M\), \(T := M \mid \alpha(m) = 1\).
+
+\subsection{Relations}
+
 A \emph{relation} in mathematics is a connection or relationship between elements of two sets. It's 
 formally defined as a subset of the Cartesian product of the sets.
 
@@ -130,25 +163,6 @@ elements in \(A\). Formally, it is defined as:
 The quotient space \(A/\sim\) is a partition of the original set \(A\) into disjoint equivalence classes. 
 Each element of the quotient space is an equivalence class \([x]\), which itself is a subset of \(A\).
 
-\subsection{Definition of a Map}
-
-A map (or function) from a set \(A\) to a set \(B\), denoted as \(f: A \to B\), is a relation that 
-associates each element of the set \(A\) with exactly one element of the set \(B\).
-
-Formally, a function \(f: A \to B\) is a subset of \(A \times B\) such that for every \(a \in A\), there 
-exists exactly one \(b \in B\) where \((a,b) \in f\). We typically write \(f(a) = b\) to indicate that 
-\(f\) maps the element \(a\) to the element \(b\).
-
-\textbf{Example:}
-
-Let \(A = \{1, 2, 3\}\) and \(B = \{x, y, z\}\). A possible function \(f: A \to B\) could be defined as:
-
-\[
-	f(1) = x, \quad f(2) = y, \quad f(3) = z
-\]
-
-This function can also be represented as the set of ordered pairs \(\{(1,x), (2,y), (3,z)\}\).
-
 \subsection{Composition of Maps}
 
 The composition of two functions is the operation of applying one function to the result of another 
@@ -162,6 +176,12 @@ by:
 
 The composition applies \(f\) first, then applies \(g\) to the result. 
 Note that the co-domain of \(f\) must match the domain of \(g\) for the composition to be defined.
+
+The formal definition is 
+
+\[
+	g \circ f := \{ (s, u) \in S \times U \mid \exists t \in T \text{ such that } (s, t) \in f \land (t, u) \in g \}
+\]
 
 \textbf{Example:}
 
@@ -334,6 +354,44 @@ It follows that:
 \]
 
 \QED
+
+\textbf{Example:}
+
+We define \(A = \{1, 0\}\) and \(B = \{2\}\) and \(f(1) = 3\), \(f(2) = 3\) \(f(0) = 1\). Then 
+
+\[
+	f(A \cap B) = f( \emptyset) = \emptyset
+\]
+
+And 
+
+\[
+	f(A) \cap f(B) = 3
+\]
+
+\subsection{Even Function}
+
+A real function \(f\) is \emph{even} if
+
+\begin{itemize}
+	
+	\item \(\forall x \in \text{Dom}(f) \exists -x \in \text{Dom}(f)\)
+	
+	\item \(\forall x \in \text{Dom}(f) \text{ the following is true } f(x) = f(-x)\)
+
+\end{itemize}
+
+\subsection{Odd Function}
+
+A real function \(f\) is \emph{odd} if
+
+\begin{itemize}
+	
+	\item \(\forall x \in \text{Dom}(f) \exists -x \in \text{Dom}(f)\)
+	
+	\item \(\forall x \in \text{Dom}(f) \text{ the following is true } f(x) = - f(x)\)
+
+\end{itemize}
 
 \subsection{Inverse of a Function}
 
@@ -535,4 +593,6 @@ Here, we examine how different algebraic changes to a function \( f(x) \) affect
 	\item Each point \( (x, y) \) becomes \( (-x, y) \).
 
 \end{itemize}
+
+
 
