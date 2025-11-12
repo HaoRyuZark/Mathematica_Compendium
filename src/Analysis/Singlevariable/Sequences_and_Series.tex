@@ -108,14 +108,33 @@ This is the open interval \((a - \varepsilon, a + \varepsilon)\).
 
 \subsection{Supremum, Infimum, Maximum and Minimum}
 
-The \emph{supremum} of a set \(A \subseteq \Reals\) is the 
+The \emph{supremum} \(\text{sup}\) of a set \(A \subseteq \Reals\) is the 
 least upper bound: the smallest real number \(s\) such that \(a \le s\) for all \(a \in A\).
 
-The \emph{infimum} of a set \(A\) is the greatest lower bound: 
-the largest number \(t\) such that \(a \ge t\) for all \(a \in A\). The \emph{maximum} is the largest 
-element in the set, if it exists.
+\[
+    x \le s, \forall x \in A 
+\]
+
+\[
+    x \le s', \forall x \in A \implies s' \ge s
+\]
+
+The \emph{infimum} \(\text{inf}\) of a set \(A\) is the greatest lower bound: 
+the largest number \(t\) such that \(a \ge t\) for all \(a \in A\). 
+
+\[
+    x \ge s, \forall x \in A 
+\]
+
+\[
+    x \ge s', \forall x \in A \implies s' \le s
+\]
+
+The \emph{maximum} is the largest element in the set, if it exists.
 
 The \emph{minimum} is the smallest element in the set, if it exists.
+
+Finally we define \(\text{sup} \emptyset := - \infty\) and \(\text{inf} \emptyset := +\infty\)
 
 \textbf{Example:}
 
@@ -130,6 +149,14 @@ For \(A = (0,1)\):
     \item \(\max A\) and \(\min A\) do not exist
 
 \end{itemize}
+
+\subsubsection{Alternative Characterization of the Supremum}
+
+Given a non-empty set \(A \subseteq \Reals\). The \(s \in Reals\) is only a supremum of \(A\) if 
+
+\[
+    (\nexists s \in A, s < x) \land (s' \in \Reals, s' < s \implies !\exists x \in A, x > s')
+\]
 
 \subsection{Limit and Accumulation Point}
 

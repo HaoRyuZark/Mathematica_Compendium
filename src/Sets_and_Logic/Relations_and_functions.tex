@@ -1,7 +1,6 @@
 \newpage
 \section{Relations, Maps and Functions}
 
-
 \subsection{Map Definition}
 
 A \emph{map} for two sets \(A\) and \(B\) is defined as a subset of \(A \times B\). And it is denoted by 
@@ -392,6 +391,21 @@ A real function \(f\) is \emph{odd} if
 	\item \(\forall x \in \text{Dom}(f) \text{ the following is true } f(x) = - f(x)\)
 
 \end{itemize}
+
+\subsection{Pre-image}
+
+Given \(f: M \to N\). For \(n \in N\) we define 
+
+\[
+	f^{-1}(\{n\}) := \{m \in M \mid f(m) = n\}
+\]
+
+as the \emph{pre-image} of \(n\). The complete \emph{pre-image} for 
+\(T \subseteq N\) is defined as 
+
+\[
+	f^{-1}(T) := \bigcup_{t \in T}f^{-1}(\{t\}) = \{m \in M \mid f(m) \in T\}
+\]
 
 \subsection{Inverse of a Function}
 

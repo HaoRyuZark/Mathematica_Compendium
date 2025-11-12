@@ -52,9 +52,7 @@ A \emph{homomorphism} is a function \(\varphi: G \rightarrow H\) such that:
     
 An \emph{isomorphism} is a bijective homomorphism. If such a map exists, we say the structures are \emph{isomorphic}, written as \(G \cong H\).
 
-\subsection{Common Algebraic Structures}
-
-\subsubsection{Semigroup \texorpdfstring{\((S, \oplus)\)}{}}
+\subsection{Semigroup \texorpdfstring{\((S, \oplus)\)}{}}
 
 A \emph{semigroup} is a set \(S\) equipped with a binary operation \(\oplus\) that is \emph{associative}. This means:
 
@@ -65,7 +63,7 @@ A \emph{semigroup} is a set \(S\) equipped with a binary operation \(\oplus\) th
 There is no requirement for an identity element or inverses. Semigroups 
 capture the essence of combining elements consistently (e.g., string concatenation).
 
-\subsubsection{Monoid \texorpdfstring{\((M, \oplus)\)}{}}
+\subsection{Monoid \texorpdfstring{\((M, \oplus)\)}{}}
 
 A \emph{monoid} builds on a semigroup by adding an \emph{identity element} \(e\) such that:
 
@@ -75,7 +73,7 @@ A \emph{monoid} builds on a semigroup by adding an \emph{identity element} \(e\)
 
 This structure is useful when an operation must have a “do nothing” element, like \(0\) for addition or \(1\) for multiplication.
 
-\subsubsection{Group \texorpdfstring{\((G, \oplus)\)}{}}
+\subsection{Group \texorpdfstring{\((G, \oplus)\)}{}}
 
 A \emph{group} is a monoid where every element has an \emph{inverse}:
 
@@ -85,7 +83,7 @@ A \emph{group} is a monoid where every element has an \emph{inverse}:
 
 Groups model reversible processes and are foundational in symmetry and abstract algebra.
 
-\subsubsection{Abelian Group \texorpdfstring{\((A, \oplus)\)}{}}
+\subsection{Abelian Group \texorpdfstring{\((A, \oplus)\)}{}}
 
 An \emph{Abelian group} (or commutative group) is a group where the operation is \emph{commutative}:
 
@@ -95,7 +93,7 @@ An \emph{Abelian group} (or commutative group) is a group where the operation is
 
 This property makes Abelian groups especially important theory and linear algebra.
 
-\subsubsection{Ring \texorpdfstring{\((R, \oplus, \odot)\)}{}}
+\subsection{Ring \texorpdfstring{\((R, \oplus, \odot)\)}{}}
 
 A \emph{ring} is a set with two operations:
 
@@ -115,7 +113,7 @@ A \emph{ring} is a set with two operations:
 
 Rings generalize arithmetic of integers, where addition and multiplication interact in a structured way.
 
-\subsubsection{Commutative Ring \texorpdfstring{\((R, \oplus, \odot)\)}{}}
+\subsection{Commutative Ring \texorpdfstring{\((R, \oplus, \odot)\)}{}}
 
 A \emph{commutative ring} is a ring where multiplication is also \emph{commutative}:
 
@@ -125,7 +123,7 @@ A \emph{commutative ring} is a ring where multiplication is also \emph{commutati
 
 This is the kind of ring most often encountered in basic algebra, such as the integers \(\Integers\).
 
-\subsubsection{Field \texorpdfstring{\((\Field, \oplus, \odot)\)}{}}
+\subsection{Field \texorpdfstring{\((\Field, \oplus, \odot)\)}{}}
 A \emph{field} is a commutative ring where every nonzero element has a \emph{multiplicative inverse}:
 
 \[
@@ -134,7 +132,53 @@ A \emph{field} is a commutative ring where every nonzero element has a \emph{mul
 
 Fields like \(\Rationals\), \(\Reals\), and \(\Complex\) allow division (except by zero), enabling the full range of arithmetic operations.
 
-\subsubsection{Vector Space \texorpdfstring{\((V, \oplus, \cdot)\)}{}}
+\subsubsection{Field Proofs}
+
+\textbf{Neutral Elements are well-defined:}
+
+We know \(a + 0 = a\). Now let us say \(a + x = 0\). If we then set \(a = 0\) and assume there 
+exists some other element with the neutral property we will end up having a neutral plus other neutral will 
+give us just the neutral again by definition, else there would be a contradiction.
+
+\[
+    0 + x = 0
+\]
+
+We conclude that \(x = 0\). By a similar logic we also get well-definiteness for the inverse element.
+
+\QED
+
+\textbf{Minus times Minus is Plus:}
+
+We will prove that \(ab = (-a)(-b)\) for some elements of a field.
+
+\begin{align*}
+	ab &= (-a)(-b) \\
+	ab + (-a)b &= (-a)(-b) + (-a)b \\ 
+	b(a + (-a)) &= (-a)((-b) + b) = 0\\
+\end{align*}
+
+From that point, for the right side we can do the following 
+
+\begin{align*}
+	(-a)((-b) + b) &= 0\\
+	(-a)(-b) + (-a)b &= 0\\
+	(-a)(-b) &= -(-a)b\\
+\end{align*}
+
+Then, by looking on the left side of the original equally
+
+\begin{align*}
+	b(a + (-a)) &= 0\\
+	ab + (-a)b &= 0\\
+	ab &= -(-a)b\\
+\end{align*}
+
+Thus, we have got our equality \(ab = (-a)(-b)\).
+
+\QED
+
+\subsection{Vector Space \texorpdfstring{\((V, \oplus, \cdot)\)}{}}
 
 A \emph{vector space} over a field \(\Field\) consists of:
 

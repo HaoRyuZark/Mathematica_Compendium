@@ -1,0 +1,419 @@
+\newpage 
+\section{Multivariable Distributions}
+
+\subsection{Measurability of Random Variables and Random Vectors}
+
+Let \( X_1, X_2, \ldots, X_n \) be random variables on \((\Omega, \mathcal{A}, P)\).  
+Then each \( X_i : \Omega \to \Reals \) is measurable.
+
+\emph{Measurability in \(\Reals\).}
+
+\[
+    X_i^{-1}((-\infty, z]) \in \mathcal{A} \quad \text{for all } z \in \Reals
+\]
+
+\emph{Alternative Representation.}
+
+Define \( X : \Omega \to \Reals^n \) by
+
+\[
+    X(\omega) = (X_1(\omega), \ldots, X_n(\omega))
+\]
+
+It can be shown (from measure theory) that \( X \) is measurable.
+
+\emph{Measurability in \(\Reals^n\).}
+
+\[
+    X^{-1}(R) \in \mathcal{A}, \quad \text{where } 
+    R = (a_1, b_1] \times (a_2, b_2] \times \cdots \times (a_n, b_n]
+\]
+
+for arbitrary \( a_1, \ldots, a_n, b_1, \ldots, b_n \in \Reals \).
+
+From this (by measure theory) it follows that for any set \( A \subseteq \Reals^n \),
+
+\[
+    X^{-1}(A) \in \mathcal{A}
+\]
+
+Hence, the probability
+
+\[
+    \Prob(X \in A) = \Prob(\{\omega \in \Omega : X(\omega) \in A\})
+\]
+
+is well-defined for all \( A \subseteq \Reals^n \).
+
+\subsection{Joint Distribution and Random Vectors}
+
+Let \( X_1, \ldots, X_n \) be random variables on a probability space \((\Omega, \mathcal{A}, P)\).  
+Then \( P_X \) (respectively \( P_{X_1, \ldots, X_n} \)) is defined as
+
+\[
+    \Prob_X(A) = P((X_1, \ldots, X_n) \in A), \quad A \subseteq \Reals^n
+\]
+
+and is called the \emph{joint distribution} of \( X_1, \ldots, X_n \).  
+The vector \( X = (X_1, \ldots, X_n) \) is called a \emph{random vector}.
+
+\subsection{Joint Probability Function}
+
+Let \( X_1, \ldots, X_n \) be discrete random variables.  
+The function \( p_X \), defined as
+
+\[
+    \Prob_X(x) = \Prob(X_1 = x_1, X_2 = x_2, \ldots, X_n = x_n)
+\]
+
+for \( x \in X(\Omega) \subseteq \Reals^n \),  
+is the \emph{joint probability function} of \( X_1, \ldots, X_n \),  
+or equivalently, of the random vector \( X \).
+
+As before, the distribution \( P_X \) is uniquely determined by the probability function \( p_X \):
+
+\[
+    \Prob_X(A) = \Prob\big((X_1, \ldots, X_n) \in A\big)
+           = \sum_{x \in A} \Prob(X_1 = x_1, \ldots, X_n = x_n)
+           = \sum_{x \in A} p_X(x)
+\]
+
+Furthermore, for probability functions \( p : \Reals^n \to \Reals \), the following holds:
+
+\[
+    \sum_{(x_1, \ldots, x_n) \in X(\Omega)} p(x_1, \ldots, x_n) = 1
+\]
+\[
+    p(x_1, \ldots, x_n) \ge 0
+\]
+
+\textbf{Example:}
+
+Let \( X, Y \) be the numbers shown when rolling two dice.  
+The joint probability function is
+
+\[
+    p_{X,Y}(i, j) = \frac{1}{36}
+\]
+
+for \( i, j \in \{1, 2, \ldots, 6\} \).
+Their combined probability function is 
+
+\[
+    p_{X,Y}(i, j) =
+    \begin{cases}
+        \frac{1}{6}, & \text{if } i = j \\
+        0, & \text{otherwise.}
+    \end{cases}
+\]
+
+\subsection{Marginal Distributions of Discrete Random Variables}
+
+Let \( X, Y \) be two discrete random variables.  
+In general, the following holds:
+
+\[
+    \Prob(X = x) = \sum_{y \in Y(\Omega)} \Prob(X = x, Y = y)
+\]
+
+and
+
+\[
+    \Prob(Y = y) = \sum_{x \in X(\Omega)} \Prob(X = x, Y = y)
+\]
+
+The probabilities \( \Prob(X = x) \) and \( \Prob(Y = y) \) are called 
+\emph{marginal distributions} (also known as \emph{marginals} or \emph{marginal distributions}).
+
+Generalized, let \( X_1, \ldots, X_n \) be random variables and  
+\( 1 \leq i_1 < \cdots < i_k \leq n \).  
+The joint distribution of \( X_{i_1}, \ldots, X_{i_k} \) is a \emph{\(k\)-dimensional marginal distribution} of \( X_1, \ldots, X_n \).
+
+For discrete random variables, the joint probability function of  
+\( X_{i_1}, \ldots, X_{i_k} \) is called the \emph{marginal probability function}.
+
+\subsubsection{Marginal Probability Function for Multiple Variables}
+
+Let \( X_1, \ldots, X_n \) be discrete random variables with joint probability function  
+\( p(x_1, \ldots, x_n) \), and let \( 1 \le i_1 < \cdots < i_k \le n \).  
+For the \emph{marginal probability function} of \( X_{i_1}, \ldots, X_{i_k} \), the following holds:
+
+\[
+    p_{i_1, \ldots, i_k}(x_{i_1}, \ldots, x_{i_k})
+    = \sum_{x_{j_1}, \ldots, x_{j_{n-k}}} p(x_1, \ldots, x_n),
+\]
+
+where \( \{ j_1, \ldots, j_{n-k} \} = \{1, \ldots, n\} \setminus \{ i_1, \ldots, i_k \} \).
+
+\textbf{Example:} 
+
+Let \( X_1, X_2 \) be the outcomes of two dice rolls, and let \( Y = X_1 + X_2 \).  
+The joint distribution of \( X_1 \) and \( Y \) is given by:
+
+\[
+    \begin{array}{c|ccccccccccc|c}
+    X_1 \backslash Y & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & \Prob(X_1 = x) \\ \hline
+    1 & \tfrac{1}{36} & \tfrac{1}{36} & \tfrac{1}{36} & \tfrac{1}{36} & \tfrac{1}{36} & \tfrac{1}{36} & 0 & 0 & 0 & 0 & 0 & \tfrac{1}{6} \\
+    2 & 0 & \tfrac{1}{36} & \tfrac{1}{36} & \tfrac{1}{36} & \tfrac{1}{36} & \tfrac{1}{36} & \tfrac{1}{36} & 0 & 0 & 0 & 0 & \tfrac{1}{6} \\
+    3 & 0 & 0 & \tfrac{1}{36} & \tfrac{1}{36} & \tfrac{1}{36} & \tfrac{1}{36} & \tfrac{1}{36} & \tfrac{1}{36} & 0 & 0 & 0 & \tfrac{1}{6} \\
+    4 & 0 & 0 & 0 & \tfrac{1}{36} & \tfrac{1}{36} & \tfrac{1}{36} & \tfrac{1}{36} & \tfrac{1}{36} & \tfrac{1}{36} & 0 & 0 & \tfrac{1}{6} \\
+    5 & 0 & 0 & 0 & 0 & \tfrac{1}{36} & \tfrac{1}{36} & \tfrac{1}{36} & \tfrac{1}{36} & \tfrac{1}{36} & \tfrac{1}{36} & 0 & \tfrac{1}{6} \\
+    6 & 0 & 0 & 0 & 0 & 0 & \tfrac{1}{36} & \tfrac{1}{36} & \tfrac{1}{36} & \tfrac{1}{36} & \tfrac{1}{36} & \tfrac{1}{36} & \tfrac{1}{6} \\ \hline
+    \Prob(Y = y) & \tfrac{1}{36} & \tfrac{2}{36} & \tfrac{3}{36} & \tfrac{4}{36} & \tfrac{5}{36} & \tfrac{6}{36} & \tfrac{5}{36} & \tfrac{4}{36} & \tfrac{3}{36} & \tfrac{2}{36} & \tfrac{1}{36} &
+    \end{array}
+\]
+
+The process in short, for \(Y = 2\) there is only one possible combination \(X_1 = 1, X_2 = 1\). For the rest 
+of the row this still holds for \(Y \le 7\).  For the next row \(X_1 = 2\) and \(Y = 2\) we encounter an impossible probability.
+
+\subsection{Transformation Formula for the Expected Value of Multiple-variable Distributions}
+
+Let \( X_1, \ldots, X_n \) be discrete random variables with joint probability function \( p \),  
+and let \( u : \Reals^n \to \Reals \).  
+Then, if the expectation exists, the following holds:
+
+\[
+    \Expc[u(X_1, \ldots, X_n)] 
+    = \sum_{(x_1, \ldots, x_n) \in X(\Omega)} 
+      u(x_1, \ldots, x_n) \, p(x_1, \ldots, x_n)
+\]
+
+\textbf{Example:}
+
+Let \( X \) and \( Y \) be random variables with the following joint probability function \( p \):
+
+\[
+    \begin{array}{c|ccc}
+    Y \backslash X & 1 & 2 & 3 \\ \hline
+    3 & \frac{1}{6} & 0 & \frac{1}{4} \\
+    4 & \frac{1}{8} & \frac{1}{3} & \frac{1}{8}
+    \end{array}
+\]
+
+What is \( \Expc[XY] \)?  
+
+\[
+    \Expc[XY] = \sum_{(x,y)} xy \, p(x,y)
+    = 1 \cdot 3 \cdot \frac{1}{6} + 2 \cdot 3 \cdot 0 + 3 \cdot 3 \cdot \frac{1}{4} 
+    + 1 \cdot 4 \cdot \frac{1}{8} + 2 \cdot 4 \cdot \frac{1}{3} + 3 \cdot 4 \cdot \frac{1}{8}
+    \approx 7.42
+\]
+
+\subsubsection{Expectation as a Special Case of the Transformation Formula}
+
+Let \( X, Y \) be discrete random variables with joint probability function \( p \).  
+With \( u(x, y) = x \), the transformation formula gives:
+
+\[
+    \Expc[X] = \sum_{(x, y) \in (X, Y)(\Omega)} x \, p(x, y)
+\]
+
+\subsection{Joint Probability Density Function}
+
+An integrable function \( f : \Reals^n \to [0, \infty) \) is called the \emph{joint (probability) density} of the random variables 
+\( X_1, \ldots, X_n \) if, for all rectangles
+
+\[
+    R = (a_1, b_1] \times \cdots \times (a_n, b_n] \subseteq \Reals^n,
+\]
+
+the following holds:
+
+\[
+    \Prob((X_1, \ldots, X_n) \in R) 
+    = \int_R f(x_1, \ldots, x_n) \, dx_1 \cdots dx_n.
+\]
+
+\textbf{Example I:}
+
+Find the probability of \(\Prob(X \le \frac{2}{3}, Y \le \frac{1}{2})\), with 
+the constraint \(\Delta = \{(x,y) \in [0,1]^2 : 0 \le y \le x \le 1 \}\)
+
+\begin{align*}
+    \int_{0}^{\frac{2}{3}} \int_{0}^{\frac{1}{2}} f(x,y) dy dx \\ 
+    &= \int_{0}^{\frac{2}{3}} \int_{0}^{\frac{1}{2}} \text{ind}_{\Delta} dy dx \\ 
+    &= 2\int_{0}^{\frac{2}{3}} \int_{0}^{\frac{1}{2}} 1 dy dx \\ 
+    &= 2\int_{0}^{\frac{2}{3}} \int_{0}^{\min (x, \frac{1}{2})} 1 dy dx \\ 
+    &= 2\left(\int_{0}^{\frac{1}{2}} x dx  + \int_{\frac{1}{w}}^{\frac{2}{3}} \frac{1}{2} dx \right) = \frac{5}{12} 
+\end{align*}
+
+\textbf{Example II:}
+
+Find the densities of \(X\) and \(Y\)
+
+\[
+    \int_0^1 \int_0^1 6\cdot x^2 \cdot y \, dy \, dx = 1
+\]
+
+Density of \(X\):
+
+\[
+    f_X(x) = \int_0^1 6x^2 y \, dy = 6x^2 \left[\frac{y^2}{2}\right]_0^1 = 3x^2 \quad \text{for } 0 \leq x \leq 
+\]
+
+\[
+    f_X(x) = \begin{cases}
+    3x^2 & \text{ if } 0 \leq x \leq 1 \\
+    0 & \text{ else }
+    \end{cases}
+\]
+
+Density of \(Y\)
+
+\[  
+    f_Y(y) = \int_0^1 6x^2 y \, dx = 6y \left[\frac{x^3}{3}\right]_0^1 = 2y \quad \text{for } 0 \leq y \leq 1
+\]
+
+\[
+    f_Y(y) = \begin{cases}
+    2y & \text{ if } 0 \leq y \leq 1 \\
+    0 & \text{ else}
+    \end{cases}
+\]
+
+\subsection{Uniform Distribution on a Measurable Set}
+
+Let \( I \subseteq \Reals^n \) be a measurable set.  
+Random variables \( (X_1, \ldots, X_n) \in \Reals^n \) with joint density
+
+\[
+    f(x_1, \ldots, x_n) = \frac{1}{|I|} \, \text{ind}_I(x_1, \ldots, x_n)
+\]
+
+are called \emph{uniformly distributed}, where \( |I| \) denotes the volume (Lebesgue measure) of the set \( I \).  
+The distribution \( P_{X_1, \ldots, X_n} \) is called the \emph{uniform distribution}.
+
+\subsection{Probability over Measurable Sets}
+
+Let \( X_1, \ldots, X_n \) be random variables with joint density \( f(x_1, \ldots, x_n) \).  
+For every measurable set \( R \subseteq \Reals^n \), the following holds:
+
+\[
+    \Prob\big((X_1, \ldots, X_n) \in R\big)
+    = \int_R f(x_1, \ldots, x_n) \, dx_1 \cdots dx_n
+\]
+
+\subsection{Joint Distribution Function for multiple Variables}
+
+Let \( X_1, \ldots, X_n \) be random variables.  
+The function \( F : \Reals^n \to \Reals \), defined by
+
+\[
+    F(x_1, \ldots, x_n) = \Prob(X_1 \le x_1, \ldots, X_n \le x_n),
+\]
+
+is called the \emph{joint distribution function} of \( X_1, \ldots, X_n \).
+
+\subsection{Marginal Densities}
+
+Let \( X_1, \ldots, X_n \) be random variables with joint density \( f(x_1, \ldots, x_n) \).  
+The density of \( X_1 \) is given by
+
+\[
+    f_{X_1}(x_1) = \int \dots \int  f(x_1, \ldots, x_n) \, dx_2 \cdots dx_n
+\]
+
+For random variables \( X, Y \) with joint density \( f(x, y) \), the following holds:
+
+\[
+    f_X(x) = \int f(x, y) \, dy
+\]
+
+\subsection{Expectation with Respect to a Joint Density}
+
+Let \( X_1, \ldots, X_n \) be random variables with joint density \( f(x_1, \ldots, x_n) \),  
+and let \( u : \Reals^n \to \Reals \) be a measurable function.  
+Then the following holds:
+
+\[
+    \Expc[u(X_1, \ldots, X_n)]
+    = \int u(x_1, \ldots, x_n) f(x_1, \ldots, x_n) \, dx_1 \cdots dx_n
+\]
+
+\subsection{Stochastic Independence of Random Variables}
+
+The random variables \( X_1, \ldots, X_n \) are \emph{stochastically independent} if,  
+for all intervals \( I_1, \ldots, I_n \subseteq \Reals \), the following holds:
+
+\[
+    \Prob(X_1 \in I_1, \ldots, X_n \in I_n)
+    = \prod_{k=1}^{n} \Prob(X_k \in I_k)
+\]
+
+\subsection{Independence of Densities}
+
+Let \( X, Y \) be discrete random variables with joint probability function \( p_{X,Y}(x, y) \)  
+and marginal probability functions \( p_X(x) \) and \( p_Y(y) \).  
+Then \( X \) and \( Y \) are \emph{independent if and only if}
+
+\[
+    p_{X,Y}(x, y) = p_X(x) \, p_Y(y)
+\]
+
+Let \( X \) and \( Y \) be discrete random variables with joint probability function \( p_{X,Y}(x, y) \)  
+and marginal probability functions \( p_X(x) \) and \( p_Y(y) \).  
+The random variables \( X \) and \( Y \) are said to be \emph{independent} if and only if
+
+\[
+    p_{X,Y}(x, y) = p_X(x) \, p_Y(y)
+\]
+
+Also, if \(X_1, \dots, X_n\) are independent random variables and 
+
+\[
+    f_1, \cdots, f_n : \Reals \to \Reals 
+\]
+
+Then are \(f_1(X_1), \dots, f_n(X_n)\) also independent random variables.
+
+\textbf{Example:}
+
+Given 
+
+\[
+    \int_0^1 \int_0^1 6\cdot x^2 \cdot y \, dy \, dx = 1
+\]
+
+with 
+
+\[
+    f_X(x) = \int_0^1 6x^2 y \, dy = 6x^2 \left[\frac{y^2}{2}\right]_0^1 = 3x^2 \quad \text{for } 0 \leq x \leq 
+\]
+
+\[  
+    f_Y(y) = \int_0^1 6x^2 y \, dx = 6y \left[\frac{x^3}{3}\right]_0^1 = 2y \quad \text{for } 0 \leq y \leq 1
+\]
+
+We test \(f_{X,Y}(x,y) \stackrel{?}{=} f_X(x) \cdot f_Y(y)\)
+
+\[ 
+    f_X(x) \cdot f_Y(y) = 3x^2 \cdot 2y = 6x^2y = f_{X,Y}(x,y)
+\]
+
+\subsection{Variance for Independent Random Variables}
+
+Given the independent random variables \(X_1, \dots, X_n\) then 
+
+\[
+    \Var \left(\sum_{i = 1}^n X_i\right) = \sum_{i = 1}^{n} \Var(X_i)
+\]
+
+\subsection{Conditional Distribution of Discrete Random Variables}
+
+Let \( X, Y \) be discrete random variables and \( x \in \Reals \) such that \( \Prob(X = x) > 0 \).  
+The mapping
+
+\[
+    A \mapsto \Prob(Y \in A \mid X = x),
+\]
+
+for measurable \( A \subseteq \Reals \), defines a probability distribution on \( \Reals \)  
+and is called the \emph{conditional distribution of \( Y \) given \( X = x \)}.  
+
+The corresponding \emph{conditional probability function} of \( Y \) given \( X = x \) is defined by
+
+\[
+    p_{Y|X}(y \mid x) = \Prob(Y = y \mid X = x)
+    = \frac{p_{X,Y}(x, y)}{p_X(x)}.
+\]
+

@@ -1,0 +1,67 @@
+\newpage
+\section{Order}
+
+\subsection{Principle of the Ordering}
+
+Every non-empty set of natural numbers has a minimum.
+
+\subsection{Order in Fields}
+
+An \emph{ordered field} is a field \(F\) equipped with a total order \( < \) that is compatible with 
+the field operations + and \( \cdot \). That is, the order satisfies both algebraic and ordering 
+properties.
+
+\subsubsection{Order Axioms for Fields}
+
+A field \(F\) is called an \emph{ordered field} if it satisfies the following properties for all 
+\( a, b, c \in F \):
+
+\begin{enumerate}[label=\Roman*.]
+    
+	\item \emph{Trichotomy:} Exactly one of the following holds:
+ 
+		  \[
+ 	   			a < b, \quad a = b, \quad a > b
+    	   \]
+
+    \item \emph{Transitivity:} If \( a < b \) and \( b < c \), then \( a < c \).
+
+    \item \emph{Additive Compatibility:} If \( a < b \), then \( a + c < b + c \).
+
+    \item \emph{Multiplicative Compatibility:} If \( 0 < a \) and \( 0 < b \), then \( 0 < ab \).
+
+\end{enumerate}
+
+These properties ensure that arithmetic operations respect the order structure.
+
+\subsubsection{Consequences of the Order Axioms}
+
+\begin{itemize}
+
+	\item \( a < b \implies -b < -a \)
+
+	\item \( a < b \land c < 0 \implies ac > bc \)
+
+    \item \(a < 0, b < 0 \implies a + b < 0\) the contrary applies to the multiplication \(ab > 0\)
+
+    \item \(a > 0, b > 0 \implies a + b > 0\)
+	
+    \item Squares are always non-negative: \( a^2 \ge 0 \)
+
+	\item The order is total: any two elements are comparable
+
+\end{itemize}
+
+\subsubsection{Examples of Ordered Fields}
+
+\begin{itemize}
+
+	\item \( \Rationals \): Rational numbers with the usual order
+
+	\item \( \Reals \): Real numbers with the usual order
+
+	\item \( \Complex \): Complex numbers are not an ordered field, since \( i^2 = -1 < 0 \) 
+	      would violate positivity of squares
+
+\end{itemize}
+

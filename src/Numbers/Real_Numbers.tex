@@ -2,7 +2,161 @@
 \section{Real Numbers}
 
 A way of defining the \emph{real numbers} is via the \emph{Cauchy sequences}. Another way is via 
-the axioms of a field. 
+the axioms of a field with the order axioms and the \emph{completeness axiom}.
+
+\begin{itemize}
+
+    \item \emph{Associativity:} \((a \ast b) \ast c = a \ast (b \ast c)\) for all \(a,b,c \in S\)
+    
+    \item \emph{Commutativity:} \(a \ast b = b \ast a\) for all \(a,b \in S\)
+    
+    \item \emph{Identity Element:} There exists \(e \in S\) such that \(a \ast e = e \ast a = a\) for all \(a \in S\)
+    
+    \item \emph{Inverse Element:} For every \(a \in S\), there exists \(a^{-1} \in S\) such that \(a \ast a^{-1} = a^{-1} \ast a = e\)
+    
+    \item \emph{Distributivity:} \(a \circ (b \bullet c) = (a \circ b) \bullet (a \circ c)\) and/or \((b \bullet c) \circ a = (b \circ a) \bullet (c \circ a)\)
+
+\end{itemize}
+
+These rules apply for the addition and multiplication for real numbers.
+
+We also refresh the order axioms.
+
+\begin{enumerate}[label=\Roman*.]
+    
+	\item \emph{Trichotomy:} Exactly one of the following holds:
+ 
+		  \[
+ 	   			a < b, \quad a = b, \quad a > b
+    	   \]
+
+    \item \emph{Transitivity:} If \( a < b \) and \( b < c \), then \( a < c \).
+
+    \item \emph{Additive Compatibility:} If \( a < b \), then \( a + c < b + c \).
+
+    \item \emph{Multiplicative Compatibility:} If \( 0 < a \) and \( 0 < b \), then \( 0 < ab \).
+
+\end{enumerate}
+
+\subsection{Properties derivated from the Axioms}
+
+Some proofs of these properties can be found in the section about the algebraic structures.
+
+\begin{itemize}
+
+	\item The neutral and inverse elements of the addition and multiplication are well defined.
+
+	\item \(a + b = c\) and \(a + c = 0 \implies b = c\)
+
+	\item \(a \ne 0\), \(ab = 1\) and \(ac = 1 \implies b = c\)
+
+	\item \(a \cdot 0 = 0\) 
+
+	\item \(-a = (-1)a\)
+	
+	\item \(-(-a) = a\)
+
+	\item \((-1)^2 = 1\)
+		
+	\item \(\left(a^{-1}\right)^{-1} = a, \forall \in \Reals, a \ne 0\)
+
+\end{itemize}
+
+\subsection{Existence of Solutions}
+
+Given \(a,b \in \Reals\), then 
+
+\[
+	!\exists x \in \Reals, \text{ such that }, a + x = b
+\]
+
+Also, if \(a \ne 0\) 
+
+\[
+	!\exists x \in \Reals, \text{ such that }, ax = b
+\]
+
+\textbf{Proof:}
+
+For the first proposition, let \(x = -a + b\) 
+
+\begin{align*}
+	a + x &= a -a + b \\
+		 &= b
+\end{align*}
+
+For the second, let \(x = a^{-1}b\)
+
+\begin{align*}
+	ax &=  a a^{-1} b \\ 
+	   &= 1 \cdot b  
+\end{align*}
+
+\QED
+
+\subsection{The Completeness Axiom}
+
+All non-empty upper-bounded subsets of the real numbers have a supremum.
+
+\subsection{Minima in the Real Numbers}
+
+As a consequence of the last axiom each non-empty lower-bounded subset of real numbers has a minimum. 
+
+\textbf{Proof:}
+
+We define \(A := \{-\hat{x}: \hat{x} \in B\}\) then \(A \ne \emptyset\) and A is upper-bounded. 
+
+Because \(B\) is lower-bound there exists a number \(m \in Reals, \hat{x} \ge m, \forall \hat{x} \in B\). 
+We also know that \(-\hat{x} \le -m , \forall \hat{x} \in B \implies x \le -m \forall x \in A \implies A\) is upper bounded. 
+
+By the completeness axiom there exists some supremum for \(A\). This means there is some \(s \in \Reals, x \le s, \forall x \in A\), and 
+if \(x \le s', \forall x \in A\) then \(s' \ge s\). 
+
+We want to show \(\sigma := -s\) is the infimum of \(B\). Note that for all the elements of \(B\) 
+
+\begin{align*}
+	\hat{x} &= -x, x \in A \\ 
+	&\ge -s \\ 
+	&= \sigma	
+\end{align*}
+
+Also \(\sigma\) is some lower bound of \(B\). If \(\hat{x} \ge \hat{\sigma}, \forall \hat{x} \in B\) and \(\hat{\sigma} \in Reals\) then 
+
+\begin{align*}	
+	\hat{\sigma} \le -x \\
+	&\implies - \hat{\sigma} \ge x \\
+	&\implies - \hat{\sigma} \ge s = -\sigma \\
+	&\implies \hat{\sigma} \ge \sigma
+\end{align*}
+
+Thus, \(\sigma\) is the infimum of\(B\). 
+
+\QED
+
+\subsection{Approximation of the Supremum}
+
+Given a non-empty, upper-bounded set \(A \subseteq \Reals\) and  \(s = \text{sup}A\). Then there is for each \(y < s\) 
+an \(x \in A\), such that 
+
+\[
+	y < x \le s
+\]
+
+An analogous theorem can be written for the minimum as well.
+
+\textbf{Proof:}
+
+If \(x \in A\) then the proof is completed. For the case \(s \notin A\), if there existed some 
+\(y^* \in \Reals\) where \(y^* < s\) and \(y^* \ge x\) for all \(x \in A\) then we sill have a contradiction to 
+the assumption that \(s\) is the supremum of \(A\).
+
+\QED
+
+\subsection{Absolute Value for Real Numbers}
+
+\[
+	|x| := \sqrt{x*x}
+\]
 
 \subsection{Definition as Cauchy Sequences}
  

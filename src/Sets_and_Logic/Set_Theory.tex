@@ -607,19 +607,19 @@ Its cardinality is \(2^n\) with \(n\) being the number of elements in the origin
 
 \subsection{Set System}
 
-Let \(X\) be a non-empty set. A subset \(\mathscr{F}\) of the power set of \(X\) is called a 
+Let \(\mathcal{U}\) be a non-empty set. A subset \(\mathscr{F}\) of the power set of \(X\) is called a 
 \emph{set system} of \(X\). 
 
 We also define 
 
 \[
-	\bigcap_{i \in I} T_i := \{x \in X \mid \forall i \in I: x \in T_i\}
+	\bigcap_{x \in \mathcal{U}} x := \{m \in X \mid \forall m \in x: m \in \mathcal{U}\}
 \]
 
 and 
 
 \[
-	\bigcup_{i \in I} T_i := \{x \in X \mid \exists i \in I: x \in T_i\}
+	\bigcup_{x \in \mathcal{U}} x := \{m \in X \mid \exists m \in x: m \in \mathcal{U}\}
 \]
 
 where \(T_i \in \mathcal{P}(X)\) as the \emph{intersection} and \emph{union} of the set system.
