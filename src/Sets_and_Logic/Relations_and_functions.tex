@@ -34,7 +34,7 @@ unique subset \(T\) of \(M\), \(T := M \mid \alpha(m) = 1\).
 \subsection{Relations}
 
 A \emph{relation} in mathematics is a connection or relationship between elements of two sets. It's 
-formally defined as a subset of the Cartesian product of the sets.
+formally defined as a \emph{subset} of the Cartesian product of two sets.
 
 For example, if we have sets \(A\) and \(B\), a relation \emph{R} from \(A\) to \(B\) consists
 of ordered pairs \((a,b)\) where \(a \in A\) and \(b \in B\), such that \(a\) is related to \(b\) 
@@ -138,16 +138,18 @@ relation. For example, if \(R = \{(1,4), (2,5), (3,4), (2,6)\}\), then \(\text{D
 
 \subsection{Equivalence Class}
 
-Let \(\sim\) be an equivalence relation on a set \(A\). For an element \(x \in A\), the 
-\emph{equivalence class} of \(x\), denoted by \([x]\), is the set of all elements in \(A\) that are 
-equivalent to \(x\). Formally, it is defined as:
+Let \(\sim\) be an equivalence relation on a set \(A\) and \(a \in A\), the 
+\emph{equivalence class} of \(a\), denoted by 
 
 \[
-	[x] := \{y \in A \mid x \sim y\} \subseteq A
-\]
+	[a]_{\sim} := \{x \in A \mid a \sim x\}
+\] 
 
-In other words, the equivalence class of \(x\) contains all elements \(y\) in \(A\) such that 
-\(x\) is related to \(y\) under the equivalence relation \(\sim\).
+is the set of all elements in \(A\) that are 
+equivalent to \(x\).
+
+In other words, the equivalence class of \(a\) contains all elements \(x\) in \(A\) such that 
+\(a\) is related to \(x\) under the equivalence relation \(\sim\).
 
 \subsection{Quotient Space}
 
@@ -216,6 +218,16 @@ Equivalently, using the contrapositive:
 \[
 	f(a_1) = f(a_2) \to a_1 = a_2
 \]
+
+\subsubsection{Injection}
+
+Given  \(T \subseteq M\) a subset of \(M\). The \emph{injection} from \(T\) to \(M\) defined as 
+
+\[
+	\iota_{T}: T \to M : t \mapsto t
+\]
+
+is injective.
 
 \subsubsection{Surjective Functions}
 
@@ -537,6 +549,39 @@ Let \(f:X\to Y\) be a function.
 	      \end{center}
 
 \end{itemize}
+
+\subsubsection{Left/Right Inverse}
+
+Given \(f : M \to N\), then  
+
+\begin{itemize}
+	
+	\item \(f\) is injective if there exists a function \(g: N \to M\) with the property \(g \circ f = \text{Id}_M\). Each 
+		\(g\) is surjective and called the \emph{left inverse} of \(f\).
+
+	\item \(f\) is surjective if there exists a function \(\gamma: N \to M\) with the property \(f \circ \gamma = \text{Id}_N\). Each 
+		\(\gamma\) is injective and called the \emph{right inverse} of \(f\).
+	
+\end{itemize}
+
+\textbf{Proof I:}
+
+\(\rightarrow\): \(f\) is injective and we want to proof that from \(g \circ f = \text{Id}_M\) then \(g is surjective\).
+
+Because \(f\) is injective we know that it maps all of \(N\). Suppose, that for some \(n \in N, n \notin f(M)\). We also know that 
+\(g \circ f = \text{Id}_M\) by definition. Now with our assumption and this knowledge 
+
+\begin{align*}
+	m &= \text{Id}_M \\ 
+	  &= g(f(m)) \\ 
+	  &= g(n), \text{ for some } n \in N \\ 
+	  &= m
+\end{align*}
+
+Therefore such a \(n\) can not exists because of our conditions.
+
+\(\leftarrow\): Because \(g\) is surjective, we know that all \(m \in M\) are mapped and because of 
+the composition and its identity property it is clear that \(f\) is injective because \(m = \text{Id}_M (m) \in M\)else the identity property would not hold.
 
 \subsection{Transformations of a Function}
 

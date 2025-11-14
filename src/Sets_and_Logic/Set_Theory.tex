@@ -483,7 +483,7 @@ and only if:
 	{(A_i)}_{i \in J} \text{ are pairwise disjoint and } \bigcup_{i \in J} A_i = X
 \]
 
-\subsubsection{Partitions Laws}
+\subsubsection{Cardinality Laws}
 
 Let \( A_i, B_j \subseteq X \) for \( i \in I \) and \( j \in J \). Then the following holds:
 
@@ -595,6 +595,79 @@ is also countable.
 Given \(A \subseteq B\), where \(B\) is countable. Then \(A\) is also countable. The other case is 
 that if \(A\) is non-countable then \(B\) must be non-countable as well.
 
+\subsection{Countability of the Rational Numbers}
+
+We show that the set of rational numbers \( \Rationals \) is countable.
+
+Every rational number can be expressed as
+
+\[
+    q = \frac{p}{q}, \quad p \in \Integers, \; q \in \Naturals, \; q \neq 0.
+\]
+
+Thus,
+
+\[
+    \Rationals = \left\{ \frac{p}{q} \; \middle| \; p \in \Integers, \; q \in \Naturals \right\}.
+\]
+
+The Cartesian product \( \Integers \times \Naturals \) is countable because both \( \Integers \) and \( \Naturals \) are countable, and a countable product of countable sets is countable.
+
+Hence, there exists an enumeration \( (p_i, q_i)_{i \in \Naturals} \) of all pairs \( (p, q) \) with \( q \neq 0 \).  
+Defining
+
+\[
+    f(i) = \frac{p_i}{q_i},
+\]
+
+we obtain a surjective mapping \( f : \Naturals \to \Rationals \).  
+
+Therefore, the set of rational numbers \( \Rationals \) is countable.
+
+\QED 
+
+\subsection{Cantor's Diagonal Argument: The Real Numbers are Uncountable}
+
+We show that the set of real numbers in the interval \( (0,1) \subseteq \Reals \) is uncountable.
+
+Assume, for contradiction, that \( (0,1) \) is countable.  
+Then there exists a surjective mapping  
+
+\[
+    f : \Naturals \to (0,1),
+\]
+
+and thus all real numbers in \( (0,1) \) can be listed as
+
+\[
+    f(1) = 0.a_{11}a_{12}a_{13}\ldots, \quad
+    f(2) = 0.a_{21}a_{22}a_{23}\ldots, \quad
+    f(3) = 0.a_{31}a_{32}a_{33}\ldots, \quad \text{and so on.}
+\]
+
+We now construct a new real number \( r \in (0,1) \) by defining its decimal digits as
+
+\[
+    r = 0.b_1 b_2 b_3 \ldots
+\]
+
+where
+
+\[
+    b_i =
+    \begin{cases}
+        5, & \text{if } a_{ii} \neq 5, \\
+        6, & \text{if } a_{ii} = 5.
+    \end{cases}
+\]
+
+By construction, \( r \) differs from each \( f(i) \) in at least the \( i \)-th decimal place.  
+Hence \( r \neq f(i) \) for all \( i \in \Naturals \), contradicting the assumption that \( f \) is surjective.
+
+Therefore, the interval \( (0,1) \), and thus the set of real numbers \( \Reals \), is uncountable.
+
+\QED 
+
 \subsection{The Power Set}
 
 The Power Set of a set is the set of all subsets of a given set 
@@ -666,18 +739,37 @@ element which satisfies such a requirement is the empty-set.
 
 \subsection{Partition}
 
-Let \(X\) be a non-empty set. A subset \(\mathscr{F}\) of the power set of \(X\) is called a 
-partition if:
+A \emph{partition} \(P\) of a set \(M\) is a subset of non-empty subsets of \(P \subseteq \mathcal{P} (M)\), such that:
+\[
+	M = \bigcup_{X \in P, X \ne \emptyset} X 
+\]
 
-\begin{enumerate}
-	
-	\item \(M \neq  \emptyset\ \forall M \in \mathscr{F}\)
- 
-	\item \(\bigcap \mathscr{F} = X\)
-	
-	\item \(M_1 \bigcap M_2 \ne \emptyset \implies M_1 = M_2\ \forall\ M_1, M_2 \in \mathscr{F} \) 
+\[
+	X \cap Y = \emptyset, \forall X, Y \in P, X \ne Y
+\]
 
-\end{enumerate}
+Therefore, \(M\) is a disjoint union of the element in \(P\). Even simpler a partition is way 
+of dividing a set into disjoint subsets such that the union of all subsets gives back the original set.
+
+\subsubsection{Partition Function}
+
+If \(P\) is a partition of \(M\) then each element of \(M\) to exactly one \(X \in P\)
+
+\[
+	f_p : M \to P : m \mapsto X \in P \text{ with }m \in X
+\]
+
+is a map, called \emph{natural map} of \(P\).
+
+
+\subsection{Classes}
+
+Given a partition \(P\) of a set \(M\), the elements of \(P\) are called \emph{classes}. 
+If \(X\) is a class, then its members are called \emph{representatives} of the class.
+
+A subset of \(M\) with an element of each of the classes of \(M\) is called the \emph{representative set} or \emph{traversal}. 
+
+The function \(v: P \to M\) with \(v(X) \in X\) for all \(X \in P\) is called \emph{representative function}.
 
 \subsubsection{Properties of Partitions}
 
@@ -699,7 +791,101 @@ partition if:
 	      
 		  Then \( R_F \) is an equivalence relation on \(X\).
 
+	\item Two equivalence classes are either disjunctive or equal.
+
 \end{itemize}
+
+\subsection{Equivalence Relations and Partitions}
+
+Let \( M \) be a set.
+
+\begin{enumerate}
+
+	\item If \( \sim \) is an equivalence relation on \( M \), then the equivalence classes defined by  
+    \[
+        [m_0] := [m_0]_{\sim} := \{\, m \in M \mid m \sim m_0 \,\}
+    \]
+    for \( m_0 \in M \) form a \emph{partition} of \( M \).  
+    This partition is usually denoted by \( M / \!\sim \).
+
+    \item If \( P \) is a partition of \( M \), then the relation \( \sim_P \) defined by  
+
+	\[
+        m \sim_P n \quad \text{if and only if there exists } X \in P \text{ such that } m, n \in X,
+    \]
+
+	is an \emph{equivalence relation}.
+
+    \item The following holds:
+
+	\[
+        M / \!\sim_P = P
+        \quad \text{for all partitions } P \text{ of } M,
+    \]
+
+	and
+
+	\[
+        \sim_{(M / \!\sim)} = \sim
+        \quad \text{for every equivalence relation } \sim \text{ on } M.
+    \]
+
+\end{enumerate}
+
+
+\subsection{Equivalence Relations and Surjective Mappings}
+
+\begin{itemize}
+
+	\item Let \( M \) be a set and \( \sim \) an equivalence relation on \( M \).  
+    Then there exists a set \( P \) and a surjective mapping  
+    \( \Gamma : M \to P \) such that \( \sim = \sim_{\Gamma} \).  
+    Hence, every equivalence relation can be represented as the equality of images under a surjective mapping.
+
+    \item If \( \Gamma : M \to N \) is a surjective mapping and  
+    \( P := M / \!\sim_{\Gamma} \) is the partition corresponding to equality of images,  
+    then the function
+    \[
+        f : P \to N, \quad [m]_{\sim_{\Gamma}} \mapsto \Gamma(m)
+    \]
+    is a well-defined bijection.
+
+    \item If \( \Gamma_1 : M \to P_1 \) and \( \Gamma_2 : M \to P_2 \) are two surjective mappings,  
+    then \( \sim_{\Gamma_1} = \sim_{\Gamma_2} \) if and only if there exists a bijection \(f: P_1 \to P_2\) with 
+	\(\Gamma_2  = f \circ \Gamma_1\)
+
+\end{itemize}
+
+\subsection{Homomorphism Theorem for Sets}
+
+Given \(f: M \to N\) a mapping. By factorizing \(f\) as \(f = \overline{f} \circ \iota_f\) with 
+\(\iota_f\) surjective and \(\overline{f}\) injective, we obtain the following:
+
+\begin{itemize}
+
+	\item The mapping \(\iota_f: M \to M / \!\sim_f\) is the natural map of the partition 
+	\(M / \!\sim_f\) induced by \(f\).
+
+	\item The mapping \(\overline{f}: M / \!\sim_f \to N: f^{-1}(\{f(m)\}) \mapsto f(m)\) is well-defined.
+
+\end{itemize}
+
+The Homomorphism Theorem for Sets can be visualized through the following commutative diagram:
+
+\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}[node distance=3cm, auto]
+		\node (M) {\(M\)};
+		\node (N) [right of=M] {\(N\)};
+		\node (Mquot) [below right of=M] {\(M/\!\sim_f\)};
+		
+		\draw[->, thick] (M) -- node[above] {\(f\)} (N);
+		\draw[->, thick] (M) -- node[left] {\(\iota_f\)} (Mquot);
+		\draw[->, thick] (Mquot) -- node[below] {\(\overline{f}\)} (N);
+		
+	\end{tikzpicture}
+	\label{fig:homomorphism_theorem}
+\end{figure}
 
 \subsection{Family of Subsets Operations}
 
