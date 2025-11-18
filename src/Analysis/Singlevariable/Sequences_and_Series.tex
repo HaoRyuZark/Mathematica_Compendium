@@ -119,20 +119,6 @@ least upper bound: the smallest real number \(s\) such that \(a \le s\) for all 
     x \le s', \forall x \in A \implies s' \ge s
 \]
 
-\textbf{Example:}
-
-For the real numbers we can define \(\sqrt{2}\) as the supremum of the set \(\{x \in \Reals \mid x^2 < 2\}\).
-
-The \emph{infimum} \(\text{inf}\) of a set \(A\) is the greatest lower bound: 
-the largest number \(t\) such that \(a \ge t\) for all \(a \in A\). 
-
-\[
-    x \ge s, \forall x \in A 
-\]
-
-\[
-    x \ge s', \forall x \in A \implies s' \le s
-\]
 
 The \emph{maximum} is the largest element in the set, if it exists.
 
@@ -140,7 +126,7 @@ The \emph{minimum} is the smallest element in the set, if it exists.
 
 Finally we define \(\text{sup} \emptyset := - \infty\) and \(\text{inf} \emptyset := +\infty\)
 
-\textbf{Example:}
+\textbf{Example I:}
 
 For \(A = (0,1)\):
 
@@ -154,6 +140,24 @@ For \(A = (0,1)\):
 
 \end{itemize}
 
+\textbf{Example II:}
+
+For \((0, 5)\) and \((0,5]\), the supremum is 5.
+
+\textbf{Example III:}
+
+For the real numbers we can define \(\sqrt{2}\) as the supremum of the set \(\{x \in \Reals \mid x^2 < 2\}\).
+
+The \emph{infimum} \(\text{inf}\) of a set \(A\) is the greatest lower bound: 
+the largest number \(t\) such that \(a \ge t\) for all \(a \in A\). 
+
+\[
+    x \ge s, \forall x \in A 
+\]
+
+\[
+    x \ge s', \forall x \in A \implies s' \le s
+\]
 \subsubsection{Alternative Characterization of the Supremum}
 
 Given a non-empty set \(A \subseteq \Reals\). The \(s \in Reals\) is only a supremum of \(A\) if 
@@ -161,6 +165,76 @@ Given a non-empty set \(A \subseteq \Reals\). The \(s \in Reals\) is only a supr
 \[
     (\nexists s \in A, s < x) \land (s' \in \Reals, s' < s \implies !\exists x \in A, x > s')
 \]
+
+\subsection{Properties of Suprema and Infima}
+
+For non-empty sets \(A, B \subseteq \Reals^+\)
+
+\begin{itemize}
+
+    \item \(\sup AB = \sup A \cdot \sup B\)
+
+    \item \(\inf AB = \inf A \cdot \inf B\)
+
+    \item \(\sup (A + B) = \sup A + \sup B \)
+
+    \item \(\inf (A + B) = \inf A + \inf B \)
+
+    \item \(\sup (A / B) = \sup(A) / \inf(B)\)
+     
+    \item \(\sup (-A) = - \inf A\)
+
+    \item \(\inf (-A) = - \sup A\)
+
+\end{itemize}
+
+For the sake of completeness we will prove one of these properties: 
+
+\textbf{Proof:}
+
+By definition \(\forall ab \in AB\) the following holds: 
+
+\[
+    ab \le \sup A \cdot \sup B \implies \sup AB \le \sup A \cdot \sup B
+\]
+
+Because \(\sup A\) and \(\sup B\) not necessarily belong to \(A\) or \(B\). With this, we already have the 
+half of the proof. Now we need to prove that \(\sup AB \ge \sup A \cdot \sup B\). 
+
+Start with 
+
+\begin{align*}
+    ab &\le \sup AB \\ 
+    a &\le \frac{\sup AB}{b} 
+\end{align*}
+
+Therefore, \(\frac{\sup AB}{b}\) is an upper bound of \(A\). This means that: 
+
+\[
+    \sup A \le \frac{\sup AB}{b} \implies \sup A \cdot b \le \sup AB
+\]
+
+From this we can also derive that 
+
+\[
+    \sup A \cdot b \le \sup AB \implies b \le \frac{\sup AB}{\sup A}
+\]
+
+Thus, because \(\frac{\sup AB}{\sup A}\) is an upper bound of \(B\) we have that:
+
+\[
+    \sup B \le \frac{\sup AB}{\sup A} \implies \sup A \cdot \sup B \le \sup AB
+\]
+
+Combining both parts of the proof we have that:
+
+\[
+    \sup AB = \sup A \cdot \sup B
+\]
+
+\QED 
+
+The other proofs can be proven using similar arguments.
 
 \subsection{Limit and Accumulation Point}
 

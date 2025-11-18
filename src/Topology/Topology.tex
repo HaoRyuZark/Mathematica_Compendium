@@ -6,6 +6,17 @@ brief explanation and its formal mathematical definition.
 
 \subsection{Introduction to topological nomenclature}
 
+\subsubsection{Open Ball} (\( B_\varepsilon(x) \)) 
+
+For a metric space \( (X, d) \), the \emph{open ball} centered at 
+\( x \in X \) with radius \( \varepsilon > 0 \) is defined as: 
+	      
+\[
+	B_\varepsilon(x) := \{ y \in X \mid d(x, y) < \varepsilon \}
+\]
+
+It represents the set of all points within distance \( \varepsilon \) from \(x\), excluding the boundary.
+
 \subsubsection{Open Set}
 	     
 A subset \( U \subseteq X \) of a topological space is called 
@@ -46,6 +57,11 @@ A point \( x \in A \) is an \emph{isolated point} if there exists \( \varepsilon
 such that \( B_\varepsilon(x) \cap A = \{x\} \). 
 That is, \(x\) stands alone in \(A\) without other points of \(A\) nearby.
 
+\subsubsection{Boundary}
+
+The set \(A \cup \{\text{ all boundary points }\}\) is called the \emph{boundary} of \(A\). It is denoted 
+as \(\overline{A}\).
+
 \subsubsection{Compact Set} 
 
 A set \( K \subseteq X \) is \emph{compact} if every open cover of \( K \) has a finite sub-cover. 
@@ -57,13 +73,4 @@ A subset \( D \subseteq X \) is \emph{dense} in \(X\) if every point
 \( x \in X \) is either in \( D \) or is a limit point of \( D \). 
 Equivalently, the closure of \( D \) is \(X\), i.e., \( \overline{D} = X \).
 
-\subsubsection{Open Ball} (\( B_\varepsilon(x) \)) 
 
-For a metric space \( (X, d) \), the \emph{open ball} centered at 
-\( x \in X \) with radius \( \varepsilon > 0 \) is defined as: 
-	      
-\[
-	B_\varepsilon(x) := \{ y \in X \mid d(x, y) < \varepsilon \}
-\]
-
-It represents the set of all points within distance \( \varepsilon \) from \(x\), excluding the boundary.

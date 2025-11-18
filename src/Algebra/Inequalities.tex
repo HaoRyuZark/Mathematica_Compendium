@@ -1,5 +1,93 @@
 \newpage
-\section{Inequalities with and without Absolute Value}
+
+\section{Inequalities}
+
+Inequalities are in the hearth of the analysis just like equalities. 
+
+\subsection{Triangle Inequalities}
+
+\begin{itemize}
+    
+    \item \(|x + y| \le |x| + |y|\)
+    
+    \item \(|x - y| \ge |x| - |y|\)
+     
+    \item \(||x| - |y|| \le |x - y|\)
+
+\end{itemize}
+
+\subsection{Reciprocal Inequality}
+
+\[
+    a < b < c \implies \frac{1}{a} > \frac{1}{b} > \frac{1}{c}
+\]
+
+\subsection{Bernoulli Inequality}
+
+Given \(x \in \Reals, x > -1, x \ne 0\). Then for \(n \in \Naturals, n \ge 2\)
+
+\[
+    (1 + x)^n > 1 + nx
+\]
+
+\textbf{Proof:}
+
+For \(n = 2\)
+
+\[
+    (1 + x)^2 > 1 + 2x
+\]
+
+Then for \(n + 1\) with \(n > 2\)
+
+\begin{align*}
+    (1 + x)^{n + 1} &> 1 + (n + 1)x \\
+    (1 + x)^n &> 1 + (n + 1)x
+\end{align*}
+
+\QED
+
+\subsection{Real Inequalities}
+
+For \(x,y \in \Reals\) the following holds 
+
+\[
+    x < y + \varepsilon, \forall \varepsilon > 0 \iff x \le y
+\]
+
+\[
+    |x| < \varepsilon, \forall \varepsilon > 0 \iff x = 0
+\]
+
+\textbf{Proof:}
+
+For the first, if \(x > y\) then I can choose some epsilon only at some point where \(y + \varepsilon > x\) therefore, 
+not all epsilons satisfy the Inequality.
+
+For the second one, if \(x \ne 0\) then \(|x| \ne 0 \land |x| > 0\) therefore, the only valid option is for 
+\(x\) to be zero.
+
+\QED
+
+\subsection{Elementary Young Inequalities}
+
+For all \(x,y \in \Reals\) holds 
+
+\[
+    xy \le \frac{1}{2}x^2 + \frac{1}{2}y^2
+\]
+
+And this implies 
+
+\[ 
+    \sqrt{xy} \le \frac{1}{2}x + \frac{1}{2}y, \quad \forall x,y \ge 0
+\]
+
+\[
+    xy \le \frac{\varepsilon}{2}x^2 + \frac{\varepsilon}{2}y^2, \quad \forall x,y \in \Reals, \varepsilon > 0
+\]
+
+\subsection{Inequalities with and without Absolute Value}
 
 \emph{Inequalities} are like normal \emph{equalities} but with ranges of solutions 
 instead of one particular solution. The inequalities without absolute value are straightforward 
@@ -75,34 +163,4 @@ Solve \(\|x + 1 \| \le 10 + \|2x - 6\|\)
     (- \infty, 3) = (- \infty, \infty)
 \]
 
-\subsection{Reciprocal Inequality}
-
-\[
-    a < b < c \implies \frac{1}{a} > \frac{1}{b} > \frac{1}{c}
-\]
-
-\subsection{Bernoulli Inequality}
-
-Given \(x \in \Reals, x > -1, x \ne 0\). Then for \(n \in \Naturals, n \ge 2\)
-
-\[
-    (1 + x)^n > 1 + nx
-\]
-
-\textbf{Proof:}
-
-For \(n = 2\)
-
-\[
-    (1 + x)^2 > 1 + 2x
-\]
-
-Then for \(n + 1\) with \(n > 2\)
-
-\begin{align*}
-    (1 + x)^{n + 1} &> 1 + (n + 1)x \\
-    (1 + x)^n &> 1 + (n + 1)x
-\end{align*}
-
-\QED
 

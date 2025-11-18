@@ -124,6 +124,7 @@ A \emph{commutative ring} is a ring where multiplication is also \emph{commutati
 This is the kind of ring most often encountered in basic algebra, such as the integers \(\Integers\).
 
 \subsection{Field \texorpdfstring{\((\Field, \oplus, \odot)\)}{}}
+
 A \emph{field} is a commutative ring where every nonzero element has a \emph{multiplicative inverse}:
 
 \[
@@ -134,19 +135,40 @@ Fields like \(\Rationals\), \(\Reals\), and \(\Complex\) allow division (except 
 
 \subsubsection{Field Proofs}
 
-\textbf{Neutral Elements are well-defined:}
+\textbf{Inverses are well-defined:}
 
-We know \(a + 0 = a\). Now let us say \(a + x = 0\). If we then set \(a = 0\) and assume there 
-exists some other element with the neutral property we will end up having a neutral plus other neutral will 
-give us just the neutral again by definition, else there would be a contradiction.
+We know \(a + -a = 0\). Now let us say \(-a' \ne -a\) and \(a -a' = 0\).
 
-\[
-    0 + x = 0
-\]
+\begin{align*}
+    a + -a  &= a - 'a \\ 
+        -a &= -a'
+\end{align*}
 
-We conclude that \(x = 0\). By a similar logic we also get well-definiteness for the inverse element.
+This contradicts our initial assumption, therefore, they are the same. Analog for the multiplication
 
-\QED
+\begin{align*}
+    a \cdot a^{-1}  &= a \cdot 'a^{-1} \\ 
+    \cdot a^{-1}  = 'a^{-1} \\ 
+\end{align*}
+
+\textbf{Neutral Element for the Addition is well-defined:}
+
+We know \(a + 0 = a\). Now let us say \(0' \ne 0\) and \(a + 0' = a\).
+
+\begin{align*}
+  a + 0 = a + (a - a) &=  a + 0' \\ 
+          a - a + a   &= a + 0' \\
+           a   &= a + 0' \text{ add -a to both sides} \\ 
+           0 &= 0'
+\end{align*}
+
+There is a contradiction to the assumption that there are more than one neutral element for the addition. Thus, 
+it is well-defined.
+
+
+\textbf{Neutral Element for the Multiplication is well-defined:}
+
+This proof is very similar to the other, thus it will be skipped. 
 
 \textbf{Minus times Minus is Plus:}
 

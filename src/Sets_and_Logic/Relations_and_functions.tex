@@ -1,36 +1,6 @@
 \newpage
 \section{Relations, Maps and Functions}
 
-\subsection{Map Definition}
-
-A \emph{map} for two sets \(A\) and \(B\) is defined as a subset of \(A \times B\). And it is denoted by 
-
-\[
-	f: A \to B \subseteq \{(a, b) \mid (a,b) \in A \times B\}
-\]
-
-\subsection{The Set of All Maps}
-
-For the sets \(M\) and \(N\), we define the sets off all maps \(f: M \to N\) as 
-
-\[
-	N^M := \{f \mid f: M \to N\}
-\]
-
-\subsection{The Characteristic Map}
-
-Given \(T \subseteq M\) we define the \emph{characteristic map} as 
-
-\[
-	\mathcal{X}_T: M \to \{0,1\} : m \to \begin{cases} 
-		1, &m \in T \\ 
-		0, &m \notin T
-	\end{cases}
-\]
-
-This map tell us if an element is in the subset. Also each map \(\alpha : M \to \{0, 1\}\) defines a 
-unique subset \(T\) of \(M\), \(T := M \mid \alpha(m) = 1\).
-
 \subsection{Relations}
 
 A \emph{relation} in mathematics is a connection or relationship between elements of two sets. It's 
@@ -39,6 +9,20 @@ formally defined as a \emph{subset} of the Cartesian product of two sets.
 For example, if we have sets \(A\) and \(B\), a relation \emph{R} from \(A\) to \(B\) consists
 of ordered pairs \((a,b)\) where \(a \in A\) and \(b \in B\), such that \(a\) is related to \(b\) 
 according to some rule or property.
+
+\textbf{Example:} 
+
+Given \(A = \{1,2,3\}\) find the elements of the relation \(R\) defined by \(R = \{(a, b) \in A \times A \mid a < b\}\).
+
+\[
+	A \times A = \{(1,1), (1,2), (1,3), (2,1), (2,2), (2,3), (3,1), (3,2), (3,3)\}
+\]
+
+The relation \(R\) would then be:
+
+\[
+	R = \{(1,2), (1,3), (2,3)\}
+\]
 
 Common types of relations include:
 
@@ -88,6 +72,60 @@ An \emph{equivalence relation} is a relation that is symmetric, transitive and r
 	R:= \{ (a,b) \in \Naturals \times \Naturals: a = b\}
 \]
 
+\subsection{Equivalence Class}
+
+Let \(\sim\) be an equivalence relation on a set \(A\) and \(a \in A\), the 
+\emph{equivalence class} of \(a\), denoted by 
+
+\[
+	[a]_{\sim} := \{y \in A \mid (a,y) \in \sim\}
+\] 
+
+is the set of all elements in \(A\) that are related to \(a\).
+
+\subsection{Quotient Space}
+
+Let \(\sim\) be an equivalence relation on a set \(A\). The \emph{quotient space} of \(A\) by 
+\(\sim\), denoted by \(A / \sim\) (or sometimes \(A / R\)), is the set of all distinct equivalence classes of 
+elements in \(A\). Formally, it is defined as:
+
+\[
+	A / \sim := \{[x] \mid x \in A\}
+\]
+
+The quotient space \(A/\sim\) is a partition of the original set \(A\) into disjoint equivalence classes. 
+Each element of the quotient space is an equivalence class \([x]\), which itself is a subset of \(A\).
+
+\subsection{Map Definition}
+
+A \emph{map} for two sets \(A\) and \(B\) is defined as a subset of \(A \times B\). And it is denoted by 
+
+\[
+	f: A \to B \subseteq \{(a, b) \mid (a,b) \in A \times B\}
+\]
+
+\subsection{The Set of All Maps}
+
+For the sets \(M\) and \(N\), we define the sets off all maps \(f: M \to N\) as 
+
+\[
+	N^M := \{f \mid f: M \to N\}
+\]
+
+\subsection{The Characteristic Map}
+
+Given \(T \subseteq M\) we define the \emph{characteristic map} as 
+
+\[
+	\mathcal{X}_T: M \to \{0,1\} : m \to \begin{cases} 
+		1, &m \in T \\ 
+		0, &m \notin T
+	\end{cases}
+\]
+
+This map tell us if an element is in the subset. Also each map \(\alpha : M \to \{0, 1\}\) defines a 
+unique subset \(T\) of \(M\), \(T := M \mid \alpha(m) = 1\).
+
 \subsection{Functions} 
 
 A subset \( f \subseteq A \times B \) is called a \textbf{function} if:
@@ -135,34 +173,6 @@ is a relation, then the domain of \emph{R} is defined as:
 
 In other words, the domain consists of all the input values that appear in the ordered pairs of the 
 relation. For example, if \(R = \{(1,4), (2,5), (3,4), (2,6)\}\), then \(\text{Dom}(R) = \{1, 2, 3\}\).
-
-\subsection{Equivalence Class}
-
-Let \(\sim\) be an equivalence relation on a set \(A\) and \(a \in A\), the 
-\emph{equivalence class} of \(a\), denoted by 
-
-\[
-	[a]_{\sim} := \{x \in A \mid a \sim x\}
-\] 
-
-is the set of all elements in \(A\) that are 
-equivalent to \(x\).
-
-In other words, the equivalence class of \(a\) contains all elements \(x\) in \(A\) such that 
-\(a\) is related to \(x\) under the equivalence relation \(\sim\).
-
-\subsection{Quotient Space}
-
-Let \(\sim\) be an equivalence relation on a set \(A\). The \emph{quotient space} of \(A\) by 
-\(\sim\), denoted by \(A / \sim\) (or sometimes \(A / R\)), is the set of all distinct equivalence classes of 
-elements in \(A\). Formally, it is defined as:
-
-\[
-	A/\sim := \{[x] \mid x \in A\}
-\]
-
-The quotient space \(A/\sim\) is a partition of the original set \(A\) into disjoint equivalence classes. 
-Each element of the quotient space is an equivalence class \([x]\), which itself is a subset of \(A\).
 
 \subsection{Composition of Maps}
 
@@ -653,5 +663,52 @@ Here, we examine how different algebraic changes to a function \( f(x) \) affect
 
 \end{itemize}
 
+\subsection{Counting Functions}
 
+Given \(f: A \to B\) with \(|A| = n\) and \(|B| = m\), we can count the number of different types of functions from 
+\(A\) to \(B\):
 
+\begin{itemize}
+
+	\item \emph{Total functions:} There are \(m^n\) total functions from \(A\) to \(B\). Each of the \(n\) elements in 
+		  \(A\) can be mapped to any of the \(m\) elements in \(B\).
+
+	\item \emph{Injective functions:} If \(n \leq m\), the number of injective functions is given by 
+	\(m \times (m-1) \times (m-2) \times \ldots \times (m-n+1)\). This is because the first element in \(A\) has \(m\) choices, the second has \(m-1\) choices, and so on.
+
+	\item \emph{Surjective functions:} The number of surjective functions can be calculated using the 
+		  principle of inclusion-exclusion:
+		  
+		  \[
+			  \text{Number of surjective functions} = \sum_{k=0}^{m} (-1)^k \binom{m}{k} (m-k)^n
+		  \]
+		  
+		  This formula counts all functions and subtracts those that miss at least one element in \(B\). 
+
+	\item \emph{Bijective functions:} If \(n = m\), the number of bijective functions (one-to-one and onto) is 
+		  \(n!\) (n factorial), which counts all possible permutations of the \(n\) elements in \(A\) to the \(n\) elements in \(B\).
+
+\end{itemize}
+
+\subsection{Counting Relations}
+
+Given two sets \(A\) and \(B\) with \(|A| = n\) and \(|B| = m\), we can count the number of different types of relations from \(A\) to \(B\):
+
+\begin{itemize}
+
+	\item \emph{Total relations:} There are \(2^{n \times m}\) total relations from \(A\) to \(B\). Each of the 
+		  \(n \times m\) possible ordered pairs \((a, b)\) can either be included in or excluded from the relation.
+
+	\item \emph{Reflexive relations:} If \(A = B\), the number of reflexive relations is \(2^{n^2 - n}\). This is because 
+		  the \(n\) diagonal pairs \((a, a)\) must be included, while the remaining \(n^2 - n\) pairs can be chosen freely.
+
+	\item \emph{Symmetric relations:} If \(A = B\), the number of symmetric relations is \(2^{\frac{n(n+1)}{2}}\). This counts 
+		  the diagonal pairs and half of the off-diagonal pairs, as each off-diagonal pair \((a, b)\) must be paired with \((b, a)\).
+
+	\item \emph{Antisymmetric relations:} If \(A = B\), the number of antisymmetric relations is \(2^{n^2 - \frac{n(n-1)}{2}}\). 
+		  This counts all pairs except for those that would violate antisymmetry.
+
+	\item \emph{Transitive relations:} Counting transitive relations is more complex and does not have a simple closed-form formula. 
+		  It often requires combinatorial methods or recursive counting techniques. 
+
+\end{itemize}

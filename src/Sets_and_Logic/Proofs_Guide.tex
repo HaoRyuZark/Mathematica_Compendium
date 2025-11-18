@@ -1,0 +1,101 @@
+\newpage
+\subsection{Guidelines for Writing Formal Mathematical Proofs}
+
+\textbf{General Principles}
+
+\begin{itemize}
+    
+	\item \emph{Be precise:} use exact mathematical language and avoid vague statements.
+   
+	\item \emph{Be concise but complete:} do not skip logical steps that a knowledgeable reader needs.
+    
+	\item \emph{Explain your reasoning:} a proof is a logical explanation, not merely a chain of equations.
+    
+	\item \emph{Know your audience:} assume familiarity with definitions and standard theorems, but not your personal thought process.
+
+\end{itemize}
+
+\textbf{Structure of a Proof}
+
+\begin{itemize}
+
+	\item \emph{Begin with definitions and hypotheses:}  
+    For a statement ``If \(P\), then \(Q\),'' start with ``Assume \(P\).''
+
+    \item \emph{Direct proofs:} assume \(P\), derive consequences, and conclude \(Q\).
+
+    \item \emph{Contrapositive proofs:} prove \(\neg Q \Rightarrow \neg P\) instead of \(P \Rightarrow Q\).
+
+    \item \emph{Proof by contradiction:} assume the negation of the desired statement and derive a contradiction.
+
+    \item \emph{Universal statements:} let an arbitrary object satisfying the hypothesis and show the statement holds for it.
+
+    \item \emph{Existential statements:} construct an example or justify its existence, and verify the required properties.
+
+    \item \emph{Equality of sets:} prove \(A \subseteq B\) and \(B \subseteq A\).
+
+    \item \emph{Uniqueness proofs:} first show existence, then show any two such objects must be equal.
+
+\end{itemize}
+
+\textbf{Writing Style}
+
+\begin{itemize}
+
+	\item \emph{Write in complete sentences} with mathematical expressions integrated into the prose.
+    
+	\item \emph{Use transition words} such as ``therefore,'' ``hence,'' and ``thus'' to make logical flow explicit.
+    
+	\item \emph{Avoid informal symbols} such as arrows (\(\rightarrow\)) in prose except in formal logic contexts.
+    
+	\item \emph{Cite known theorems} when they are used in the argument.
+    
+	\item \emph{Keep notation consistent} throughout the proof.
+
+\end{itemize}
+
+\textbf{Using Definitions Explicitly.}
+
+\begin{itemize}
+
+	\item \emph{State relevant definitions clearly} when they are used.  
+	For example, to prove continuity at \(a\), one begins:  
+    ``Let \(\varepsilon > 0\). We must find \(\delta > 0\) such that \dots''
+
+\end{itemize}
+
+\textbf{Conclusion.}
+
+\begin{itemize}
+    \item \emph{End with a clear concluding statement} such as ``Therefore, \(Q\).'' or ``This completes the proof.''
+\end{itemize}
+
+\textbf{Common Mistakes to Avoid.}
+
+\begin{itemize}
+
+	\item \emph{Skipping logical steps} or jumping to conclusions.
+    
+	\item \emph{Using examples instead of general arguments.}
+    
+	\item \emph{Assuming the statement} you are trying to prove.
+    
+	\item \emph{Including irrelevant details.}
+    
+	\item \emph{Using ambiguous language} like ``clearly'' or ``obviously'' unless truly justified.
+
+\end{itemize}
+
+\textbf{Template.}
+
+\begin{verbatim}
+Proof.
+[State assumptions clearly.]
+
+[Develop argument using definitions and known theorems.]
+
+[Use clear logical reasoning to reach the conclusion.]
+
+Therefore, [claim to be proved].
+\qed
+\end{verbatim}

@@ -96,7 +96,7 @@ For the second, let \(x = a^{-1}b\)
 
 \subsection{The Completeness Axiom}
 
-All non-empty upper-bounded subsets of the real numbers have a supremum.
+All non-empty upper-bounded subsets of the real numbers have a \emph{supremum} \(s \in \Reals\).
 
 \subsection{Minima in the Real Numbers}
 
@@ -104,32 +104,36 @@ As a consequence of the last axiom each non-empty lower-bounded subset of real n
 
 \textbf{Proof:}
 
-We define \(A := \{-\hat{x}: \hat{x} \in B\}\) then \(A \ne \emptyset\) and A is upper-bounded. 
+The main idea is that the supremum times minus 1 of a set is the minimum of another set. 
 
-Because \(B\) is lower-bound there exists a number \(m \in Reals, \hat{x} \ge m, \forall \hat{x} \in B\). 
-We also know that \(-\hat{x} \le -m , \forall \hat{x} \in B \implies x \le -m \forall x \in A \implies A\) is upper bounded. 
-
-By the completeness axiom there exists some supremum for \(A\). This means there is some \(s \in \Reals, x \le s, \forall x \in A\), and 
-if \(x \le s', \forall x \in A\) then \(s' \ge s\). 
-
-We want to show \(\sigma := -s\) is the infimum of \(B\). Note that for all the elements of \(B\) 
+We define \(- A := \{-a \mid a \in A\}\) then \(-A \ne \emptyset\) and is upper-bounded. 
+By definition \(s\) is less or greater than all the element of the set \(A\).
 
 \begin{align*}
-	\hat{x} &= -x, x \in A \\ 
-	&\ge -s \\ 
-	&= \sigma	
+	s &\le a, \forall a \in A	\\ 
+	-s &\ge -a, \forall a \in A
 \end{align*}
 
-Also \(\sigma\) is some lower bound of \(B\). If \(\hat{x} \ge \hat{\sigma}, \forall \hat{x} \in B\) and \(\hat{\sigma} \in Reals\) then 
+Thus, \(-s = \text{sup}-A\). 
 
-\begin{align*}	
-	\hat{\sigma} \le -x \\
-	&\implies - \hat{\sigma} \ge x \\
-	&\implies - \hat{\sigma} \ge s = -\sigma \\
-	&\implies \hat{\sigma} \ge \sigma
+Now we want to prove that \(-\text{sup}-A\) is first, the lower bound of \(A\) and second, it is the greatest upper bound.
+
+For the first part 
+
+\begin{align*}
+	\text{sup}-A &\ge -a \forall a \in A \\ 
+	- \text{sup} -A &\le a \forall a \in A
 \end{align*}
 
-Thus, \(\sigma\) is the infimum of\(B\). 
+Thus, \(-\text{sup}-A\) is in fact a lower bound of \(A\). For the second part let us 
+assume that there exists some element \(s\) such that \(s > -\text{sup}-A\) and \(s \le a, \forall a \in A\), then 
+
+\[
+	-s < \sup -A  \text{ and } -s \ge -a, \forall a \in A
+\]
+
+This is a contradiction because we have an upper bound, which is not an upper bound. Therefore, 
+\(-\text{sup}-A\) is the infimum of \(A\).
 
 \QED
 
@@ -151,6 +155,144 @@ If \(x \in A\) then the proof is completed. For the case \(s \notin A\), if ther
 the assumption that \(s\) is the supremum of \(A\).
 
 \QED
+
+\subsection{Supremum of the Naturals}
+
+\(\Naturals\) is not upper-bounded.
+
+\textbf{Proof:}
+
+Assume \(a = \text{sup}\Naturals\). Since \(\Naturals \subset \Reals\) is not empty it has an upper-bound by 
+the completeness axiom. 
+
+By the definition of the supremum \(a - 1 \in \Naturals\) is not an upper-bound of \(\Naturals\), therefore 
+\(a - 1 < k, k \in \Naturals\). 
+
+Then, the following also applies
+
+\[
+	a < k + 1
+\]
+
+This is a contradiction to the assumption that \(a\) our supremum, thus our assumption has been 
+proven false.
+
+\subsection{Remainder of Archimedes and Eudoxus}
+
+\emph{Archimedes}
+
+For all pair of positive real numbers \(x,y\) exists some \(n \in \Naturals\) such that: 
+
+\[
+	nx > y
+\]
+
+\emph{Eudoxus}
+
+For all positive real numbers there exists an \(n \in \Naturals\), such that 
+
+\[
+	\frac{1}{n} < x
+\]
+
+\textbf{Proof Eudoxus:}
+
+\(x \in \Reals_{> 0} \implies \frac{1}{x} \in \Reals_{> 0}\). By the Archimedian property, \(\exists n \in \Integers_{0 >}, \frac{1}{x} < n\). 
+Equivalently \(\frac{1}{n} < x\). 
+
+\QED 
+
+\subsection{Density of the Rationals in  the Reals}
+
+For each pair \(a, b \in \Reals\) there exists some \(q \in \Rationals\) such that 
+
+\[
+	a < q < b
+\]
+
+\textbf{Proof:}
+
+Let \(q = \frac{m}{n}, m \in \Integers, n \in \Naturals\) to prove \(a < \frac{m}{n} < b\) equivalently \(an < m < bn\).
+
+For \(b - a > 0\) we know \(\frac{1}{n} < b - a\) or \(a < b - \frac{1}{n}\), by the Archimedian property. 
+
+Next take the smallest \(m \in \Integers\) such that \(m - 1 \le na < m\) or \(a < \frac{m}{n}\). This gives us the first half of 
+our theorem.
+
+Finally, for the second half 
+
+\begin{align*}
+	m - 1 &\le na \\ 
+		&= na + 1 \\ 
+		&< n(b - \frac{1}{n}) + 1 \text{ using our result from the Archimedian property }\\ 
+		&= nb
+\end{align*}
+
+This tells us that \(m < nb \implies \frac{m}{n} < b\).
+
+\QED
+
+\subsection{Existence of Square Roots}
+
+For each \(x \in [0, \infty], !\exists  r \in [0, \infty) \text{ s. d. } r^2  =x\). Also,
+\(\sqrt{x}:= r\) and we call \(x \mapsto \sqrt{x}\) the \emph{root function}.
+
+\textbf{Proof:}
+
+Let \(T = \{x \in [0, \infty) \mid x < y\}\) and let us define \(a = y^2\) as the supremum of \(T\). 
+
+To prove that the equality holds we will prove that the other order cases can not be true. 
+
+Assume \(a < y^2\), because \(a - y < 0\), we know that \(\frac{1}{n} < a - y\) and \( a + \frac{1}{n} < y\). By our assumption 
+
+\[
+	\left(a  + \frac{1}{n}\right)^2 = a^2 - \frac{2a}{n} + \frac{1}{n^2} < y
+\]
+
+Let us choose \(n\) large enough \(n_0\) such that 
+
+\[
+	\frac{2a + 1}{n_0} < y - a^2
+\]
+
+Therefore,
+
+\[
+	\left(a  + \frac{1}{n_0}\right)^2 = a^2 + (2 - a^2) = y
+\]
+
+Thus, \(a + \frac{1}{n} \in T\), but because \(a\) is the supremum this contradiction because our supremum is not the smallest upper-bound. 
+
+For the second case, assume \(a > y\), by applying the same reasoning with \(a - \frac{1}{n}\), we will arrive at a similar contradiction 
+
+Assume \(a^2 > y\), then \(a^2 - y > 0 \implies \frac{1}{n} < a^2 - y, \implies a^2 - \frac{1}{n} < y\)
+
+\[
+	\left(a  - \frac{1}{n}\right)^2 = a^2 - \frac{2a}{n} + \frac{1}{n^2} > a^2 - \frac{2a}{n}
+\]
+
+Then choose \(n\) such that 
+
+\[
+	\frac{2a}{n_0} > a^2 - y \implies a^2 - \frac{2a}{n_0} > y
+\]
+
+Then 
+
+\[
+	\left(a  - \frac{1}{n_0}\right)^2 > y
+\]
+
+But then \(a  - \frac{1}{n_0}\) is an upper bound and this contradicts our assumption.
+Thus, by elimination \(a^2 = y\)
+
+\QED
+
+\subsection{Irrational Numbers}
+
+\[
+	\Reals \setminus \Rationals \text{ or } \Rationals^C := \{x \in \Reals \mid x \notin \Rationals\}
+\]
 
 \subsection{Absolute Value for Real Numbers}
 

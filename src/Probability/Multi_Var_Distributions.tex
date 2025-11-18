@@ -398,6 +398,23 @@ Given the independent random variables \(X_1, \dots, X_n\) then
     \Var \left(\sum_{i = 1}^n X_i\right) = \sum_{i = 1}^{n} \Var(X_i)
 \]
 
+\textbf{Proof:}
+
+For \(i \ne j\) we have due to independence 
+
+\[
+    \Expc[(X_i - \Expc[X_i])](X_j - \Expc[X_j]) = \Expc[X_i - \Expc[X_i]] \cdot \Expc[X_j - \Expc[X_j]] = 0
+\]
+
+This implies that 
+
+\begin{align*}
+    \Var\left(\sum_{i=1}^n X_i\right) &= \Expc\left[\left(\sum_{i=1}^n X_i - \Expc[X_i]\right)^2\right] \\
+    &= \Expc\left[\sum_{i=1}^n (X_i - \Expc[X_i])^2  + \sum_{i \ne j}(X_i - \Expc[X_i])(X_j - \Expc[X_j])\right] \\
+    &= \sum_{i=1}^n \Expc[(X_i - \Expc[X_i])^2] + \sum_{i \ne j} \Expc[(X_i - \Expc[X_i])(X_j - \Expc[X_j])] \\
+    &= \sum_{i=1}^n \Var(X_i)
+\end{align*}
+
 \subsection{Conditional Distribution of Discrete Random Variables}
 
 Let \( X, Y \) be discrete random variables and \( x \in \Reals \) such that \( \Prob(X = x) > 0 \).  
@@ -417,3 +434,120 @@ The corresponding \emph{conditional probability function} of \( Y \) given \( X 
     = \frac{p_{X,Y}(x, y)}{p_X(x)}.
 \]
 
+Two conditional discrete random variables \(X\) and \(Y\) are independent if the conditional probability of \(Y\) given \(X = x\) is 
+not dependent on \(x\) i.e. 
+
+\textbf{Proof:}
+
+\(X,Y\) independent \(\iff p_{X, Y} (x,y) = p_X(x)p_Y(y)\)
+
+\[
+    p_{Y|X}(y|x) = \frac{p_{X,Y}(x,y)}{p_X(x)} = \frac{p_X(x)p_Y(y)}{p_X(x)} = p_Y(y)
+\]
+
+Otherwise, if \(p_{Y \mid X}(y \mid x) = \Prob(Y = y \mid X = x)\) is not dependent on \(x\) then 
+
+\[
+    p_{Y|X}(y|x) = \Prob(Y = y) = p_Y(y)
+\]
+
+Then \(p_{X, Y}(x,y) =  p_X(x) p_{Y \mid X}(y \mid x)= p_X(x)p_Y(y)\)
+
+\subsection{Conditional Density for Continuous Random Variables}
+
+Let \(X, Y\) be continuous random variables with joint density \(f(x,y)\).
+The conditional density \(f_{Y\mid X}(y\mid x)\) of \(Y\) given \(X = x\) is defined by
+
+\[
+    f_{Y\mid X}(y\mid x)
+    =
+    \begin{cases}
+        \frac{f(x,y)}{f_X(x)}, & \text{if } f_X(x) > 0, \\[8pt]
+        0, & \text{if } f_X(x) = 0.
+    \end{cases}
+\]
+
+The conditional distribution of \(Y\) given \(X = x\) is the distribution with density \(f_{Y\mid X}(y\mid x)\).
+Thus, for any measurable set \(A \subseteq \Reals\),
+
+\[
+    \Prob(Y \in A \mid X = x) = \int_A f_{Y\mid X}(y\mid x)\, dy.
+\]
+
+
+\subsection{Covariance and Correlation of Random Variables}
+
+Let \(X, Y\) be random variables with existing variances.
+The covariance is defined by
+
+\[
+    \cov(X, Y) = E[(X - \Expc[X])(Y - \Expc[Y])].
+\]
+
+If the variances are positive, the correlation coefficient \(\rho_{X,Y}\) is defined as
+\[
+    \rho_{X,Y}
+    = \frac{\cov(X,Y)}{\sqrt{\Var(X)\,\Var(Y)}}.
+\]
+
+If \(\rho_{X,Y} = 0\), the random variables \(X\) and \(Y\) are called \emph{uncorrelated}.
+
+\subsubsection{Properties of Covariance}
+
+\begin{itemize}
+
+    \item \(\cov(X, X) = \Var(X)\)
+
+    \item \(\cov(X, Y) = \Expc[XY] - \Expc[X]\Expc[Y]\)
+
+    \item \(\cov(X_1 + X_2, Y) = \cov(X_1, Y) + \cov(X_2, Y)\)
+
+    \item If \(X\) and \(Y\) are independent, then \(\cov(X, Y) = 0\)
+
+\end{itemize}
+
+\subsubsection{Variance of the Sum of Random Variance}
+
+Given the random variables \(X_1, \dots, X_n\) then 
+
+\[
+    \Var\left(\sum_{i=1}^n X_i\right) = \sum_{i=1}^n \Var(X_i) + 2 \sum_{i \ne j} \cov(X_i, X_j)
+\]
+
+If the random variables are independent then 
+
+\[
+    \Var\left(\sum_{i=1}^n X_i\right) = \sum_{i=1}^n \Var(X_i)
+\]
+
+Special case: \(n = 2\): \(\Var(X + Y) = \Var(X) + \Var(Y) + 2 \cov(X, Y)\)
+
+\subsubsection{Cauchy-Schwarz Inequality for Random Variables}
+
+Let \(X, Y\) be random variables with \(\Expc[X^2]\) and \(\Expc[Y^2]\) finite.  
+Then the following holds:
+
+\[
+    |\Expc[X, Y]| \le \sqrt{\Expc[X^2] \Expc[Y^2]}
+\]
+
+Following 
+
+\[
+    |\cov(X, Y)| \le \sqrt{\Var(X) \Var(Y)}
+\]
+
+\subsubsection{Correlation between minus and plus one}
+
+Let \(X, Y\) be random variables with existing variances.
+Then the following holds:
+
+\[
+    \rho_{X,Y} = 1 \iff Y = aX + b \text{ with } a > 0
+\]
+
+\[
+    \rho_{X,Y} = -1 \iff Y = aX + b \text{ with } a < 0
+\]
+
+\subsection{Multivariable Normal Distribution}
