@@ -226,7 +226,23 @@ These are Zermelo Fraenkel axioms of set theory including \emph{The Axiom of Cho
 		      \left[ \forall B, C \in X: B \ne C \implies B \cap C = \emptyset \right] \right) \\
 		      \qquad \implies \exists Y: \forall I \in X: \exists! J \in Y: J \in I\)
 
-			\end{enumerate}
+\end{enumerate}
+
+\subsection{Proof The Power Set of a Set is not an Element of the Set}
+
+Let \(X\) be a set and \(Y = \{x \in X \mid x \notin x\}\). 
+
+This is a subset of \(X\) by definition and implies \(Y \in \mathcal{P}(X)\). 
+
+Assume \(\mathcal{P}(X) \subseteq X\) then \(Y \subseteq X, Y \in X\) but 
+
+\[
+	Y \in Y \implies Y \notin Y \implies Y \in Y \text{ which is a contradiction}
+\]
+
+Because our assumption was proven false, then \(\mathcal{P}(X)\) is not a subset of \(X\).
+
+\QED 
 
 \subsection{The Cartesian Product}
 
@@ -761,7 +777,6 @@ If \(P\) is a partition of \(M\) then each element of \(M\) to exactly one \(X \
 
 is a map, called \emph{natural map} of \(P\).
 
-
 \subsection{Classes}
 
 Given a partition \(P\) of a set \(M\), the elements of \(P\) are called \emph{classes}. 
@@ -794,6 +809,25 @@ The function \(v: P \to M\) with \(v(X) \in X\) for all \(X \in P\) is called \e
 	\item Two equivalence classes are either disjunctive or equal.
 
 \end{itemize}
+
+\textbf{Proof: Equivalence Relations Correspond to Partitions}
+
+Let \(A / E = \{[a]_e \mid A\}\)
+
+Assume \([a]_E \ne [b]_E\) then \(a \neg E b\)
+
+For different equivalence classes the union is disjoint thus one of properties is fulfilled. 
+
+Continuing, for any 
+
+\[
+	x \in \bigcup A/E \implies x \in [a]_E \in A/E \implies x \in A \land x E a 
+\]
+
+Because of that \(a \in [a]_E \in A/E\) together with \(x \in A\) gives us the certainty that the union 
+of the equivalence classes is the set \(A\).
+
+\QED
 
 \subsection{Equivalence Relations and Partitions}
 
@@ -858,7 +892,9 @@ Let \( M \) be a set.
 
 \subsection{Homomorphism Theorem for Sets}
 
-Given \(f: M \to N\) a mapping. By factorizing \(f\) as \(f = \overline{f} \circ \iota_f\) with 
+First, given \(f: M \to N\) with \( M / \!\sim_f = \{f^{-1}(\{n\}) \mid m \in f(M)\}\)  
+
+By factorizing \(f\) as \(f = \overline{f} \circ \iota_f\) with 
 \(\iota_f\) surjective and \(\overline{f}\) injective, we obtain the following:
 
 \begin{itemize}
@@ -887,6 +923,9 @@ The Homomorphism Theorem for Sets can be visualized through the following commut
 	\label{fig:homomorphism_theorem}
 \end{figure}
 
+This is saying us to first form collections of elements and then use our second function to associate that connections to their 
+respective images. 
+
 \subsection{Family of Subsets Operations}
 
 Let \(\mathscr{F}\) be a system of sets (a family of subsets) on the set \(X\). We define:
@@ -905,4 +944,67 @@ Let \(\mathscr{F}\) be a system of sets (a family of subsets) on the set \(X\). 
 For \(g: A \to B\) and \(|A| = n + 1\), \(|B| = n\) then there exists \(b \in B\) such that \(|g^{-1}(\{ b \})| \ge 2\). 
 
 In other words if you have \(n\) boxes and \(n + 1\) objects, then at least one of those boxes will have more than 2 elements.
+
+\subsection{The Cantor Set}
+
+In the following, we want to study the Cantor set \(\mathcal{C}\subseteq\Reals\).
+
+First, we describe its construction informally: We start with the unit interval \(A_0:=[0,1]\) and remove from it the "middle third" (where the boundary points are not removed). The result \(A_1\) thus consists of the subintervals \(\left[0,\frac{1}{3}\right]\) and \(\left[\frac{2}{3},1\right]\). Now we remove from each of these two subintervals the middle third and continue in this manner.
+
+For fixed but arbitrary \(n\in\Naturals_0\), \(A_n\) thus consists of \(2^n\) pairwise disjoint closed sub-intervals of length \(3^{-n}\), and \(A_{n+1}\) arises from \(A_n\) by removing the middle third from each of these subintervals. What "remains" is the Cantor set.
+
+Now mathematically precise: For \(n\in\Naturals_0\), let 
+
+\[
+	A_{n+1}:=\frac{A_n}{3} \cup (\frac{2+A_n}{3}), \text{ with } A_0 = [0,1]
+\]
+	
+Regarding the notation - for \(X\subseteq\Reals\) and \(a,t\in\Reals\), we define
+
+\[
+    aX:=\{ax:x\in X\}
+\]
+
+\[
+    t+X:=\{t+x:x\in X\}
+\]
+
+Then \(\mathcal{C}:=\bigcap_{n=0}^\infty A_n\).
+
+For the intuition, imagine our fraction squishing all the numbers and then adding two to a copy of those numbers. Then repeating 
+the process multiple times.
+
+\textbf{Properties:}
+
+\begin{itemize}
+
+	\item The Cantor Set is uncountable 
+	
+	\item The Cantor Set has a length of 0 
+	
+	\item The set can be interpreted as all infinite sequences of zeroes and ones, when handling left and right as 0 and one.
+
+\end{itemize}
+
+\textbf{Proof I:}
+
+\textbf{Proof II:}
+
+This is not the most rigorous proof, but accomplishes its goal:
+
+The original interval as length 1 and consist of one unit, the next \(1 - \frac{1}{3}\) and consist of two units, this pattern with 
+\(2^n \frac{1}{3^n}\) continues forever thus, 
+
+\[
+	L = 1 - \sum_{i = 1}^{\infty} 2^n \frac{1}{3^n}
+\]
+
+Note that the sum is a geometric series therefore, 
+
+\[
+	L = 1 - 1 = 0
+\]
+
+\QED
+
 

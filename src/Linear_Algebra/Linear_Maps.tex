@@ -71,6 +71,48 @@ and we write \( V \cong W \).
 
 \end{itemize}
 
+\subsection{Composition as Matrix Multiplication}
+
+Given \(A \in \Field^{m \times n}, B \in \Field^{n \times l}\) and  \(\phi_A: \Field^{n \times 1} \to \Field^{m \times 1}\) and 
+\(\phi_B: \Field^{l \times 1} \to \Field^{n \times 1}\) induced linear maps then 
+
+\begin{itemize}
+
+    \item
+    \[
+        \phi_A \circ \phi_B \text{ is a linear map}
+    \]
+
+    \item 
+    \[
+        \phi_A \circ \phi_B = \phi_{AB}
+    \]
+
+\end{itemize}
+
+\textbf{Proof I:}
+
+\begin{align*}
+(\varphi_A \circ \varphi_B)(au + bv) &= \varphi_A(\varphi_B(au + bv))\\ 
+&= \varphi_A(a\,\varphi_B(u) + b\,\varphi_B(v))\\ 
+&= a\,\varphi_A(\varphi_B(u)) + b\,\varphi_A(\varphi_B(v)) \\ 
+&= a(\varphi_A \circ \varphi_B)(u) + b(\varphi_A \circ \varphi_B)(v) 
+\end{align*}
+
+\QED 
+
+\subsection{Injectivity and Surjectivity}
+
+Let \( A \in \Field^{m \times n} \). Then:
+
+\( \varphi_A \) is injective if and only if the fiber of
+\( \varphi_A \) over the zero column \( 0_m \in \Field^{m \times 1} \)
+consists only of the zero column \( 0_n \in \Field^{n \times 1} \).
+
+\( \varphi_A \) is surjective if and only if every column in
+\( \Field^{m \times 1} \) can be written as a linear combination of
+the columns of \( A \).
+
 \subsection{Linear Extension Theorem}
 
 Let \(\beta = \{v_1, \dots, v_n\}\) be a basis of the finite dimensional vector space \(V\) and 

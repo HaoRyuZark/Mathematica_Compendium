@@ -15,6 +15,29 @@ where \( a_{ij} \) are the coefficients of the variables \( x_j \), and \( b_i \
 on the right-hand side of the equations. The goal is to find the values of \( x_1, x_2, \ldots, x_n \)
 that satisfy all equations simultaneously.
 
+More formally, given \(M, N\) with \(f: M \to N\). For each \(n \in N\) is the corresponding 
+\emph{linear system of equation} given by 
+
+\[
+    f(m) = n
+\]
+
+With the solution set 
+
+\[
+    f^{-1}(\{n\}) = \{m \in M \mid f(m) = n\}
+\]
+
+Wit the following types of solutions depending on the nature of \(f\)
+
+\begin{itemize}
+ 
+    \item \emph{At least one solution} if \(f\) is surjective. 
+   
+    \item \emph{One solution and no more} if \(f\) is injective/surjective. 
+
+\end{itemize}
+
 \subsection{Matrix Representation}
 
 A linear system can be represented in matrix form as:
@@ -36,6 +59,24 @@ with \( (A, b) \) is defined as
 \[
     L(A, b) := \{ x \in \Field^n \mid Ax = b \}.
 \]
+
+\subsubsection{Reduced Echelon Form}
+
+For a matrix \(A \in \Field^{m \times n}\) with rows \(Z_1, \dots, Z_n\). 
+
+We define \(i \in \underbar{m}\) the \(i\)-t \emph{echelon index} \(Ei_i(A)\) as 
+
+\[
+    Ei := \min \{j \in \underbar{n} \mid A_{ij} \ne 0\}
+\]
+
+We define the \emph{echelon form} as the sequence 
+
+\[
+    Ei(A) := (Ei_1 (A), Ei_2 (A), \dots,Ei_s (A))
+\]
+
+If the index of all \(Ei_i(A)\) coincides with the column number, then we call it the \emph{strict echelon form}.
 
 \subsection{Equality of the Rank \texorpdfstring{\(\operatorname{rg}(A) = \operatorname{rg}_S(A)\)}{}}
 
@@ -169,9 +210,33 @@ The forward elimination process involves performing row operations on the augmen
 
 \end{itemize}
 
+These steps are defined as linear maps applied to a system like \(f(m) = n\) to \((g \circ f)(m) = g(n)\).
+We need to be able to find the respective inverses to get to the result \((g \circ f)^{-1}({g(n)}) = n\). This 
+is accomplished via the \emph{elementary matrices}.
+
 Once the matrix is in upper triangular form, back substitution is used to find the values of the
 variables. The last equation gives the value of the last variable, which can then be substituted into
 the previous equations to find the other variables.
+
+\subsection{Invariability of the Solution Set}
+
+Let \( f : M \to N \) and \( n \in N \). For every bijective map 
+\( g : N \to N \), the following holds for the fiber of \( f \) over \( n \):
+
+\[
+    f^{-1}(\{n\}) = (g \circ f)^{-1}(\{g(n)\}).
+\]
+
+\textbf{Proof:}
+
+The first inclusion does not use the bijectivity of \( g \):
+
+Let \( m \in f^{-1}(\{n\}) \), i.e.\ \( f(m) = n \). Then
+\( g(f(m)) = g(n) \), i.e.\ \( m \in (g \circ f)^{-1}(\{g(n)\}) \).
+For the reverse implication one needs a left inverse of \( g \),
+which of course exists because \( g \) is bijective.
+
+\QED 
 
 \subsection{Gauss-Jordan Elimination}
 
@@ -253,7 +318,7 @@ Such equations always have at least the trivial solution \(x_1 = x_2 = \cdots = 
 
 \subsection{Particular Solution}
 
-A particular solution to a linear system of equations is a specific solution that satisfies the system.
+A \emph{particular solution} to a linear system of equations is a specific solution that satisfies the system.
 It can be found using various methods, including substitution, elimination, or matrix methods. A
 particular solution is not unique; there may be multiple particular solutions depending on the system.
 A particular solution can be found by substituting specific values for the variables and solving for the
@@ -277,7 +342,7 @@ other values of \(x\) may yield different values of \(y\).
 
 \subsection{General = Particular + Homogeneous}
 
-The general solution of a linear system of equations is the complete set of solutions that satisfy the
+The \emph{general solution} of a linear system of equations is the complete set of solutions that satisfy the
 system. It can be expressed as the sum of a particular solution and the general solution of the associated
 homogeneous system.
 
@@ -306,7 +371,7 @@ Any linear system's solution set has the form:
 
 where \(\vec{p}\) is a particular solution to the system, and the vectors \(\vec{\beta}_1,
 \ldots, \vec{\beta}_k\) form a basis of the solution space to the corresponding homogeneous system.
-The number \(k\) equals the number of \textbf{free variables} the system has after applying Gaussian
+The number \(k\) equals the number of \emph{free variables} the system has after applying Gaussian
 elimination.
 
 \subsection{Linear Combination Lemma}
@@ -416,6 +481,7 @@ Let \(x_4 = t\) (free variable), then:
 \]
 
 \subsection{The Determinant, the cross product and the solutions of linear Systems of Equations}
+
 A linear system of three equation has the following properties:
 
 \begin{itemize}

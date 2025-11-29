@@ -57,6 +57,27 @@ A \emph{function sequence} is sequence composed of functions and its noted like:
     {(f)}_n \text{with } x^t := \{ f: D\to R | \ f \text{ is a function}\}
 \]
 
+\subsection{Boundness of a Sequence}
+
+To show the boundness of a sequence we can use the definition of the \emph{supremum} or \emph{infimum} and 
+approximations. 
+
+One useful definition is that a sequence is bounded below and above if 
+
+\[
+    |a_n| \le M, \forall n \ge 1
+\]
+
+\textbf{Example:}
+
+Given is \(a_n = \frac{1}{2n + 3}\) 
+
+\[
+    \left| \frac{1}{2n + 3} \right| \le \frac{1}{2n + 3} < \frac{1}{2n} < \frac{1}{n} le 1
+\]
+
+Because, we have found a concrete bound we can state that the sequence is bounded. 
+
 \subsection{Convergence}
 
 A sequence \((a_n)\) \emph{converges} to a limit \(L\) if for every \(\varepsilon > 0\), there exists an 
@@ -71,6 +92,62 @@ In this case, we write:
 \[
     \lim_{n \to \infty} a_n = L
 \]
+
+\subsubsection{Properties of convergent Sequences}
+
+Given the convergent sequences \(\{a_n\}_{n = 1}^{\infty}, \{b_n\}_{n = 1}^{\infty}\) with \(a\) and \(b\) as the respective limits. 
+For a bounded sequence \(\{c_n\}_{n = 1}^{\infty}\) then the following applies:
+
+\begin{itemize}
+
+    \item \(\{a_n\}_{n = 1}^{\infty}\) is bounded 
+    
+    \item \(\{\alpha a_n + \beta b_n\}_{n = 1}^{\infty}, \alpha, \beta \in \Reals\) converges towards \(\alpha a + \beta b\)
+
+    \item \(\{|a_n|\}_{n = 1}^{\infty}\) converges towards \(|a|\) and \(\{\sqrt{a_n}\}_{n = 1}^{\infty}\) towards \(\sqrt{|a|}\)
+
+    \item \(\{a_n \cdot b_n\}_{n = 1}^{\infty}\) converges towards \(a \cdot b\)
+
+    \item \(\{a_n \cdot c_n\}_{n = 1}^{\infty}\) is bounded 
+    
+    \item If \(a_n \ne 0, \forall n \in \Naturals\) and \(a \ne 0\) then \(\lim_{n \to \infty} \frac{1}{a_n} = \frac{1}{a}\)
+
+\end{itemize}
+
+\subsection{Boundness of Convergent Sequences}
+
+Let \(a_n\) be a convergent sequence then \(a_n\) is bounded 
+
+\textbf{Proof:}
+
+Because \(a_n\) converges, it has a limit \(a\). Now, let \(\varepsilon = 1\), and let us use the definition of convergence.
+
+\begin{align*}
+    -\varepsilon <|a_n - a| &< \varepsilon \\ 
+   -1 < a_n - a &< 1 \\ 
+    a - 1 , a_n  &< 1 + a \textbf{ for all } n > n_0 
+\end{align*}
+
+Until, this point we have proof the boundness for all \(n > n_0\). To guarantee that the sequence is also bounded 
+for \( 1 \le n \le n_0 \) we define 
+
+\[
+    U := \max({x \mid x \in a_n , n \le n_0}, a + 1) 
+\]
+
+and
+
+\[
+    L := \min({x \mid x \in a_n, n \le n_0}, a - 1)
+\]
+
+Thus, our sequence is bounded
+
+\[
+    L \le a_n \le U
+\]
+
+\QED 
 
 \subsection{Cauchy Sequence}
 
@@ -158,6 +235,38 @@ the largest number \(t\) such that \(a \ge t\) for all \(a \in A\).
 \[
     x \ge s', \forall x \in A \implies s' \le s
 \]
+
+\textbf{Example IV:}
+
+Prove that \(\sup \{\frac{n}{n + 1 \mid n \in \Naturals}\} = 1\).  
+
+To prove we need to show that 1 is an upper bound and then that \(\forall \varepsilon > 0\) \(a - \varepsilon\) is not 
+an upper bound.
+
+\begin{align*}
+    1 &\ge \frac{n}{n + 1} \\ 
+    n + 1 &\ge n
+\end{align*}
+
+Thus, 1 is in fact an upper bound. 
+
+For the second part, let \(\varepsilon > 0\), and we want to prove that \(\exists n \in \Naturals : \frac{n}{n + 1} > 1 - \varepsilon\)
+
+\begin{align*}
+    frac{n}{n + 1} > 1 - \varepsilon \\ 
+    \varepsilon >  1 - frac{n}{n + 1} \\ 
+    \varepsilon >  frac{n + 1 - n}{n + 1} \\ 
+    \varepsilon >  frac{1}{n + 1} \\ 
+    n + 1 >  frac{1}{\varepsilon} \\ 
+    n  >  frac{1}{\varepsilon}  - 1 
+\end{align*}
+
+By the Archimedian principle we now that we can always find a bigger natural number such that \(n > \frac{1}{\varepsilon} - 1\)
+
+Now we can reverse the steps in the inequality, and we will get our original inequality.
+
+\QED
+
 \subsubsection{Alternative Characterization of the Supremum}
 
 Given a non-empty set \(A \subseteq \Reals\). The \(s \in Reals\) is only a supremum of \(A\) if 
@@ -252,7 +361,40 @@ The other proofs can be proven using similar arguments.
 
 The sequence \(a_n = {(-1)}^n + \frac{1}{n}\) has two accumulation points: \(1\) and \(-1\).
 
+\subsection{The Monotone Convergence Theorem}
+
+Let \(a_n\) be a monotone sequence. Then \(a_n\) converges if and only if it is bounded. 
+
+\textbf{Proof:} 
+
+\(a_n\) converges; thus there exists a limit and therefore, the sequence is bounded. 
+
+The sequence \(a_n\) is bounded and monotone. Therefore, there exist both infimum and supremum. We will prove the case for the supremum
+
+\[
+    a \ge a_i \forall a_i \in a_n \implies a - \varepsilon < a_i
+\]
+
+Suppose \(a\) is the limit then for all \(i > n_0, n_0 \in \Naturals\)
+
+\begin{align*}
+    |a_i - a| &< \varepsilon \\  
+    |a - a_i| &< \varepsilon \\  
+    |a - a_i| = a - a_i &< \varepsilon \\  
+    a  - \varepsilon &< a_i 
+\end{align*}
+
+Therefore, the supremum is the limit.
+
+\QED
+
 \subsection{Monotonicity by Difference and Quotient}
+
+A is considered \emph{monotone} if either for all \(n \in \Naturals\) the following holds 
+
+\[
+    a_{n + 1} \ge a_{n} \text{ or } a_{n + 1} \le a_n
+\]
 
 \emph{Monotonicity by Difference:}
 
@@ -310,6 +452,141 @@ increasing sequence of natural numbers.
     \item A bounded sequence always has at least one convergent subsequence (Bolzano-Weierstraß theorem).
 
 \end{itemize}
+
+\subsubsection{Existence of the Accumulation Point as Limit}
+
+A sequence \(\{x_n\}_{n = 1}^{\infty}\) has \(x_0\) as accumulation point if and only if there exists a subsequence 
+which converges towards \(x_0\).
+
+\textbf{Proof:}
+
+Suppose that \(x_0\) is an accumulation point then \((x_0 - 1, x_0 + 1)\) contains a sequence member \(x_{n_0}, n_0 \in \Naturals\).
+Let  
+
+\[
+    n_1 := n_0
+\]
+
+For each \(k \in \Naturals\) exists some \(N(k) \in \Naturals\) such that \(N(k) > N(k - 1)\)
+and 
+
+\[
+    x_{N(k)} \in \in (x_0 - \frac{1}{k}, x_0 + \frac{1}{k})
+\]
+
+Now we set 
+
+\[
+    n_k = N(k)
+\]
+
+For each subsequence \(\{x_{n_k}\}_{k = 1}^{\infty}\) the following holds 
+
+\[
+    |x_{n_k} - x_0 | \le \frac{1}{k}
+\]
+
+Therefore, the subsequence converges also towards \(x_0\).
+
+Other way of the proof, if the sequence \(\{x_{n_k}\}_{k = 1}^{\infty}\) converges towards \(x_0\) then there exists a \(\delta > 0\) and \(K \in \Naturals\) 
+such that 
+
+\[
+    x_{n_k} \in (x_0 - \delta, x_0 + \delta), \forall k \ge K
+\]
+
+Therefore, each neighborhood has infinite sequence members. 
+
+\QED 
+
+\subsubsection{Monotone Subsequence}
+
+Every sequence \(a_n\) has monotone subsequence.
+
+\textbf{Proof:}
+
+Let \(a_n\) be a sequence and \(a_m\) be a peak if \(\forall a_i \in a_n, i > m, m, i \in \Naturals\) the following holds \(a_i \le a_m\). 
+
+Now consider the case that \(a_n\) has infinitely many peaks. Let \(a_{n_k}\) be the sequence of the \(k\)-th peak. This gives us that 
+each peak is greater or equal than the other, therefore we have monotone growing subsequence. If we define the peaks with \(a_i \ge a_m\) we also would 
+get monotone sequence, but a decreasing instead.
+
+For the case that there are only a finite number of peaks, let \(a_n\) be the last peak \(a_i \ge a_m\). If we can always find another \(a_{i + 1}\) such 
+that \(a_{i + 1} \ge a_n\), therefore we can find monotone increasing subsequence. Similarly, the case for the decreasing case can be shown.
+
+\QED 
+
+\subsubsection{Convergence due to Subsequences}
+
+A sequence \(\{a_n\}_{n = 1}^{\infty}\) converges to \(a\) if and only if each of its subsequences also 
+converges to \(a\).
+
+\textbf{Proof:}
+
+Let \(a_{n_k}\) be a subsequence of \(a_n\). Let \(\varepsilon > 0\). 
+
+\[
+    \exists n_0 \in \Naturals, |a_n - a| < \varepsilon \forall n > n_0
+\]
+
+We want to show 
+
+\[
+    \exists n_1 \in \Naturals, |a_{n_k} - a| < \varepsilon \forall k > n_1
+\]
+
+with \(n_k \ge k\). 
+
+Let \(n_1 = n_0\) then if \(k > n_1\), \(k > n_0\) and \(n_k \ge k > n_0\). Thus, for all \(k > n_1\), 
+\(|a_{n_k} - a | < \varepsilon\).
+
+For the other way of the proof: assume every subsequence of \(a_n\) converges to \(a\). \(a_n\) is itself a subsequence 
+of thus, it converges to \(a\). 
+
+\QED
+
+\subsection{Proof that \(-1^n\) is divergent}
+
+Let us assume that a limit exists then 
+
+\[
+    |-1^n - L| < \varepsilon \forall n \ge N 
+\]
+
+Let us choose \(\varepsilon = \frac{1}{2}\). 
+
+Now our sequence bounces between -1 and 1 thus we can say that 
+
+\[
+    |-1 - L| < \frac{1}{2}
+\]
+\[
+    |1 - L| < \frac{1}{2}
+\]
+
+Now let us use the triangle inequality a
+
+\[
+   2 = |-1 - L + 1 - L| \le |-1 + L| +  |1 - L| < 2\frac{1}{2} = 2
+\]
+
+This is a contradiction. Thus, such a limit can not exist
+
+\QED 
+
+\subsection{Bolzano-Weierstraß Theorem}
+
+Every bounded sequence in \(\Reals\) has at least one convergent subsequence.
+
+\textbf{Proof:}
+
+Let \(a_n\) be a bounded sequence, and let \(a_{n_k}\) be a monotone subsequence given by the monotone subsequence 
+theorem. \(a_{n_k}\) is bounded because or original sequence is bounded.
+
+Due to the monotone convergent theorem, we also know that the subsequence converges.
+Therefore, our theorem is proven.
+
+\QED
 
 \subsection{Series}
 
@@ -425,9 +702,91 @@ A sequence \((a_n)\) is called a \emph{null sequence} or \emph{zero sequence} if
 Every zero sequence is convergent (to 0), and plays an essential role in convergence proofs and 
 epsilon-delta arguments.
 
+More formally, a sequence \(\{a_n\}_{n = 1}^{\infty}\) of real numbers is called a zero sequence if and only if for all \(\varepsilon > 0\) there exists \(n_0\)
+such that 
+
+\[
+    | a_{n_0} | < \varepsilon, \forall n \ge n_0 \in \Naturals
+\]
+
+Note that \(\{|a_n|\}_{n = 1}^{\infty}\) is only a zero sequence if \(\{a_n\}_{n = 1}^{\infty}\) is a zero sequence.
+
+\textbf{Example:}
+
+Is \(a_n = \frac{1}{n}\) a zero sequence?
+
+Choose \(n_0 = \frac{1}{\varepsilon}\) then 
+
+\[
+    n \ge \frac{1}{\varepsilon} \implies \frac{1}{n} \le \varepsilon, \forall n \in \Naturals, n \ge n_0
+\]
+
+Thus, it is a zero sequence 
+
+\subsection{Comparison Criteria for Sequences}
+
+Given \(\{a_n\}_{n = 1}^{\infty}\) and \(\{b_n\}_{n = 1}^{\infty}\) with 
+
+\[
+    |b_n| \le |a_n|
+\]
+
+For all \(n \in \Naturals\) with \(n \ge n_0 \in \Naturals\). If  \(a_n \to 0, n \to \infty\) then  
+\(b_n \to 0, n \to \infty\).
+
+We also call \(a_n\) a majorant of \(b_n\).
+
+\subsection{Properties of Zero Sequences}
+
+Given the zero sequences \(\{a_n\}_{n = 1}^{\infty}, \{b_n\}_{n = 1}^{\infty}\)  and  the bounded sequence \(\{c\}_{n = 1}^{\infty}\) then 
+
+\begin{itemize}
+
+    \item \(\{a_n\}_{n = 1}^{\infty}\) is also bounded.
+
+    \item \(\{\alpha a_n + \beta b_n\}_{n = 1}^{\infty}, \alpha, \beta \in \Reals\) is also a zero sequence.
+    
+    \item \(\{\sqrt{|a_n|}\}_{n = 1}^{\infty}\) is a zero sequence.
+
+    \item \(\{a_n \cdot c_n\}_{n = 1}^{\infty}\) is a zero sequence.
+
+\end{itemize}
+
+\textbf{Proofs:}
+
+
+
 \subsection{The Monotony Principle}
 
 Every bounded monotonic sequence converges.
+
+\textbf{Proof:}
+
+Define \(a:= \sup\{a_n: n \in \Naturals\}\). We know that our sequence is bounded and in this case it has the 
+property that \(a_n \le a\). 
+
+We use the definition of convergence 
+
+\begin{align*}
+   |a_{n_0} - a | &< \varepsilon \\ 
+   a_{n_0} &> a - \varepsilon
+\end{align*}
+
+Using the approximation property of the supremum we get 
+
+\[
+   a_n \ge a_{n_0} > a - \varepsilon, \forall n \ge n_0
+\]
+
+Therefore, we have for each \(\varepsilon > 0\) an \(n_0 \in \Naturals\)
+
+\[
+   a - \varepsilon \le a_{n_0} \le a  \forall n \ge n_0
+\]
+
+Thus, our theorem is true. 
+
+\QED 
 
 \begin{itemize}
 

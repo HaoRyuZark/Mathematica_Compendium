@@ -146,7 +146,8 @@ as the \emph{distribution function}.
 
 A random variable \(X \in \{1, 2, \dots, n\}\) with 
 \(\Prob(X = i) = \frac{1}{n}\) for \(i = 1, \dots, n\) is uniformly distributed. 
-The distribution \(\Prob_X\) is called the (discrete) \emph{uniform distribution}.
+The distribution \(\Prob_X\) is called the (discrete) \emph{uniform distribution}. Noted as 
+\(\mathcal{U}(a, b)\)
 
 \[
     \frac{1}{n}
@@ -168,7 +169,7 @@ where \(a\) and \(b\) are the boundaries of our distribution.
 
 \subsection{Bernoulli Distribution}
 
-Distribution for binary events with only one trial.
+Distribution for binary events with only one trial, noted as \(\mathcal{B}(p)\)
 
 \[
     \Prob(X = k) = p^k (1 - p)^{1 - k}, \quad k \in \{0, 1\}
@@ -176,7 +177,10 @@ Distribution for binary events with only one trial.
 
 \subsection{Binomial Distribution}
 
-Distribution for discrete binary experiments. Either an event occurs or it does not. 
+From the Bernoulli distribution we can derive the \emph{binomial distribution} \(\text{Bino}(n, p)\)as having a number 
+of consecutive independent Bernoulli experiments.
+
+This distribution is for discrete binary experiments. Either an event occurs or it does not. 
 
 \[
     \Prob(X = k) = \binom{n}{k} p^k {(1 - p)}^{n - k}
@@ -215,14 +219,72 @@ Sigma rules:
 
 \end{itemize}
 
+\subsection{Normal Distribution}
+
+The \emph{normal distribution} \(\mathcal{N}(\mu, \sigma)\) is the limit of the \emph{binomial distribution} and it is given by 
+
+\[
+    f(x) = \frac{1}{\sqrt{2\pi \sigma^2} e^{\frac{1}{2}{\left(\frac{x - u}{\sigma}\right)}^2}}
+\]
+
+It also has 
+
+     
+\[
+    \Expc[X] = np = \mu
+\]
+    
+\[
+    \Var(X) = \Expc[X] (1-p)
+\]
+
+To compute its cumulative probability we need to use special tables, due to the fact that the function can not be analytically integrated. 
+To get an specific we use tables which pre-calculated values computed numerically using the so called \(\Phi\) function. 
+This functions is used in the following manner:
+
+We plug the values in the expression, our expected value and the standard deviation 
+
+\[
+    Z = \frac{X - \mu}{\sigma}
+\]
+
+\(\Phi(Z)\) you use the portion before the comma as the row and after the comma as the column to read the value from.
+
+
+\subsubsection{Standard Normal Distribution}
+
+The \emph{standard} normal distribution has the parameters \(\mu = 0\) and \(\sigma^2 = \Var = 1\). 
+
+To transform a normal distributed random variable \(X\) you can define a new random variable 
+
+\[
+    Z = \frac{X - \mu}{\sigma}
+\]
+
+\textbf{Example:}
+
+Given \(X \sim N(10, 4)\). What is \(\Prob(8 \le X \le 12)\)?
+
+We define \(Z = \frac{X - 10}{2}\). Then we get 
+
+\[
+    \Prob(8 \le X \le 12) = \Prob\left(\frac{8 - 10}{2} \le Z \le \frac{12 - 10}{2}\right) = \Prob(-1 \le Z \le 1)
+\]
+
+Using the standard normal distribution table we get
+
+\[
+    \Prob(-1 \le Z \le 1) = \mathbb{F}_Z(1) - \mathbb{F}_Z(-1) = 0.8413 - 0.1587 = 0.6826
+\]
+
 \subsection{Geometric Distribution}
 
 A random variable \(X \in \Naturals_0\) with 
 \(\Prob(X = n) = p(1 - p)^n\) for some \(p \in (0, 1)\) and \(n \in \Naturals_0\) 
 is geometrically distributed. The distribution \(\Prob_X\) is called the \emph{geometric distribution}.
 
-Similar to the binomial distribution, the \emph{geometric} distribution is used for an experiment with two 
-outcomes and we we want to know the probability of \(k - 1\) non-successes until a success happens  
+Similar to the binomial distribution, the \emph{geometric} \(\mathcal{G}(n, p)\) distribution is used for an experiment with two 
+outcomes, and we want to know the probability of \(k - 1\) non-successes until a success happens  
 
 \[
     \Prob(X = k) = (1 - p)^{k - 1}p
@@ -246,7 +308,7 @@ and
 
 \subsection{Poisson Distribution}
 
-A random variable \(X \in \mathbb{N}_0\) with 
+A random variable \(X \in \Naturals_0\) with 
 
 \[
     \Prob(X = n) = \frac{\lambda^n}{n!} e^{-\lambda}, \quad \text{ for some } \lambda > 0,
@@ -258,13 +320,14 @@ We also define the distribution function
     \mathbb{F}_X(n) = \sum_{i = 0}^{n} \frac{\lambda^i}{i!} i^{-\lambda}
 \]
 
-is Poisson distributed. The distribution \(\Prob_X\) is called the \emph{Poisson distribution}.
-In simple words, it is the number of events x, in a specific interval.
+is Poisson distributed. The distribution \(\Prob_X\) is called the \emph{Poisson distribution} \(\text{Poi}(\lambda)\)
+In simple words, it is the number of events x, in a specific interval. This is 
+a limit of the binomial distribution for large \(n\) and small \(p\).
 
 We also get our expected result and variance 
 
 \[
-    \Expc[X] = \lambda
+    \Expc[X] = \lambda = np
 \]
 
 and 
@@ -276,7 +339,7 @@ and
 \subsection{Hyper-geometric Distribution}
 
 Similar to the binomial distribution, but we keep track of the changes after each choice. In other words, 
-binomial distribution without repetition.
+binomial distribution without repetition. We notate this as \(\text{HG}(M, N, n)\).
 
 \[
     \Prob(X = k) = \frac{\binom{M}{k} \binom{N - M}{n - k}}{\binom{N}{n}}
@@ -309,7 +372,7 @@ We also get
 \]
 
 \[
-    \Var(X) = \Expc(x)\left(1 - \frac{M}{N}\right) \left(\frac{N - n}{N - 1}\right)
+    \Var(X) = \Expc[X]\left(1 - \frac{M}{N}\right) \left(\frac{N - n}{N - 1}\right)
 \]
 
 \subsection{The Expected Value for Discrete Random Variables}
@@ -423,6 +486,12 @@ function with the properties \(h(a) > 0\) and \(X(\Omega) \subseteq D\) then
     \Prob(X \ge a) \le \frac{\Expc[h(X)]}{h(a)}
 \]
 
+Simpler, 
+
+\[
+    \Prob(X \ge a) \le \frac{\Expc[X]}{a}
+\]
+
 There is a special case for \(Y = |X|, a > 0\) and \(h(x) = x\) 
 
 \[    
@@ -437,10 +506,12 @@ Given a random variable \(X\) with a variance and \(a > 0\) then
     \Prob(|X - \Expc[X]| \ge a) \le \frac{\Var(X)}{a^2}
 \]
 
+This states that the probability of \(X\) is at least \(a\) away of its mean can not be too big.
+
 \subsection{Probability Density}
 
 A Lebesgue-integrable function \( f : \Reals \to [0, \infty) \) is called the (probability)
-\emph{density} or\emph{density function} of the random variable \( X \) or of the
+\emph{density} or \emph{density function} of the random variable \( X \) or of the
 distribution \( \Prob_X \) if, for all \( a, b \in \Reals \) with \( a \le b \), the following holds:
 
 \[
@@ -554,7 +625,7 @@ with
 
 \subsection{Exponential Distribution}
 
-We define the \emph{exponential distribution} as a real defined random variable, used mostly 
+We define the \emph{exponential distribution} \(\mathcal{E}(\lambda)\)as a real defined random variable, used mostly 
 for the duration of time intervals.
 
 \[
@@ -591,28 +662,8 @@ And even the following property
     \Prob (X \ge x + y \mid X > y) = e^{\lambda x} = \Prob(X \ge x)
 \]
 
-This distribution is memoryless. This means that the future probabilities of an event are independent 
+This distribution is memory-less. This means that the future probabilities of an event are independent 
 of the previous ones. 
-
-\subsection{Normal Distribution}
-
-The \emph{normal distribution} is given by 
-
-\[
-    f(x) = \frac{1}{\sqrt{2\pi \sigma^2} e^{\frac{1}{2}{\left(\frac{x - u}{\sigma}\right)}^2}}
-\]
-
-It also has: 
-
-     
-\[
-    \Expc[X] = np = \mu
-\]
-    
-\[
-    \Var(X) = \Expc[X] (1-p)
-\]
-    
 
 \subsection{Chi-Square Distribution}
 
@@ -646,7 +697,7 @@ For \(y \in J\) and \(f_Y(y) = 0\) for \(y \in \Reals \setminus J\).
 \subsection{Quantile}
 
 Let \( X \) be a random variable with distribution \( F \).
-For \( p \in (0, 1) \), a value \( q_p \) is called a \textbf{p-quantile} of \( X \) (or of \( F \)) if:
+For \( p \in (0, 1) \), a value \( q_p \) is called a \emph{p-quantile} of \( X \) (or of \( F \)) if:
 
 \[
     \Prob(X \le q_p) \ge p \text{ and }\Prob(q_p \le X) \ge 1 - p,

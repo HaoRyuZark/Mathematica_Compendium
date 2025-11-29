@@ -22,17 +22,38 @@ This is the precise \emph{\(\varepsilon\)-\(\delta\) definition} of a limit.
 
 \subsection{Limit Calculation Rules}
 
-\emph{Sum Rule:} \(\displaystyle \lim_{x \to a} (f(x) + g(x)) = \lim_{x \to a} f(x) + \lim_{x \to a} g(x)\)
+\emph{Sum Rule:} \( \lim_{x \to a} (f(x) + g(x)) = \lim_{x \to a} f(x) + \lim_{x \to a} g(x)\)
 
-\emph{Difference Rule:} \(\displaystyle \lim_{x \to a} (f(x) - g(x)) = \lim_{x \to a} f(x) - \lim_{x \to a} g(x)\)
+\emph{Difference Rule:} \( \lim_{x \to a} (f(x) - g(x)) = \lim_{x \to a} f(x) - \lim_{x \to a} g(x)\)
 
-\emph{Product Rule:} \(\displaystyle \lim_{x \to a} (f(x)g(x)) = \lim_{x \to a} f(x) \cdot \lim_{x \to a} g(x)\)
+\emph{Product Rule:} \( \lim_{x \to a} (f(x)g(x)) = \lim_{x \to a} f(x) \cdot \lim_{x \to a} g(x)\)
 
-\emph{Quotient Rule:} \(\displaystyle \lim_{x \to a} \frac{f(x)}{g(x)} = \frac{\lim f(x)}{\lim g(x)}\) if \(\lim g(x) \ne 0\)
+\emph{Quotient Rule:} \(\lim_{x \to a} \frac{f(x)}{g(x)} = \frac{\lim f(x)}{\lim g(x)}\) if \(\lim g(x) \ne 0\)
 
-\emph{Power Rule:} \(\displaystyle \lim_{x \to a} {f(x)}^n = {(\lim_{x \to a} f(x))}^n\)
+\emph{Power Rule:} \( \lim_{x \to a} {f(x)}^n = {(\lim_{x \to a} f(x))}^n\)
 
-\emph{Root Rule:} \(\displaystyle \lim_{x \to a} \sqrt[n]{f(x)} = \sqrt[n]{\lim_{x \to a} f(x)}\) (when defined)
+\emph{Root Rule:} \( \lim_{x \to a} \sqrt[n]{f(x)} = \sqrt[n]{\lim_{x \to a} f(x)}\) (when defined)
+
+\textbf{Proof of the Sum Rule:}
+
+For any \(\varepsilon > 0, \text{ there exists a } \delta_1 > 0\) such that if \(0 < |x - a| < \delta\) then \(0 < |f(x) - L| < \varepsilon\). 
+The same goes for \(g(x)\) with its respective limit and delta. Now choose \(\delta = \min\{\delta_1, \delta_2\}\) such that
+
+\[
+    |f(x) - L| < \frac{\varepsilon}{2}
+\]
+
+\[
+    |g(x) - K| < \frac{\varepsilon}{2}
+\]
+
+This using now the triangle inequality we get 
+
+\[
+    |f(x) + g(x) - (L + K)| \le |f(x) - L|  + |g(x) - K| < 2\frac{\varepsilon}{2} = \varepsilon
+\]
+
+\QED
 
 \subsection{Limits at Infinity}
 
@@ -54,7 +75,7 @@ Indeterminate forms arise in limits when the expression does not directly imply 
 
 \subsection{Limit of a Composite Function}
 
-If \(\displaystyle \lim_{x \to a} f(x) = L\) and \(\displaystyle \lim_{x \to L} g(x) = g(L)\) 
+If \( \lim_{x \to a} f(x) = L\) and \( \lim_{x \to L} g(x) = g(L)\) 
 (i.e., \(g\) is continuous at \(L\)), then:
 
 \[
@@ -67,11 +88,11 @@ If \(\displaystyle \lim_{x \to a} f(x) = L\) and \(\displaystyle \lim_{x \to L} 
     \lim_{x \to a^-} f(x) = L_-, \quad \lim_{x \to a^+} f(x) = L_+
 \]
 
-The two-sided limit \(\displaystyle \lim_{x \to a} f(x)\) exists if and only if \(L_- = L_+\).
+The two-sided limit \( \lim_{x \to a} f(x)\) exists if and only if \(L_- = L_+\).
 
 \subsection{L’Hôpital’s Rule}
 
-If \(\displaystyle \lim_{x \to a} f(x) = \lim_{x \to a} g(x) = 0\) or \(\pm\infty\), and \(\displaystyle \lim_{x \to a} \frac{f'(x)}{g'(x)}\) exists, then:
+If \( \lim_{x \to a} f(x) = \lim_{x \to a} g(x) = 0\) or \(\pm\infty\), and \( \lim_{x \to a} \frac{f'(x)}{g'(x)}\) exists, then:
 
 \[
     \lim_{x \to a} \frac{f(x)}{g(x)} = \lim_{x \to a} \frac{f'(x)}{g'(x)}
@@ -115,19 +136,19 @@ This is used to find fixed points of recursive definitions.
 
 \begin{itemize}
 
-    \item \(\displaystyle \lim_{x \to 0} \frac{\sin x}{x} = 1\)
+    \item \( \lim_{x \to 0} \frac{\sin x}{x} = 1\)
 
-    \item \(\displaystyle \lim_{x \to 0} \frac{1 - \cos x}{x^2} = \frac{1}{2}\)
+    \item \( \lim_{x \to 0} \frac{1 - \cos x}{x^2} = \frac{1}{2}\)
 
-    \item \(\displaystyle \lim_{x \to 0} \frac{\ln(1 + x)}{x} = 1\)
+    \item \( \lim_{x \to 0} \frac{\ln(1 + x)}{x} = 1\)
 
-    \item \(\displaystyle \lim_{x \to 0} \frac{e^x - 1}{x} = 1\)
+    \item \( \lim_{x \to 0} \frac{e^x - 1}{x} = 1\)
 
-    \item \(\displaystyle \lim_{n \to \infty} \frac{n!}{n^n} = 0\)
+    \item \( \lim_{n \to \infty} \frac{n!}{n^n} = 0\)
 
-    \item \(\displaystyle \lim_{n \to \infty} \sqrt[n]{a} = 1\) (for \(a > 0\))
+    \item \( \lim_{n \to \infty} \sqrt[n]{a} = 1\) (for \(a > 0\))
 
-    \item \(\displaystyle \lim_{x \to 0} \frac{1}{\cos x} = 1\)
+    \item \( \lim_{x \to 0} \frac{1}{\cos x} = 1\)
 
 \end{itemize}
 

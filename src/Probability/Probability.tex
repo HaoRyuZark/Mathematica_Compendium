@@ -44,7 +44,7 @@ Finally, each subset of \(\Omega\) is called an \emph{outcome}, each subset with
 only one element in it is called an \emph{elemental outcome} The set of all possible outcomes is 
 \(\mathcal{P}(\Omega)\)
 
-\subsection{Laplace Distribution and Experiment}
+\subsection{Laplace Distribution and Expceriment}
 
 A \emph{Laplace distribution} is a probability experiment with finite outcomes where 
 each elemental outcome has the same probability of occurring.
@@ -408,14 +408,14 @@ Given the product space \((\Omega, \mathcal{P}(\Omega), \Prob)\) of the spaces \
 For \(i = 1, \dots, n\). Then it holds that \(\Prob(A_{i}^{'}) = \Prob_i(A_i)\) and the events \(A_{i}^{'}\) are 
 independent.
 
-\subsection{Bernoulli-Experiments}
+\subsection{Bernoulli-Expceriments}
 
 An experiment where \(\Omega = \{0,1\}, \Prob(\{1\}) = p\) and \(\Prob(\{0\}) = 1 - p\) for 
-\(p \in (0, 1)\) is called a \emph{Bernoulli-Experiment}.
+\(p \in (0, 1)\) is called a \emph{Bernoulli-Expceriment}.
 
 \subsubsection{Bernoulli Schema}
 
-If we perform a Bernoulli-Experiment \(n\)-times with a success probability of \(p\). Where 
+If we perform a Bernoulli-Expceriment \(n\)-times with a success probability of \(p\). Where 
 \(\Prob(A_i) = p\). We define 
 
 \[
@@ -564,7 +564,7 @@ Finally we plug in the individual numbers
     \Prob(R) = \frac{1}{3} \left(\frac{2}{5} + \frac{3}{2} + \frac{1}{4} \right) = \frac{6}{15}
 \]
 
-\subsection{Multistage Random Experiments}
+\subsection{Multistage Random Expceriments}
 
 Let \(\Omega_1, \ldots, \Omega_n\) be discrete sample spaces of \(n\) sub-experiments, and let \(\Omega = \Omega_1 \times \cdots \times \Omega_n\).
 Furthermore, let an initial distribution be given by the probability function \(p_1\) with
@@ -675,3 +675,347 @@ Our numbers are:
 
 Thus, our formula gives us a 9 percent chance of actually being infected.
 
+\subsection{Law of Large Numbers}
+
+Given a sequence of independent random variables \(X_1, X_2, \dots, X_n\) with the same 
+mean \(\mu\) and the same \(\sigma^2\). The sample mean \(Z_n = \frac{1}{n} \sum_{i = 1}^{n}X_i\) will 
+converge to \(\mu\) as \(n \to \infty\).
+
+Formally \(P(|Z_n - \mu| > \epsilon)_{n \to \infty} \to 0\).
+
+\textbf{Proof:}
+
+Since our random variables are independent 
+
+\[
+    \Expc[Z_n] = \frac{1}{n} \sum_{i = 1}^{n} \Expc[X_i] = \mu
+\]
+
+\[
+    \Var[Z_n] = \frac{1}{n} \sum_{i = 1}^{n} \Var[X_i] = \frac{\sigma^2}{n}
+\]
+
+as \(n \to \infty, \Var(X) \to \infty\).
+
+Formally, 
+
+\begin{align*}
+    \Prob(|Z_n - \mu | \ge \varepsilon) &\le \frac{\Var(Z_n)}{\varepsilon^2} \\ 
+    & \frac{\sigma^2}{n \varepsilon^2} \to 0 \text{ as n goes to infinity}
+\end{align*}
+
+\subsection{Strong Law of large Numbers}
+
+Given \(X_1, X_2, \dots\) independent random variables with the same distribution and \(|\Expc|X_1| < \infty\) then
+
+\[
+    Z_n \to \Expc[X_1]
+\]
+
+\subsection{Central Limit Theorem}
+
+Given the same conditions of the \emph{Law of large Numbers}. The sample mean 
+
+\[
+    Z_n = \frac{1}{n} \sum_{i = 1}^{n}X_i \sim \mathcal{N}(\mu, \frac{\sigma^2}{n})
+\]
+
+or equivalently
+
+\[
+    \lim_{n \to \infty} \Prob \left(\sqrt{n} \frac{Z_n - \mu}{\sigma} \le x\right) = \Phi (x)
+\]
+
+\textbf{Example:}
+
+Approximate the probability of a tricked coin landing heads with \(n = 10000\) throws and the number of 
+heads between \(4900 < X < 5100\).
+
+Our variable is binomial distributed 
+
+\[
+    \mu = \Expc[X] = np = 5000
+\]
+
+\[
+    \sigma = 50
+\]
+
+Then for  
+
+\[
+    \Prob \left( Z_1 \le \sqrt{n} \frac{Z_n - \mu}{\sigma} \le Z_2 \right)
+\]
+
+with \(Z_1 = \frac{4900 - 5000}{50}, Z_2 = \frac{5100 - 5000}{50}\)
+We get 
+
+\[
+    \Phi(Z_2) - \Phi(Z_1) = 0.9545
+\]
+
+\subsection{Theorem of Moivre-Laplace}
+
+Given \(X_1, X_2, \dots, X_n\) Bernoulli distributed random variables and \(S_n = \sum_{i = 1}^{n} X_i\) then the 
+number of successes is given by 
+
+\[
+    \lim_{n \to \infty} \Prob \left( \frac{S_n - np}{\sqrt{np (1 - p)} \le x}\right) = \Phi(X)
+\]
+
+\subsection{Cheat sheet Distributions}
+
+In the next sections the different distributions will be handled in deep, but for a fast overview we have:
+
+\subsubsection{Bernoulli Distribution}
+
+\textbf{Notation:} \(X \sim \text{Bernoulli}(p)\), \(0 \le p \le 1\).
+
+\textbf{PMF:}
+
+\[
+    \Prob(X = x) = p^{x}(1-p)^{1-x}, \quad x \in \{0,1\}.
+\]
+
+\textbf{Meaning:} Models a single success/failure trial.
+
+\textbf{Origin:} Assumes two outcomes with constant success probability \(p\).
+
+\textbf{Use Cases:} Indicators, binary outcomes.
+
+\textbf{Mean:}
+
+\[
+    \Expc[X] = p.
+\]
+
+\textbf{Variance:}
+
+\[
+    \Var(X) = p(1-p).
+\]
+
+\subsubsection{Binomial Distribution}
+
+\textbf{Notation:} \(X \sim \text{Binomial}(n,p)\).
+
+\textbf{PMF:}
+
+\[
+    \Prob(X = k) = \binom{n}{k} p^{k}(1-p)^{n-k}, \quad k = 0,\dots,n.
+\]
+
+\textbf{Meaning:} Number of successes in \(n\) independent Bernoulli trials.
+
+\textbf{Origin:} Sum of \(n\) independent Bernoulli\((p)\) variables.
+
+\textbf{Use Cases:} Counting successes in repeated experiments.
+
+\textbf{Mean:}
+
+\[
+    \Expc[X] = np.
+\]
+
+\textbf{Variance:}
+
+\[
+    \Var(X) = np(1-p).
+\]
+
+\subsubsection{Normal Distribution}
+
+\textbf{Notation:} \(X \sim N(\mu, \sigma^{2})\).
+
+\textbf{PDF:}
+
+\[
+    f(x) = \frac{1}{\sqrt{2\pi\sigma^{2}}}
+    \exp\!\left( -\frac{(x - \mu)^{2}}{2\sigma^{2}} \right).
+\]
+
+\textbf{Meaning:} Models phenomena influenced by many small independent effects.
+
+\textbf{Origin:} Central Limit Theorem; maximum entropy with fixed mean and variance.
+
+\textbf{Use Cases:} Measurement errors, natural variations.
+
+\textbf{Mean:}
+
+\[
+    \Expc[X] = \mu.
+\]
+
+\textbf{Variance:}
+
+\[
+    \Var(X) = \sigma^{2}.
+\]
+
+\subsubsection{Poisson Distribution}
+
+\textbf{Notation:} \(X \sim \text{Poisson}(\lambda)\).
+
+\textbf{PMF:}
+
+\[
+    \Prob(X = k) = e^{-\lambda} \frac{\lambda^{k}}{k!}, \quad k \in \{0,1,2,\dots\}.
+\]
+
+\textbf{Meaning:} Counts occurrences of events with constant rate and independent increments.
+
+\textbf{Origin:} Limit of the Binomial distribution as \(n \to \infty\), \(p \to 0\), \(np = \lambda\).
+
+\textbf{Use Cases:} Arrivals, rare events, queueing.
+
+\textbf{Mean:}
+
+\[
+    \Expc[X] = \lambda.
+\]
+
+\textbf{Variance:}
+
+\[
+    \Var(X) = \lambda.
+\]
+
+\subsubsection{Geometric Distribution}
+
+\textbf{Notation:} \(X \sim \text{Geom}(p)\).
+
+\textbf{PMF:}
+
+\[
+    \Prob(X = k) = (1-p)^{k-1} p, \quad k = 1,2,\dots.
+\]
+
+\textbf{Meaning:} Number of trials until first success.
+
+\textbf{Origin:} Independent Bernoulli trials; first success at trial \(k\).
+
+\textbf{Use Cases:} Waiting times, reliability.
+
+\textbf{Mean:}
+
+\[
+    \Expc[X] = \frac{1}{p}.
+\]
+
+\textbf{Variance:}
+
+\[
+    \Var(X) = \frac{1-p}{p^{2}}.
+\]
+
+\subsubsection{Hypergeometric Distribution}
+
+\textbf{Notation:} \(X \sim \text{Hypergeometric}(N,K,n)\).
+
+\textbf{PMF:}
+
+\[
+    \Prob(X = k) = \frac{\binom{K}{k}\binom{N-K}{\,n-k\,}}{\binom{N}{n}}.
+\]
+
+\textbf{Meaning:} Number of successes when sampling without replacement.
+
+\textbf{Origin:} Combinatorial selection from a finite population.
+
+\textbf{Use Cases:} Quality control, card draws, lotteries.
+
+\textbf{Mean:}
+
+\[
+    \Expc[X] = n\frac{K}{N}.
+\]
+
+\textbf{Variance:}
+
+\[
+    \Var(X) = n\frac{K}{N}\left(1 - \frac{K}{N}\right)\frac{N-n}{N-1}.
+\]
+
+\subsubsection{Discrete Uniform Distribution}
+
+\textbf{Notation:} \(X \sim \text{Uniform}\{a,\dots,b\}\).
+
+\textbf{PMF:}
+
+\[
+    \Prob(X = k) = \frac{1}{b-a+1}, \quad k = a,\dots,b.
+\]
+
+\textbf{Meaning:} All outcomes equally likely.
+
+\textbf{Origin:} Symmetry or maximal uncertainty over a finite set.
+
+\textbf{Use Cases:} Dice, randomized algorithms.
+
+\textbf{Mean:}
+
+\[
+    \Expc[X] = \frac{a+b}{2}.
+\]
+
+\textbf{Variance:}
+
+\[
+    \Var(X) = \frac{(b-a+1)^{2}-1}{12}.
+\]
+
+\subsection{Continuous Uniform Distribution}
+
+\textbf{Notation:} \(X \sim \text{Uniform}(a,b)\).
+
+\textbf{PDF:}
+
+\[
+    f(x) = \frac{1}{b-a}, \quad a \le x \le b.
+\]
+
+\textbf{Meaning:} All values in the interval have equal density.
+
+\textbf{Origin:} Complete symmetry on an interval.
+
+\textbf{Use Cases:} Random number generation, simulation.
+
+\textbf{Mean:}
+
+\[
+    \Expc[X] = \frac{a+b}{2}.
+\]
+
+\textbf{Variance:}
+
+\[
+    \Var(X) = \frac{(b-a)^{2}}{12}.
+\]
+
+\subsubsection{Exponential Distribution}
+
+\textbf{Notation:} \(X \sim \text{Exponential}(\lambda)\).
+
+\textbf{PDF:}
+
+\[
+    f(x) = \lambda e^{-\lambda x}, \quad x \ge 0.
+\]
+
+\textbf{Meaning:} Waiting time between events in a Poisson process; memory-less.
+
+\textbf{Origin:} Time between events occurring at rate \(\lambda\).
+
+\textbf{Use Cases:} Reliability, inter-arrival times.
+
+\textbf{Mean:}
+
+\[
+    \Expc[X] = \frac{1}{\lambda}.
+\]
+
+\textbf{Variance:}
+
+\[
+    \Var(X) = \frac{1}{\lambda^{2}}.
+\]

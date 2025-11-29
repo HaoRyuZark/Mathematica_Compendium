@@ -1038,6 +1038,37 @@ Dividing by \(\Delta t\) and taking the limit:
 This vector \(\frac{d\vec{r}}{dt}\) points in the direction of motion and is tangent to the curve at 
 each point \(t\).
 
+\subsection{Linear Regression}
 
+\emph{Linear Regression} is can be done using the gradient and the data points of a data set, instead of using matrices 
+
+\textbf{Steps:}
+
+The dimension used for this case is 2 for simplicity 
+
+\begin{enumerate}
+    
+    \item \emph{Construct the Square error function}: \( SE (\alpha, \beta) = \sum_{i = 0}^{n} (\alpha x_i + \beta - y_i)^2\) 
+    
+    \item \emph{Take the gradient and set it to zero}:
+
+        \[
+            \begin{bmatrix}
+                \sum_{i = 0}^{n} 2x_i (\alpha x_i + \beta - y_i) \\ 
+                2\sum_{i = 0}^{n} \alpha x_i + \beta y_i
+            \end{bmatrix}
+            = 0
+        \]
+
+    \item \emph{Solve for Alpha and Beta}:
+
+        \[
+            \alpha = \frac{\Sigma_i x_i y_i - \Sigma_i x_i \Sigma_i y_i}{\Sigma_i x_{i}^{2} - (\Sigma_i x_i)^2}
+        \]      
+        \[
+            \beta = \frac{1}{n}\Sigma_i y_i - \alpha \frac{1}{n}\Sigma_i x_i 
+        \]
+    
+\end{enumerate}
 
 

@@ -1,0 +1,215 @@
+\newpage
+\section{Polynomial Rings}
+
+Given a field \(\Field\) with \(\Field^{\Integers_{\ge 0}}\) we define the multiplication 
+
+\[
+    (a_0, a_1, \dots ) \cdot (b_0, b_1, \dots ) := (c_0, c_1, \dots) 
+\]
+
+Where 
+
+\[
+    c_0 := a_0 b_0, \quad c_1:= a_0 b_1 + a_1 b_0 \quad c_2 := a_0 b_2 + a_1 b_1 + a_2 b_0
+\]
+
+In general for \(n \ge 0\)
+
+\[
+    c_n := \sum_{i = 0}^{n} a_i b{n - i} = a_0 b_{n} + a_1 b_{n - 1} + cdots + a_n b_0
+\]
+
+This \((\Field^{\Integers_{\ge 0}}, +, \cdot)\) is also noted as \(\Field[[\Field]]\) and 
+called the \emph{power-ring} over \(\Field\). Also, instead of \((a_0, a_1, \dots)\) we write 
+
+\[
+    f = \sum_{i=0}^{\infty} a_i X^i
+\]
+
+For \(X := (0, 1, 0, 0, \dots)\). We call this ring also the \emph{formal power series} over \(\Field\).  
+
+The members \(f = (a_0, a_1, \dots, ) \in \Field [[X]]\) are called \emph{polynomials}
+
+For the finite case we write 
+
+\[
+    f = \sum_{i=0}^{n} a_i X^i
+\]
+
+The set of all polynomials reachable via the multiplication vector-space properties of \(\Field[[X]]\) is 
+called the \emph{polynomial ring} \(\Field[X]\). The field before the \([X]\) tells us which elements 
+are allowed as coefficients.
+
+\textbf{Example:}
+
+For \(f := (1,2,3,4, \dots) = 1 + 2X + 3X^2 + 4X^3 \)
+
+\[
+    f \cdot 4 = (4,\,1,\,5,\,2,\,0,\,0,\,\ldots) = 4 + 1X + 5X^{2} + 2X^{3}
+\]
+
+\[
+    f \cdot 3X = (0,\,3,\,6,\,2,\,5,\,0,\,0,\,\ldots) = 3X + 6X^{2} + 2X^{3} + 5X^{4}
+\]
+
+\[
+    f \cdot 2X^{2} = (0,\,0,\,2,\,4,\,6,\,1,\,0,\,0,\,\ldots) = 2X^{2} + 4X^{3} + 6X^{4} + X^{5}
+\]
+
+\[
+    f \cdot X^{3} = (0,\,0,\,0,\,1,\,2,\,3,\,4,\,0,\,0,\,\ldots) = X^{3} + 2X^{4} + 3X^{5} + 4X^{6}
+\]
+
+\subsection{Degree of a Polynomial}
+
+The \emph{degree} of a polynomial is given by the \(n\) in \(\sum_{i = 0}^{n} a_i X^i\) with \(f \ne \vec{0}\).
+Also, note that we define \(\text{def}(0):= -\infty\)
+
+
+\subsection{Properties}
+
+\emph{Neutral Element}
+
+\[
+    1 := (1, 0, 0, \dots) \in \Field[X]
+\]
+
+is the neutral element of the multiplication in \(\Field[[X]]\) and \(\Field[X]\).
+
+\emph{\(X_a\)}
+
+\[
+    X_a = (0, a_0, a_1, \dots) \forall a \in \Field [[X]]
+\]
+
+\emph{Multiplication}
+
+\[
+    X^i X^j = X^{i + j}, \text{ with } X^0 := 1
+\]
+
+\emph{Identity}
+
+Given \(f \in \Field[X]\) with degree \(n\) then 
+
+\[
+    f = a_0 + a_1 X + \cdots + a_n X^n
+\]
+
+gives a clear identification of \(\Field\) with 
+
+\[
+    \{0\} \cup \{f \in \Field [X] \mid \deg(f) = 0\}
+\]
+
+\emph{Vector space}
+
+\[
+    \Field[X]_{\deg < n} := \{0\} \cup \{f \in \Field [X] \mid \deg(f) < n\}
+\]
+
+is a vector space.
+
+\emph{Degree Multiplication}
+
+For \(f,g \in \Field[X] \setminus \{0\}\) the following holds 
+
+\[
+    \deg(fg) = \deg(f) + \deg(g)
+\]
+
+\subsection{Field Algebra}
+
+Given a ring \(R\) with the one of the vector space with the field \(\Field\). We call 
+\(R\) an \emph{associative algebra} with the one if only if 
+
+\[
+    a(rs) = (ar)s = r(as)
+\]
+
+for all \(r,s \in R\) and \(a \in \Field\).
+
+\subsection{Lemmi of the Division}
+
+Given the field \(\Field\) then 
+
+\begin{itemize}
+
+    \item  \(\Field[X]\) is a commutative ring with one and exactly one commutative \(\Field\)-Algebra with 1.
+
+    \item For \(f, g \in \Field[X]\) with \(g \ne 0\) there are well-defined \(q,r \in \Field[X]\) with 
+    
+        \[
+            f = qg + r \text{ and } \deg(r) < \deg(g) \lor r = 0
+        \]
+    
+\end{itemize}
+
+\textbf{Proof:}
+
+For the first lemma, to show that the multiplication is commutative we just 
+use the commutative property of commutativity of our field \(\Field\). 
+
+The distributive property for \(f,g,h \in \Field [X]\) and the scalar multiplication 
+are also easy to show using our definitions. We will show the associativity. 
+
+We will use induction: If \(\deg(h) = 0\), then \(h \in \Field\) and the associativity holds because of the 
+associativity for scalars. 
+
+Let us assume that it holds for \(\deg(h) \le n\). If  \(\deg(h) > 0 \) then
+
+\[
+    h = \hat{h} + a_{n + 1}X^{n + 1} \text{ with } \hat{h} \in \Field [X]
+\]
+
+is a polynomial of degree at most \(n\) or 0. Due to that fact, \((fg)\hat{h} = f(g\hat{h})\) 
+
+Induction step:
+
+\begin{align*}
+    (fg)h &= (fg)(\hat{h} + a_{n + 1}X^{n + 1}) \\  
+          &= fg\hat{h} + fga_{n + 1}X^{n + 1}) \\ 
+          &= fg\hat{h} + f(ga_{n + 1)}X^{n + 1}) \\ 
+          &= f(g\hat{h} + ga_{n + 1}X^{n + 1})) \\ 
+          &= f(g(\hat{h} + a_{n + 1}X^{n + 1}))) \\ 
+          &= f(gh)
+\end{align*}
+
+\QED 
+
+As for the second lemma, given \(\deg(f) = m, \deg(g) = n, f = \sum_{i = 0}^{m} a_i X^i, g = \sum_{i = 0}^{n} b_i X^i\).
+If \(f = 0\) then \(q = 0\) and \(r = 0\). If \(m < n\) we are done, because \(q = 0, r = f\). 
+
+For the case \(m \ge n\) we will show the existence of \(q,r\) per induction using \(m\). For 
+\(m = 0\) are \(n = 0\), \(f = a_0\) \(g = b_0\). Set \(q = \frac{a_0}{q_0}\) and \(r = 0\), and we get 
+\(f = qg + r\).
+
+If \(m > 0\) and we assume that for each polynomial \(h\) with \(\deg(h) le m - 1\) there 
+exists polynomials \(\hat{q}, \hat{r}\) such that \(\deg(\hat{r}) < \deg(g)\) and 
+\(h = \hat{q}g + \hat{r}\).
+
+Define \(\hat{f} := f - \frac{a_m}{b_n}X^{m - n}g\). Then \(\deg(\hat{f}) \le m - 1\). There also 
+exist \(\hat{q}, \hat{r}\) with \(\deg(\hat{r}) < \deg(g)\) and \(\hat{f} \hat{q}g + \hat{r}\). Then 
+
+\[
+    f = \hat{f} + \frac{a_m}{b_n} X^{m-n} g
+    = \hat{q} g + \hat{r} + \frac{a_m}{b_n} X^{m-n} g
+    = \left(\hat{q} + \frac{a_m}{b_n} X^{m-n}\right) g + \hat{r}
+\]
+
+Hence, with \(q = \hat q + \frac{a_m}{b_n} X^{m-n}\) and \(r = \hat{r}\), existence is shown.
+
+For uniqueness: Let \(f = qg + r\) and \(f = \hat{q}g + \hat{r}\)
+with \(\deg(r) < \deg(g)\) and \(\deg(\hat{r}) < \deg(g)\). Then it follows that
+
+\[
+    r - \hat{r} = (q - \hat{q}) g .
+\]
+
+If \(q - \hat{q} \neq 0\), then \(\deg(r - \hat{r}) \ge \deg(g)\),
+which is a contradiction. Thus, \(q = \hat{q}\) and \(r = \hat{r}\).
+
+\QED
+
+
+

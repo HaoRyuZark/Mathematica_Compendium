@@ -83,6 +83,32 @@ Let \(\sim\) be an equivalence relation on a set \(A\) and \(a \in A\), the
 
 is the set of all elements in \(A\) that are related to \(a\).
 
+\subsection{Lemmi about Equivalence Classes}
+
+For \(a,b \in A\) then 
+
+\begin{itemize}
+
+	\item \(aEb \iff [a]_E = [b]_E\)
+
+	\item \(a \neg E b, (a,b) \notin E \iff [a]_E \cap [b]_E = \emptyset \)
+
+\end{itemize}
+
+\textbf{Proof I:}
+
+\(aEb, x \in [a]_E \text{ tells us that also } x E b \implies x \in [b]_E \). For the other direction 
+using the reflexive property we get \([a]_E = [b]_E \implies a E a \implies a \in [a]_E = [b]_E\)
+
+\QED
+
+\textbf{Proof II:}
+
+\(x \in [a]_E \cap [b]_E \implies x E a, x E b, a E x \implies a E b\) a contradiction. 
+Now, for \( [a]_E \cap [b]_E = \emptyset\) we can say \(a E b \implies a \in [a]_E, a \in [b]_E \), another contradiction.
+
+\QED 
+
 \subsection{Quotient Space}
 
 Let \(\sim\) be an equivalence relation on a set \(A\). The \emph{quotient space} of \(A\) by 
@@ -90,7 +116,7 @@ Let \(\sim\) be an equivalence relation on a set \(A\). The \emph{quotient space
 elements in \(A\). Formally, it is defined as:
 
 \[
-	A / \sim := \{[x] \mid x \in A\}
+	A / \sim := \{[x]_\sim \mid x \in A\}
 \]
 
 The quotient space \(A/\sim\) is a partition of the original set \(A\) into disjoint equivalence classes. 
@@ -139,23 +165,37 @@ That is, for each \( x \in A \), there exists at most one \( y \in B \) such tha
 \subsection{The Graph}
 
 \[
-	\text{graph}(f):= \{(x, f(x)): x \in X\}
+	\text{graph}(f):= \{(x, f(x)) \mid x \in X\}
 \]
 
 \subsection{The identity}
 
 \[
-	\text{id}(f):= idx:= \{(x, x): x \in X\}
+	\text{id}(f):= idx:= \{(x, x)\mid x \in X\}
+\]
+
+\subsection{The Range}
+
+The \emph{range}  is defined as 
+
+\[
+	\text{ran}(R) = \{y \mid \exists x: x R y\}
 \]
 
 \subsection{Image}
 
-The \emph{image (or range)} of a relation \emph{R} from set \(A\) to set \(B\) is the set 
+The \emph{image} of a relation \emph{R} from set \(A\) to set \(B\) is the set 
 of all elements in \(B\) that are related to at least one element in \(A\). Formally, if 
 \(R \subseteq A \times B\) is a relation, then the image of \emph{R} is defined as:
 
 \[
 	\img(R) = \{b \in B \mid \exists a \in A \text{ such that } (a,b) \in R\}
+\]
+
+or 
+
+\[
+	\img(R[A]) = \{y \in \text{ ran}(R) \mid \exists a \in A \text{ such that } xRy\}
 \]
 
 In other words, the image consists of all the output values that appear in the ordered pairs of the 
@@ -566,17 +606,23 @@ Given \(f : M \to N\), then
 
 \begin{itemize}
 	
-	\item \(f\) is injective if there exists a function \(g: N \to M\) with the property \(g \circ f = \text{Id}_M\). Each 
+	\item \(f\) is \emph{injective} if there exists a function \(g: N \to M\) with the property \(g \circ f = \text{Id}_M\). Each 
 		\(g\) is surjective and called the \emph{left inverse} of \(f\).
 
-	\item \(f\) is surjective if there exists a function \(\gamma: N \to M\) with the property \(f \circ \gamma = \text{Id}_N\). Each 
+
+	\item \(f\) is \emph{surjective} if there exists a function \(\gamma: N \to M\) with the property \(f \circ \gamma = \text{Id}_N\). Each 
 		\(\gamma\) is injective and called the \emph{right inverse} of \(f\).
 	
 \end{itemize}
 
+\textbf{Example:}
+
+Given \(f: M \to N\) having a right inverse \(\gamma: N \to M\) guarantees the existence of the solution of \(f(m) = n\). Set \(m = \gamma(n)\) then 
+\(f(m) = f(\gamma(n)) = f \circ \gamma = \text{Id}_N (n) = n\).
+
 \textbf{Proof I:}
 
-\(\rightarrow\): \(f\) is injective and we want to proof that from \(g \circ f = \text{Id}_M\) then \(g is surjective\).
+\(\rightarrow\): \(f\) is injective, and we want to proof that from \(g \circ f = \text{Id}_M\) then \(g is surjective\).
 
 Because \(f\) is injective we know that it maps all of \(N\). Suppose, that for some \(n \in N, n \notin f(M)\). We also know that 
 \(g \circ f = \text{Id}_M\) by definition. Now with our assumption and this knowledge 
@@ -588,7 +634,7 @@ Because \(f\) is injective we know that it maps all of \(N\). Suppose, that for 
 	  &= m
 \end{align*}
 
-Therefore such a \(n\) can not exists because of our conditions.
+Therefore, such an \(n\) can not exist because of our conditions.
 
 \(\leftarrow\): Because \(g\) is surjective, we know that all \(m \in M\) are mapped and because of 
 the composition and its identity property it is clear that \(f\) is injective because \(m = \text{Id}_M (m) \in M\)else the identity property would not hold.
@@ -697,7 +743,8 @@ Given two sets \(A\) and \(B\) with \(|A| = n\) and \(|B| = m\), we can count th
 \begin{itemize}
 
 	\item \emph{Total relations:} There are \(2^{n \times m}\) total relations from \(A\) to \(B\). Each of the 
-		  \(n \times m\) possible ordered pairs \((a, b)\) can either be included in or excluded from the relation.
+		  \(n \times m\) possible ordered pairs \((a, b)\) can either be included in or excluded from the relation. This comes from the cardinality of 
+		  the power set of the Cartesian product of \(A \times B\).
 
 	\item \emph{Reflexive relations:} If \(A = B\), the number of reflexive relations is \(2^{n^2 - n}\). This is because 
 		  the \(n\) diagonal pairs \((a, a)\) must be included, while the remaining \(n^2 - n\) pairs can be chosen freely.

@@ -6,13 +6,13 @@ brief explanation and its formal mathematical definition.
 
 \subsection{Introduction to topological nomenclature}
 
-\subsubsection{Open Ball} (\( B_\varepsilon(x) \)) 
+\subsubsection{Open Ball \( B_\varepsilon(x) \)} 
 
 For a metric space \( (X, d) \), the \emph{open ball} centered at 
 \( x \in X \) with radius \( \varepsilon > 0 \) is defined as: 
 	      
 \[
-	B_\varepsilon(x) := \{ y \in X \mid d(x, y) < \varepsilon \}
+	B_\varepsilon(x) := \{ y \in X \mid d(x, y) < \varepsilon \} = (x - \varepsilon, x + \varepsilon)
 \]
 
 It represents the set of all points within distance \( \varepsilon \) from \(x\), excluding the boundary.
@@ -25,18 +25,36 @@ such that the open ball \( B_\varepsilon(x) \subseteq U \).
 Intuitively, an open set contains none of its boundary points and every point has some 
 wiggle room around it.
 
+\textbf{Example:}
+
+We will prove that  \((0,1)\) is an open set. 
+
+This means \(x_0 > 0\) and \(1 - x_0 > 0\). First we define 
+
+\[
+	\varepsilon := \frac{1}{2} \min {x_0, 1 - x_0}
+\]
+
+Then from \(|y - x_0| \le \varepsilon\) we get 
+
+\begin{align*}
+	&y \ge x_0 |y - x_0 | \ge x_0 - \varepsilon \ge \frac{1}{2}x_0 > 0, \\ 
+	&y \le x_0 |y - x_0 | \le x_0 + \varepsilon \le x_0 + \frac{1}{2}(1 - x_0) = \frac{1}{2} + \frac{1}{2}x_0 < 1
+\end{align*}
+
+\QED 
+
+\subsubsection{The Interior of a Set} 
+
+The \emph{interior} denoted as \(A^{\circ}\) of a set \(A\) is the set of all inner points of \(A\). 
+
 \subsubsection{Closed Set} 
 	      
 A subset \( A \subseteq X \) is called \emph{closed} if its 
 complement \( X \setminus A \) is open. Equivalently, \(A\) contains all its limit points. 
 That is, \(A\) is closed if it includes its boundary.
 
-\subsubsection{Interior Point}
-
-A point \( x \in A \) is an \emph{interior point} of \( A \subseteq X \) if there 
-exists \( \varepsilon > 0 \) such that \( B_\varepsilon(x) \subseteq A \). 
-The set of all interior points of \(A\) is called the \emph{interior} of \(A\), 
-denoted \( \mathrm{int}(A) \).
+\textbf{Example:} \([0,1]\)
 
 \subsubsection{Boundary Point}
 	      
@@ -56,6 +74,10 @@ In other words, points of \(A\) cluster arbitrarily close to
 A point \( x \in A \) is an \emph{isolated point} if there exists \( \varepsilon > 0 \)
 such that \( B_\varepsilon(x) \cap A = \{x\} \). 
 That is, \(x\) stands alone in \(A\) without other points of \(A\) nearby.
+
+\textbf{Example:}
+
+\(-1\) is an isolated point of \({-1} \cup (0,1)\)
 
 \subsubsection{Boundary}
 

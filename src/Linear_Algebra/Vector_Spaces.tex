@@ -1,40 +1,54 @@
 \newpage
 \section{Vector Spaces}
 
-A \emph{vector space} is a set \(V\) with two operations, vector addition and scalar multiplication, 
+Given a field \(\Field\). A \emph{vector space} is a set \((V, \Field, +, \circ)\) with two operations, vector addition and scalar multiplication, 
 such that:
 
 \begin{enumerate}[label=\Roman*.]
 
-	\item The set \(V\) is closed under vector addition.
+	\item \((a + b)\vec{v} = a\vec{v} + b\vec{v}, \forall a,b \in \Field land \vec{v} \in V\)
+	
+	\item \((\vec{v} + \vec{u})a = a\vec{v} + a\vec{u}, \forall a\in \Field land \vec{v}, \vec{u} \in V\)
 
-	\item The set \(V\) is closed under scalar multiplication.
+	\item \((ab)\vec{v} = a(b\vec{v}), \forall a,b \in \Field land \vec{v} \in V\)
 
-	\item Vector addition is commutative.
-
-	\item Vector addition is associative.
-
-	\item There exists a zero vector \(\vec{0} \in V\) such that \(\vec{v} + \vec{0} = \vec{v}\) 
-		  for all \(\vec{v} \in V\).
-
-	\item For every vector \(\vec{v} \in V\), there exists a vector \(-\vec{v} \in V\) such that 
-	      \(\vec{v} + (-\vec{v}) = \vec{0}\).
-
-	\item Scalar multiplication is distributive with respect to vector addition: 
-	      \(a(\vec{u} + \vec{v}) = a\vec{u} + a\vec{v}\) for all \(a \in F\) and 
-		  \(\vec{u}, \vec{v} \in V\).
-
-	\item Scalar multiplication is distributive with respect to field addition: 
-	      \((a + b)\vec{v} = a\vec{v} + b\vec{v}\) for all \(a, b \in F\) and \(\vec{v} \in V\).
-
-	\item Scalar multiplication is associative: \(a(b\vec{v}) = (ab)\vec{v}\) for all \(a, b \in F\) 
-	      and \(\vec{v} \in V\).
-
-	\item The multiplicative identity acts as a scalar: \(1\vec{v} = \vec{v}\) for all \(\vec{v} \in V\).
+	\item \(1 \vec{v} = \vec{v}, \forall \vec{v} \in V\)
 
 \end{enumerate}
 
-The set \(F\) is a field, and the elements of \(V\) are called \emph{vectors}.
+The scalar multiplication is defined as  
+
+\[
+	\Field \times  V \to V: (a,v) \mapsto av
+\]
+
+Also using these axioms, we get 
+
+\begin{itemize}
+
+	\item \(\vec{v}0 = \vec{0}\)
+
+	\item \((-1)\vec{v} = -1\vec{v}\)
+
+\end{itemize}
+
+\textbf{Proof:} 
+
+For the first property, \(0\vec{v} = (0 + 0)\vec{v} = 0\vec{v} + 0\vec{v}\) then 
+
+\[
+	0\vec{v} = 0\vec{v} + 0\vec{v} \implies \vec{0} = 0\vec{v} 
+\]
+
+For the second property, 
+
+\begin{align*}
+	(-1)\vec{v} &= (1 - 2)\vec{v} \\ 
+	(-1)\vec{v} &= \vec{v} - 2\vec{v} \\  
+	(-1)\vec{v} &= -\vec{v}  
+\end{align*}
+
+\QED
 
 \textbf{Examples:}
 
@@ -51,6 +65,8 @@ The set \(F\) is a field, and the elements of \(V\) are called \emph{vectors}.
 
 	\item The set of all \(m \times n\) matrices with real entries is a vector space over the field of 
 	      real numbers \(\Reals\).
+
+	\item The set of all linear maps is also a vector space. 
 
 \end{enumerate}
 

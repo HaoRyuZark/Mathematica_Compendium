@@ -62,6 +62,32 @@ Some proofs of these properties can be found in the section about the algebraic 
 
 \end{itemize}
 
+\subsection{Division Algorithm}
+
+For \(a, b \in \Integers, a \ge b, b \ne 0 \exists q,r \in Integers : a = bq + r\) with 
+\(0 \le r < q\).
+
+\textbf{Proof:}
+
+For \(a = b, q = 1, r = 0\) which are well-defined by the axioms. For \(a > b\) we have 
+that if \(a\) is a multiple of \(b\) then \(r = 0\). Lastly, for the last case, let us assume there exists 
+\(bq + r = a\) and also there exist \(b'q + r' = a\) then 
+
+\begin{align*}
+	bq + r &= b'q + r' \\ 
+	r &= b'q + r' - bq
+\end{align*}
+
+Then, \(0 \le r < q \implies  -q < r < q \), thus 
+
+\[
+	-q < b'q + r' - bq < q  \implies b'q - bq = 0
+\]
+
+Thus, the theorem is proven. 
+
+\QED 
+
 \subsection{Existence of Solutions}
 
 Given \(a,b \in \Reals\), then 
@@ -243,47 +269,14 @@ Let \(T = \{x \in [0, \infty) \mid x < y\}\) and let us define \(a = y^2\) as th
 
 To prove that the equality holds we will prove that the other order cases can not be true. 
 
-Assume \(a < y^2\), because \(a - y < 0\), we know that \(\frac{1}{n} < a - y\) and \( a + \frac{1}{n} < y\). By our assumption 
-
-\[
-	\left(a  + \frac{1}{n}\right)^2 = a^2 - \frac{2a}{n} + \frac{1}{n^2} < y
-\]
-
-Let us choose \(n\) large enough \(n_0\) such that 
-
-\[
-	\frac{2a + 1}{n_0} < y - a^2
-\]
-
-Therefore,
-
-\[
-	\left(a  + \frac{1}{n_0}\right)^2 = a^2 + (2 - a^2) = y
-\]
-
-Thus, \(a + \frac{1}{n} \in T\), but because \(a\) is the supremum this contradiction because our supremum is not the smallest upper-bound. 
+Assume \(a < y\), because \(a - y < 0\), we know that \(\frac{1}{n} < a - y\) and \( a + \frac{1}{n} < y\). Thus, \(a + \frac{1}{n} \in T\), but 
+because \(a\) is the supremum this contradiction because our supremum is not the smallest upper-bound. 
 
 For the second case, assume \(a > y\), by applying the same reasoning with \(a - \frac{1}{n}\), we will arrive at a similar contradiction 
 
-Assume \(a^2 > y\), then \(a^2 - y > 0 \implies \frac{1}{n} < a^2 - y, \implies a^2 - \frac{1}{n} < y\)
+Assume \(a > y\), then \(a - y > 0 \implies \frac{1}{n} < a - y, \implies a - \frac{1}{n} < y\)
 
-\[
-	\left(a  - \frac{1}{n}\right)^2 = a^2 - \frac{2a}{n} + \frac{1}{n^2} > a^2 - \frac{2a}{n}
-\]
-
-Then choose \(n\) such that 
-
-\[
-	\frac{2a}{n_0} > a^2 - y \implies a^2 - \frac{2a}{n_0} > y
-\]
-
-Then 
-
-\[
-	\left(a  - \frac{1}{n_0}\right)^2 > y
-\]
-
-But then \(a  - \frac{1}{n_0}\) is an upper bound and this contradicts our assumption.
+But then \(a  - \frac{1}{n}\) is an upper bound and this contradicts our assumption.
 Thus, by elimination \(a^2 = y\)
 
 \QED
@@ -299,6 +292,66 @@ Thus, by elimination \(a^2 = y\)
 \[
 	|x| := \sqrt{x*x}
 \]
+
+\subsection{Norms Remainder}
+
+Properties of a norm 
+
+\begin{itemize}
+	
+	\item \(|x| \ge 0, \forall x \in \Reals\)
+	
+	\item \(|x| = 0, \implies x = 0\)
+
+	\item \(|\alpha x| = |\alpha| |x|, \forall x, \alpha \in \Reals\)
+
+	\item \(|x + y| \le |x| + |y| \forall x,y \in \Reals\)
+
+\end{itemize}
+
+\subsection{Distance}
+
+We define the \emph{distance} between two real numbers as 
+
+\[
+	d(x,y) = | x - y |
+\]
+
+With the following properties
+
+\begin{itemize}
+
+	\item \(d(x,y) \ge 0, \forall x,y \in \Reals\)
+	
+	\item \(d(x,y) = 0, \iff x = y \)
+
+	\item \(d(x,y) = d(y,x)\)
+	
+	\item \(d(x,y) \ge d(x,y) + d(z,y), \forall x,y \in \Reals\)
+
+\end{itemize}
+
+\subsection{Nested Interval Property}
+
+For each \(n \in \Naturals\), assume we are given a closed interval  \(I_n = [a, b] = \{x \in \Reals \mid a_n \le x \le b_n\}\). 
+Also assume each \(I_n\) contains \(I_{n + 1}\). Then the nested sequence of closed intervals \(I_1 \supseteq I_2 \supseteq I_3 \supseteq \ldots\)
+has a non-empty intersection. 
+
+\textbf{Proof:}
+
+By definition every \(I_n\) is non-empty, thus the sequences \((a_n)_{n \in \Naturals}\) and \((b_n)_{n \in \Naturals}\) are well-defined. 
+Also, every set \(A = \{a_n: n \in \Naturals\}\) is bounded above by the corresponding \(b_n\), and this is guaranteed by 
+the axiom of completeness.
+
+Let \(x = \sup A\). Then consider \(I_n = [a_n, b_n]\) 
+
+\[
+	a_n \le x \le b_n, \forall n \in \Naturals \implies x \in I_n
+\]
+
+Thus, \(x \in \bigcap_{n = 1}^{\infty} I_n\) and the intersection is non-empty. 
+
+\QED
 
 \subsection{Definition as Cauchy Sequences}
  

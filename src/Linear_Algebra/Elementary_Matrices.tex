@@ -60,10 +60,51 @@ Operations on the \emph{Identity Matrix} and call them \emph{Elementary Matrices
 Each of them also encodes the row Operations from where they came from.
 So now Gaussian Elimination can be encoded as matrix multiplication.
 
+Formally,
+
+\[
+    C_1:= \text{Add}_m (i, j, \lambda) := I_m + a e_i f_j: m \times m \to \Field : (s,t) \mapsto 
+    \begin{cases}
+        1, & s = t \\ 
+        \lambda, & (s,t) = (i,j) \\ 
+        0, &\text{ else} 
+    \end{cases}
+\]
+
+\[
+    C_2:= \text{Swap}_m (i,j) := (e_1, \dots, e_{i - 1}, e_j, e_{j + 1}, \dots, e_{j - 1}, e_i, e_{j + 1}, \dots, e_m): m \times m \to \Field : (s,t) \mapsto
+    \begin{cases}
+        1, & s = t \notin \{i, j\} \\ 
+        1, & (s, t) \in \{(i,j), (j,i)\}\\ 
+        0, &\text{ else} 
+    \end{cases}
+\]
+
+\[
+    C_3:= \text{Mul}_m (i,\lambda) := I_m + (a - 1) e_i f_j: m \times m \to \Field : (s,t) \mapsto 
+    \begin{cases}
+        1, & s = t  \ne 1 \\ 
+        \lambda, & s = t = i \\ 
+        0, &\text{ else} 
+    \end{cases}
+\]
+
 \subsection{Invertibility}
 
 Because every row operation is invertible now we can also claim that
 Elementary Matrices are invertible and thy also represented that inverted row operation.
+
+Formally, 
+
+\begin{itemize}
+    
+    \item \(\text{Add}_m (i, j, a)\) has the inverse \(\text{Add}_m (i, j, - a)\).
+
+    \item \(\text{Mul}_m (i,\lambda)\) has the inverse \(\text{Mul}_m (i,\lambda^-1)\).
+    
+    \item \(\text{Swap}_m (i,j)\) has itself as the inverse.
+
+\end{itemize}
 
 \subsection{Determinants}
 

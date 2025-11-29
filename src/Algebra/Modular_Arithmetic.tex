@@ -124,7 +124,7 @@ in specific ways:
 \emph{Floor Function}
 
 The floor function, denoted by \(\lfloor x \rfloor\), gives the greatest integer less than or equal 
-to a real number \(x\). \\
+to a real number \(x\).
 
 \textbf{Example:}
 
@@ -133,7 +133,7 @@ to a real number \(x\). \\
 \emph{Ceiling Function} 
     
 The ceiling function, denoted by \(\lceil x \rceil\), gives the smallest integer greater than or 
-equal to a real number \(x\). \\
+equal to a real number \(x\).
 
 \textbf{Example:}
 
@@ -141,4 +141,46 @@ equal to a real number \(x\). \\
 
 These functions are particularly useful: in number theory, computer science 
 and rounding operations, where precise integer bounds of real numbers are required.
+
+\subsection{Residual Class Rind modulo \(n\)}
+
+Given \(n \in \Naturals\). We define the relation \(\sim_n\) for \(\Integers\).
+
+\[
+    a \sim b \iff n mid (a - b)
+\]
+
+Also, \(a / n\) and \(b / n\) have the same residual 
+
+\subsection{Equivalence Class of \(\Integers\)} 
+
+For \(i, n \in \Integers\) 
+
+\[
+    \overline{i} := i + n \Integers = \{ i + na \mid a \in \Integers\}
+\]
+
+and 
+
+\[
+    \Integers_N = \Integers / n \Integers = \{\overline{0}:= n \Integers, \overline{1}:= 1 + n \Integers, \dots, \overline{n - 1} := n - 1 + n \Integers \}    
+\]
+
+is the set of all equivalence relationships for \(\Integers\) with respect to the relation 
+\(k \sim l \iff n \mid (k - l)\). We define the addition and multiplication for \(\Integers / n \Integers\) using the 
+representatives 
+
+\[
+    (a  + n \Integers) + (b + n \Integers) := (a + b) + n\Integers
+\]
+
+\[
+    (a  + n \Integers) \cdot (b + n \Integers) := ab + n\Integers
+\]
+
+For all \(a, b \in \Integers\). Therefore, 
+
+\[
+    \overline{a} + \overline{b} = \overline{a + b}, \quad \overline{a} \cdot \overline{b} = \overline{ab}
+\]
 
