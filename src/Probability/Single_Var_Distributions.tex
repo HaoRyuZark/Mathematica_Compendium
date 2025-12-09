@@ -193,7 +193,7 @@ With
 \]
 
 \[
-    \Var(X) = \Expc(x)(1-p)
+    \Var(X) = \Expc[X](1-p)
 \]
 
 
@@ -207,21 +207,12 @@ We also get the standard deviation and our distribution function
     \mathbb{F}_X = \sum_{i = P(X=k)}^{P(X=n) (P(X=i))}
 \]
 
-Sigma rules:
 
-\begin{itemize}
-
-    \item \(\Prob(\mu - \sigma \le x \mu + \sigma) \approx 68,3\%\)
-
-    \item \(\Prob(\mu - 2\sigma \le x \mu + 2\sigma) \approx 95,4\%\)
-
-    \item \(\Prob(\mu - 3\sigma \le x \mu + 3\sigma) \approx 99,7\%\)
-
-\end{itemize}
+If we let \(n \to \infty\) with \(np\) being not to small then the limit of this distribution becomes the normal distribution.
 
 \subsection{Normal Distribution}
 
-The \emph{normal distribution} \(\mathcal{N}(\mu, \sigma)\) is the limit of the \emph{binomial distribution} and it is given by 
+The \emph{normal distribution} \(\mathcal{N}(\mu, \sigma^2)\) is the limit of the \emph{binomial distribution} under certain conditions, and it is given by 
 
 \[
     f(x) = \frac{1}{\sqrt{2\pi \sigma^2} e^{\frac{1}{2}{\left(\frac{x - u}{\sigma}\right)}^2}}
@@ -239,8 +230,8 @@ It also has
 \]
 
 To compute its cumulative probability we need to use special tables, due to the fact that the function can not be analytically integrated. 
-To get an specific we use tables which pre-calculated values computed numerically using the so called \(\Phi\) function. 
-This functions is used in the following manner:
+To get a specific we use tables which pre-calculated values computed numerically using the so called \(\Phi\) function. 
+This function is used in the following manner:
 
 We plug the values in the expression, our expected value and the standard deviation 
 
@@ -335,6 +326,18 @@ and
 \[
     \Var(X) = \lambda
 \]
+
+The derivation is the following, let \(\lambda = np\)
+
+\begin{align*}
+    \lim_{n \to \infty} &\binom{n}{k} p^k (1 - p)^{n - k} \\ 
+                        &= \frac{n!}{k!(n - k)!} \left(\frac{\lambda}{n}\right)^k \left(1 - \frac{\lambda}{n}\right)^{n - k} \\ 
+                        &= \frac{n(n-1)\dots(n - k + 1)}{k!} \left(\frac{\lambda}{n}\right)^k \left(1 - \frac{\lambda}{n}\right)^{n - k} \\ 
+                        &= \frac{n(n-1)\dots(n - k + 1)}{k!} \frac{\lambda^k}{n^k} \left(1 - \frac{\lambda}{n}\right)^{n - k} \\ 
+                        &= \frac{\lambda^k}{k!} \frac{n(n-1)\dots(n - k + 1)}{n^k} \left(1 - \frac{\lambda}{n}\right)^{n} \left(1 - \frac{\lambda}{n}\right)^{-k}  \\ 
+                        &= \frac{\lambda^k}{k!} \cdot 1 \cdot e^{-\lambda} \cdot 1 \\ 
+                        &= \frac{\lambda^k}{k!} \cdot e^{-\lambda} 
+\end{align*}
 
 \subsection{Hyper-geometric Distribution}
 

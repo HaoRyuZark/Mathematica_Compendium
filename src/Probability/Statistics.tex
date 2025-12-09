@@ -36,4 +36,265 @@ The \emph{relative frequency} is defined as
     r_i = \frac{h_i}{n}, i \in I
 \]
 
+\subsection{Mean}
 
+Given samples \(x_1, \dots, x_n\) the \emph{mean} is given by: 
+
+\[
+    \overline{x_n}\frac{1}{n}\sum_{i = 1}^{n} x_i
+\]
+
+The \emph{mean} minimizes the quadratic error \(\sum_{i = 1}^{n}(x_i - c)^2\)
+
+\subsection{Order Statistic}
+
+Given \(X_1, \dots, X_n\) random variables. The random variables \(X_{(1)}, \dots, X_{(n)}\) are 
+called \emph{order Statistic} of the variables \(X_1, \dots, X_n\) if for each \(\omega \in \Omega\) the following holds: 
+
+\[
+    X_{(1)} (\omega) \le X_{(2)} (\omega) \le \dots \le X_{(n)} (\omega)
+\]
+
+and for each \(i\) there exist \(k_i\) such that \(X_(i)(\omega) = X_{k_i}(\omega)\).
+
+Note
+
+\[
+    X_{(1)} = \min \{X_1, \dots, X_n\}
+\]
+\[
+    X_{(n)} = \max \{X_1, \dots, X_n\}
+\]
+
+\textbf{Example:}
+
+Given \(5,1,3,4,2\) we get 
+
+\[
+    x_{(1)} = 1, x_{(2)} = 2, \dots, x_{(5)} = 5
+\]
+
+\subsection{Median}
+
+Given \(X_1, \dots, X_n\) random variables with their correspondent order statistic. 
+Their \emph{empiric median} is defined as 
+
+\[
+    \med (X_1, \dots, X_n) = 
+    \begin{cases}
+        X_{\left(\frac{n + 1}{2}\right)} & n \text{ n is odd} \\ 
+        \frac{1}{2} \left(X_{X_{n / 2}} + X_{n /2 + 1}\right) & n \text{ n is odd} \\ 
+    \end{cases}
+\]
+
+The median is equivariant for addition
+
+\[
+    \med(X_1 + a, \dots, X_n + a) = \med(X_1, X_2, \dots, X_n) + a
+\]
+
+\textbf{Example:}
+
+Given \(3.80, 4.33, 4.96, 3.71, 3.40\). What is the median?
+
+\emph{Order statistic}: \(3.40, 3.71, 3.80, 4.33, 4.96\)
+
+\emph{Median}: \(n = 5\) thus, \(\frac{n + 1}{2} = 3\) our median is \(\med(X) = X_{(3)} = 3.80\)
+
+\subsection{Empirical Quantile}
+
+Given \(X_1, \dots, X_n\) random variables with their correspondent order statistic. 
+The \emph{empirical p-quantile} is defined as 
+
+\[
+    q_p = 
+    \begin{cases}
+    X_{ \left\lfloor  n\cdot p + 1 \right\rfloor}  & \text{ if } np \notin \Naturals \\
+    \frac{1}{2} (X_{np} + X_{np + 1})  & \text{ if } np \notin \Naturals 
+    \end{cases}
+\]
+
+Note 
+
+\[
+    \med(X_1, \dots, X_n) = q_{0.5}
+\]
+
+\subsection{Modus}
+
+The most recurrent value in a set of samples is called the \emph{modus}. 
+
+Given \(x_1, \dots, x_n\) samples of discrete classes \(c_1, \dots, c_n\). Define \(h_i\) as the 
+recurrence of the class \(c_i\) in the sample set. 
+
+\[
+    h_i = |\{x_j \in c_i : j = 1, \dots, n\}|
+\]
+
+for \(i = 1, \dots, d\). Then is the class \(c_k\) a modus if \(h_k = \max_{i = 1}^{d} h_i\)
+
+\subsection{Empirical Variance}
+
+Let \(X_1, \ldots, X_n\) be random variables with mean \(\overline{X}_n\) 
+The \emph{empirical variance} is defined as
+
+\[
+    s^2 = \frac{1}{n - 1} \sum_{i = 1}^{n}(X_i - \overline{X_n})^2
+\]
+
+\(s\) is called the \emph{empirical standard deviation}.
+
+As a side note, if our samples are distributed uniformly then 
+
+\[
+    \Var(X) = \frac{1}{n}\sum_{i = 1}^{n} (x_i - \overline{x_n})^2
+\]
+
+\subsection{Sigma Rules}
+
+Given \(X \sim \mathcal{N}(\mu, \sigma^2)\)
+
+\begin{itemize}
+
+    \item \(\Prob(\mu - \sigma \le x \mu + \sigma) \approx 68,3\%\)
+
+    \item \(\Prob(\mu - 2\sigma \le x \mu + 2\sigma) \approx 95,4\%\)
+
+    \item \(\Prob(\mu - 3\sigma \le x \mu + 3\sigma) \approx 99,7\%\)
+
+\end{itemize}
+
+\subsection{Absolute Deviation and Range}
+
+Let\(X_1, \ldots, X_n\) be random variables with mean \(\overline{X}_n\), 
+minimum \(X_{(1)}\) and maximum \(X_{(n)}\).
+
+The range \emph{absolute deviation} is defined as
+
+\[
+    \mathrm{MAD} = \frac{1}{n} \sum_{i = 1}^{n} |X_i - \overline{X_n}|
+\]
+
+The sample \emph{range} is defined as
+
+\[
+    r = X_{(n)} - X_{(1)} = \max\{X_1, \ldots, X_n\} - \min\{X_1, \ldots, X_n\}.
+\]
+
+\subsection{Interquartile Range}
+
+Let \(X_1, \ldots, X_n\) be random variables with 25\% and 75\% quantiles
+\(q_{0.25}\) and \(q_{0.75}\). The \emph{interquartile range} is defined as
+
+\[
+    \mathrm{IQR} = q_{0.75} - q_{0.25}.
+\]
+
+\subsection{Coefficient of Variation}
+
+Let \(X_1, \ldots, X_n\) be random variables with mean \(\overline{X}_n\) 
+and empirical variance \(s^2\). The \emph{empirical coefficient of variation}
+is defined as
+
+\[
+    V = \frac{s}{\overline{X_n}}
+\]
+
+\subsection{Empirical Distribution Function}
+
+Let \(X_1, \ldots, X_n\) be random variables. The function 
+
+\[
+    F_n (x) = \frac{1}{n} \sum_{i = 1}^{n} \text{ind}_{X_i \le x}
+\]
+
+is the \emph{empirical distribution} function 
+
+\[
+    F_n (a_i) = \frac{1}{n} \sum_{j = 1}^{n} \text{ind}_{X_j \le a_i}
+\]
+
+If the trait are sorted \(a_1 < a_2 < \dots\) then 
+
+\[
+    F_n (a_i) = \frac{1}{n} \sum_{j = 1}^{n} \text{ind}_{X_j \le a_i} = \sum_{k = 1}^{i} \frac{1}{n} \sum_{j = 1}^{n} \text{ind}_{x_j = a_k} = \sum_{k = 1}^{i} r_k
+\]
+
+where \(r_k\) is the relative frequency of \(k\)
+
+\textbf{Example:}
+
+Given the samples \(3, 2, 4, 3, 1, 4, 3\) we have the traits \(1, 2, 3, 4\) with relative frequencies 
+
+\begin{itemize}
+
+    \item \(r_1 = \frac{1}{7}\)
+
+    \item \(r_2 = \frac{1}{7}\)
+
+    \item \(r_3 = \frac{3}{7}\)
+
+    \item \(r_4 = \frac{2}{7}\)
+
+\end{itemize}
+
+Then the empirical distribution function is given by
+
+\begin{itemize}
+
+    \item \(F_n(1) = r_1 = \frac{1}{7}\)
+
+    \item \(F_n(2) = r_1 + r_2 = \frac{2}{7}\)
+
+    \item \(F_n(3) = r_1 + r_2 + r_3 = \frac{5}{7}\)
+
+    \item \(F_n(4) = r_1 + r_2 + r_3 + r_4 = 1\)
+
+\end{itemize}
+
+\subsection{Absolute Frequency sum}
+
+\[
+    n F_n (a_i) = n \sum_{k = 1}^{i} r_k = \sum_{k = 1}^{i} h_k
+\]
+
+
+where \(h_k\) is the absolute frequency of \(k\)
+
+\subsection{Classified Data}
+
+When dealing with a lot of data sometimes it is easier to put it into
+\emph{classes} \(A_1, \dots, A_n\) which represent a certain range \([a,b], (a,b)\) or 
+some mix interval with a corresponding \(h_i,r_i, \alpha_i\) (absolute f., relative f. and class range \(b - a\) )
+
+\emph{Empirical Distribution Function}
+
+\[
+    F_n(x) \approx \Prob(X \le x)
+\]
+
+\emph{Mean}
+
+\[
+    \overline{x} \approx \frac{1}{n} \sum_{i = i}^{k} h_i \alpha_i = \sum_{i = 1}^{k}r_i \alpha_i
+\]
+
+\emph{Empirical Variance}
+
+\[
+    s^2 \approx \frac{1}{n - 1}\sum_{i = 1}^{k} h_i (\alpha_i - \overline{x_n})^2
+\]
+
+\emph{Empirical Quantile}
+
+\[
+    q_p = a_i + \frac{p - F_{i - 1}}{F_i - F_{i - 1}}(a_{i + 1} - a_i)
+\]
+
+\(F_i\) is the commutative probabiltity of the relative probabiltity. 
+
+\emph{Mode Class}
+
+\[
+    A_i \text{ with } h_i = \max_{j = 1}^{k} h_j
+\]

@@ -101,6 +101,18 @@ Given \(A \in \Field^{m \times n}, B \in \Field^{n \times l}\) and  \(\phi_A: \F
 
 \QED 
 
+\textbf{Proof II:}
+
+\begin{align*}
+    (\varphi_A \circ \varphi_B)(x) &= \varphi_A(\varphi_B(x)) \\
+    &= \varphi_A(Bx) \\
+    &= A(Bx) \\
+    &= (AB)x \\
+    &= \varphi_{AB}(x)
+\end{align*}
+
+\QED
+
 \subsection{Injectivity and Surjectivity}
 
 Let \( A \in \Field^{m \times n} \). Then:
@@ -261,7 +273,7 @@ It follows that \(\dim(\img(f)) = \rank(f) = n - r\) and therefore,
   
 \subsection{Linear Maps and Matrices}
 
-Let \( V \) and \( W \) be finite-dimensional vector spaces over the same field \( K \). 
+Let \( V \) and \( W \) be finite-dimensional vector spaces over the same field \( \Field \). 
 If \( \dim V = n \) and \( \dim W = m \), then a linear map \( f: V \to W \) can be represented by 
 an \( m \times n \) matrix. The action of the linear map on a vector can be expressed as:
 
@@ -272,6 +284,16 @@ an \( m \times n \) matrix. The action of the linear map on a vector can be expr
 where \(A\) is the matrix representation of \(f\) and \( v \) is the vector represented in a column 
 format. The columns of the matrix \(A\) are the images of the basis vectors of \( V \) under the linear 
 map \(f\).
+
+This fact comes from \(f\) being linear which means that 
+
+\[
+    f(x) = x_1f(e_1) + \cdots + x_nf(e_n)
+\]
+
+with \(e_i\) being a basis vector. And from that expression we can derive \((f(e_1), \dots, f(e_n))x\).
+
+We can state that matrices \emph{induce} linear maps which we are denoted as \(\varphi_A\).
 
 \subsection{How to identify the type of Linear Map Summary}
 

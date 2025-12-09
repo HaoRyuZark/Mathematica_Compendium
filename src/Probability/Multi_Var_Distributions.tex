@@ -564,43 +564,86 @@ Then the following holds:
 \subsection{Multivariable Normal Distribution}
 
 Given \(X_1, \dots, X_n\) independent \(\mathcal{N}(0,1)\) the density function of their joint distribution is given by
-
 \[
-    f(x_1, \dots ,x_n) = \prod_{i = 1}^{n} \frac{1}{\sqrt{2\pi}} e^{\left(-\frac{1}{2}x_{i}^{2}\right)} = \frac{1}{\sqrt{2\pi}} e^{\left(-\frac{1}{2} X^T \cdot X\right)}
+    f(x_1, \dots ,x_n) = \prod_{i = 1}^{n} \frac{1}{\sqrt{2\pi}} e^{\left(-\frac{1}{2}x_{i}^{2}\right)} = \frac{1}{(2\pi)^{n/2}} e^{\left(-\frac{1}{2} X^T \cdot X\right)}
 \]
 
-Thus, for \(\mu \ne \vec{0} \in \Reals^n\) and \(\Sigma = I_n \in \Reals^{n \times n}\)
+Thus, for \(\mu \ne \vec{0} \in \Reals^n\) and \(\Sigma \in \Reals^{n \times n}\) positive definite,
 
 \[
     f(x_1, \dots ,x_n) = \frac{1}{(2\pi)^{\frac{d}{2}} |\Sigma|^{\frac{1}{2}}} e^{-\frac{1}{2} (X - \mu)^T \Sigma^{-1}(X - \mu)}
 \]
 
-With \(d\) being the dimension of the space and \(|\Sigma|\) begin the determinant of the  generalized
-variance given by
+With \(d\) being the dimension of the space and \(|\Sigma|\) being the determinant of the covariance matrix
 
 \[
+    \Sigma = 
     \begin{bmatrix}
-        \cov_{X_1, X_1} & \cdots & \cov_{X_1, X_n} \\
+        \cov(X_1, X_1) & \cdots & \cov(X_1, X_n) \\
         \vdots & \ddots & \vdots \\
-        \cov_{X_m, X_1} & \cdots & \cov_{X_m,X_n}
+        \cov(X_n, X_1) & \cdots & \cov(X_n,X_n)
     \end{bmatrix}
 \]
 
-\(\mu_i = \Expc[X_i]\) and lastly \(X^T X\) being the dot product of the input vector.
+where \(\mu_i = \Expc[X_i]\) and \((X - \mu)^T \Sigma^{-1}(X - \mu)\) is a generalization of \(\frac{(x - \mu)^2}{\sigma^2}\).
 
-Note \((X - \mu)^T \Sigma^{-1}(X - \mu)\) is a generalization of \(\frac{(x - \mu)^2}{\sigma^2}\).
-
-Given \(\mu \in \Reals^{n}, A \in \Reals^{n \times n}\) then
+Given \(\mu \in \Reals^{n}\) and \(A \in \Reals^{n \times n}\), if \(Z \sim \mathcal{N}(\vec{0}, I_n)\), then
 
 \[
-    X = AZ + \mu \text{ is normal distributed}
+    X = AZ + \mu \sim \mathcal{N}(\mu, AA^T)
 \]
 
+\subsubsection{Computing Expected Values and Variances of Linear Combinations}
+
+\paragraph{Expected Value of Linear Combinations}
+For random variables \(X_1, \dots, X_n\) (not necessarily independent) with \(\Expc[X_i] = \mu_i\) and constants \(a_1, \dots, a_n, b \in \Reals\), the expected value of a linear combination is always:
+
+\[
+    \Expc\left[b + \sum_{i=1}^{n} a_i X_i\right] = b + \sum_{i=1}^{n} a_i \mu_i
+\]
+
+This holds regardless of independence or correlation structure.
+
+\paragraph{Variance of Linear Combinations}
+
+The variance formula depends on whether the variables are independent:
+
+\textbf{Case 1: Independent Variables}
+
+If \(X_1, \dots, X_n\) are mutually independent with \(\Var(X_i) = \sigma_i^2\), then:
+
+\[
+    \Var\left(\sum_{i=1}^{n} a_i X_i\right) = \sum_{i=1}^{n} a_i^2 \sigma_i^2
+\]
+
+\textbf{Case 2: Dependent Variables (General Case)}
+
+If \(X_1, \dots, X_n\) are not independent, we must account for covariances:
+
+\[
+    \Var\left(\sum_{i=1}^{n} a_i X_i\right) = \sum_{i=1}^{n} a_i^2 \sigma_i^2 + 2\sum_{i<j} a_i a_j \cov(X_i, X_j)
+\]
+
+Equivalently, in matrix notation with \(a = (a_1, \dots, a_n)^T\):
+
+\[
+    \Var\left(\sum_{i=1}^{n} a_i X_i\right) = a^T \Sigma a
+\]
+
+\textbf{Special Cases:}
+
+\begin{itemize}
+    \item If \(\cov(X_i, X_j) = 0\) for all \(i \ne j\), we recover the independent case
+    \item If \(a_i = 1\) for all \(i\) (simple sum), then:
+    \[
+        \Var\left(\sum_{i=1}^{n} X_i\right) = \sum_{i=1}^{n} \sigma_i^2 + 2\sum_{i<j} \cov(X_i, X_j)
+    \]
+    \item Adding a constant \(b\) does not affect variance: \(\Var(b + Y) = \Var(Y)\)
+\end{itemize}
 
 \subsection{Example: Bivariate Normal Distribution}
 
 Consider the random vector
-
 \[
     X =
     \begin{pmatrix}
@@ -610,9 +653,7 @@ Consider the random vector
     \sim
     N_2(\mu, \Sigma),
 \]
-
 with mean vector
-
 \[
     \mu =
     \begin{pmatrix}
@@ -634,9 +675,7 @@ and covariance matrix
 where \(-1 < \rho < 1\) is the correlation coefficient.
 
 \textbf{Density:}
-
 The density of \(X\) is
-
 \[
     f_X(x) =
     \frac{1}{2\pi |\Sigma|^{1/2}}
@@ -644,17 +683,13 @@ The density of \(X\) is
     -\frac{1}{2}(x-\mu)^{\top}\Sigma^{-1}(x-\mu)
     \right),
 \]
-
 where
-
 \[
     |\Sigma|
     =
     \sigma_1^{2}\sigma_2^{2}(1-\rho^{2}),
 \]
-
 and
-
 \[
     \Sigma^{-1}
     =
@@ -665,18 +700,80 @@ and
     \end{pmatrix}.
 \]
 
-\subsubsection{Independence of Random Variables under the Joint Normal Distribution}
+\subsection{Detailed Example: Spare Parts Delivery}
 
-Given \(X_1, \dots, X_n\) random variables with a joint normal distribution. If \(\cov(X_i, X_j) = 0\) for \(i \ne j\)
-then they are independent.
+Consider a delivery containing:
+\begin{itemize}
+    \item One box of ball bearings: \(X_1 \sim \mathcal{N}(125, 1)\)
+    \item Two boxes of gears: \(Y_1, Y_2 \sim \mathcal{N}(84, 4)\)
+    \item Three boxes of screws: \(Z_1, Z_2, Z_3 \sim \mathcal{N}(65, 3)\)
+\end{itemize}
+All variables are independent. The total weight is:
+\[
+    G = X_1 + Y_1 + Y_2 + Z_1 + Z_2 + Z_3
+\]
+
+\textbf{Step 1: Expected Total Weight}
+
+Using linearity of expectation:
+\begin{align*}
+    \Expc[G] &= \Expc[X_1] + \Expc[Y_1] + \Expc[Y_2] + \Expc[Z_1] + \Expc[Z_2] + \Expc[Z_3] \\
+    &= 125 + 84 + 84 + 65 + 65 + 65 \\
+    &= 488 \text{ kg}
+\end{align*}
+
+\textbf{Step 2: Variance of Total Weight}
+
+Since all variables are independent:
+\begin{align*}
+    \Var(G) &= \Var(X_1) + \Var(Y_1) + \Var(Y_2) + \Var(Z_1) + \Var(Z_2) + \Var(Z_3) \\
+    &= 1 + 4 + 4 + 3 + 3 + 3 \\
+    &= 18 \text{ kg}^2
+\end{align*}
+
+Therefore, \(G \sim \mathcal{N}(488, 18)\) with standard deviation \(\sigma_G = \sqrt{18} = 3\sqrt{2} \approx 4.243\) kg.
+
+\textbf{Step 3: Probability Calculations}
+
+\textit{Question:} What is the probability that the delivery weighs more than 495 kg?
+
+Standardize: \(Z = \frac{G - 488}{\sqrt{18}} \sim \mathcal{N}(0,1)\)
+
+\begin{align*}
+    P(G > 495) &= P\left(\frac{G - 488}{\sqrt{18}} > \frac{495 - 488}{\sqrt{18}}\right) \\
+    &= P\left(Z > \frac{7}{\sqrt{18}}\right) \\
+    &= P(Z > 1.650) \\
+    &= 1 - \Phi(1.650) \\
+    &\approx 1 - 0.9505 = 0.0495
+\end{align*}
+
+Thus, there is approximately a 4.95\% probability that the delivery weighs more than 495 kg.
+
+\textbf{Alternative Scenario: Dependent Variables}
+
+Suppose instead that \(Y_1\) and \(Y_2\) are correlated with \(\cov(Y_1, Y_2) = 2\) (perhaps they're from the same production batch). Then:
+\begin{align*}
+    \Var(G) &= 1 + 4 + 4 + 3 + 3 + 3 + 2\cov(Y_1, Y_2) \\
+    &= 18 + 2(2) \\
+    &= 22 \text{ kg}^2
+\end{align*}
+
+This increases the standard deviation to \(\sqrt{22} \approx 4.690\) kg, making extreme values more likely.
+
+\subsubsection{Independence of Random Variables under the Joint Normal Distribution}
+Given \(X_1, \dots, X_n\) random variables with a joint normal distribution. If \(\cov(X_i, X_j) = 0\) for all \(i \ne j\), then they are mutually independent. 
+
+\textbf{Important:} This equivalence between zero correlation and independence is special to the multivariate normal distribution and does not hold in general.
 
 \subsubsection{Linear Combinations of the Joint Normal Distribution}
+Given \(X_1, \dots, X_n\) random variables with a joint normal distribution \(\mathcal{N}(\mu, \Sigma)\). For any sequence of coefficients \(a_1, \dots, a_n \in \Reals\), the linear combination \(\sum_{i = 1}^{n} a_i X_i\) is also normally distributed.
 
-Given \(X_1, \dots, X_n\) random variables with a joint normal distribution. For any sequence of coefficients \(a_1, \dots, a_n \in \Reals\)  is the
-linear combination \(\sum_{i = 1}^{n} a_i X_i\) also normally distributed.
+Specifically, if \(X \sim \mathcal{N}(\mu, \Sigma)\) and \(a \in \Reals^n\), then:
+\[
+    a^T X \sim \mathcal{N}(a^T \mu, a^T \Sigma a)
+\]
 
-If the random variables are also normally distributed \(\mathcal{N}(\mu_i, \sigma_{i}^{2})\) and are independent then
-
+If the random variables are independent with \(X_i \sim \mathcal{N}(\mu_i, \sigma_{i}^{2})\), then:
 \[
     b + \sum_{i = 1}^{n} a_i X_i \sim \mathcal{N}\left(b + \sum_{i=1}^{n} a_i \mu_i, \sum_{i = 1}^{n} a_{i}^{2} \sigma_{i}^2\right)
 \]

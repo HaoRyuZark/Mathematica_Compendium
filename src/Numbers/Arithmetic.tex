@@ -1,18 +1,237 @@
 \newpage
-\section{Fundamental Theorem of Arithmetic}
+\section{Arithmetic}
+
+\subsection{Prime Numbers}
+
+A \emph{prime number} \(p \in \Naturals \setminus \{1\}\) fulfills the following condition:
+
+\begin{enumerate}[label= \Roman*.]
+	\item \(p\) is only divisible by itself and 1.
+\end{enumerate}
+
+\subsection{Division}
+
+Given \(a,b \in \Integers\). There exists unique \(q,r \in \Integers\) such that 
+
+\[
+	a = qb + r \quad 0 \le r < |b|
+\]
+
+\subsection{Greatest Common Denominator}
+
+For two integers \(a, b \in \Integers\) with \((a,b) \neq (0,0)\), the positive
+integer \(t\) satisfying
 
 \begin{itemize}
 
-	\item The Fundamental Theorem of Arithmetic says that every integer greater than 1 can be factored 
-		 uniquely into a product of primes.
-	
-	\item Euclid’s lemma says that if a prime divides a product of two numbers, it must divide at least 
-		  one of the numbers.
-	
-	\item The least common multiple \([a, b]\) of nonzero integers \(a\) and \(b\) is the smallest positive 
-	      integer divisible by both \(a\) and \(b\).
+	\item \(t \mid a\) and \(t \mid b\),
+
+	\item for all \(c \in \Integers\) with \(c \mid a\) and \(c \mid b\), it follows that \(c \mid t\),
 
 \end{itemize}
+
+is called the \emph{greatest common divisor} (gcd) of \(a\) and \(b\) denoted as \(t = \gcd(a,b)\).
+
+If \(t = 1\), then \(a\) and \(b\) are said to be \emph{coprime} or \emph{relatively prime}.
+
+\subsection{The Euclidean Algorithm}
+
+If \(a = bq + r\) then \(\gcd(a, b) = \gcd(b, r)\). 
+
+\textbf{Input:} \(a, b \in \mathbb{Z}\), \(a \neq 0 \neq b\).  
+\textbf{Output:} The greatest common divisor \(t\) of \(a\) and \(b\).
+
+\textbf{Algorithm:}
+
+\begin{enumerate}
+
+	\item If \(a = 0\), then return \(|b|\). If \(b = 0\), return \(|a|\).
+
+	\item Set \(r_1 := a\); \(r_2 := b\); \(k := 2\).
+
+	\item As long as \(r_k \neq 0\), define \(r_{k+1} := r_{k-1} \bmod r_k\).
+
+	\item As soon as \(r_k = 0\), return \(r_{k-1}\).
+
+\end{enumerate}
+
+In simpler terms, as long the remainder is not zero, we keep dividing the previous remainder by the current
+remainder and updating the remainders. When we reach a remainder of zero, the previous remainder is the gcd. 
+
+\textbf{Proof:}
+
+Given is \(a = bq + r\) to show that \(\gcd(a, b) = \gcd(b, r)\). This is like saying 
+
+\begin{align*}
+	\gcd(a,b) & = gcd(b, r) \\ 
+	\gcd(b,r) & = \gcd(r, r_1)\\
+	\gcd(r, r_1) & = \gcd(r_1, r_2) \\
+	& \vdots \\
+	\gcd(r_{n-1}, r_{n}) & = \gcd(r_n, 0) = r_n 
+\end{align*}
+
+Let \(d\) be a common divisor of \(a\), \(b\). Then \(d \mid a\) and \(d \mid b\), so \(d \mid ((a - bq) = r) \implies d \mid r \).
+
+Let \(e\) be a common divisor of \(b\), \(r\). Then \(e \mid b\) and \(e \mid r\), so \(e \mid ((bq + r) = a) \implies e \mid a \).
+
+Thus, the set of common divisors of \(a\), \(b\) is the same as the set of common divisors of \(b\), \(r\),
+so their greatest common divisors are equal.
+
+\QED 
+
+\textbf{Example:}
+
+Find \(\gcd(252, 198)\):
+
+\begin{align*}
+	r_{n - 1} & = q_{n - 1} r_n + r_{n + 1} \\
+	252 & = 1 \cdot 198 + 54  \\
+	198 & = 3 \cdot 54 + 36   \\
+	54  & = 1 \cdot 36 + 18   \\
+	36  & = 2 \cdot 18 + 0
+\end{align*}
+
+So, \(\gcd(252, 198) = 18\). 
+
+\subsection{Euclidean Algorithm as Linear Map}
+
+Given \(E := \{(a,b)^T \mid a, b \in \Integers, b \ne 0 \}\) and 
+
+\[
+	\varepsilon: E \to \Integers^{2 \times 1} : 
+	\begin{bmatrix}
+		a \\ 
+		b
+	\end{bmatrix}
+	\mapsto
+	\begin{bmatrix}
+		b \\
+		a \mod b
+	\end{bmatrix}
+\]
+
+Then the Euclidean algorithm can be described as repeated application of \(\varepsilon\) until the second
+component is zero. The first component at that point is the gcd.
+
+\[
+	\varepsilon^{k - 1}
+	\begin{bmatrix}
+		a \\ 
+		b
+	\end{bmatrix}
+	= \varepsilon \circ \cdots \circ \varepsilon
+	\begin{bmatrix}
+		t \\ 
+		0
+	\end{bmatrix}
+\]
+
+\(t = \gcd(a,b)\).
+
+Also, we can express \(\varepsilon\) as a matrix multiplication:
+
+\[
+	\varepsilon
+	\begin{bmatrix}
+		a \\ 
+		b
+	\end{bmatrix}
+	=
+	\begin{bmatrix}
+		0 & 1 \\
+		1 & -q
+	\end{bmatrix}
+	\begin{bmatrix}
+		a \\ 
+		b
+	\end{bmatrix}
+	= 
+	\begin{bmatrix}
+		b \\ 
+		r
+	\end{bmatrix}
+\]
+
+with \(a = qb + r\) and \(q \in \Integers, 0 \le q < |b|\).
+
+\subsection{Bezout Identity}
+
+This is one of the most important properties of the \emph{GCD}. 
+Given \(a, b \in \Integers\), not both zero, there exist integers \(\alpha, \beta \in \Integers\) such that
+
+\[
+	\gcd(a, b) = a\alpha + b\beta
+\]
+
+This equation comes directly from \emph{Euclid's Algorithm}. For the intuition, when writting your iterations 
+you can manipulate them to arrive at the solution.
+
+\subsection{Euclidean Algorithm as Matrix Multiplication}
+
+\textbf{Input:} \(a, b \in \mathbb{Z}\), \(a \neq 0 \neq b\).  
+
+\textbf{Output:} \(t = \gcd(a,b)\) and \(\alpha, \beta \in \mathbb{Z}\) with 
+\(\alpha a + \beta b = t\).
+
+\textbf{Algorithm:}
+
+\begin{enumerate}
+    \item If \(a = 0\), return \(|b|\), \(\alpha = 0\), and 
+    \(\beta = b / |b|\).  
+    If \(b = 0\), return \(|a|\), \(\alpha = a / |a|\), and \(\beta = 0\).
+    
+    \item Compute, for \(r_1 := a\) and \(r_2 := b\), the sequence 
+    \((r_n)\) using Algorithm~5.18, i.e.  
+    \(r_{n-1} = q_{n-1} r_n + r_{n+1}\) with \(q_{n-1} \in \mathbb{Z}\) 
+    and \(r_k = 0\).
+    
+    \item Define 
+    
+	\[
+		A_n := 
+		\begin{bmatrix}
+			0 & 1 \\
+			1 & -q_{n-1}
+		\end{bmatrix}	
+	\]
+
+	for \(1 \le n \le k - 2\). Then the first row of the matrix \(A_{k - 2} \cdots A_1\) returns the pair \(\alpha. \beta\)
+\end{enumerate}
+
+\subsection{Prime Field}
+
+Given \(p \in \Naturals, p > 1\) is prime, then \(\Integers / p \Integers\) is a field with \(p\) elements. It can also 
+be noted \(\Field_p\)
+
+\textbf{Proof:} 
+
+We need to show that for \(a + p \Integers \ne p \Integers\) there exists some \(b + p \Integers\) such that \((a + p\Integers))(b + p\Integers) = 1 + p\Integers\).
+
+For \(a \notin p \Integers\) we know that \(gcd(a,p) = 1\) thus, we do not have zero divisors.
+
+\subsection{Implication of Prime Numbers}
+
+For \(a, b \in \Integers\) and a prime number \(p\)
+
+\[
+	p \mid ab \implies (p \mid a ) \lor (p \mid b)
+\]
+
+\textbf{Proof:} 
+
+``\(\Rightarrow\)'' Let \(p\) be a prime and \(a,b \in \Integers\)
+with \(p \mid ab\). Assume \(p \nmid a\). Then there exist \(\alpha,\beta \in \Integers\)
+with \(\alpha p + \beta a = 1\). Since \(p \mid ab\), it follows that
+\(p \mid \alpha p b + \beta ab = (\alpha p + \beta a)b = b\).
+
+``\(\Leftarrow\)'' Let \(c \in \Naturals\) be a divisor of \(p\). Then there exists
+\(d \in \mathbb{N}\) with \(p = cd\). In particular \(1 \le c \le p\) and
+\(1 \le d \le p\) and \(p \mid cd\). By our assumption it follows that
+\(p \mid c\) or \(p \mid d\), i.e. \(p \le c\) or \(p \le d\). Together with
+\(c \le p\) and \(d \le p\) this forces \(c = 1\) or \(c = p\). Hence \(p\)
+has no nontrivial divisors and is prime.
+
+\QED
 
 \subsection{Fundamental Theorem of Arithmetic}
 
@@ -37,6 +256,22 @@ That is,
 \[
 	4312 = 2^3 \cdot 7^2 \cdot 11
 \]
+
+Approach to the proof: 
+
+\begin{itemize}
+
+	\item The Fundamental Theorem of Arithmetic says that every integer greater than 1 can be factored 
+		 uniquely into a product of primes.
+	
+	\item Euclid’s lemma says that if a prime divides a product of two numbers, it must divide at least 
+		  one of the numbers.
+	
+	\item The least common multiple \([a, b]\) of nonzero integers \(a\) and \(b\) is the smallest positive 
+	      integer divisible by both \(a\) and \(b\).
+
+\end{itemize}
+
 
 \subsection{Lemmas}
 
@@ -73,7 +308,7 @@ By the \(n=2\) case, either \(p \mid a_n\) or \(p \mid a_1a_2 \cdots a_{n-1}\), 
 
 \QED
 
-\subsection{Proof of the Fundamental Theorem}
+\subsection{Proof of the Fundamental Theorem of Arithmetic}
 
 \textbf{Existence:}
 
@@ -103,7 +338,7 @@ If \(m_1 > n_1\), divide both sides by \(q_1^{n_1}\):
 
 But then \(p_1\) divides LHS but not RHS, contradiction. So \(m_1 = n_1\). Cancel and repeat.
 
-Eventually, all \(p_i\) match with some \(q_i\), and the exponents are equal. So the factorizations 
+Eventually, all \(p_i\) match with some \(q_i\), and the exponents are equal. So the factorizations
 are the same up to order.
 
 \QED
@@ -119,11 +354,13 @@ divisible by both.
 	[6, 4] = 12, \quad [33, 15] = 165
 \]
 
-\textbf{Fact:}
+\subsection{Multiplication Property of the Least Common Multiple}
 
 \[
 	[a, b] \cdot \gcd(a, b) = ab
 \]
+
+\textbf{Proof:}
 
 Let:
 
@@ -150,3 +387,25 @@ So:
 \[
 	\gcd(36, 90) = 18, \quad [36, 90] = 180, \quad 36 \cdot 90 = 32400 = 18 \cdot 180
 \]
+
+
+\subsection{Second Proof of the Fundamental Theorem of Arithmetic}
+
+Given \(n \in \Naturals\) has \(1\) as a prime factor. Suppose that every natural number 
+smaller than \(n\) can be factorized into primes. 
+
+If \(n\) is a prime number then it is itself its prime factorization. Else. there 
+are \(b, c \in \Integers\) with \(n = bc\) \(1 < b, c<n\). By our induction's supposition, 
+\(b\) and \(c\) have also a prime factorization.
+
+\[
+	b = p_1 \cdot p_2 \cdots p_r \text{ and } c = q_1 \cdot q_2 \cdots q_s
+\]
+
+with \(p_i, p_j\) \(1 \le \le r\) and \(1 \le j \le s\) prime numbers. The product is 
+the prime factorization of the \(n\).
+
+The uniqueness is given by \emph{the implication of prime numbers}.
+
+\QED
+

@@ -4,6 +4,12 @@
 Continuity describes functions whose values change smoothly, without abrupt jumps or breaks. 
 This concept is fundamental in calculus, analysis, and fixed point theory.
 
+Given \(f\) in a neighborhood \(a\) defined. \(f\) is \emph{continuous} if the limit 
+
+\[
+    \lim_{x \to a} f(x) = f(x_0)
+\]
+
 \subsection{Definition of Continuity at a Point}
 
 A function \(f\) is \emph{continuous} at a point \(x_0\) if:
@@ -68,6 +74,22 @@ Choose:
 \[
     \delta = \min\left\{\frac{x_0}{2}, \frac{x_0^2 \varepsilon}{2} \right\}
 \]
+
+\subsection{Characterization using sequences}
+
+Let \(f : (a,b) \to \mathbb{R}\) be a function and \(x_0 \in (a,b\).
+The function \(f\) is continuous at \(x_0\) if and only if for every sequence 
+\(\{x_n\}_{n\in \Naturals}\) with \(x_n \in (a,b)\) for all \(n \in \Naturals\)
+and \(\lim_{n\to\infty} x_n = x_0\), it holds that 
+\(\lim_{n\to\infty} f(x_n) = f(x_0)\).
+
+\subsection{Left and Right Continuity}
+
+Let \( f : D \to \Reals \) be a function and \( x_0 \in D \).
+The function \( f \) is called \emph{left-continuous} at \( x_0 \) if
+\( f \) is continuous on \( D \cap (-\infty, x_0] \).
+Analogously, \( f \) is \emph{right-continuous} at \( x_0 \) if
+\( f \) is continuous on \( D \cap [x_0, \infty) \).
 
 \subsection{Rules of Continuity}
 

@@ -5,16 +5,50 @@ The exponential function and its related functions such as sine, cosine, and the
 are fundamental in both pure and applied mathematics. This section explores these functions through their 
 series expansions and interrelationships.
 
+\[
+    \exp(x) := e^x :=\lim_{n \to \infty} \left(1 + \frac{x}{n}\right)^n
+\]
+
 \subsection{Exponential Function as a Series}
 
 The exponential function \(e^x\) is defined as an infinite series:
 
 \[
-    e^x = \sum_{n=0}^{\infty} \frac{x^n}{n!}
+    e^x := \sum_{n=0}^{\infty} \frac{x^n}{n!}
     = 1 + \frac{x}{1!} + \frac{x^2}{2!} + \frac{x^3}{3!} + \cdots
 \]
 
 This series converges for all real and complex values of \(x\).
+
+\subsection{Properties of the Exponential}
+
+\begin{itemize}
+
+    \item \(\exp(x) < \exp(y), \forall x, y \in \Reals : x < y\)
+
+    \item \(\exp(x) \ge 1 + x, \forall 1 + x\)
+
+    \item \(|\exp(x) - 1| \le \frac{|x|}{1 - |x|}\) for all \(x \in \Reals\) such that \(|x| < 1\)
+
+    \item For a large enough \(x\): \(\exp(x) > x^n, \forall n \in \Naturals\) and \(x > 4n^2\)
+
+\end{itemize}
+
+\subsection{General Definition}
+
+For \(a > 0\) and \(x \in \Reals\) we define 
+
+\[
+    a^x := \exp(x \ln(x)) = e^{x \ln(a)}
+\]
+
+\subsection{Difference of Exponentials}
+
+For \(a,b \in \Reals\) and \(n \in \Naturals\)
+
+\[
+    a^n - b^n = (a - b) \sum_{k = 1}^{n} a^{n - k} b^{k - 1}
+\]
 
 \subsection{Sine and Cosine Definitions with \texorpdfstring{\(e\)}{e}}
 

@@ -93,6 +93,8 @@ In this case, we write:
     \lim_{n \to \infty} a_n = L
 \]
 
+This also means that \(\{a_n - a\}_{n = 1}^{\infty}\) is a zero sequence.
+
 \subsubsection{Properties of convergent Sequences}
 
 Given the convergent sequences \(\{a_n\}_{n = 1}^{\infty}, \{b_n\}_{n = 1}^{\infty}\) with \(a\) and \(b\) as the respective limits. 
@@ -114,6 +116,9 @@ For a bounded sequence \(\{c_n\}_{n = 1}^{\infty}\) then the following applies:
 
 \end{itemize}
 
+\subsection{Convergence by Power of One Half}
+
+
 \subsection{Boundness of Convergent Sequences}
 
 Let \(a_n\) be a convergent sequence then \(a_n\) is bounded 
@@ -125,7 +130,7 @@ Because \(a_n\) converges, it has a limit \(a\). Now, let \(\varepsilon = 1\), a
 \begin{align*}
     -\varepsilon <|a_n - a| &< \varepsilon \\ 
    -1 < a_n - a &< 1 \\ 
-    a - 1 , a_n  &< 1 + a \textbf{ for all } n > n_0 
+    a - 1 , a_n  &< 1 + a \text{ for all } n > n_0 
 \end{align*}
 
 Until, this point we have proof the boundness for all \(n > n_0\). To guarantee that the sequence is also bounded 
@@ -155,7 +160,7 @@ A sequence \((a_n)\) is a \emph{Cauchy sequence} if for every \(\varepsilon > 0\
 integer \(n_0\) such that for all \(n, m \ge n_0\):
 
 \[
-    \forall \varepsilon > 0\ \exists n,m \in \Naturals: |a_n - a_m| < \varepsilon\ \text{with } n < m
+    \forall \varepsilon > 0 \exists n,m,N \in \Naturals: |a_n - a_m| < \varepsilon\ \text{with } n, m \ge N
 \]
 
 Every convergent sequence is a Cauchy sequence. In complete metric spaces (like \(\Reals\)), the 
@@ -172,6 +177,43 @@ Let \(a_i = \frac{1}{i}\) and \(\varepsilon = 0.01\). We want to find \(i_0\) su
     \Rightarrow \frac{1}{i} < 0.01 \Rightarrow i > 100
     \Rightarrow i_0 = 101
 \]
+
+\subsection{Proof that every Convergent Sequence is a Cauchy Sequence}
+
+Given a sequence \(a_n\) then \(a_n\) is convergent if and only if it is a Cauchy sequence. 
+
+\(\rightarrow :\) \(a_n\) is convergent therefore, the following holds 
+
+\[
+    \forall \varepsilon > 0 \exists N \in \Naturals: \forall n \ge N |a_n - L| < \varepsilon
+\]
+
+Thus, we can use the triangle inequality for our definition of the Cauchy sequence and the following 
+definition 
+
+\[
+    |a_n - a| < \frac{\varepsilon}{2} 
+\]
+\[
+    |a_m - a| < \frac{\varepsilon}{2} 
+\]
+
+This is allowed we know that \(a_n\) converges. We choose the max of each of the indices for which the inequality holds. Then
+
+\[
+    |a_n - a_m + a - a| \le |a_n - a| + |a_m - a| < 2\frac{\varepsilon}{2} = \varepsilon
+\]
+
+\(\leftarrow :\) \(a_n\) is a Cauchy sequence, thus 
+
+\[
+    \forall \varepsilon > 0 \exists n,m,N \in \Naturals: |a_n - a_m| < \varepsilon \text{ with } n, m \ge N
+\]
+
+\(a_n\) is bounded because else \( |a_n - a_m| < \varepsilon \) will not hold. Therefore, by Bolzano-Weierstraß Theorem 
+it must converge 
+
+\QED 
 
 \subsection{Definition of \texorpdfstring{\(\varepsilon\)}{ε}-Neighborhood}
 
@@ -253,12 +295,12 @@ Thus, 1 is in fact an upper bound.
 For the second part, let \(\varepsilon > 0\), and we want to prove that \(\exists n \in \Naturals : \frac{n}{n + 1} > 1 - \varepsilon\)
 
 \begin{align*}
-    frac{n}{n + 1} > 1 - \varepsilon \\ 
-    \varepsilon >  1 - frac{n}{n + 1} \\ 
-    \varepsilon >  frac{n + 1 - n}{n + 1} \\ 
-    \varepsilon >  frac{1}{n + 1} \\ 
-    n + 1 >  frac{1}{\varepsilon} \\ 
-    n  >  frac{1}{\varepsilon}  - 1 
+    \frac{n}{n + 1} > 1 - \varepsilon \\ 
+    \varepsilon >  1 - \frac{n}{n + 1} \\ 
+    \varepsilon >  \frac{n + 1 - n}{n + 1} \\ 
+    \varepsilon >  \frac{1}{n + 1} \\ 
+    n + 1 >  \frac{1}{\varepsilon} \\ 
+    n  >  \frac{1}{\varepsilon}  - 1 
 \end{align*}
 
 By the Archimedian principle we now that we can always find a bigger natural number such that \(n > \frac{1}{\varepsilon} - 1\)
@@ -388,6 +430,19 @@ Therefore, the supremum is the limit.
 
 \QED
 
+\subsection{Monotony}
+
+We define a real valued function \(f\) as \emph{monotone increasing/decreasing}
+
+\[
+    x < y \implies f(x) \le f(y)
+\]
+\[
+    x < y \implies f(x) \ge f(y)
+\]
+
+We call it \emph{strictly monotone increasing or decreasing} if \(f(x) < f(y)\) or \(f(x) > f(y)\).
+
 \subsection{Monotonicity by Difference and Quotient}
 
 A is considered \emph{monotone} if either for all \(n \in \Naturals\) the following holds 
@@ -416,12 +471,14 @@ A is considered \emph{monotone} if either for all \(n \in \Naturals\) the follow
 
 \end{itemize}
 
-\subsection{Divergence (Definition)}
+\subsection{Divergence}
 
 A sequence \emph{diverges} if it does not converge. That is, there is no real number \(L\) such that:
 
+If it diverges towards some infinity then 
+
 \[
-    \lim_{n \to \infty} a_n = L
+    \forall M \in \Reals \exists n,N \in \Naturals : |a_n| \ge |M| \forall n \ge N
 \]
 
 \begin{itemize}
@@ -471,7 +528,7 @@ For each \(k \in \Naturals\) exists some \(N(k) \in \Naturals\) such that \(N(k)
 and 
 
 \[
-    x_{N(k)} \in \in (x_0 - \frac{1}{k}, x_0 + \frac{1}{k})
+    x_{N(k)} \in  (x_0 - \frac{1}{k}, x_0 + \frac{1}{k})
 \]
 
 Now we set 
@@ -577,6 +634,8 @@ This is a contradiction. Thus, such a limit can not exist
 \subsection{Bolzano-Weierstraß Theorem}
 
 Every bounded sequence in \(\Reals\) has at least one convergent subsequence.
+
+Equivalently, every bounded sequence of real numbers has at least one accumulation point.
 
 \textbf{Proof:}
 
@@ -751,10 +810,6 @@ Given the zero sequences \(\{a_n\}_{n = 1}^{\infty}, \{b_n\}_{n = 1}^{\infty}\) 
     \item \(\{a_n \cdot c_n\}_{n = 1}^{\infty}\) is a zero sequence.
 
 \end{itemize}
-
-\textbf{Proofs:}
-
-
 
 \subsection{The Monotony Principle}
 
@@ -939,3 +994,42 @@ asymptotically equal, denoted by \(a_n \sim b_n\), if
 
 provided that \(b_n \neq 0\) for all sufficiently large \(n\). Asymptotic equality implies that the sequences behave similarly as \(n\) approaches infinity.
 
+\subsection{Boundness of a Function}
+
+A real valued function \(f\) is \emph{bounded bellow} if 
+
+\[
+    \forall x \in \mathcal{D}(f) f(x) \ge m
+\]
+
+and \emph{bounded above} if 
+
+\[
+    \forall x \in \mathcal{D}(f) f(x) \le m
+\]
+
+\subsection{Inverse function due to Monotony}
+
+Given a strictly monotonic function \(f\). Then \(f\) has an inverse.
+
+\textbf{Proof:}
+
+Given \(x_1 < x_2\) or \(x_1 > x_2\) then due to the monotony 
+
+\[
+    f(x_1) < f(x_2) \text{ or } f(x_1) > f(x_2)
+\]
+
+Thus, \(f(x_1) = f(x_2) \iff x_2 = x_1\)
+
+\QED
+
+\subsection{Domain Restriction}
+
+Given \(f: A \to B\) and \(C \subsetneq A\) then 
+
+\[
+    g := f_{\mid C}: C \to B, x \mapsto f(x)
+\]
+
+\(f\) with \emph{restricted} domain. The case with \(A \subsetneq C\) will be the \emph{expansion}.

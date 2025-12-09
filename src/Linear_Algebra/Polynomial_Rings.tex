@@ -19,6 +19,12 @@ In general for \(n \ge 0\)
     c_n := \sum_{i = 0}^{n} a_i b{n - i} = a_0 b_{n} + a_1 b_{n - 1} + cdots + a_n b_0
 \]
 
+And the addition as 
+
+\[
+    (a_i)_{i \in \Naturals} + (a_i)_{i \in \Naturals} = (a_i + b_i)_{i \in \Naturals}
+\]
+
 This \((\Field^{\Integers_{\ge 0}}, +, \cdot)\) is also noted as \(\Field[[\Field]]\) and 
 called the \emph{power-ring} over \(\Field\). Also, instead of \((a_0, a_1, \dots)\) we write 
 
@@ -65,8 +71,23 @@ For \(f := (1,2,3,4, \dots) = 1 + 2X + 3X^2 + 4X^3 \)
 The \emph{degree} of a polynomial is given by the \(n\) in \(\sum_{i = 0}^{n} a_i X^i\) with \(f \ne \vec{0}\).
 Also, note that we define \(\text{def}(0):= -\infty\)
 
+\emph{Degree Addition}
 
-\subsection{Properties}
+For \(f,g \in \Field[X] \setminus \{0\}\) the following holds 
+
+\[
+    \deg(f + g) \le \max(\deg(f),\deg(g))
+\]
+
+\emph{Degree Multiplication}
+
+For \(f,g \in \Field[X] \setminus \{0\}\) the following holds 
+
+\[
+    \deg(fg) \le \max()\deg(f) + \deg(g)
+\]
+
+\subsection{Properties of the Polynomial Ring}
 
 \emph{Neutral Element}
 
@@ -110,13 +131,6 @@ gives a clear identification of \(\Field\) with
 
 is a vector space.
 
-\emph{Degree Multiplication}
-
-For \(f,g \in \Field[X] \setminus \{0\}\) the following holds 
-
-\[
-    \deg(fg) = \deg(f) + \deg(g)
-\]
 
 \subsection{Field Algebra}
 
@@ -211,5 +225,86 @@ which is a contradiction. Thus, \(q = \hat{q}\) and \(r = \hat{r}\).
 
 \QED
 
+\subsection{Greatest Common Divisor for Polynomials}
+
+For two polynomials \(f,g \Field[X]\) with \((f,g \ne (0,0))\). The polynomial 
+\(t \in \Field[X]\) with 
+
+\begin{itemize}
+
+    \item \(t \mid f\) and \(t \mid g\)
+
+    \item For all \(c \in \Field[X]\) with \(c \mid f\) and \(c \mid g\) holds \(c \mid t\)
+
+\end{itemize}
+
+is considered the \emph{greatest common divisor} of \(f\) and \(g\). If \(t = 1\) 
+then \(f,g\) are \emph{relative prime}.
+
+\subsection{More Properties of Polynomials}
+
+\begin{itemize}
+
+    \item In \(\mathbb{Z}\) one has \(|ab| = |a||b|\); in \(\Field[X]\) one has 
+    \(\deg(fg) = \deg(f) + \deg(g)\).
+
+    \item The gcd of two polynomials \(f, g \in \Field[X]\) with 
+    \((f,g) \neq (0,0)\) is unique only up to factors in \(\Field[X]^{\ast}\), 
+    that is, up to factors in \(\Field[X]\) of degree \(0\). Notation: 
+    \(t = \gcd(f,g)\) actually also denotes every multiple \(a t\) with 
+    \(a \in \Field \setminus \{0\}\) as a gcd of \(f\) and \(g\).
+
+    \item In both rings there is a division with remainder, 
+    and therefore \(\Field[X]\) also has a Euclidean algorithm for computing 
+    the gcd and an extended Euclidean algorithm for determining Bézout 
+    coefficients. Here the degree of a polynomial plays the role of the 
+    absolute value in \(\Integers\). We give the first part of the algorithm again.
+
+    \item Furthermore, one also has the analogue of prime numbers in 
+    \(\Field[X]\), namely irreducible polynomials, and correspondingly a unique prime factorization for 
+    polynomials.
+
+\end{itemize}
+
+\subsection{Euclidean Algorithm for Polynomials}
+
+\textbf{Input:} \(f, g \in \Field[X]\), \((f, g) \neq (0,0)\).
+
+\textbf{Output:} The greatest common divisor \(t\) of \(f\) and \(g\).
+
+\textbf{Algorithm:}
+
+\begin{enumerate}
+
+    \item If \(f = 0\), then return \(g\). If \(g = 0\), return \(f\).
+
+    \item Set \(r_1 := f\), \(r_2 := g\), \(k := 2\).
+
+    \item As long as \(r_k \neq 0\), define \(r_{k+1} := r_k\).
+
+    \item As soon as \(\deg(r_k) = 0\), return \(r_{k-1}\).
+
+\end{enumerate}
+
+\textbf{Example:}
 
 
+\subsection{Reducible Irreducible}
+
+A polynomial \(p \in \Field[X] \setminus \{0\}\) is called \emph{irreducible} if 
+\(p\) is not a unit (that is, \(p \notin \Field[X]^{\ast}\)) and if for 
+\(f, g \in \Field[X]\) the following holds: 
+\(p = f \cdot g \Rightarrow f \in \Field[X]^{\ast} \,\vee\, g \in \Field[X]^{\ast}\).
+An element \(h \in \Field[X] \setminus \{0\}\) for which 
+\(h = f \cdot g\) holds with \(f, g \in \Field[X] \setminus \Field[X]^{\ast}\) 
+is called \emph{reducible}.
+
+\subsection{Normalized}
+
+A polynomial \(f \in \Field[X] \setminus \{0\}\) with \(f = \sum_{i = 0}^{n} a_i X^i\) is considered 
+\emph{normalized} if \(a_n = 1\).
+
+\subsection{Factorization Property}
+
+Each polynomial \(f \in \Field[X] \setminus \{0\}\) has from to one to the order of the factors unique 
+factorizations in a normalized irreducible form and a unit.
