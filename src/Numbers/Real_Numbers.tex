@@ -62,32 +62,6 @@ Some proofs of these properties can be found in the section about the algebraic 
 
 \end{itemize}
 
-\subsection{Division Algorithm}
-
-For \(a, b \in \Integers, a \ge b, b \ne 0 \exists q,r \in Integers : a = bq + r\) with 
-\(0 \le r < q\).
-
-\textbf{Proof:}
-
-For \(a = b, q = 1, r = 0\) which are well-defined by the axioms. For \(a > b\) we have 
-that if \(a\) is a multiple of \(b\) then \(r = 0\). Lastly, for the last case, let us assume there exists 
-\(bq + r = a\) and also there exist \(b'q + r' = a\) then 
-
-\begin{align*}
-	bq + r &= b'q + r' \\ 
-	r &= b'q + r' - bq
-\end{align*}
-
-Then, \(0 \le r < q \implies  -q < r < q \), thus 
-
-\[
-	-q < b'q + r' - bq < q  \implies b'q - bq = 0
-\]
-
-Thus, the theorem is proven. 
-
-\QED 
-
 \subsection{Existence of Solutions}
 
 Given \(a,b \in \Reals\), then 

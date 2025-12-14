@@ -264,8 +264,26 @@ where \(h_k\) is the absolute frequency of \(k\)
 \subsection{Classified Data}
 
 When dealing with a lot of data sometimes it is easier to put it into
-\emph{classes} \(A_1, \dots, A_n\) which represent a certain range \([a,b], (a,b)\) or 
-some mix interval with a corresponding \(h_i,r_i, \alpha_i\) (absolute f., relative f. and class range \(b - a\) )
+\emph{classes} \(A_1, \dots, A_k\) which represent a certain range \([a,b], [a,b),\) etc. 
+with a corresponding \emph{absolute frequency} \(h_i\), \emph{relative frequency} \(r_i\), \emph{class middle} \( \frac{a_{i + 1} - a_{i}}{2} = \alpha_i\).
+
+For the next definitions, the following example table will be used.
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{c|c|c|c|c}
+\textbf{i} & \textbf{Duration} & \(\mathbf{h_i}\) & \(\mathbf{r_i}\) & \(\mathbf{F_i}\) \\ \hline
+1 & \([0, 2)\)   & 1650 & 0.3300 & 0.3300 \\
+2 & \([2, 4)\)   & 1111 & 0.2222 & 0.5522 \\
+3 & \([4, 6)\)   & 720  & 0.1440 & 0.6962 \\
+4 & \([6, 8)\)   & 508  & 0.1016 & 0.7978 \\
+5 & \([8, 10)\)  & 332  & 0.0664 & 0.8642 \\
+6 & \([10, 15)\) & 427  & 0.0854 & 0.9496 \\
+7 & \([15, 30]\) & 252  & 0.0504 & 1.0000 \\
+\end{tabular}
+\end{table}
+
+\(F_i = \sum_{k = 1}^{i} r_k\) 
 
 \emph{Empirical Distribution Function}
 
@@ -291,10 +309,223 @@ some mix interval with a corresponding \(h_i,r_i, \alpha_i\) (absolute f., relat
     q_p = a_i + \frac{p - F_{i - 1}}{F_i - F_{i - 1}}(a_{i + 1} - a_i)
 \]
 
-\(F_i\) is the commutative probabiltity of the relative probabiltity. 
+\textbf{Example:}
+
+\(i = 2\), \(A_{2} = [2,4)\) with \(q = 0.5\)
+
+\[
+    2 + \frac{0.5 - 0.33}{0.5522 - 0.33}(4 - 2) = 3.53
+\]
+
 
 \emph{Mode Class}
+
+With \(A_i = \text{interval}(a_i, a_{i + 1})\) 
 
 \[
     A_i \text{ with } h_i = \max_{j = 1}^{k} h_j
 \]
+
+\subsection{Samples via Random Variables}
+
+Let \(\mathcal{X} \subset \Reals^{n}\) and \(X : \Omega \to \mathcal{X}\) be a 
+random variable.  A \emph{sample is a realization} of \(X = (X_{1}, \ldots, X_{n})^{T}\), i.e., \(X(\omega)\) for some \(\omega \in \Omega\).
+
+\begin{itemize}
+
+    \item The set \(\mathcal{X}\) is called the \emph{sample set}.
+
+    \item The samples \(x_1, \dots,,x_n\) correspond to the coordinates of the vector
+    \[
+        \begin{bmatrix}
+            X_1(\omega) \\ 
+            \vdots \\ 
+            X_n{\omega}
+        \end{bmatrix} 
+        = 
+        X(\omega)
+    \]
+\end{itemize}
+
+\subsection{Statistical Model}
+
+Let \(\mathcal{X} \subset \Reals^{n}\) and \(X : \Omega \to \mathcal{X}\) be a random variable.
+
+\begin{itemize}
+
+    \item A \emph{statistical model} is a family of probability measures \(P\) on \(\mathcal{X}\).
+
+    \item If \(P = \{ P_{\theta} : \theta \in \Theta \}\), then \(\Theta\) is called the parameter space of \(P\), and \(\theta \in \Theta\) is referred to as a parameter.
+
+\end{itemize}
+
+\textbf{Example:}
+
+\(n\)-fold coin toss  
+
+\begin{itemize}
+
+    \item Sample space: \(\mathcal{X} = \{0,1\}^{n}\)
+
+    \item \(X_{i} \sim \mathrm{Ber}(p)\) (with values in \(\{0,1\}\))
+
+    \item \(X = (X_{1}, \ldots, X_{n})^{T}\) is a random variable in \(\{0,1\}^{n}\)
+
+    \item Sample: \(X(\omega) = (x_{1}, \ldots, x_{n}) \in \{0,1\}^{n}\)
+
+    \item Informally: “Let \(x_{1}, \ldots, x_{n}\) be a sample...”
+
+    \item Marginal distribution of the independent tosses: \(\Prob_{p}(X_{1} = 1) = p\)
+
+    \item Joint distribution: \(\Prob_{p}^{n}\)
+
+    \item Statistical model for the coin toss:
+
+    \[
+        P = \{ \Prob_{p}^{n} : p \in (0,1) \}
+    \]
+
+\end{itemize}
+
+\subsection{Estimator}
+
+Let \(X : \Omega \to \mathcal{X}\) be a random variable with statistical model
+\(P = \{ P_{\theta} : \theta \in \Theta \}\).
+
+\begin{enumerate}
+
+    \item A mapping \(T_{n} : \mathcal{X} \to \Theta\), or the random variable \(T_{n}(X)\),
+    is called an \emph{estimator} for \(\theta\).
+
+    \item An estimate is a realization of the estimator, i.e.,
+    \(T_{n}(X)(\omega)\) for some \(\omega \in \Omega\).
+
+    \item If for the true distribution of \(X\) we have \(\Prob_{X} = \Prob_{\theta_{0}}\),
+    then \(\theta_{0}\) is called the true parameter.
+
+\end{enumerate}
+
+\subsection{Distortion}
+
+Let \(X : \Omega \to \mathcal{X}\) be a random variable with statistical model  
+\(P = \{ P_{\theta} : \theta \in \Theta \}\). For \(\theta \in \Theta\), let \( \Expc_{\theta} \) denote the
+expectation with respect to \(P_{\theta}\), and let \(\Var_{\theta}\) denote the corresponding variance.
+
+\begin{itemize}
+
+    \item The \emph{bias} of an estimator \(T_{n}\) is
+    \[
+        \mathrm{Bias}_{T_{n}}(\theta)
+        = \Expc_{\theta}[T_{n}(X)] - \theta 
+    \]
+
+    \item An estimator is called \emph{unbiased} if
+    \(\mathrm{Bias}_{T_{n}}(\theta) = 0\) for all \(\theta \in \Theta\), i.e.,
+    \[
+        \Expc_{\theta}[T_{n}(X)] = \theta
+    \]
+
+    \item A sequence of estimators \((T_{n})_{n \in \mathbb{Z}}\) is called consistent if
+    for all \(\varepsilon > 0\) and all \(\theta \in \Theta\),
+    \[
+        \lim_{n \to \infty} 
+        \Prob_{\theta}\!\left( |T_{n}(X) - \theta| > \varepsilon \right)
+        = 0 
+    \]
+
+\end{itemize}
+
+\subsection{Estimators for Identical, Independent Random Variables}
+
+Let \(X : \Omega \to \mathcal{X}\) be a random variable with  
+\(X = (X_{1}, \ldots, X_{n})^{T}\) for independent, identically distributed
+random variables \(X_{1}, \ldots, X_{n}\).
+
+\begin{enumerate}
+
+    \item If the expectation of \(X_{1}\) exists, then the sample mean
+
+    \[
+        \overline{X}_{n}
+    \]
+
+    is an unbiased and consistent estimator for \(\Expc[X_{1}]\).
+
+    \item If the variance of \(X_{1}\) exists and the expectation  
+    \(\mu = \Expc[X_{1}]\) is known, then
+
+    \[
+        \hat{\sigma}_{n}^{2}
+        = \frac{1}{n} \sum_{i=1}^{n} (X_{i} - \mu)^{2}
+    \]
+
+    is an unbiased and consistent estimator for \(\Var(X_{1})\).
+
+    \item If the variance of \(X_{1}\) exists and the expectation of \(X_{1}\)
+    is unknown, then the sample variance
+
+    \[
+        s_{n}^{2}
+        = \frac{1}{n-1} \sum_{i=1}^{n} (X_{i} - \overline{X}_{n})^{2}
+    \]
+
+    is an unbiased and consistent estimator for \(\Var(X_{1})\).
+
+\end{enumerate}
+
+\subsection{Maximum Likelihood}
+
+Let \(X = (X_{1}, \ldots, X_{n})^{T} : \Omega \to \mathcal{X}\) be a random variable with
+statistical model \(P = \{ P^{n}_{\theta} : \theta \in \Theta \}\).
+Furthermore, let \(x_{1}, \ldots, x_{n}\) be a sample.
+The function \(L : \Theta \to [0,1]\), defined by
+
+\[
+    L(\theta) = 
+    \begin{cases}
+    \Prob_{\theta} (X_1 = x_1) \cdot \dots \cdot \Prob_{\theta} (X_n = x_n) &\text{ for disc. random vars.} \\ 
+    f_{\theta} (x_1) \cdot \cdots \cdot f_{\theta} (x_n) &\text{ for cont. random vars.}
+    \end{cases}
+\]
+
+is called the \emph{likelihood function}.
+
+The parameter \(\hat{\theta}\) that maximizes \(L(\theta)\) is called the
+\emph{maximum-likelihood estimate}.
+
+The mapping \(\hat{\theta}(x_{1}, \ldots, x_{n})\) is called the
+\emph{maximum-likelihood estimator}.
+
+\subsection{Log-Likelihood-Estimator}
+
+The likelihood function can be pretty challenging to optimize, therefore, 
+the less complicated \emph{Log-Likelihood-function} is often used for maximation
+problem. 
+
+\[
+    l(\theta) = 
+    \begin{cases}
+        \sum_{i = 1}^{n} \log(\Prob_{\theta} (X_i = x_i)) &\text{ for disc. random vars.} \\
+        \sum_{i = 1}^{n} \log( f_\theta(x_i)) &\text{ for cont. random vars.}
+    \end{cases}
+\]
+
+\subsection{Confidence Interval}
+
+Let \(X = (X_{1}, \ldots, X_{n})^{T} : \Omega \to \mathcal{X}\) be a random variable with
+statistical model \(P = \{ \Prob^{n}_{\theta} : \theta \in \Theta \}\).
+Furthermore, let \(x_{1}, \ldots, x_{n}\) be a sample and let \(\alpha \in [0,1]\).
+
+A mapping \(I\) that assigns to each sample
+\(x = (x_{1}, \ldots, x_{n})^{T} \in X\) a subset \(I(x) \subset \Theta\)
+is called a \((1 - \alpha)\)-confidence region for \(\theta\) if
+
+\[
+    \Prob_{\theta}\bigl( \theta \in I(X_{1}, \ldots, X_{n}) \bigr)
+    \ge 1 - \alpha
+\]
+
+for all \(\theta \in \Theta\).
+
+If \(\Theta \subset \Reals\) and \(I(x)\) is an interval for all \(x \in X\),
+then \(I\) is called a \((1 - \alpha)\)-\emph{confidence interval}.

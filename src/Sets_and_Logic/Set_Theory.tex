@@ -987,6 +987,123 @@ the process multiple times.
 \end{itemize}
 
 \textbf{Proof I:}
+We give a proof by contradiction.
+
+Assume the Cantor set is countable. Then there exists a surjective function
+
+\[
+	c : \Naturals \to \mathcal{C}.
+\]
+
+After the first step of the Cantor construction we have
+
+\[
+	A_{1} = [0,\tfrac{1}{3}] \cup [\tfrac{2}{3}, 1].
+\]
+
+Since
+
+\[
+	c(1) \in \mathcal{C} \subset A_{1},
+\]
+
+the point \(c(1)\) lies in exactly one of the two disjoint intervals.  
+We choose the other interval and call it \(I_{1}\).
+
+Thus:
+
+\begin{itemize}
+
+	\item \(I_{1} \subset A_{1}\),
+
+	\item \(I_{1}\) is closed,
+
+	\item \(c(1) \notin I_{1}\).
+
+\end{itemize}
+
+
+For the inductive step, assume there exists a closed interval
+
+\[
+	I_{n} \subset A_{n} \quad \text{with} \quad c(n) \notin I_{n}.
+\]
+
+When passing from \(A_{n}\) to \(A_{n+1}\), the middle third of each interval is removed.
+Therefore, \(I_{n}\) splits into exactly two disjoint closed subintervals of \(A_{n+1}\).
+
+Since \(c(n+1)\) can lie in only one of these two intervals, we choose the other and call it \(I_{n+1}\).
+
+Thus:
+
+\begin{itemize}
+
+	\item \(I_{n+1} \subsetneq I_{n}\),
+
+	\item \(I_{n+1}\) is closed and non-empty,
+
+	\item \(c(n+1) \notin I_{n+1}\).
+
+\end{itemize}
+
+
+By construction the nested sequence
+
+\[
+	I_{1} \supsetneq I_{2} \supsetneq I_{3} \supsetneq \cdots
+\]
+
+is obtained, and the lengths satisfy
+
+\[
+	|I_{n}| = 3^{-n}.
+\]
+
+Thus, the lengths converge to \(0\).
+
+
+Since the intervals are closed, bounded, nested, and their lengths tend to \(0\), the interval-nesting principle implies:
+
+\[
+	\bigcap_{n=1}^{\infty} I_{n} \neq \varnothing.
+\]
+
+There exists exactly one point
+
+\[
+	x \in \bigcap_{n=1}^{\infty} I_{n}.
+\]
+
+Since each \(I_{n} \subset A_{n}\), it follows that
+
+\[
+	x \in \mathcal{C}.
+\]
+
+\subsection*{Contradiction}
+
+Because \(c\) is surjective by assumption, there exists a \(k \in \Naturals\) such that
+
+\[
+	x = c(k).
+\]
+
+However, by our construction \(I_{k}\) was chosen so that
+
+\[
+	c(k) \notin I_{k},
+\]
+
+while at the same time
+
+\[
+	x \in I_{k}.
+\]
+
+This is a contradiction. Thus, the assumption that the Cantor set is countable leads to a contradiction.
+Therefore, the Cantor set has to be uncountable.
+
+\QED 
 
 \textbf{Proof II:}
 

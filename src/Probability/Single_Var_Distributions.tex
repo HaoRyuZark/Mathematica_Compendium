@@ -638,6 +638,12 @@ for the duration of time intervals.
     \end{cases} 
 \] 
 
+Where \(lambda\) our \emph{rate} parameter. 
+
+\[
+    \lambda = \frac{1}{\text{avarage}}
+\]
+
 We also define the distribution function 
 
 \[
@@ -659,18 +665,61 @@ We also have
 \]
     
 
-And even the following property 
+\subsubsection{Memory-less Property of the Exponential Distribution}
+
+This distribution is \emph{memory-less}. This means that the future probabilities of an event are independent 
+of the previous ones. 
+
 
 \[
-    \Prob (X \ge x + y \mid X > y) = e^{\lambda x} = \Prob(X \ge x)
+    \Prob (X \ge x + y \mid X > y) = \Prob(X \ge x)
 \]
 
-This distribution is memory-less. This means that the future probabilities of an event are independent 
-of the previous ones. 
+\subsubsection{The Connection between the Exponential Distribution and the Poisson Process}
+
+A neat connection between these two concepts is that given an exponential distribution 
+over some time \(t\) then the number of events which occurred during that interval is given by a Poisson distribution \(\mathrm{Poi}(\lambda t)\) 
+
+\textbf{Example:}
+
+Emails com at a rate of 5 per minute (\(\lambda = 5\)). What is the probability of waiting \(t\) until the next email?
+
+The probability of getting an email after \(t\) waiting is given by the following exponential distribution
+
+\[
+    \Prob(T > t) = e^{-5}t
+\]
+
+What is the probability of getting no emails in the next \(t\) minutes?
+
+This is given by the following Poisson process 
+
+\[
+    \Prob(k = 0) = \frac{5^0 e^{-5t}}{0!} = e^{-5t}
+\]
+
+\subsection{Gamma Distribution}
+
+This distribution comes directly from the connection between the exponential distribution and the Poisson process.
+Given events \(w_0, \dots, w_n\) with an exponential distribution. The \emph{gamma} distribution gives us the waiting time 
+for the \(r-th\) event. 
+
+\[
+    T_r = \sum_{k = 0}^{r} w_k 
+\]
+
+We denote this as \(T_r \sim \mathrm{gamma}(r, \lambda)\). The probability density function is given by 
+
+\[
+    \Prob(T_r > t) = \Prob(N_t \ge r - 1) = \sum_{k = 0}^{r - 1} \frac{e^{-\lambda t}(\lambda t)^k}{k!} = \cdots = e^{-\lambda t}\frac{\lambda^r t^{r - 1}}{(r - 1)!}
+\]
+
+with \(N_t\) is the number of Poisson events in \(t\).
 
 \subsection{Chi-Square Distribution}
 
-Given a random variable \(X\) with density 
+The square of the \emph{normal distribution} is called the 
+\emph{Chi-Square Distribution} noted as \(\mathcal{N}(a\mu + b, a^2 \sigma^2)\). Given a random variable \(X\) with density 
 
 \[
     f(x) = \frac{1}{2^{\frac{n}{2}} \Gamma \left(\frac{n}{2}\right)} x^{\frac{n}{2 - 1}}e^{\frac{-x}{2}}
@@ -685,6 +734,9 @@ We also have
 \[
     \Var(X) = \Expc[X] 2n
 \]
+
+The probability density function is reached by taking the cumulative density function of the normal distribution which is 
+an Integral, square it, and then we take its derivative.
 
 \subsection{Transformation Theorem for Densities}
 
@@ -719,4 +771,56 @@ If \( q_p \) is not unique, we can make it “unique” by defining the smallest
 \[
     F^{-1}(p) = \inf \{ x \in \Reals : F(x) \ge p \}.
 \]
+
+\subsection{The Moment Generating Function}
+
+The \(n-th\)\emph{moment} of a distribution are given by \(\Expc[X^n]\). We also 
+know that the first moment is the mean and the variance is closely related to the second moment.
+The moments \emph{uniquely} determine the distribution.
+
+The \emph{moment generating function} is defined as 
+
+\[
+    M(t) = 
+    \begin{cases}
+        \sum_{x} e^{tx} \Prob(X = x) & \text{ if } X \text{ discrete} \\
+        \int_{-\infty}^{\infty} e^{tx} \Prob(X = x) dx & \text{ if } X \text{ continuous}
+    \end{cases}
+\]
+
+\(M(t)\) uniquely determines the cumulative probability distribution of \(\Prob(X = x)\)
+
+\subsubsection{Derivative of the Moment Generating Function}
+
+The \(n-th\) derivative of the \emph{moment generating function} has the following property 
+
+\[
+    M^{n}(0) = \Expc[X^n]
+\]
+
+\textbf{Proof (Informal):}
+
+We will handle only the continuous case, but the same holds for the discrete case 
+
+\[
+    \frac{d}{dt} \int_{-\infty}^{\infty} e^{tx} \Prob(X = x) dx  = \int_{-\infty}^{\infty} xe^{tx} \Prob(X = x) dx
+\]
+
+\[
+    \frac{d}{dt} \int_{-\infty}^{\infty} xe^{tx} \Prob(X = x) dx  = \int_{-\infty}^{\infty} x^2 e^{tx} \Prob(X = x) dx
+\]
+
+And the pattern repeats. This is just given us the definition of each of the moments. 
+
+\QED
+
+\subsubsection{The Additive Property of the Moment Generating Function}
+
+Let \(X_1, X_2, \dots, X_n\) be random variables with their corresponding moment generating functions.
+Let \(Z = \sum_i X_i\) then 
+
+\[
+    M_Z (t) = \prod_{i} M_{X_i}(t)
+\]
+
 

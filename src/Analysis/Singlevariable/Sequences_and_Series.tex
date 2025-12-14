@@ -84,7 +84,7 @@ A sequence \((a_n)\) \emph{converges} to a limit \(L\) if for every \(\varepsilo
 integer \(n_0\) such that for all \(n \ge n_0\):
 
 \[
-    \forall \varepsilon > 0 \exists n \in \Naturals: \forall i \ge n\ |a_i - L| < \varepsilon
+    \forall \varepsilon > 0 \exists N \in \Naturals: \forall n \ge N |a_n - L| < \varepsilon
 \]
 
 In this case, we write:
@@ -116,8 +116,43 @@ For a bounded sequence \(\{c_n\}_{n = 1}^{\infty}\) then the following applies:
 
 \end{itemize}
 
+\subsection{The limit of a Sequence is Unique}
+
+Given a convergent sequence \(a_n\) then its limit is unique. 
+
+\textbf{Proof:}
+
+Suppose that \(a_n\) has two different limits \(a\) and \(b\). Let \( \varepsilon = \frac{|a - b|}{2} > 0\)
+
+Because we have distinct limit we write 
+
+\[
+    \forall \varepsilon > 0 \exists i \in \Naturals: \forall i \ge N_1 |a_i - a| < \frac{|a - b|}{2}
+\]
+
+and 
+
+\[
+    \forall \varepsilon > 0 \exists j \in \Naturals: \forall j \ge N_2 |a_j - b| < \frac{|a - b|}{2}
+\]
+
+Let \(M = \max{N_1, N_2}\). Then 
+
+\[
+    |a - b| = |a - a_n + a_n - b| \le  |a_n - a| + |a_n - b| < 2 \varepsilon = \varepsilon > 0
+\]
+
+Thus, \(|a - b| < |a - b|\) and this is a contradiction. The limit must be unique.
+
+\QED 
+
 \subsection{Convergence by Power of One Half}
 
+If for a sequence \(a_n\) the following holds then it converges 
+
+\[
+   | a_n  - a_{n + 1} | \le \frac{1}{2^n} 
+\]
 
 \subsection{Boundness of Convergent Sequences}
 

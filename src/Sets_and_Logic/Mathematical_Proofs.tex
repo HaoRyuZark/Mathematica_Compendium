@@ -6,7 +6,7 @@ In this section I will provide with some examples of different types of proofs.
 \subsection{Proof by Direct Argument}
 
 \[
-	A \implies F
+	A \implies B
 \]
 
 
@@ -157,15 +157,14 @@ primes.
 
 \textbf{Basis: } \(A(2)\) is true because is prime 
 
-\textbf{Inductive hypothesis:} \(A(j)\) for \(2 \le j \le n\) is true.
+\textbf{Inductive hypothesis:} \(A(j)\) for \(2 \le j \le n\) is true. \textbf{Important!}
 
 Consider the cases \(k + 1\) is prime or composite. 
 
-In the second case then \(A(k + 1)\) is true.
-
-For the first case, by definition is \(k + 1\) is composite it can be written as a product of factor \(a,b,c,dots\) where  
-\(2 \le a \le b \le c \le \dots < k + 1\). By induction these number can also be written as the product of primes, and so on until we arrive at our 
-base case. 
+The first case is true.
+For the case \(n + 1\) is not prime then \(n + 1 = ab\) with \(2 \le a,b \le n < n + 1\) and both 
+for \(a\) and \(b\) we know that they can be written as the product of primes thus 
+\(n + 1\) can be written as the product of primes. 
 
 \QED
 
@@ -261,12 +260,13 @@ The number 2 is a prime number, as its only divisors are 1 and 2. However, 2 is
 even, which contradicts the statement that all prime numbers are odd.
 
 Therefore, the statement All prime numbers are odd is false.
+
 \QED
 
 \subsection{Proof by Contrapositive}
 
 \[
-	A \implies B \iff \neg B \implies A
+	A \implies B \iff \neg B \implies \neg A
 \]
 
 If \(n\) is an integer such that \( n^2 \) is odd, then \(n\) is odd.

@@ -1,6 +1,62 @@
 \newpage
 \section{Arithmetic}
 
+\subsection{Even and Odd numbers}
+
+A natural number \(a\) is \emph{even} if \(a = 2k\) with \(k \in \Naturals\).
+
+A natural number \(b\) is \emph{odd} if \(b = 2q - 1\) with \(q \in \Naturals\).
+
+\subsection{Perfect Squares}
+
+A natural number \(a\) has a \emph{perfect square} if \(\sqrt{a} \in \Naturals\).
+
+\subsection{Division Algorithm}
+
+Given any two integers \(a\) and \(b\) with \(a > 0\), there exists unique integers \(q\) and \(r\) such that 
+\(b  =qa + r\) with \(0 \ge r < a\).
+
+\textbf{Proof:}
+
+Let \(S = \{b - xa \mid b - xa \ge 0, x \in \Integers\}\)
+
+By the well ordering principle of the natural numbers we know that our set has 
+minimum \(r\). 
+
+First we prove \( 0 \le r\)
+
+If \(b \ge 0\) then let \(x = 0 \implies b \in S\).
+For \(b < 0\) then let \(x = b\). Thus 
+
+\[
+	b - ba  = b(1 - a) \implies b - ba \in S
+\]
+
+Now to prove that \(r < a\), assume \( r \ge a\), but then 
+
+
+\begin{align*}
+	b  - qa &\ge a \\
+	b  - qa - a &\ge 0\\ 
+	b  - a(q + 1) &\ge 0\\ 
+	b  - a(q + 1) &\ge 0 \implies b - a(q + 1) \in S\\ 
+\end{align*}
+
+And \(b - a(q + 1) < b - aq = r \implies r < a\) therefore, we have a contradiction.
+
+Now we will prove the uniqueness. 
+
+Assume \(pq + r = a = pq' + r'\) with \(q \ne q' \) and \(r \ne r'\)
+
+\[	
+	r - r' = a(q - q') = 0
+\]
+
+Using the property of inverses of \(\Integers \setminus \{0\}\) as a Field we know that 
+\(r = r'\) and \(q - q'\).
+
+\QED 
+
 \subsection{Prime Numbers}
 
 A \emph{prime number} \(p \in \Naturals \setminus \{1\}\) fulfills the following condition:
@@ -8,6 +64,22 @@ A \emph{prime number} \(p \in \Naturals \setminus \{1\}\) fulfills the following
 \begin{enumerate}[label= \Roman*.]
 	\item \(p\) is only divisible by itself and 1.
 \end{enumerate}
+
+\subsection{Pythagorean Triplets}
+
+\emph{Pythagorean triplets} are 3 natural numbers such that 
+
+\[
+	a^2 + b^2 = c^c
+\]
+
+\subsection{Divisibility}
+
+A number \(a \in \Integers\) is divisible a number \(b \in \Integers\) if 
+
+\[
+	a = kb \quad k \in \Integers
+\]
 
 \subsection{Division}
 
@@ -60,7 +132,10 @@ remainder and updating the remainders. When we reach a remainder of zero, the pr
 
 \textbf{Proof:}
 
-Given is \(a = bq + r\) to show that \(\gcd(a, b) = \gcd(b, r)\). This is like saying 
+Notice, that the algorithm terminates because the sequence given \(r_n\) is monotone decreasing due to \(0 \le r < b\) and 
+the well ordering principle of the natural numbers.
+
+For the correctness: given is \(a = bq + r\) to show that \(\gcd(a, b) = \gcd(b, r)\). This is like saying 
 
 \begin{align*}
 	\gcd(a,b) & = gcd(b, r) \\ 
@@ -156,15 +231,64 @@ with \(a = qb + r\) and \(q \in \Integers, 0 \le q < |b|\).
 
 \subsection{Bezout Identity}
 
-This is one of the most important properties of the \emph{GCD}. 
+This is one of the most important properties of the \emph{gcd}. 
 Given \(a, b \in \Integers\), not both zero, there exist integers \(\alpha, \beta \in \Integers\) such that
 
 \[
 	\gcd(a, b) = a\alpha + b\beta
 \]
 
-This equation comes directly from \emph{Euclid's Algorithm}. For the intuition, when writting your iterations 
+This equation comes directly from \emph{Euclid's Algorithm}. For the intuition, when writing your iterations 
 you can manipulate them to arrive at the solution.
+
+\textbf{Proof:}
+
+Given 
+
+\[
+	M := \{a\alpha + b \beta \mid a\alpha + b \beta > 0 \land \alpha \in \Integers \land \beta \in \Integers\}
+\]
+
+\(M\) is not empty because of \(\alpha, \beta \in M\), and it has a minimum by the well ordering principle 
+of the natural numbers which we will call \(c\).
+
+Then, let \(k \in M\). Then there exist \(q \in \Naturals_0\) and \(r \in \Naturals_0\) with \(r < c\) such 
+that
+
+\[
+	k = qc + r
+\]
+
+because \(k\) and \(c\) are elements of \(M\) we should be able to find \(r_1, r_2, s_1, s_2\)  such that 
+
+\[
+	k = r_1 a + s_1 b \quad c = r_2 a + s_2 b
+\]
+
+Now let us
+
+\begin{align*}	
+	k = r_1 a + s_1 b &= qc + r \\ 
+		r_1 a + s_1 b &= q(r_2 a + s_2 b) + r \\ 
+		r &= r_1 a + s_1 b - q(r_2 a + s_2 b)  \\ 
+		r &= r_1 a + s_1 b - qr_2 a  -qs_2 b  \\
+		r &= (r_1  - qr_2)a + (s_1   -qs_2) b 
+\end{align*}
+
+\(r \ge 0\) and  \(r < c\), but if \(r \ne 0\) then \(r \in M\) would be the minimum which is a contradiction to the assumption 
+that \(c\) is the minimum, also \(r = 0\), \(k = qc\). Thus, \emph{every element of M is multiplicity of c}. Therefore, 
+\(a,b\) are also divisible by \(c\).
+
+Now we need to show that \(c\) is in fact the greatest common divisor. \(c = r_2 a + s_2 b\) 
+
+\[
+	c = a \alpha_0 + b \beta_0
+\]
+
+Because \(c \mid a \land c \mid b\) we know that \(c \mid a \alpha_0 + b \beta_0 \). We also 
+know that \(c \mid \gcd(a,b)\) and thus, \(|c| =|g = \gcd(a,b| \) but because both are positive \(c = g\).
+
+\QED
 
 \subsection{Euclidean Algorithm as Matrix Multiplication}
 
@@ -176,7 +300,8 @@ you can manipulate them to arrive at the solution.
 \textbf{Algorithm:}
 
 \begin{enumerate}
-    \item If \(a = 0\), return \(|b|\), \(\alpha = 0\), and 
+
+	\item If \(a = 0\), return \(|b|\), \(\alpha = 0\), and 
     \(\beta = b / |b|\).  
     If \(b = 0\), return \(|a|\), \(\alpha = a / |a|\), and \(\beta = 0\).
     
@@ -225,10 +350,10 @@ with \(\alpha p + \beta a = 1\). Since \(p \mid ab\), it follows that
 \(p \mid \alpha p b + \beta ab = (\alpha p + \beta a)b = b\).
 
 ``\(\Leftarrow\)'' Let \(c \in \Naturals\) be a divisor of \(p\). Then there exists
-\(d \in \mathbb{N}\) with \(p = cd\). In particular \(1 \le c \le p\) and
+\(d \in \Naturals\) with \(p = cd\). In particular \(1 \le c \le p\) and
 \(1 \le d \le p\) and \(p \mid cd\). By our assumption it follows that
 \(p \mid c\) or \(p \mid d\), i.e. \(p \le c\) or \(p \le d\). Together with
-\(c \le p\) and \(d \le p\) this forces \(c = 1\) or \(c = p\). Hence \(p\)
+\(c \le p\) and \(d \le p\) this forces \(c = 1\) or \(c = p\). Hence, \(p\)
 has no nontrivial divisors and is prime.
 
 \QED
@@ -312,7 +437,25 @@ By the \(n=2\) case, either \(p \mid a_n\) or \(p \mid a_1a_2 \cdots a_{n-1}\), 
 
 \textbf{Existence:}
 
-Use induction on \(n > 1\). Base case: \(n = 2\) is prime.
+Use induction on \(n > 1\)Let \(X = (X_{1}, \ldots, X_{n})^{T} : \Omega \to X\) be a random variable with
+statistical model \(P = \{ P^{n}_{\theta} : \theta \in \Theta \}\).
+Furthermore, let \(x_{1}, \ldots, x_{n}\) be a sample and let \(\alpha \in [0,1]\).
+
+A mapping \(I\) that assigns to each sample
+\(x = (x_{1}, \ldots, x_{n})^{T} \in X\) a subset \(I(x) \subset \Theta\)
+is called a \((1 - \alpha)\)-confidence region for \(\theta\) if
+
+\[
+    \Prob_{\theta}\bigl( \theta \in I(X_{1}, \ldots, X_{n}) \bigr)
+    \ge 1 - \alpha
+\]
+
+for all \(\theta \in \Theta\).
+
+If \(\Theta \subset \Reals\) and \(I(x)\) is an interval for all \(x \in X\),
+then \(I\) is called a \((1 - \alpha)\)-confidence interval.
+
+Base case: \(n = 2\) is prime.
 
 Inductive step: If \(n\) is prime, done. Otherwise, \(n = ab\), with \(1 < a, b < n\).
 By induction, both \(a\) and \(b\) factor into primes, so \(n\) does too.
@@ -408,4 +551,38 @@ the prime factorization of the \(n\).
 The uniqueness is given by \emph{the implication of prime numbers}.
 
 \QED
+
+\subsection{Goldbach's Conjecture}
+
+Every even integer greater than 4 can be written as the sum two primes.
+
+\subsection{Prime Factorization}
+
+To find the \emph{prime factorization} of a number \(a\) the algorithm goes as follows 
+
+\begin{itemize}
+
+	\item Let \(n\) be the first prime number. 
+
+	\item  Try dividing \(a\) by \(n\). If \(n \mid a\) note the number and set \(a = a \div n\) to repeat this step. If \(n\) 
+	did not divide \(a\) set \(n\) to the next prime number and repeat this step. 
+
+	\item When 1 was reached using the previous step then the algorithm terminates and the noted numbers is our prime factorization 
+	of \(a\).
+
+\end{itemize}
+
+\subsection{GCD via Prime factorization}
+
+The \(\gcd\) of two or more number can also be found with the following algorithm.
+
+\begin{itemize}
+	
+	\item Find the prime factorization of all target numbers.
+
+	\item Note the number which appear in both prime factorization always taking the one with least exponent.
+	
+	\item Multiply the noted prime factors together. 
+	
+\end{itemize}
 
