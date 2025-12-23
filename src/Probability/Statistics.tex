@@ -261,7 +261,7 @@ Then the empirical distribution function is given by
 
 where \(h_k\) is the absolute frequency of \(k\)
 
-\subsection{Classified Data}
+\subsection{Grouped Data}
 
 When dealing with a lot of data sometimes it is easier to put it into
 \emph{classes} \(A_1, \dots, A_k\) which represent a certain range \([a,b], [a,b),\) etc. 
@@ -304,6 +304,9 @@ For the next definitions, the following example table will be used.
 \]
 
 \emph{Empirical Quantile}
+
+For the quantile \(q_p\) find \(F_i \ge p\) and \(F_{i  - 1} < p\) this will give you a class 
+\(A(a_i, a_{i + 1}]\). Then plug into the formula.
 
 \[
     q_p = a_i + \frac{p - F_{i - 1}}{F_i - F_{i - 1}}(a_{i + 1} - a_i)

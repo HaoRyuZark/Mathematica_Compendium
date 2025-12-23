@@ -495,6 +495,36 @@ In other words, composing a function with its inverse yields the identity functi
 
 Where \(id_A\) and \(id_B\) are the identity functions on sets \(A\) and \(B\), respectively.
 
+\textbf{Proof:}
+
+\(\Rightarrow\): direction is trivial, due to the definition of a bijective function. 
+
+\(\Leftarrow\): Our function has the following properties:
+
+\[
+	f^{-1}(f(a)) = a \quad \text{for all } a \in A
+\]
+
+\[
+	f(f^{-1}(b)) = b \quad \text{for all } b \in B
+\]
+
+The first condition, gives us the injectivity due to the constraint the for all \(b \in B\) there exist exactly one \(a \in A\)
+such that \(f(a) = b\). Else, the condition would no be obeyed.
+
+The second one gives us the surjectivity of \(f\) by providing a definition for each of the \(b \in B\). Otherwise, 
+our condition would be violated. 
+
+The uniqueness is guaranteed by 
+
+\[
+	f^{-1}(b) \ne g^{-1}(b)
+\]
+
+Gives us a contradiction, if they would have the same properties but were different.
+
+\QED
+
 \subsubsection{Steps to Find the Inverse of a Function}
 
 To find the inverse of a function \(f (x)\), follow these steps:

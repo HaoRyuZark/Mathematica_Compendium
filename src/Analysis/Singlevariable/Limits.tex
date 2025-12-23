@@ -187,6 +187,31 @@ If and only if for the sequence in the domain of \(f \) the following is true
     \lim_{n \to \infty} x_n = x_0
 \]
 
+\textbf{Proof:}
+
+\(\Rightarrow\) Assume \(\lim_{x \to x_0}f(x) = L\). Let \(a_n\) be a sequence in the domain with \(a_n \to x_0\) and 
+\(a_n \ne x_0\) we must show that \(f(a_n) \to L\)
+
+Let \(\varepsilon > 0\). There exists \(\delta > 0\) such that if \(0 < |x - x_0| < \delta\) then 
+\(|f(x) - L| < \varepsilon\). But since \(a_n \to x_0\) then \(\exists N: |a_n - x_0| < \varepsilon, \forall n > N \). Thus, 
+for all \(n > N\), \(|f(a_n) - L| < \varepsilon\) and so \(f(a_n) \to L\). 
+
+\(\Leftarrow\) Assume that for every sequence \(a_n\) in the domain which converges to \(x_0\)
+\(f(a_n) \to L\)
+
+Suppose for the sake of contradiction that \(\lim_{x \to x_0}f(x) \ne L\)
+
+Then, there exists \(\varepsilon > 0\) such that for all \(\delta > 0, \exists x \in \mathcal{D}, 0 < |x - x_0| < \delta\)
+where \(|f(a_n) - L| \ge \varepsilon\). Therefore, by letting \(\delta_n = \frac{1}{n}\), 
+\(\exists a_n \in \mathcal{D}\) satisfiying \(0 < |a_n - x_0| < \frac{1}{n}\) and which 
+\(|f(a_n)- L| \ge \varepsilon\). 
+
+Then by contradiction \(f(a_n)\) does not converge to \(L\). 
+
+Hence, it must be that \(\lim_{x \to x_0}f(x) \ne L\)
+
+\QED
+
 \subsection{Limit of a Recursive Sequence}
 
 Let \((a_n)\) be defined recursively:
@@ -253,7 +278,7 @@ Now, we write the following because we are assuming they all have the same limit
 
 \begin{align*}
     - \varepsilon &< g(x)_{n} - L \le f(x)_n - L \le h(x)_{n} - L < \varepsilon \\ 
-    - \varepsilon &< \le f(x)_n - L < \varepsilon 
+    - \varepsilon &<  f(x)_n - L < \varepsilon 
 \end{align*}
 
 from our original inequality. Thus, there has been no contradiction.
@@ -462,3 +487,6 @@ We define \emph{limes superior} and \emph{limes inferior} as
     a_* = \lim_{n \to \infty} \inf a_n := \lim_{n \to \infty} y_n 
 \]
 
+\subsection{Limit by Bounds}
+
+If the limit superior and inferior are equal then the limit exists.

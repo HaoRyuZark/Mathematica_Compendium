@@ -213,6 +213,10 @@ Let \(a_i = \frac{1}{i}\) and \(\varepsilon = 0.01\). We want to find \(i_0\) su
     \Rightarrow i_0 = 101
 \]
 
+\subsection{Boundness of Cauchy Sequence}
+
+Every Cauchy sequence is \emph{bounded}. 
+
 \subsection{Proof that every Convergent Sequence is a Cauchy Sequence}
 
 Given a sequence \(a_n\) then \(a_n\) is convergent if and only if it is a Cauchy sequence. 
@@ -245,8 +249,37 @@ This is allowed we know that \(a_n\) converges. We choose the max of each of the
     \forall \varepsilon > 0 \exists n,m,N \in \Naturals: |a_n - a_m| < \varepsilon \text{ with } n, m \ge N
 \]
 
-\(a_n\) is bounded because else \( |a_n - a_m| < \varepsilon \) will not hold. Therefore, by Bolzano-Weierstraß Theorem 
+\(a_n\) is bounded because else \( |a_n - a_m| > \varepsilon \) for \(n,m \ge N_0\). Therefore, by Bolzano-Weierstraß Theorem 
 it must converge 
+
+\QED 
+
+\subsection{Cauchy Sequences are Convergent}
+
+Given a Cauchy sequence \(a_n\) then it converges 
+
+\textbf{Proof:}
+
+We know that \(a_n\) is bounded and by the Bolzano Weierstraß Therorem it has convergent subsequence. 
+
+\[
+    \forall \varepsilon > 0 \exists n,m,N_1 \in \Naturals: |a_n - a_m| < \frac{\varepsilon}{2} \text{with } n, m \ge N_1
+\]
+
+And  
+
+\[
+    \forall \varepsilon > 0 \exists n,m,N_2 \in \Naturals: |a_{n_k} - a| < \frac{\varepsilon}{2} \text{with } n \ge N_2
+\]
+
+
+Then let \(N = \max{N_1, N_2}\) therefore 
+
+\[
+    |a_n - a_m| = |a_n + a_{n_{N + 1}} - a_{n_{N + 1}} - a_m| \le |a_n - a_{n_{N + 1}} | + |a_m - a_{n_{N + 1}} | = 2\frac{\varepsilon}{2} = \varepsilon
+\]
+
+Thus, it converges.
 
 \QED 
 
@@ -542,6 +575,8 @@ increasing sequence of natural numbers.
     \item A sequence converges if and only if all of its subsequences converge to the same limit.
 
     \item A bounded sequence always has at least one convergent subsequence (Bolzano-Weierstraß theorem).
+
+    \item \(n_k \ge k\)
 
 \end{itemize}
 
