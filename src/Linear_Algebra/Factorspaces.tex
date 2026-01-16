@@ -1,0 +1,114 @@
+\newpage 
+\section{Factor Spaces}
+
+Given a vector space \(V\). An equivalence relation onto \(V\) is considered 
+\emph{linear congruent} if from
+
+\[
+    v \sim v' \land u \sim u' \quad v,v',u,u' \in V, a,b \in \field \implies av + bu \sim av' + bu'
+\]
+
+Given \(v \in V\) then the equivalence class 
+
+\[
+    [v] := \{u \in V \mid u \sim v\}
+\]
+
+is also the \emph{congruent class} of \(v\).
+
+\subsection{Subspace Relation}
+
+Given a subspace \(U \subseteq V\) we can define a linear congruence \(\sim_U\) onto \(V\) as follows:  
+
+\[
+    v \sim_U v' \iff v - v' \in U
+\]  
+
+\textbf{Proof:}
+
+Given \(v, v', w, w' \in V\) with \(v \sim v'\) and \(w \sim w'\), then there exists \(u_1, u_2 \in U\) 
+such that \(v - v' = u_1\) and \(w - w' = u_2\). Then for any \(a, b \in \field\) we have: 
+
+\[
+    av + bw - (av' + bw') = a(v - v') + b(w - w') = au_1 + bu_2 \in U
+\]
+
+\QED 
+
+\subsection{Properties of Linear Congruence}
+
+Given a linear congruence \(\sim\) onto \(V\) then the following properties hold: 
+
+\begin{itemize}
+
+    \item \(U := [0]\) is a subspace of \(V\). 
+
+    \item \(\sim = \sim_U\)
+
+    \item The congruence class \([v]\) is given by \(v + U := \{v + u \mid u \in U\}\)
+
+\end{itemize}
+
+\subsection{Factor Space}
+
+Given \(U \subseteq V\) with \(\sim := \sim_U\). The \emph{factor space} \(V / \sim_U\) is the set of all congruence classes. 
+This is also called the \emph{quotient space} and is denoted by \(V / U\) 
+
+\[
+    V / U := \{ v + U = \{v + u \mid u \in U\} \mid v \in V \}
+\]
+
+\subsection{Properties of Factor Spaces}
+
+Given \(U \subseteq V\) then the following properties hold: 
+
+\begin{itemize}
+
+    \item Addition  \((v + U) + (w + U) := (v + w) + U \) 
+
+    \item Scalar Multiplication  \(a(v + U) := (av) + U\)
+    
+    \item \(\iota: V \to V /U : v \mapsto v + U\) is the \emph{natural epimorphism} of \(V\) onto \(V /U\).
+    with \(\kern(\iota) = U\) 
+
+\end{itemize}
+
+\subsection{Homomorphism Theorem}
+
+Given a linear map \(\psi: V \to W\). Then \(\psi\) can be factored as into \(\iota_\psi: V \to V / \kern(\psi)\) and 
+\(\overline{\psi}: V / \kern(\psi) \to W: v + \kern(\psi) \mapsto \psi(v) \). This means that \(\psi = \overline{\psi} \circ \iota_\psi\).
+
+\subsection{Dimension of Factor Spaces}
+
+Given a finite-dimensional vector space \(V\) and a subspace \(U \subseteq V\). Then the
+\emph{dimension} of the factor space \(V / U\) is given by:
+
+\[
+    \dim(V / U) = \dim(V) - \dim(U)
+\]
+
+\subsubsection{Connection To Linear Systems of Equations}
+
+Given a linear system of equations \(Ax = b\) with \(A \in \field^{m \times n}\) and \(b \in \field^m\). 
+The induced linear map is given by \(\psi_A: \field^n \to \field^m: x \mapsto Ax\) can be factored into a surjective map 
+\(\psi_G\) and injective map \(\psi_B\). 
+
+\[
+    \psi_A = \psi_B \circ \psi_G \quad A = BG
+\]
+
+\subsection{Dimension Formula for Vector Spaces}
+
+Given a linear map \(\psi: V \to W\) between finite-dimensional vector spaces \(V\) and \(W\). Then the following identity holds:
+
+\[
+    \dim(V) = \dim(\kern(\psi)) + \dim(\img(\psi))
+\]
+
+\subsection{Grassmann Identify}
+
+Given \(U, W \subseteq V\) subspaces of a finite-dimensional vector space \(V\). Then the following identity holds:
+
+\[
+    \dim(U + W) + \dim(U \cap W) = \dim(U) + \dim(W)
+\]

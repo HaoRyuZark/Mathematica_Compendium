@@ -3,13 +3,13 @@
 
 \subsection{Even and Odd numbers}
 
-A natural number \(a\) is \emph{even} if \(a = 2k\) with \(k \in \Naturals\).
+A natural number \(a\) is \emph{even} if \(a = 2k\) with \(k \in \N\).
 
-A natural number \(b\) is \emph{odd} if \(b = 2q - 1\) with \(q \in \Naturals\).
+A natural number \(b\) is \emph{odd} if \(b = 2q - 1\) with \(q \in \N\).
 
 \subsection{Perfect Squares}
 
-A natural number \(a\) has a \emph{perfect square} if \(\sqrt{a} \in \Naturals\).
+A natural number \(a\) has a \emph{perfect square} if \(\sqrt{a} \in \N\).
 
 \subsection{Division Algorithm}
 
@@ -18,7 +18,7 @@ Given any two integers \(a\) and \(b\) with \(a > 0\), there exists unique integ
 
 \textbf{Proof:}
 
-Let \(S = \{b - xa \mid b - xa \ge 0, x \in \Integers\}\)
+Let \(S = \{b - xa \mid b - xa \ge 0, x \in \Z\}\)
 
 By the well ordering principle of the natural numbers we know that our set has 
 minimum \(r\). 
@@ -52,14 +52,14 @@ Assume \(pq + r = a = pq' + r'\) with \(q \ne q' \) and \(r \ne r'\)
 	r - r' = a(q - q') = 0
 \]
 
-Using the property of inverses of \(\Integers \setminus \{0\}\) as a Field we know that 
+Using the property of inverses of \(\Z \setminus \{0\}\) as a Field we know that 
 \(r = r'\) and \(q - q'\).
 
 \QED 
 
 \subsection{Prime Numbers}
 
-A \emph{prime number} \(p \in \Naturals \setminus \{1\}\) fulfills the following condition:
+A \emph{prime number} \(p \in \N \setminus \{1\}\) fulfills the following condition:
 
 \begin{enumerate}[label= \Roman*.]
 	\item \(p\) is only divisible by itself and 1.
@@ -75,15 +75,15 @@ A \emph{prime number} \(p \in \Naturals \setminus \{1\}\) fulfills the following
 
 \subsection{Divisibility}
 
-A number \(a \in \Integers\) is divisible a number \(b \in \Integers\) if 
+A number \(a \in \Z\) is divisible a number \(b \in \Z\) if 
 
 \[
-	a = kb \quad k \in \Integers
+	a = kb \quad k \in \Z
 \]
 
 \subsection{Division}
 
-Given \(a,b \in \Integers\). There exists unique \(q,r \in \Integers\) such that 
+Given \(a,b \in \Z\). There exists unique \(q,r \in \Z\) such that 
 
 \[
 	a = qb + r \quad 0 \le r < |b|
@@ -91,14 +91,14 @@ Given \(a,b \in \Integers\). There exists unique \(q,r \in \Integers\) such that
 
 \subsection{Greatest Common Denominator}
 
-For two integers \(a, b \in \Integers\) with \((a,b) \neq (0,0)\), the positive
+For two integers \(a, b \in \Z\) with \((a,b) \neq (0,0)\), the positive
 integer \(t\) satisfying
 
 \begin{itemize}
 
 	\item \(t \mid a\) and \(t \mid b\),
 
-	\item for all \(c \in \Integers\) with \(c \mid a\) and \(c \mid b\), it follows that \(c \mid t\),
+	\item for all \(c \in \Z\) with \(c \mid a\) and \(c \mid b\), it follows that \(c \mid t\),
 
 \end{itemize}
 
@@ -170,10 +170,10 @@ So, \(\gcd(252, 198) = 18\).
 
 \subsection{Euclidean Algorithm as Linear Map}
 
-Given \(E := \{(a,b)^T \mid a, b \in \Integers, b \ne 0 \}\) and 
+Given \(E := \{(a,b)^T \mid a, b \in \Z, b \ne 0 \}\) and 
 
 \[
-	\varepsilon: E \to \Integers^{2 \times 1} : 
+	\varepsilon: E \to \Z^{2 \times 1} : 
 	\begin{bmatrix}
 		a \\ 
 		b
@@ -227,12 +227,12 @@ Also, we can express \(\varepsilon\) as a matrix multiplication:
 	\end{bmatrix}
 \]
 
-with \(a = qb + r\) and \(q \in \Integers, 0 \le q < |b|\).
+with \(a = qb + r\) and \(q \in \Z, 0 \le q < |b|\).
 
 \subsection{Bezout Identity}
 
 This is one of the most important properties of the \emph{gcd}. 
-Given \(a, b \in \Integers\), not both zero, there exist integers \(\alpha, \beta \in \Integers\) such that
+Given \(a, b \in \Z\), not both zero, there exist integers \(\alpha, \beta \in \Z\) such that
 
 \[
 	\gcd(a, b) = a\alpha + b\beta
@@ -246,13 +246,13 @@ you can manipulate them to arrive at the solution.
 Given 
 
 \[
-	M := \{a\alpha + b \beta \mid a\alpha + b \beta > 0 \land \alpha \in \Integers \land \beta \in \Integers\}
+	M := \{a\alpha + b \beta \mid a\alpha + b \beta > 0 \land \alpha \in \Z \land \beta \in \Z\}
 \]
 
 \(M\) is not empty because of \(\alpha, \beta \in M\), and it has a minimum by the well ordering principle 
 of the natural numbers which we will call \(c\).
 
-Then, let \(k \in M\). Then there exist \(q \in \Naturals_0\) and \(r \in \Naturals_0\) with \(r < c\) such 
+Then, let \(k \in M\). Then there exist \(q \in \N_0\) and \(r \in \N_0\) with \(r < c\) such 
 that
 
 \[
@@ -325,18 +325,18 @@ know that \(c \mid \gcd(a,b)\) and thus, \(|c| =|g = \gcd(a,b| \) but because bo
 
 \subsection{Prime Field}
 
-Given \(p \in \Naturals, p > 1\) is prime, then \(\Integers / p \Integers\) is a field with \(p\) elements. It can also 
-be noted \(\Field_p\)
+Given \(p \in \N, p > 1\) is prime, then \(\Z / p \Z\) is a field with \(p\) elements. It can also 
+be noted \(\field_p\)
 
 \textbf{Proof:} 
 
-We need to show that for \(a + p \Integers \ne p \Integers\) there exists some \(b + p \Integers\) such that \((a + p\Integers))(b + p\Integers) = 1 + p\Integers\).
+We need to show that for \(a + p \Z \ne p \Z\) there exists some \(b + p \Z\) such that \((a + p\Z))(b + p\Z) = 1 + p\Z\).
 
-For \(a \notin p \Integers\) we know that \(gcd(a,p) = 1\) thus, we do not have zero divisors.
+For \(a \notin p \Z\) we know that \(gcd(a,p) = 1\) thus, we do not have zero divisors.
 
 \subsection{Implication of Prime Numbers}
 
-For \(a, b \in \Integers\) and a prime number \(p\)
+For \(a, b \in \Z\) and a prime number \(p\)
 
 \[
 	p \mid ab \implies (p \mid a ) \lor (p \mid b)
@@ -344,13 +344,13 @@ For \(a, b \in \Integers\) and a prime number \(p\)
 
 \textbf{Proof:} 
 
-``\(\Rightarrow\)'' Let \(p\) be a prime and \(a,b \in \Integers\)
-with \(p \mid ab\). Assume \(p \nmid a\). Then there exist \(\alpha,\beta \in \Integers\)
+``\(\Rightarrow\)'' Let \(p\) be a prime and \(a,b \in \Z\)
+with \(p \mid ab\). Assume \(p \nmid a\). Then there exist \(\alpha,\beta \in \Z\)
 with \(\alpha p + \beta a = 1\). Since \(p \mid ab\), it follows that
 \(p \mid \alpha p b + \beta ab = (\alpha p + \beta a)b = b\).
 
-``\(\Leftarrow\)'' Let \(c \in \Naturals\) be a divisor of \(p\). Then there exists
-\(d \in \Naturals\) with \(p = cd\). In particular \(1 \le c \le p\) and
+``\(\Leftarrow\)'' Let \(c \in \N\) be a divisor of \(p\). Then there exists
+\(d \in \N\) with \(p = cd\). In particular \(1 \le c \le p\) and
 \(1 \le d \le p\) and \(p \mid cd\). By our assumption it follows that
 \(p \mid c\) or \(p \mid d\), i.e. \(p \le c\) or \(p \le d\). Together with
 \(c \le p\) and \(d \le p\) this forces \(c = 1\) or \(c = p\). Hence, \(p\)
@@ -406,7 +406,7 @@ If \(m \mid pq\) and \(\gcd(m, p) = 1\), then \(m \mid q\).
 
 \textbf{Proof:} 
 
-Write \(1 = \gcd(m, p) = am + bp\) for some \(a, b \in \Integers\). Then
+Write \(1 = \gcd(m, p) = am + bp\) for some \(a, b \in \Z\). Then
 
 \[
 	q = amq + bpq
@@ -446,13 +446,13 @@ A mapping \(I\) that assigns to each sample
 is called a \((1 - \alpha)\)-confidence region for \(\theta\) if
 
 \[
-    \Prob_{\theta}\bigl( \theta \in I(X_{1}, \ldots, X_{n}) \bigr)
+    \prob_{\theta}\bigl( \theta \in I(X_{1}, \ldots, X_{n}) \bigr)
     \ge 1 - \alpha
 \]
 
 for all \(\theta \in \Theta\).
 
-If \(\Theta \subset \Reals\) and \(I(x)\) is an interval for all \(x \in X\),
+If \(\Theta \subset \R\) and \(I(x)\) is an interval for all \(x \in X\),
 then \(I\) is called a \((1 - \alpha)\)-confidence interval.
 
 Base case: \(n = 2\) is prime.
@@ -534,11 +534,11 @@ So:
 
 \subsection{Second Proof of the Fundamental Theorem of Arithmetic}
 
-Given \(n \in \Naturals\) has \(1\) as a prime factor. Suppose that every natural number 
+Given \(n \in \N\) has \(1\) as a prime factor. Suppose that every natural number 
 smaller than \(n\) can be factorized into primes. 
 
 If \(n\) is a prime number then it is itself its prime factorization. Else. there 
-are \(b, c \in \Integers\) with \(n = bc\) \(1 < b, c<n\). By our induction's supposition, 
+are \(b, c \in \Z\) with \(n = bc\) \(1 < b, c<n\). By our induction's supposition, 
 \(b\) and \(c\) have also a prime factorization.
 
 \[

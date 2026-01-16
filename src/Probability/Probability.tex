@@ -21,7 +21,7 @@ This is a small question that says: What is the probability of at least two peop
 their birthday on the same day in a group of \(x\) persons.
 
 \[
-    \Prob(x) = 1 - \prod_{n = 0}^{x} \frac{365 - n}{365}
+    \prob(x) = 1 - \prod_{n = 0}^{x} \frac{365 - n}{365}
 \]
 
 This formula gives us the probability of total minus all persons having it on different days. Which
@@ -50,19 +50,19 @@ A \emph{Laplace distribution} is a probability experiment with finite outcomes w
 each elemental outcome has the same probability of occurring.
 
 \[
-    \Prob(\omega) = \frac{\omega}{|\Omega|}
+    \prob(\omega) = \frac{\omega}{|\Omega|}
 \]
 
 Then an experiment with this property is considered a \emph{Laplace experiment}.
 
 \[
-    \Prob(E) = \frac{E}{|\Omega|}
+    \prob(E) = \frac{E}{|\Omega|}
 \]
 
 \subsection{Sigma Algebra}
 
 Given a non-empty set \(\Omega\) and \(\mathcal{A} \subseteq \mathcal{P}(\Omega)\) a set 
-of subsets of \(Omega\). \(\mathcal{A}\) is a \(\sigma\)-Algebra if and only if 
+of subsets of \(\Omega\). \(\mathcal{A}\) is a \(\sigma\)-Algebra if and only if 
 
 \begin{enumerate}[label=\Roman*.]
     
@@ -70,7 +70,7 @@ of subsets of \(Omega\). \(\mathcal{A}\) is a \(\sigma\)-Algebra if and only if
 
     \item \(A \in \mathcal{A} \implies A^c \in \mathcal{A} \)
 
-    \item \(A_1, A_2, A_3, \dots \in \mathcal{A} \implies \bigcup_{n \in \Naturals} A_n \in \mathcal{A} \)
+    \item \(A_1, A_2, A_3, \dots \in \mathcal{A} \implies \bigcup_{n \in \N} A_n \in \mathcal{A} \)
 
 \end{enumerate}
 
@@ -96,7 +96,7 @@ If \(\mathcal{A}\) is a sigma algebra then
     
     \item \(\emptyset \in \mathcal{A}\) 
 
-    \item \(A_1, A_2, \dots \in \mathcal{A} \implies \bigcap_{n \in \Naturals} A_n \in \mathcal{A}\)
+    \item \(A_1, A_2, \dots \in \mathcal{A} \implies \bigcap_{n \in \N} A_n \in \mathcal{A}\)
 
     \item \(A, B \in \mathcal{A} \implies A \setminus B \in \mathcal{A}\)
 
@@ -110,7 +110,7 @@ always a subset of a collection, this is trivial.
 Given a number of sets in \(\mathcal{A}\), using the laws of De Morgan we get 
 
 \[
-    \bigcap_{n \in \Naturals} A_n = \bigcup A_{n}^{c}
+    \bigcap_{n \in \N} A_n = \bigcup A_{n}^{c}
 \]
 
 and we know that the complements are part of \(mathcal{A}\) by definition. 
@@ -124,29 +124,29 @@ that their union if also in the set.
 \subsection{Probability Measurement}
 
 Given a non-empty set \(\Omega\) and \(\mathcal{A} \subseteq \mathcal{P}\) a sigma algebra. We define 
-the function \(\Prob:\mathcal{A} \to \Reals\) as a \emph{probability measurement} if 
+the function \(\prob:\mathcal{A} \to \R\) as a \emph{probability measurement} if 
 
 \begin{enumerate}[label=\Roman*.]
     
-    \item \(\forall A \in \mathcal{A}: \Prob(A) \ge 0\)
+    \item \(\forall A \in \mathcal{A}: \prob(A) \ge 0\)
 
-    \item \(\Prob(\Omega) = 1\) 
+    \item \(\prob(\Omega) = 1\) 
 
-    \item \(A_n \in \mathcal{A}, n \in \Naturals \text{ disjunctive in pairs } \implies \Prob\left(\bigcup_{n \in \Naturals} A_n\right) = \sum_{n \in \Naturals} \Prob(A_n)\) 
+    \item \(A_n \in \mathcal{A}, n \in \N \text{ disjunctive in pairs } \implies \prob\left(\bigcup_{n \in \N} A_n\right) = \sum_{n \in \N} \prob(A_n)\) 
 
 \end{enumerate}
 
-Also, the triplet \(\Omega, \mathcal{A}, \Prob\) is called a \emph{probability space}.
+Also, the triplet \(\Omega, \mathcal{A}, \prob\) is called a \emph{probability space}.
 
 \subsubsection{Probability space of the Power-set}
 
-We want to prove that the probability space with the power-set of omega and \(\Prob(A) = \frac{|A|}{|\Omega|}\) is in fact a probability space 
+We want to prove that the probability space with the power-set of omega and \(\prob(A) = \frac{|A|}{|\Omega|}\) is in fact a probability space 
 
 \begin{itemize}
     
-    \item \(\Prob(A) = \frac{|A|}{|\Omega|}\) is always greater or equal to zero.
+    \item \(\prob(A) = \frac{|A|}{|\Omega|}\) is always greater or equal to zero.
     
-    \item \(\Prob(\Omega) = \frac{|\Omega|}{|\Omega|} = 1\) 
+    \item \(\prob(\Omega) = \frac{|\Omega|}{|\Omega|} = 1\) 
 
     \item If all of our subsets in the power-set are pairwise disjunctive this mean that their intersection is the empty-set. In other wise there 
           therefore, their independent of each other which means that their probabilities are also independent.
@@ -155,17 +155,17 @@ We want to prove that the probability space with the power-set of omega and \(\P
 
 \subsubsection{Discrete Probability Spaces}
 
-A probability space \(\Omega, \mathcal{P}(\Omega), \Prob\) is considered \emph{discrete} if 
+A probability space \(\Omega, \mathcal{P}(\Omega), \prob\) is considered \emph{discrete} if 
 \(\Omega\) is finite or infinite countable. In that case \(\Omega = \{\omega_i : i \in I\}\) for \(I = \{1, \dots, n\}\) 
 
 For \(A \in \mathcal{A}\)
 
 \[
-    \Prob(A) = \Prob\left( \bigcup_{i \in I: \omega_i \in A} \{\omega_i\}\right) = 
-    \sum_{i \in I: \omega_i \in A} \Prob(\{\omega_i\}) = \sum_{i \in I: \omega_i \in A} p(\omega_i)
+    \prob(A) = \prob\left( \bigcup_{i \in I: \omega_i \in A} \{\omega_i\}\right) = 
+    \sum_{i \in I: \omega_i \in A} \prob(\{\omega_i\}) = \sum_{i \in I: \omega_i \in A} p(\omega_i)
 \]
 
-The function \(\Prob(\{\omega_i\}) = p(\omega_i)\) is called a \emph{probability function}
+The function \(\prob(\{\omega_i\}) = p(\omega_i)\) is called a \emph{probability function}
 
 To test if specific function or distribution is actually a probability one we have to check.
 
@@ -179,28 +179,28 @@ To test if specific function or distribution is actually a probability one we ha
 
 \subsubsection{Properties of Probability-Measurements}
 
-Given \((\Omega, \mathcal{A}, \Prob)\) and \(A,B \in \mathcal{A}\)
+Given \((\Omega, \mathcal{A}, \prob)\) and \(A,B \in \mathcal{A}\)
 
 
 \begin{itemize}
 
-    \item \( \Prob(\emptyset) = 0 \)
+    \item \( \prob(\emptyset) = 0 \)
     
-    \item \( A_1, \ldots, A_n \in \mathcal{A} \) pairwise disjoint: \( \Prob\left(\bigcup_{i=1}^n A_i\right) = \sum_{i=1}^n \Prob(A_i) \)
+    \item \( A_1, \ldots, A_n \in \mathcal{A} \) pairwise disjoint: \( \prob\left(\bigcup_{i=1}^n A_i\right) = \sum_{i=1}^n \prob(A_i) \)
     
-    \item \( \Prob(B \setminus A) = \Prob(B) - \Prob(A \cap B) \)
+    \item \( \prob(B \setminus A) = \prob(B) - \prob(A \cap B) \)
     
-    \item \( \Prob(A \cup B) = \Prob(A) + \Prob(B) - \Prob(A \cap B) \)
+    \item \( \prob(A \cup B) = \prob(A) + \prob(B) - \prob(A \cap B) \)
     
-    \item \( \Prob(A^c) = 1 - \Prob(A) \)
+    \item \( \prob(A^c) = 1 - \prob(A) \)
     
-    \item If \( A \subset B \), then \( \Prob(A) \le \Prob(B) \)
+    \item If \( A \subset B \), then \( \prob(A) \le \prob(B) \)
     
-    \item \( 0 \le \Prob(A) \le 1 \)
+    \item \( 0 \le \prob(A) \le 1 \)
 
-    \item \( A_1, \ldots, A_n \in \mathcal{A} \): \( \Prob\left(\bigcup_{i=1}^n A_i\right) \le \sum_{i=1}^n \Prob(A_i) \)
+    \item \( A_1, \ldots, A_n \in \mathcal{A} \): \( \prob\left(\bigcup_{i=1}^n A_i\right) \le \sum_{i=1}^n \prob(A_i) \)
     
-    \item \( A_1, A_2, \ldots \in \mathcal{A} \): \( \Prob\left(\bigcup_{i=1}^{\infty} A_i\right) \le \sum_{i=1}^{\infty} \Prob(A_i) \)
+    \item \( A_1, A_2, \ldots \in \mathcal{A} \): \( \prob\left(\bigcup_{i=1}^{\infty} A_i\right) \le \sum_{i=1}^{\infty} \prob(A_i) \)
 
 \end{itemize}
 
@@ -209,31 +209,31 @@ Given \((\Omega, \mathcal{A}, \Prob)\) and \(A,B \in \mathcal{A}\)
 \begin{itemize}
 
     \item Define \(A_n = \emptyset\) and by the properties of the probability spaces we know that  
-    \(A_n \in \mathcal{A}, n \in \Naturals \text{ disjunctive in pairs } \implies \Prob\left(\bigcup_{n \in \Naturals} A_n\right) = \sum_{n \in \Naturals} \Prob(A_n)\) 
+    \(A_n \in \mathcal{A}, n \in \N \text{ disjunctive in pairs } \implies \prob\left(\bigcup_{n \in \N} A_n\right) = \sum_{n \in \N} \prob(A_n)\) 
     
-    Therefore, \(\Prob(\emptyset) = \sum_{i = 1}^{n} \Prob(A_i)\) and the only real number with the property \(x + x = x\) is 0.
+    Therefore, \(\prob(\emptyset) = \sum_{i = 1}^{n} \prob(A_i)\) and the only real number with the property \(x + x = x\) is 0.
     
     \item By definition  
    
     \item \(B = (A \cap B) \cup B \setminus A\) and by the definition of the addition of probabilities 
     \[
-	\Prob(B) = \Prob(B \setminus A) - \Prob(A \cap B)
+	\prob(B) = \prob(B \setminus A) - \prob(A \cap B)
     \]
     
     \item Using the addition property and by writing the union as \((A \setminus B) \cup (B \setminus A) \cup (A \cap B)\)we get that 
 
     \[
-	\Prob(A \cup B) = \Prob(B) - \Prob(A \cap B) + \Prob(A) - \Prob(A \cap B) + \Prob(A \cup B)	
+	\prob(A \cup B) = \prob(B) - \prob(A \cap B) + \prob(A) - \prob(A \cap B) + \prob(A \cup B)	
     \]
 
-    which results in \( \Prob(A \cup B) = \Prob(A) + \Prob(B) - \Prob(A \cap B) \)
+    which results in \( \prob(A \cup B) = \prob(A) + \prob(B) - \prob(A \cap B) \)
  
-    \item \(\Omega = A^c \cup A\) and \(1 = \Prob(\Omega)\), thus by the addition \(P(A) + P(A^c) = 1\) 
+    \item \(\Omega = A^c \cup A\) and \(1 = \prob(\Omega)\), thus by the addition \(P(A) + P(A^c) = 1\) 
     
     \item Given that if \(A = B\) then the equality holds the case where \(A\) is a subset of \(B\) comes 
     from the fact that it is a strict subset of the other than its cardinality is smaller.
     
-    \item By the definition that \(\Prob(\Omega) = 1\) and the property \(\Prob(\emptyset) = 0\) 
+    \item By the definition that \(\prob(\Omega) = 1\) and the property \(\prob(\emptyset) = 0\) 
     we are given an upper and lower bound for our probability distribution. Therefore, every subset of \(\Omega\) will 
     have a probability less or equal to it. For the lower bound the logic is that it has no other subset with fewer elements than it, but 
     it is part of sets with more elements.
@@ -241,7 +241,7 @@ Given \((\Omega, \mathcal{A}, \Prob)\) and \(A,B \in \mathcal{A}\)
     \item Let us define \(B_n = A_n \setminus \bigcap{i = 1}_{n - 1} A_i\) which are pairwise disjoint. 
     
     \[
-	    \Prob\left(\bigcup A_n\right) = \Prob\left(\bigcup B_n\right) = \sum \Prob\left(B_i\right) \le \sum \Prob\left(A_i\right)
+	    \prob\left(\bigcup A_n\right) = \prob\left(\bigcup B_n\right) = \sum \prob\left(B_i\right) \le \sum \prob\left(A_i\right)
     \]
     
     Due to the fact that the \(B_i\) are pairwise disjoint.
@@ -283,16 +283,16 @@ Let \( |A \cap B| = k \), then:
 Two results \(A, B \in \mathcal{A}\) are considered \emph{independent} if 
 
 \[
-    \Prob (A \mid B) = \Prob (A)
+    \prob (A \mid B) = \prob (A)
 \]
 \[
-    \Prob (B \mid A) = \Prob (B)
+    \prob (B \mid A) = \prob (B)
 \]
 
 then 
 
 \[
-    \Prob(A \cap B) = \Prob(A) \cdot \Prob(B) 
+    \prob(A \cap B) = \prob(A) \cdot \prob(B) 
 \]
 
 
@@ -308,34 +308,34 @@ number and when throwing the second dice the sum gives us an even number.
 Therefore, 
 
 \[
-    \Prob(A) = \frac{|A|}{|\Omega|} = \frac{18}{36} = \frac{1}{2}
+    \prob(A) = \frac{|A|}{|\Omega|} = \frac{18}{36} = \frac{1}{2}
 \]
 
 \[
-    \Prob(B) = \frac{|B|}{|\Omega|} = \frac{18}{36} = \frac{1}{2}
+    \prob(B) = \frac{|B|}{|\Omega|} = \frac{18}{36} = \frac{1}{2}
 \]
 
 And  
 
 \[
-    \Prob(A \cap B) = \frac{| \{2,4,6\}^2| }{|\Omega|} = \frac{1}{4}
+    \prob(A \cap B) = \frac{| \{2,4,6\}^2| }{|\Omega|} = \frac{1}{4}
 \]
 
-This is just \(\Prob(A) \cdot \Prob(B)\). Therefore, they are independent.
+This is just \(\prob(A) \cdot \prob(B)\). Therefore, they are independent.
 
 \QED 
 
 \subsubsection{Independence for multiple results}
 
 \[
-    \Prob(A_1 \cap A_2 \cap \cdots \cap A_n) = \Prob(A_1) \cdot \Prob(A_2) \cdots \Prob(A_n) 
+    \prob(A_1 \cap A_2 \cap \cdots \cap A_n) = \prob(A_1) \cdot \prob(A_2) \cdots \prob(A_n) 
 \]
 
 For all pairs \(A_i, A_j\) where \(i \le j\) 
 
 \subsubsection{Independence in Laplace Distribution}
 
-Give a Laplace distribution \(\Prob = \frac{|A|}{|\Omega|}\) with two independent results 
+Give a Laplace distribution \(\prob = \frac{|A|}{|\Omega|}\) with two independent results 
 \(A\) and \(B\). 
 
 \[
@@ -346,7 +346,7 @@ This means that \(B\) is a probable in \(A\) as in the greater picture.
 
 \subsubsection{Complement Property}
 
-Given the probability space \((\Omega, \mathcal{A}, \Prob)\) and \(A, B \in \mathcal{A}\) as two 
+Given the probability space \((\Omega, \mathcal{A}, \prob)\) and \(A, B \in \mathcal{A}\) as two 
 independent results. Then \(A^c\) and \(B\) are also independent.
 
 \textbf{Proof:}
@@ -360,23 +360,23 @@ The sets \(A \cap B\) and \(A^c \cap B\) are disjoint and their union is
 If we calculate the probability 
 
 \[
-    \Prob(B) = \Prob(A \cap B) +  \Prob(A^c \cap B)
+    \prob(B) = \prob(A \cap B) +  \prob(A^c \cap B)
 \]
 
 This gives us 
 
 \[
-    \Prob(A^c \cap B) = \Prob(A) - \Prob(A \cap B)
+    \prob(A^c \cap B) = \prob(A) - \prob(A \cap B)
 \]
 
 Using the Independence of \(A\) and \(B\)
 
 \[
-    \Prob(A^c \cap B) = \Prob(B) - \Prob(A)\Prob(B) = \Prob(B) (1 - \Prob(A))
+    \prob(A^c \cap B) = \prob(B) - \prob(A)\prob(B) = \prob(B) (1 - \prob(A))
 \]
 
 \[
-    \Prob(B) = \Prob(B) (1 - \Prob(A)) = \Prob(B) \cdot \Prob(A^c)
+    \prob(B) = \prob(B) (1 - \prob(A)) = \prob(B) \cdot \prob(A^c)
 \]
 
 \QED 
@@ -406,7 +406,7 @@ An example is throwing two dices at the same time.
 
 \subsection{The Product Space of Discrete Probability Spaces}
 
-Given the product space \((\Omega, \mathcal{P}(\Omega), \Prob)\) of the spaces \((\Omega_i, \mathcal{P}(\Omega_i), \Prob_i)\) and 
+Given the product space \((\Omega, \mathcal{P}(\Omega), \prob)\) of the spaces \((\Omega_i, \mathcal{P}(\Omega_i), \prob_i)\) and 
 \(A_i \in \mathcal{P}(\Omega_i)\).We define 
 
 \begin{align*}
@@ -415,18 +415,18 @@ Given the product space \((\Omega, \mathcal{P}(\Omega), \Prob)\) of the spaces \
 	      &= \Omega_1 \times \cdots \times \Omega_{i - 1} \times A_i \times \Omega_{i + 1} \times \cdots \times \Omega_n
 \end{align*}
 
-For \(i = 1, \dots, n\). Then it holds that \(\Prob(A_{i}^{'}) = \Prob_i(A_i)\) and the events \(A_{i}^{'}\) are 
+For \(i = 1, \dots, n\). Then it holds that \(\prob(A_{i}^{'}) = \prob_i(A_i)\) and the events \(A_{i}^{'}\) are 
 independent.
 
 \subsection{Bernoulli-Expceriments}
 
-An experiment where \(\Omega = \{0,1\}, \Prob(\{1\}) = p\) and \(\Prob(\{0\}) = 1 - p\) for 
+An experiment where \(\Omega = \{0,1\}, \prob(\{1\}) = p\) and \(\prob(\{0\}) = 1 - p\) for 
 \(p \in (0, 1)\) is called a \emph{Bernoulli-Expceriment}.
 
 \subsubsection{Bernoulli Schema}
 
 If we perform a Bernoulli-Expceriment \(n\)-times with a success probability of \(p\). Where 
-\(\Prob(A_i) = p\). We define 
+\(\prob(A_i) = p\). We define 
 
 \[
     C_k = \bigcup_{I \in \{1, \dots, n\} \land |I| = k} \left(\bigcap_{i \in I} A_i \cap \bigcap_{i \in I} A_{i}^{c}\right)
@@ -435,17 +435,17 @@ If we perform a Bernoulli-Expceriment \(n\)-times with a success probability of 
 For the probability we get 
 
 \[
-    \Prob(C_k) = \sum_{I \in \{1, \dots, n\} \land |I| = k} \Prob \left(\bigcap_{i \in I} A_i \cap \bigcap_{i \notin I} A_{i}^{c}\right) = 
-    \sum_{I \in \{1, \dots, n\} \land |I| = k} \prod_{i \in I} \Prob(A_i) = \prod_{i \notin I} = \binom{n}{k} p^k (1 - p)^{n - k}
+    \prob(C_k) = \sum_{I \in \{1, \dots, n\} \land |I| = k} \prob \left(\bigcap_{i \in I} A_i \cap \bigcap_{i \notin I} A_{i}^{c}\right) = 
+    \sum_{I \in \{1, \dots, n\} \land |I| = k} \prod_{i \in I} \prob(A_i) = \prod_{i \notin I} = \binom{n}{k} p^k (1 - p)^{n - k}
 \]
 
 \subsection{Conditional Probability}
 
-Given the events \(A\) and \(B\) where \(\Prob(A) > 0\). The \emph{conditional probability} 
+Given the events \(A\) and \(B\) where \(\prob(A) > 0\). The \emph{conditional probability} 
 of \(B\) under the condition \(A\) is defined as 
 
 \[
-    \Prob(B \mid A) = \frac{\Prob(A \cap B)}{\Prob(A)}
+    \prob(B \mid A) = \frac{\prob(A \cap B)}{\prob(A)}
 \]
 
 \textbf{Example:}
@@ -454,58 +454,58 @@ In words, what is the probability of \(B\) if we limit ourself only to the case 
 From this definition we can also derive these two statements which are also equivalent. 
 
 \[
-    \Prob(B \mid A) = \Prob(B) \iff A \text{ and } B \text{ are independent}
+    \prob(B \mid A) = \prob(B) \iff A \text{ and } B \text{ are independent}
 \]
 
 \textbf{Proof:}
 
 \begin{align*}	
-    \Prob(B \cap A) = \Prob(A)\Prob(B) &= \Prob(A \cap B){\Prob(A)}\\ 
-    &= \Prob(B)	
+    \prob(B \cap A) = \prob(A)\prob(B) &= \prob(A \cap B){\prob(A)}\\ 
+    &= \prob(B)	
 \end{align*}
 
 \QED 
 
 \subsubsection{Conditional Probability of a Subset} 
 
-Given the events \(A\) and \(B\) where \(\Prob(A) > 0\). If \(A \subset B\) then 
-\(\Prob(B \mid A) = 1\)
+Given the events \(A\) and \(B\) where \(\prob(A) > 0\). If \(A \subset B\) then 
+\(\prob(B \mid A) = 1\)
 
 \textbf{Proof:}
 
 \(A \subset B \implies A \cap B = A \) therefore 
 
 \[
-    \Prob(B \mid A) = \frac{\Prob(A)}{\Prob(A)} = 1
+    \prob(B \mid A) = \frac{\prob(A)}{\prob(A)} = 1
 \]
 
 \QED 
 
 \subsubsection{Probability Measurement of Conditional Probability}
 
-Given the probability space \((\Omega, \mathcal{A}, \Prob)\) and \(A \in \mathcal{A}\) where 
-\(\Prob(A) > 0\). The map \(B \to \Prob(B \mid A)\) is a probability measurement with 
+Given the probability space \((\Omega, \mathcal{A}, \prob)\) and \(A \in \mathcal{A}\) where 
+\(\prob(A) > 0\). The map \(B \to \prob(B \mid A)\) is a probability measurement with 
 the following properties.
 
 \begin{itemize}
     
-    \item \(\forall \in \mathcal{A}: \Prob(B \mid A) \ge 0\)	
+    \item \(\forall \in \mathcal{A}: \prob(B \mid A) \ge 0\)	
     
-    \item \(\Prob(\Omega \mid A) = 1\)
+    \item \(\prob(\Omega \mid A) = 1\)
 
-    \item \(B_n \in A, n \in \Naturals\) pairwise disjoint \(\implies \Prob\left(\bigcup_{n \in \Naturals} B _n \mid A\right) 
-	    = \sum_{n \in \Naturals} \Prob(B_n \mid A)\)
+    \item \(B_n \in A, n \in \N\) pairwise disjoint \(\implies \prob\left(\bigcup_{n \in \N} B _n \mid A\right) 
+	    = \sum_{n \in \N} \prob(B_n \mid A)\)
 
 \end{itemize}
 
 We also get 
 
 \[
-    \Prob(\emptyset \mid A) = 0 
+    \prob(\emptyset \mid A) = 0 
 \]
 
 \[
-    \Prob(B^c \mid A) = 1 - \Prob(B \mid A)
+    \prob(B^c \mid A) = 1 - \prob(B \mid A)
 \]
 
 \textbf{Proof:}
@@ -515,7 +515,7 @@ We also get
     \item Because our sets do not have negative cardinalities and the lowest we can reach is 
 	  the probability of the empty-set we can not get below 0.
 
-    \item Similar to another proof we get \(\frac{\Prob(A)}{\Prob(A)}\) 
+    \item Similar to another proof we get \(\frac{\prob(A)}{\prob(A)}\) 
 
     \item By the definition of probability space.
 	
@@ -525,19 +525,19 @@ We also get
 
 \subsubsection{Multiplication Theorem}
 
-Given \(A_1, dots, A_n\) events with \(\Prob(A_1 \cap \cdots \cap A_{n - 1}) \ne 0\). Then 
+Given \(A_1, dots, A_n\) events with \(\prob(A_1 \cap \cdots \cap A_{n - 1}) \ne 0\). Then 
 
 \[
-    \Prob(A_1 \cap \cdots \cap A_n) = \Prob(A_1)\cdot\Prob(A_2 \mid A_1) \cdot \dots \cdot \mathbb(A_n \mid A_1 \cap \dots \cap A_{n - 1})
+    \prob(A_1 \cap \cdots \cap A_n) = \prob(A_1)\cdot\prob(A_2 \mid A_1) \cdot \dots \cdot \mathbb(A_n \mid A_1 \cap \dots \cap A_{n - 1})
 \]
 
 \subsubsection{Theorem of the Total Probability}
 
 Given our standard probability space, the disjoint partitions of \(\Omega\), \(B_1, \dots, B_n\) where 
-\(B_1 \cup \dots \cup B_n = \Omega\), \(B_i \cap B_j = \emptyset\) for \(i \neq j\) and \(\Prob(B_i) > 0\) then 
+\(B_1 \cup \dots \cup B_n = \Omega\), \(B_i \cap B_j = \emptyset\) for \(i \neq j\) and \(\prob(B_i) > 0\) then 
 
 \[
-    \Prob (A) = \sum_{i = 1}^{n} \Prob(A \cap B_i) = \sum_{i = 1}^{n}\Prob (A \mid B_i )\Prob(B_i) \forall A \in \mathcal{A}
+    \prob (A) = \sum_{i = 1}^{n} \prob(A \cap B_i) = \sum_{i = 1}^{n}\prob (A \mid B_i )\prob(B_i) \forall A \in \mathcal{A}
 \]
 
 \textbf{Example:}
@@ -559,19 +559,19 @@ What is the probability of a ball being red?
 The answer is given by
 
 \[
-    \Prob(R) = \Prob (R \cap A) + \Prob (R \cap B) + \Prob (R \cap C) 
+    \prob(R) = \prob (R \cap A) + \prob (R \cap B) + \prob (R \cap C) 
 \]
 
 Which gives us 
 
 \[
-    \Prob(R) = \Prob (R \mid A)\Prob (A) + \Prob (R \mid B) \Prob(B) + \Prob (R \mid C) \Prob(C)
+    \prob(R) = \prob (R \mid A)\prob (A) + \prob (R \mid B) \prob(B) + \prob (R \mid C) \prob(C)
 \]
 
 Finally we plug in the individual numbers 
 
 \[
-    \Prob(R) = \frac{1}{3} \left(\frac{2}{5} + \frac{3}{2} + \frac{1}{4} \right) = \frac{6}{15}
+    \prob(R) = \frac{1}{3} \left(\frac{2}{5} + \frac{3}{2} + \frac{1}{4} \right) = \frac{6}{15}
 \]
 
 \subsection{Multistage Random Expceriments}
@@ -605,7 +605,7 @@ For the multistage random experiment, the following two \emph{path rules} apply:
 
     \item For \(A \subset \Omega\), it holds that
 	\[
-	    \Prob(A) = \sum_{(\omega_1, \ldots, \omega_n) \in A} p(\omega_1, \ldots, \omega_n)
+	    \prob(A) = \sum_{(\omega_1, \ldots, \omega_n) \in A} p(\omega_1, \ldots, \omega_n)
 	\]
 \end{enumerate}
 
@@ -618,14 +618,14 @@ Note that for independent sub-experiments, we obtain the product space with
 
 \subsection{Bayes Theorem}
 
-Let \((\Omega, \mathcal{A}, \Prob)\) be a probability space. 
-Furthermore, let \(B_1, \ldots, B_n\) be a disjoint partition of the sample space \(\Omega\) with \(\Prob(B_i) > 0\) for all \(i = 1, \ldots, n\).
+Let \((\Omega, \mathcal{A}, \prob)\) be a probability space. 
+Furthermore, let \(B_1, \ldots, B_n\) be a disjoint partition of the sample space \(\Omega\) with \(\prob(B_i) > 0\) for all \(i = 1, \ldots, n\).
 Then, for every event \(A \in \mathcal{A}\), the following holds:
 
 \[
-    \Prob(B_i \mid A)
-    = \frac{\Prob(A \mid B_i)\,\Prob(B_i)}{\Prob(A)}
-    = \frac{\Prob(A \mid B_i)\,\Prob(B_i)}{\sum_{k=1}^{n} \Prob(A \mid B_k)\Prob(B_k)}.
+    \prob(B_i \mid A)
+    = \frac{\prob(A \mid B_i)\,\prob(B_i)}{\prob(A)}
+    = \frac{\prob(A \mid B_i)\,\prob(B_i)}{\sum_{k=1}^{n} \prob(A \mid B_k)\prob(B_k)}.
 \]
 
 In words and by changing \(A\) with \(E\) of evidence and \(B\) with \(H\) of hypothesis, we want to know how much the actual evidence changes 
@@ -633,17 +633,17 @@ our initial belief. The process can be described as: you have a hypothesis, you 
 the probability that your hypothesis is true given the observed evidence.
 
 \[
-    \Prob(H \mid E) = \frac{\Prob(E \mid H) \Prob(H)}{\Prob(H)\Prob(E \mid H) + \Prob(\neg H)\Prob(E \mid \neg H)}
+    \prob(H \mid E) = \frac{\prob(E \mid H) \prob(H)}{\prob(H)\prob(E \mid H) + \prob(\neg H)\prob(E \mid \neg H)}
 \]
 
 \begin{itemize}
 	
-    \item \(\Prob(H)\) is called the \emph{prior}. Our initial hypothesis, without seeing the evidence.
+    \item \(\prob(H)\) is called the \emph{prior}. Our initial hypothesis, without seeing the evidence.
 
-    \item \(\Prob (E \mid H)\) is called the \emph{likelihood}. This is the probability that we will see our hypothesis reflected on the 
+    \item \(\prob (E \mid H)\) is called the \emph{likelihood}. This is the probability that we will see our hypothesis reflected on the 
     evidence given that our hypothesis is true.
 
-    \item \(\Prob (E \mid \neg H)\) represents the probability that our hypothesis will be reflected on the sample given our hypothesis is false. 
+    \item \(\prob (E \mid \neg H)\) represents the probability that our hypothesis will be reflected on the sample given our hypothesis is false. 
     
 \end{itemize}
 
@@ -651,11 +651,11 @@ With this knowledge, breaking down the formula is very intuitive
 
 \begin{itemize}
     
-    \item \(\Prob (H \mid E)\) is the \emph{posterior}. It describes the following question: How often is \(H\) true among the cases where \(H\) is true.probability
+    \item \(\prob (H \mid E)\) is the \emph{posterior}. It describes the following question: How often is \(H\) true among the cases where \(H\) is true.probability
 
-    \item \(\Prob(H)\Prob(E \mid H)\) is the proportion of our hypothesis in the sample being true times the actual proportion of the fitting samples inside our hypothesis. 
+    \item \(\prob(H)\prob(E \mid H)\) is the proportion of our hypothesis in the sample being true times the actual proportion of the fitting samples inside our hypothesis. 
 
-    \item \(\Prob(H)\Prob(E \mid H) + \Prob(\neg H)\Prob(E \mid \neg H) \) consist of our expression above plus the proportion of the counter hypothesis times the proportion of the 
+    \item \(\prob(H)\prob(E \mid H) + \prob(\neg H)\prob(E \mid \neg H) \) consist of our expression above plus the proportion of the counter hypothesis times the proportion of the 
     representatives of our hypothesis which will show up in the evidence in the counter group.
 
 \end{itemize}
@@ -666,20 +666,20 @@ A disease affects 1 percent of the population, and you were tested positive with
 the probability for you truly being infected? 
 
 \[
-    \Prob ( I \mid + ) = \frac{\Prob(I)\Prob(+ \mid I)}{\Prob(I)\Prob(+ \mid I) + \Prob( \neg I) \Prob( + | \neg I)}
+    \prob ( I \mid + ) = \frac{\prob(I)\prob(+ \mid I)}{\prob(I)\prob(+ \mid I) + \prob( \neg I) \prob( + | \neg I)}
 \]
 
 Our numbers are: 
 
 \begin{itemize}
 	
-    \item \(\Prob(I) = 0.001 \)
+    \item \(\prob(I) = 0.001 \)
 
-    \item \(\Prob (+ \mid I) = 0.99\) 
+    \item \(\prob (+ \mid I) = 0.99\) 
     
-    \item \(\Prob(\neg I) =  0.999\)
+    \item \(\prob(\neg I) =  0.999\)
 
-    \item \(\Prob (+ \mid \neg I) = 0.1\)  
+    \item \(\prob (+ \mid \neg I) = 0.1\)  
     
 \end{itemize}
 
@@ -698,28 +698,28 @@ Formally \(P(|Z_n - \mu| > \epsilon)_{n \to \infty} \to 0\).
 Since our random variables are independent 
 
 \[
-    \Expc[Z_n] = \frac{1}{n} \sum_{i = 1}^{n} \Expc[X_i] = \mu
+    \expc[Z_n] = \frac{1}{n} \sum_{i = 1}^{n} \expc[X_i] = \mu
 \]
 
 \[
-    \Var[Z_n] = \frac{1}{n} \sum_{i = 1}^{n} \Var[X_i] = \frac{\sigma^2}{n}
+    \var[Z_n] = \frac{1}{n} \sum_{i = 1}^{n} \var[X_i] = \frac{\sigma^2}{n}
 \]
 
-as \(n \to \infty, \Var(X) \to \infty\).
+as \(n \to \infty, \var(X) \to \infty\).
 
 Formally, 
 
 \begin{align*}
-    \Prob(|Z_n - \mu | \ge \varepsilon) &\le \frac{\Var(Z_n)}{\varepsilon^2} \\ 
+    \prob(|Z_n - \mu | \ge \varepsilon) &\le \frac{\var(Z_n)}{\varepsilon^2} \\ 
     & \frac{\sigma^2}{n \varepsilon^2} \to 0 \text{ as n goes to infinity}
 \end{align*}
 
 \subsection{Strong Law of large Numbers}
 
-Given \(X_1, X_2, \dots\) independent random variables with the same distribution and \(|\Expc|X_1| < \infty\) then
+Given \(X_1, X_2, \dots\) independent random variables with the same distribution and \(|\expc|X_1| < \infty\) then
 
 \[
-    Z_n \to \Expc[X_1]
+    Z_n \to \expc[X_1]
 \]
 
 \subsection{Central Limit Theorem}
@@ -733,7 +733,7 @@ Given the same conditions of the \emph{Law of large Numbers}. The sample mean
 or equivalently
 
 \[
-    \lim_{n \to \infty} \Prob \left(\sqrt{n} \frac{Z_n - \mu}{\sigma} \le x\right) = \Phi (x)
+    \lim_{n \to \infty} \prob \left(\sqrt{n} \frac{Z_n - \mu}{\sigma} \le x\right) = \Phi (x)
 \]
 
 \textbf{Example:}
@@ -744,7 +744,7 @@ heads between \(4900 < X < 5100\).
 Our variable is binomial distributed 
 
 \[
-    \mu = \Expc[X] = np = 5000
+    \mu = \expc[X] = np = 5000
 \]
 
 \[
@@ -754,7 +754,7 @@ Our variable is binomial distributed
 Then for  
 
 \[
-    \Prob \left( Z_1 \le \sqrt{n} \frac{Z_n - \mu}{\sigma} \le Z_2 \right)
+    \prob \left( Z_1 \le \sqrt{n} \frac{Z_n - \mu}{\sigma} \le Z_2 \right)
 \]
 
 with \(Z_1 = \frac{4900 - 5000}{50}, Z_2 = \frac{5100 - 5000}{50}\)
@@ -770,262 +770,5 @@ Given \(X_1, X_2, \dots, X_n\) Bernoulli distributed random variables and \(S_n 
 number of successes is given by 
 
 \[
-    \lim_{n \to \infty} \Prob \left( \frac{S_n - np}{\sqrt{np (1 - p)} \le x}\right) = \Phi(X)
-\]
-
-\subsection{Cheat sheet Distributions}
-
-In the next sections the different distributions will be handled in deep, but for a fast overview we have:
-
-\subsubsection{Bernoulli Distribution}
-
-\textbf{Notation:} \(X \sim \text{Bernoulli}(p)\), \(0 \le p \le 1\).
-
-\textbf{PMF:}
-
-\[
-    \Prob(X = x) = p^{x}(1-p)^{1-x}, \quad x \in \{0,1\}.
-\]
-
-\textbf{Meaning:} Models a single success/failure trial.
-
-\textbf{Origin:} Assumes two outcomes with constant success probability \(p\).
-
-\textbf{Use Cases:} Indicators, binary outcomes.
-
-\textbf{Mean:}
-
-\[
-    \Expc[X] = p.
-\]
-
-\textbf{Variance:}
-
-\[
-    \Var(X) = p(1-p).
-\]
-
-\subsubsection{Binomial Distribution}
-
-\textbf{Notation:} \(X \sim \text{Binomial}(n,p)\).
-
-\textbf{PMF:}
-
-\[
-    \Prob(X = k) = \binom{n}{k} p^{k}(1-p)^{n-k}, \quad k = 0,\dots,n.
-\]
-
-\textbf{Meaning:} Number of successes in \(n\) independent Bernoulli trials.
-
-\textbf{Origin:} Sum of \(n\) independent Bernoulli\((p)\) variables.
-
-\textbf{Use Cases:} Counting successes in repeated experiments.
-
-\textbf{Mean:}
-
-\[
-    \Expc[X] = np.
-\]
-
-\textbf{Variance:}
-
-\[
-    \Var(X) = np(1-p).
-\]
-
-\subsubsection{Normal Distribution}
-
-\textbf{Notation:} \(X \sim N(\mu, \sigma^{2})\).
-
-\textbf{PDF:}
-
-\[
-    f(x) = \frac{1}{\sqrt{2\pi\sigma^{2}}}
-    \exp\!\left( -\frac{(x - \mu)^{2}}{2\sigma^{2}} \right).
-\]
-
-\textbf{Meaning:} Models phenomena influenced by many small independent effects.
-
-\textbf{Origin:} Central Limit Theorem; maximum entropy with fixed mean and variance.
-
-\textbf{Use Cases:} Measurement errors, natural variations.
-
-\textbf{Mean:}
-
-\[
-    \Expc[X] = \mu.
-\]
-
-\textbf{Variance:}
-
-\[
-    \Var(X) = \sigma^{2}.
-\]
-
-\subsubsection{Poisson Distribution}
-
-\textbf{Notation:} \(X \sim \text{Poisson}(\lambda)\).
-
-\textbf{PMF:}
-
-\[
-    \Prob(X = k) = e^{-\lambda} \frac{\lambda^{k}}{k!}, \quad k \in \{0,1,2,\dots\}.
-\]
-
-\textbf{Meaning:} Counts occurrences of events with constant rate and independent increments.
-
-\textbf{Origin:} Limit of the Binomial distribution as \(n \to \infty\), \(p \to 0\), \(np = \lambda\).
-
-\textbf{Use Cases:} Arrivals, rare events, queueing.
-
-\textbf{Mean:}
-
-\[
-    \Expc[X] = \lambda.
-\]
-
-\textbf{Variance:}
-
-\[
-    \Var(X) = \lambda.
-\]
-
-\subsubsection{Geometric Distribution}
-
-\textbf{Notation:} \(X \sim \text{Geom}(p)\).
-
-\textbf{PMF:}
-
-\[
-    \Prob(X = k) = (1-p)^{k-1} p, \quad k = 1,2,\dots.
-\]
-
-\textbf{Meaning:} Number of trials until first success.
-
-\textbf{Origin:} Independent Bernoulli trials; first success at trial \(k\).
-
-\textbf{Use Cases:} Waiting times, reliability.
-
-\textbf{Mean:}
-
-\[
-    \Expc[X] = \frac{1}{p}.
-\]
-
-\textbf{Variance:}
-
-\[
-    \Var(X) = \frac{1-p}{p^{2}}.
-\]
-
-\subsubsection{Hypergeometric Distribution}
-
-\textbf{Notation:} \(X \sim \text{Hypergeometric}(N,K,n)\).
-
-\textbf{PMF:}
-
-\[
-    \Prob(X = k) = \frac{\binom{K}{k}\binom{N-K}{\,n-k\,}}{\binom{N}{n}}.
-\]
-
-\textbf{Meaning:} Number of successes when sampling without replacement.
-
-\textbf{Origin:} Combinatorial selection from a finite population.
-
-\textbf{Use Cases:} Quality control, card draws, lotteries.
-
-\textbf{Mean:}
-
-\[
-    \Expc[X] = n\frac{K}{N}.
-\]
-
-\textbf{Variance:}
-
-\[
-    \Var(X) = n\frac{K}{N}\left(1 - \frac{K}{N}\right)\frac{N-n}{N-1}.
-\]
-
-\subsubsection{Discrete Uniform Distribution}
-
-\textbf{Notation:} \(X \sim \text{Uniform}\{a,\dots,b\}\).
-
-\textbf{PMF:}
-
-\[
-    \Prob(X = k) = \frac{1}{b-a+1}, \quad k = a,\dots,b.
-\]
-
-\textbf{Meaning:} All outcomes equally likely.
-
-\textbf{Origin:} Symmetry or maximal uncertainty over a finite set.
-
-\textbf{Use Cases:} Dice, randomized algorithms.
-
-\textbf{Mean:}
-
-\[
-    \Expc[X] = \frac{a+b}{2}.
-\]
-
-\textbf{Variance:}
-
-\[
-    \Var(X) = \frac{(b-a+1)^{2}-1}{12}.
-\]
-
-\subsection{Continuous Uniform Distribution}
-
-\textbf{Notation:} \(X \sim \text{Uniform}(a,b)\).
-
-\textbf{PDF:}
-
-\[
-    f(x) = \frac{1}{b-a}, \quad a \le x \le b.
-\]
-
-\textbf{Meaning:} All values in the interval have equal density.
-
-\textbf{Origin:} Complete symmetry on an interval.
-
-\textbf{Use Cases:} Random number generation, simulation.
-
-\textbf{Mean:}
-
-\[
-    \Expc[X] = \frac{a+b}{2}.
-\]
-
-\textbf{Variance:}
-
-\[
-    \Var(X) = \frac{(b-a)^{2}}{12}.
-\]
-
-\subsubsection{Exponential Distribution}
-
-\textbf{Notation:} \(X \sim \text{Exponential}(\lambda)\).
-
-\textbf{PDF:}
-
-\[
-    f(x) = \lambda e^{-\lambda x}, \quad x \ge 0.
-\]
-
-\textbf{Meaning:} Waiting time between events in a Poisson process; memory-less.
-
-\textbf{Origin:} Time between events occurring at rate \(\lambda\).
-
-\textbf{Use Cases:} Reliability, inter-arrival times.
-
-\textbf{Mean:}
-
-\[
-    \Expc[X] = \frac{1}{\lambda}.
-\]
-
-\textbf{Variance:}
-
-\[
-    \Var(X) = \frac{1}{\lambda^{2}}.
+    \lim_{n \to \infty} \prob \left( \frac{S_n - np}{\sqrt{np (1 - p)} \le x}\right) = \Phi(X)
 \]

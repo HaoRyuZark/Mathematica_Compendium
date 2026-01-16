@@ -1,0 +1,646 @@
+\newpage 
+\section{Relational Algebra}
+
+\subsection{Relations}
+
+A \textbf{relation} is a set of the Cartesian Product of two sets. It contains ordered pairs \((a,b)\).
+
+The Cartesian Product for our entities is defined as
+
+\[
+    S \times T := \bigcup_{(s_1, \dots, s_n) \in S} \left[ \bigcup_{(t_1, \dots, t_k) \in T} \{(s_1, \dots, s_n, t_1, \dots, t_k)\}\right]
+\]
+
+Simplified each element of \(S\) is combined with each element of \(T\). The size of this
+special product is \( |T \times S| = |S| \cdot |T| \).
+
+In the relational algebra relations represent tables and their rows the tuples.
+
+\subsection{Relational Algebra}
+
+Relational Algebra is a \textbf{formal, procedural query language} for the relational model. It provides a set of \textbf{operators} that take relations (tables) as input and produce relations as output. It forms the \textbf{theoretical foundation of SQL} and relational database systems.
+
+Throughout this section, we use two example relations to illustrate each concept.
+
+\subsubsection{Axioms of Relational Algebra}
+
+Relational Algebra is based on \textbf{set theory} and satisfies the following axioms:
+
+\begin{itemize}
+\item \textbf{Closure}: Every operation produces a relation.
+\item \textbf{Set Semantics}: Relations do not contain duplicate tuples.
+\item \textbf{Order Irrelevance}: The order of tuples and attributes does not matter.
+\item \textbf{Composability}: Operations can be nested arbitrarily.
+\end{itemize}
+
+\textbf{Example:}
+  
+If \(\sigma_{id > 1}(A)\) returns a relation, it can be used as input to another operator such as projection.
+
+\subsubsection{Relations}
+
+A \textbf{relation} is a finite set of tuples over a fixed set of attributes.
+
+Formally:
+
+\[
+    R \subseteq D_1 \times D_2 \times \dots \times D_n
+\]
+
+\textbf{Example:}
+  
+Relation \(A(id, value)\) is a set of tuples:
+
+\[
+    A = \{(1, X), (2, Y)\}
+\]
+
+\subsubsection{Identifier and Schema}
+
+We define  
+
+\[
+    \mathrm{ident}(R) = \{a_i\}_i \quad \text{ and } \mathrm{schema}(R) = \{[a_1:T_1, \dots, a_n:T_n]\}
+\]
+
+\(\mathrm{ident}\) returns the names of the attributes of the relation, while 
+\(\mathrm{schema}\) the attributes and its corresponding types.
+
+\subsection{Domain of an Attribute}
+
+The \textbf{domain} of an attribute \(a\) in a relation \(R\) is the set of all possible values that \(a\) can take in \(R\).
+
+\subsubsection{Cartesian Product for Relations}
+
+The \textbf{Cartesian product} combines every tuple of one relation with every tuple of another.
+
+\[
+S \times T = \bigcup_{(s_1, \dots, s_n) \in S} \left[ \bigcup_{(t_1, \dots, t_n) \in T} \{(s_1, \dots, s_n, t_1, \dots, t_k)\} \right]
+\]
+
+With size \(|S \times T|  = |S| \times |T|\).
+
+\subsubsection{Union \(\cup\)}
+
+Combines tuples from two relations with the \textbf{same schema}.
+
+\[
+A \cup B
+\]
+
+\subsubsection{Set Difference \(\setminus\)}
+
+Returns tuples in one relation but \textbf{not} in another.
+
+\[
+A \setminus B
+\]
+
+\subsubsection{Intersection \(\cap\)}
+
+Returns tuples common to both relations.
+
+\[
+A \cap B = \{\}
+\]
+
+\subsubsection{Selection \(\sigma\)}
+
+Filters tuples based on a predicate.
+
+\[
+\sigma_{\theta}(S) = \{s \in S \mid s \text{ satisfies } \Theta\}
+\]
+
+\subsubsection{Projection \(\pi\)}
+
+Selects specific attributes.
+
+\[
+\prod_{a_{i1}, \dots, a_{ik}}(S) \{(a_{i1}, \dots, a_{ik}) \mid a \in S\}
+\]
+
+\subsubsection{Symmetric Difference \(\triangle\)}
+
+Tuples in either relation but \textbf{not in both}.
+
+\[
+A \triangle B = (A \setminus B) \cup (B \setminus A)
+\]
+
+\subsubsection{Rename \(\rho\)}
+
+Renames relations or attributes.
+
+\[
+\rho_{A'(key, data)}(A)
+\]
+
+\subsubsection{\texorpdfstring{\(\mathrm{with}\)}{with}}
+
+\(\mathrm{with}\) allows us to store products of specific operation with an 
+special name which can be used later in oter Operations.
+
+\subsubsection{Join \(\bowtie\)}
+
+A \textbf{theta join} is the Cartesian Prouct plus a selection.
+
+\[
+    S \bowtie_{\theta } T = \sigma_\theta (S \times T)
+\]
+
+\paragraph{Inner Join \(\bowtie\)}
+
+A \textbf{theta join} combines tuples that satisfy a condition.
+
+\[
+    S \bowtie_{\theta } T = \sigma_\theta (S \times T)
+\]
+
+\paragraph{Equi Join}
+
+An equi-join is a join where the join condition consists only of equality 
+comparisons between attributes of the two relations.
+
+\[
+    R \bowtie_{R.a_1 = S.b_1 \land \dots \land R.a_k = S.b_k} S
+\]
+
+The name and domain of the attribures must be the same.
+
+\paragraph{Natural Join}
+
+It is a speical case of the equi join which can only be performed only if there 
+is a common attribute.
+
+\begin{itemize}
+\item Natural Join = Cartesian Product + Selection + Projection
+\end{itemize}
+
+\paragraph{Outer Join}
+
+Preserves non-matching tuples.
+
+\begin{itemize}
+\item Left outer join 
+\item Right outer join
+\item Full outer join
+\end{itemize}
+
+\textbf{Example (Left Outer Join)}
+
+\begin{tabular}{|c|c|c|}
+\hline
+id & A.value & B.value \\
+\hline
+1 & X & NULL \\
+2 & Y & Y \\
+\hline
+\end{tabular}
+
+\paragraph{Semi Join}
+
+Returns tuples from one relation that \textbf{have a match} in the other.
+
+\[
+A \ltimes B
+\]
+
+\textbf{Example:}
+
+
+\begin{tabular}{|c|c|}
+\hline
+id & value \\
+\hline
+2 & Y \\
+\hline
+\end{tabular}
+
+\subsubsection{Division \(\div\)}
+
+Used to express \textbf{"for all"} queries. It can only be performed when 
+the relation on the right is a proper subset of the left relation.
+
+Let:
+\begin{itemize}
+\item \(R(X, Y)\)
+\item \(S(Y)\)
+\end{itemize}
+
+Then:
+
+\[
+R \div S
+\]
+
+\textbf{Example Concept}  
+If \(A(id, value)\) contains all values in \(B(value)\), division returns the corresponding \texttt{id}s.
+
+Division is commonly used in queries like:
+\begin{quote}
+“Find entities related to \textbf{all} items in a set.”
+\end{quote}
+
+\subsubsection{Assigment \((=)\)}
+
+This is just using to store the result of a relational algebra operation.
+
+\subsection{Types of Keys}
+
+A \textbf{key} is an attribute or combination of attributes (\textbf{composite key}) which uniquely identifies an entity.
+
+\begin{itemize}
+\item \textbf{Candidate Key:} The term refers to the attributes which are suited for being the key.
+\item \textbf{Irreducible:} A key has to be as atomic as possible.
+\item \textbf{Super key:} It consists of a candidates key's attributes + potentially some extra attributes.
+\item \textbf{Alternate Key:} This is an alternative primary key. This means that the UNIQUE constraints will be imposed on the attribute/s.
+\item \textbf{Surrogate Key:} This key has only meaning inside the database. Example: ID \(\to\) Person's Name.
+\item \textbf{Foreign Key} This key is an attribute of one table which references another table.
+\end{itemize}
+
+\subsection{Relation Schema}
+
+The \((\mathcal{R}, \tau)\) represents a \textbf{relation schema}. We can constrain our relations to obey certain rules. Thus, limiting our space. Here, \(\mathcal{R}\) is the set of all relations of \(n\) elements and \(\tau\) is a \(n\) tuple (attributes).
+
+This is the analog of using \verb|CREATE TABLE| in SQL. We are creating rules for 
+the tuples inside the relation.
+
+\subsection{Functional Dependencies}
+
+A \textbf{functional relation} is dependence between one or more attributes commonly noted \texttt{A -> B}.
+
+Formally \(a \rightarrow b\) holds:
+
+\[
+    \forall r (\mathcal{R}) \forall d_1, d_2 \in r (d_1[\alpha] = d_2[\alpha] \implies d_1[\beta] = d_2[\beta])
+\]
+
+where \(r(\mathcal{R})\) is a relation in the Schema \(\mathcal{R}\), \(\alpha\)
+is a tuple in the schema and \(d[\alpha]\) is the tuple without \(\alpha\).
+
+In simple terms the notation \( X \to Y\) means "we know Y if we know X".
+
+A complete dependece is when \(A \to B\) is when we can not further reduce the tuple \(A\) 
+so that we still get \(B\).
+
+\subsection{Armstrong Axioms}
+
+For a relation \(R = \{a_1, \dots, a_n\}\) with the schema \(\alpha, \beta, \gamma \subseteq \mathrm{ident}(R)\)
+The Armstrong axioms are given: 
+
+\begin{itemize}
+\item \textbf{Reflexivity:} for all \(\beta \subseteq \alpha\) holds \(\alpha \to \beta\)
+\item \textbf{Transitivity:} \(\alpha \to \beta \land \beta \to \gamma \implies \alpha \gamma\)
+\item \textbf{Connectivity:} \(\alpha \to \beta \implies \alpha \gamma \to \beta \gamma\)
+\item \textbf{Union:} \(\alpha \to \beta \land \alpha \to \gamma \implies \alpha \to \beta \gamma\)
+\item \textbf{Dedomposition:} \(\alpha \to \beta \gamma \implies \alpha \to \beta \land \alpha \to \gamma\)
+\item \textbf{Pseudotransivity:} \(\alpha \to \beta \land \beta \gamma \to \delta \implies \alpha \gamma \to \delta\)
+\end{itemize}
+
+\subsection{Attribute Closure}
+
+The attribute closure \(AC(FD, x)\)is the set of all attributes reachable via functional dependency inluding 
+the starting point.
+
+\textbf{Example:}
+
+
+\(R = \{A,B,C,D\}\) with \(FD = \{A \to B, B \to C, AB \to CD\}\)
+
+\begin{itemize}
+\item \(AC(FD, A) = \{A, AB, ABC, ABCD\} = ABCD\)
+\item \(AC(FD, B) = \{B, BC\} = BC\)
+\end{itemize}
+
+\subsection{Canonical Overlapping}
+
+We consider two sets of functional dependencies if and only if their 
+attribute closures \(FD^+\) are identical.
+
+For a schema \(R\) with a set of functional dependencies \(FD\) we denote \(FC^c\) as 
+\textbf{the Canonical Overlapping} of \(FD\) if the following criteria are satisfied: 
+
+\begin{itemize}
+\item \(FD^c \cong FD\), \(FD^{c+} = FD^+\)
+\item For all \(\alpha \to \beta \in FD^c\) are minimal in the sense that 
+  \begin{itemize}
+  \item \(\forall a \in \alpha: FD^c \setminus (\alpha \to \beta) \cup (\alpha \setminus a \to \beta) \ne FD^c\)
+  \item \(\forall b \in \beta: FD^c \setminus (\alpha \to \beta) \cup (\alpha \to \beta \setminus b ) \ne FD^c\)
+  \end{itemize}
+\item All left side attributes appear only one time 
+\end{itemize}
+
+\subsubsection{Left-Reduction}
+
+For all \(\alpha \to \beta \in FD\) check if there is a redundant \(a \in \alpha\). \(\beta \subseteq AC(FD, \alpha \setminus a)\).
+If that is the case then replace \(\alpha \to \beta\) with \(\alpha \setminus a \to \beta\).
+
+\subsubsection{Right-Reduction}
+
+For all \(\alpha \to \beta \in FD\) check if there is a redundant \(b \in \beta\). 
+\(\beta \subseteq AC(FD \setminus \{\alpha \to \beta \} \cup \{\alpha \to \beta \setminus b, \alpha\})\).
+If that is the case then replace \(\alpha \to \beta\) with \(\alpha \to \beta \setminus b\).
+
+\subsubsection{Elimination}
+
+Remove \(\alpha \to \emptyset\).
+
+\subsubsection{Union}
+
+If \(\alpha \to \beta_1\) and \(\alpha \to \beta_2\) then combine them into \(\alpha \to \beta_1, \beta_2\).
+
+\textbf{Example:}
+
+
+Given are \(R=\{ A, B, C, D, E, F \}, FD=\{ ABC \to DEF,A \to BC,D \to EF\} \).
+
+\textbf{Left-Reduction:}
+
+Firt iteration \(ABC \to DEF\)
+
+\begin{itemize}
+\item Is \(A\) redundant? No: \(AC(F, BC) = BC\)
+\item Is \(B\) redundant? Yes: \(AC(F, AC) = AC \implies ABC \implies ABCDEF\).  
+Thus we have \(AC \to DEF, A \to BC, D \to EF\).
+\item Is \(C\) redundant? Yes: \(AC(F, A) = A \implies ABC \implies ABCDEF\).  
+Thus we have \(A \to DEF, A \to BC, D \to EF\).
+\end{itemize}
+
+\textbf{Right-Reduction}
+
+Using \(\{A \to DEF, A \to BC, D \to EF\}\) we proceed with the first dependency 
+\(A \to DEF\).
+
+\begin{itemize}
+\item Is \(D\) redundant? No, without it we cant reach \(EF\).
+\item Is \(E\) redundant? Yes: \(AC(A \to DF, A \to BC, A \to EF, A) = A \implies ADF \implies ADEFBC\).  
+Thus we have \(F = \{A \to DF, A \to BC, D \to EF\}\).
+\item Is \(F\) redundant? Yes: \(AC(A \to D, A \to BC, D \to EF, A) = A \implies ABC \implies ABCDEF\).  
+Thus we have \(F = \{A \to D, A \to BC, D \to EF\}\).
+\end{itemize}
+
+\textbf{Elimination and Union}
+
+\[
+    FC^c = \{A \to BCD, D \to EF\}
+\]
+
+\textbf{Important Notes}
+
+\begin{itemize}
+\item By the left-reduction we only care about fd's which have at least two attributes in the right side.
+\item By the right-reduction we only care about the fd's with one attribute at the right.
+\end{itemize}
+
+\subsection{How to find a Candidate Key}
+
+Given a set of attributes \(\{A,B,C,D\}\) with the following functional dependencies:
+
+\[
+A \to B, C \to B, A \to D
+\]
+
+The set is already left-reduced. 
+
+\begin{itemize}
+\item \(AC(F, A) = ABD\)
+\item \(AC(F, C) = CB\)
+\end{itemize}
+
+We get \(A \to BD, C \to B\).
+
+For the right reduction: 
+
+\begin{itemize}
+\item Is \(B\) redundant? Yes
+\end{itemize}
+
+Finally, we get our candidate key \(AC \to ABCD\).
+
+\subsection{Losslessness and Maintenance of Dependency}
+
+Given a relation which needs to be splited into more relations:
+
+\begin{itemize}
+
+    \item \textbf{Losslessness:} After the split, the information in the original relation needs be accesible via joins.
+
+    \item \textbf{Maintenance of Dependency:} The original functional dependencies do not change after the split.
+
+\end{itemize}
+
+\subsection{Normal Forms}
+
+A \textbf{normalized} table are protected from data inconsistencies and make the tables more readable.
+
+\begin{itemize}
+\item \textbf{I Normal Form:}
+  \begin{itemize}
+  \item No row order for information.
+  \item No Mixing data types in the same column.
+  \item No Tables without a primary key.
+  \item No Repeating groups.
+  \end{itemize}
+\end{itemize}
+
+This normal is mostly given in relational algebra problems.
+
+\begin{itemize}
+\item \textbf{II Normal Form:} Each non-key attribute must depend on the entire primary key.
+  \begin{itemize}
+  \item The relation is in the second normal form if it is already in the first normal form and each \textbf{non-key} attribute is functionally dependent on the \textbf{key-candidate}.
+  \end{itemize}
+\end{itemize}
+
+\textbf{Example I:}
+
+\(R = \{A,B,C,D\}, \quad FD = \{A \to BC, B \to A\}\) not in 2NF due to \(D\) not being present.
+
+\textbf{Example II:}
+
+\(R = \{A,B,C,D\}, \quad FD = \{A \to B, B \to A, AD \to C\}\)
+
+Candidates \(AD, BD\), not prime attribute \(C\). Thus, it obeys the 2NF.
+
+\begin{itemize}
+\item \textbf{III Normal Form:} Every non-key attribute in a table should depend on the key, the whole key, and nothing but the key.
+  \begin{itemize}
+  \item The relation is in the third normal form if it is already in the second normal form and each \textbf{non-key} attribute is not dependent on other \textbf{non-key} attribute.
+  \item \textbf{Boyce-Cood III Normal Form:} Every attribute in a table should depend on the key, the whole key, and nothing but the key.
+  \end{itemize}
+\end{itemize}
+
+\textbf{Formal Definition 3NF:}
+
+A schema \(R\) is in the 3NF if for all \( \alpha \to \beta \in FD\) at least one of the following statements 
+is true: 
+
+\begin{itemize}
+\item \(\alpha \to \beta\) is trivial \(\beta \subseteq \alpha\)
+\item \(\beta\) has only prime attributes 
+\item \(\alpha\) is a superkey 
+\end{itemize}
+
+\textbf{Formal Definition BCNF:}
+
+A schema \(R\) is in the BCNF if for all \( \alpha \to \beta \in FD\) at least one of the following statements 
+is true: 
+
+\begin{itemize}
+\item \(\alpha \to \beta\) is trivial \(\beta \subseteq \alpha\)
+\item \(\alpha\) is a superkey 
+\end{itemize}
+
+\textbf{Example I}
+
+\(R = \{A,B,C,D\}, \quad FD = \{A \to BC, C \to D\}\), not in 3NF due to \(D\) being dependent on \(C\).
+
+\begin{itemize}
+\item \textbf{IV Normal Form:} Multivalued dependencies in a table must be multivalued dependencies on the key.
+\item \textbf{V Normal Form:} Our table in the forth normal form cannot be describable as the logical result of joining some other tables.
+\end{itemize}
+
+\subsection{Synthesis Algorithm}
+
+The \textbf{synthesis algorithm} is used to convert relations to the 3NF.
+
+\begin{itemize}
+    
+    \item Find the Canonical Overlapping.
+   
+    \item For all \(\alpha \to \beta \in FD^c\) we get a schema \(R_k = \alpha \cup \beta\) in which 
+    the attributes of functional dependencies which are in \(R_k\) will be ordered to \(R_k\).
+  
+    \item A key candidate has to be in \(R_k\). Else, we create another relation with the attributes of 
+    the key candidate.
+ 
+    \item Individual \(R_k\) can contain other \(R_m\). Those schemata are not necessary and can be removed.
+
+\end{itemize}
+
+\textbf{Example:}
+
+Given \(R = \{A,B,C,D,E,F\}\) with \(FD = \{A \to A, A \to B, C \to DEF, E \to F\}\).
+
+\textbf{Left-Reduction}
+
+Nothing to do.
+
+\textbf{Right Reduction}
+
+\(A \to \emptyset\) (trivial)  
+\(A \to B\) nothing to do.  
+\(C \to DEF\) discard \(F\) due to \(C \to DE \implies C \to DEF\).  
+\(E \to F\) nothing to do.
+
+Result: \(FC^c = \{A \to B, C \to DE, E \to F\}\).
+
+\textbf{Schemata}
+
+\(\mathcal{R}_{AB}\) with \(F_{AB} = \{A \to B\}\).  
+
+\(\mathcal{R}_{CDE}\) with \(F_{CDE} = \{C \to DE\}\).  
+
+\(\mathcal{R}_{EF}\) with \(F_{EF} = \{E \to F\}\).
+
+\textbf{Test for key candidates}
+
+No relation has the key-candidate \(AC\).
+
+\subsection{Decomposition Algorithm for BCNF}
+
+The \textbf{decomposition algorithm} is used to convert relations to the BCNF. 
+
+A schema \(R\) is in the BCNF if for all \( \alpha \to \beta \in FD\) at least one of the following statements
+is true:
+
+\begin{itemize}
+
+    \item \(\alpha \to \beta\) is trivial \(\beta \subseteq \alpha\)
+
+    \item \(\alpha\) is a superkey 
+
+\end{itemize}
+
+\subsubsection*{Algorithm}
+
+\begin{itemize}
+    
+    \item Let \(Z = \{R\}\).
+    
+    \item As long as there schemata \(R_i \in Z\) gives which are not in BCNF proceed to 
+    
+    \begin{itemize}
+        \item Split \(R_i\) into \(R_{i1} = \alpha \cup \beta\) and \(R_{i2} = R_i - \beta\).
+        \item Remove \(R_i\) from \(Z\) and add \(R_{i1}\) and \(R_{i2}\).
+    \end{itemize}
+
+    \item The algorithm works recursively on the subschemas.
+
+\end{itemize}
+
+\textbf{Example:}
+
+\(R = \{A,B,C,D\}\) with \(F = \{BC \to D, AB \to A\}\).
+
+\(AB \to A\) is in BCNF due to \(AB\) being a key-candidate and \(A \subseteq AB\)
+
+On the other hand \(BC \to D\) is not in BCNF due to \(BC\) not being a key-candidate. 
+
+Thus, we split \(R\) into
+
+\(F_{R_1} = \{BC \to D\}\) and \(F_{R_2} = \{AB \to A\}\).
+
+\subsection{Optimization}
+
+The following equivalences hold for relational algebra expressions: 
+
+\begin{itemize}
+    
+    \item \(\sigma C_1 \land C_2 \land \dots \land C_n \cong \sigma_{C_1} ( \sigma_{C_2} ( \dots ( \sigma_{C_n} (R)) \dots ))\)
+    
+    \item \(\sigma_{C_1} (\sigma_{C_2} (R)) \cong \sigma_{C_1} (\sigma_{C_2} (R))\)
+    
+    \item If \(L_1 \subseteq L_2 \subseteq \dots \subseteq L_n\) then 
+        \[
+            \pi_{L_1} (\pi_{L_2} ( \dots ( \pi_{L_n} (R)) \dots ) ) \cong \pi_{L_1} (R) 
+        \]
+    
+    \item \(\pi_{A_1, \dots, A_n} (\sigma_{C} (R)) \cong \sigma_C ( \pi_{A_1, \dots, A_n}(R))\)
+    
+    \item \(\times, \cup, \cap\) and \(\bowtie\) are commutative
+    
+    \item Pushing Selections, select as early as possible \( \sigma_C \left(R \bowtie_{C_J} S \right) \cong \sigma_C (R) \bowtie_{C_J} S\)
+
+    Special Case: 
+
+    \[
+     \sigma_{C_1 \land C_2} \left(R \bowtie_{C_J} S \right) \cong \sigma_{C_1} (R) \bowtie_{C_J} \sigma_{C_2} (S)
+    \]
+
+    \item \(\pi_L (R \bowtie_{C_J} S) \cong \pi_{A_1, \dots, A_n}(R) \bowtie_{C_J} \pi_{b_1, \dots, b_n}(S)\)
+    
+    \item \(\times, \cup, \cap\) and \(\bowtie\) are associative
+   
+    \item \(\sigma\) is distributive with \(\cup, \cap, -\) 
+
+    \[
+        \sigma_C (R \Theta S) = \sigma_C (R) \Theta \sigma_C (S)
+    \]
+    
+    \item \(\pi\) is distributive with \(\cup\) 
+
+    \[
+        \pi_C (R \cup S) = \pi_C (R) \cup \pi_C (S)
+    \]
+    
+    \item De Morgam for Joins with selections 
+
+    \[
+        \neg (A \land B) = \neg A \lor \neg B \quad \neg (A \lor B) = \neg A \land \neg B
+    \]
+    
+    \item \(\sigma_C (R \times S) \cong R \bowtie_C S\)
+
+\end{itemize}

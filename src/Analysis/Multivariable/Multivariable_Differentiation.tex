@@ -3,7 +3,7 @@
 
 \subsection{Partial Derivatives}
 
-Let \( f : U \subseteq \Reals^n \to \Reals \) and \( \vec{X}_0 = (x_1^{(0)}, \dots, x_n^{(0)}) 
+Let \( f : U \subseteq \R^n \to \R \) and \( \vec{X}_0 = (x_1^{(0)}, \dots, x_n^{(0)}) 
 \in U \). Then \(f\) is \emph{partially differentiable with respect to \( x_i \)} at 
 \( \vec{X}_0 \) if the limit:
 
@@ -37,7 +37,7 @@ where \(\lim_{\Delta x_1 \to 0}\frac{E_1(\Delta x_1)}{\Delta x_1} = \lim_{\Delta
 
 \subsection{The Gradient}
 
-Let \( f : U \subseteq \Reals^n \to \Reals \) be differentiable at \( \vec{X}_0 = (x_1^{(0)}, 
+Let \( f : U \subseteq \R^n \to \R \) be differentiable at \( \vec{X}_0 = (x_1^{(0)}, 
 \dots, x_n^{(0)}) \). The \emph{gradient} of \(f\) at \( \vec{X}_0 \) is:
 
 \[
@@ -112,7 +112,7 @@ of the curve
 
     \item \( \nabla(f + g) = \nabla f + \nabla g \)
 
-    \item \( \nabla(\lambda f) = \lambda \nabla f \) for \( \lambda \in \Reals \)
+    \item \( \nabla(\lambda f) = \lambda \nabla f \) for \( \lambda \in \R \)
 
     \item \( \nabla(fg) = f \nabla g + g \nabla f \)
 
@@ -176,8 +176,8 @@ Thus, the tangent plane is:
 
 \subsection{The Directional Derivative}
 
-Let \( f : \Reals^n \to \Reals \) be differentiable at \( \vec{x}_0 \), 
-and let \( \vec{v} \in \Reals^n \) be a direction vector with \( \|\vec{v}\| = 1 \). The 
+Let \( f : \R^n \to \R \) be differentiable at \( \vec{x}_0 \), 
+and let \( \vec{v} \in \R^n \) be a direction vector with \( \|\vec{v}\| = 1 \). The 
 \emph{directional derivative} of \(f\) at \( \vec{x}_0 \) in the direction \( \vec{v} \) is defined as:
 
 \[
@@ -280,7 +280,7 @@ and the direction vector \( \vec{v} \).
 
 \subsection{The Total Differential}
 
-If \( f : \Reals^n \to \Reals \) is differentiable at \( \vec{x}_0 \), then the 
+If \( f : \R^n \to \R \) is differentiable at \( \vec{x}_0 \), then the 
 \emph{total differential} of \(f\) at \( \vec{x}_0 \) is the linear approximation:
 
 \[
@@ -292,7 +292,7 @@ This expresses how small changes in the input variables propagate into changes i
 
 \subsection{The Chain Rule}
 
-Let \( f : \Reals^n \to \Reals \) be differentiable, and suppose \( \vec{x} = \vec{x}(t) \in \Reals^n \) 
+Let \( f : \R^n \to \R \) be differentiable, and suppose \( \vec{x} = \vec{x}(t) \in \R^n \) 
 is a differentiable path. Then:
 
 \[
@@ -517,7 +517,7 @@ Final Answer
 
 \subsection{Schwarz’s Theorem (Clairaut’s Theorem)}
 
-Let \( f : \Reals^n \to \Reals \) be twice continuously differentiable. Then for any \( i \ne j \), 
+Let \( f : \R^n \to \R \) be twice continuously differentiable. Then for any \( i \ne j \), 
 the mixed partial derivatives satisfy:
 
 \[
@@ -528,7 +528,7 @@ That is, the order of partial differentiation does not matter if all second deri
 
 \subsection{The Jacobian}
 
-Let \( \vec{f} : \Reals^n \to \Reals^m \), where
+Let \( \vec{f} : \R^n \to \R^m \), where
 
 \[
     \vec{f}(\vec{x}) = \begin{bmatrix}
@@ -553,7 +553,7 @@ describes local invertibility and orientation.
 
 \subsection{Taylor's Theorem}
 
-Let \( f : \Reals^n \to \Reals \) be \(k\)-times continuously differentiable at \( \vec{x}_0 \). Then 
+Let \( f : \R^n \to \R \) be \(k\)-times continuously differentiable at \( \vec{x}_0 \). Then 
 the Taylor polynomial of degree 2 around \( \vec{x}_0 \) is:
 
 \[
@@ -588,7 +588,7 @@ Now, the second order Taylor polynomial at \( (0, 0) \) is:
 
 \subsection{Relative Extrema}
 
-To determine local extrema for \( f : \Reals^n \to \Reals \), follow this procedure:
+To determine local extrema for \( f : \R^n \to \R \), follow this procedure:
 
 \textbf{Step 1:} Find critical points by solving:
 
@@ -633,7 +633,7 @@ determinant help us determine if all the concavities given by the axis second de
 
 \subsection{Finding Candidate Points for Zeros While Seeking Relative Extrema}
 
-To find local minima or maxima of a function \( f : \Reals^n \to \Reals \), we first identify 
+To find local minima or maxima of a function \( f : \R^n \to \R \), we first identify 
 \emph{critical points}, which are the candidates for relative extrema. 
 These are the points where the gradient of \(f\) vanishes or does not exist.
 
@@ -652,7 +652,7 @@ The gradient of \(f\), denoted \( \nabla f \), collects all the first partial de
 
 \textbf{Step 2: Solve the System \( \nabla f = 0 \)}
 
-Find all points \( \vec{x}_0 \in \Reals^n \) such that:
+Find all points \( \vec{x}_0 \in \R^n \) such that:
 
 \[
     \nabla f(\vec{x}_0) = \vec{0}
@@ -710,8 +710,8 @@ or directional behavior.
 
 \subsection{Lagrange Multipliers}
 
-Let \( f : \Reals^n \to \Reals \) be the function to optimize, subject to the constraint 
-\( g(\vec{x}) = 0 \), where \( g : \Reals^n \to \Reals \).  
+Let \( f : \R^n \to \R \) be the function to optimize, subject to the constraint 
+\( g(\vec{x}) = 0 \), where \( g : \R^n \to \R \).  
 
 If we look at the constraint intersection with the original function we are going to notice that along 
 the intersection there are maxima and minima with their respective tangent lines and gradients that are 
@@ -959,7 +959,7 @@ function \(f\).
 
 \subsection{The Tangent Vector}
 
-Let \( \vec{X}(t) \in \Reals^n \) be a differentiable, parameterized curve. The \emph{tangent vector} 
+Let \( \vec{X}(t) \in \R^n \) be a differentiable, parameterized curve. The \emph{tangent vector} 
 at the point \( \vec{X}(t_0) \) is given by:
 
 \[
@@ -975,7 +975,7 @@ corresponds to the instantaneous speed. The unit tangent vector is:
     \vec{X}(t) = \frac{\vec{X}'(t)}{\|\vec{X}'(t)\|}
 \]
 
-The speed of the vector in \(\Reals^2\) is given by:
+The speed of the vector in \(\R^2\) is given by:
 
 \[
     \vec{X}(t) = \begin{bmatrix}

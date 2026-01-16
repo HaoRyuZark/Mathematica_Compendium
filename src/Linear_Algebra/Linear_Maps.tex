@@ -7,7 +7,7 @@ A linear map \( f: V \to W \) is a function that satisfies the following propert
     
     \item \( f(v_1 + v_2) = f(v_1) + f(v_2) \) for all \( v_1, v_2 \in V \).
     
-    \item \( f(\lambda v) = \lambda f(v) \) for all \( v \in V \) and \( \lambda \in \Reals \).
+    \item \( f(\lambda v) = \lambda f(v) \) for all \( v \in V \) and \( \lambda \in \R \).
     
     \item \( f(0) = 0 \).
 
@@ -73,8 +73,8 @@ and we write \( V \cong W \).
 
 \subsection{Composition as Matrix Multiplication}
 
-Given \(A \in \Field^{m \times n}, B \in \Field^{n \times l}\) and  \(\phi_A: \Field^{n \times 1} \to \Field^{m \times 1}\) and 
-\(\phi_B: \Field^{l \times 1} \to \Field^{n \times 1}\) induced linear maps then 
+Given \(A \in \field^{m \times n}, B \in \field^{n \times l}\) and  \(\phi_A: \field^{n \times 1} \to \field^{m \times 1}\) and 
+\(\phi_B: \field^{l \times 1} \to \field^{n \times 1}\) induced linear maps then 
 
 \begin{itemize}
 
@@ -115,14 +115,14 @@ Given \(A \in \Field^{m \times n}, B \in \Field^{n \times l}\) and  \(\phi_A: \F
 
 \subsection{Injectivity and Surjectivity}
 
-Let \( A \in \Field^{m \times n} \). Then:
+Let \( A \in \field^{m \times n} \). Then:
 
 \( \varphi_A \) is injective if and only if the fiber of
-\( \varphi_A \) over the zero column \( 0_m \in \Field^{m \times 1} \)
-consists only of the zero column \( 0_n \in \Field^{n \times 1} \).
+\( \varphi_A \) over the zero column \( 0_m \in \field^{m \times 1} \)
+consists only of the zero column \( 0_n \in \field^{n \times 1} \).
 
 \( \varphi_A \) is surjective if and only if every column in
-\( \Field^{m \times 1} \) can be written as a linear combination of
+\( \field^{m \times 1} \) can be written as a linear combination of
 the columns of \( A \).
 
 \subsection{Linear Extension Theorem}
@@ -162,15 +162,24 @@ Therefore, \(U = T\).
 
 \subsection{The Kernel of a Linear Map}
 
-The kernel of a linear map \( f: V \to W \) is the set of all vectors in \( V \) that are mapped to 
+The \emph{kernel} of a linear map \( f: V \to W \) is the set of all vectors in \( V \) that are mapped to 
 the zero vector in \( W \):
 
 \[
     \ker(f) = \{ v \in V \mid f(v) = 0 \}
 \]
 
+and also \(\ker(f) \subseteq V\). 
+
 To compute the \emph{kernel} of the linear map, we just solve the homogenous system of equations \(Ax = \vec{0}\) 
 where \(A\) is the matrix representation of \(f\). The number of free variables is the \(\dim(\ker(f))\).
+
+\textbf{Proof:}
+
+\(\ker(f) \ne \emptyset \) because \(0 \in \ker(f)\) (at least zero should be in the kernel by the definition of the vector space and linear maps). 
+Also, for \(v, w \in \ker(A)\) we know that \(f(av + bw) = = af(v) + bf(w) = a0 + b0 = 0\). 
+
+\QED
 
 \subsection{The Image of a Linear Map}
 
@@ -181,8 +190,21 @@ as \( f(v) \) for some \( v \in V \):
     \img(f) = \{ w \in W \mid w = f(v) \text{ for some } v \in V \}
 \]
 
+Also, \(\img(f) \subseteq W \)
+
 To find \( \dim(\text{im}(f)) \), compute the rank of the matrix representing \( f \). This 
 is the number of pivot columns in the row-reduced form of \( A \).
+
+\textbf{Proof:}
+
+\(f(0) \in \img(f) \implies \img(f) \ne \emptyset\). Therefore, for \(v_1,v_2 \in V, \exists w_1, w_2 \in \img(f)\) with 
+\(w_1 = f(v_1)\) and \(w_2 = f(v_2)\) due to 
+
+\[
+    aw_1 + bw_2 = af(v_1) = bf(v_2) = f(av_1 + bv_2) \in \img(f)
+\]
+
+\QED 
 
 \subsection{The Rank of a Linear Map}
 
@@ -273,7 +295,7 @@ It follows that \(\dim(\img(f)) = \rank(f) = n - r\) and therefore,
   
 \subsection{Linear Maps and Matrices}
 
-Let \( V \) and \( W \) be finite-dimensional vector spaces over the same field \( \Field \). 
+Let \( V \) and \( W \) be finite-dimensional vector spaces over the same field \( \field \). 
 If \( \dim V = n \) and \( \dim W = m \), then a linear map \( f: V \to W \) can be represented by 
 an \( m \times n \) matrix. The action of the linear map on a vector can be expressed as:
 
@@ -330,7 +352,7 @@ We want to summarize how to identify the type of linear map given \( f: V \to W 
 
 \textbf{Example:}
 
-Let \( f: \Reals^3 \to \Reals^2 \) be defined by the matrix
+Let \( f: \R^3 \to \R^2 \) be defined by the matrix
 
 \[
     A = \begin{bmatrix} 2 & 1 & 1 \\ 2 & 3 & 2 \end{bmatrix}.

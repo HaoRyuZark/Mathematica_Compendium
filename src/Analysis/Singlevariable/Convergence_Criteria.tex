@@ -113,24 +113,24 @@ Then the series converges.
 
 \subsection{Compactness Criterion}
 
-A sequence \((x_n)\) in \(\Reals^n\) has a convergent subsequence if and only if it is bounded. 
+A sequence \((x_n)\) in \(\R^n\) has a convergent subsequence if and only if it is bounded. 
 This is a consequence of the \textbf{Bolzano-Weierstraß theorem}, which is a form of sequential 
-compactness in \(\Reals^n\).
+compactness in \(\R^n\).
 
 \subsection{Cauchy Criterion I}
 
 A sequence \((a_n)\) converges if and only if it is a \emph{Cauchy sequence}:
 
 \[
-    \forall \varepsilon > 0, \exists n_0 \in \Naturals, \forall n, m \ge n_0 \Rightarrow |a_n - a_m| < \varepsilon
+    \forall \varepsilon > 0, \exists n_0 \in \N, \forall n, m \ge n_0 \Rightarrow |a_n - a_m| < \varepsilon
 \]
 
 This is an internal (non-limit based) criterion for convergence, valid in complete metric spaces.
 
 \subsection{Cauchy Criterion II}
 
-A series \(a_n = \sum_{i = 0}^{k}x_i\) converges \(\iff \forall d \in \Reals d > 0 
-\exists N \in \Naturals \forall n,m > N: \left| \sum_{i = 0}^{n}x_i + \sum_{i=0}^{m}\right|\)
+A series \(a_n = \sum_{i = 0}^{k}x_i\) converges \(\iff \forall d \in \R d > 0 
+\exists N \in \N \forall n,m > N: \left| \sum_{i = 0}^{n}x_i + \sum_{i=0}^{m}\right|\)
 
 \[
     = \left|\sum_{i = 0}^{n}x_i\right| < d

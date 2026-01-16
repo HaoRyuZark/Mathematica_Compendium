@@ -1,10 +1,38 @@
 \newpage
 \section{Dot Product, Euclidean and Unitary Space}
 
+\subsection{Outer Product}
+
+The \emph{outer product} of two vectors \(a \in \field^m\) and \(b \in \field^n\) is defined as the matrix
+
+\[
+    a \otimes b := a b^T = 
+    \begin{bmatrix}
+        a_1 b_1 & a_1 b_2 & \dots & a_1 b_n \\
+        a_2 b_1 & a_2 b_2 & \dots & a_2 b_n \\
+        \vdots  & \vdots  & \ddots& \vdots  \\
+        a_m b_1 & a_m b_2 & \dots & a_m b_n 
+    \end{bmatrix} \in \field^{m \times n}.
+\]
+
+\subsection{Outer Product}
+
+The \emph{outer product} of two vectors \(a \in \field^m\) and \(b \in \field^n\) is defined as the matrix
+
+\[
+    a \otimes b := a b^T = 
+    \begin{bmatrix}
+        a_1 b_1 & a_1 b_2 & \dots & a_1 b_n \\
+        a_2 b_1 & a_2 b_2 & \dots & a_2 b_n \\
+        \vdots  & \vdots  & \ddots& \vdots  \\
+        a_m b_1 & a_m b_2 & \dots & a_m b_n 
+    \end{bmatrix} \in \field^{m \times n}.
+\]
+
 \subsection{Inner Product}
 
-Let \(V\) be a vector space over a field \(K\). A mapping \(\langle \cdot, \cdot \rangle : V \times V 
-\to K\) is called an inner product (or inner product) if the following conditions are satisfied:
+Let \(V\) be a vector space over a field \(\field\). A mapping \(\langle \cdot, \cdot \rangle : V \times V 
+\to \field\) is called an inner product (or inner product) if the following conditions are satisfied:
 
 \emph{Symmetry}
 
@@ -13,8 +41,8 @@ For all \(a, b \in V\):
 \[
     \langle a, b \rangle = 
     \begin{cases}
-    \langle b, a \rangle & \text{if } K = \Reals, \\
-    \overline{\langle b, a \rangle} & \text{if } K = \Complex.
+    \langle b, a \rangle & \text{if } K = \R, \\
+    \overline{\langle b, a \rangle} & \text{if } K = \C.
     \end{cases}
 \]
 
@@ -34,13 +62,13 @@ and
 
 \emph{Homogeneity in the First Argument}
 
-For all \(\alpha \in K\), we have:
+For all \(\alpha \in \field\), we have:
 
 \[
     \langle \alpha a, b \rangle = \alpha \langle a, b \rangle = 
     \begin{cases}
-    \langle a, \alpha b \rangle & \text{if } K = \Reals, \\
-    \langle a, \alpha b \rangle & \text{if } K = \Complex.
+    \langle a, \alpha b \rangle & \text{if } \field = \R, \\
+    \langle a, \alpha b \rangle & \text{if } \field = \C.
     \end{cases}
 \]
 
@@ -75,7 +103,7 @@ Here we add \(\|a\|\|b\|\) to make this function linear.
 
 \subsection{Standard Inner Product for Complex Number}
 
-Let \( a = {(a_i)}_{i=1}^n \) and \( b = {(b_i)}_{i=1}^n \) be vectors in \( \Complex^n \). The standard 
+Let \( a = {(a_i)}_{i=1}^n \) and \( b = {(b_i)}_{i=1}^n \) be vectors in \( \C^n \). The standard 
 inner product is defined by
 
 \[
@@ -105,12 +133,12 @@ complex vector space with an inner product is called a \emph{unitary vector spac
 
 \subsection{Norms in Vector Spaces}
 
-Let \( V \) be a \( K \)-vector space and \( a, b \in V \). A function \( \| \cdot \| : V \to \Reals \) 
+Let \( V \) be a \( K \)-vector space and \( a, b \in V \). A function \( \| \cdot \| : V \to \R \) 
 is called a norm if and only if the following conditions hold:
 
 \begin{itemize}
 
-    \item \( \|a\| \in \Reals \),
+    \item \( \|a\| \in \R \),
 
     \item \( \|a\| \geq 0 \),
 
@@ -124,7 +152,7 @@ is called a norm if and only if the following conditions hold:
 
 \subsubsection{Induced Norm by a Inner Product}
 
-As in the special case \( V = \Reals^n \), an inner product induces a norm.
+As in the special case \( V = \R^n \), an inner product induces a norm.
 In a unitary (or Euclidean) space, the inner product induces a (standard) norm defined by
 
 \[
@@ -198,8 +226,8 @@ The concept of the \emph{inner product} plays a major rule in linear algebra, an
 manifestations of this element. We are going to see how inner products are constructed based on the 
 properties we are interested in. Those being linearity for the columns, symmetry and positive definiteness.
 
-Let us start with a matrix \(A \in \Reals^{n \times n}\) and a map 
-\((\centerdot , \centerdot)_A \Reals^n \times \Reals^n : \to \Reals \) more specific 
+Let us start with a matrix \(A \in \R^{n \times n}\) and a map 
+\((\centerdot , \centerdot)_A \R^n \times \R^n : \to \R \) more specific 
 \((x,y)_A := \langle x, Ay\rangle\) using the standard Euclidean inner product.
 
 For our first property, the linearity; it is granted for every matrix \(A = (a_1, a_2, \dots, a_n)\) 
@@ -217,25 +245,25 @@ matrix.
 
 \subsection{Definiteness and Quadratic Forms}
 
-Given a symmetric \(A \in \Reals^{n \times n}\) then:
+Given a symmetric \(A \in \R^{n \times n}\) then:
 
 \begin{enumerate}
     
     \item The map \(x \to \langle x, Ax\rangle\) is called the \emph{Quadratic Form}
     
-    \item \(A\) is \emph{positive definite} if \(\langle x, Ax \rangle > 0 \forall x \in \Reals^n 
+    \item \(A\) is \emph{positive definite} if \(\langle x, Ax \rangle > 0 \forall x \in \R^n 
           \backslash \{0\}\)
 
-    \item \(A\) is \emph{negative definite} if \(\langle x, Ax \rangle < 0 \forall x \in \Reals^n 
+    \item \(A\) is \emph{negative definite} if \(\langle x, Ax \rangle < 0 \forall x \in \R^n 
           \backslash \{0\}\)
     
-    \item \(A\) is \emph{positive semidefinite} if \(\langle x, Ax \rangle \ge 0 \forall x \in \Reals^n 
+    \item \(A\) is \emph{positive semidefinite} if \(\langle x, Ax \rangle \ge 0 \forall x \in \R^n 
           \backslash \{0\}\)
 
-    \item \(A\) is \emph{negative semidefinite} if \(\langle x, Ax \rangle \le 0 \forall x \in \Reals^n 
+    \item \(A\) is \emph{negative semidefinite} if \(\langle x, Ax \rangle \le 0 \forall x \in \R^n 
           \backslash \{0\}\)
 
-    \item \(A\) is \emph{indefinite} if \(\exists x,y \in \Reals^n  \backslash \{0\}: \langle x, Ax\rangle 
+    \item \(A\) is \emph{indefinite} if \(\exists x,y \in \R^n  \backslash \{0\}: \langle x, Ax\rangle 
           < 0 \land \langle y, Ay \rangle > 0 \)
     
 \end{enumerate}
@@ -330,7 +358,7 @@ And now we are done.
 
 \subsection{Minors}
 
-For a matrix \(A \in \Reals^{n \times n}\) the starting from the left \(k \times k\)-submatrices 
+For a matrix \(A \in \R^{n \times n}\) the starting from the left \(k \times k\)-submatrices 
 \(A_k = (a_{ij})_{i,j=1}^{k}\) of \(A\). The \(D_k  = \det(A_k)\) is called a \emph{main minor} or 
 \emph{minor} of \(A\).
 
@@ -371,9 +399,9 @@ main minors are all not positive.
 
 \textbf{Example: Symmetry and Positive Definiteness of \(BAB^T\) and \(B^T A B\)}
 
-Let \( A \in \Reals^{n \times n} \) be a symmetric matrix and \( B \in \mathbb{R}^{m \times n} \) 
+Let \( A \in \R^{n \times n} \) be a symmetric matrix and \( B \in \mathbb{R}^{m \times n} \) 
 be a real matrix. We study the symmetry and positive definiteness of the matrices 
-\( C = BAB^T \in \Reals^{m \times m} \) and \( D = B^T A B \in \Reals^{n \times n} \).
+\( C = BAB^T \in \R^{m \times m} \) and \( D = B^T A B \in \R^{n \times n} \).
 
 \textbf{(i) Symmetry of \( BAB^T \):}  
 
@@ -451,7 +479,7 @@ If \(A\) is negative definite then
 
 \subsubsection{Theorem I}
 
-Given \(m \ge n\) and \(A \in \Reals^{m \times n}\) with \(rg(A) = n\). Then \(A^T A\) is positive 
+Given \(m \ge n\) and \(A \in \R^{m \times n}\) with \(rg(A) = n\). Then \(A^T A\) is positive 
 definite. For \(rg(A) < n\) is \(A^T A\) positive semidefinite.
 
 \textbf{Proof:}
@@ -469,6 +497,6 @@ Also, \(A^T A\) is positive semidefinite, and it is also invertible for \(rg(A) 
 
 \subsection{Theorem II}
 
-Given \(m \le n\) and \(A \in \Reals^{m \times n}\). Then \(A^T A\) is positive semidefinite and even 
+Given \(m \le n\) and \(A \in \R^{m \times n}\). Then \(A^T A\) is positive semidefinite and even 
 positive definite if \(rg(A) = m\).
 

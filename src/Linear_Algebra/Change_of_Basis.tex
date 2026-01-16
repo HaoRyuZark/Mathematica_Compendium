@@ -68,11 +68,11 @@ to the basis \(\gamma\). Which at the end is simply getting the coordinate of th
 
 \subsection{Coordinate mapping}
 
-Let \( V \) be a \(\Field\)-vector space with a basis \( \beta = \{v_1, \ldots, v_n\} \).
+Let \( V \) be a \(\field\)-vector space with a basis \( \beta = \{v_1, \ldots, v_n\} \).
 Then there exists exactly one isomorphism
 
 \[
-    \varphi_\beta : \Field^n \to V
+    \varphi_\beta : \field^n \to V
 \]
 
 such that
@@ -89,7 +89,7 @@ The isomorphism \( \varphi_\beta \) from the previous theorem is called the \emp
 and for \( v \in V \), we define
 
 \[
-    (\vec{v})_\beta := \varphi_\beta^{-1} (v) \in \Field^n
+    (\vec{v})_\beta := \varphi_\beta^{-1} (v) \in \field^n
 \]
 
 as the \emph{coordinates of \( v \) with respect to \(\beta\)}.
@@ -108,7 +108,7 @@ to the standard basis, respectively.
 \[
     \begin{tikzcd}
         & V & \\
-        \Field^n \arrow[ur, "\varphi_\gamma"] \arrow[rr, "T_{\beta}^{\gamma} = \varphi_\beta^{-1} \circ \varphi_\gamma"'] & & \Field^n \arrow[ul, "\varphi_\beta"']
+        \field^n \arrow[ur, "\varphi_\gamma"] \arrow[rr, "T_{\beta}^{\gamma} = \varphi_\beta^{-1} \circ \varphi_\gamma"'] & & \field^n \arrow[ul, "\varphi_\beta"']
     \end{tikzcd}
 \]
 
@@ -140,7 +140,7 @@ In vector notation with the translation:
 
 \subsection{Change of Basis in Linear Maps}
 
-Let \( V \) and \( W \) be finitely generated \( \Field\)-vector spaces with
+Let \( V \) and \( W \) be finitely generated \( \field\)-vector spaces with
 bases \(\gamma\) and \(\beta\), respectively, and let \( f \in \mathrm{Hom}(V, W) \).
 Then we have
 
@@ -153,7 +153,7 @@ apply the linear map \(f\) and then convert the result to the basis \(\beta\).
 
 \[
     \begin{tikzcd}
-        \Field^n \arrow[rrrr, "M_{\beta}^{\gamma}"] \arrow[rd, "\varphi_\gamma"] &                   &  &   & \Field^m \arrow[ld, "\varphi_\beta"'] \\
+        \field^n \arrow[rrrr, "M_{\beta}^{\gamma}"] \arrow[rd, "\varphi_\gamma"] &                   &  &   & \field^m \arrow[ld, "\varphi_\beta"'] \\
         & V \arrow[rr, "f"] &  & W &
     \end{tikzcd}
 \]
@@ -181,9 +181,9 @@ We can visualize this as a commutative diagram where when take an inverse we rev
 
 \[
     \begin{tikzcd}
-        \Field^n \arrow[dd, "T_{\gamma'}^{\gamma}"] \arrow[rrrr, "M_{\beta}^{\gamma}"] \arrow[rd, "\varphi_\gamma"] &                   &  &   & \Field^m \arrow[dd, "T_{\beta'}^{\beta}"] \arrow[ld, "\varphi_\beta"'] \\
+        \field^n \arrow[dd, "T_{\gamma'}^{\gamma}"] \arrow[rrrr, "M_{\beta}^{\gamma}"] \arrow[rd, "\varphi_\gamma"] &                   &  &   & \field^m \arrow[dd, "T_{\beta'}^{\beta}"] \arrow[ld, "\varphi_\beta"'] \\
         & V \arrow[rr, "f"] &  & W &                                                       \\
-        \Field^n \arrow[rrrr, "M_{\beta'}^{\gamma'}"] \arrow[ru, "\varphi_{\gamma'}"']                    &                   &  &   & \Field^m \arrow[lu, "\varphi_{\beta'}"]
+        \field^n \arrow[rrrr, "M_{\beta'}^{\gamma'}"] \arrow[ru, "\varphi_{\gamma'}"']                    &                   &  &   & \field^m \arrow[lu, "\varphi_{\beta'}"]
     \end{tikzcd}
 \]
 

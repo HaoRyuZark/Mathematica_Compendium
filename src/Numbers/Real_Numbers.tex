@@ -58,22 +58,22 @@ Some proofs of these properties can be found in the section about the algebraic 
 
 	\item \((-1)^2 = 1\)
 		
-	\item \(\left(a^{-1}\right)^{-1} = a, \forall \in \Reals, a \ne 0\)
+	\item \(\left(a^{-1}\right)^{-1} = a, \forall \in \R, a \ne 0\)
 
 \end{itemize}
 
 \subsection{Existence of Solutions}
 
-Given \(a,b \in \Reals\), then 
+Given \(a,b \in \R\), then 
 
 \[
-	!\exists x \in \Reals, \text{ such that }, a + x = b
+	!\exists x \in \R, \text{ such that }, a + x = b
 \]
 
 Also, if \(a \ne 0\) 
 
 \[
-	!\exists x \in \Reals, \text{ such that }, ax = b
+	!\exists x \in \R, \text{ such that }, ax = b
 \]
 
 \textbf{Proof:}
@@ -96,7 +96,7 @@ For the second, let \(x = a^{-1}b\)
 
 \subsection{The Completeness Axiom}
 
-All non-empty upper-bounded subsets of the real numbers have a \emph{supremum} \(s \in \Reals\).
+All non-empty upper-bounded subsets of the real numbers have a \emph{supremum} \(s \in \R\).
 
 \subsection{Minima in the Real Numbers}
 
@@ -139,7 +139,7 @@ This is a contradiction because we have an upper bound, which is not an upper bo
 
 \subsection{Approximation of the Supremum}
 
-Given a non-empty, upper-bounded set \(A \subseteq \Reals\) and  \(s = \text{sup}A\). Then there is for each \(y < s\) 
+Given a non-empty, upper-bounded set \(A \subseteq \R\) and  \(s = \text{sup}A\). Then there is for each \(y < s\) 
 an \(x \in A\), such that 
 
 \[
@@ -151,22 +151,22 @@ An analogous theorem can be written for the minimum as well.
 \textbf{Proof:}
 
 If \(x \in A\) then the proof is completed. For the case \(s \notin A\), if there existed some 
-\(y^* \in \Reals\) where \(y^* < s\) and \(y^* \ge x\) for all \(x \in A\) then we sill have a contradiction to 
+\(y^* \in \R\) where \(y^* < s\) and \(y^* \ge x\) for all \(x \in A\) then we sill have a contradiction to 
 the assumption that \(s\) is the supremum of \(A\).
 
 \QED
 
 \subsection{Supremum of the Naturals}
 
-\(\Naturals\) is not upper-bounded.
+\(\N\) is not upper-bounded.
 
 \textbf{Proof:}
 
-Assume \(a = \text{sup}\Naturals\). Since \(\Naturals \subset \Reals\) is not empty it has an upper-bound by 
+Assume \(a = \text{sup}\N\). Since \(\N \subset \R\) is not empty it has an upper-bound by 
 the completeness axiom. 
 
-By the definition of the supremum \(a - 1 \in \Naturals\) is not an upper-bound of \(\Naturals\), therefore 
-\(a - 1 < k, k \in \Naturals\). 
+By the definition of the supremum \(a - 1 \in \N\) is not an upper-bound of \(\N\), therefore 
+\(a - 1 < k, k \in \N\). 
 
 Then, the following also applies
 
@@ -181,7 +181,7 @@ proven false.
 
 \emph{Archimedes}
 
-For all pair of positive real numbers \(x,y\) exists some \(n \in \Naturals\) such that: 
+For all pair of positive real numbers \(x,y\) exists some \(n \in \N\) such that: 
 
 \[
 	nx > y
@@ -189,7 +189,7 @@ For all pair of positive real numbers \(x,y\) exists some \(n \in \Naturals\) su
 
 \emph{Eudoxus}
 
-For all positive real numbers there exists an \(n \in \Naturals\), such that 
+For all positive real numbers there exists an \(n \in \N\), such that 
 
 \[
 	\frac{1}{n} < x
@@ -197,14 +197,14 @@ For all positive real numbers there exists an \(n \in \Naturals\), such that
 
 \textbf{Proof Eudoxus:}
 
-\(x \in \Reals_{> 0} \implies \frac{1}{x} \in \Reals_{> 0}\). By the Archimedian property, \(\exists n \in \Integers_{0 >}, \frac{1}{x} < n\). 
+\(x \in \R_{> 0} \implies \frac{1}{x} \in \R_{> 0}\). By the Archimedian property, \(\exists n \in \Z_{0 >}, \frac{1}{x} < n\). 
 Equivalently \(\frac{1}{n} < x\). 
 
 \QED 
 
 \subsection{Density of the Rationals in  the Reals}
 
-For each pair \(a, b \in \Reals\) there exists some \(q \in \Rationals\) such that 
+For each pair \(a, b \in \R\) there exists some \(q \in \Q\) such that 
 
 \[
 	a < q < b
@@ -212,11 +212,11 @@ For each pair \(a, b \in \Reals\) there exists some \(q \in \Rationals\) such th
 
 \textbf{Proof:}
 
-Let \(q = \frac{m}{n}, m \in \Integers, n \in \Naturals\) to prove \(a < \frac{m}{n} < b\) equivalently \(an < m < bn\).
+Let \(q = \frac{m}{n}, m \in \Z, n \in \N\) to prove \(a < \frac{m}{n} < b\) equivalently \(an < m < bn\).
 
 For \(b - a > 0\) we know \(\frac{1}{n} < b - a\) or \(a < b - \frac{1}{n}\), by the Archimedian property. 
 
-Next take the smallest \(m \in \Integers\) such that \(m - 1 \le na < m\) or \(a < \frac{m}{n}\). This gives us the first half of 
+Next take the smallest \(m \in \Z\) such that \(m - 1 \le na < m\) or \(a < \frac{m}{n}\). This gives us the first half of 
 our theorem.
 
 Finally, for the second half 
@@ -258,7 +258,7 @@ Thus, by elimination \(a^2 = y\)
 \subsection{Irrational Numbers}
 
 \[
-	\Reals \setminus \Rationals \text{ or } \Rationals^C := \{x \in \Reals \mid x \notin \Rationals\}
+	\R \setminus \Q \text{ or } \Q^C := \{x \in \R \mid x \notin \Q\}
 \]
 
 \subsection{Absolute Value for Real Numbers}
@@ -273,13 +273,13 @@ Properties of a norm
 
 \begin{itemize}
 	
-	\item \(|x| \ge 0, \forall x \in \Reals\)
+	\item \(|x| \ge 0, \forall x \in \R\)
 	
 	\item \(|x| = 0, \implies x = 0\)
 
-	\item \(|\alpha x| = |\alpha| |x|, \forall x, \alpha \in \Reals\)
+	\item \(|\alpha x| = |\alpha| |x|, \forall x, \alpha \in \R\)
 
-	\item \(|x + y| \le |x| + |y| \forall x,y \in \Reals\)
+	\item \(|x + y| \le |x| + |y| \forall x,y \in \R\)
 
 \end{itemize}
 
@@ -295,32 +295,32 @@ With the following properties
 
 \begin{itemize}
 
-	\item \(d(x,y) \ge 0, \forall x,y \in \Reals\)
+	\item \(d(x,y) \ge 0, \forall x,y \in \R\)
 	
 	\item \(d(x,y) = 0, \iff x = y \)
 
 	\item \(d(x,y) = d(y,x)\)
 	
-	\item \(d(x,y) \ge d(x,y) + d(z,y), \forall x,y \in \Reals\)
+	\item \(d(x,y) \ge d(x,y) + d(z,y), \forall x,y \in \R\)
 
 \end{itemize}
 
 \subsection{Nested Interval Property}
 
-For each \(n \in \Naturals\), assume we are given a closed interval  \(I_n = [a, b] = \{x \in \Reals \mid a_n \le x \le b_n\}\). 
+For each \(n \in \N\), assume we are given a closed interval  \(I_n = [a, b] = \{x \in \R \mid a_n \le x \le b_n\}\). 
 Also assume each \(I_n\) contains \(I_{n + 1}\). Then the nested sequence of closed intervals \(I_1 \supseteq I_2 \supseteq I_3 \supseteq \ldots\)
 has a non-empty intersection. 
 
 \textbf{Proof:}
 
-By definition every \(I_n\) is non-empty, thus the sequences \((a_n)_{n \in \Naturals}\) and \((b_n)_{n \in \Naturals}\) are well-defined. 
-Also, every set \(A = \{a_n: n \in \Naturals\}\) is bounded above by the corresponding \(b_n\), and this is guaranteed by 
+By definition every \(I_n\) is non-empty, thus the sequences \((a_n)_{n \in \N}\) and \((b_n)_{n \in \N}\) are well-defined. 
+Also, every set \(A = \{a_n: n \in \N\}\) is bounded above by the corresponding \(b_n\), and this is guaranteed by 
 the axiom of completeness.
 
 Let \(x = \sup A\). Then consider \(I_n = [a_n, b_n]\) 
 
 \[
-	a_n \le x \le b_n, \forall n \in \Naturals \implies x \in I_n
+	a_n \le x \le b_n, \forall n \in \N \implies x \in I_n
 \]
 
 Thus, \(x \in \bigcap_{n = 1}^{\infty} I_n\) and the intersection is non-empty. 
@@ -332,85 +332,85 @@ Thus, \(x \in \bigcap_{n = 1}^{\infty} I_n\) and the intersection is non-empty.
 Let \( K \) be an ordered field. On the set
 		
 \[
-	\operatorname{ch}(K) := \{ x : \Naturals \to K \mid x \text{ is a Cauchy sequence} \}
+	\operatorname{ch}(K) := \{ x : \N \to K \mid x \text{ is a Cauchy sequence} \}
 \]
 		
 and on the set
 	
 \[
-	c(K) := \{ x : \Naturals \to K \mid x \text{ is a convergent sequence} \}
+	c(K) := \{ x : \N \to K \mid x \text{ is a convergent sequence} \}
 \]
 
 we can define an addition and a multiplication as follows:
 
-If \( x = {(x_n)}_{n \in \Naturals} \) and \( y = {(y_n)}_{n \in \Naturals} \) are Cauchy sequences 
+If \( x = {(x_n)}_{n \in \N} \) and \( y = {(y_n)}_{n \in \N} \) are Cauchy sequences 
 (respectively, convergent sequences), then their sum is defined as
 	
 \[
-	x + y := {(x_n)}_{n \in \Naturals} + {(y_n)}_{n \in \Naturals} := {(x_n + y_n)}_{n \in \Naturals}
+	x + y := {(x_n)}_{n \in \N} + {(y_n)}_{n \in \N} := {(x_n + y_n)}_{n \in \N}
 \]
 	
 and their product is defined as
 
 \[
-	x \cdot y := {(x_n)}_{n \in \Naturals} \cdot {(y_n)}_{n \in \Naturals} := {(x_n \cdot y_n)}_{n \in 
-	\Naturals}
+	x \cdot y := {(x_n)}_{n \in \N} \cdot {(y_n)}_{n \in \N} := {(x_n \cdot y_n)}_{n \in 
+	\N}
 \]
 
 The sum and product satisfy all field axioms except for the existence of the multiplicative inverse.
-The zero element is \( 0_{\Naturals} = (0, 0, \ldots) \), the unit element is \( 1_{\Naturals} = (1, 1, 
-\ldots) \), and the additive inverse of \( x = {(x_n)}_{n \in \Naturals} \) is 
-\( -x = {(-x_n)}_{n \in \Naturals} \). We demonstrate the distributive law as an example:
+The zero element is \( 0_{\N} = (0, 0, \ldots) \), the unit element is \( 1_{\N} = (1, 1, 
+\ldots) \), and the additive inverse of \( x = {(x_n)}_{n \in \N} \) is 
+\( -x = {(-x_n)}_{n \in \N} \). We demonstrate the distributive law as an example:
 
-Let \( x = {(x_n)}_{n \in \Naturals}, y = {(y_n)}_{n \in \Naturals}, z = {(z_n)}_{n \in \Naturals} \) be 
+Let \( x = {(x_n)}_{n \in \N}, y = {(y_n)}_{n \in \N}, z = {(z_n)}_{n \in \N} \) be 
 Cauchy sequences (convergent sequences). Then we have:
 
 \begin{align*}
-	x(y + z) &= {(x_n)}_{n \in \Naturals} \cdot \left( {(y_n)}_{n \in \Naturals} + {(z_n)}_{n \in \Naturals} \right)\\
-	&= {(x_n)}_{n \in \Naturals} \cdot {(y_n + z_n)}_{n \in \Naturals}\\ 
-	&= {(x_n (y_n + z_n))}_{n \in \Naturals}\\
-	&= {(x_n y_n + x_n z_n)}_{n \in \Naturals}\\
-	&= {(x_n y_n)}_{n \in \Naturals} + {(x_n z_n)}_{n \in \Naturals}\\
+	x(y + z) &= {(x_n)}_{n \in \N} \cdot \left( {(y_n)}_{n \in \N} + {(z_n)}_{n \in \N} \right)\\
+	&= {(x_n)}_{n \in \N} \cdot {(y_n + z_n)}_{n \in \N}\\ 
+	&= {(x_n (y_n + z_n))}_{n \in \N}\\
+	&= {(x_n y_n + x_n z_n)}_{n \in \N}\\
+	&= {(x_n y_n)}_{n \in \N} + {(x_n z_n)}_{n \in \N}\\
 	&= xy + xz.
 \end{align*}
 
-We now aim to construct the ordered field \( \Reals \) of the real numbers;
+We now aim to construct the ordered field \( \R \) of the real numbers;
 it will have the following properties:
 
 \begin{itemize}
 	
-	\item There exists an injective mapping \( j : \Rationals \to \Reals \) which respects addition, 
+	\item There exists an injective mapping \( j : \Q \to \R \) which respects addition, 
     	  multiplication, and order, such that the following holds:
 		
-		For all \( z, w \in \Reals \) with \( z < w \), there exists an \( x \in \Rationals \) such that
+		For all \( z, w \in \R \) with \( z < w \), there exists an \( x \in \Q \) such that
 		
 		\[
 			z < j(x) < w
 		\]
 
-	\item Every Cauchy sequence in \( \Reals \) converges.
+	\item Every Cauchy sequence in \( \R \) converges.
 
 \end{itemize}
 
-Via \(j\), we identify \( \Rationals \) with \( j(\Rationals) \) and consider \( \Rationals \) as a 
-subset of \( \Reals \). In \( \Reals \), the following will additionally hold:
+Via \(j\), we identify \( \Q \) with \( j(\Q) \) and consider \( \Q \) as a 
+subset of \( \R \). In \( \R \), the following will additionally hold:
 
 \begin{itemize}
 
-	\item For all \( y > 0 \) and \( n \in \Naturals \), the equation \( x^n = y \) has a solution.
+	\item For all \( y > 0 \) and \( n \in \N \), the equation \( x^n = y \) has a solution.
 
-	\item Every bounded above subset of \( \Reals \) has a supremum.
+	\item Every bounded above subset of \( \R \) has a supremum.
 
 \end{itemize}
 
-We define the following relation on the set \( \operatorname{ch}(\Rationals) \) of all Cauchy sequences 
-in \( \Rationals \):
+We define the following relation on the set \( \operatorname{ch}(\Q) \) of all Cauchy sequences 
+in \( \Q \):
 
 \[
 	x \sim y \quad \text{if and only if} \quad x - y \text{ is a null sequence}
 \]
 
-That is, \( {(x_n)}_{n \in \Naturals} \sim {(y_n)}_{n \in \Naturals} \) if and only if
+That is, \( {(x_n)}_{n \in \N} \sim {(y_n)}_{n \in \N} \) if and only if
 
 \[
 	x_n - y_n \to 0 \quad (n \to \infty)
@@ -421,27 +421,27 @@ That is, \( {(x_n)}_{n \in \Naturals} \sim {(y_n)}_{n \in \Naturals} \) if and o
 The set
 
 \[
-	\Reals := \{ {[x]}_{\sim} : x \in \operatorname{ch}(\Rationals) \}
+	\R := \{ {[x]}_{\sim} : x \in \operatorname{ch}(\Q) \}
 \]
 
 is called the set of real numbers.
 
 Analogous to the construction of the rational numbers, the real numbers consist of equivalence classes.
-Roughly speaking, an equivalence class consists of those Cauchy sequences in \( \Rationals \) that exhibit 
+Roughly speaking, an equivalence class consists of those Cauchy sequences in \( \Q \) that exhibit 
 the same limit behavior.
 
 Equipped with the addition
 
 \[
-	+ : \Reals \times \Reals \to \Reals, \quad [x], [y] \mapsto [x] + [y] := [x + y]
+	+ : \R \times \R \to \R, \quad [x], [y] \mapsto [x] + [y] := [x + y]
 \]
 
 and the multiplication
 
 \[
-	\cdot : \Reals \times \Reals \to \Reals, \quad [x], [y] \mapsto [x] \cdot [y] := [xy]
+	\cdot : \R \times \R \to \R, \quad [x], [y] \mapsto [x] \cdot [y] := [xy]
 \]
 
-\( \Reals \) is a field. The zero element is \( [0_{\Naturals}] \), and the unit element is 
-\( [1_{\Naturals}] \).
+\( \R \) is a field. The zero element is \( [0_{\N}] \), and the unit element is 
+\( [1_{\N}] \).
 

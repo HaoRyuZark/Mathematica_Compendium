@@ -1,34 +1,34 @@
 \newpage
 \section{Vector Spaces}
 
-Given a field \(\Field\). A \emph{vector space} is a set \((V, \Field, +, \circ)\) with two operations, vector addition and scalar multiplication, 
+Given a field \(\field\). A \emph{vector space} is a set \((V, \field, \oplus , \odot)\) with two operations, vector addition and scalar multiplication, 
 such that:
 
 \begin{enumerate}[label=\Roman*.]
 
-	\item \((a + b)\vec{v} = a\vec{v} + b\vec{v}, \forall a,b \in \Field land \vec{v} \in V\)
+	\item \((a \oplus b)\vec{v} = a\vec{v} \oplus b\vec{v}, \forall a,b \in \field land \vec{v} \in V\)
 	
-	\item \((\vec{v} + \vec{u})a = a\vec{v} + a\vec{u}, \forall a\in \Field land \vec{v}, \vec{u} \in V\)
+	\item \((\vec{v} \oplus \vec{u})a = a\vec{v} \oplus a\vec{u}, \forall a\in \field land \vec{v}, \vec{u} \in V\)
 
-	\item \((ab)\vec{v} = a(b\vec{v}), \forall a,b \in \Field land \vec{v} \in V\)
+	\item \((ab)\odot \vec{v} = a(b \odot\vec{v}), \forall a,b \in \field land \vec{v} \in V\)
 
-	\item \(1 \vec{v} = \vec{v}, \forall \vec{v} \in V\)
+	\item \(1 \odot \vec{v} = \vec{v}, \forall \vec{v} \in V\)
 
 \end{enumerate}
 
 The scalar multiplication is defined as  
 
 \[
-	\Field \times  V \to V: (a,v) \mapsto av
+	\field \times  V \to V: (a,v) \mapsto a \odot v
 \]
 
 Also using these axioms, we get 
 
 \begin{itemize}
 
-	\item \(\vec{v}0 = \vec{0}\)
+	\item \(\vec{v} \odot 0 = \vec{0}\)
 
-	\item \((-1)\vec{v} = -1\vec{v}\)
+	\item \((-1) \odot \vec{v} = -1 \odot \vec{v}\)
 
 \end{itemize}
 
@@ -54,17 +54,17 @@ For the second property,
 
 \begin{enumerate}
 
-	\item The set of all \(n\)-tuples of real numbers \(\Reals^n\) is a vector space over the field 
-	      of real numbers \(\Reals\).
+	\item The set of all \(n\)-tuples of real numbers \(\R^n\) is a vector space over the field 
+	      of real numbers \(\R\).
 
 	\item The set of all polynomials of degree less than or equal to \(n\) is a vector space over the 
-	      field of real numbers \(\Reals\).
+	      field of real numbers \(\R\).
 
-	\item The set of all continuous functions from \(\Reals\) to \(\Reals\) is a vector space 7
-	      over the field of real numbers \(\Reals\).
+	\item The set of all continuous functions from \(\R\) to \(\R\) is a vector space 7
+	      over the field of real numbers \(\R\).
 
 	\item The set of all \(m \times n\) matrices with real entries is a vector space over the field of 
-	      real numbers \(\Reals\).
+	      real numbers \(\R\).
 
 	\item The set of all linear maps is also a vector space. 
 
@@ -86,7 +86,61 @@ A subset \(W\) of a vector space \(V\) is a \emph{subspace} of \(V\) if:
 
 If \(W\) is a subspace of \(V\), we write \(W \subseteq V\).
 
-The intersection of two subspaces is also a subspace.
+A subspace subset \(W\) of \(V\) is only a subspace if and only if \(W \ne \emptyset \) and for all 
+\(v,w \in W\) and all \(a \in \field\) then \(v + aw \in W\)
+
+\textbf{Proof:}
+
+\(\Rightarrow :\) \(\vec{0} \in W\) thus \(W \ne \emptyset\). Also, by the axioms 
+\(v + aw \in W\).
+
+\(\Leftarrow:\) \(W \ne emptyset \implies \exists w \in W\) because \(\field\) is a field then \(-1 \in \field\) and therefore,
+\(w - w = 0 \in W\). For \(v + aw \in W\) we choose \(a = 1\) or \(v = 0\), and we see that the addition and multiplication is also defined
+for our vector space.
+
+\subsection{Properties of the subspaces}
+
+\begin{itemize}
+
+	\item The intersection of two or more subspaces \(\bigcap_{W \in V} W \) is a subspace.
+
+	\item The union of two subspaces is not necessarily a subspace.
+
+	\item The sum of two subspaces \(U\) and \(W\) is defined as:
+	      \[
+		      U + W = \{\vec{u} + \vec{w} : \vec{u} \in U, \vec{w} \in W\}
+	      \]
+	      The sum of two subspaces is a subspace.
+
+\end{itemize}
+
+\subsection{Sum of Subspaces}
+
+\begin{itemize}
+
+	\item The \emph{direct sum} of two subspaces \(U\) and \(W\) is defined as:
+	      \[
+		      U \oplus W = \{\vec{u} + \vec{w} : \vec{u} \in U, \vec{w} \in W\}
+	      \]
+	      The direct sum of two subspaces is a subspace.
+
+	\item The direct sum of two subspaces is the smallest subspace containing both subspaces, such that 
+		  \(U \cap W = \{\vec{0}\}\).
+
+	\item The direct sum of two subspaces is denoted by \(U \oplus W\).
+
+\end{itemize}
+
+The sum of two subspaces is the smallest subspace containing both subspaces.
+
+\subsubsection{Vector Space Product}
+
+The \emph{product} \(\langle M \rangle\) of \(M \subseteq V\) is the intersection of 
+all subspaces of \(V\) which contain \(M\)
+
+\[
+	\langle M \rangle := \bigcap_{{W \subseteq V}_{M \subseteq W}} W 
+\]
 
 \subsection{Linear Combinations}
 
@@ -105,38 +159,7 @@ subspace of the vector space \(V\).
 
 The span of a set of vectors is the smallest subspace containing those vectors.
 
-\subsection{Properties of the subspaces}
-
-\begin{itemize}
-
-	\item The intersection of two subspaces is a subspace.
-
-	\item The union of two subspaces is not necessarily a subspace.
-
-	\item The sum of two subspaces \(U\) and \(W\) is defined as:
-	      \[
-		      U + W = \{\vec{u} + \vec{w} : \vec{u} \in U, \vec{w} \in W\}
-	      \]
-	      The sum of two subspaces is a subspace.
-
-		\end{itemize}
-
-The sum of two subspaces is the smallest subspace containing both subspaces.
-
-\begin{itemize}
-
-	\item The direct sum of two subspaces \(U\) and \(W\) is defined as:
-	      \[
-		      U \oplus W = \{\vec{u} + \vec{w} : \vec{u} \in U, \vec{w} \in W\}
-	      \]
-	      The direct sum of two subspaces is a subspace.
-
-	\item The direct sum of two subspaces is the smallest subspace containing both subspaces, such that 
-		  \(U \cap W = \{\vec{0}\}\).
-
-	\item The direct sum of two subspaces is denoted by \(U \oplus W\).
-
-\end{itemize}
+The set of all linear combinations of a set of vectors \(B = \{\vec{v}_1, \vec{v}_2, \ldots, \vec{v}_n\}\) is given by \(\mathcal{L}(B)\)
 
 \subsection{Linear Independence}
 
@@ -193,6 +216,14 @@ is the trivial combination where all coefficients are zero.
 
 \end{itemize}
 
+Given \(B = (v_1, \dots, v_n)\). \(B\) is a basis of \(V\) if and only if 
+
+\[
+	\lambda = \lambda_B: \field^n \to V: (a_1, \dots, a_n) \mapsto \sum_{i=1}^n a_i v_i
+\]
+
+is an isomorphism. This means that each vector in \(V\) can be uniquely represented as a linear combination of the basis vectors.
+
 \subsection{Dimension}
 
 The \emph{dimension} of a vector space \(V\) is the number of vectors in a basis of \(V\).
@@ -227,7 +258,7 @@ To find the basis of a set of vectors, we can use the following steps:
 The number of non-zero rows in the echelon form matrix is equal to the dimension of the vector space 
 spanned by the original set of vectors.
 
-The basis of a vector space is not unique. Different basiss can span the same vector space.
+The basis of a vector space is not unique. Different bases can span the same vector space.
 
 \subsection{Basis Extension Theorem}
 
@@ -283,15 +314,27 @@ process terminates after finitely many steps, since
 
 Every finitely generated vector space \(V\) has a basis.
 
-\subsection{Exchange Lemma}
+\subsection{Epimorphism of Finite Dimensional Vector Spaces}
 
-Let \((v_1, \ldots, v_n)\) and \((w_1, \ldots, w_m)\) be basiss of a vector space \(V\). Then, for every 
-\(v_i\), there exists a \(w_j\) such that if we replace \(v_i\) by \(w_j\) in the tuple 
-\((v_1, \ldots, v_n)\), it still forms a basis of \(V\).
+A finite dimensional vector space is an \emph{epimorphic} image of \(Field^n\) where \(n\) is the number of dimensions.
 
 \textbf{Proof:}
 
-Let \((v_1, \ldots, v_n)\) and \((w_1, \ldots, w_m)\) be two basiss of \(V\). Suppose we remove \(v_i\) 
+Given \(\{v_1, \dots, v_n\} \subseteq V\) a generating system of \(V\) and \(X = (v_1, \dots, v_n) \in V^n\)
+
+\[
+	\lambda: K^n \to V: a \mapsto a_1 X_1 + \cdots + a_n X_n
+\]
+
+\subsection{Exchange Lemma}
+
+Let \((v_1, \ldots, v_n)\) be a base of \(V\) and \((w_1, \ldots, w_m)\) be generating system of \(V\). Then, for every 
+\(v_i\), there exists a \(w_j\) such that if we replace \(v_i\) by \(w_j\) in the tuple 
+\((v_1, \ldots, v_n)\), it still forms a basis of \(V\). We can exchange \(m - n\) vectors in this way.
+
+\textbf{Proof I:}
+
+Let \((v_1, \ldots, v_n)\) and \((w_1, \ldots, w_m)\) be two bases of \(V\). Suppose we remove \(v_i\) 
 from the first basis. The truncated tuple \((v_1, \ldots, v_{i-1}, v_{i+1}, \ldots, v_n)\) satisfies
 
 \[
@@ -318,6 +361,32 @@ and add one of the vectors \(v_1, \ldots, v_n\) to complete the basis. Clearly, 
 to add \(v_i\), but this would imply that the tuple \((v_1, \ldots, v_n, w_j)\) is not a basis, as 
 \(w_j\) would then be linearly dependent on the other vectors. 
 Therefore, \((v_1, \ldots, v_{i-1}, v_{i+1}, \ldots, v_n, w_j)\) must form a basis of \(V\).
+
+\QED
+
+\textbf{Proof II:}
+
+Let \(A = (v_1, \dots, v_n)\) and \(B = (w_1, \dots, w_m)\) be two bases of \(V\). We prove the statement by induction on \(m\). 
+
+For \(m = 1\) \(A \cup B = (v_1, \dots, v_n, w_1)\) is linearly dependent because \(A\) is a basis of \(V\). 
+Thus, there exist \(\lambda_1, \dots, \lambda_n = w_1\). 
+
+Choose \(\lambda_j \ne 0\) and define 
+
+\[
+	v_j = -\frac{1}{\lambda_j} (\lambda_1 v_1 + \dots + \lambda_{j-1} v_{j-1} + \lambda_{j+1} v_{j+1} + \dots + \lambda_n v_n - w_1 )
+\]
+
+If we remove \(v_j\) from \(A\) and add \(w_1\) we get a basis of \(V\). This is true because let 
+
+\[
+	\tilde{\lambda_1} v_1 + \dots + \tilde{\lambda_{j-1}} v_{j-1} +\tilde{\lambda_j} w_1+ \tilde{\lambda_{j+1}} v_{j+1} + \dots + \tilde{\lambda_n} v_n = 0
+\]
+
+Assume \(\tilde{\lambda_j} \ne 0\) then we can express \(w_1\) as a linear combination of the other vectors. This is a contradiction because this would mean 
+that we can write \(w_1\) as another linear combination of the vectors in \(A\) which is not possible because \(B\) is a basis of \(V\). 
+
+For we repeat this process \(n - m\) times we get the desired result. 
 
 \QED
 
@@ -356,7 +425,8 @@ we can use the following steps:
 	\[
 	    a_0 + a_1 x + a_2 x^2 + \ldots + a_n x^n = 0,
     \]
- 		where \(a_0, a_1, \ldots, a_n\) are scalars.
+ 	
+	where \(a_0, a_1, \ldots, a_n\) are scalars.
 	
 	\item Since the left-hand side is a polynomial of degree at most \(n\), it can only be equal 
 		  to zero if all coefficients are zero.
@@ -454,6 +524,7 @@ This leads to the system of equations:
 \]
 
 Solving this system gives \(a = 1\), \(b = 1\), and \(c = -1\), so the interpolation polynomial is
+
 \[
 	p_2(x) = x^2 + x - 1.
 \]

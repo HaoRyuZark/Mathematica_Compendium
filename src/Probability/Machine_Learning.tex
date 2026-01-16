@@ -1,0 +1,2208 @@
+\newpage
+\section{Machine Learning}
+
+Machine Learning is an area of computer science which focuses on making accurate 
+predictions based on already gathered data and mathematical models.
+
+\subsection{Basic Terminology}
+
+\begin{itemize}
+
+    \item Historical Data: Refers to the data on which we are going to base our model. 
+
+    \item Feature Vector \(X\): This some vector whose components represent the different numeric values of the characteristics 
+    of some object.
+
+    \item Function \(f\): is called \emph{target function} \(f: \mathcal{X} \to \mathcal{Y}\) which makes a perfect approximation 
+
+    \item Label \(y\): Is some image of one \(x \in \mathcal{X}\) 
+
+    \item Data Sample \(D\): this is a set of pairs \((x_i, y_i)\)
+
+\end{itemize}
+
+Our goal is to find a function \(g: \mathcal{X} \to \mathcal{Y}\) which approximates \(f\)
+
+\subsection{Solution Strategy}
+
+\begin{itemize}
+
+    \item The learning algorithm \(\mathcal{A}\) uses data to select, from a set of candidate functions, the function \( g \) that best approximates the target function \(f\).
+
+    \item \( \mathcal{H} \): Set of candidate functions (hypothesis set). (Example: linear functions)
+
+    \item \( g \in mathcal{H} \) is also called the \emph{final hypothesis}, which the algorithm selects at the end.
+
+\end{itemize}
+
+\subsection{Central Learning Problems in Machine Learning}
+
+\textbf{Supervised Learning}
+
+\begin{itemize}
+
+    \item Sought: Unknown target function.
+
+    \item Data: Input--output pairs.
+
+    \item Approximate the unknown target function \( f_{\text{target}} \) with a hypothesis \( h \) such that \( h \approx f_{\text{target}} \).
+
+\end{itemize}
+
+\textbf{Unsupervised Learning} 
+
+\begin{itemize}
+   
+    \item Sought: Unknown function that describes the data.
+
+    \item Data: Only input data (no labels).
+
+    \item Find a function \( f \) that describes the structure or distribution of the data well. 
+     
+\end{itemize}
+
+\textbf{Reinforcement Learning}
+
+\begin{itemize}
+    
+    \item Sought: Unknown strategy \( S \) that maximizes a reward.
+    
+    \item Data: (1) Input  (2) Possible output (3) Evaluation of output (reward).
+    
+    \item Find a function \( f \) that approximates the optimal strategy \( S^* \) that maximizes the expected reward.
+
+\end{itemize}
+
+\subsection{The Perceptron} 
+
+\emph{The perceptron} is our first model in machine learning. It consists on having a separate vector \(w \in \R^d\) which consist of weights which are going to be 
+associated with the components of \(x \in \mathbb{R}^d\). We also define \(y \in \{-1,1\}\),  and some value \(b\) to work as our border between the categories of y. 
+We classify our prediction based on the result 
+
+\[
+    \sum_{i = 1}^{d} w_i x_i > b \text{ accept }
+\]
+
+\[
+    \sum_{i = 1}^{d} w_i x_i < b \text{ reject }
+\]
+
+More precisely 
+
+\begin{align*}
+    \sum_{i = 1}^{d} w_i x_i + 1 \cdot b &> 0 \\ 
+    \sum_{i = 1}^{d} w_i x_i + x_0 \cdot w_0 &> 0  \mid x_0 = 1 \quad w_0 = b\\
+    \sum_{i = 0}^{d} w_i x_i &> 0  \\
+    w^T x &> 0 
+\end{align*}
+
+Finally, to get our respective \(y\) we define the following function 
+
+\[
+    \text{sign}(w^T x) = \begin{cases}
+     1, &\sum_{i = 1}^{d} w_i x_i > 0\\
+    -1, &\sum_{i = 1}^{d} w_i x_i < 0
+    \end{cases}
+\]
+
+And we get our final perceptron equation 
+
+\[
+    h(x) = \text{sign}(w^Tx)
+\]
+
+For the case \(d = 2\),  our vector \(w\) defines a \emph{line}. 
+
+\begin{align*}
+    w_0 \cdot 1 + w_1 x_1 + w_2, x_2 &= 0 \\ 
+    x_2 &= - \frac{w_1}{w_2} x_1 - \frac{w_0}{w2} \\ 
+    x_2 &= m x_1 + c
+\end{align*}
+
+Here a visualization 
+
+\begin{center}
+\begin{tikzpicture}[>=Stealth, scale=1.2]
+
+% Axes
+\draw[->] (-0.5,0) -- (4.5,0) node[right] {$x_1$};
+\draw[->] (0,-0.5) -- (0,4.5) node[above] {$x_2$};
+
+% Positive class (blue)
+\foreach \x/\y in {3/3.5, 3.6/3.1, 2.7/2.8, 3.2/2.5, 2.5/3.2}
+    \fill[blue] (\x,\y) circle (3pt);
+
+% Negative class (red)
+\foreach \x/\y in {0.6/0.8, 1.1/0.4, 0.4/1.2, 1.4/1.1, 0.8/1.5}
+    \fill[red] (\x,\y) rectangle +(6pt,6pt);
+
+% Decision boundary line (example)
+\draw[thick] (0.2,4) -- (4,0.3);
+\node at (4.1,1.8) {$w_1 x_1 + w_2 x_2 + 1 \cdot b = 0$};
+
+\end{tikzpicture}
+\end{center}
+
+Note that \(y\) is not used for the visualization, as it is just using in the \(\text{sign}\) function to as for the classification. 
+
+\subsubsection{The Perceptron Learning Algorithm}
+
+The \emph{PLA} modifies \(w\) until the data are linearly separated, as long it is possible. 
+It can be the case that in the current space it is not possible. Formally, if there exists a \(w^*\) such that 
+\(h(x_i) = y_i, \forall (x_i, y_i) \in \mathcal{D}\).
+
+It goes as follows: 
+
+\begin{itemize}
+
+    \item \emph{Data:} \((x_i, y_i)\) with \(x\) being a vector \(i = 1, \ldots, N\).
+    
+    \item \emph{Assumption:} The data are linearly separable, i.e., we can separate the data into their classes using a line (\(d = 2\)) or a hyperplane (\(d > 2\)).
+
+\end{itemize}
+
+Let \(t = 0, 1, 2, \ldots\) be the current iteration step, and let \(w^{(t)}\) denote the vector \(w\) at iteration step \(t\).  
+Set \(t = 0\) and \(w^{(0)} = 0\).
+
+\begin{enumerate}
+
+    \item Use the perceptron with \(w^{(t)}\) and classify all data \(\mathbf{x_i}, i = 1, \ldots, N\). The labels predicted by the perceptron are denoted by \(y_{i,\text{pred}}\).
+    
+    \item Select any pair \((x_j, y_j)\) that was misclassified (i.e., \(y_{j,\text{pred}} \neq y_j\)), and denote it by \((x^{(t)}, y^{(t)})\). If no such pair exists, terminate.
+    
+    \item Update the weight vector \(w\) using the following rule:
+    
+        \[
+            w^{(t+1)} = w^{(t)} + y^{(t)} x^{(t)}
+        \]
+
+        This just means taking the current \(w\) and adding the vector \(x\) times the corresponding label \(y\) which was expected.
+         
+    \item Increase \(t\) by 1 and return to step 1.
+    
+    \item After we got our final weights, we get our line or hyperplane by manipulating our 
+    expression \(\sum_{i = 0}^d x_i w_i = 0\)
+
+\end{enumerate}
+
+\subsubsection{In Sample Errors}
+
+The \emph{in-sample-error} is the mean of the amount of samples which were incorrectly labeled. 
+
+\[
+    E_{in} (h) = \frac{1}{N} \sum_{i = 1}^{N} W(h(x_i) \neq f(x_i))
+\]
+
+where
+
+\[
+    W(Expr) = \begin{cases}
+        1 & Expr = True \\ 
+        0 & Expr = False
+    \end{cases}
+\]
+
+It is the median of the errors made on the training data. 
+
+\subsubsection{Out of Sample Errors}
+
+This refers to all errors which can occur due to the lack of data. Obviously we do not 
+have all possible samples which will exists.
+
+\[
+    E_{out} (h) = P[h(x) \neq f(x)]
+\]
+
+These errors have a randomness factor, or in other words an unknown probability distribution.
+They are harder to calculate due to their nature. 
+
+\subsection{Pocket Algorithm}
+
+The \emph{pocket algorithm} is an extension of the perceptron learning algorithm to handle non-linear separable data-sets. This 
+achieved by setting a maximum number iterations while also keeping track of the vector with the lowest in-sample error value. 
+
+\begin{enumerate}
+
+    \item Initialize \( w \) and set \( w_{\text{best}} = w \).
+    
+    \item Compute the current in-sample error \( E_{\text{best}} = E_{\text{in}}(w) \).
+    
+    \item For each iteration:
+    
+        \begin{enumerate}
+        
+            \item If a point \( (x_i, y_i) \) is misclassified, update:
+        
+                \[
+                    w \leftarrow w + y_i \tilde{x}_i
+                \]
+ 
+            \item Compute the new error \( E_{\text{in}}(w) \).
+        
+        \item If \( E_{\text{in}}(w) < E_{\text{best}} \), then:
+        
+            \[
+                w_{\text{best}} \leftarrow w, \quad E_{\text{best}} \leftarrow E_{\text{in}}(w)
+            \]
+
+    \end{enumerate}
+
+    \item After all iterations, output \( w_{\text{best}} \).
+
+\end{enumerate}
+
+We use the following formula for error.
+
+\[
+    E_{\text{in}}(w) = \frac{1}{N} \sum_{i=1}^{N} \mathbb{I}\big( \text{sign}(w^T \tilde{x}_i) \neq y_i \big)
+\]
+
+\subsection{Preparing the Data Set}
+
+The data set \(\mathcal{D}\) we be spit into training and test data to minimize our 
+margin of error. If a model is trained only used the same data again, and again it will become 
+less reliable with new data which differs from its training set. Making out of sample errors 
+difficult to spot.
+
+Another way of improving the quality of the data set is to add a certain degree of noise to our sample data. Thus, 
+converting \(y\) into a probability-variable dependent on \(x\). Therefore, \(f \to P(y \mid x)\).
+
+\subsection{Linear Models Types of Supervised Learning}
+
+We distinguish between three types of supervised learning, which differ in their target function.
+
+We also define our linear model as 
+
+\[
+    \theta(s(x)) = \theta \left(\langle w, x \rangle\right)
+\]
+
+This just means that we handle our data with linear functions. 
+
+Use cases: 
+
+\begin{enumerate}
+
+    \item \emph{Classification:} discrete classes. \(\theta( \cdot) = \text{sign}(\cdot)\)
+    
+    \item \emph{Regression:} real numbers. \(\theta( \cdot) = \text{id}(\cdot) = \cdot\)
+    
+    \item \emph{Logistic Regression:} probabilities. \(\theta(s) = \frac{e^s}{1 + e^s}\)
+
+\end{enumerate}
+
+\subsection{Classes of Classifications}
+
+The most common cases we encounter when we want to find our specific categories are: 
+
+\begin{itemize}
+    
+    \item \emph{Linear Separation} Data can be separated into classes via a line or hyperplane.
+
+    \item \emph{Non-Linear} Due to noise in the data.
+
+    \item \emph{Non-Linear} Due to a non-linear target function.
+
+\end{itemize}
+
+\subsection{Linear Regression}
+
+From linear algebra we already know that the way of doing \emph{linear regression} is via 
+the method of the least squares.
+
+\[
+    w = (X^T X)^{-1}X^T y = X^{\dagger}y
+\]
+
+The error-kinds for our model are going to be 
+
+\[
+    E_{out}(h) = \mathbb{E}[(h(x) - y)^2]
+\]
+
+\[
+    E_{in}(h) = \frac{1}{N} \sum_{n = 1}^{N}(h(x_n) - y_n)^2 
+\]
+
+Our hypothesis set \(\mathcal{H}\) is composed of hypotheses of the form \(h(x) = \langle x, w\rangle, x_0  = 1\).
+Our goal is to find some vector \(w\) such that \(E_{in}\) is minimal \(w_{lin} = {\text{arg min} E_{in}(w)}_{w \in \R^d}\)
+
+\[
+    E_{in}(w) = \frac{1}{N} \sum_{n = 1}^{N}(\langle w, x \rangle - y_n)^2 
+\]
+
+and \(w_{lin} := X^{\dagger} y \).
+
+\begin{center}
+ \begin{tikzpicture}[line cap=round, mark options={mark size=1.5pt,fill=white}]
+  \begin{axis}
+    [
+      xmin=0,
+      xmax=4,
+      ymin=0,
+      ymax=4,
+      domain=0.25:3.75,
+      axis lines=center,
+      xlabel=$x$,
+      ylabel=$y$,      
+      xtick={2},
+      xticklabels={$x_1$},
+      ytick=\empty
+    ]
+    \addplot [thick, blue]             {(\func(x))};
+    \addplot [dashed, red] coordinates {(2,0) (2,2.44)};
+    \addplot [mark=*, red] coordinates {(2,\y)};
+    \addplot [only marks]  coordinates {(0.5,0.80) (1,1.57)   (1.5,1.34)
+                                        (2,2.44)   (2.5,2.48) (3,2.66)
+                                        (3.5,3.17)};
+    \node       at (2,2.44) [left]  {$y_1$};
+    \node[red]  at (2,\y)   [right] {$\alpha x_1+\beta$};
+    \node[blue] at (2.6,3.1)        {$y=\alpha x+\beta$};
+  \end{axis}
+ \end{tikzpicture}   
+\end{center}
+
+\subsection{Non-Linear Transformations}
+
+The two algorithms covered until know have the condition that both of them are linear, but 
+what if our date can not be linearly separated. We can modify the input variable \(x_i\) 
+in a non-linear way to be able to separate the data linearly in another space and then apply our algorithms.
+
+For this purpose, we define the new space \(\mathcal{Z}\) whose elements are \(z_n = \phi(x_n)\), where 
+\(\phi: \mathcal{X} \to \mathcal{Z}\) is a non-linear transformation. We also define \(\hat{g}(z) = \text{sign}(\langle \hat{w}, z \rangle)\).
+Finally, our hypothesis set \(\mathcal{H}_{\phi}\) contains functions of the form \(h(x) = \hat{h}(\phi(x))\).
+
+This can become very complex but for 3d or 2d cases with data visualization a non-linear transformation can be found 
+using the mathematical technique of looking with your own eyes. 
+
+\subsection{Approximation and Generalization}
+
+When trying to approximate the target function \(f\) we encounter the problem that our data may not 
+give us the exact function because of the lack of data. To want to minimize the in-sample error 
+but also make out approximation as general as possible.
+
+\emph{Approximation:} Small in-sample-error
+
+\emph{Generalization:} \(E_{\text{out}} \approx E_{\text{in}}\)
+
+\subsection{Bias and Variance}
+
+Fitting the training data well, but making poor predictions, is called the \emph{bias-variance} trade-off.
+
+The \emph{bias} is a measurement of the difference between all the possible data predicted via our final 
+hypothesis \(g\) the target function \(f\). In other words, how much our approximations deviates from the actual perfect 
+prediction.
+
+The \emph{variance} measures how much a final hypothesis \(g\) gotten from one specific 
+data-set differ from one another.
+
+There are two extreme cases: one is when the hypothesis-set has only one function, therefore we have zero 
+variance and a big bias; and the other case is when the set is large and different data-sets produce similar functions, 
+therefore we get a near zero bias but a high variance.
+
+With this in mind we now define 
+
+\[
+    E_{\text{out}} = \text{ Bias } + \text{ Variance} 
+\]
+
+\textbf{Example:}
+
+Our target is \(\sin(\pi x)\), and our hypothesis-sets are \(\mathcal{H}_0\) the set of all horizontal 
+lines \(h(x) = b\) and \(\mathcal{H}_1\) the set of all lines \(h(x) ax + b\). The training-sets are two data-points of the internal 
+\([-1,+1]\).
+
+
+\subsection{Learning Curves}
+
+\emph{Learning curves} plot \(E_{\text{in}}\) and \(E_{\text{out}}\) depending on the number of the 
+data-points.
+
+\subsection{Overfitting}
+
+\emph{Overfitting} refers to the situation when a model adapts itself too much to a given data-set. Precisely, it is the process 
+in which hypotheses \(h\) continuously reduce the in-sample error, but leading to a bigger output-of-sample error.
+
+We define \emph{overfitting} for a hypothesis \(h\), if for another hypothesis \(h'\) the following is true 
+
+\[
+    E_{\text{in}}(h) < E_{\text{in}}(h') \text{ but } E_{\text{out}}(h) > E_{\text{out}}(h')
+\]
+
+In summary, noise in the data (stochastic or deterministic) have a negative effect on the learning process and can lead 
+to overfitting. To address this problem we will use \emph{regularization}.
+
+\subsection{Underfitting}
+
+\emph{Underfitting} refers to the case when the model has not been trained with enough data to make 
+accurate approximations.
+
+\subsection{The Augmented Error}
+
+We define the \emph{augmented error} as 
+
+\[
+    E_{\text{aug}}(w) = E_{\text{in}}(w) + \frac{\lambda}{N}w^T w 
+\]
+
+\(\lambda\) is the parameter for how much we should regularize, \(w^T w\) is the punish-term based on the weight of the vector and 
+\(N\) is the number of data points.
+
+\subsection{Regularization}
+
+\emph{Regularization} is the process of making the algorithm less sensible to data out of the sample our in other words,
+helps the learning algorithm to minimize the output-of-sample error. This is accomplished by different methods like adding error terms, 
+special procedures etc.
+
+In general, with regularization we want to decrease the complexity of our approximations to the target function to minimize overfitting.
+
+\subsubsection{Ridge Regression}
+
+This is a regularization technique used  specially in linear models to prevent overfitting by discouraging the model from assigning 
+excessively large values to its parameters.
+
+The regularization using \(\Omega(h) = w^T w\) we call is also called \emph{weight decay} or \emph{ridge regression}.
+
+\textbf{Example:}
+
+This example uses linear regression. Therefore, 
+
+\begin{align*}
+    E_{\text{in}}(h) &= \frac{1}{N} \sum_{n = 1}^{N}(h(\phi(x_n)) - y_n)^2 \\
+    E_{\text{in}}(h) &= \frac{1}{N} \sum_{n = 1}^{N}(w^Tz_n - y_n)^2 \\
+    E_{\text{in}}(h) &= \frac{1}{N} (Zw - y_n)^T(Zw - y)
+\end{align*}
+
+And 
+
+\[
+    Z := \begin{bmatrix}
+        z_1^T \\ z_2^T \\ \vdots \\ z_{n}^T 
+    \end{bmatrix}
+\]
+
+Our augmented error is given by 
+
+\begin{align*} 
+    E_{\text{aug}} (w) &= E_{\text{in}} + \frac{\lambda}{N} w^T w \\ 
+    &= \frac{1}{N} (Zw - y_n)^T(Zw - y) + \frac{\lambda}{N} w^T w 
+\end{align*}
+
+To minimize it we want to set its gradient to 0 which gives us  
+
+\begin{align*}
+    \nabla_w E_{\text{aug}}(w) = 0 \implies & Z^T(Zw - y) + \lambda w = 0 \\
+    & Z^TZw - Z^Ty + \lambda w = 0 \\
+    & (Z^TZ - Z^T I)w + Z^T y= 0 \\
+    & w_{\text{reg}} = (Z^T Z + \lambda I)^{-1} Z^T y 
+\end{align*}
+
+Finally, as a remainder the formula without regularization
+
+\[
+    w_{\text{lin}} = (Z^T Z)^{-1} Z^T y
+\]
+
+\subsection{Validation}
+
+\emph{Validation} refers to process of evaluating our algorithms and models based on specific parameters 
+and procedures. 
+
+The hypothesis gained from a model which is going to be validated is marked as \(\overline{g_n}\). 
+
+\subsubsection{Quote from the statistical Learn-theory}
+
+The more often you use a data-set for training a model, taking decisions, etc. The hard is to approximate 
+the capacity of the data-set to approximate the out-of-sample error. 
+
+\subsection{Hold-Out-Validation}
+
+Data points are randomly shuffled into training and test data. 
+
+\subsection{Cross Validation}
+
+\emph{Cross Validation} is a technique to estimate the out-of-sample error. It consists on splitting the data-set into \(V\) different
+sub-sets of equal size called \emph{folds}. Then, we train our model \(V\) times, each time using \(V-1\) disjoint sub-sets for training and the remaining one for testing. The final 
+out-of-sample error is given by the average of all the out-of-sample errors gotten from each iteration.
+
+We can apply this technique to different models and select the one with the lowest out-of-sample error.
+
+The nomenclature:
+
+\begin{itemize}
+    
+    \item \emph{Number of data points in the training set} \(N_{\text{train}} = \frac{V - 1}{V} N\)
+
+    \item \emph{Number of data points in the validation set} \(N_{\text{val}} = \frac{1}{V} N\)
+
+    \item \(e_n:= E_{\text{val}} (\overline{g_n}) = e(\overline{g_n}(x_n), y_n)\)
+
+    \item \emph{Cross Validation Error} \(E_{\text{V-fold CV}} = \frac{1}{V} \sum_{n = 1}^{V} E_v\)
+
+\end{itemize}
+
+\subsection{Leave One Out Cross Validation}
+
+This is cross validation but with leaving always one data point out, instead of a fold.
+
+The nomenclature:
+
+\begin{itemize}
+    
+    \item \(e_n:= E_{\text{val}} (\overline{g_n}) = e(\overline{g_n}(x_n), y_n)\)
+
+    \item \emph{Cross Validation Error} \(E_{\text{CV}} \frac{1}{N} \sum_{n = 1}^{N} e_n\)
+
+\end{itemize}
+
+\subsection{Confusion Matrix}
+
+A \emph{confusion matrix} is a table that is often used to describe the performance of a classification model (or "classifier") on a set of test data for 
+which the true values are known. It allows the visualization of the performance of an algorithm. 
+
+For example, in a binary classification problem, the confusion matrix is a 2x2 table that summarizes the counts of true positive \(TP\), 
+true negative \(TN\), false positive \(FP\), and false negative \(FN\) predictions made by the model. 
+
+\subsection{Sensitivity and Specificity}
+
+\emph{Sensitivity} measures the proportion of actual positives in the data that are correctly identified as such (true positive rate). It is calculated as:
+
+\[
+    \text{Sensitivity} = \frac{TP}{TP + FN}
+\]
+
+The denominator represents the sum of the column corresponding to actual positive cases, while the numerator represents the true positive cases.
+
+\emph{Specificity} measures the proportion of actual negatives in the data that are correctly identified as such (true negative rate). It is calculated as:
+
+\[
+    \text{Specificity} = \frac{TN}{TN + FP}
+\]
+
+The numerator is the sum of all cells which are not in row or column of positive cases, while the denominator is the sum of the row corresponding to actual negative cases plus 
+our previous numerator.
+
+\subsection{Learning Principles}
+
+\subsubsection*{Ockham}
+
+The simplest model which approximates the data is also the more plausible. 
+
+\subsubsection*{Corrupted Samples}
+
+If the sample are corrupted, biased or contains errors then the model will also not be neutral 
+and will give false approximations.
+
+\subsubsection*{Data Snooping}
+
+If a data-set affects the learning process then its capacity of approximating the out-of-sample error 
+was reduced. 
+
+\subsection{Logistic Regression}
+
+\emph{Logistic Regression} is a statistical model that in its basic form uses a logistic function to model a binary dependent variable.
+This model returns a probability value which can be mapped to two or more discrete classes.
+
+To achieve the desired result we apply a \emph{linear regression} and then apply the \emph{logistic function} to the result to 
+squish it between 0 and 1.
+
+The logistic function is defined as
+
+\[
+    \theta(s) = \frac{e^s}{1 + e^s} = \frac{1}{1 + e^{-s}}
+\]
+
+called the \emph{sigmoid function} with the property 
+
+\[
+    \theta(-s) = 1 - \theta(s)
+\]
+
+Note that \(h(x_i) = \theta(w^T x_i + b) = \frac{1}{1 + e^{- (w^T x_i + b)}}\)
+
+Based on the output of the logistic function we classify our data in the respective classes. For example, if the output is
+greater than 0.5 we classify it as class 1, otherwise as class -1.
+
+where \(h_\theta (x^i)\) is the hypothesis function, \(y^i\) is the true label for the \(i\)-th data point \(x^i\), and \(N\) is the total number of data points.
+
+\subsubsection{Maximum Likelihood}
+
+We can not optimize the sigmoid function directly; thus, we use the method of maximum likelihood. 
+
+\[
+    L = (\theta) = \prod_{n = 1}^N h_\theta(x^i)
+\]
+
+We take that expression and modify it into 
+
+\[
+    L = (\theta) = \prod_{n = 1}^N (h_\theta(x^i))^{y^i} (1 - h_\theta(x^i))^{1 - y^i}
+\]
+
+Taking the logarithm of the likelihood function gives us the log-likelihood:
+
+\[
+    \log L(w,b) = - \frac{1}{N} \sum_{i=1}^{N} [y^i \log(h_\theta (x^i)) + (1 - y^i) \log(1 - h_\theta (x^i))]
+\]
+
+And this is the function we want to maximize. Note, that this is the \emph{cross entropy loss function}
+
+\subsubsection*{Gradient of the Cross Entropy Loss Function}
+
+Using the cross entropy we can define our error for logistic regression. By taking the gradient
+
+\[
+   \log L(w,b) = - \frac{1}{N} \sum_{i = 1}^{n} [y^i \log(h_\theta (x^i) + (1 - y^i) \log(1 - h_\theta (x^i))]
+\]
+
+We get 
+
+\[
+    \frac{\partial \log L(w,b)}{\partial w} = \frac{1}{N} \sum_{i=1}^{N} (h_\theta(x^i) - y^i) x^i
+\]
+
+\[
+    \frac{\partial \log L(w,b)}{\partial b} = \frac{1}{N} \sum_{i=1}^{N} (h_\theta(x^i) - y^i)  
+\]
+
+In vector form
+
+\[
+    \nabla_w \log L(w,b) = \frac{1}{N} X^T (h_\theta(X) - y)
+\]
+
+\[
+    \nabla_b \log L(w,b) = \frac{1}{N} \sum_{i=1}^{N} (h_\theta(x^i) - y^i)
+\]
+
+\subsubsection{Logistic Regression Algorithm}
+
+\begin{enumerate}
+
+    \item Initialize \(w\) and \(b\) (e.g., to zeros or small random values).
+
+    \item For each iteration until convergence or for a fixed number of iterations:
+    
+        \begin{enumerate}
+        
+            \item Compute the predictions for all training examples:
+        
+                \[
+                     y_{\text{pred}} = h_\theta(x^i) = \frac{1}{1 + e^{-(w^T x^i + b)}}
+                \]
+ 
+            \item Compute the gradients:
+
+                \[
+                    \nabla_w \log L(w,b) = \frac{1}{N} X^T (h_\theta(X) - y)
+                \]
+
+                \[
+                    \nabla_b \log L(w,b) = \frac{1}{N} \sum_{i=1}^{N} (h_\theta(x^i) - y^i)
+                \] 
+        
+            \item Update the parameters using gradient descent:
+        
+                \[
+                    w \leftarrow w - \alpha \nabla_w \log L(w,b)
+                \]
+                
+                \[
+                    b \leftarrow b - \alpha \nabla_b \log L(w,b)
+                \]
+
+        \end{enumerate}
+
+    \item After all iterations, output the learned parameters \(w\) and \(b\).
+
+\end{enumerate}
+
+\subsection{Surprise}
+
+The \emph{surprise} of an event \(X = x\) is defined as 
+
+\[
+    \mathrm{Surprise}(x) = S(x) = \ln \left(\frac{1}{P(X = x)}\right)
+\]
+
+\subsection{Entropy}
+
+\emph{Entropy} is defined as the expected surprise of a random variable \(X\) 
+
+\[
+    \mathrm{Entropy}(X) = H(X) = -\sum_{x \in X} P(X = x) S(x) = -\sum_{x \in X} P(X = x) \ln(P(X = x))
+\]
+
+Or in a simpler way
+
+\[
+    \mathrm{Entropy}(X) = \sum p(x) \ln\left(\frac{1}{p(x)}\right)
+\]
+
+\subsection{Mutual Information}
+
+\emph{Mutual Information} measures how much information one random variable \(X\) contains about another random variable \(Y\). It is defined as
+
+\[
+    I(X; Y) = \sum_{x \in X} \sum_{y \in Y} P(X = x, Y = y) \ln \left[\frac{P(X = x, Y = y)}{P(X = x) P(Y = y)} \right]
+\]
+
+If one of the random variables is continuous then we can make bins for different range of values and then proceed 
+to work with the bins as the discrete classes.
+
+\subsection{Cross Entropy}
+
+\emph{Cross Entropy} is a measure of the difference between two probability distributions for a given random variable or set of 
+events.
+
+\[
+    H(P, Q) = - \sum_{x \in X} P(X = x) \ln(Q(X = x))    
+\]
+
+where \(P\) is the true distribution and \(Q\) is the estimated distribution.   
+
+When there is no discrepancy between both distributions, the cross entropy is equal to the entropy of \(P\).
+
+It also has the following properties:
+
+\begin{itemize}
+
+    \item \emph{Lower Bound:} 
+    \[
+        H(P,Q) \ge H(P)
+    \]
+
+    \item \emph{Asymmetry:}
+    \[
+        H(P,Q) \ne H(Q, P) 
+    \]
+
+\end{itemize}
+
+\subsection{KL-Divergence}
+
+\emph{Kullback-Leibler Divergence} is a measure of how one probability distribution \(Q\) diverges from a second 
+expected probability distribution \(P\).
+
+\[
+    D_{KL}(P \| Q) = \sum_{x \in X} P(X = x) \ln \left(\frac{P(X = x)}{Q(X = x)}\right)
+\]
+
+It measures surprise from using \(Q\) to approximate \(P\). The reverse of the cross entropy, where we use 
+\(P\) to approximate \(Q\).
+
+\subsection{Information Gain}
+
+\emph{Information Gain} measures how much information a feature \(A\) gives us about the class label \(Y\). It is defined as
+
+\[
+    IG(S, A) = H(S) - \sum_{v \in \text{values}(A)} \frac{|S_v|}{|S|} H(S_v)
+\]
+
+where \(H(S)\) is the entropy of the original set \(S\), \(S_v\) is the subset of \(S\) 
+for which feature \(A\) has value \(v\), and \(|S|\) and \(|S_v|\) are the sizes of sets \(S\) and \(S_v\) respectively.
+
+In the context of Trees we can think about information gain as  
+
+\[
+    IG = H(\text{parent}) - \sum_i  w_i H(\text{children}_i)
+\]
+
+where \(w_i\) is the proportion of samples in child \(i\) relative to the parent node. 
+
+\textbf{Example:}
+
+Suppose we have a dataset \(S\) with 10 samples, where 6 belong to class A and 4 belong to class B. The entropy of the original set \(S\) is calculated as:
+
+\[
+    H(S) = -\left(\frac{6}{10} \log_2 \left(\frac{6}{10}\right) + \frac{4}{10} \log_2 \left(\frac{4}{10}\right)\right) \approx 0.970
+\]
+
+Now, let's say we split the dataset based on a feature \(A\) that can take two values: \(v_1\) and \(v_2\). After the split, we have:
+
+- Subset \(S_{v_1}\) with 4 samples (3 from class A and 1 from class B)
+- Subset \(S_{v_2}\) with 6 samples (3 from class A and 3 from class B)
+
+The entropy for each subset is calculated as:
+
+\[
+    H(S_{v_1}) = -\left(\frac{3}{4} \log_2 \left(\frac{3}{4}\right) + \frac{1}{4} \log_2 \left(\frac{1}{4}\right)\right) \approx 0.811
+\]
+
+\[
+    H(S_{v_2}) = -\left(\frac{3}{6} \log_2 \left(\frac{3}{6}\right) + \frac{3}{6} \log_2 \left(\frac{3}{6}\right)\right) = 1.0    
+\]  
+
+The weighted average entropy after the split is:
+
+\[
+    \sum_{v \in \text{values}(A)} \frac{|S_v|}{|S|} H(S_v) = \frac{4}{10} \cdot H(S_{v_1}) + \frac{6}{10} \cdot H(S_{v_2}) \approx 0.4 \cdot 0.811 + 0.6 \cdot 1.0 \approx 0.924
+\]
+
+Therefore, the information gain from splitting on feature \(A\) is:
+
+\[
+    IG(S, A) = H(S) - \sum_{v \in \text{values}(A)} \frac{|S_v|}{|S|} H(S_v) \approx 0.970 - 0.924 = 0.046
+\]  
+
+\subsection{Gini Impurity}
+
+\emph{Gini Impurity} is a measure of how often a randomly chosen element from the set would be incorrectly labeled if it was randomly 
+labeled according to the distribution of labels in the subset. It is calculated as
+
+\[
+    Gini(S) = 1 - \sum_{i=1}^{C} p_i^2
+\]
+
+where \(C\) is the number of classes and \(p_i\) is the proportion of instances in class \(i\) in the set \(S\).
+
+The closer the Gini impurity is to 0, the more pure the set is.
+
+
+\subsection{Trees}
+
+\emph{Trees} are used mainly for \emph{regression trees} or classification \emph{decision trees}. They are 
+mostly not an individual learning model but are just an extra layer.
+
+Formal definition: Given a feature vector \(x \in X\) in a \(d\)-dimensional feature space with 
+\(R_1, R_2, \dots, R_M\) being disjoint regions \emph{hyperquadratns} in the feature space. 
+
+The hypothesis \(h(x)\) of a tree is given by the formula 
+
+\[
+    h(x) = \sum_{m = 2}^{M} c_m \ind_m (x)
+\]
+
+With \(c_m\) being the coefficient given as 
+
+\begin{itemize}
+    \item \emph{Regression:} \(c_m\) is the mean of all labels in \(R_m\). 
+
+    \item \emph{Classification:} \(c_m\) is the multiplicity label of all data points in the training set \(R_m\).
+\end{itemize}
+
+The regions can be defined by \emph{binary splitting}.
+
+\subsection{Regressions Trees}
+
+A \emph{regression tree} divides the feature space into disjoint sub-spaces in such a way that it brings
+the value of all labels \(y_i\) for \(x_i \in R_m\) as close as possible \(\overline{y_{R_m}} = c_m\). 
+
+The following is again an optimization problem: Find the partition in \(M\) hyperquadrants, such that the sum 
+of the square distance is minimal. 
+
+\[
+    \text{Minimize}_{M, R_1, \dots, R_M} \sum_{m = 1}^{M} \sum_{x_i \in R_m} (y_i - \overline{y_{R_m}})^2
+\]
+
+with 
+
+\[
+    \overline{y_{R_m}} = \frac{1}{N_m} \sum_{x_i \in R_m} y_i
+\]
+
+and 
+
+\[
+    N_m = |\{x_i \in R_m\}|
+\]
+
+\subsubsection{Recursive Binary Splitting}
+
+We previously state an optimization problem, which sadly can not be solved efficiently, instead 
+we will approach it with \emph{recursive binary splitting} an algorithm which goes as follows 
+
+\begin{enumerate}
+
+    \item Given \(R_0\) a hyperquadrant with training data \((x_i, y_i)\). Given a feature vector \(x_i = (x_{i1}, \dots, x_{id})\). Also, given 
+     \(j \in \{1, \dots, d\}\) as the indexes of the feature and \(s \in \R\) a bias term. 
+
+    \item Define the regions 
+    \[
+        R_1(j,s) = \{x \mid (x)_j < s, x \in R_0\}
+    \]
+    \[
+        R_2(j,s) = \{x \mid (x)_j \ge s, x \in R_0\}
+    \]
+
+    Find \((j, s)\) which minimizes the following 
+
+    \[
+        \theta = \min \left(\sum_{i:x_i \in R_1 (j,s)} (y_i - \overline{y_{R_1}})^2 + \sum_{i:x_i \in R_2 (j,s)} (y_i - \overline{y_{R_2}})^2\right) 
+    \]
+
+    \item For the next step repeat step one, \(R_0 = R_1\) or \(R_0 = R_2\) depending on the smallest, else terminate.
+\end{enumerate}
+
+The termination criteria are for example 
+
+\begin{itemize}
+    \item Each leaf which has to be divided has a minimal number of data points contained.
+
+    \item The tree can have maximal depth. 
+    
+    \item The tree size is limited.
+\end{itemize}
+
+\subsection{Classification Trees}
+
+We can take everything from the regression tree except the cost function. For 
+\emph{classification trees} the cost function is given as the label of the specific classes itself.
+
+\textbf{Nomenclature}
+
+\begin{itemize}
+    \item \(C\) is the number of classes in the classification problem. 
+
+    \item \(p(i)\) is the probability of the class relative to the complete set.
+\end{itemize}
+
+\subsection{Gini Impurity}
+
+Represents the mean probability for a data point being misclassified. \(p(i) = p_i\)
+
+This probability that a data point was misclassified is given by
+
+\[
+    \sum_{k \ne i}^{C} p_k = 1 - p_i
+\]
+
+The mean is then 
+
+\[
+    E_{\text{Gini}}= \sum_{i}^{C}p_i (1 - p_i) = \sum_{i}^{C} p_i - \sum_{i}^{C} p_{i}^2 = 1 - \sum_{1}^{C} p_{i}^{2} 
+\]
+
+\subsection{Information Gain in Machine Learning}
+
+Information gain is a measure commonly used in decision tree algorithms such as ID3, C4.5, 
+and CART to determine which feature should be used to split the dataset 
+at each step. It quantifies how much uncertainty about the class labels is reduced after 
+splitting the data based on a particular feature.
+
+\subsubsection{Variance}
+
+For regression problems, we can use variance as a measure of impurity. The variance of a set of values is defined as:
+
+\[
+    \text{Var}(X) = \frac{1}{N} \sum_{i=1}^{N} (x_i - \overline{x})^2
+\]
+
+where \(\overline{x}\) is the mean of the values in set \(X\).
+
+\subsubsection{Covariance}
+
+The covariance between two random variables \(X\) and \(Y\) is defined as:
+
+\[
+    \cov(X, Y) = E[(X - E[X])(Y - E[Y])] = E[XY] - E[X]E[Y]
+\]
+
+Or the 
+
+\[
+    \cov = \frac{1}{N} \sum_{i=1}^{N} \prod_{j = 1}^{n} \vec{x_j}
+\]
+
+where \(\vec{x_j} = (x_{j1}, x_{j2}, \dots, x_{jn})^T\) is a feature vector.
+
+\subsubsection{Correlation}
+
+The correlation coefficient between two random variables \(X\) and \(Y\) is defined as:
+
+\[
+    \rho_{X,Y} = \frac{\cov(X, Y)}{\sigma_X \sigma_Y}
+\]
+
+where \(\sigma_X\) and \(\sigma_Y\) are the standard deviations of \(X\) and \(Y\), respectively.
+
+\subsubsection{Covariance Matrix}
+
+The covariance matrix for a set of \(n\) random variables \(X_1, X_2, \dots, X_n\) is defined as:
+
+\[
+    \Sigma = 
+    \begin{bmatrix}
+        \cov(X_1, X_1) & \cov(X_1, X_2) & \dots & \cov(X_1, X_n) \\
+        \cov(X_2, X_1) & \cov(X_2, X_2) & \dots & \cov(X_2, X_n) \\
+        \vdots & \vdots & \ddots & \vdots \\
+        \cov(X_n, X_1) & \cov(X_n, X_2) & \dots & \cov(X_n, X_n)
+    \end{bmatrix}
+\]
+
+
+\subsubsection{Information content}
+
+For the occurrence of some event \(k\) with probability \(p_k\) we define 
+
+\[
+    I_k := - \log_2 p_k
+\]
+
+For the intuition, the rarer an event occurs the more information it provides. 
+
+\subsubsection{Entropy}
+
+\emph{Entropy} is the mean information content of an event in a probability experiment with 
+a random variable \(X\) 
+
+\[
+    H(X) := E[I] - \sum_{k=1}^C p_k \log_2 p_k
+\]
+
+where \(p_i\) is the proportion of samples belonging to class \(i\), and \(k\) is the total number of classes. High entropy indicates a mixture of classes, while 
+low entropy indicates more homogeneous data.
+
+For a multivariate case wit two random variables we can calculate the conditional entropy 
+
+\[
+    H(X \mid Y = y_i) := E[I] - \sum_{i} p(x_i \mid y_i) \log_2 p(x_i \mid y_i)
+\]
+
+The \emph{conditional entropy} is defined as 
+
+\[
+    H(X \mid Y) = - \sum_{i}^C p(y_i) H(X \mid Y = y_i)
+\]
+
+
+\subsubsection{Definition of Information Gain}
+
+The reduction of the information content of an event \(X\) by knowing \(Y\) is defined as:
+
+\[
+    IG(X, Y) = H(X) - H(X \mid Y)
+\]
+
+\subsubsection{Intuition}
+
+A feature produces high information gain if the resulting subsets are relatively pure, meaning they have low entropy. Conversely, features that do not help distinguish 
+between classes result in low information gain.
+
+\subsubsection{Purpose}
+
+Information gain guides decision tree algorithms by selecting features that maximally reduce uncertainty at each split. This helps create more efficient, 
+interpretable, and accurate decision trees.
+
+\subsection{CART Algorithm}
+
+The \emph{CART} (Classification and Regression Trees) algorithm is a popular decision tree algorithm used for both classification and regression tasks.
+The CART algorithm constructs binary trees by recursively splitting the data based on feature values to minimize impurity or variance.
+
+The steps of the CART algorithm are as follows:
+
+\begin{enumerate}
+
+    \item \textbf{Select the Best Split:} For each feature, evaluate all possible split points and calculate the impurity (e.g., Gini impurity for classification or variance for regression) 
+    for each split. Choose the feature and split point that results in the lowest impurity.
+
+    \item \textbf{Create Child Nodes:} Split the dataset into two subsets based on the selected feature and split point, creating left and right child nodes.
+
+    \item \textbf{Repeat Recursively:} For each child node, repeat steps 1 and 2 until a stopping criterion is met (e.g., maximum tree depth, minimum number of samples in a node, or no further reduction in impurity).
+
+    \item \textbf{Assign Class Labels or Values:} For classification tasks, assign the most common class label to each leaf node. For regression tasks, assign the mean value of the target variable to each leaf node.
+    
+\end{enumerate}
+
+\subsection{Variance Reduction}
+
+In regression tasks, the CART algorithm aims to minimize the variance within each node after a split. The variance reduction is calculated as follows: 
+
+\[
+    \text{Variance Reduction} = \text{Var}(R) - \left( \frac{N_{left}}{N} \text{Var}(R_{left}) + \frac{N_{right}}{N} \text{Var}(R_{right}) \right)
+\]
+
+with 
+
+\[
+    \var (Y) = \frac{1}{N - 1} \sum_{i = 1}^{N} (y_i - \overline{y})^2
+\]
+
+\subsection{Random Forest}
+
+The \emph{random forest} algorithm is an ensemble learning method that combines multiple decision trees to improve predictive performance and reduce overfitting.
+
+The steps to create a random forest are as follows:
+
+\begin{enumerate}
+
+    \item \textbf{Bootstrap Sampling:} For each tree in the forest, a bootstrap sample is created by randomly sampling the training data with replacement. 
+    This means that some data points may be included multiple times, while others may not be included at all.
+
+    \item \textbf{Feature Selection:} At each split in the decision tree, a random subset of features is selected. This randomness helps to decorrelate the trees in 
+    the forest, making the ensemble more robust.
+
+    \item \textbf{Tree Construction:} Each decision tree is grown to its maximum depth without pruning. The splitting criteria (e.g., Gini impurity or information gain)
+    are used to determine the best splits based on the selected features.
+
+    \item \textbf{Aggregation:} For classification tasks, the final prediction is made by majority voting among all trees in the forest. For regression tasks, the 
+    predictions from all trees are averaged to obtain the final output.
+
+\end{enumerate}
+
+\subsection{Quantifying the Differences between Features}
+
+Examples:
+
+\begin{itemize}
+
+    \item Euclidean Distance \( d(x ,y) = \|x - y \|\)
+
+    \item Cosine Similarity \( \text{sim}(x, y) = \frac{x \cdot y}{\|x\| \|y\|} \) 
+
+    \item Jaccard Similarity \( \text{sim}(A, B) = \frac{|A \cap B|}{|A \cup B|} \in [0, 1] \)
+
+\end{itemize}
+
+\subsection{Nearest Neighbors}
+
+Given a data-set \(\mathcal{D} = \{(x_1, y_1), \dots, (x_N, y_N)\}\) and a new point \(x\) we want to predict its label \(y\).
+We choose a \emph{distance metric} \(d(x, x')\) to quantify the difference between two feature vectors. 
+
+To predict the label of \(x\) we find the \(k\) nearest neighbors of \(x\) in the data-set \(\mathcal{D}\) based on the distance metric \(d\).
+
+Feature vectors in the training set are noted with its distance to \(x\). \(x_{[1]}\) symbolizes the nearest neighbor of 
+\(x\), \(x_{[2]}\) the second nearest and so on 
+
+\[
+    d(x, x_{[1]}) \le d(x, x_{[2]}) \le \dots d(x, x_{[N]})
+\]
+
+\textbf{Nearest Neighbor Model}
+
+The final hypothesis is given by :\(g(x) = y_{[1]}(x)\)
+
+\subsection{k-Nearest Neighbors}
+
+This is a generalization of the NN model. 
+
+Given an integer \(k \ge 1\) and \(y \in \{-1, 1\}\) the \emph{k-nearest neighbor} model (binary classification) is given by 
+
+\[
+    g(x) = \text{sign} \left(\sum_{i = 1}^{k} y_{[i]}(x)\right) 
+\]
+
+Note that for \(k = 1\) we get the previous NN model.
+
+\subsubsection{k-Nearest Neighbor Regression}
+
+The KNN regression is given by:
+
+\begin{itemize}
+
+    \item The mean of the labels of the \(k\) nearest neighbor 
+
+    \item Final hypothesis \(\frac{1}{k} \sum_{i = 1}^{k} y_{[i]}(x)\)
+
+\end{itemize}
+
+\subsection{Support Vector Machine}
+
+As starting point we take the perceptron we already defined, but this time with \(b\), the bias term 
+as an independent term 
+
+\[
+    y_k = \text{sign}(w^T x + b), y_k \in \{-1, 1\}
+\]
+
+A \emph{support vector machine} is a perceptron whose decision boundary or \emph{margin} has the maximum margin 
+to all data-points.
+
+If some data points lie on the margin then 
+
+\begin{align*}
+    (I)  w^T x_i + b &= 0 \\ 
+    (II) w^T x_j + b &= 0
+\end{align*}
+
+By performing \(2II - I \) we get the vector lying on the hyperplane
+
+\[
+    w^T (x_j - x_i) = 0
+\]
+
+We also know that \(w^T\) is normal to the hyperplane.
+
+The name \emph{support vector classifier} comes from the fact that the observations on the edge and within the soft margin 
+are called \emph{support vectors}. 
+
+\subsubsection{Rescaling of the Signal}
+
+The term inside our \emph{sign} function, the signal, can be rescaled without changing the 
+result of the classification. Due to the property of the sign function \(\text{sign}(\alpha s) = \text{sign}(s)\) 
+for any \(\alpha > 0\). 
+
+\[
+    y_k = \text{sign}(w^T x_k + b) \implies y_k (w^T x_k + b) > 0
+\]
+
+The behavior of the rescaling acts differently on if the data point is in the margin or not. 
+
+\[
+    y_k(w^T x_k + b) = 1 \quad \text{ for points in the margin}
+\]
+
+\[
+    y_k(w^T x_k + b) > 1 \quad \text{ for points outside the margin}
+\]
+
+\subsubsection{Width of the Margin}
+
+Given two points \(x_1, x_2\) lying on the margin with different labels. Therefore,
+
+\begin{align*}
+    (I)  w^T x_1 + b &= 1 \\ 
+    (II) w^T x_2 + b &= -1
+\end{align*}
+
+Then we get 
+
+\[
+    w^T (x_1 - x_2) = 2
+\]
+
+The \emph{width} of the margin \(r\) is given by the projection of the vector \(x_1 - x_2\) onto the
+normal vector \(\frac{w}{\|w\|}\)
+
+\[
+    r = \frac{w^T (x_1 - x_2)}{\|w\|} = \frac{2}{\|w\|}
+\]
+
+Therefore, to maximize the width of the margin we have to minimize \(\frac{1}{2}\|w\|\).
+
+\subsection{Hard Margin SVM}
+
+A \emph{hard margin SVM:} is a perceptron with maximal margin and no misclassifications.
+
+Like previously stated, to maximize the width \(r = \frac{2}{\|w\|}\) of the margin we have to minimize \(\frac{1}{2}\|w\|\).
+
+Formally, we want to solve the following optimization problem 
+
+\emph{Minimize:} \(\frac{1}{2}\|w\|^2\) under \(N\) \emph{constraints} 
+
+\emph{Maximize:} \(y_n (w^T x_n + b) \ge 1, (n = 1, \dots, N)\)
+
+We will skip the derivation of the final solution, which is done via \emph{Karush-Kuhn-Tucker conditions}. Now, 
+we have a \emph{dual optimization problem} 
+
+\[
+    \max \left(- \frac{1}{2} \sum_{n = 1}^{N}\sum_{m = 1}^{N} y_n y_m \alpha_n \alpha_m x_n^T x_m + \sum_{n = 1}^{N} \alpha_n \right)
+\]
+
+under the condition 
+
+\[
+    \sum_{n = 1}^{N} \alpha_n y_n = 0
+\]
+
+In the primary problem we had 
+
+\[
+    y_n = \text{sign}(w^T x_n + b)
+\]
+
+Now in the dual problem we have
+
+\[
+    y_i = \text{sign} \left(\sum_{n = 1}^{N} \alpha_n y_n x_n^T x_i + b \right)
+\]
+
+with \(\alpha\) being our solution vector with dimension \(N\).
+
+Some components of \(\alpha\) will be zero, and the others positive, due to it being \emph{sparse}. Therefore 
+
+\[
+    y_i = \text{sign} \left(\sum_{k \in \mathcal{s}} \alpha_k y_k x_k^T x_i + b \right)
+\]
+
+with \(\mathcal{S} = \{j \mid \alpha_j \ne 0, j = 1, \dots, N\}\).
+
+Finally, the data points \(x_k\) with \(\alpha_k \ne 0\) are called \emph{support vectors} 
+and the \(a_k \ne 0 \) the \emph{support values}.
+
+\subsection{Soft Margin Support Vector Machine}
+
+The idea of \emph{soft margin SVM} is to allow misclassifications but penalize them in the optimization problem.
+To get the best soft margin we can use cross validation.
+
+Formally, we want to solve the following optimization problem: 
+
+\emph{Minimize:} \(\frac{1}{2} w^T w + C \sum_n \xi_n\) under \(N\) \emph{constraints} 
+
+In other words, maximize \(\frac{1}{2}w^Tw\), the width of the margin, minimize \(\sum_n \xi_n\), the total error.
+
+With the constraint \(y_n (w^T x_n + b) \ge 1 - \xi_n, (n = 1, \dots, N)\)
+
+\[
+    \xi_n = \max (0, 1 - y_n (w^T x_n + b))
+\]
+
+Thus, 
+
+\[
+    \frac{1}{2} w^T w + C \sum_n \max (0, 1 - y_n (w^T x_n + b))
+\]
+
+with \(C\) is our regularization parameter.
+
+Our \emph{dual optimization problem} is given by
+
+\[
+    \max \left(- \frac{1}{2} \sum_{n = 1}^{N}\sum_{m = 1}^{N} y_n y_m \alpha_n \alpha_m x_n^T x_m + \sum_{n = 1}^{N} \alpha_n \right)
+\]
+
+under the conditions
+
+\[
+    \sum_{n = 1}^{N} \alpha_n y_n = 0, 0 \le \alpha_n \le C \forall n
+\]
+
+Also, 
+
+\[
+    y_i = \text{sign} \left(\sum_{n = 1}^{N} \alpha_n y_n x_n^T x_i + b \right)
+\]
+
+\subsection{Non-Linear Support Vector Machines}
+
+We will allow non-linear feature Transformations \(x \to \Phi(x)\) 
+
+\[
+    x_n^Tx_i \to \Phi(x_n)^T \Phi(x_i)
+\]
+
+Now our \(y_i\) becomes 
+
+\[
+    y_i = \text{sign} \left(\sum_{n = 1}^{N} \alpha_n y_n \Phi(x_n)^T \Phi(x_i) + b \right)
+\]
+
+Let us also \(K:= \Phi(x_n)^T \Phi(x_i)\)
+
+\subsubsection{Kernel Trick}
+
+The \emph{kernel trick} allows us to compute the inner product in the transformed feature space without explicitly performing the transformation.
+For that we use so-called \emph{kernel functions, K} to use as inner products in the feature space. We are basically using 
+mathematical elegance to use high dimensional spaces without paying the computational cost.
+
+The kernel functions must satisfy the following properties \emph{Mercer's Theorem}:
+
+\(K\) is a \emph{kernel} if the kernel matrix \(K\) is symmetric and positive semi-definite for any set of input data points. 
+
+\[
+    x^T K x \ge 0 \quad K = K^T
+\]
+
+\textbf{Common Kernel Functions:}
+
+\begin{itemize}
+
+    \item \emph{Linear:} \(k(x,y) = x^T y\)
+    
+    \item \emph{Polynomial:} \(k(x,y) = (x^T y + c)\)
+
+    \item \emph{RBF:} \(k(x,y) = \exp( -\gamma \|x -  y \|^2)\)
+    
+    \item \emph{Sigmoid:} \(k(x,y) = \tanh( \gamma x^Ty + c)\)
+
+\end{itemize}
+
+We can also give parameters \(\alpha, \beta\) for \(k(\beta + \alpha x^T, y)\)
+
+\textbf{Example:}
+
+Given \(\Phi(x_1, x_2) = (1, \sqrt{2}x_1, \sqrt{2}x_2, x_1^2, \sqrt{2}x_1x_2, x_2^2)\) we 
+get for 
+
+\[
+    \langle \Phi(x), \Phi(y)\rangle = 1^2 +  \sqrt{2}x_1\sqrt{2}y_1 + \sqrt{2}x_2\sqrt{2}x_2 + x_1^2 y_1^2 + \sqrt{2}x_1x_2 \sqrt{2}y_1y_2 + x_2^2 y_2^2
+\]
+
+The following kernel by simplifying
+
+\[
+    \langle \Phi(x), \Phi(y)\rangle = 1 + 2x^T y + (x^Ty)^2 = (1 + x^Ty)^2 = k(x,y)
+\]
+
+Generalized \((d + x^Ty)^2 \)
+
+\subsection{The Radial Kernel}
+
+The \emph{radial basis function (RBF) kernel} is defined as 
+
+\[
+    K(x, y) = \exp\left(- \frac{\|x - y\|^2}{2\sigma^2}\right)
+\]
+
+where \(\sigma > 0\) is a parameter that controls the width of the Gaussian function, and 
+\(\sigma\) is the standard deviation of the Gaussian distribution.
+
+It maps data points into an infinite-dimensional space. The RBF kernel is particularly effective in handling non-linear 
+relationships in data.
+
+The way it works is by measuring the similarity between two data points based on their distance. 
+Points that are closer together in the input space will have a higher similarity score, while points that are farther apart will have a 
+lower score.
+
+The parameter \(\sigma\) controls the width of the Gaussian function. A smaller \(\sigma\) leads to a narrower kernel, meaning that only 
+points very close to each other will have a significant similarity score. Conversely, a larger \(\sigma\) results in a wider kernel, 
+allowing points that are farther apart to have a higher similarity score. The parameter is optimized via cross-validation. 
+
+The infinite-dimensional property comes from the fact that the RBF kernel can be expressed as an infinite series expansion,
+
+\[
+    K(x, y) = \sum_{n=0}^{\infty} \frac{1}{n!} \left(-\frac{\|x - y\|^2}{2\sigma^2}\right)^n
+\]
+
+\subsection{Least Squares Support Vector Machine}
+
+This is a simplified version of the soft margin SVN. 
+
+Formally, 
+
+\emph{Primary Optimization Problem:}
+
+\emph{Minimize:} \(\frac{1}{2} w^T w + \frac{\gamma}{2} \sum_n^N e_n^2\) under \(N\) constraints.
+
+\[
+    y_n(w^t x_n + b) = 1 - e_n, 
+\]
+
+with 
+
+\[
+    e_n^2 = y_n^2 (y_n - (w^T x_n + b))2 = (y_n - (w^T x_n + b))
+\]
+
+The Lagrangian we get is 
+
+\[
+    \mathcal{L} = \frac{1}{2} w^T w + \frac{\gamma}{2} \sum_n^N e_n^2 - \sum_{n = 1}^{N} \alpha_n [y_n (w^T x_n + b) - 1 + e_n]
+\]
+
+Apply \(\nabla_{w, b, e, \alpha} \mathcal{L} = 0\)
+
+\begin{align*}
+    \textbf{I } \frac{\partial \mathcal{L}}{\partial w} &= w - \sum_{k = 1}^{N} \alpha_k y_k x_k = 0 \iff w = \sum_{k = 1}^{N} \alpha_k y_k x_k \\ 
+    \textbf{II } \frac{\partial \mathcal{L}}{\partial b} &= - \sum_{k = 1}^{N} \alpha_k y_k = 0 \iff  y^t \vec{\alpha} = 0 \\ 
+    \textbf{III } \frac{\partial \mathcal{L}}{\partial e} &= \gamma e_k - a_k  =0 \iff \alpha_k = \gamma e_K  \iff e = \frac{1}{\gamma} \vec{\alpha}\\ 
+    \textbf{IV } \frac{\partial \mathcal{L}}{\partial \alpha_k} &= - y_k (w^T x_k + b) + 1 - e_k \iff y_k (w^T x_k + b) + e_k = 1 \forall k
+\end{align*}
+
+Now let us combine our results 
+
+\begin{align*}
+    \textbf{I } w = \sum_{k = 1}^{N} \alpha_k y_k x_k \\ 
+    \textbf{II }  y^t \vec{\alpha} = 0 \\ 
+    \textbf{III }  e = \frac{1}{\gamma} \vec{\alpha}\\ 
+    \textbf{IV }  y_k (w^T x_k + b) + e_k = 1 \forall k
+\end{align*}
+
+Substitute I and III in IV 
+
+\begin{align*}
+    &y_k (w^T x_k + b) + e_k = 1 \forall k \\ 
+    &\iff y_k (\sum_{j = 1}^{N} \alpha_j y_j x_j^T x_k + b) +  \frac{1}{\gamma} \alpha_k = 1 \forall k \\ 
+    &\iff y_k b + \sum_{j = 1}^{N} \alpha_j y_j x_j^T x_k y_k +  \frac{1}{\gamma} \alpha_k = 1 \forall k 
+\end{align*}
+
+Now replace the dot product with the kernel function 
+
+\[
+    \iff \text{V } yb + (yyT \cdot K) \vec{a} + \frac{1}{\gamma} I\vec{a} = 1
+\]
+
+The only results left to use are II and V which we can combine into 
+
+\[
+    A = 
+    \begin{bmatrix}
+        0 & y^T \\ 
+        y & \Omega + \frac{1}{\gamma} I
+    \end{bmatrix} 
+\]
+
+After this process we get 
+
+\[
+    y_i = \mathrm{sign}(w^T x_i + b) \implies \mathrm{sign}\left(\sum_{k = 1}^{N} \alpha_k y_k x_k^T x_i + b\right)
+\]
+
+We can apply our kernel function and get
+
+\[
+    y_i = \mathrm{sign}\left(\sum_{k = 1}^{N} \alpha_k y_k K(x_k, x_i) + b\right)
+\]
+
+
+\subsubsection{Least Square Support Vector Machine Implementation}
+
+\begin{enumerate}
+
+    \item Implement the kernel function, typically 
+    \[
+        K(x_k, x_i) = \exp\left(- \frac{\|x_k - x_i\|^2}{2\sigma^2}\right)
+    \]
+
+    \item Compute the \(n \times n\) matrix \(\Omega = yy^T \cdot K\) with \(y\) being the label vector and \(K\) the  
+    kernel matrix.
+
+    \item Find the matrix   
+    \[
+        A = 
+        \begin{bmatrix}
+            0 & y^T \\ 
+            y & \Omega + \frac{1}{\gamma} I
+        \end{bmatrix} 
+    \]
+
+    \item Invert \(A\) and get \(b\) and \(\vec{\alpha}\)     
+    \[
+        \begin{bmatrix}
+            b \\ 
+            \vec{\alpha}
+        \end{bmatrix}
+        = 
+        A^{-1} 
+        \begin{bmatrix}  0  \\ 1 \end{bmatrix}
+    \]
+
+    \item Predict the labels 
+    \[
+        y_i = \mathrm{sign}\left(\sum_{k = 1}^{N} \alpha_k y_k K(x_k, x_i) + b\right)
+    \]
+
+   
+
+\end{enumerate}
+
+\subsection{Dimension Reduction Principal Component Analysis}
+
+It refers to the reduction of the features for the learning process.
+
+\emph{PCA (Principal Component Analysis)} finds new axes — called components — for the data, such that the data show the largest possible variance along these axes.
+In other words, PCA looks for directions in which the data vary the most.
+Axes along which the data have little, or almost no variance can usually be ignored, because they contain little useful information.
+
+The goal is to identify the directions (principal components) along which the variation in the data is maximal. Then by projecting 
+our date onto these new axis we reduce the dimensionality of our data while retaining most of its variance. Hence, we can apply other 
+machine learning algorithms more efficiently. 
+
+These new axis are generated via the orthogonal projection of the vectors.
+
+The big picture is that 
+
+\begin{enumerate}
+
+    \item We have \(N\) feature vectors with \(D\) features each.
+
+    \item We want to reduce the number of features from \(D\) to \(M < D\) 
+
+    \item We have a \(D \times D\) covariance matrix \(S\)
+
+    \item We compute the eigenvalues and eigenvectors of \(S\)
+
+    \item We sort the eigenvalues with their corresponding eigenvectors in decreasing order and take the first \(M\) eigenvectors 
+
+    \item These eigenvectors form the new basis for the feature space.
+
+\end{enumerate}
+
+\subsubsection{Average Vector}
+
+Given \(N\) features vectors with \(D\) features. The \emph{average vector} is given 
+by
+
+\[
+    \overline{x} = \frac{1}{N} \sum_{n = 1}^{N} x_n
+\]
+
+\subsubsection{PCA Formula I}
+
+Given a matrix \(X\) where each row represents a feature vector. We can perform the 
+principal component analysis via the following steps:
+
+\begin{itemize}
+ 
+    \item Compute the average vector  \(\overline{x} = \frac{1}{N} \sum_{n = 1}^{N} x_n\)
+
+    \item Get the \emph{average matrix} by computing \(\overline{X} = \vec{1} \cdot \overline{x}^T\)
+
+    \item Subtract the mean \(B = X - \overline{X}\)
+
+    \item Compute the covariance matrix \(cov = B^T B\)
+
+    \item Compute the eigenvectors and values of \(cov\). We can write them as \(cov V = VD\) where \(V\) is the matrix of the eigenvectors and
+    \(D\) the matrix made of the eigenvalues in the main diagonal.
+
+    \item The principal components are given as the columns of the matrix \(T = BV\). Or if we are programming it from 
+    scratch sort the indices and then take the first \(k\) eigenvectors.
+
+    \item Transform the original \(n-\)dimensional data into \(k\) dimensions. Projections with the dot product can be achieved by using the 
+    eigenvector matrix to transform our vectors. \(XV^T\) is our new, transformed data. 
+
+\end{itemize}
+
+\subsubsection{PCA Formula II}
+
+We look for the direction \(u_1\) such that the variance of the data at that axis becomes maximal.
+With the constraint 
+
+\[
+    u_1^T u_1 = 1 \iff 1 - u_1^T u_1 = 0  
+\]
+
+The projection of the features vectors on \(u_1\) is given by 
+
+\[
+    u_1^T x_n
+\]
+
+The variance of the projection is given by 
+
+\begin{align*} 
+    \mathrm{Var}(u_1^T x_n) &= \frac{1}{N} \sum_{n = 1}^{N} (u_1^T x_n - u_1^T \overline{x})^2  \\ 
+    &= u_1^T S u_1
+\end{align*}
+
+With the covariance matrix 
+
+\[
+    S = \frac{1}{N} \sum_{n = 1}^{N}  (x_n - \overline{x})^2 
+\]
+
+We are going to of course use \emph{Lagrange Multipliers for that}
+
+\[
+    \mathcal{L}(u_1, \lambda_1) = u_1^T S u_1 + \lambda_1[1 - u_1^T u_1 ]
+\]
+
+Take the gradient and set it to 0 
+
+\[
+    \frac{\partial \mathcal{L}}{\partial \lambda_1} = u_1^T u_1 = 1 
+\]
+
+\[
+    \frac{\partial \mathcal{L}}{\partial u_1} =  Su_1 - \lambda_1 u_1 = 0 \iff S u_1 \lambda_1 u_1  \iff u_1^T S u_1 = \lambda_1
+\]
+
+We can do this because \(u_1\) is an eigenvector of \(S\).
+
+The previous process was only for one direction (the principal component). 
+
+Now we need to find more directions \(u_j\) such that they are orthogonal to each other and \(u_1\) such 
+that the variance is maximized.
+
+We do this with induction 
+
+Given \(u_1, \dots, u_M\) eigenvectors of \(S\) with the corresponding eigenvalues 
+\(\lambda_1 \ge \dots \ge \lambda_M\)
+
+We want to find \(u_{M + 1}\) such that 
+
+\begin{itemize}
+
+    \item The Variance in that direction is maximal 
+
+    \item \(u_{M + 1}\) is orthogonal to \(u_1, \dots, u_M\)
+
+    \item \(u_{M + 1}\) is normalized \(u_{M + 1}^T u_{M + 1} = 1\)
+
+\end{itemize}
+
+This is again a Lagrange problem 
+
+\[
+    \mathcal{L}(u_{M + 1}, \lambda_{M + 1}, \eta_i) = u_{M + 1}^T S u_{M + 1} + \lambda_{M + 1} [1 - u_{M + 1}^T u_{M + 1}] + \sum_{i = 1}^{M} \eta_i u_{M + 1}^T u_{M + 1}
+\]
+
+With the following partial derivatives 
+
+\[
+    \frac{\partial \mathcal{L}}{\partial \lambda_{M + 1}} = 1 - u_{M + 1}^T  u_{M + 1} = 0
+\]
+
+\[
+    \frac{\partial \mathcal{L}}{\partial \eta_j } = u_{M + 1}^T  u_{M + 1} = 0
+\]
+
+\[
+    \frac{\partial \mathcal{L}}{\partial u_{M + 1} } = 2Su_{M + 1}  + 2\lambda_{M + 1} u_{M + 1} + \sum_{i = 1}^{M} \eta_i u_{i} = 0
+\]
+
+We know substitute 
+
+\[
+    \frac{\partial \mathcal{L}}{\partial u_{M + 1} } = 2u_j^TSu_{M + 1}  + 2\lambda_{M + 1}u_j^T u_{M + 1} + \sum_{i = 1}^{M} \eta_i u_{j}^T u_{i} = 0
+\]
+
+From that
+
+\begin{align*}
+    2u_j^TSu_{M + 1} + \eta_j &= 0 \text{ apply  the transpose }\\ 
+    2u_{M + 1}^T S^T u_j + \eta_j &= 0 \text{ remember that } S = S^T\\ 
+    2u_{M + 1}^T S u_j + \eta_j &=  2u_{M + 1}^T \lambda_j u_j + \eta_j = 0 
+\end{align*}
+
+To find \(\lambda_{M + 1}\):
+
+\begin{align*}
+    2 S u_{M + 1}^T - 2 \lambda_{M + 1} u_{M + 1} = 0
+\end{align*}
+
+This means that \(u_{M + 1}\) is also an eigenvector of \(S\).
+
+\subsubsection{Effect of the Mean}
+
+The \emph{mean} (or center of mass) of the data influences the PCA coordinates:
+
+\begin{itemize}
+
+    \item If the data have a mean that is not at the origin of the coordinate system, then after applying PCA, the transformed data will typically have offsets in the new coordinate system. 
+    These offsets can make interpretation more difficult.
+
+    \item However, the PCA directions (the principal component axes) do not change if the data’s mean changes.
+
+    \item This is because the covariance matrix — which PCA is based on — is invariant to changes in the mean.
+
+    \item Some software implementations of PCA do not use the covariance matrix directly. 
+    In those cases, the resulting PCA might depend on the original mean of the data. 
+
+    \item As a recommendation, always center each feature (variable) by subtracting its mean before applying PCA. This ensures that the data have a mean 
+    of 0 and that the PCA results are interpretable and consistent. 
+    \[
+        \hat{x_i} = x_i - \overline{x}
+    \]
+
+\end{itemize}
+
+\subsubsection{Z Scoring}
+
+Given \(\overline{X}\) as the mean and \(\sigma\) as the standard deviation of \(X\). The standardize feature 
+\(Z\) (z-score) is given by 
+
+\[
+    Z = \frac{X - \overline{X}}{\sigma}
+\]
+
+In practice, data are often organized in matrices where each column represents a feature.
+In this case, standardize each feature by transforming every column separately so that it has mean 0 and variance 1 (i.e., standard deviation 1).
+
+\subsubsection{Recap of PCA}
+
+The basic assumption behind dimensionality reduction with PCA is: the directions with the largest variance 
+contain the most information about the data.
+
+Dimensionality reduction with PCA means that we discard those PCA components (directions) that represent only a 
+small amount of variance.
+
+PCA gives us new axes defined by direction vectors \(u_1, \dots, u_D\) (the principal components).
+
+Projecting a standardized data point \(x_1\) onto these direction vectors gives the components of the 
+PCA coordinates of that data point.
+
+\[
+    z_i = 
+    \begin{bmatrix}
+        u_1^T \\ 
+        u_2^T \\ 
+        \vdots
+    \end{bmatrix}
+    x_i
+\]
+
+\subsubsection{Proportion of Variance}
+
+\emph{Variance of \(j\)-th component} 
+
+\[
+    \mathrm{Var}(Z_j) = \mathrm{Var}(u_j^T x) = u_j^T S u_j = u_j^T \lambda_j u_j = \lambda
+\]
+
+\emph{Total Variance } 
+
+\[
+    \mathrm{Var}_{\text{Total}} = \sum_{j = 1}^{D} \mathrm{Var}(Z_j) = \sum_{j = 1}^{D} \lambda_j
+\]
+
+
+\emph{Proportion of Variance}
+
+\[
+    \mathrm{PVE}(j) = \frac{ \mathrm{Var}(Z_j)}{ \mathrm{Var}_{\text{Total}}}
+\]
+
+\subsection{Kernel PCA}
+
+This is an extension of PCA to non-linear feature spaces via the kernel trick.
+
+\subsubsection{Reformulation of the PCA with Non-Linear Features}
+
+The covariance matrix \(S = \frac{1}{N} \sum_{n = 1}^{N} (x_n - \overline{x})(x_n - \overline{x})^T\) can 
+be reformulated with \(x_i \to \Phi(x_i)\) to 
+
+\[
+    S = \frac{1}{N} \sum_{n = 1}^{N} (\Phi(x_n) - \overline{\Phi(x)})(\Phi(x_n) - \overline{\Phi(x)})^T
+\]
+
+Assume that the features vectors are centered in the feature space, i.e. \(\overline{\Phi(x)} = 0\). 
+Then we have
+
+\[
+    S = \frac{1}{N} \sum_{n = 1}^{N} \Phi(x_n) \Phi(x_n)^T
+\]
+
+\subsubsection{Eigenvector as Linear Combination of the transformed Features}
+
+\begin{align*}
+    S u_j &= \lambda_j u_j  \\ 
+    S u_j &= \frac{1}{N} \sum_{n = 1}^{N} \Phi(x_n) \Phi(x_n)^T u_j  \\ 
+    &= \frac{1}{\lambda_j N} \sum_{n = 1}^{N} \Phi(x_n) (\Phi(x_n)^T u_j)  \\
+    &= \frac{1}{\lambda_j N} \sum_{n = 1}^{N} \Phi(x_n)^T u_j (\Phi(x_n))  \\
+    &= \sum_{n = 1}^{N} \left( \frac{1}{\lambda_j N} \Phi(x_n)^T u_j \right) \Phi(x_n) \\ 
+    &= \sum_{n = 1}^{N} a_{ji} \Phi(x_i)
+\end{align*}
+
+with \(u_j = \sum_{l} \alpha_{jl} \Phi(x_l)\)
+
+Because we can express the eigenvectors as a linear combination of the transformed features, we can 
+find the coefficients \(\alpha_{jl}\) instead of \(u_j\). 
+
+\subsubsection{Find the Eigenvectors}
+
+\begin{align*}
+    \frac{1}{N} \sum_{i} \Phi(x_i) \Phi(x_i)^T \sum_{l} \alpha_{jl} \Phi(x_l) &= \lambda_j \sum_{l} \alpha_{jl} \Phi(x_l) \\
+    \frac{1}{N} \sum_{i} \Phi(x_i) \left( \sum_{l} \alpha_{jl} \Phi(x_i)^T \Phi(x_l) \right) &= \lambda_j \sum_{l} \alpha_{jl} \Phi(x_l) \\
+    \frac{1}{N} \sum_{i} \Phi(x_i) \left( \sum_{l} \alpha_{jl} K(x_i, x_l) \right) &= \lambda_j \sum_{l} \alpha_{jl} K(x_k, x_l) \\
+    \frac{1}{N} KK \vec{\alpha}_j &= \lambda_j K \vec{\alpha}_j \\
+     K \vec{\alpha}_j &= N \lambda_j K \vec{\alpha}_j
+\end{align*}
+
+Therefore, we have to solve the following eigenvalue problem
+
+\[
+    K \vec{\alpha}_j = N \lambda_j \vec{\alpha}_j
+\]
+
+Which we reformulate to 
+
+\[
+    K \vec{\alpha}_j = \hat{\lambda_j}\vec{\alpha}_j
+\]
+
+The coefficients \(\alpha_j\) are the components of the eigenvectors of the kernel matrix \(K\). 
+
+\subsubsection{Normalization of the Eigenvectors}
+
+To normalize the eigenvectors \(u_j\) we have to impose the condition 
+
+\[
+    u_j = \sum_{l} \alpha_{jl} \Phi(x_l) \implies \hat{u} = \sum_{l} \hat{\alpha_{jl}} \Phi(x_l) = \hat{u_j^T} u_j^T = 1 \forall j
+\]
+
+This gives us
+
+\[
+    \sum_k \sum_l \hat{\alpha_{jk}} \hat{\alpha_{jl}} K(x_k, x_l) = 1 \forall j
+\]
+
+Which can be reformulated to
+
+\[
+    \hat{\vec{\alpha}_j^T} \hat{\lambda_j} \hat{\vec{\alpha}}_j = 1 \forall j \implies \|\hat{\vec{\alpha}}_j\| = \frac{1}{\sqrt{\hat{\lambda_j}}}
+\]
+
+With 
+
+\[
+    \vec{\alpha_j} \to \hat{\vec{\alpha}}_j = \frac{\vec{\alpha_j}}{\sqrt{\hat{\lambda_j}}} \frac{\vec{\alpha}_j}{\|\vec{\alpha}_j\|}
+\]
+
+\subsubsection{Projection onto the KPCA Axis}
+
+\begin{align*}
+    \Phi(x)^T u_j &= \Phi(x)^T \sum_{l} \alpha_{jl} \Phi(x_l) \\
+    &= \sum_{l} \alpha_{jl} \Phi(x)^T \Phi(x_l) \\
+    &= \sum_{l} \alpha_{jl} K(x, x_l)
+\end{align*}
+
+\subsubsection{Centering of the Features}
+
+We assumed that the features where centered in the transformed feature space. Now we want to normalize them.
+
+Given 
+
+\[
+    \hat{\Phi}(x_i) = \Phi(x_i) - \frac{1}{N} \sum_{l} Phi(x_l)
+\]
+
+and the kernel function
+
+\begin{align*} 
+    K(x_i, x_j) &= \hat{\Phi(x_i)^T} \hat{\Phi(x_j)} \\ 
+    &= \left( \Phi(x_i) - \frac{1}{N} \sum_{l} \Phi(x_l) \right)^T \left( \Phi(x_j) - \frac{1}{N} \sum_{l} \Phi(x_l) \right) \\
+    &= K(x_i, x_j) - \frac{1}{N} \sum_{l} K(x_i, x_l) - \frac{1}{N} \sum_{k} K(x_k, x_j) + \frac{1}{N^2} \sum_{k,l} K(x_k, x_l)
+\end{align*}
+
+Simplified 
+
+\[
+    \hat{K} = K - 1_N K - K 1_N + 1_N K 1_N
+\]
+
+where \(1_N\) is the \(N \times N\) matrix with all entries equal to \(\frac{1}{N}\). 
+
+\subsection{Kernel PCA Algorithm}
+
+Now we can summarize the KPCA algorithm
+
+\begin{enumerate}
+
+    \item Choose a kernel function \(K(x, y)\) and compute the kernel matrix \(K\) with entries \(K_{ij} = K(x_i, x_j)\).
+
+    \item Center the kernel matrix to obtain \(\hat{K}\) using \(\hat{K} = K - 1_N K - K 1_N + 1_N K 1_N\)
+
+    \item Solve the eigenvalue problem \(\hat{K} \vec{\alpha}_j = \hat{\lambda}_j \vec{\alpha}_j\) to find the eigenvalues \(\hat{\lambda}_j\) and eigenvectors \(\vec{\alpha}_j\).
+
+    \item Normalize the eigenvectors \(\vec{\alpha}_j \to \frac{1}{\sqrt{\hat{\lambda}_j}} \frac{\vec{\alpha}_j}{\|\vec{\alpha}_j\|}\)
+
+    \item Project the data points onto the KPCA axes using
+    \[
+        \Phi(x)^T \hat{u_j} = \sum_{l} \hat{\alpha_{jl}} K(x, x_l)
+    \]
+
+\end{enumerate}
+
+\subsection{Linear Discriminant Analysis}
+
+The goal of the \emph{linear discriminant analysis} is to find directions \(u_1, u_2, \ldots, u_k\) in the classes such they can be best separated. 
+
+For the direction \(u_1\) with the projection of some data point \(x_i\) onto that direction defined as
+
+\[
+    \hat{x_i} = u_1^T x_i
+\]
+
+Let 
+
+\[
+    m^{(k)} = \frac{1}{N_k} \sum_{n \in \mathcal{C}_k} x_n
+\]
+
+be the \emph{mean vector} of class \(k\). 
+
+The projection onto \(u_1\) is given by 
+
+\[
+    \hat{m}^{(k)} = u_1^T m^{(k)}
+\]
+
+\subsubsection*{Within-Class Scatter}
+
+For quantifying the separation of the points projected onto \(u_1\) we define the following
+the \emph{within-class scatter} as 
+
+\begin{align*}
+    s_w^2 &:= \sum_{n \in \mathcal{C}_k} (\hat{x}_n - \hat{m}^{(k)})^2\\ 
+    &= \sum_{n \in \mathcal{C}_k} (u_1^T x_n - u_1^T m^{(k)})^2 \\
+    &= u_1^T \left[ \sum_{n \in \mathcal{C}_k} (x_n - m^{(k)})(x_n - m^{(k)})^T \right] u_1 \\ 
+    &= u_1^T S_{wk} u_1  
+\end{align*}
+
+The \emph{total scatter} for two classes is given by
+
+\begin{align*}
+    s_1^2 + s_2^2 &= u_1^T (S_{w1} + S_{w2}) u_1 \\
+    &= u_1^T S_W u_1
+\end{align*}
+
+For \(n-\)classes we have 
+
+\[
+    S_W = \sum_{k = 1}^{n} S_{wk} = \sum_{k = 1}^{n} \sum_{n \in \mathcal{C}_k} (x_n - m^{(k)})(x_n - m^{(k)})^T
+\]
+
+\subsubsection*{Between-Classes Scatter}
+
+The quantification of the separation between the middle points, called the 
+\emph{between-classes-scatter} is given by 
+
+\begin{align*}
+    (\hat{m}^{(1)} - \hat{m}^{(2)})^2 &= (u_1^T m^{(1)} - u_1^T m^{(2)})^2 \\
+    &= u_1^T (m^{(1)} - m^{(2)})(m^{(1)} - m^{(2)})^T u_1 \\
+    &= u_1^T S_b u_1
+\end{align*}
+
+\[
+    S_b = (m^{(1)} - m^{(2)})(m^{(1)} - m^{(2)})^T
+\]
+
+where \(m^{(1)}\) and \(m^{(2)}\) are the mean vectors of class 1 and class 2. 
+
+\subsubsection{Fisher Discriminant}
+
+The \emph{Fisher Discriminant} is the ratio of the between-class scatter and the within-class scatter.
+
+\[
+    J(u_1) = \frac{u_1^T S_b u_1}{u_1^T S_W u_1} = \frac{(u_1^T (m^{(1)} - m^{(2)})(m^{(1)} - m^{(2)})^T u_1)}{u_1^T S_W u_1}
+\]
+
+We want to maximize \(J(u_1)\). This means to find the direction \(u_1\) such that the between-class scatter is maximized and the 
+within-class scatter is minimized. To accomplish this we take the gradient and set it to zero. 
+
+\begin{align*} 
+    \frac{d J(u_1)}{du_1} &= u_1^T S_W u_1 \frac{d}{du_1} (u_1^T S_b u_1) - u_1^T S_b u_1 \frac{d}{du_1} (u_1^T S_W u_1) \\ 
+    &= 2 S_b u_1 (u_1^T S_W u_1) - 2 S_W u_1 (u_1^T S_b u_1) = 0 \quad \text{ divide by } 2 (u_1^T S_W u_1)\\
+    &\iff S_b u_1 = \frac{u_1^T S_b u_1}{u_1^T S_W u_1} S_W u_1 \\
+    &\iff S_b u_1 = J(u_1) S_W u_1 \\ 
+    &\iff (S_W^{-1} S_b) u_1 = J(u_1) u_1
+\end{align*}
+
+We arrive at an eigenvalue problem where \(u_1\) is the eigenvector of \(S_W^{-1} S_b\) with the corresponding 
+eigenvalue \(J(u_1)\).
+
+\subsubsection{Linear Discriminant Algorithm}
+
+\begin{enumerate}
+
+    \item Compute the within-class scatter matrix \(S_W\) and the between-class scatter matrix \(S_b\).
+
+    \item Solve the eigenvalue problem \((S_W^{-1} S_b) u = \lambda u\) to find the eigenvalues \(\lambda\) and eigenvectors \(u\).
+
+    \item Sort the eigenvectors by their corresponding eigenvalues in descending order.
+
+    \item Select the top \(k\) eigenvectors to form a projection matrix \(W\).
+
+    \item Project the original data points onto the new subspace using \(z_i = W^T x_i\).   
+
+\end{enumerate}
+
+\subsection{Naive Bayes}
+
+The \emph{naive Bayes} is a probabilistic classifier based on Bayes' Theorem with strong (naive)
+independence assumptions between the features.
+
+Recall Bayes' theorem as
+
+\[
+    \prob(A \mid B) = \frac{\prob(B \mid A) \cdot \prob(A)}{\prob(B)}
+\]
+
+For our case we will use 
+
+\[
+    \prob(y \mid X) = \frac{\prob(X \mid y) \cdot \prob(y)}{\prob(X)}
+\]
+
+\[
+    \prob(y \mid X) = \frac{\left(\prod_{i = i }^{n} \prob(x_i \mid y) \right) \cdot \prob(y)}{\prob(X)}
+\]
+
+
+where \(X = (x_1, x_2, \cdots, x_n)\) and with the assumption that the features are independent.
+
+We want to select the class with the highest posterior probability
+
+\begin{align*} 
+    y &= \argmax_y  \prob(y \mid X) = \argmax_y \frac{\left(\prod_{i = i }^{n} \prob(x_i \mid y) \right) \cdot \prob(y)}{\prob(X)} \\ 
+    y &= \argmax_y \prod_{i = i }^{n} \prob(x_i \mid y) \prob(y) \\ 
+    y &= \argmax_y \sum_{i = i }^{n} \ln(\prob(x_i \mid y)) + \ln(\prob(y)) 
+\end{align*}
+
+\textbf{Nomenclature:}
+
+\begin{itemize}
+
+    \item \(\prob(y)\) is the proper probability, which in this case is the frequency of each class 
+
+    \item  \(\prob(x_i \mid y)\) is the class conditional probability which is model with a normal distribution
+
+    \[
+        \prob(x_i \mid y) = \frac{1}{\sqrt{2\pi \sigma_y^2}} \exp\left(- \frac{(x_i - \mu_y)^2}{2 \sigma_y^2}\right)
+    \]
+
+\end{itemize}
+
+\subsubsection*{Algorithm}
+
+\begin{enumerate}
+
+    \item Calculate the mean, variance and prior (frequency) for each class
+
+    \item Calculate the posterior for each class with 
+   
+    \[ 
+        y = \argmax_y \sum_{i = i }^{n} \ln(\prob(x_i \mid y)) + \ln(\prob(y)) 
+    \]
+
+    and the normal distribution formula 
+
+    \item Choose the class with the highest probability
+
+\end{enumerate}
+
+\subsection{KMeans}
+
+\emph{KMeans} is an unsupervised learning iterative process that clusters the data set into \(k\) different clusters.
+Each sample is assigned to the cluster with the nearest mean, and then the means, \emph{centroids}, and clusters are 
+updated until there is no more change or the maximum number of iterations is reached.
+
+\subsubsection{Intra-Cluster Variance}
+
+Given \(C_1, \dots, C_n\) clusters with centroids \(\mu_1, \dots, \mu_n\). The \emph{intra-cluster variance} is given by
+
+\[
+    J = \frac{1}{|C_i|} \sum_{i = 1}^{k} \sum_{x_j \in C_i} \| x_j - \mu_i \|^2
+\]
+
+The goal of the KMeans algorithm is to minimize \(J\).
+
+\subsubsection{Centroid}
+
+The \emph{centroid} of a cluster \(C_i\) is given by
+
+\[
+    \mu_i = \frac{1}{|C_i|} \sum_{x_j \in C_i} x_j
+\]
+
+\subsubsection*{Algorithm}
+
+\begin{enumerate}
+
+    \item Initialize cluster centers randomly 
+
+    \item Repeat until converged or max iterations are reached: 
+
+        \subitem Update cluster labels: Assign points to the nearest centroid 
+
+        \subitem Update centroids: Set center to the mean of each cluster
+
+\end{enumerate}
+
+The distance measure can be chosen by the developer.
+
+\subsubsection*{Important Note on KMeans}
+
+\begin{itemize}
+
+    \item KMeans can converge to local minima depending on the initial centroids. 
+    
+    \item The results can vary between different runs with different initialization.
+
+\end{itemize}
+
+\subsubsection{Elbow Heuristic}
+
+The \emph{elbow heuristic} consists of plotting the explained variance as a function of the number of clusters and looking for an "elbow" point 
+where the rate of decrease sharply changes.
+
+\begin{itemize}
+
+    \item For \(1, \dots, K\) determine the clustering and the intra-cluster variance \(J(k)\) 
+
+    \item Visualize \(J(k)\) against \(k\) 
+    
+    \item Choose \(k\) at the "elbow" point where the decrease in \(J(k)\) starts to slow down significantly.
+
+\end{itemize}

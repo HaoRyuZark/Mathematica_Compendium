@@ -44,7 +44,7 @@ For differentiable function on the interval \(t \in [a; b]\)
 
 \subsubsection{Over Vector Field}
 
-Let \( F : \Reals^n \to \Reals^n \) be a \emph{vector field}, and let \( \gamma \) be a 
+Let \( F : \R^n \to \R^n \) be a \emph{vector field}, and let \( \gamma \) be a 
 smooth curve parametrized by \( \vec{r}(t) \), \( t \in [a, b] \). 
 The \emph{line integral} of \(F\) along \( \gamma \) is:
 
@@ -373,8 +373,8 @@ only depends on the endpoints.
 
 \subsection{The Potential Function}
 
-A vector field \( \vec{F} : \Reals^n \to \Reals^n \) is called \emph{conservative} if there exists a 
-scalar function \( f : \Reals^n \to \Reals \) such that:
+A vector field \( \vec{F} : \R^n \to \R^n \) is called \emph{conservative} if there exists a 
+scalar function \( f : \R^n \to \R \) such that:
 
 \[
     \vec{F} = \nabla f
@@ -509,7 +509,7 @@ Therefore, the potential function is:
 
 \subsection{Double Integral over a Rectangular Region}
 
-Let \( A = [x_0, x_1] \times [y_0, y_1] \) be a rectangular region in \( \Reals^2 \). The double 
+Let \( A = [x_0, x_1] \times [y_0, y_1] \) be a rectangular region in \( \R^2 \). The double 
 integral of a function \( f(x, y) \) over \(A\) is:
 
 \[
@@ -564,7 +564,7 @@ The general process for setting up iterated integrals over a non-rectangular reg
 
 \subsection{Integration over Curvilinear Domains}
 
-If the region \( A \subset \Reals^2 \) is not rectangular, it is divided into subregions 
+If the region \( A \subset \R^2 \) is not rectangular, it is divided into subregions 
 \( \Delta A_k \), and the integral is defined as the limit:
 
 \[
@@ -718,7 +718,7 @@ basis vectors.
 Given a vector-valued function
 
 \[
-    f : \Reals^n \rightarrow \Reals^m, \quad f(x_1, \ldots, x_n) = 
+    f : \R^n \rightarrow \R^m, \quad f(x_1, \ldots, x_n) = 
     \begin{bmatrix}
     f_1(x_1, \ldots, x_n) \\
     f_2(x_1, \ldots, x_n) \\
@@ -750,7 +750,7 @@ of small steps in the \(x_1, \dots, x_n\) directions which give of the partial d
 represent this small steps. 
 
 \subsubsection{Determinant}
-When \(m = n\), i.e., the function maps from \(\Reals^n\) to \(\Reals^n\), the Jacobian matrix is square. 
+When \(m = n\), i.e., the function maps from \(\R^n\) to \(\R^n\), the Jacobian matrix is square. 
 In this case, the \emph{Jacobian determinant} is defined as:
 
 \[
@@ -935,18 +935,18 @@ Then
 
 \subsection{Improper Integrals over Unbounded Regions}
 
-If the domain of integration is unbounded (e.g., the entire plane \( \Reals^2 \)), the double integral is 
+If the domain of integration is unbounded (e.g., the entire plane \( \R^2 \)), the double integral is 
 defined via a limit process:
 
 \[
-    \iint_{\Reals^2} f(x, y)\, dx\, dy := \lim_{M_1, M_2 \to \infty} \lim_{N_1, N_2 \to \infty}
+    \iint_{\R^2} f(x, y)\, dx\, dy := \lim_{M_1, M_2 \to \infty} \lim_{N_1, N_2 \to \infty}
     \int_{M_1}^{M_2} \int_{N_1}^{N_2} f(x, y)\, dy\, dx
 \]
 
 Often, using polar coordinates simplifies such cases, reducing multiple limits to one:
 
 \[
-    \iint_{\Reals^2} f(x, y)\, dx\, dy = \int_0^{2\pi} \int_0^{\infty} f(r \cos \varphi, r \sin \varphi)\, 
+    \iint_{\R^2} f(x, y)\, dx\, dy = \int_0^{2\pi} \int_0^{\infty} f(r \cos \varphi, r \sin \varphi)\, 
     r\, dr\, d\varphi
 \]
 
@@ -979,7 +979,7 @@ Now let us translate to polar coordinates
 
 The triple integral allows the computation of volume or mass in three-dimensional space.
 
-Let \( V \subset \Reals^3 \) be a bounded region, then:
+Let \( V \subset \R^3 \) be a bounded region, then:
 
 \[
     \iiint_V f(x, y, z)\, dV = \lim_{n \to \infty} \sum_{k=1}^n f(x_k, y_k, z_k) \, \Delta V_k,
@@ -1424,7 +1424,7 @@ and for the implicit surfaces
 
 \subsection{Curl}
 
-Let \( \vec{F} = (F_1, F_2, F_3) : \Reals^3 \to \Reals^3 \) be a vector field.
+Let \( \vec{F} = (F_1, F_2, F_3) : \R^3 \to \R^3 \) be a vector field.
 
 \[
     \operatorname{curl} \vec{F} = \nabla \times \vec{F} = \begin{bmatrix}

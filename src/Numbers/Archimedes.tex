@@ -1,47 +1,40 @@
 \newpage
 \section{The Archimedean Principle}
 
-For any real number \( x \in \Reals \), there exists a natural number \( n \in \Naturals \) such 
-that \( n > x \).
+If \(a\) and \(b\) are real numbers with \(a > 0\), then there exists \(n \in \N\) 
+such that \(na > b\).
 
-In other words, no matter how large a real number you choose, there is always a natural number that 
-is larger. Similarly, for any positive real number \( \epsilon > 0 \), there exists a natural number 
-\( n \in \Naturals \) such that \( \frac{1}{n} < \epsilon \).
+Equivalently, for any real number \( x \in \R \), there exists a natural number \( n \in \N \) such 
+that \( n > x = \frac{b}{a} \). 
 
 \textbf{Proof:}
 
 We prove the Archimedean Principle by contradiction.
 
-Assume that there exists some real number \( x \in \Reals \) such that \( n \leq x \) for all 
-\( n \in \Naturals \). That is, \(x\) is an upper bound for the set \( \Naturals \subset \Reals\), baked up 
+Assume that there exists some real number \( x \in \R \) such that \( n \leq x \) for all 
+\( n \in \N \). That is, \(x\) is an upper bound for the set \( \N \subset \R\), baked up 
 by the Completeness Axiom of the real numbers.
 
-Let \( S = \sup(\Naturals) \), the least upper bound of \( \Naturals \). Then 
-\( S - 1 < \sup(\Naturals) \), so \( S - 1 \) is not an upper bound of \( \Naturals \). Hence, 
-there exists \( n_0 \in \Naturals \) such that:
+Let \( s = \sup(\N) \) be the least upper bound of \( \N \). Then, 
 
 \[
-	n_0 > S - 1 \Rightarrow n_0 + 1 > S
+	s - 1 < s \implies \exists m \in \N \text{ s. t. } m > s - 1
 \]
 
-But \( n_0 + 1 \in \Naturals \), which contradicts the assumption that \emph{S} is an upper bound of 
-\(\Naturals \). Therefore, our assumption must be false, and the theorem is proven.
+But, if we add 1 to both sides we get  
+
+\[
+	s < m + 1 \in \N
+\]
+
+This is a contradiction to the assumption that \(s\) is the supremum of the naturals. Hence there 
+is not a real number \(x\) which is greater than all natural numbers.
 
 \QED
 
-\subsection{Equivalent Formulations}
+\subsection{Equivalent Formulation}
 
-The Archimedean Principle is often stated in different but equivalent ways:
-
-\begin{itemize}
-	
-	\item For any \( \epsilon > 0 \), there exists \( n \in \Naturals \) such that \( \frac{1}{n} < 
-		  \epsilon \).
-	
-	\item For any \( a, b \in \Reals \) with \( a > 0 \), there exists \( n \in \Naturals \) such that 
-	      \( na > b \).
-
-\end{itemize}
+For any \( \varepsilon > 0 \), there exists \( n \in \N \) such that \( \frac{1}{n} < \varepsilon \)
 
 \subsection{Applications}
 
@@ -58,7 +51,26 @@ The Archimedean Principle is often stated in different but equivalent ways:
 
 	\item \textbf{Non-Existence of Infinitely Small Numbers:} The principle implies that real numbers do 
 	      not contain infinitesimals (nonzero numbers smaller than all \( \frac{1}{n} \)), distinguishing 
-		  \( \Reals \) from non-standard number systems.
+		  \( \R \) from non-standard number systems.
 
 \end{enumerate}
+
+\textbf{Example:}
+
+Prove that \(\forall \varepsilon > 0, \exists N \in \N: \frac{1}{n} < \varepsilon, \forall n \ge N\)
+
+We know that 
+
+\begin{align*}
+	\frac{1}{N} &< \varepsilon \\ 
+	\varepsilon > \frac{1}{N} &\ge \frac{1}{n} \text{ by transitivity } \\ 
+	\varepsilon &> \frac{1}{n}
+\end{align*}
+
+We also get \(N > \frac{1}{\varepsilon}\).
+
+And by the Archimedean Principle we let \(b = 1\), \(a = \varepsilon\) and \(n = N\). Then by 
+the transitivity we get out proof.
+
+\QED
 

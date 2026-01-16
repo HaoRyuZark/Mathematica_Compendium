@@ -527,7 +527,7 @@ Let \( A_i, B_j \subseteq X \) for \( i \in I \) and \( j \in J \). Then the fol
 Here, \( I = \{ 1, 2, 3, \dots, n \} \) and \( J = \{ 1, 2, 3, \dots, m \} \). Then:
 
 \begin{align*}
-&I \times J = \{ (i, j) \mid 1 \leq i \leq n, 1 \leq j \leq m, i, j \in \Naturals \} \\
+&I \times J = \{ (i, j) \mid 1 \leq i \leq n, 1 \leq j \leq m, i, j \in \N \} \\
 &= \{ (1, 1), (1, 2), \dots, (1, m), (2, 1), (2, 2), \dots, (2, m), \dots, (n, 1), (n, 2), \dots, (n, m) \}
 \end{align*}
 
@@ -593,15 +593,15 @@ Let \( |A \cap B| = k \), then:
 
 \subsection{Definition of Countable and Non-countable}
 
-A set \(A\) is \emph{infinite countable} or just \emph{countable} if there exist a bijection from \(\Naturals\) to 
+A set \(A\) is \emph{infinite countable} or just \emph{countable} if there exist a bijection from \(\N\) to 
 \(A\). If \(A\) has infinite elements and there is no such bijection, we call it \emph{non-countable}
 
 \subsection{Countable Union}
 
-Given \(A_n, n \in \Naturals\) countable sets, then 
+Given \(A_n, n \in \N\) countable sets, then 
 
 \[
-	M := \bigcup_{n \in \Naturals} A_n 
+	M := \bigcup_{n \in \N} A_n 
 \]
 
 is also countable.
@@ -613,44 +613,44 @@ that if \(A\) is non-countable then \(B\) must be non-countable as well.
 
 \subsection{Countability of the Rational Numbers}
 
-We show that the set of rational numbers \( \Rationals \) is countable.
+We show that the set of rational numbers \( \Q \) is countable.
 
 Every rational number can be expressed as
 
 \[
-    q = \frac{p}{q}, \quad p \in \Integers, \; q \in \Naturals, \; q \neq 0.
+    q = \frac{p}{q}, \quad p \in \Z, \; q \in \N, \; q \neq 0.
 \]
 
 Thus,
 
 \[
-    \Rationals = \left\{ \frac{p}{q} \; \middle| \; p \in \Integers, \; q \in \Naturals \right\}.
+    \Q = \left\{ \frac{p}{q} \; \middle| \; p \in \Z, \; q \in \N \right\}.
 \]
 
-The Cartesian product \( \Integers \times \Naturals \) is countable because both \( \Integers \) and \( \Naturals \) are countable, and a countable product of countable sets is countable.
+The Cartesian product \( \Z \times \N \) is countable because both \( \Z \) and \( \N \) are countable, and a countable product of countable sets is countable.
 
-Hence, there exists an enumeration \( (p_i, q_i)_{i \in \Naturals} \) of all pairs \( (p, q) \) with \( q \neq 0 \).  
+Hence, there exists an enumeration \( (p_i, q_i)_{i \in \N} \) of all pairs \( (p, q) \) with \( q \neq 0 \).  
 Defining
 
 \[
     f(i) = \frac{p_i}{q_i},
 \]
 
-we obtain a surjective mapping \( f : \Naturals \to \Rationals \).  
+we obtain a surjective mapping \( f : \N \to \Q \).  
 
-Therefore, the set of rational numbers \( \Rationals \) is countable.
+Therefore, the set of rational numbers \( \Q \) is countable.
 
 \QED 
 
 \subsection{Cantor's Diagonal Argument: The Real Numbers are Uncountable}
 
-We show that the set of real numbers in the interval \( (0,1) \subseteq \Reals \) is uncountable.
+We show that the set of real numbers in the interval \( (0,1) \subseteq \R \) is uncountable.
 
 Assume, for contradiction, that \( (0,1) \) is countable.  
 Then there exists a surjective mapping  
 
 \[
-    f : \Naturals \to (0,1),
+    f : \N \to (0,1),
 \]
 
 and thus all real numbers in \( (0,1) \) can be listed as
@@ -678,9 +678,9 @@ where
 \]
 
 By construction, \( r \) differs from each \( f(i) \) in at least the \( i \)-th decimal place.  
-Hence \( r \neq f(i) \) for all \( i \in \Naturals \), contradicting the assumption that \( f \) is surjective.
+Hence \( r \neq f(i) \) for all \( i \in \N \), contradicting the assumption that \( f \) is surjective.
 
-Therefore, the interval \( (0,1) \), and thus the set of real numbers \( \Reals \), is uncountable.
+Therefore, the interval \( (0,1) \), and thus the set of real numbers \( \R \), is uncountable.
 
 \QED 
 
@@ -947,19 +947,19 @@ In other words if you have \(n\) boxes and \(n + 1\) objects, then at least one 
 
 \subsection{The Cantor Set}
 
-In the following, we want to study the Cantor set \(\mathcal{C}\subseteq\Reals\).
+In the following, we want to study the Cantor set \(\mathcal{C}\subseteq\R\).
 
 First, we describe its construction informally: We start with the unit interval \(A_0:=[0,1]\) and remove from it the "middle third" (where the boundary points are not removed). The result \(A_1\) thus consists of the subintervals \(\left[0,\frac{1}{3}\right]\) and \(\left[\frac{2}{3},1\right]\). Now we remove from each of these two subintervals the middle third and continue in this manner.
 
-For fixed but arbitrary \(n\in\Naturals_0\), \(A_n\) thus consists of \(2^n\) pairwise disjoint closed sub-intervals of length \(3^{-n}\), and \(A_{n+1}\) arises from \(A_n\) by removing the middle third from each of these subintervals. What "remains" is the Cantor set.
+For fixed but arbitrary \(n\in\N_0\), \(A_n\) thus consists of \(2^n\) pairwise disjoint closed sub-intervals of length \(3^{-n}\), and \(A_{n+1}\) arises from \(A_n\) by removing the middle third from each of these subintervals. What "remains" is the Cantor set.
 
-Now mathematically precise: For \(n\in\Naturals_0\), let 
+Now mathematically precise: For \(n\in\N_0\), let 
 
 \[
 	A_{n+1}:=\frac{A_n}{3} \cup (\frac{2+A_n}{3}), \text{ with } A_0 = [0,1]
 \]
 	
-Regarding the notation - for \(X\subseteq\Reals\) and \(a,t\in\Reals\), we define
+Regarding the notation - for \(X\subseteq\R\) and \(a,t\in\R\), we define
 
 \[
     aX:=\{ax:x\in X\}
@@ -992,7 +992,7 @@ We give a proof by contradiction.
 Assume the Cantor set is countable. Then there exists a surjective function
 
 \[
-	c : \Naturals \to \mathcal{C}.
+	c : \N \to \mathcal{C}.
 \]
 
 After the first step of the Cantor construction we have
@@ -1082,7 +1082,7 @@ Since each \(I_{n} \subset A_{n}\), it follows that
 
 \subsection*{Contradiction}
 
-Because \(c\) is surjective by assumption, there exists a \(k \in \Naturals\) such that
+Because \(c\) is surjective by assumption, there exists a \(k \in \N\) such that
 
 \[
 	x = c(k).

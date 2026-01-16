@@ -1,7 +1,7 @@
 \newpage
 \section{The Determinant of a Matrix}
 
-The determinant of a square matrix \(A \in \Reals^{n \times n}\), denoted \(\det(A)\) or \(|A|\), is a
+The determinant of a square matrix \(A \in \R^{n \times n}\), denoted \(\det(A)\) or \(|A|\), is a
 scalar value that provides important information about the matrix, including whether it is
 invertible and the volume scaling factor of the linear transformation represented by \(A\).
 The determinant can be computed using various methods, including the Laplace
@@ -73,13 +73,13 @@ where \(A_{ij}\) is the \((n-1) \times (n-1)\) sub-matrix obtained by deleting t
 
     \item For elementary matrices \(\det C1 = 1\), \(\det C2 = -1\), \(\det C3 = \lambda\).
 
-    \item For \(A \in \Reals^{n\times n}\, \det(\lambda A) = \lambda^n \det(A)\)
+    \item For \(A \in \R^{n\times n}\, \det(\lambda A) = \lambda^n \det(A)\)
 
 \end{itemize}
 
 \subsection{Proof of the multiplication of determinants}
 
-For \( A, B \in \Field^{n \times n} \), it holds that
+For \( A, B \in \field^{n \times n} \), it holds that
 
 \[
     \det(AB) = \det(A)\det(B).
@@ -127,7 +127,7 @@ It holds that
 
 \subsection{The Leibniz Formula}
 
-Let \( A = (a_{ij}) \in \Field^{n \times n} \) be a square matrix over a field \( K \). The determinant of \(A\) is defined via the \textbf{Leibniz formula} as:
+Let \( A = (a_{ij}) \in \field^{n \times n} \) be a square matrix over a field \( K \). The determinant of \(A\) is defined via the \textbf{Leibniz formula} as:
 
 \[
     \det(A) = \sum_{\sigma \in S_n} \operatorname{sgn}(\sigma) \cdot a_{1\sigma(1)} a_{2\sigma(2)} \cdots a_{n\sigma(n)},

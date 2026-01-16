@@ -69,17 +69,65 @@ Choose:
     \delta = \min\left\{\frac{x_0}{2}, \frac{x_0^2 \varepsilon}{2} \right\}
 \]
 
+\textbf{Example:}
+
+Prove that 
+
+\[
+    f(x) = \begin{cases} 
+    x^2 \sin \left(\frac{1}{x}\right) & x \ne 0 \\ 
+    0 & x = 0
+    \end{cases}
+\]
+
+is continuous at \(x_0 = 0\). 
+
+Recall, \(f\) is continuous at \(x_0 = 0\) if: 
+
+\[
+    \forall \varepsilon > 0, \exists \delta > 0 \text{ such that } |x - x_0| < \delta \Rightarrow |f(x) - f(x_0)| < \varepsilon
+\]
+
+We have \(\varepsilon > 0\) and we want to find \(\delta > 0\): 
+
+Let us assume \(|x - 0| < \delta \iff \delta > |x|\) then 
+
+\begin{align*}
+    |f(x) - f(0)| &= |f(x) - 0| = |x^2 \sin \left(\frac{1}{x}\right)| \\
+    &\le |x^2| \cdot \left|\sin \left(\frac{1}{x}\right)\right| \\
+    &\le |x^2| \cdot 1 = x^2 < \varepsilon \\ 
+    &\Rightarrow x < \sqrt{\varepsilon}
+\end{align*}
+
+Choose \(\delta = \sqrt{\varepsilon}\).
+
+Let \(\varepsilon > 0\) be given and choose \(\delta = \sqrt{\varepsilon}\). Then for all \(x\) with \(|x - 0| < \delta\) we have:
+
+\[
+    |f(x) - f(0)| < \varepsilon
+\]
+
+\QED
+
 \subsection{Characterization using sequences}
 
 Let \(f : (a,b) \to \mathbb{R}\) be a function and \(x_0 \in (a,b\).
+
 The function \(f\) is continuous at \(x_0\) if and only if for every sequence 
-\(\{x_n\}_{n\in \Naturals}\) with \(x_n \in (a,b)\) for all \(n \in \Naturals\)
-and \(\lim_{n\to\infty} x_n = x_0\), it holds that 
-\(\lim_{n\to\infty} f(x_n) = f(x_0)\).
+
+\[
+    \{x_n\}_{n\in \N}
+\] 
+
+with \(x_n \in (a,b)\) for all \(n \in \N\) and \(\lim_{n\to\infty} x_n = x_0\), it holds that 
+
+\[
+    \lim_{n\to\infty} f(x_n) = f(x_0)
+\]
 
 \subsection{Left and Right Continuity}
 
-Let \( f : D \to \Reals \) be a function and \( x_0 \in D \).
+Let \( f : D \to \R \) be a function and \( x_0 \in D \).
 The function \( f \) is called \emph{left-continuous} at \( x_0 \) if
 \( f \) is continuous on \( D \cap (-\infty, x_0] \).
 Analogously, \( f \) is \emph{right-continuous} at \( x_0 \) if
@@ -106,7 +154,7 @@ A function over an interval \([a,b]\) which is continuous is \emph{bounded}.
 
 \textbf{Proof:}
 
-If \(f\) is not bounded, then \(\forall n \in \Naturals, \exists x_n \in [a,b]\) such that
+If \(f\) is not bounded, then \(\forall n \in \N, \exists x_n \in [a,b]\) such that
 \[
     |f(x_n)| > n
 \]
@@ -130,7 +178,7 @@ But by construction \(|f(x_{n_k})| > n_k \to \infty\) as \(k \to \infty\), which
 
 \subsection{Extreme-Value Theorem}
 
-If \(f: [a, b] \to \Reals\) is continuous on the closed interval \([a, b]\), then exist \(x_m, x_M in [a,b]\) such that 
+If \(f: [a, b] \to \R\) is continuous on the closed interval \([a, b]\), then exist \(x_m, x_M in [a,b]\) such that 
 
 \[
     f(x_m) = \inf_{[a,b]} f, \quad f(x_M) = \sup_{[a,b]} f
@@ -138,7 +186,7 @@ If \(f: [a, b] \to \Reals\) is continuous on the closed interval \([a, b]\), the
 
 \textbf{Proof:}
 
-Let \(m := \inf_{[a,b]} f, \quad M := \sup_{[a,b]} f\) we know by the previous theorem that \(f\) is bounded, so \(m, M \in \Reals\).
+Let \(m := \inf_{[a,b]} f, \quad M := \sup_{[a,b]} f\) we know by the previous theorem that \(f\) is bounded, so \(m, M \in \R\).
 
 By the Bolzano-Weierstrass theorem, there exist convergent subsequences \(\{x_{n_k}\}, \{x_{m_k}\} \subset [a,b]\) such that
 
@@ -156,7 +204,7 @@ Since \([a,b]\) is closed, the limits of these subsequences \(x_m, x_M \in [a,b]
 
 \subsection{Extreme Points}
 
-If for set \(A \subseteq \Reals\) with \(f : A \to \Reals\) holds that 
+If for set \(A \subseteq \R\) with \(f : A \to \R\) holds that 
 
 \[
     f(x_m) = \inf_{x \in A} f(x) =: m \quad \text{or} \quad f(x_M) = \sup_{x \in A} f(x) =: M
@@ -168,7 +216,7 @@ then \(x_m\) is called a \emph{point of minimum} and \(x_M\) a \emph{point of ma
 
 \subsection{Middle Value Theorem}
 
-If \(f: [a, b] \to \Reals\) is continuous and \(f(a) \ne f(b)\), then for every \(y_0\) between \(f(a)\) and \(f(b)\) 
+If \(f: [a, b] \to \R\) is continuous and \(f(a) \ne f(b)\), then for every \(y_0\) between \(f(a)\) and \(f(b)\) 
 there exists \(x_0 \in (a, b)\) such that \(f(x_0) = y_0\).
 
 \subsection{Continuity of the Inverse by a decreasing Function}
@@ -186,7 +234,7 @@ continuous and monotonic.
 
 \subsection{Lipschitz Continuity}
 
-A function \(f: D \subset \Reals \to \Reals\) is \emph{Lipschitz continuous} if:
+A function \(f: D \subset \R \to \R\) is \emph{Lipschitz continuous} if:
 
 \[
     \exists L > 0 \text{ such that } |f(x) - f(y)| \le L |x - y| \quad \forall x, y \in D
@@ -210,7 +258,7 @@ A \emph{fixed point} of a function \(f\) is a point \(x^*\) such that:
 
 \subsection{Fixed Point on Interval}
 
-Given a continuous function \(f:[a,b] \to \Reals\) with \(f([a,b]) \subseteq [a,b]\), then there exists at least one fixed 
+Given a continuous function \(f:[a,b] \to \R\) with \(f([a,b]) \subseteq [a,b]\), then there exists at least one fixed 
 point \(x^* \in [a,b]\) such that \(f(x^*) = x^*\).
 
 \subsection{Banach Fixed Point Theorem}
@@ -342,7 +390,7 @@ For \(\varepsilon = 0,1\)
 
 \subsection{Uniform Continuity}
 
-A function \(f: \mathcal{D} \subset \Reals \to \Reals\) is \emph{uniformly continuous} if:
+A function \(f: \mathcal{D} \subset \R \to \R\) is \emph{uniformly continuous} if:
 
 \[
     \forall \varepsilon > 0, \exists \delta > 0 \text{ such that } |x - y| < \delta \Rightarrow |f(x) - f(y)| < \varepsilon \quad \forall x, y \in \mathcal{D}
@@ -370,9 +418,9 @@ Since \(\frac{1}{x} > 1\) for \(x < 1\), we have a contraction and therefore \(f
 
 \subsection{Boundedness by Uniform Continuity}
 
-If a function \(f: (a, b) \to \Reals\) is uniformly continuous on the open interval \((a, b)\), then \(f\) is bounded.
+If a function \(f: (a, b) \to \R\) is uniformly continuous on the open interval \((a, b)\), then \(f\) is bounded.
 
 \subsection{Cauchy Sequence by Uniform Continuity}
 
-Given \(\mathcal{D} \subseteq \Reals\) and a uniformly continuous function \(f: \mathcal{D} \to \Reals\).
+Given \(\mathcal{D} \subseteq \R\) and a uniformly continuous function \(f: \mathcal{D} \to \R\).
 Then for every Cauchy sequence \(\{x_n\} \subseteq \mathcal{D}\), the sequence \(\{f(x_n)\}\) is also a Cauchy sequence.

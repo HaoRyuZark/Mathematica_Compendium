@@ -15,7 +15,7 @@ Operations on the \emph{Identity Matrix} and call them \emph{Elementary Matrices
           &        & \lambda & 1 &        \\
           &        &         &   & \ddots \\
     \end{bmatrix}
-    \in \Field^{n \times n}
+    \in \field^{n \times n}
     \quad \text{or} \quad
     C_1 :=
     \begin{bmatrix}
@@ -25,7 +25,7 @@ Operations on the \emph{Identity Matrix} and call them \emph{Elementary Matrices
           &        &   & 1       &        \\
           &        &   &         & \ddots \\
     \end{bmatrix}
-    \in \Field^{n \times n}
+    \in \field^{n \times n}
 \]
 
 \emph{C2: Row swap}
@@ -40,7 +40,7 @@ Operations on the \emph{Identity Matrix} and call them \emph{Elementary Matrices
           &        &   &   & \ddots &   \\
           &        &   &   &        & 1 \\
     \end{bmatrix}
-    \in \Field^{n \times n}
+    \in \field^{n \times n}
 \]
 
 \emph{C3: Row Scaling}
@@ -54,7 +54,7 @@ Operations on the \emph{Identity Matrix} and call them \emph{Elementary Matrices
           &        &         & \ddots &   \\
           &        &         &        & 1 \\
     \end{bmatrix}
-    \in \Field^{n \times n}
+    \in \field^{n \times n}
 \]
 
 Each of them also encodes the row Operations from where they came from.
@@ -63,7 +63,7 @@ So now Gaussian Elimination can be encoded as matrix multiplication.
 Formally,
 
 \[
-    C_1:= \text{Add}_m (i, j, \lambda) := I_m + a e_i f_j: m \times m \to \Field : (s,t) \mapsto 
+    C_1:= \text{Add}_m (i, j, \lambda) := I_m + a e_i f_j: m \times m \to \field : (s,t) \mapsto 
     \begin{cases}
         1, & s = t \\ 
         \lambda, & (s,t) = (i,j) \\ 
@@ -72,7 +72,7 @@ Formally,
 \]
 
 \[
-    C_2:= \text{Swap}_m (i,j) := (e_1, \dots, e_{i - 1}, e_j, e_{j + 1}, \dots, e_{j - 1}, e_i, e_{j + 1}, \dots, e_m): m \times m \to \Field : (s,t) \mapsto
+    C_2:= \text{Swap}_m (i,j) := (e_1, \dots, e_{i - 1}, e_j, e_{j + 1}, \dots, e_{j - 1}, e_i, e_{j + 1}, \dots, e_m): m \times m \to \field : (s,t) \mapsto
     \begin{cases}
         1, & s = t \notin \{i, j\} \\ 
         1, & (s, t) \in \{(i,j), (j,i)\}\\ 
@@ -81,7 +81,7 @@ Formally,
 \]
 
 \[
-    C_3:= \text{Mul}_m (i,\lambda) := I_m + (a - 1) e_i f_j: m \times m \to \Field : (s,t) \mapsto 
+    C_3:= \text{Mul}_m (i,\lambda) := I_m + (a - 1) e_i f_j: m \times m \to \field : (s,t) \mapsto 
     \begin{cases}
         1, & s = t  \ne 1 \\ 
         \lambda, & s = t = i \\ 

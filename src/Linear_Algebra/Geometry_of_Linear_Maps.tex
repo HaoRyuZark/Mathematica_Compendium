@@ -115,7 +115,7 @@ which gives us
 
 \subsection{Orthogonal Matrices}
 
-A matrix \(A \in \Reals^{n \times n}\) is \emph{orthogonal} if its columns vectors form an orthonormal 
+A matrix \(A \in \R^{n \times n}\) is \emph{orthogonal} if its columns vectors form an orthonormal 
 basis.
 
 The set of all \emph{orthogonal} matrices is \(O(n)\).
@@ -149,7 +149,7 @@ The set of all \emph{orthogonal} matrices is \(O(n)\).
 
 \textbf{Example of a proof}
 
-Prove that \(H_n\) is \emph{orthogonal} for all \(\vec{u}\in \Reals^n \backslash \{0\} \).
+Prove that \(H_n\) is \emph{orthogonal} for all \(\vec{u}\in \R^n \backslash \{0\} \).
 
 \[
     H_n = I_n - 2 \frac{uu^T}{u^Tu}
@@ -195,10 +195,10 @@ We know that \(\det(I) = I \), therefore
 
 \subsection{Dot Product}
 
-Given \(f: \Reals^n \to \Reals^n\) then this two statements are equivalent.
+Given \(f: \R^n \to \R^n\) then this two statements are equivalent.
 
 \[
-    \langle f(x), f(y) \rangle = \langle x, y \rangle \quad \forall x,y \in \Reals^n
+    \langle f(x), f(y) \rangle = \langle x, y \rangle \quad \forall x,y \in \R^n
 \]
 
 and 
@@ -247,7 +247,7 @@ With \(\alpha = \angle(x, y) = \angle(f(x), f(y))\) gilt:
 
 \subsection{Theorem of the Matrix Representation}
 
-The mapping \( f : \Reals^n \to \Reals^n \) is orthogonal if and only if  
+The mapping \( f : \R^n \to \R^n \) is orthogonal if and only if  
 the associated matrix representation \( Q \) (with respect to the standard basis) is an orthogonal matrix, i.e., \( Q \in O(n) \).
 
 \textbf{Proof \(\Rightarrow\):} 
@@ -256,7 +256,7 @@ the associated matrix representation \( Q \) (with respect to the standard basis
 
 \[
     \langle Qx, Qy \rangle = \langle Q^\top Qx, y \rangle = \langle x, y \rangle \quad \forall x, y 
-    \in \Reals^n,
+    \in \R^n,
 \]
 
 thus,
@@ -304,9 +304,9 @@ due to the group property of \( O(n) \).
 \subsection{QR-Decomposition}
 
 A use case of orthogonal matrices is the \emph{QR-Decomposition}. The goal is that given a system 
-\( Ax = b\) with a matrix \(A\in \Reals^{m \times n}\), \(m \ge n\) and \(rg(A) = n\) we can find 
-two matrices \(Q \text{ and } R\) such that \(A = QR \text{ with } R\in \Reals^{n \times n} 
-\text{ and } Q \in \Reals^{m \times n}\). \emph{R} is matrix with only an upper triangle and 
+\( Ax = b\) with a matrix \(A\in \R^{m \times n}\), \(m \ge n\) and \(rg(A) = n\) we can find 
+two matrices \(Q \text{ and } R\) such that \(A = QR \text{ with } R\in \R^{n \times n} 
+\text{ and } Q \in \R^{m \times n}\). \emph{R} is matrix with only an upper triangle and 
 \emph{Q} is orthogonal for the columns.
 
 We know that the best approximation by the method of the least squares is given by

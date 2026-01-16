@@ -21,7 +21,7 @@ and its corresponding eigenvalue \(\lambda\) is expressed by the following equat
     A\vec{v} = \lambda\vec{v}
 \]
 
-Where \(A = f: V \to V\) is an \emph{endomorphism}, \(\vec{v} \ne \vec{0}\) and  \(\lambda \in \Complex\).
+Where \(A = f: V \to V\) is an \emph{endomorphism}, \(\vec{v} \ne \vec{0}\) and  \(\lambda \in \C\).
 
 The way we find a method to find them is by manipulating the equation above
 
@@ -68,7 +68,7 @@ with \(\lambda\) then \(v \in L(v_1, \dots, v_k) \backslash \{0\}\) is an eigenv
 
 \subsubsection{Theorem II}
 
-For \(\lambda \in \Complex\) is \(Eig(f;\lambda):= \{c \in V | f(v) = \lambda v\}\) the \emph{Eigenspace} of 
+For \(\lambda \in \C\) is \(Eig(f;\lambda):= \{c \in V | f(v) = \lambda v\}\) the \emph{Eigenspace} of 
 \(f\) with \(\lambda\) and, it is a subspace of \(V\).
 
 \subsubsection{Theorem III}
@@ -219,7 +219,7 @@ Thus, let \(v_2 = -2\) and \(v_1 = \frac{2}{2} = 1\). This give us the first eig
 scalar versions.
 
 \[
-    e_1 = \left\{ c \begin{bmatrix} 1 \\ -2 \end{bmatrix} | c \in \Reals\right\}
+    e_1 = \left\{ c \begin{bmatrix} 1 \\ -2 \end{bmatrix} | c \in \R\right\}
 \]
 
 The process for the other eigenvalue is exactly the same.
@@ -337,12 +337,12 @@ A matrix is diagonalizable if and only if the eigenvectors of it are linear inde
 
 \subsubsection{Complex Diagonalization}
 
-Given a matrix \(A \in \Complex^{n \times n}\) with \(n\) distinct eigenvalues then is \(A\)
-diagonalizable. But this does not guaranty the diagonalizibility for \(\Reals\).
+Given a matrix \(A \in \C^{n \times n}\) with \(n\) distinct eigenvalues then is \(A\)
+diagonalizable. But this does not guaranty the diagonalizibility for \(\R\).
 
 \subsubsection{Geometric and Algebraic Multiplicity}
 
-Given a matrix \(A \in \Complex^{n \times n}\) with \(\lambda\) as eigenvalue. The multiple occurrences 
+Given a matrix \(A \in \C^{n \times n}\) with \(\lambda\) as eigenvalue. The multiple occurrences 
 of the zero \(\lambda\) of \(\mathcal{X}_A\) is called \emph{algebraic multiplicity} \(\alg(\lambda)\). 
 Continuing, \(\geo(\lambda):= dim(Eig(A;\lambda))\) is the \emph{geometrical multiplicity} of \(\lambda\).
 
@@ -489,7 +489,7 @@ it is real-valued.
 
 \subsubsection{Orthogonality of Eigenvectors}
 
-Given a symmetric matrix \(A \in \Reals^{n \times n}\) with \(\lambda \ne \mu \) as two eigenvalues of 
+Given a symmetric matrix \(A \in \R^{n \times n}\) with \(\lambda \ne \mu \) as two eigenvalues of 
 \(A\) with eigenvectors \(v\) and \(w\). Then \(v\) and \(w\) are \emph{orthogonal} to each other.
 
 \textbf{Proof:}
@@ -506,7 +506,7 @@ the vectors must be orthogonal.
 
 \subsubsection{Eigenvalue Decomposition of Symmetric Matrices}
 
-Given a symmetric matrix \(A \in \Reals^{n \times n}\) with eigenvalues 
+Given a symmetric matrix \(A \in \R^{n \times n}\) with eigenvalues 
 \(\lambda_1, \lambda_2, \dots, \lambda_n\). Then because of the orthogonality of its eigenvectors and 
 the fact that they can be normalized write the matrix \emph{Q} as an orthogonal matrix, and therefore
 
@@ -609,7 +609,7 @@ For \(\lambda_1 = 1\):
 Our free variable is \(y\) therefore 
 
 \[
-    \vec{v} = \left\{ y \begin{bmatrix} -1 \\ 1\end{bmatrix} \mid  y \in \Reals \right\}
+    \vec{v} = \left\{ y \begin{bmatrix} -1 \\ 1\end{bmatrix} \mid  y \in \R \right\}
 \]
 
 Now choose \(y = 1\) which gives us \(x = -1\). Now we get the vector 
@@ -647,13 +647,13 @@ Now we will complete the process by writing \(D, X, \text{ and } X^{-1}\).
 
 \subsubsection{Normal Matrices}
 
-A matrix \(A \in \Complex^{n \times n}\) is considered \emph{normal} if and only if 
+A matrix \(A \in \C^{n \times n}\) is considered \emph{normal} if and only if 
 
 \[
     A \overline{A}^{T} = \overline{A}^T A
 \]  
 
-Also, then there exist with the euclidean inner product in \(\Complex^n\) an orthonormal basis 
+Also, then there exist with the euclidean inner product in \(\C^n\) an orthonormal basis 
 of eigenvector and therefore, \(A\) is diagonalizable.
 
 This implies that
@@ -713,7 +713,7 @@ The SVD has numerous applications in mathematics, science, and engineering, incl
 
 \textbf{Example:}
 
-Let \( A \in \Reals^{n \times n} \) be a real square matrix with SVD given by:
+Let \( A \in \R^{n \times n} \) be a real square matrix with SVD given by:
 
 \[
     A = U S V^T

@@ -13,23 +13,27 @@ Without loss of generality, assume \( f(a) < N < f(b) \).
 Define:
 
 \[
-    S = \{ x \in [a, b] \mid f(x) \le N \}
+    S = \{ x \in [a, b] \mid f(x) < N \}
 \]
 
-Since \( a \in S \), \emph{S} is non-empty and bounded above by \(b\). Let \( c = \sup S \).
+Since \( a \in S \), \(S\) is non-empty and bounded above by \(b\). Let \( c = \sup S \). We want 
+to show that \( f(c) = N \) by satisfiying the inequalities \(f(c) \ge N\) and \(f(c) \le N\).
 
-By the continuity of \(f\), we have:
+If \(f(c) < N\), by the continuity of \(f\), there exists \( \delta > 0 \) such that for all \( x \in (c, c + \delta) \):
 
 \[
-    \lim_{x \to c^-} f(x) = f(c) = \lim_{x \to c^+} f(x)
+    f(x) < N
 \]
 
-Since \( f(x) \le N \) for all \( x < c \), and for any \( \varepsilon > 0 \), 
-there exists \( x > c \) with \( f(x) > N \), then by the definition of supremum and continuity:
+This contradicts the definition of \( c \) as the supremum of \( S \).
+
+If \(f(c) > N\), again by the continuity of \(f\), there exists \( \delta > 0 \) such that for all \( x \in (c - \delta, c) \): 
 
 \[
-    f(c) = N
+    f(x) > N    
 \]
+
+This contradicts the definition of \( c \) as the supremum of \( S \). Hence, we must have \( f(c) = N \).
 
 \QED
 
@@ -60,8 +64,8 @@ minimum value on \([a, b]\). That is, there exist \( c, d \in [a, b] \) such tha
 
 \textbf{Proof:}  
 
-Since \(f\) is continuous on the compact interval \([a, b]\), the image \( f([a, b]) \subset \Reals \) 
-is also compact. A compact subset of \( \Reals \) is closed and bounded, and hence 
+Since \(f\) is continuous on the compact interval \([a, b]\), the image \( f([a, b]) \subset \R \) 
+is also compact. A compact subset of \( \R \) is closed and bounded, and hence 
 attains its supremum and infimum.
 
 Therefore, there exist \( c, d \in [a, b] \) such that:

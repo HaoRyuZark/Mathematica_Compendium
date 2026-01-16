@@ -1,7 +1,7 @@
 \newpage
 \section{Polynomial Rings}
 
-Given a field \(\Field\) with \(\Field^{\Integers_{\ge 0}}\) we define the multiplication 
+Given a field \(\field\) with \(\field^{\Z_{\ge 0}}\) we define the multiplication 
 
 \[
     (a_0, a_1, \dots ) \cdot (b_0, b_1, \dots ) := (c_0, c_1, \dots) 
@@ -16,25 +16,25 @@ Where
 In general for \(n \ge 0\)
 
 \[
-    c_n := \sum_{i = 0}^{n} a_i b{n - i} = a_0 b_{n} + a_1 b_{n - 1} + cdots + a_n b_0
+    c_n := \sum_{i = 0}^{n} a_i b_{n - i} = a_0 b_{n} + a_1 b_{n - 1} + cdots + a_n b_0
 \]
 
 And the addition as 
 
 \[
-    (a_i)_{i \in \Naturals} + (a_i)_{i \in \Naturals} = (a_i + b_i)_{i \in \Naturals}
+    (a_i)_{i \in \N} + (a_i)_{i \in \N} = (a_i + b_i)_{i \in \N}
 \]
 
-This \((\Field^{\Integers_{\ge 0}}, +, \cdot)\) is also noted as \(\Field[[\Field]]\) and 
-called the \emph{power-ring} over \(\Field\). Also, instead of \((a_0, a_1, \dots)\) we write 
+This \((\field^{\Z_{\ge 0}}, +, \cdot)\) is also noted as \(\field[[\field]]\) and 
+called the \emph{power-ring} over \(\field\). Also, instead of \((a_0, a_1, \dots)\) we write 
 
 \[
     f = \sum_{i=0}^{\infty} a_i X^i
 \]
 
-For \(X := (0, 1, 0, 0, \dots)\). We call this ring also the \emph{formal power series} over \(\Field\).  
+For \(X := (0, 1, 0, 0, \dots)\). We call this ring also the \emph{formal power series} over \(\field\).  
 
-The members \(f = (a_0, a_1, \dots, ) \in \Field [[X]]\) are called \emph{polynomials}
+The members \(f = (a_0, a_1, \dots, ) \in \field [[X]]\) are called \emph{polynomials}
 
 For the finite case we write 
 
@@ -42,8 +42,8 @@ For the finite case we write
     f = \sum_{i=0}^{n} a_i X^i
 \]
 
-The set of all polynomials reachable via the multiplication vector-space properties of \(\Field[[X]]\) is 
-called the \emph{polynomial ring} \(\Field[X]\). The field before the \([X]\) tells us which elements 
+The set of all polynomials reachable via the multiplication vector-space properties of \(\field[[X]]\) is 
+called the \emph{polynomial ring} \(\field[X]\). The field before the \([X]\) tells us which elements 
 are allowed as coefficients.
 
 \textbf{Example:}
@@ -73,7 +73,7 @@ Also, note that we define \(\text{def}(0):= -\infty\)
 
 \emph{Degree Addition}
 
-For \(f,g \in \Field[X] \setminus \{0\}\) the following holds 
+For \(f,g \in \field[X] \setminus \{0\}\) the following holds 
 
 \[
     \deg(f + g) \le \max(\deg(f),\deg(g))
@@ -81,10 +81,10 @@ For \(f,g \in \Field[X] \setminus \{0\}\) the following holds
 
 \emph{Degree Multiplication}
 
-For \(f,g \in \Field[X] \setminus \{0\}\) the following holds 
+For \(f,g \in \field[X] \setminus \{0\}\) the following holds 
 
 \[
-    \deg(fg) \le \max()\deg(f) + \deg(g)
+    \deg(fg) \le \max(\deg(f) + \deg(g))
 \]
 
 \subsection{Properties of the Polynomial Ring}
@@ -92,15 +92,15 @@ For \(f,g \in \Field[X] \setminus \{0\}\) the following holds
 \emph{Neutral Element}
 
 \[
-    1 := (1, 0, 0, \dots) \in \Field[X]
+    1 := (1, 0, 0, \dots) \in \field[X]
 \]
 
-is the neutral element of the multiplication in \(\Field[[X]]\) and \(\Field[X]\).
+is the neutral element of the multiplication in \(\field[[X]]\) and \(\field[X]\).
 
 \emph{\(X_a\)}
 
 \[
-    X_a = (0, a_0, a_1, \dots) \forall a \in \Field [[X]]
+    X_a = (0, a_0, a_1, \dots) \forall a \in \field [[X]]
 \]
 
 \emph{Multiplication}
@@ -111,22 +111,22 @@ is the neutral element of the multiplication in \(\Field[[X]]\) and \(\Field[X]\
 
 \emph{Identity}
 
-Given \(f \in \Field[X]\) with degree \(n\) then 
+Given \(f \in \field[X]\) with degree \(n\) then 
 
 \[
     f = a_0 + a_1 X + \cdots + a_n X^n
 \]
 
-gives a clear identification of \(\Field\) with 
+gives a clear identification of \(\field\) with 
 
 \[
-    \{0\} \cup \{f \in \Field [X] \mid \deg(f) = 0\}
+    \{0\} \cup \{f \in \field [X] \mid \deg(f) = 0\}
 \]
 
 \emph{Vector space}
 
 \[
-    \Field[X]_{\deg < n} := \{0\} \cup \{f \in \Field [X] \mid \deg(f) < n\}
+    \field[X]_{\deg < n} := \{0\} \cup \{f \in \field [X] \mid \deg(f) < n\}
 \]
 
 is a vector space.
@@ -134,24 +134,24 @@ is a vector space.
 
 \subsection{Field Algebra}
 
-Given a ring \(R\) with the one of the vector space with the field \(\Field\). We call 
+Given a ring \(R\) with the one of the vector space with the field \(\field\). We call 
 \(R\) an \emph{associative algebra} with the one if only if 
 
 \[
     a(rs) = (ar)s = r(as)
 \]
 
-for all \(r,s \in R\) and \(a \in \Field\).
+for all \(r,s \in R\) and \(a \in \field\).
 
-\subsection{Lemmi of the Division}
+\subsection{Division for Polynomial}
 
-Given the field \(\Field\) then 
+Given the field \(\field\) then 
 
 \begin{itemize}
 
-    \item  \(\Field[X]\) is a commutative ring with one and exactly one commutative \(\Field\)-Algebra with 1.
+    \item  \(\field[X]\) is a commutative ring with one and exactly one commutative \(\field\)-Algebra with 1.
 
-    \item For \(f, g \in \Field[X]\) with \(g \ne 0\) there are well-defined \(q,r \in \Field[X]\) with 
+    \item For \(f, g \in \field[X]\) with \(g \ne 0\) there are well-defined \(q,r \in \field[X]\) with 
     
         \[
             f = qg + r \text{ and } \deg(r) < \deg(g) \lor r = 0
@@ -162,18 +162,18 @@ Given the field \(\Field\) then
 \textbf{Proof:}
 
 For the first lemma, to show that the multiplication is commutative we just 
-use the commutative property of commutativity of our field \(\Field\). 
+use the commutative property of commutativity of our field \(\field\). 
 
-The distributive property for \(f,g,h \in \Field [X]\) and the scalar multiplication 
+The distributive property for \(f,g,h \in \field [X]\) and the scalar multiplication 
 are also easy to show using our definitions. We will show the associativity. 
 
-We will use induction: If \(\deg(h) = 0\), then \(h \in \Field\) and the associativity holds because of the 
+We will use induction: If \(\deg(h) = 0\), then \(h \in \field\) and the associativity holds because of the 
 associativity for scalars. 
 
 Let us assume that it holds for \(\deg(h) \le n\). If  \(\deg(h) > 0 \) then
 
 \[
-    h = \hat{h} + a_{n + 1}X^{n + 1} \text{ with } \hat{h} \in \Field [X]
+    h = \hat{h} + a_{n + 1}X^{n + 1} \text{ with } \hat{h} \in \field [X]
 \]
 
 is a polynomial of degree at most \(n\) or 0. Due to that fact, \((fg)\hat{h} = f(g\hat{h})\) 
@@ -198,7 +198,7 @@ For the case \(m \ge n\) we will show the existence of \(q,r\) per induction usi
 \(m = 0\) are \(n = 0\), \(f = a_0\) \(g = b_0\). Set \(q = \frac{a_0}{q_0}\) and \(r = 0\), and we get 
 \(f = qg + r\).
 
-If \(m > 0\) and we assume that for each polynomial \(h\) with \(\deg(h) le m - 1\) there 
+If \(m > 0\) and we assume that for each polynomial \(h\) with \(\deg(h) \le m - 1\) there 
 exists polynomials \(\hat{q}, \hat{r}\) such that \(\deg(\hat{r}) < \deg(g)\) and 
 \(h = \hat{q}g + \hat{r}\).
 
@@ -227,14 +227,14 @@ which is a contradiction. Thus, \(q = \hat{q}\) and \(r = \hat{r}\).
 
 \subsection{Greatest Common Divisor for Polynomials}
 
-For two polynomials \(f,g \Field[X]\) with \((f,g \ne (0,0))\). The polynomial 
-\(t \in \Field[X]\) with 
+For two polynomials \(f,g \field[X]\) with \((f,g \ne (0,0))\). The polynomial 
+\(t \in \field[X]\) with 
 
 \begin{itemize}
 
     \item \(t \mid f\) and \(t \mid g\)
 
-    \item For all \(c \in \Field[X]\) with \(c \mid f\) and \(c \mid g\) holds \(c \mid t\)
+    \item For all \(c \in \field[X]\) with \(c \mid f\) and \(c \mid g\) holds \(c \mid t\)
 
 \end{itemize}
 
@@ -245,30 +245,30 @@ then \(f,g\) are \emph{relative prime}.
 
 \begin{itemize}
 
-    \item In \(\mathbb{Z}\) one has \(|ab| = |a||b|\); in \(\Field[X]\) one has 
+    \item In \(\mathbb{Z}\) one has \(|ab| = |a||b|\); in \(\field[X]\) one has 
     \(\deg(fg) = \deg(f) + \deg(g)\).
 
-    \item The gcd of two polynomials \(f, g \in \Field[X]\) with 
-    \((f,g) \neq (0,0)\) is unique only up to factors in \(\Field[X]^{\ast}\), 
-    that is, up to factors in \(\Field[X]\) of degree \(0\). Notation: 
+    \item The gcd of two polynomials \(f, g \in \field[X]\) with 
+    \((f,g) \neq (0,0)\) is unique only up to factors in \(\field[X]^{\ast}\), 
+    that is, up to factors in \(\field[X]\) of degree \(0\). Notation: 
     \(t = \gcd(f,g)\) actually also denotes every multiple \(a t\) with 
-    \(a \in \Field \setminus \{0\}\) as a gcd of \(f\) and \(g\).
+    \(a \in \field \setminus \{0\}\) as a gcd of \(f\) and \(g\).
 
     \item In both rings there is a division with remainder, 
-    and therefore \(\Field[X]\) also has a Euclidean algorithm for computing 
+    and therefore \(\field[X]\) also has a Euclidean algorithm for computing 
     the gcd and an extended Euclidean algorithm for determining Bézout 
     coefficients. Here the degree of a polynomial plays the role of the 
-    absolute value in \(\Integers\). We give the first part of the algorithm again.
+    absolute value in \(\Z\). We give the first part of the algorithm again.
 
     \item Furthermore, one also has the analogue of prime numbers in 
-    \(\Field[X]\), namely irreducible polynomials, and correspondingly a unique prime factorization for 
+    \(\field[X]\), namely irreducible polynomials, and correspondingly a unique prime factorization for 
     polynomials.
 
 \end{itemize}
 
 \subsection{Euclidean Algorithm for Polynomials}
 
-\textbf{Input:} \(f, g \in \Field[X]\), \((f, g) \neq (0,0)\).
+\textbf{Input:} \(f, g \in \field[X]\), \((f, g) \neq (0,0)\).
 
 \textbf{Output:} The greatest common divisor \(t\) of \(f\) and \(g\).
 
@@ -291,20 +291,20 @@ then \(f,g\) are \emph{relative prime}.
 
 \subsection{Reducible Irreducible}
 
-A polynomial \(p \in \Field[X] \setminus \{0\}\) is called \emph{irreducible} if 
-\(p\) is not a unit (that is, \(p \notin \Field[X]^{\ast}\)) and if for 
-\(f, g \in \Field[X]\) the following holds: 
-\(p = f \cdot g \Rightarrow f \in \Field[X]^{\ast} \,\vee\, g \in \Field[X]^{\ast}\).
-An element \(h \in \Field[X] \setminus \{0\}\) for which 
-\(h = f \cdot g\) holds with \(f, g \in \Field[X] \setminus \Field[X]^{\ast}\) 
+A polynomial \(p \in \field[X] \setminus \{0\}\) is called \emph{irreducible} if 
+\(p\) is not a unit (that is, \(p \notin \field[X]^{\ast}\)) and if for 
+\(f, g \in \field[X]\) the following holds: 
+\(p = f \cdot g \Rightarrow f \in \field[X]^{\ast} \,\vee\, g \in \field[X]^{\ast}\).
+An element \(h \in \field[X] \setminus \{0\}\) for which 
+\(h = f \cdot g\) holds with \(f, g \in \field[X] \setminus \field[X]^{\ast}\) 
 is called \emph{reducible}.
 
 \subsection{Normalized}
 
-A polynomial \(f \in \Field[X] \setminus \{0\}\) with \(f = \sum_{i = 0}^{n} a_i X^i\) is considered 
+A polynomial \(f \in \field[X] \setminus \{0\}\) with \(f = \sum_{i = 0}^{n} a_i X^i\) is considered 
 \emph{normalized} if \(a_n = 1\).
 
 \subsection{Factorization Property}
 
-Each polynomial \(f \in \Field[X] \setminus \{0\}\) has from to one to the order of the factors unique 
+Each polynomial \(f \in \field[X] \setminus \{0\}\) has from to one to the order of the factors unique 
 factorizations in a normalized irreducible form and a unit.

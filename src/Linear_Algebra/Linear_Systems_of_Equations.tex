@@ -57,12 +57,12 @@ In the context of Definition 6.1, the solution set \( L(A, b) \) of the system o
 with \( (A, b) \) is defined as
 
 \[
-    L(A, b) := \{ x \in \Field^n \mid Ax = b \}.
+    L(A, b) := \{ x \in \field^n \mid Ax = b \}.
 \]
 
 \subsubsection{Reduced Echelon Form}
 
-For a matrix \(A \in \Field^{m \times n}\) with rows \(Z_1, \dots, Z_n\). 
+For a matrix \(A \in \field^{m \times n}\) with rows \(Z_1, \dots, Z_n\). 
 
 We define \(i \in \underbar{m}\) the \(i\)-t \emph{echelon index} \(Ei_i(A)\) as 
 
@@ -84,7 +84,7 @@ We have \(\operatorname{rg}(A) = \operatorname{rg}_S(A)\).
 
 \textbf{Proof:}
 
-For \(x = {(x_1, \ldots, x_n)}^T \in \Field^n\), it holds that
+For \(x = {(x_1, \ldots, x_n)}^T \in \field^n\), it holds that
 
 \[
     Ax = \sum_{i=1}^{n} x_i a_i.
@@ -94,8 +94,8 @@ It follows that
 
 \[
     \operatorname{rg}(A) = \operatorname{rg}(L_A) = \dim(\img(L_A))
-    = \dim\left(\{L_A(x) \mid x \in \Field^n\}\right)
-    = \dim\left(\{Ax \mid x \in \Field^n\}\right)
+    = \dim\left(\{L_A(x) \mid x \in \field^n\}\right)
+    = \dim\left(\{Ax \mid x \in \field^n\}\right)
 \]
 
 \[
@@ -135,7 +135,7 @@ where \(L(a_1, \ldots, a_n)\) denotes the linear span of \(a_1, \ldots, a_n\).
 
 \subsection{Solution Set of the Linear System \texorpdfstring{\(Ax = b\)}{}}
 
-Let \(x_s \in \Field^n\) be a solution of \(Ax = b\). Then the solution set is given by
+Let \(x_s \in \field^n\) be a solution of \(Ax = b\). Then the solution set is given by
 
 \[
     L(A, b) = x_s + \ker(A) = \{x_s + x \mid x \in \ker(A)\}.
@@ -366,13 +366,34 @@ Any linear system's solution set has the form:
 
 \[
     \left\{ \vec{p} + c_1\vec{\beta}_1 + \cdots + c_k\vec{\beta}_k \;\middle|\; c_1, \ldots, c_k \in
-    \Reals \right\},
+    \R \right\},
 \]
 
 where \(\vec{p}\) is a particular solution to the system, and the vectors \(\vec{\beta}_1,
 \ldots, \vec{\beta}_k\) form a basis of the solution space to the corresponding homogeneous system.
 The number \(k\) equals the number of \emph{free variables} the system has after applying Gaussian
 elimination.
+
+\textbf{Proof:}
+
+We want to proof that every linear system of equations \(Ax = b\) which has at least one solution fulfills 
+the following properties 
+
+\begin{enumerate}
+
+    \item \(L = \{Ax = 0\} \ne \emptyset\)
+
+    \item The general solution is linear combination of the particular solutions plus the homogeneous solution.
+
+\end{enumerate}
+
+For the first property the solution of \(Ax = 0\) is the \(\ker(A)\) more precisely \(\ker(\phi_A)\) and thus, 
+it is not empty because \(0 \in \ker(A)\)
+
+The second proposition follows for the second one because the addition of the zero vector to a linear 
+combination of other vectors just gives you the original combination by the axioms of the vector spaces.
+
+\QED 
 
 \subsection{Linear Combination Lemma}
 
@@ -462,7 +483,7 @@ Let \(x_4 = t\) (free variable), then:
         x_3 & = \frac{1}{2}      \\
         x_4 & = t
     \end{aligned}
-    \quad \text{with } t \in \Reals
+    \quad \text{with } t \in \R
 \]
 
 \textbf{Solution Set:}
@@ -476,7 +497,7 @@ Let \(x_4 = t\) (free variable), then:
     \begin{bmatrix}
         1 \\ -1 \\ 0 \\ 1
     \end{bmatrix}
-    \;\middle|\; t \in \Reals
+    \;\middle|\; t \in \R
     \right\}
 \]
 
@@ -550,7 +571,7 @@ The row operations do not change the solution set.
 
 \textbf{Proof:}
 
-A linear system of equations of the form \(Ax = b\), \(A \in \Field^{m \times n}\) with some solution
+A linear system of equations of the form \(Ax = b\), \(A \in \field^{m \times n}\) with some solution
 \(x\) can be multiplied by some elementary matrix \(C_1, C_2, C_3\) which correspond to a row
 operation \(CAx = Cb\).
 
@@ -575,7 +596,7 @@ the rank of the matrix.
 
 \textbf{Proof:}
 
-If \(C\) is an elementary matrix and \(A \in \Field^{m \times n}\) some matrix. The statement \(rg(CA) = rg(A)\)
+If \(C\) is an elementary matrix and \(A \in \field^{m \times n}\) some matrix. The statement \(rg(CA) = rg(A)\)
 is true because of the invertibility of the elementary matrices and the isomorphism in vector spaces.
 
 Given \(A = (a_1, a_2, \dots, a_n)\). The exchange of two columns preserves \(L := L(a_1, \dots, a_n)\),
@@ -636,12 +657,12 @@ and then \(rg(A^{(\ell)}) \le n - 1\) which is a contradiction to the assumption
 
 \subsection{Alternative Method for finding the Rank of a matrix}
 
-For a matrix \(A \in \Field^{(m \times n)}\). The biggest submatrix of the size \(r \times r\) with a
+For a matrix \(A \in \field^{(m \times n)}\). The biggest submatrix of the size \(r \times r\) with a
 non-zero determinant gives us the \emph{rank} of the matrix. \(rg(A) = r\).
 
 \subsection{Cramer's Rule}
 
-For a square matrix \(A = (a_1, \dots, a_n)\) and \(x,b \in \Field^{n}\) with \(Ax = b\) with \(\det A \ne 0\)
+For a square matrix \(A = (a_1, \dots, a_n)\) and \(x,b \in \field^{n}\) with \(Ax = b\) with \(\det A \ne 0\)
 then
 
 \[
@@ -656,7 +677,7 @@ The solution \(i\) is then
 
 \textbf{Proof:}
 
-Given a matrix \(X_i \in \Field^{n \times n}\) by
+Given a matrix \(X_i \in \field^{n \times n}\) by
 
 \[
     \begin{bmatrix}

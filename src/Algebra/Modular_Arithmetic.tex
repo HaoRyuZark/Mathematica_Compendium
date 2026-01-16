@@ -4,23 +4,23 @@
 We define an equivalence relation 
 
 \[
-    a \cong b \mod n \iff n | (a - b) \land  a,b \in \Integers
+    a \cong b \mod n \iff n | (a - b) \land  a,b \in \Z
 \]
 
 Means that both have the same residual when divided by \(n\). 
 
 \subsection{Residual-class  and Residual-class Rings}
 
-Because we have an equivalence relation we can classify the partitions of our set \(\Integers\) into classes which we will 
+Because we have an equivalence relation we can classify the partitions of our set \(\Z\) into classes which we will 
 call \emph{Residual-classes}. 
 
 \textbf{Example:}
 
 \[
-    [13]_7 + \{m \in \Integers \mid m \cong 13 \mod 7\}
+    [13]_7 + \{m \in \Z \mid m \cong 13 \mod 7\}
 \]
 
-The set of all Residual-classes can be written as \(\Integers / n \Integers\) where \(n\) is the modulo. 
+The set of all Residual-classes can be written as \(\Z / n \Z\) where \(n\) is the modulo. 
 
 
 \subsection{Properties}
@@ -144,7 +144,7 @@ and rounding operations, where precise integer bounds of real numbers are requir
 
 \subsection{Residual Class Rind modulo \(n\)}
 
-Given \(n \in \Naturals\). We define the relation \(\sim_n\) for \(\Integers\).
+Given \(n \in \N\). We define the relation \(\sim_n\) for \(\Z\).
 
 \[
     a \sim b \iff n mid (a - b)
@@ -152,33 +152,33 @@ Given \(n \in \Naturals\). We define the relation \(\sim_n\) for \(\Integers\).
 
 Also, \(a / n\) and \(b / n\) have the same residual 
 
-\subsection{Equivalence Class of \(\Integers\)} 
+\subsection{Equivalence Class of \(\Z\)} 
 
-For \(i, n \in \Integers\) 
+For \(i, n \in \Z\) 
 
 \[
-    \overline{i} := i + n \Integers = \{ i + na \mid a \in \Integers\}
+    \overline{i} := i + n \Z = \{ i + na \mid a \in \Z\}
 \]
 
 and 
 
 \[
-    \Integers_N = \Integers / n \Integers = \{\overline{0}:= n \Integers, \overline{1}:= 1 + n \Integers, \dots, \overline{n - 1} := n - 1 + n \Integers \}    
+    \Z_N = \Z / n \Z = \{\overline{0}:= n \Z, \overline{1}:= 1 + n \Z, \dots, \overline{n - 1} := n - 1 + n \Z \}    
 \]
 
-is the set of all equivalence relationships for \(\Integers\) with respect to the relation 
-\(k \sim l \iff n \mid (k - l)\). We define the addition and multiplication for \(\Integers / n \Integers\) using the 
+is the set of all equivalence relationships for \(\Z\) with respect to the relation 
+\(k \sim l \iff n \mid (k - l)\). We define the addition and multiplication for \(\Z / n \Z\) using the 
 representatives 
 
 \[
-    (a  + n \Integers) + (b + n \Integers) := (a + b) + n\Integers
+    (a  + n \Z) + (b + n \Z) := (a + b) + n\Z
 \]
 
 \[
-    (a  + n \Integers) \cdot (b + n \Integers) := ab + n\Integers
+    (a  + n \Z) \cdot (b + n \Z) := ab + n\Z
 \]
 
-For all \(a, b \in \Integers\). Therefore, 
+For all \(a, b \in \Z\). Therefore, 
 
 \[
     \overline{a} + \overline{b} = \overline{a + b}, \quad \overline{a} \cdot \overline{b} = \overline{ab}

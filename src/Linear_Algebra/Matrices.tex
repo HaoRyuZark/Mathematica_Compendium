@@ -12,7 +12,7 @@ A matrix is a rectangular array of numbers, symbols, or expressions arranged in 
 Formally 
 
 \[
-    A: m \times n \to \Field : (i,j) \mapsto a_{i,j}  
+    A: m \times n \to \field : (i,j) \mapsto a_{i,j}  
 \]
 
 \[
@@ -25,7 +25,7 @@ Formally
     \end{bmatrix}
 \]
 
-The set of all \(m \times n\) matrices with real entries is denoted by \(\Reals^{m \times n}\). Special cases include:
+The set of all \(m \times n\) matrices with real entries is denoted by \(\R^{m \times n}\). Special cases include:
 
 \begin{itemize}
 
@@ -65,7 +65,7 @@ Where \(O\) is the zero matrix.
 Matrix multiplication is defined between matrices where the number of columns in the first
 matrix equals the number of rows in the second matrix.
 
-For \(A \in \Complex^{m \times p}\) and \(B \in \Complex^{p \times n}\), their product \(C = AB \in \Complex^{m \times n}\) is defined as:
+For \(A \in \C^{m \times p}\) and \(B \in \C^{p \times n}\), their product \(C = AB \in \C^{m \times n}\) is defined as:
 
 \[
     c_{ij} = \sum_{k=1}^{p} a_{ik}b_{kj} = a_{i1}b_{1j} + a_{i2}b_{2j} + \cdots + a_{ip}b_{pj}
@@ -85,7 +85,7 @@ Thus, each operation in matrix multiplication is taking the dot product of the \
 of the current row with the column vector of the other matrix.
 
 \[
-    A \circ \vec{v} =
+    A \times \vec{v} =
     \begin{bmatrix}
         \langle a_{1}^T, v\rangle \\
         \langle a_{2}^T, v\rangle \\
@@ -97,7 +97,7 @@ of the current row with the column vector of the other matrix.
 As for the case with multiple columns
 
 \[
-    A \circ B =
+    A \times B =
     \begin{bmatrix}
         \langle a_{1}^T, b_{j} \rangle & \dots  & \langle a_{1}^T, b_{n} \rangle \\
         \vdots                         & \cdots & \vdots                         \\
@@ -125,17 +125,17 @@ Consider the matrices \(A\) and \(B\) given by:
     \begin{bmatrix}
         2 & 3 & 1  \\
         1 & 0 & -2
-    \end{bmatrix} \in \Reals^{2 \times 3}
+    \end{bmatrix} \in \R^{2 \times 3}
     \quad \text{and} \quad
     B =
     \begin{bmatrix}
         1  & 2 \\
         -1 & 3 \\
         4  & 0
-    \end{bmatrix} \in \Reals^{3 \times 2}
+    \end{bmatrix} \in \R^{3 \times 2}
 \]
 
-To compute the product \(C = AB \in \Reals^{2 \times 2}\), we calculate each entry \(c_{ij}\) using the formula:
+To compute the product \(C = AB \in \R^{2 \times 2}\), we calculate each entry \(c_{ij}\) using the formula:
 
 \[
     c_{ij} = \sum_{k=1}^{3} a_{ik} b_{kj}
@@ -181,9 +181,31 @@ Let's verify that matrix multiplication is not generally commutative by attempti
 
 Since \(B\) is a \(3 \times 2\) matrix and \(A\) is a \(2 \times 3\) matrix, the product \(BA\) would be a \(3 \times 3\) matrix. However, this calculation cannot be performed since the number of columns in \(B\) (which is 2) does not equal the number of rows in \(A\) (which is 2). Thus, \(BA\) is undefined, demonstrating that matrix multiplication is not always commutative.
 
+\subsection{Outer Product for Matrix Multiplication}
+
+The \emph{outer product} of two vectors \(a \in \field^m\) and \(b \in \field^n\) is defined as the matrix
+
+\[
+    a \otimes b := a b^T = 
+    \begin{bmatrix}
+        a_1 b_1 & a_1 b_2 & \dots & a_1 b_n \\
+        a_2 b_1 & a_2 b_2 & \dots & a_2 b_n \\
+        \vdots  & \vdots  & \ddots& \vdots  \\
+        a_m b_1 & a_m b_2 & \dots & a_m b_n 
+    \end{bmatrix} \in \field^{m \times n}.
+\]
+
+For the case where \(A \in \field^{n \times m}\) and \(A \in \field^{m \times n} \)
+
+\[
+    A \times B = \sum_{k = 1}^{n} a _{k} \otimes b_{k} = \sum_{k = 1}^{n} a_{k} b_{k}^{T}
+\]
+
+where \(a_k\) is the \(k\)-th column of \(A\) and \(b_k\) is the \(k\)-th row of \(B\).
+
 \subsection{The Transpose of a Matrix}
 
-The transpose of a matrix \(A \in \Reals^{m \times n}\), denoted \(A^T \in \Reals^{n \times m}\), is obtained by interchanging rows and columns:
+The transpose of a matrix \(A \in \R^{m \times n}\), denoted \(A^T \in \R^{n \times m}\), is obtained by interchanging rows and columns:
 
 \[
     {(A^T)}_{ij} = a_{ji} \quad \text{for all } i = 1, 2, \ldots, n \text{ and } j = 1, 2, \ldots, m
@@ -427,7 +449,7 @@ Therefore, the solution to the original system is \(x = 1\), \(y = 4\), and \(z 
 
 \subsection{The Inverse of a Matrix}
 
-For a square matrix \(A \in \Reals^{n \times n}\), the inverse matrix \(A^{-1}\) (if it exists) satisfies:
+For a square matrix \(A \in \R^{n \times n}\), the inverse matrix \(A^{-1}\) (if it exists) satisfies:
 
 \[
     A A^{-1} = A^{-1} A = I_n
@@ -670,13 +692,13 @@ To find the rank of a matrix:
 \subsubsection{Properties of Rank}
 
 \begin{align*}
-     & \rank(A) \leq \min(m,n) \text{ for } A \in \Reals^{m \times n} \\
+     & \rank(A) \leq \min(m,n) \text{ for } A \in \R^{m \times n} \\
      & \rank(A^T) = \rank(A)                                          \\
      & \rank(AB) \leq \min(\rank(A), \rank(B))                        \\
      & \rank(A+B) \leq \rank(A) + \rank(B)
 \end{align*}
 
-For a square matrix \(A \in \Reals^{n \times n}\), the following are equivalent:
+For a square matrix \(A \in \R^{n \times n}\), the following are equivalent:
 
 \begin{itemize}
 
@@ -699,7 +721,7 @@ For a square matrix \(A \in \Reals^{n \times n}\), the following are equivalent:
 The column space of \(A\), denoted \(\text{Col}(A)\), is the span of the columns of \(A\):
 
 \[
-    \text{Col}(A) = \{\vec{y} \in \Reals^m : \vec{y} = A\vec{x} \text{ for some } \vec{x} \in \Reals^n\}
+    \text{Col}(A) = \{\vec{y} \in \R^m : \vec{y} = A\vec{x} \text{ for some } \vec{x} \in \R^n\}
 \]
 
 This is also called the range or image of the linear transformation represented by \(A\). The dimension of the column space equals the rank of \(A\).
@@ -721,7 +743,7 @@ The null space (or kernel) of \(A\), denoted \(\text{Null}(A)\) or \(\text{Ker}(
 is the set of all vectors that \(A\) maps to zero:
 
 \[
-    \text{Null}(A) = \{\vec{x} \in \Reals^n : A\vec{x} = \vec{0}\}
+    \text{Null}(A) = \{\vec{x} \in \R^n : A\vec{x} = \vec{0}\}
 \]
 
 The dimension of the null space is called the nullity of \(A\), denoted \(\text{nullity}(A)\).
@@ -731,7 +753,7 @@ The dimension of the null space is called the nullity of \(A\), denoted \(\text{
 The left null space of \(A\) is the null space of \(A^T\):
 
 \[
-    \text{Null}(A^T) = \{\vec{y} \in \Reals^m : A^T\vec{y} = \vec{0}\} = \{\vec{y} \in \Reals^m : \vec{y}^T A = \vec{0}^T\}
+    \text{Null}(A^T) = \{\vec{y} \in \R^m : A^T\vec{y} = \vec{0}\} = \{\vec{y} \in \R^m : \vec{y}^T A = \vec{0}^T\}
 \]
 
 The Rank-Nullity Theorem connects these spaces:
@@ -766,8 +788,8 @@ where \(\vec{a}_i\) are images of the basis vector of \(V\) as columns of \(A\) 
 
 \subsection{Matrix Representation of Linear Maps on Basis vectors}
 
-Let \(V\) and \(W\) be two \(\Field\)-vector spaces, \(\beta = \{v_1, \dots, v_n\}\) a basis of \(V\) and \( \gamma = \{w_1, \dots, w_m\}\) a basis of \(W\), and
-let \(f : V \to W\) be linear. Then there exists a unique matrix \(A = (a_{ij}) \in \Field^{m \times n}\) with
+Let \(V\) and \(W\) be two \(\field\)-vector spaces, \(\beta = \{v_1, \dots, v_n\}\) a basis of \(V\) and \( \gamma = \{w_1, \dots, w_m\}\) a basis of \(W\), and
+let \(f : V \to W\) be linear. Then there exists a unique matrix \(A = (a_{ij}) \in \field^{m \times n}\) with
 
 \[
     f(v_j) = \sum_{i=1}^{m} a_{ij}w_i \quad \forall j = 1, \dots, n
@@ -775,7 +797,7 @@ let \(f : V \to W\) be linear. Then there exists a unique matrix \(A = (a_{ij}) 
 
 \textbf{Example:}
 
-Let \( V = \Reals^2 \), \( W = \Reals^3 \), and define a linear map \( f : V \to W \) by:
+Let \( V = \R^2 \), \( W = \R^3 \), and define a linear map \( f : V \to W \) by:
 
 \[
     f\left( \begin{bmatrix} x \\ y \end{bmatrix} \right) =
@@ -940,7 +962,7 @@ We obtain
     \end{bmatrix} .
 \]
 
-But now it must be shown that indeed \(f(x) = Ax \quad \forall x \in \Reals^3\) holds, by,
+But now it must be shown that indeed \(f(x) = Ax \quad \forall x \in \R^3\) holds, by,
 for example, calculating both \(Ax\) and \(f(x)\) for a
 general \(x\) and showing equality: Here, with \(x = {(x_1, x_2, x_3)}^T\)
 
@@ -987,7 +1009,7 @@ thus, with \(\lambda = \frac{1}{3} \lambda'\):
         2  \\
         3
     \end{bmatrix}
-    \, \middle| \, \lambda \in \Reals
+    \, \middle| \, \lambda \in \R
     \right\}
 \]
 
@@ -1013,7 +1035,7 @@ not a multiple of the first. It follows therefore,
         -1 \\
         -1
     \end{bmatrix}
-    , \quad \lambda, \mu \in \Reals
+    , \quad \lambda, \mu \in \R
     \right\}
 \]
 
@@ -1032,8 +1054,8 @@ A matrix is \emph{Over Triangular} if all elements under or above the main diago
 \subsection{Complex Matrices}
 
 This kind of matrices can have complex numbers in some or all of its entries. Something
-special about them is they can be written as the sum of a real matrix \(A \in \Reals^{n \times m}\) and
-a matrix \(B \in \Complex^{n \times m}\) which is made of the imaginary part of the entries of the original
+special about them is they can be written as the sum of a real matrix \(A \in \R^{n \times m}\) and
+a matrix \(B \in \C^{n \times m}\) which is made of the imaginary part of the entries of the original
 matrix.
 
 Complex matrices also have complex conjugates.

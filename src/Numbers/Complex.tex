@@ -7,8 +7,8 @@ A complex number is a number of the form:
 	z = a + bi,
 \]
 
-where \( a, b \in \Reals \), and \(i\) is the imaginary unit defined by \( i^2 = -1 \). 
-The set of all complex numbers is denoted by \( \Complex \).
+where \( a, b \in \R \), and \(i\) is the imaginary unit defined by \( i^2 = -1 \). 
+The set of all complex numbers is denoted by \( \C \).
 
 \subsection{The Complex Plane}
 
@@ -129,7 +129,7 @@ Let \( z = r(\cos \theta + i \sin \theta) = re^{i\theta} \) be a complex number 
 
 \subsubsection{Exponentiation}
 
-To raise \(z\) to the power \( n \in \Naturals \), we use De Moivre’s Theorem:
+To raise \(z\) to the power \( n \in \N \), we use De Moivre’s Theorem:
 
 \[
 	z^n = r^n (\cos(n\theta) + i \sin(n\theta)) = r^n e^{in\theta}
@@ -187,11 +187,11 @@ radius \( 2^{1/4} \) in the complex plane.
 
 \subsection{Solving Equations with Complex Numbers}
 
-Solving equations in \( \Complex \) can involve various forms. Here are the most common cases:
+Solving equations in \( \C \) can involve various forms. Here are the most common cases:
 
 \subsubsection{Linear Equations:}
 
-Solve for \(z\) in \( az + b = 0 \), where \( a, b \in \Complex \), \( a \neq 0 \):
+Solve for \(z\) in \( az + b = 0 \), where \( a, b \in \C \), \( a \neq 0 \):
 	
 \[
 	z = -\frac{b}{a}
@@ -281,10 +281,10 @@ In this case we let \( z = x + iy \) and \( \hat{z} = x - iy \).
 
 The logarithm of a complex number is multivalued due to the periodic nature of the complex exponential.
 
-Let \( z = re^{i\theta} \) with \( r > 0 \), \( \theta \in \Reals \). Then:
+Let \( z = re^{i\theta} \) with \( r > 0 \), \( \theta \in \R \). Then:
 
 \[
-	\log z = \ln r + i(\theta + 2\pi k), \quad k \in \Integers
+	\log z = \ln r + i(\theta + 2\pi k), \quad k \in \Z
 \]
 
 Here:
@@ -296,7 +296,7 @@ Here:
 	\item \( \theta \) is the principal argument \( \arg(z) \in (-\pi, \pi] \).
 	
 	\item The term \( 2\pi k \) accounts for the infinitely many branches of the logarithm in 
-		  \( \Complex \).
+		  \( \C \).
 
 		\end{itemize}
 
@@ -313,7 +313,7 @@ The principal value of the complex logarithm is often written:
 Let \( z = -1 \). Then:
 
 \[
-	|z| = 1, \quad \arg(z) = \pi, \quad \to \log(-1) = i(\pi + 2\pi k), \quad k \in \Integers
+	|z| = 1, \quad \arg(z) = \pi, \quad \to \log(-1) = i(\pi + 2\pi k), \quad k \in \Z
 \]
 
 \[

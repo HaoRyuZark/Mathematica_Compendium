@@ -3,33 +3,33 @@
 
 \subsection{Open Sets}
 
-Let \( \| \cdot \| \) be a norm on \( \Reals^n \). The \( \varepsilon \)-neighborhood of a 
-point \( \vec{x}_0 \in \Reals^n \) is defined as:
+Let \( \| \cdot \| \) be a norm on \( \R^n \). The \( \varepsilon \)-neighborhood of a 
+point \( \vec{x}_0 \in \R^n \) is defined as:
 
 \[
-    U_\varepsilon(\vec{x}_0) := \left\{ \vec{x} \in \Reals^n \mid \| \vec{x} - \vec{x}_0 \| 
+    U_\varepsilon(\vec{x}_0) := \left\{ \vec{x} \in \R^n \mid \| \vec{x} - \vec{x}_0 \| 
     < \varepsilon \right\}
 \]
 
-A point \( \vec{x}_0 \in D \subseteq \Reals^n \) is called an \emph{interior point} of \( D \) 
+A point \( \vec{x}_0 \in D \subseteq \R^n \) is called an \emph{interior point} of \( D \) 
 if there exists \( \varepsilon > 0 \) such that \( U_\varepsilon(\vec{x}_0) \subseteq D \).  
 A set \( D \) is called \emph{open} if all its points are interior points.
 
 Although \( \varepsilon \)-neighborhoods depend on the chosen norm, due to the equivalence of norms 
-in \( \Reals^n \), openness is norm-independent.
+in \( \R^n \), openness is norm-independent.
 
 \subsection{Closed Sets}
 
-Let \( D \subseteq \Reals^n \) and \( \| \cdot \| \) a norm. A point \( \vec{x}_0 \) is called 
+Let \( D \subseteq \R^n \) and \( \| \cdot \| \) a norm. A point \( \vec{x}_0 \) is called 
 an \emph{accumulation point} (or limit point) of \( D \) if for every \( \varepsilon > 0 \), the 
 neighborhood \( U_\varepsilon(\vec{x}_0) \) contains a point \( \vec{x} \ne \vec{x}_0 \) such that 
 \( \vec{x} \in D \).
 
-A set \( D \subseteq \Reals^n \) is called \emph{closed} if it contains all its accumulation points.
+A set \( D \subseteq \R^n \) is called \emph{closed} if it contains all its accumulation points.
 
 \subsection{Boundedness and Order}
 
-A set \( D \subseteq \Reals^n \) is called \emph{bounded} if there exists a real number \( M > 0 \) 
+A set \( D \subseteq \R^n \) is called \emph{bounded} if there exists a real number \( M > 0 \) 
 such that:
 
 \[
@@ -40,9 +40,9 @@ If no such bound \( M \) exists, the set is called \emph{unbounded}.
 
 \subsection{Sequences}
 
-Let \( (\vec{x}_n) \subseteq \Reals^n \) be a sequence of vectors. We say that 
-\( \vec{x}_n \to \vec{x} \in \Reals^n \) as \( n \to \infty \) if for every \( \varepsilon > 0 \), 
-there exists \( n_0 \in \Naturals \) such that:
+Let \( (\vec{x}_n) \subseteq \R^n \) be a sequence of vectors. We say that 
+\( \vec{x}_n \to \vec{x} \in \R^n \) as \( n \to \infty \) if for every \( \varepsilon > 0 \), 
+there exists \( n_0 \in \N \) such that:
     
 \[
     \|\vec{x}_n - \vec{x}\| < \varepsilon \quad \text{for all } n > n_0
@@ -51,7 +51,7 @@ there exists \( n_0 \in \Naturals \) such that:
 The sequence \( (\vec{x}_n) \) is called \emph{convergent} if such \( \vec{x} \) exists.
 
 The sequence \( (\vec{x}_n) \) is called a \emph{Cauchy sequence} if for every \( \varepsilon > 0 \), 
-there exists \( n_0 \in \Naturals \) such that:
+there exists \( n_0 \in \N \) such that:
 
 \[
     \|\vec{x}_n - \vec{x}_m\| < \varepsilon \quad \text{for all } n, m > n_0
@@ -70,8 +70,8 @@ there exists \( n_0 \in \Naturals \) such that:
 
 From linear algebra it is known what a \emph{Norm} is and its properties:
 
-Let \( V \) be a vector space over \( \Reals \) or \( \Complex \). A function 
-\( \|\cdot\|: V \to \Reals \) is called a norm if for all \( x, y \in V \) and all scalars 
+Let \( V \) be a vector space over \( \R \) or \( \C \). A function 
+\( \|\cdot\|: V \to \R \) is called a norm if for all \( x, y \in V \) and all scalars 
 \( \alpha \), the following properties hold:
 
 \begin{enumerate}
@@ -84,7 +84,7 @@ Let \( V \) be a vector space over \( \Reals \) or \( \Complex \). A function
 
 \end{enumerate}
 
-Commonly used norms in \( \Reals^n \) (or \( \Complex^n \)) include:
+Commonly used norms in \( \R^n \) (or \( \C^n \)) include:
 
 \begin{itemize}
     
@@ -170,7 +170,7 @@ induce the same topology and convergence behavior in finite-dimensional spaces.
 
 \subsubsection{Equivalence in the Reals}
 
-In the \(\Reals^n\) all norms are equivalent and 
+In the \(\R^n\) all norms are equivalent and 
 
 \begin{align*}
      \|\vec{x}\|_\infty &\le \|\vec{x}\|_2 \le \sqrt{n}\|\vec{x}\|_\infty \\
@@ -180,17 +180,17 @@ In the \(\Reals^n\) all norms are equivalent and
 
 \subsection{Accumulation Point}
 
-A vector \( \vec{x}_0 \in \Reals^n \) is called an \emph{accumulation point} of a set 
-\( D \subseteq \Reals^n \) if for every \( \varepsilon > 0 \), the neighborhood 
+A vector \( \vec{x}_0 \in \R^n \) is called an \emph{accumulation point} of a set 
+\( D \subseteq \R^n \) if for every \( \varepsilon > 0 \), the neighborhood 
 \( U_\varepsilon(\vec{x}_0) \) contains a point \( \vec{x} \in D \setminus \{\vec{x}_0\} \).
 
 In the context of sequences, an accumulation point of a sequence \( (\vec{x}_n) \) is a point 
-\( \vec{x} \in \Reals^n \) for which there exists a subsequence \( (\vec{x}_{n_k}) \) such that 
+\( \vec{x} \in \R^n \) for which there exists a subsequence \( (\vec{x}_{n_k}) \) such that 
 \( \vec{x}_{n_k} \to \vec{x} \).
 
 \subsection{Bolzano–Weierstraß Theorem}
 
-Every infinite, bounded sequence in \( \Reals^n \) has at least one accumulation point.
+Every infinite, bounded sequence in \( \R^n \) has at least one accumulation point.
 
 \begin{itemize}
     
@@ -198,13 +198,13 @@ Every infinite, bounded sequence in \( \Reals^n \) has at least one accumulation
 
     \item A bounded sequence is \emph{convergent} if and only if it has exactly one accumulation point.
 
-    \item Every Cauchy sequence in \( \Reals^n \) is convergent (since \( \Reals^n \) is complete).
+    \item Every Cauchy sequence in \( \R^n \) is convergent (since \( \R^n \) is complete).
 
 \end{itemize}
 
 \subsection{Limits}
 
-A function \( f : U \subseteq \Reals^n \to \Reals \) has the limit \( g \in \Reals \) at a 
+A function \( f : U \subseteq \R^n \to \R \) has the limit \( g \in \R \) at a 
 point \( \vec{X}_0 \in U \) if:
 
 \[
@@ -235,10 +235,10 @@ The limit towards infinity is then
 
 \subsection{Partial Functions}
 
-For a function \( f: U \subseteq \Reals^n \to \Reals \), a \emph{partial function} is a 
+For a function \( f: U \subseteq \R^n \to \R \), a \emph{partial function} is a 
 restriction of \(f\) to a variable by fixing all others.
 
-\textbf{Examples in \( \Reals^3 \):}
+\textbf{Examples in \( \R^3 \):}
 
 \[
     f(x_1, x_2, x_3) = 5x_1 + x_2 x_3
@@ -259,7 +259,7 @@ allowing analysis along coordinate axes.
 
 \subsection{Continuity}
 
-Let \( f : U \subseteq \Reals^n \to \Reals \), and \( \vec{X}_0 \in U \). The function 
+Let \( f : U \subseteq \R^n \to \R \), and \( \vec{X}_0 \in U \). The function 
 \(f\) is said to be \emph{continuous at \( \vec{X}_0 \)} if:
 
 \[
@@ -403,7 +403,7 @@ Now take the limit
 \subsection{Uniform and Lipschitz Continuity}
 
 \subsubsection{Uniform Continuity:}  
-A function \( f : D \subseteq \Reals^n \to \Reals \) is called \emph{uniformly continuous} on 
+A function \( f : D \subseteq \R^n \to \R \) is called \emph{uniformly continuous} on 
 \( D \) if:
 
 \[
@@ -417,7 +417,7 @@ If \(f\) is continuous on a compact set (closed and bounded), then \(f\) is unif
 
 \subsubsection{Lipschitz Continuity:}  
 
-A function \( f : D \subseteq \Reals^n \to \Reals \) is \emph{Lipschitz continuous} if there 
+A function \( f : D \subseteq \R^n \to \R \) is \emph{Lipschitz continuous} if there 
 exists a constant \( L > 0 \) such that:
 
 \[
@@ -428,7 +428,7 @@ If \( L < 1 \), then \(f\) is called a \emph{contraction}.
 
 \subsection{Epsilon–Delta Criterion}
 
-Let \( f : D \subseteq \Reals^n \to \Reals \), and \( \vec{X}_0 \in D \). The function 
+Let \( f : D \subseteq \R^n \to \R \), and \( \vec{X}_0 \in D \). The function 
 \(f\) is continuous at \( \vec{X}_0 \) if:
 
 \[
@@ -441,8 +441,8 @@ settings using norms.
 
 \subsection{Fixpoints}
   
-A point \( \vec{X}_0 \in D \subseteq \Reals^n \) is called a \emph{fix-point} of a function 
-\( \vec{\varphi} : D \to \Reals^n \) if:
+A point \( \vec{X}_0 \in D \subseteq \R^n \) is called a \emph{fix-point} of a function 
+\( \vec{\varphi} : D \to \R^n \) if:
 
 \[
     \vec{\varphi}(\vec{X}_0) = \vec{X}_0
@@ -452,7 +452,7 @@ That is, applying the function does not change the point — it maps to itself.
 
 \subsection{Banach Fixed Point Theorem}
 
-Let \( \vec{\varphi} : D \subseteq \Reals^n \to \Reals^n \) be a \emph{contraction mapping}, 
+Let \( \vec{\varphi} : D \subseteq \R^n \to \R^n \) be a \emph{contraction mapping}, 
 i.e., there exists a constant \( L < 1 \) such that:
 
 \[
@@ -473,7 +473,7 @@ This result is fundamental in nonlinear analysis and iterative numerical methods
 
 \subsection{Vector fields}
 
-A \emph{vector field} is a function \(\vec{f}: \Reals^n \to \Reals^n\). Also, just a 
+A \emph{vector field} is a function \(\vec{f}: \R^n \to \R^n\). Also, just a 
 function with vectors as inputs and outputs.
 
 \[

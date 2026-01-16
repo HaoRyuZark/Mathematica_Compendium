@@ -84,7 +84,7 @@ A sequence \((a_n)\) \emph{converges} to a limit \(L\) if for every \(\varepsilo
 integer \(n_0\) such that for all \(n \ge n_0\):
 
 \[
-    \forall \varepsilon > 0 \exists N \in \Naturals: \forall n \ge N |a_n - L| < \varepsilon
+    \forall \varepsilon > 0 \exists N \in \N: \forall n \ge N |a_n - L| < \varepsilon
 \]
 
 In this case, we write:
@@ -104,7 +104,7 @@ For a bounded sequence \(\{c_n\}_{n = 1}^{\infty}\) then the following applies:
 
     \item \(\{a_n\}_{n = 1}^{\infty}\) is bounded 
     
-    \item \(\{\alpha a_n + \beta b_n\}_{n = 1}^{\infty}, \alpha, \beta \in \Reals\) converges towards \(\alpha a + \beta b\)
+    \item \(\{\alpha a_n + \beta b_n\}_{n = 1}^{\infty}, \alpha, \beta \in \R\) converges towards \(\alpha a + \beta b\)
 
     \item \(\{|a_n|\}_{n = 1}^{\infty}\) converges towards \(|a|\) and \(\{\sqrt{a_n}\}_{n = 1}^{\infty}\) towards \(\sqrt{|a|}\)
 
@@ -112,7 +112,7 @@ For a bounded sequence \(\{c_n\}_{n = 1}^{\infty}\) then the following applies:
 
     \item \(\{a_n \cdot c_n\}_{n = 1}^{\infty}\) is bounded 
     
-    \item If \(a_n \ne 0, \forall n \in \Naturals\) and \(a \ne 0\) then \(\lim_{n \to \infty} \frac{1}{a_n} = \frac{1}{a}\)
+    \item If \(a_n \ne 0, \forall n \in \N\) and \(a \ne 0\) then \(\lim_{n \to \infty} \frac{1}{a_n} = \frac{1}{a}\)
 
 \end{itemize}
 
@@ -127,13 +127,13 @@ Suppose that \(a_n\) has two different limits \(a\) and \(b\). Let \( \varepsilo
 Because we have distinct limit we write 
 
 \[
-    \forall \varepsilon > 0 \exists i \in \Naturals: \forall i \ge N_1 |a_i - a| < \frac{|a - b|}{2}
+    \forall \varepsilon > 0 \exists i \in \N: \forall i \ge N_1 |a_i - a| < \frac{|a - b|}{2}
 \]
 
 and 
 
 \[
-    \forall \varepsilon > 0 \exists j \in \Naturals: \forall j \ge N_2 |a_j - b| < \frac{|a - b|}{2}
+    \forall \varepsilon > 0 \exists j \in \N: \forall j \ge N_2 |a_j - b| < \frac{|a - b|}{2}
 \]
 
 Let \(M = \max{N_1, N_2}\). Then 
@@ -195,10 +195,10 @@ A sequence \((a_n)\) is a \emph{Cauchy sequence} if for every \(\varepsilon > 0\
 integer \(n_0\) such that for all \(n, m \ge n_0\):
 
 \[
-    \forall \varepsilon > 0 \exists n,m,N \in \Naturals: |a_n - a_m| < \varepsilon\ \text{with } n, m \ge N
+    \forall \varepsilon > 0 \exists n,m,N \in \N: |a_n - a_m| < \varepsilon\ \text{with } n, m \ge N
 \]
 
-Every convergent sequence is a Cauchy sequence. In complete metric spaces (like \(\Reals\)), the 
+Every convergent sequence is a Cauchy sequence. In complete metric spaces (like \(\R\)), the 
 converse also holds.
 
 \textbf{Example: Convergence Exercise}
@@ -224,7 +224,7 @@ Given a sequence \(a_n\) then \(a_n\) is convergent if and only if it is a Cauch
 \(\rightarrow :\) \(a_n\) is convergent therefore, the following holds 
 
 \[
-    \forall \varepsilon > 0 \exists N \in \Naturals: \forall n \ge N |a_n - L| < \varepsilon
+    \forall \varepsilon > 0 \exists N \in \N: \forall n \ge N |a_n - L| < \varepsilon
 \]
 
 Thus, we can use the triangle inequality for our definition of the Cauchy sequence and the following 
@@ -246,7 +246,7 @@ This is allowed we know that \(a_n\) converges. We choose the max of each of the
 \(\leftarrow :\) \(a_n\) is a Cauchy sequence, thus 
 
 \[
-    \forall \varepsilon > 0 \exists n,m,N \in \Naturals: |a_n - a_m| < \varepsilon \text{ with } n, m \ge N
+    \forall \varepsilon > 0 \exists n,m,N \in \N: |a_n - a_m| < \varepsilon \text{ with } n, m \ge N
 \]
 
 \(a_n\) is bounded because else \( |a_n - a_m| > \varepsilon \) for \(n,m \ge N_0\). Therefore, by Bolzano-Weierstraß Theorem 
@@ -263,13 +263,13 @@ Given a Cauchy sequence \(a_n\) then it converges
 We know that \(a_n\) is bounded and by the Bolzano Weierstraß Therorem it has convergent subsequence. 
 
 \[
-    \forall \varepsilon > 0 \exists n,m,N_1 \in \Naturals: |a_n - a_m| < \frac{\varepsilon}{2} \text{with } n, m \ge N_1
+    \forall \varepsilon > 0 \exists n,m,N_1 \in \N: |a_n - a_m| < \frac{\varepsilon}{2} \text{with } n, m \ge N_1
 \]
 
 And  
 
 \[
-    \forall \varepsilon > 0 \exists n,m,N_2 \in \Naturals: |a_{n_k} - a| < \frac{\varepsilon}{2} \text{with } n \ge N_2
+    \forall \varepsilon > 0 \exists n,m,N_2 \in \N: |a_{n_k} - a| < \frac{\varepsilon}{2} \text{with } n \ge N_2
 \]
 
 
@@ -285,17 +285,17 @@ Thus, it converges.
 
 \subsection{Definition of \texorpdfstring{\(\varepsilon\)}{ε}-Neighborhood}
 
-The \emph{\(\varepsilon\)-neighborhood} of a point \(a \in \Reals\) is the set:
+The \emph{\(\varepsilon\)-neighborhood} of a point \(a \in \R\) is the set:
 
 \[
-    B_\varepsilon(a) = \{x \in \Reals \mid |x - a| < \varepsilon\}
+    B_\varepsilon(a) = \{x \in \R \mid |x - a| < \varepsilon\}
 \]
 
 This is the open interval \((a - \varepsilon, a + \varepsilon)\).
 
 \subsection{Supremum, Infimum, Maximum and Minimum}
 
-The \emph{supremum} \(\text{sup}\) of a set \(A \subseteq \Reals\) is the 
+The \emph{supremum} \(\text{sup}\) of a set \(A \subseteq \R\) is the 
 least upper bound: the smallest real number \(s\) such that \(a \le s\) for all \(a \in A\).
 
 \[
@@ -333,7 +333,7 @@ For \((0, 5)\) and \((0,5]\), the supremum is 5.
 
 \textbf{Example III:}
 
-For the real numbers we can define \(\sqrt{2}\) as the supremum of the set \(\{x \in \Reals \mid x^2 < 2\}\).
+For the real numbers we can define \(\sqrt{2}\) as the supremum of the set \(\{x \in \R \mid x^2 < 2\}\).
 
 The \emph{infimum} \(\text{inf}\) of a set \(A\) is the greatest lower bound: 
 the largest number \(t\) such that \(a \ge t\) for all \(a \in A\). 
@@ -348,7 +348,7 @@ the largest number \(t\) such that \(a \ge t\) for all \(a \in A\).
 
 \textbf{Example IV:}
 
-Prove that \(\sup \{\frac{n}{n + 1 \mid n \in \Naturals}\} = 1\).  
+Prove that \(\sup \{\frac{n}{n + 1 \mid n \in \N}\} = 1\).  
 
 To prove we need to show that 1 is an upper bound and then that \(\forall \varepsilon > 0\) \(a - \varepsilon\) is not 
 an upper bound.
@@ -360,7 +360,7 @@ an upper bound.
 
 Thus, 1 is in fact an upper bound. 
 
-For the second part, let \(\varepsilon > 0\), and we want to prove that \(\exists n \in \Naturals : \frac{n}{n + 1} > 1 - \varepsilon\)
+For the second part, let \(\varepsilon > 0\), and we want to prove that \(\exists n \in \N : \frac{n}{n + 1} > 1 - \varepsilon\)
 
 \begin{align*}
     \frac{n}{n + 1} > 1 - \varepsilon \\ 
@@ -379,15 +379,15 @@ Now we can reverse the steps in the inequality, and we will get our original ine
 
 \subsubsection{Alternative Characterization of the Supremum}
 
-Given a non-empty set \(A \subseteq \Reals\). The \(s \in Reals\) is only a supremum of \(A\) if 
+Given a non-empty set \(A \subseteq \R\). The \(s \in Reals\) is only a supremum of \(A\) if 
 
 \[
-    (\nexists s \in A, s < x) \land (s' \in \Reals, s' < s \implies !\exists x \in A, x > s')
+    (\nexists s \in A, s < x) \land (s' \in \R, s' < s \implies !\exists x \in A, x > s')
 \]
 
 \subsection{Properties of Suprema and Infima}
 
-For non-empty sets \(A, B \subseteq \Reals^+\)
+For non-empty sets \(A, B \subseteq \R^+\)
 
 \begin{itemize}
 
@@ -485,7 +485,7 @@ The sequence \(a_n\) is bounded and monotone. Therefore, there exist both infimu
     a \ge a_i \forall a_i \in a_n \implies a - \varepsilon < a_i
 \]
 
-Suppose \(a\) is the limit then for all \(i > n_0, n_0 \in \Naturals\)
+Suppose \(a\) is the limit then for all \(i > n_0, n_0 \in \N\)
 
 \begin{align*}
     |a_i - a| &< \varepsilon \\  
@@ -513,7 +513,7 @@ We call it \emph{strictly monotone increasing or decreasing} if \(f(x) < f(y)\) 
 
 \subsection{Monotonicity by Difference and Quotient}
 
-A is considered \emph{monotone} if either for all \(n \in \Naturals\) the following holds 
+A is considered \emph{monotone} if either for all \(n \in \N\) the following holds 
 
 \[
     a_{n + 1} \ge a_{n} \text{ or } a_{n + 1} \le a_n
@@ -546,7 +546,7 @@ A sequence \emph{diverges} if it does not converge. That is, there is no real nu
 If it diverges towards some infinity then 
 
 \[
-    \forall M \in \Reals \exists n,N \in \Naturals : |a_n| \ge |M| \forall n \ge N
+    \forall M \in \R \exists n,N \in \N : |a_n| \ge |M| \forall n \ge N
 \]
 
 \begin{itemize}
@@ -587,14 +587,14 @@ which converges towards \(x_0\).
 
 \textbf{Proof:}
 
-Suppose that \(x_0\) is an accumulation point then \((x_0 - 1, x_0 + 1)\) contains a sequence member \(x_{n_0}, n_0 \in \Naturals\).
+Suppose that \(x_0\) is an accumulation point then \((x_0 - 1, x_0 + 1)\) contains a sequence member \(x_{n_0}, n_0 \in \N\).
 Let  
 
 \[
     n_1 := n_0
 \]
 
-For each \(k \in \Naturals\) exists some \(N(k) \in \Naturals\) such that \(N(k) > N(k - 1)\)
+For each \(k \in \N\) exists some \(N(k) \in \N\) such that \(N(k) > N(k - 1)\)
 and 
 
 \[
@@ -615,7 +615,7 @@ For each subsequence \(\{x_{n_k}\}_{k = 1}^{\infty}\) the following holds
 
 Therefore, the subsequence converges also towards \(x_0\).
 
-Other way of the proof, if the sequence \(\{x_{n_k}\}_{k = 1}^{\infty}\) converges towards \(x_0\) then there exists a \(\delta > 0\) and \(K \in \Naturals\) 
+Other way of the proof, if the sequence \(\{x_{n_k}\}_{k = 1}^{\infty}\) converges towards \(x_0\) then there exists a \(\delta > 0\) and \(K \in \N\) 
 such that 
 
 \[
@@ -632,7 +632,7 @@ Every sequence \(a_n\) has monotone subsequence.
 
 \textbf{Proof:}
 
-Let \(a_n\) be a sequence and \(a_m\) be a peak if \(\forall a_i \in a_n, i > m, m, i \in \Naturals\) the following holds \(a_i \le a_m\). 
+Let \(a_n\) be a sequence and \(a_m\) be a peak if \(\forall a_i \in a_n, i > m, m, i \in \N\) the following holds \(a_i \le a_m\). 
 
 Now consider the case that \(a_n\) has infinitely many peaks. Let \(a_{n_k}\) be the sequence of the \(k\)-th peak. This gives us that 
 each peak is greater or equal than the other, therefore we have monotone growing subsequence. If we define the peaks with \(a_i \ge a_m\) we also would 
@@ -653,13 +653,13 @@ converges to \(a\).
 Let \(a_{n_k}\) be a subsequence of \(a_n\). Let \(\varepsilon > 0\). 
 
 \[
-    \exists n_0 \in \Naturals, |a_n - a| < \varepsilon \forall n > n_0
+    \exists n_0 \in \N, |a_n - a| < \varepsilon \forall n > n_0
 \]
 
 We want to show 
 
 \[
-    \exists n_1 \in \Naturals, |a_{n_k} - a| < \varepsilon \forall k > n_1
+    \exists n_1 \in \N, |a_{n_k} - a| < \varepsilon \forall k > n_1
 \]
 
 with \(n_k \ge k\). 
@@ -703,7 +703,7 @@ This is a contradiction. Thus, such a limit can not exist
 
 \subsection{Bolzano-Weierstraß Theorem}
 
-Every bounded sequence in \(\Reals\) has at least one convergent subsequence.
+Every bounded sequence in \(\R\) has at least one convergent subsequence.
 
 Equivalently, every bounded sequence of real numbers has at least one accumulation point.
 
@@ -776,7 +776,7 @@ Point-wise convergence does not preserve properties like continuity or different
 A sequence of functions \((f_n)\) converges \emph{uniformly} to \(f\) on \(A\) if:
 
 \[
-    \forall \varepsilon > 0, \exists n_0 \in \Naturals \text{ such that } \forall n \ge n_0, \forall x \in A, \quad |f_n(x) - f(x)| < \varepsilon
+    \forall \varepsilon > 0, \exists n_0 \in \N \text{ such that } \forall n \ge n_0, \forall x \in A, \quad |f_n(x) - f(x)| < \varepsilon
 \]
 
 \emph{Key Property:} Uniform convergence preserves continuity, integration, and differentiation under 
@@ -811,7 +811,7 @@ This is useful in proving the existence of limits, roots, and fixed points.
 
 The \emph{Weierstraß Approximation Theorem} states:
 
-Every continuous function \(f: [a, b] \rightarrow \Reals\) can be uniformly approximated by a 
+Every continuous function \(f: [a, b] \rightarrow \R\) can be uniformly approximated by a 
 polynomial \(P(x)\), i.e., for every \(\varepsilon > 0\) there exists a polynomial \(P(x)\) such that:
 
 \[
@@ -835,7 +835,7 @@ More formally, a sequence \(\{a_n\}_{n = 1}^{\infty}\) of real numbers is called
 such that 
 
 \[
-    | a_{n_0} | < \varepsilon, \forall n \ge n_0 \in \Naturals
+    | a_{n_0} | < \varepsilon, \forall n \ge n_0 \in \N
 \]
 
 Note that \(\{|a_n|\}_{n = 1}^{\infty}\) is only a zero sequence if \(\{a_n\}_{n = 1}^{\infty}\) is a zero sequence.
@@ -847,7 +847,7 @@ Is \(a_n = \frac{1}{n}\) a zero sequence?
 Choose \(n_0 = \frac{1}{\varepsilon}\) then 
 
 \[
-    n \ge \frac{1}{\varepsilon} \implies \frac{1}{n} \le \varepsilon, \forall n \in \Naturals, n \ge n_0
+    n \ge \frac{1}{\varepsilon} \implies \frac{1}{n} \le \varepsilon, \forall n \in \N, n \ge n_0
 \]
 
 Thus, it is a zero sequence 
@@ -860,7 +860,7 @@ Given \(\{a_n\}_{n = 1}^{\infty}\) and \(\{b_n\}_{n = 1}^{\infty}\) with
     |b_n| \le |a_n|
 \]
 
-For all \(n \in \Naturals\) with \(n \ge n_0 \in \Naturals\). If  \(a_n \to 0, n \to \infty\) then  
+For all \(n \in \N\) with \(n \ge n_0 \in \N\). If  \(a_n \to 0, n \to \infty\) then  
 \(b_n \to 0, n \to \infty\).
 
 We also call \(a_n\) a majorant of \(b_n\).
@@ -873,7 +873,7 @@ Given the zero sequences \(\{a_n\}_{n = 1}^{\infty}, \{b_n\}_{n = 1}^{\infty}\) 
 
     \item \(\{a_n\}_{n = 1}^{\infty}\) is also bounded.
 
-    \item \(\{\alpha a_n + \beta b_n\}_{n = 1}^{\infty}, \alpha, \beta \in \Reals\) is also a zero sequence.
+    \item \(\{\alpha a_n + \beta b_n\}_{n = 1}^{\infty}, \alpha, \beta \in \R\) is also a zero sequence.
     
     \item \(\{\sqrt{|a_n|}\}_{n = 1}^{\infty}\) is a zero sequence.
 
@@ -887,7 +887,7 @@ Every bounded monotonic sequence converges.
 
 \textbf{Proof:}
 
-Define \(a:= \sup\{a_n: n \in \Naturals\}\). We know that our sequence is bounded and in this case it has the 
+Define \(a:= \sup\{a_n: n \in \N\}\). We know that our sequence is bounded and in this case it has the 
 property that \(a_n \le a\). 
 
 We use the definition of convergence 
@@ -903,7 +903,7 @@ Using the approximation property of the supremum we get
    a_n \ge a_{n_0} > a - \varepsilon, \forall n \ge n_0
 \]
 
-Therefore, we have for each \(\varepsilon > 0\) an \(n_0 \in \Naturals\)
+Therefore, we have for each \(\varepsilon > 0\) an \(n_0 \in \N\)
 
 \[
    a - \varepsilon \le a_{n_0} \le a  \forall n \ge n_0
@@ -988,7 +988,7 @@ The sum of two sequences \((a_n)\) and \((b_n)\) is a new sequence \((c_n)\) whe
 \(c_n\) is the sum of the corresponding terms of \((a_n)\) and \((b_n)\):
 
 \[
-    c_n = a_n + b_n, \quad \forall n \in \Naturals.
+    c_n = a_n + b_n, \quad \forall n \in \N.
 \]
 
 If \(\lim_{n \to \infty} a_n = A\) and \(\lim_{n \to \infty} b_n = B\), then the limit of the sum sequence is:
@@ -1003,7 +1003,7 @@ The product of two sequences \((a_n)\) and \((b_n)\) is a new sequence \((d_n)\)
 is the product of the corresponding terms of \((a_n)\) and \((b_n)\):
 
 \[
-    d_n = a_n \cdot b_n, \quad \forall n \in \Naturals.
+    d_n = a_n \cdot b_n, \quad \forall n \in \N.
 \]
 
 If \(\lim_{n \to \infty} a_n = A\) and \(\lim_{n \to \infty} b_n = B\), then the limit of the product sequence is:
@@ -1017,7 +1017,7 @@ If \(\lim_{n \to \infty} a_n = A\) and \(\lim_{n \to \infty} b_n = B\), then the
 The absolute value of a sequence \((a_n)\) is a new sequence \((e_n)\) where each term \(e_n\) is the absolute value of the corresponding term of \((a_n)\):
 
 \[
-    e_n = |a_n|, \quad \forall n \in \Naturals.
+    e_n = |a_n|, \quad \forall n \in \N.
 \]
 
 If \(\lim_{n \to \infty} a_n = A\), then the limit of the absolute value sequence is:
@@ -1028,10 +1028,10 @@ If \(\lim_{n \to \infty} a_n = A\), then the limit of the absolute value sequenc
 
 \subsubsection{Conjugate of a Complex Sequence}
 
-If \((a_n)\) is a sequence of complex numbers, where \(a_n = x_n + i y_n\) with \(x_n, y_n \in \Reals\), then the conjugate of \((a_n)\) is a new sequence \((\overline{a_n})\) where each term \(\overline{a_n}\) is the complex conjugate of \(a_n\):
+If \((a_n)\) is a sequence of complex numbers, where \(a_n = x_n + i y_n\) with \(x_n, y_n \in \R\), then the conjugate of \((a_n)\) is a new sequence \((\overline{a_n})\) where each term \(\overline{a_n}\) is the complex conjugate of \(a_n\):
 
 \[
-    \overline{a_n} = x_n - i y_n, \quad \forall n \in \Naturals.
+    \overline{a_n} = x_n - i y_n, \quad \forall n \in \N.
 \]
 
 If \(\lim_{n \to \infty} a_n = A = X + i Y\), then the limit of the conjugate sequence is:
@@ -1055,7 +1055,7 @@ and imaginary parts separately.
 
 \subsubsection{Asymptotic Equality}
 
-Two sequences \({(a_n)}_{n \in \Naturals}\) and \({(b_n)}_{n \in \Naturals}\) are said to be 
+Two sequences \({(a_n)}_{n \in \N}\) and \({(b_n)}_{n \in \N}\) are said to be 
 asymptotically equal, denoted by \(a_n \sim b_n\), if
 
 \[

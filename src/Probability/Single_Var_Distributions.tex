@@ -3,14 +3,14 @@
 
 \subsection{Random Variables}
 
-Given a probability space \((\Omega, \mathcal{A}, \Prob)\), we call a function \(f: \Omega \to \Reals\) \emph{measurable} if 
-for all \(z \in \Reals\) the following applies 
+Given a probability space \((\Omega, \mathcal{A}, \prob)\), we call a function \(f: \Omega \to \R\) \emph{measurable} if 
+for all \(z \in \R\) the following applies 
 
 \[
     f^{-1} ((- \infty, z ]) = \{\omega \in \Omega : f(\omega) \le z \} \in \mathcal{A}
 \]
 
-This measurable function \(X: \Omega \to \Reals\) is a \emph{random variable}.
+This measurable function \(X: \Omega \to \R\) is a \emph{random variable}.
 
 Note that for discrete probability spaces \(\{\omega: X(\omega) \le z\} \subseteq \Omega \in \mathcal{P}\)
 
@@ -19,12 +19,12 @@ Also, it considered discrete if it has only a finite or an infinite countable nu
 Finally, we define the probability for random variables as
 
 \[
-    \Prob(X = k) := \Prob(\{X = k\})
+    \prob(X = k) := \prob(\{X = k\})
 \]
 
 \subsubsection{Operations with Random Variables}
 
-Given two R.V. \(X\),\(Y\) and some number \(\alpha \in \Reals\), then
+Given two R.V. \(X\),\(Y\) and some number \(\alpha \in \R\), then
 
 \begin{itemize}
 
@@ -49,7 +49,7 @@ are also R.V.
 Given \(A \subseteq \Omega\), we define the \emph{indicator function} as 
 
 \[
-    \text{ind}_A (\omega) = \begin{cases}
+    \ind_A (\omega) = \begin{cases}
 	1,& \text{ if }  \omega \in A \\ 
 	0,& \text{ if }  \omega \notin A
     \end{cases}
@@ -59,17 +59,17 @@ We also the get the following rules:
 
 \begin{itemize}
     
-    \item \(\text{ind}_\emptyset = 0\)
+    \item \(\ind_\emptyset = 0\)
     
-    \item \(\text{ind}_{A}^2 = \text{ind}_{A}\)
+    \item \(\ind_{A}^2 = \ind_{A}\)
     
-    \item \(\text{ind}_{A^c} = 1 - \text{ind}_A\)
+    \item \(\ind_{A^c} = 1 - \ind_A\)
 
-    \item \(\text{ind}_{A \cap B} = \text{ind}_A \text{ind}_B \)
+    \item \(\ind_{A \cap B} = \ind_A \ind_B \)
 
-    \item \(\text{ind}_{A \cup B} = \text{ind}_A  + \text{ind}_B - \text{ind}_{A \cap B} \)
+    \item \(\ind_{A \cup B} = \ind_A  + \ind_B - \ind_{A \cap B} \)
 
-    \item \(\text{ind}_{A + B} = \text{ind}_A  + \text{ind}_B \)
+    \item \(\ind_{A + B} = \ind_A  + \ind_B \)
     
 \end{itemize}
 
@@ -78,7 +78,7 @@ We also the get the following rules:
 Given the events \(A_1, \dots A_n \in \Omega\). We define the random variable 
 
 \[
-    X:= \sum_{j = 1}^{n} \text{ind}-{A_j}   
+    X:= \sum_{j = 1}^{n} \ind-{A_j}   
 \]
 
 as the \emph{indicator sum} or \emph{counting variable}. 
@@ -91,23 +91,23 @@ The realization of \(X\) gives us how much \(A_j\) have occurred.
 
 \subsection{Distributions}
 
-Given our probability space and a R.V. \(X\). The probability measurement \(\Prob_X\) to 
-\(\Reals\) defined by 
+Given our probability space and a R.V. \(X\). The probability measurement \(\prob_X\) to 
+\(\R\) defined by 
 
 \[
-    \Prob_X (A) := \Prob(\{\omega: X(w) \in A\}), \text{ for } A \subseteq \Reals
+    \prob_X (A) := \prob(\{\omega: X(w) \in A\}), \text{ for } A \subseteq \R
 \]
 
-is called as the \emph{distribution} of \(X\). Also we write \(\Prob(X \in A)\) as a abbreviation for
-\(\Prob(\{\omega: X(w) \in A\}) \).
+is called as the \emph{distribution} of \(X\). Also we write \(\prob(X \in A)\) as a abbreviation for
+\(\prob(\{\omega: X(w) \in A\}) \).
 
 \subsection{Distribution Function}
 
-Given a probability space, a probability variable and a distribution \(\Prob_X\) we define 
+Given a probability space, a probability variable and a distribution \(\prob_X\) we define 
 the function 
 
 \[
-    \mathbb{F}_X (x) = \Prob(X \le x) = \Prob(\{\omega: X(w) \le x\})
+    \mathbb{F}_X (x) = \prob(X \le x) = \prob(\{\omega: X(w) \le x\})
 \]
 
 as the \emph{distribution function}.
@@ -124,29 +124,31 @@ as the \emph{distribution function}.
 
 \end{itemize}
 
-\subsection{Formulas for Distributions}
+\subsection{Cumulative Probability Calculations}
 
 \begin{itemize}
 
-    \item \(\Prob(X = a) = \Prob(X = a)\)
+    \item \(\prob(X = a) = \prob(X = a)\)
 
-    \item \(\Prob(X \le a) = \Prob(X \le a)\)
+    \item \(\prob(X \le a) = \prob(X \le a)\)
 
-    \item \(\Prob(X < a) = \Prob(X \le a - 1)\)
+    \item \(\prob(X < a) = \prob(X \le a - 1)\)
 
-    \item \(\Prob(X > a) = 1 - \Prob(X \le a)\)
+    \item \(\prob(X > a) = 1 - \prob(X \le a)\)
 
-    \item \(\Prob(X \ge a) = 1 - \Prob(X \le - 1)\)
+    \item \(\prob(X \ge a) = 1 - \prob(X \le - 1)\)
 
-    \item \(\Prob(a \le X \le b) = \Prob(X \le b) - \Prob(X \le a)\)
+    \item \(\prob(a \le X \le b) = \prob(X \le b) - \prob(X \le a)\)
+
+    \item \(\prob(|X - a| < b) = \prob(-b < |X - a| < b) = \prob(b) - \prob(-b) \)
 
 \end{itemize}
 
 \subsection{Uniform Distribution}
 
 A random variable \(X \in \{1, 2, \dots, n\}\) with 
-\(\Prob(X = i) = \frac{1}{n}\) for \(i = 1, \dots, n\) is uniformly distributed. 
-The distribution \(\Prob_X\) is called the (discrete) \emph{uniform distribution}. Noted as 
+\(\prob(X = i) = \frac{1}{n}\) for \(i = 1, \dots, n\) is uniformly distributed. 
+The distribution \(\prob_X\) is called the (discrete) \emph{uniform distribution}. Noted as 
 \(\mathcal{U}(a, b)\)
 
 \[
@@ -156,7 +158,7 @@ The distribution \(\Prob_X\) is called the (discrete) \emph{uniform distribution
 The expected value is given by 
 
 \[
-    \Expc(X) = \frac{n + 1}{2}
+    \expc(X) = \frac{n + 1}{2}
 \]
 
 and the standard deviation is given by
@@ -172,7 +174,7 @@ where \(a\) and \(b\) are the boundaries of our distribution.
 Distribution for binary events with only one trial, noted as \(\mathcal{B}(p)\)
 
 \[
-    \Prob(X = k) = p^k (1 - p)^{1 - k}, \quad k \in \{0, 1\}
+    \prob(X = k) = p^k (1 - p)^{1 - k}, \quad k \in \{0, 1\}
 \]
 
 \subsection{Binomial Distribution}
@@ -183,17 +185,17 @@ of consecutive independent Bernoulli experiments.
 This distribution is for discrete binary experiments. Either an event occurs or it does not. 
 
 \[
-    \Prob(X = k) = \binom{n}{k} p^k {(1 - p)}^{n - k}
+    \prob(X = k) = \binom{n}{k} p^k {(1 - p)}^{n - k}
 \]
 
 With 
 
 \[
-    \Expc[X] = np
+    \expc[X] = np
 \]
 
 \[
-    \Var(X) = \Expc[X](1-p)
+    \var(X) = \expc[X](1-p)
 \]
 
 
@@ -222,11 +224,11 @@ It also has
 
      
 \[
-    \Expc[X] = np = \mu
+    \expc[X] = np = \mu
 \]
     
 \[
-    \Var(X) = \Expc[X] (1-p)
+    \var(X) = \expc[X] (1-p)
 \]
 
 To compute its cumulative probability we need to use special tables, due to the fact that the function can not be analytically integrated. 
@@ -244,7 +246,7 @@ We plug the values in the expression, our expected value and the standard deviat
 
 \subsubsection{Standard Normal Distribution}
 
-The \emph{standard} normal distribution has the parameters \(\mu = 0\) and \(\sigma^2 = \Var = 1\). 
+The \emph{standard} normal distribution has the parameters \(\mu = 0\) and \(\sigma^2 = \var = 1\). 
 
 To transform a normal distributed random variable \(X\) you can define a new random variable 
 
@@ -254,55 +256,55 @@ To transform a normal distributed random variable \(X\) you can define a new ran
 
 \textbf{Example:}
 
-Given \(X \sim N(10, 4)\). What is \(\Prob(8 \le X \le 12)\)?
+Given \(X \sim N(10, 4)\). What is \(\prob(8 \le X \le 12)\)?
 
 We define \(Z = \frac{X - 10}{2}\). Then we get 
 
 \[
-    \Prob(8 \le X \le 12) = \Prob\left(\frac{8 - 10}{2} \le Z \le \frac{12 - 10}{2}\right) = \Prob(-1 \le Z \le 1)
+    \prob(8 \le X \le 12) = \prob\left(\frac{8 - 10}{2} \le Z \le \frac{12 - 10}{2}\right) = \prob(-1 \le Z \le 1)
 \]
 
 Using the standard normal distribution table we get
 
 \[
-    \Prob(-1 \le Z \le 1) = \mathbb{F}_Z(1) - \mathbb{F}_Z(-1) = 0.8413 - 0.1587 = 0.6826
+    \prob(-1 \le Z \le 1) = \mathbb{F}_Z(1) - \mathbb{F}_Z(-1) = 0.8413 - 0.1587 = 0.6826
 \]
 
 \subsection{Geometric Distribution}
 
-A random variable \(X \in \Naturals_0\) with 
-\(\Prob(X = n) = p(1 - p)^n\) for some \(p \in (0, 1)\) and \(n \in \Naturals_0\) 
-is geometrically distributed. The distribution \(\Prob_X\) is called the \emph{geometric distribution}.
+A random variable \(X \in \N_0\) with 
+\(\prob(X = n) = p(1 - p)^n\) for some \(p \in (0, 1)\) and \(n \in \N_0\) 
+is geometrically distributed. The distribution \(\prob_X\) is called the \emph{geometric distribution}.
 
 Similar to the binomial distribution, the \emph{geometric} \(\mathcal{G}(n, p)\) distribution is used for an experiment with two 
 outcomes, and we want to know the probability of \(k - 1\) non-successes until a success happens  
 
 \[
-    \Prob(X = k) = (1 - p)^{k - 1}p
+    \prob(X = k) = (1 - p)^{k - 1}p
 \]
 
 We also get
 
 \[
-    \Expc[X] = \mu = \frac{1 - p}{p}
+    \expc[X] = \mu = \frac{1 - p}{p}
 \]
 
 \[
-    \Var = \frac{1 - p}{p^2}
+    \var = \frac{1 - p}{p^2}
 \]
 
 and 
 
 \[
-    \sigma = \sqrt{\Var(X)}
+    \sigma = \sqrt{\var(X)}
 \]
 
 \subsection{Poisson Distribution}
 
-A random variable \(X \in \Naturals_0\) with 
+A random variable \(X \in \N_0\) with 
 
 \[
-    \Prob(X = n) = \frac{\lambda^n}{n!} e^{-\lambda}, \quad \text{ for some } \lambda > 0,
+    \prob(X = n) = \frac{\lambda^n}{n!} e^{-\lambda}, \quad \text{ for some } \lambda > 0,
 \] 
 
 We also define the distribution function 
@@ -311,20 +313,20 @@ We also define the distribution function
     \mathbb{F}_X(n) = \sum_{i = 0}^{n} \frac{\lambda^i}{i!} i^{-\lambda}
 \]
 
-is Poisson distributed. The distribution \(\Prob_X\) is called the \emph{Poisson distribution} \(\text{Poi}(\lambda)\)
+is Poisson distributed. The distribution \(\prob_X\) is called the \emph{Poisson distribution} \(\text{Poi}(\lambda)\)
 In simple words, it is the number of events x, in a specific interval. This is 
 a limit of the binomial distribution for large \(n\) and small \(p\).
 
 We also get our expected result and variance 
 
 \[
-    \Expc[X] = \lambda = np
+    \expc[X] = \lambda = np
 \]
 
 and 
 
 \[
-    \Var(X) = \lambda
+    \var(X) = \lambda
 \]
 
 The derivation is the following, let \(\lambda = np\)
@@ -345,7 +347,7 @@ Similar to the binomial distribution, but we keep track of the changes after eac
 binomial distribution without repetition. We notate this as \(\text{HG}(M, N, n)\).
 
 \[
-    \Prob(X = k) = \frac{\binom{M}{k} \binom{N - M}{n - k}}{\binom{N}{n}}
+    \prob(X = k) = \frac{\binom{M}{k} \binom{N - M}{n - k}}{\binom{N}{n}}
 \]
 
 \textbf{Nomenclature:}
@@ -371,36 +373,36 @@ elements we are not interested in.
 We also get 
 
 \[
-    \Expc[X] = n \frac{M}{N}
+    \expc[X] = n \frac{M}{N}
 \]
 
 \[
-    \Var(X) = \Expc[X]\left(1 - \frac{M}{N}\right) \left(\frac{N - n}{N - 1}\right)
+    \var(X) = \expc[X]\left(1 - \frac{M}{N}\right) \left(\frac{N - n}{N - 1}\right)
 \]
 
 \subsection{The Expected Value for Discrete Random Variables}
 
-Given \(\Omega, \mathcal{A}, \Prob\), a probability space and \(X\) a discrete random variable. We 
+Given \(\Omega, \mathcal{A}, \prob\), a probability space and \(X\) a discrete random variable. We 
 define the \emph{expected result} as 
 
 \[
-    \Expc(X) = \sum_{x \in X(\Omega)} x \Prob(X = x)
+    \expc(X) = \sum_{x \in X(\Omega)} x \prob(X = x)
 \]
 
 which exists only if 
 
 \[
-    \sum_{x \in X(\Omega)} |x| \Prob(X = x) < \infty
+    \sum_{x \in X(\Omega)} |x| \prob(X = x) < \infty
 \]
 
-Where \(x\) is an event \(\Prob(X = x)\) its respective probability. It represents the mean of the random variable.
+Where \(x\) is an event \(\prob(X = x)\) its respective probability. It represents the mean of the random variable.
 
 \subsubsection{Transformation of the  Expected Value}
 
-Given \(u: X(\Omega) \to \Reals\) where \(\sum_{x \in X(\Omega)} |u(x)|p(x) < \infty\) then 
+Given \(u: X(\Omega) \to \R\) where \(\sum_{x \in X(\Omega)} |u(x)|p(x) < \infty\) then 
 
 \[
-    \Expc[u(X)] = \sum_{x \in X(\Omega)} u(x)\Prob(X = x)
+    \expc[u(X)] = \sum_{x \in X(\Omega)} u(x)\prob(X = x)
 \] 
 
 This represents the expectation of the function.
@@ -408,14 +410,14 @@ This represents the expectation of the function.
 \subsection{Triangle Inequality for  Expected Values}
 
 \[
-    |\Expc[X]| \le \Expc[|X|]
+    |\expc[X]| \le \expc[|X|]
 \]
 
 \textbf{Proof:}
 
 \begin{align*}	
-    |\Expc[X]| &= \left| \sum_{x \in X(\Omega)} x \Prob(X = x) \right| \le \sum_{x \in X(\Omega)} |x \Prob(X = x)| \\ 
-		    &= \sum_{x \in X(\Omega)} |x| \Prob(X = x) = \Expc [|X|]
+    |\expc[X]| &= \left| \sum_{x \in X(\Omega)} x \prob(X = x) \right| \le \sum_{x \in X(\Omega)} |x \prob(X = x)| \\ 
+		    &= \sum_{x \in X(\Omega)} |x| \prob(X = x) = \expc [|X|]
 \end{align*}
 
 \QED
@@ -426,23 +428,23 @@ Given two random variables \(X\) and \(Y\), if both have an expected results the
 
 \begin{itemize}
 	
-    \item \(\Expc[\alpha X] = \alpha \Expc[X]\)
+    \item \(\expc[\alpha X] = \alpha \expc[X]\)
 
-    \item \(\Expc[X + Y] = \Expc[X] + \Expc[Y]\)
+    \item \(\expc[X + Y] = \expc[X] + \expc[Y]\)
 
-    \item \(\Expc[b] = b\)
+    \item \(\expc[b] = b\)
     
-    \item \(X \le Y = \Expc[X] \le \Expc[Y]\)
+    \item \(X \le Y = \expc[X] \le \expc[Y]\)
 
 \end{itemize}
 
 \subsection{Variance}
 
-Given a random variable \(X\) for which \(\Expc[(X - \Expc)^2]\) exists. The we define 
+Given a random variable \(X\) for which \(\expc[(X - \expc)^2]\) exists. The we define 
 the \emph{variance} of \(X\) as 
 
 \[
-    \Var(X) = \Expc[(X - \Expc)^2] = \sum_{x \in X} (x -  \Expc^2)\Prob(X = x)
+    \var(X) = \expc[(X - \expc)^2] = \sum_{x \in X} (x -  \expc^2)\prob(X = x)
 \]
 
 And its root is the \emph{standard deviation}.
@@ -454,51 +456,51 @@ Then the following hold:
 
 \begin{itemize}
 
-    \item \(\Var(aX + b) = a^2 \, \Var(X)\), for \( a, b \in \Reals \)
+    \item \(\var(aX + b) = a^2 \, \var(X)\), for \( a, b \in \R \)
     
-    \item \(\Var(X) = \Expc[X^2] - (\Expc[X])^2\)
+    \item \(\var(X) = \expc[X^2] - (\expc[X])^2\)
     
-    \item For \( a \in \Reals \), we have  \(\Expc[(X - a)^2] = \Var(X) + (\Expc[X] - a)^2\),  
-    and in particular, \(\Expc[(X - a)^2] \ge \Var(X)\).  
-    Equality holds if and only if \( a = \Expc[X] \).
+    \item For \( a \in \R \), we have  \(\expc[(X - a)^2] = \var(X) + (\expc[X] - a)^2\),  
+    and in particular, \(\expc[(X - a)^2] \ge \var(X)\).  
+    Equality holds if and only if \( a = \expc[X] \).
 
 \end{itemize}
 
 \textbf{Example:}
 
-Given \(\Expc(X) = 1.2\) and \(\Prob(X = 0) = 0.16, \quad \Prob(X = 1) = 0.48, \Prob(X = 2) = 0.36\). 
+Given \(\expc(X) = 1.2\) and \(\prob(X = 0) = 0.16, \quad \prob(X = 1) = 0.48, \prob(X = 2) = 0.36\). 
 
 \[
-    \Expc[X^2] =  0^2 (0.16) + 1^2(0.48) + 2^2(0.36) = 1.92
+    \expc[X^2] =  0^2 (0.16) + 1^2(0.48) + 2^2(0.36) = 1.92
 \]
 
 \[
-    \Var(X) = \Expc[(X - \Expc)^2] = (0 - 1.2)^2 (0.16) + (1 - 1.2)^2(0.48) + (2 - 1.2)^2(0.36)
+    \var(X) = \expc[(X - \expc)^2] = (0 - 1.2)^2 (0.16) + (1 - 1.2)^2(0.48) + (2 - 1.2)^2(0.36)
 \]
 
 \subsection{Moments}
 
-For a random variable \(X\), we define \(k\). \emph{moment} as \(\Expc[X^k]\)
+For a random variable \(X\), we define \(k\). \emph{moment} as \(\expc[X^k]\)
 
 \subsubsection{Markov Inequality}
 
-Given a random variable \(X\), \(a \in \Reals\) and \(h: D \to [0, \infty)\) a monotonic growing 
+Given a random variable \(X\), \(a \in \R\) and \(h: D \to [0, \infty)\) a monotonic growing 
 function with the properties \(h(a) > 0\) and \(X(\Omega) \subseteq D\) then 
 
 \[
-    \Prob(X \ge a) \le \frac{\Expc[h(X)]}{h(a)}
+    \prob(X \ge a) \le \frac{\expc[h(X)]}{h(a)}
 \]
 
 Simpler, 
 
 \[
-    \Prob(X \ge a) \le \frac{\Expc[X]}{a}
+    \prob(X \ge a) \le \frac{\expc[X]}{a}
 \]
 
 There is a special case for \(Y = |X|, a > 0\) and \(h(x) = x\) 
 
 \[    
-    \Prob(X \ge a) \le \frac{\Expc[h(X)]}{a}
+    \prob(X \ge a) \le \frac{\expc[h(X)]}{a}
 \]
 
 \subsubsection{Chebychev Inequality}
@@ -506,19 +508,19 @@ There is a special case for \(Y = |X|, a > 0\) and \(h(x) = x\)
 Given a random variable \(X\) with a variance and \(a > 0\) then 
 
 \[
-    \Prob(|X - \Expc[X]| \ge a) \le \frac{\Var(X)}{a^2}
+    \prob(|X - \expc[X]| \ge a) \le \frac{\var(X)}{a^2}
 \]
 
 This states that the probability of \(X\) is at least \(a\) away of its mean can not be too big.
 
 \subsection{Probability Density}
 
-A Lebesgue-integrable function \( f : \Reals \to [0, \infty) \) is called the (probability)
+A Lebesgue-integrable function \( f : \R \to [0, \infty) \) is called the (probability)
 \emph{density} or \emph{density function} of the random variable \( X \) or of the
-distribution \( \Prob_X \) if, for all \( a, b \in \Reals \) with \( a \le b \), the following holds:
+distribution \( \prob_X \) if, for all \( a, b \in \R \) with \( a \le b \), the following holds:
 
 \[
-    \Prob(a < X \le b) = \Prob_X((a, b]) = \int_a^b f(x)\,dx.
+    \prob(a < X \le b) = \prob_X((a, b]) = \int_a^b f(x)\,dx.
 \]
 
 Distributions that possess a probability density are called \emph{continuous distributions}.
@@ -527,7 +529,7 @@ Distributions that possess a probability density are called \emph{continuous dis
 
 \begin{itemize}
 	
-    \item \(\mathbb{F}_X \) is continuous at \( x \) if and only if \( \Prob(X = x) = 0 \).
+    \item \(\mathbb{F}_X \) is continuous at \( x \) if and only if \( \prob(X = x) = 0 \).
 
     \item 
 	\[
@@ -547,7 +549,7 @@ To test if given a function it can be used as a density functions we test:
 
 \begin{itemize}
 	
-    \item \(f(x) \ge 0 \forall x \in \Reals \)
+    \item \(f(x) \ge 0 \forall x \in \R \)
 
     \item \(\int_{-\infty}^{\infty} f(x) dx = 1\)
 
@@ -557,18 +559,18 @@ To test if given a function it can be used as a density functions we test:
 
 Given a continuous random variable \(X\) then 
 
-For \(a, b \in \Reals\)
+For \(a, b \in \R\)
 
 \[
-    \Prob(a \le X \le b ) = F_X (b) - F_X (a) = \int_{a}^{b} f_X(x)dx = \Prob(a < X \le b)
+    \prob(a \le X \le b ) = F_X (b) - F_X (a) = \int_{a}^{b} f_X(x)dx = \prob(a < X \le b)
 \]
 
-Also \(A \in \mathcal{B}(\Reals): \Prob(X \in A) = \int_A f_X (x)dx\)
+Also \(A \in \mathcal{B}(\R): \prob(X \in A) = \int_A f_X (x)dx\)
 
-And \(A \in \mathcal{B}(\Reals) \text{ (discrete) }: A = \{a_i\}_{i \in I}, I \in \Naturals :\) 
+And \(A \in \mathcal{B}(\R) \text{ (discrete) }: A = \{a_i\}_{i \in I}, I \in \N :\) 
 
 \[
-    \Prob(X \in A) = \sum_{i \in I} \Prob(X = a_i) = 0
+    \prob(X \in A) = \sum_{i \in I} \prob(X = a_i) = 0
 \]
 
 \subsection{Expected Value for Continuous Random Variables}
@@ -577,18 +579,18 @@ Given a continuous random variable \(X\) with a density \(f_X\). The \emph{expec
 of \(X\) exists if \(\int |x|f_X(x)dx , \infty\) In that case we define it as 
 
 \[
-    \Expc[X] = \int x f_X (x)dx 
+    \expc[X] = \int x f_X (x)dx 
 \]
 
 We also get all of its properties like for the discrete case.
 
 \subsubsection{Transformation Lemma}
 
-Given a continuous random variable \(X\) with a density \(f\) and a measurable function \(u: \Reals \to \Reals\) 
+Given a continuous random variable \(X\) with a density \(f\) and a measurable function \(u: \R \to \R\) 
 with \(\int |u(x)|f(x)dx < \infty\) then the following applies 
 
 \[
-    \Expc[u(X)] = \int u(x) f(x) dx
+    \expc[u(X)] = \int u(x) f(x) dx
 \]
 
 \subsubsection{Continuous Uniform Distribution}
@@ -596,15 +598,16 @@ with \(\int |u(x)|f(x)dx < \infty\) then the following applies
 A random variable \(X \in [0,1]\) with 
 
 \[
-    \Prob (X \le x) \begin{cases}
-	0 &, \text{ if } x < 0 \\
-	x &, \text{ if } x \in [0,1] \\
-	1 &, \text{ if } x > 1 \\
+    \prob (X \le x) = 
+    \begin{cases}
+	0, & \text{ if } x < 0 \\
+	x, & \text{ if } x \in [0,1] \\
+	1, & \text{ if } x > 1 \\
     \end{cases}
 \]
 
 is considered \emph{continuous equally distributed}. The distribution function 
-\(\Prob_X\) is called \emph{continuous uniform distribution}. Generalized 
+\(\prob_X\) is called \emph{continuous uniform distribution}. Generalized 
 
 \[
     f(x) = \frac{1}{b  - a}
@@ -613,17 +616,17 @@ is considered \emph{continuous equally distributed}. The distribution function
 And 
 
 \[
-    \Prob (X \le x) = \frac{x - a}{b - a}, x \in [a, b]
+    \prob (X \le x) = \frac{x - a}{b - a}, x \in [a, b]
 \]
 
 with 
 
 \[
-    \Expc[X] =  \frac{a + b}{2}
+    \expc[X] =  \frac{a + b}{2}
 \]
     
 \[
-    \Var(X) = \frac{(b - a)^2}{12}
+    \var(X) = \frac{(b - a)^2}{12}
 \]
 
 \subsection{Exponential Distribution}
@@ -647,7 +650,7 @@ Where \(lambda\) our \emph{rate} parameter.
 We also define the distribution function 
 
 \[
-    \mathbb{F}_X(X = n) = \int_{- \infty}^{n} \Prob(X = n) = \begin{cases}
+    \mathbb{F}_X(X = n) = \int_{- \infty}^{n} \prob(X = n) = \begin{cases}
 	1 - e^{- \lambda n} &, n \ge 0 \\ 
 	0 &, \text{ else }
     \end{cases} 
@@ -657,11 +660,11 @@ We also have
 
      
 \[
-    \Expc(X) = \frac{1}{\lambda}
+    \expc(X) = \frac{1}{\lambda}
 \]
     
 \[
-    \Var(X) = \frac{1}{\lambda^2}
+    \var(X) = \frac{1}{\lambda^2}
 \]
     
 
@@ -672,7 +675,7 @@ of the previous ones.
 
 
 \[
-    \Prob (X \ge x + y \mid X > y) = \Prob(X \ge x)
+    \prob (X \ge x + y \mid X > y) = \prob(X \ge x)
 \]
 
 \subsubsection{The Connection between the Exponential Distribution and the Poisson Process}
@@ -687,7 +690,7 @@ Emails com at a rate of 5 per minute (\(\lambda = 5\)). What is the probability 
 The probability of getting an email after \(t\) waiting is given by the following exponential distribution
 
 \[
-    \Prob(T > t) = e^{-5}t
+    \prob(T > t) = e^{-5}t
 \]
 
 What is the probability of getting no emails in the next \(t\) minutes?
@@ -695,7 +698,7 @@ What is the probability of getting no emails in the next \(t\) minutes?
 This is given by the following Poisson process 
 
 \[
-    \Prob(k = 0) = \frac{5^0 e^{-5t}}{0!} = e^{-5t}
+    \prob(k = 0) = \frac{5^0 e^{-5t}}{0!} = e^{-5t}
 \]
 
 \subsection{Gamma Distribution}
@@ -711,7 +714,7 @@ for the \(r-th\) event.
 We denote this as \(T_r \sim \mathrm{gamma}(r, \lambda)\). The probability density function is given by 
 
 \[
-    \Prob(T_r > t) = \Prob(N_t \ge r - 1) = \sum_{k = 0}^{r - 1} \frac{e^{-\lambda t}(\lambda t)^k}{k!} = \cdots = e^{-\lambda t}\frac{\lambda^r t^{r - 1}}{(r - 1)!}
+    \prob(T_r > t) = \prob(N_t \ge r - 1) = \sum_{k = 0}^{r - 1} \frac{e^{-\lambda t}(\lambda t)^k}{k!} = \cdots = e^{-\lambda t}\frac{\lambda^r t^{r - 1}}{(r - 1)!}
 \]
 
 with \(N_t\) is the number of Poisson events in \(t\).
@@ -719,35 +722,69 @@ with \(N_t\) is the number of Poisson events in \(t\).
 \subsection{Chi-Square Distribution}
 
 The square of the \emph{normal distribution} is called the 
-\emph{Chi-Square Distribution} noted as \(\mathcal{N}(a\mu + b, a^2 \sigma^2)\). Given a random variable \(X\) with density 
+\emph{Chi-Square Distribution} noted as \(\mathcal{N}(a\mu + b, a^2 \sigma^2)\) or \(\chi^2_n\) 
+with \(n \in \N\) degrees of freedom.
+
+Given a random variable \(X\) with density 
 
 \[
     f(x) = \frac{1}{2^{\frac{n}{2}} \Gamma \left(\frac{n}{2}\right)} x^{\frac{n}{2 - 1}}e^{\frac{-x}{2}}
 \]
 
+where \(\Gamma\) is the gamma function defined as
+
+\[
+    \Gamma (x) = \int_{0}^{\infty} t^{x - 1} e^{-t} dt
+\]
+
+For the 1 degree of freedom we get 
+
+\[
+    f(x) = \frac{1}{\sqrt{2\pi}} y^{-\frac{1}{2}} e^{-\frac{y}{2}}
+\]
+
 We also have 
 
 \[
-    \Expc[X] = n
+    \expc[X] = n
 \]
     
 \[
-    \Var(X) = \Expc[X] 2n
+    \var(X) = \expc[X] 2n
 \]
 
+\subsubsection*{Derivation}
+
 The probability density function is reached by taking the cumulative density function of the normal distribution which is 
-an Integral, square it, and then we take its derivative.
+an Integral, square it, and then we take its derivative. We proceed as follows:
+
+Given \(X \sim \mathcal{N}(0,1)\) we define \(Y = X^2\). Then we get 
+
+\[
+    F_Y(y) = \prob(Y \le y) = \prob(-\sqrt{y} \le X \le \sqrt{y}) = F_X(\sqrt{y}) - F_X(-\sqrt{y})
+\]
+
+This gives us 
+
+\(\Phi(\sqrt{y}) - \Phi(-\sqrt{y})\) Now we take the derivative to get the density function
+
+\begin{align*}
+    f_Y(y) &= \frac{d}{dy} F_Y(y) = \frac{d}{dy} \left( \Phi(\sqrt{y}) - \Phi(-\sqrt{y}) \right) \\ 
+           &= \Phi'(\sqrt{y}) \cdot \frac{1}{2\sqrt{y}} + \Phi'(-\sqrt{y}) \cdot \frac{1}{2\sqrt{y}} \\
+           &= y^{-\frac{1}{2}} f_X(\sqrt{y})  \\ 
+           &= \frac{1}{\sqrt{2\pi}} y^{-\frac{1}{2}} e^{-\frac{y}{2}}
+\end{align*}
 
 \subsection{Transformation Theorem for Densities}
 
-Given a random variable \(X\) with values in the open interval \(I \subseteq \Reals\) and the density \(f_X\). If 
-\(j \subseteq \Reals\) is an open interval and \(u: I \to J\) is a diffeomorphism then has \(Y = u(X)\) the density 
+Given a random variable \(X\) with values in the open interval \(I \subseteq \R\) and the density \(f_X\). If 
+\(j \subseteq \R\) is an open interval and \(u: I \to J\) is a diffeomorphism then has \(Y = u(X)\) the density 
 
 \[
     f_Y (y) = f_X(u^{-1}(y)) | (u^{-1})'(y)|
 \]
 
-For \(y \in J\) and \(f_Y(y) = 0\) for \(y \in \Reals \setminus J\).
+For \(y \in J\) and \(f_Y(y) = 0\) for \(y \in \R \setminus J\).
 
 \subsection{Quantile}
 
@@ -755,7 +792,7 @@ Let \( X \) be a random variable with distribution \( F \).
 For \( p \in (0, 1) \), a value \( q_p \) is called a \emph{p-quantile} of \( X \) (or of \( F \)) if:
 
 \[
-    \Prob(X \le q_p) \ge p \text{ and }\Prob(q_p \le X) \ge 1 - p,
+    \prob(X \le q_p) \ge p \text{ and }\prob(q_p \le X) \ge 1 - p,
 \]
 
 or equivalently,
@@ -769,12 +806,12 @@ If \( F \) is strictly increasing and continuous, then \( q_p \) is unique.
 If \( q_p \) is not unique, we can make it “unique” by defining the smallest quantile as
 
 \[
-    F^{-1}(p) = \inf \{ x \in \Reals : F(x) \ge p \}.
+    F^{-1}(p) = \inf \{ x \in \R : F(x) \ge p \}.
 \]
 
 \subsection{The Moment Generating Function}
 
-The \(n-th\)\emph{moment} of a distribution are given by \(\Expc[X^n]\). We also 
+The \(n-th\)\emph{moment} of a distribution are given by \(\expc[X^n]\). We also 
 know that the first moment is the mean and the variance is closely related to the second moment.
 The moments \emph{uniquely} determine the distribution.
 
@@ -783,19 +820,19 @@ The \emph{moment generating function} is defined as
 \[
     M(t) = 
     \begin{cases}
-        \sum_{x} e^{tx} \Prob(X = x) & \text{ if } X \text{ discrete} \\
-        \int_{-\infty}^{\infty} e^{tx} \Prob(X = x) dx & \text{ if } X \text{ continuous}
+        \sum_{x} e^{tx} \prob(X = x) & \text{ if } X \text{ discrete} \\
+        \int_{-\infty}^{\infty} e^{tx} \prob(X = x) dx & \text{ if } X \text{ continuous}
     \end{cases}
 \]
 
-\(M(t)\) uniquely determines the cumulative probability distribution of \(\Prob(X = x)\)
+\(M(t)\) uniquely determines the cumulative probability distribution of \(\prob(X = x)\)
 
 \subsubsection{Derivative of the Moment Generating Function}
 
 The \(n-th\) derivative of the \emph{moment generating function} has the following property 
 
 \[
-    M^{n}(0) = \Expc[X^n]
+    M^{n}(0) = \expc[X^n]
 \]
 
 \textbf{Proof (Informal):}
@@ -803,11 +840,11 @@ The \(n-th\) derivative of the \emph{moment generating function} has the followi
 We will handle only the continuous case, but the same holds for the discrete case 
 
 \[
-    \frac{d}{dt} \int_{-\infty}^{\infty} e^{tx} \Prob(X = x) dx  = \int_{-\infty}^{\infty} xe^{tx} \Prob(X = x) dx
+    \frac{d}{dt} \int_{-\infty}^{\infty} e^{tx} \prob(X = x) dx  = \int_{-\infty}^{\infty} xe^{tx} \prob(X = x) dx
 \]
 
 \[
-    \frac{d}{dt} \int_{-\infty}^{\infty} xe^{tx} \Prob(X = x) dx  = \int_{-\infty}^{\infty} x^2 e^{tx} \Prob(X = x) dx
+    \frac{d}{dt} \int_{-\infty}^{\infty} xe^{tx} \prob(X = x) dx  = \int_{-\infty}^{\infty} x^2 e^{tx} \prob(X = x) dx
 \]
 
 And the pattern repeats. This is just given us the definition of each of the moments. 

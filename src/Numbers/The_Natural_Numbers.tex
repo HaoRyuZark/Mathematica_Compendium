@@ -4,36 +4,36 @@
 In this section we will take a look at the natural numbers, which are the numbers we use for counting. 
 The natural numbers are defined as follows:
 
-We will now define the set of natural numbers, \( \Naturals \), via the following 9 axioms. 
+We will now define the set of natural numbers, \( \N \), via the following 9 axioms. 
 These axioms are known as the \emph{Peano Axioms}. The first 4 axioms define equality on 
-the set \( \Naturals \).
+the set \( \N \).
 
 \begin{enumerate}[label=\Roman*.]
 
-	\item For every \( x \in \Naturals \), we have \( x = x \).\hfill (Reflexivity)
+	\item For every \( x \in \N \), we have \( x = x \).\hfill (Reflexivity)
 	
-	\item For every \( x, y \in \Naturals \), if \( x = y \) then \( y = x \).\hfill (Symmetry)
+	\item For every \( x, y \in \N \), if \( x = y \) then \( y = x \).\hfill (Symmetry)
 	
-	\item For every \( x, y, z \in \Naturals \), if \( x = y \) and \( y = z \) then \( x = z \).\hfill 
+	\item For every \( x, y, z \in \N \), if \( x = y \) and \( y = z \) then \( x = z \).\hfill 
 	      (Transitivity)
 	
-	\item For all \( x, y \), if \( x \in \Naturals \) and \( x = y \), then \( y \in \Naturals \).\hfill 
+	\item For all \( x, y \), if \( x \in \N \) and \( x = y \), then \( y \in \N \).\hfill 
 	      (Closure of Equality)
 
 \end{enumerate}
 
-The remaining 5 axioms define the structure of \( \Naturals \):
+The remaining 5 axioms define the structure of \( \N \):
 
 \begin{enumerate}[label=\Roman*.]
 	\setcounter{enumi}{4}
 
-	\item \( 1 \in \Naturals \)
+	\item \( 1 \in \N \)
 	
-	\item If \( x \in \Naturals \), then the successor \( S(x) \in \Naturals \).
+	\item If \( x \in \N \), then the successor \( S(x) \in \N \).
 	
-	\item There is no \( x \in \Naturals \) such that \( S(x) = 1 \).
+	\item There is no \( x \in \N \) such that \( S(x) = 1 \).
 	
-	\item For all \( x, y \in \Naturals \), if \( S(x) = S(y) \), then \( x = y \).
+	\item For all \( x, y \in \N \), if \( S(x) = S(y) \), then \( x = y \).
 	
 	\item Let \( P(x) \) be a statement about the natural number \(x\). If:
 	
@@ -41,11 +41,11 @@ The remaining 5 axioms define the structure of \( \Naturals \):
 	
 			\item \( P(1) \) is true, and
 	
-			\item for all \( n \in \Naturals \), if \( P(n) \) is true, then \( P(S(n)) \) is also true,
+			\item for all \( n \in \N \), if \( P(n) \) is true, then \( P(S(n)) \) is also true,
 	
 		\end{itemize}
 	
-		then \( P(x) \) is true for all \( x \in \Naturals \).\hfill (Mathematical Induction)
+		then \( P(x) \) is true for all \( x \in \N \).\hfill (Mathematical Induction)
 \end{enumerate}
 
 As shorthand, we denote:
@@ -63,21 +63,21 @@ As shorthand, we denote:
 We will prove this by contradiction. Assume \( n \ne m \) and \( S(n) = S(m) \). 
 By Axiom 8, we have \( n = m \), which is a contradiction. Therefore, \( S(n) \ne S(m) \).
 
-\subsubsection{Proposition 2: \texorpdfstring{\text{For any} \(n \in \Naturals,\ n \ne S(n)\)}{ For any n in N, n!= S (n)}}
+\subsubsection{Proposition 2: \texorpdfstring{\text{For any} \(n \in \N,\ n \ne S(n)\)}{ For any n in N, n!= S (n)}}
 
 \textbf{Proof:} 
 
-\(M = \{n \in \Naturals \| n \ne S(n) \}\ \)
+\(M = \{n \in \N \| n \ne S(n) \}\ \)
 
-By \(1 \ne S(n)\ \) for any \(n \in \Naturals\), this implies that 1 is part of the set \(M\). 
-This implies that \(S(n) \ne S(S(n)) \implies S(n) \in M\ \) By Axiom 9 \(M = \Naturals\)
+By \(1 \ne S(n)\ \) for any \(n \in \N\), this implies that 1 is part of the set \(M\). 
+This implies that \(S(n) \ne S(S(n)) \implies S(n) \in M\ \) By Axiom 9 \(M = \N\)
 
-\subsubsection{Proposition 3: \texorpdfstring{\(n \ne 1\ \exists m \in \Naturals \mid n = S(m)\)}{n!= 1, exists m in N | n = S (m)}}
+\subsubsection{Proposition 3: \texorpdfstring{\(n \ne 1\ \exists m \in \N \mid n = S(m)\)}{n!= 1, exists m in N | n = S (m)}}
 
 \textbf{Proof:}
 
 \[
-	M = \{1\} \cup\{n \in \Naturals | \text{Proposition 3 is true}\}
+	M = \{1\} \cup\{n \in \N | \text{Proposition 3 is true}\}
 \]
 
 We know that 1 ins in the set \(M\). And by proposition 1 we know that
@@ -86,11 +86,11 @@ We know that 1 ins in the set \(M\). And by proposition 1 we know that
 	S(n) = S(S(m)) \implies S(n) \in M
 \]
 
-And by Axiom 9 we know that \(M = \Naturals\)
+And by Axiom 9 we know that \(M = \N\)
 
-\subsection{Definition of Addition in \texorpdfstring{\(\Naturals\)}{}}
+\subsection{Definition of Addition in \texorpdfstring{\(\N\)}{}}
 
-For any pair n, m \(\in \Naturals\) there is a unique way to define
+For any pair n, m \(\in \N\) there is a unique way to define
 
 \[
 	\text{Add}(n , m) = n + m
@@ -106,7 +106,7 @@ For any pair n, m \(\in \Naturals\) there is a unique way to define
 
 \textbf{Uniqueness:} 
 
-Suppose: \textit{A} \& \textit{B} satisfy our conditions. Fix n and then let \(M = \{ m \in \Naturals | 
+Suppose: \textit{A} \& \textit{B} satisfy our conditions. Fix n and then let \(M = \{ m \in \N | 
 A(n,m) = B(n, m)\}\). Then
 
 \[
@@ -121,7 +121,7 @@ A(n,m) = B(n, m)\}\). Then
 	\implies A(n , S(m)) = B(n, S(m))
 \]
 
-by Axiom 9 we know that \(M = \Naturals\) and A = B
+by Axiom 9 we know that \(M = \N\) and A = B
 
 \textbf{Construction:} For \(n = 1\) Define \(A(n, m) = S(m)\)
 
@@ -145,21 +145,21 @@ Define: \(A(S(n), S(m)) = S(A(n, m))\)
 
 \textbf{Commutativity of Addition:}
 
-The proposition says \(n + m = m + n\) for any \(n, m \in \Naturals\). We will prove this by 
-induction on \(m\). Fix n and consider \(M = \{ n \in \Naturals | A(n, m) = A(n, m)\}\)
+The proposition says \(n + m = m + n\) for any \(n, m \in \N\). We will prove this by 
+induction on \(m\). Fix n and consider \(M = \{ n \in \N | A(n, m) = A(n, m)\}\)
 
 Now recall that \(A(n, 1) = S(n)\)
 
 For \(n = 1\):
 
 \[
-	A(n, 1) = S(1) = A(1, n) \implies 1 \in \Naturals
+	A(n, 1) = S(1) = A(1, n) \implies 1 \in \N
 \]
 
-also \(A(n , k) = 1 + k \implies 1 + m = S(m) \implies 1 + m = m + 1 \implies 1 \in \Naturals\)
+also \(A(n , k) = 1 + k \implies 1 + m = S(m) \implies 1 + m = m + 1 \implies 1 \in \N\)
 
-Suppose: \(n \in \Naturals \implies n + m = m + n\) or \(A(n, m) = A(m, n)\)
+Suppose: \(n \in \N \implies n + m = m + n\) or \(A(n, m) = A(m, n)\)
 
 By construction \(A(S(n), m) = S(A(n, m))\) and by definition
 \(A(S(n), m) = S(A(n, m)) = A(m, S(n)) = S(n) + m =  m + S(n) \implies S(n) \in M \implies 
-\text{by induction } M = \Naturals\).
+\text{by induction } M = \N\).

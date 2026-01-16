@@ -1,16 +1,16 @@
 \newpage
 \section{Dual Spaces}
 
-Given a \(\Field\)-vector space \(V\), we define \(V^*\) \emph{Dual Space} of \(V\), as the set
+Given a \(\field\)-vector space \(V\), we define \(V^*\) \emph{Dual Space} of \(V\), as the set
 of linear transformations from \(f: V \to K\). \(f\) is called the \emph{Linear Functional}.
 
 \textbf{Example:}
 
-\(V = \Reals^3, \text{ with } f: V \to \Reals \text{ and } f(x,y,z) = x + y + z\)
+\(V = \R^3, \text{ with } f: V \to \R \text{ and } f(x,y,z) = x + y + z\)
 
 \subsection{The Dual Basis}
 
-Given a finite dimensional \(\Field\)-vector space \(V\). Let \(\beta = \{v_1, \dots, v_n\}\) be a
+Given a finite dimensional \(\field\)-vector space \(V\). Let \(\beta = \{v_1, \dots, v_n\}\) be a
 basis of \(V\) let \(f \in V*\). The set of functionals \(\beta^* = \{f_1, \dots, f_n\}\) of
 \(V^*\). Defined by:
 
@@ -93,7 +93,7 @@ multiple systems of equations.
 
 \textbf{Example:}
 
-Given the space \(V = \Reals^n\) with the basis \(\left\{\begin{bmatrix}
+Given the space \(V = \R^n\) with the basis \(\left\{\begin{bmatrix}
     2 \\ 1 \end{bmatrix}, \begin{bmatrix} 3 \\ 1\end{bmatrix}\right\}\) find \(\beta^* = \{f_1, f_2\}\).
 
 Because of linearity
@@ -124,7 +124,7 @@ if we let f be \(f = 2x -5\) we get that it can be decomposed into:
 
 \subsection{Change of Basis in the Dual Space}
 
-Given some finite \(\Field\)-vector space \(V\) with basis \(\beta\) and \(\beta'\). Then matrix for
+Given some finite \(\field\)-vector space \(V\) with basis \(\beta\) and \(\beta'\). Then matrix for
 the change of basis \(\beta^* \to \beta'^*\) is given by
 
 \[
@@ -233,7 +233,7 @@ Because we have shown it for the basis vectors it gets extended to all of it lin
 
 \textbf{Example:}
 
-Let \(P_1 \Reals\) be the space of polynomials of degree at most 1 and \(W = \Reals^2\). Also,
+Let \(P_1 \R\) be the space of polynomials of degree at most 1 and \(W = \R^2\). Also,
 let \(T: V \to W\) be defined by \(T(p) = \begin{bmatrix} p(0) - 2p(1) \\ p(0) + p'(0)\end{bmatrix}\)
 
 For example \(T(1 + 2x) = \begin{bmatrix} 1 - 2(1 + 2) \\ 1 + 2 \end{bmatrix} = \begin{bmatrix} -5 \\ 3 \end{bmatrix}\)
@@ -351,10 +351,10 @@ Thus, the matrix of \(T\) is
 
 \subsection{The Dual of the Dual Space}
 
-Given a dual space \(V^* = L(V, \Field) \) then 
+Given a dual space \(V^* = L(V, \field) \) then 
 
 \[
-    (V^*)^* = L(V^*, \Field)
+    (V^*)^* = L(V^*, \field)
 \]
 
 
@@ -417,7 +417,7 @@ In this proof we know that \(T^T: W^* \to V^*\). Now let us declare our basis \(
 \{\mathcal{G}_1, \dots, \mathcal{G}_n\}\) for \(W^**\).
 
 
- When we evaluate at \(g: W \to \Field\) we get 
+ When we evaluate at \(g: W \to \field\) we get 
 
 \begin{align*}
     T^{TT} (\hat{x})(g) & = \hat{x}(T^T)(g)  \\ 

@@ -1,8 +1,9 @@
 \newpage
 \section{Statistics}
 
-\emph{Statistics} focuses on getting information not from probabilities, random variables and 
-distributions, but from samples of data collected independently.
+In \emph{probability}, we had models, and we assumed that have its ideal form. 
+In \emph{Statistics}, we try to estimate the model from samples. We will approximate its parameters and 
+test hypothesis about the model. 
 
 \subsection{Basic Nomenclature}
 
@@ -20,6 +21,86 @@ distributions, but from samples of data collected independently.
      
 \end{itemize}
 
+\subsection{Random Sampling}
+
+A \emph{random sample} of size \(n\) is a sequence of \(n\) random variables \(X_1, X_2, \dots, X_n\) which are independent and identically distributed 
+(i.i.d.) with the same distribution as the random variable \(X\).
+
+\subsubsection{Population Statistics}
+
+Let \(x_1, x_2, \dots, x_N\) be the elements of the population. 
+
+\begin{itemize}
+
+    \item The \emph{population mean} (or expectation) of \(X\) is defined as 
+
+    \[
+        \mu = \frac{1}{N} \sum_{i = 1}^{N} x_i 
+    \]
+
+    \item The \emph{population variance} of \(X\) is defined as 
+
+    \[
+        \sigma^2 = \frac{1}{N} \sum_{i = 1}^{N} (x_i - \mu)^2
+    \]
+
+    \item The \emph{population standard deviation} of \(X\) is defined as 
+
+    \[
+        \sigma = \sqrt{\sigma^2}
+    \]
+
+\end{itemize}
+
+\subsection{Sample Statistics}
+
+Let \(X_1, X_2, \dots, X_n\) be a random sample of size \(n\).
+
+\begin{itemize}
+
+    \item The \emph{sample mean} is defined as 
+
+    \[
+        \overline{X_n} = \frac{1}{n} \sum_{i = 1}^{n} X_i
+    \]
+    
+    it has the property that \(\overline{X_n} \sim \mathcal{N}(\mu, \frac{\sigma^2}{n})\)
+
+    \item The \emph{sample variance} is defined as 
+
+    \[
+        s^2 = \frac{1}{n - 1} \sum_{i = 1}^{n}(X_i - \overline{X_n})^2
+    \]
+
+    \item The \emph{sample standard deviation} is defined as 
+
+    \[
+        s = \sqrt{s^2}
+    \]
+
+\end{itemize}
+
+\subsection{Finite n-Correction}
+
+\[
+    \var(\overline{X_n}) = \frac{\sigma^2}{n} \cdot \frac{n - 1}{N - 1}
+\]
+
+for very large \(N\).
+
+\textbf{Proof:}
+
+\begin{align*}
+    \var(\overline{X}) &= \cov(\overline{X}, \overline{X}) \\
+   &= \cov \left(\frac{1}{N} \sum_{i = 1}^{n} \overline{X_i}, \frac{1}{N} \sum_{j = 1}^{n} \overline{X_j} \right) \\ 
+   &= \frac{1}{n^2} \left(\sum_{i = 1}^{n}\sum_{j = 1}^{n} \cov(\overline{X_i}, \overline{X_j}) \right) \\ 
+   &= \frac{1}{n^2} \left(\sum_{i = 1}^{n} \cov(\overline{X_i}, \overline{X_j}) + \sum_{i = 1}^{n} \cov(\overline{X_i}, \overline{X_j})\right) \\ 
+   &= \frac{1}{n^2} n\sigma^2 - \frac{n(n - 1)}{N - 1}\sigma^2 \\ 
+   &= \frac{\sigma^2}{n} \cdot \frac{n - 1}{N - 1}
+\end{align*}
+
+\QED 
+
 \subsection{Frequency}
 
 Given a trait \(X\) with some quantifiers \((a_i)_{i \in I}\) for a discrete set \(I\). Given a 
@@ -27,7 +108,7 @@ sample of observations \(x_1, x_2, \dots, x_n\) of \(X\). The \emph{absolute fre
 defined as 
 
 \[
-    h_i = \sum_{j = 1}^{n} \text{ind}_{x_j = a_i} i \in I
+    h_i = \sum_{j = 1}^{n} \ind_{x_j = a_i} i \in I
 \]
 
 The \emph{relative frequency} is defined as  
@@ -35,16 +116,6 @@ The \emph{relative frequency} is defined as
 \[
     r_i = \frac{h_i}{n}, i \in I
 \]
-
-\subsection{Mean}
-
-Given samples \(x_1, \dots, x_n\) the \emph{mean} is given by: 
-
-\[
-    \overline{x_n}\frac{1}{n}\sum_{i = 1}^{n} x_i
-\]
-
-The \emph{mean} minimizes the quadratic error \(\sum_{i = 1}^{n}(x_i - c)^2\)
 
 \subsection{Order Statistic}
 
@@ -109,8 +180,8 @@ The \emph{empirical p-quantile} is defined as
 \[
     q_p = 
     \begin{cases}
-    X_{ \left\lfloor  n\cdot p + 1 \right\rfloor}  & \text{ if } np \notin \Naturals \\
-    \frac{1}{2} (X_{np} + X_{np + 1})  & \text{ if } np \notin \Naturals 
+    X_{ \left\lfloor  n\cdot p + 1 \right\rfloor}  & \text{ if } np \notin \N \\
+    \frac{1}{2} (X_{np} + X_{np + 1})  & \text{ if } np \notin \N 
     \end{cases}
 \]
 
@@ -147,7 +218,7 @@ The \emph{empirical variance} is defined as
 As a side note, if our samples are distributed uniformly then 
 
 \[
-    \Var(X) = \frac{1}{n}\sum_{i = 1}^{n} (x_i - \overline{x_n})^2
+    \var(X) = \frac{1}{n}\sum_{i = 1}^{n} (x_i - \overline{x_n})^2
 \]
 
 \subsection{Sigma Rules}
@@ -156,11 +227,11 @@ Given \(X \sim \mathcal{N}(\mu, \sigma^2)\)
 
 \begin{itemize}
 
-    \item \(\Prob(\mu - \sigma \le x \mu + \sigma) \approx 68,3\%\)
+    \item \(\prob(\mu - \sigma \le x \mu + \sigma) \approx 68,3\%\)
 
-    \item \(\Prob(\mu - 2\sigma \le x \mu + 2\sigma) \approx 95,4\%\)
+    \item \(\prob(\mu - 2\sigma \le x \mu + 2\sigma) \approx 95,4\%\)
 
-    \item \(\Prob(\mu - 3\sigma \le x \mu + 3\sigma) \approx 99,7\%\)
+    \item \(\prob(\mu - 3\sigma \le x \mu + 3\sigma) \approx 99,7\%\)
 
 \end{itemize}
 
@@ -200,24 +271,46 @@ is defined as
     V = \frac{s}{\overline{X_n}}
 \]
 
+\subsection{Covariance}
+
+\emph{Covariance} represents how much two values are dependent on each other 
+
+\[
+    \cov(X, Y) = \frac{1}{n - 1} \sum_{i = 1}^{n}(X_i - \overline{X_n}) (Y_i - \overline{Y_n})
+\]
+
+If the result is greater than zero they are 'moving' in the same direction and the slope is positive, less 'opposite' with 
+negative slope and equal to zero means that they are independent, and the slope is zero.
+
+\subsection{Correlation Coefficient}
+
+It adjusts the covariance to see relationships 
+
+\[
+    r = \frac{\cov(X,Y)}{\sigma(X) \sigma(Y)}, \quad -1 < r < 1
+\]
+
+The closer the result the closer the relationship between the values. Zero means 
+independence.
+
 \subsection{Empirical Distribution Function}
 
 Let \(X_1, \ldots, X_n\) be random variables. The function 
 
 \[
-    F_n (x) = \frac{1}{n} \sum_{i = 1}^{n} \text{ind}_{X_i \le x}
+    F_n (x) = \frac{1}{n} \sum_{i = 1}^{n} \ind_{X_i \le x}
 \]
 
 is the \emph{empirical distribution} function 
 
 \[
-    F_n (a_i) = \frac{1}{n} \sum_{j = 1}^{n} \text{ind}_{X_j \le a_i}
+    F_n (a_i) = \frac{1}{n} \sum_{j = 1}^{n} \ind_{X_j \le a_i}
 \]
 
 If the trait are sorted \(a_1 < a_2 < \dots\) then 
 
 \[
-    F_n (a_i) = \frac{1}{n} \sum_{j = 1}^{n} \text{ind}_{X_j \le a_i} = \sum_{k = 1}^{i} \frac{1}{n} \sum_{j = 1}^{n} \text{ind}_{x_j = a_k} = \sum_{k = 1}^{i} r_k
+    F_n (a_i) = \frac{1}{n} \sum_{j = 1}^{n} \ind_{X_j \le a_i} = \sum_{k = 1}^{i} \frac{1}{n} \sum_{j = 1}^{n} \ind_{x_j = a_k} = \sum_{k = 1}^{i} r_k
 \]
 
 where \(r_k\) is the relative frequency of \(k\)
@@ -258,7 +351,6 @@ Then the empirical distribution function is given by
     n F_n (a_i) = n \sum_{k = 1}^{i} r_k = \sum_{k = 1}^{i} h_k
 \]
 
-
 where \(h_k\) is the absolute frequency of \(k\)
 
 \subsection{Grouped Data}
@@ -288,7 +380,7 @@ For the next definitions, the following example table will be used.
 \emph{Empirical Distribution Function}
 
 \[
-    F_n(x) \approx \Prob(X \le x)
+    F_n(x) \approx \prob(X \le x)
 \]
 
 \emph{Mean}
@@ -331,7 +423,7 @@ With \(A_i = \text{interval}(a_i, a_{i + 1})\)
 
 \subsection{Samples via Random Variables}
 
-Let \(\mathcal{X} \subset \Reals^{n}\) and \(X : \Omega \to \mathcal{X}\) be a 
+Let \(\mathcal{X} \subset \R^{n}\) and \(X : \Omega \to \mathcal{X}\) be a 
 random variable.  A \emph{sample is a realization} of \(X = (X_{1}, \ldots, X_{n})^{T}\), i.e., \(X(\omega)\) for some \(\omega \in \Omega\).
 
 \begin{itemize}
@@ -352,7 +444,7 @@ random variable.  A \emph{sample is a realization} of \(X = (X_{1}, \ldots, X_{n
 
 \subsection{Statistical Model}
 
-Let \(\mathcal{X} \subset \Reals^{n}\) and \(X : \Omega \to \mathcal{X}\) be a random variable.
+Let \(\mathcal{X} \subset \R^{n}\) and \(X : \Omega \to \mathcal{X}\) be a random variable.
 
 \begin{itemize}
 
@@ -378,19 +470,19 @@ Let \(\mathcal{X} \subset \Reals^{n}\) and \(X : \Omega \to \mathcal{X}\) be a r
 
     \item Informally: “Let \(x_{1}, \ldots, x_{n}\) be a sample...”
 
-    \item Marginal distribution of the independent tosses: \(\Prob_{p}(X_{1} = 1) = p\)
+    \item Marginal distribution of the independent tosses: \(\prob_{p}(X_{1} = 1) = p\)
 
-    \item Joint distribution: \(\Prob_{p}^{n}\)
+    \item Joint distribution: \(\prob_{p}^{n}\)
 
     \item Statistical model for the coin toss:
 
     \[
-        P = \{ \Prob_{p}^{n} : p \in (0,1) \}
+        P = \{ \prob_{p}^{n} : p \in (0,1) \}
     \]
 
 \end{itemize}
 
-\subsection{Estimator}
+\subsection{Estimators}
 
 Let \(X : \Omega \to \mathcal{X}\) be a random variable with statistical model
 \(P = \{ P_{\theta} : \theta \in \Theta \}\).
@@ -403,90 +495,307 @@ Let \(X : \Omega \to \mathcal{X}\) be a random variable with statistical model
     \item An estimate is a realization of the estimator, i.e.,
     \(T_{n}(X)(\omega)\) for some \(\omega \in \Omega\).
 
-    \item If for the true distribution of \(X\) we have \(\Prob_{X} = \Prob_{\theta_{0}}\),
+    \item If for the true distribution of \(X\) we have \(\prob_{X} = \prob_{\theta_{0}}\),
     then \(\theta_{0}\) is called the true parameter.
 
 \end{enumerate}
 
+In simpler terms, an estimator is a function that takes in our samples and gives us an estimate of the parameter we are looking for.
+
 \subsection{Distortion}
 
 Let \(X : \Omega \to \mathcal{X}\) be a random variable with statistical model  
-\(P = \{ P_{\theta} : \theta \in \Theta \}\). For \(\theta \in \Theta\), let \( \Expc_{\theta} \) denote the
-expectation with respect to \(P_{\theta}\), and let \(\Var_{\theta}\) denote the corresponding variance.
+\(P = \{ P_{\theta} : \theta \in \Theta \}\). For \(\theta \in \Theta\), let \( \expc_{\theta} \) denote the
+expectation with respect to \(P_{\theta}\), and let \(\var_{\theta}\) denote the corresponding variance.
 
 \begin{itemize}
 
     \item The \emph{bias} of an estimator \(T_{n}\) is
     \[
         \mathrm{Bias}_{T_{n}}(\theta)
-        = \Expc_{\theta}[T_{n}(X)] - \theta 
+        = \expc_{\theta}[T_{n}(X)] - \theta 
     \]
 
     \item An estimator is called \emph{unbiased} if
     \(\mathrm{Bias}_{T_{n}}(\theta) = 0\) for all \(\theta \in \Theta\), i.e.,
     \[
-        \Expc_{\theta}[T_{n}(X)] = \theta
+        \expc_{\theta}[T_{n}(X)] = \theta
     \]
 
     \item A sequence of estimators \((T_{n})_{n \in \mathbb{Z}}\) is called consistent if
     for all \(\varepsilon > 0\) and all \(\theta \in \Theta\),
     \[
         \lim_{n \to \infty} 
-        \Prob_{\theta}\!\left( |T_{n}(X) - \theta| > \varepsilon \right)
+        \prob_{\theta}\!\left( |T_{n}(X) - \theta| > \varepsilon \right)
         = 0 
     \]
 
 \end{itemize}
 
-\subsection{Estimators for Identical, Independent Random Variables}
+\subsection{Method of Moments Estimators}
 
 Let \(X : \Omega \to \mathcal{X}\) be a random variable with  
 \(X = (X_{1}, \ldots, X_{n})^{T}\) for independent, identically distributed
 random variables \(X_{1}, \ldots, X_{n}\).
 
-\begin{enumerate}
+The \emph{method of moments} estimates the target distribution parameters based on the 
+moments of the sample. The first moment is the expectation, the second moment is the variance, etc.
 
-    \item If the expectation of \(X_{1}\) exists, then the sample mean
+Based on the first and second moments, we have the following \emph{unbiased and consistent estimators}:
 
-    \[
-        \overline{X}_{n}
-    \]
+Given \(X_1, \ldots, X_n\) random variables from a population with mean \(\mu\) and variance \(\sigma^2\). 
+The for some \(i in 1, \dots, n\)
 
-    is an unbiased and consistent estimator for \(\Expc[X_{1}]\).
+\[
+    \expc[X_i] = \mu
+\]
 
-    \item If the variance of \(X_{1}\) exists and the expectation  
-    \(\mu = \Expc[X_{1}]\) is known, then
+\[
+    \var[X_i] = \sigma^2
+\]
 
-    \[
-        \hat{\sigma}_{n}^{2}
-        = \frac{1}{n} \sum_{i=1}^{n} (X_{i} - \mu)^{2}
-    \]
+\[
+    \sigma[X_i] = \sigma
+\]
 
-    is an unbiased and consistent estimator for \(\Var(X_{1})\).
+\subsection{Expected Value, Standard Deviation and Variance of the Sample Mean}
 
-    \item If the variance of \(X_{1}\) exists and the expectation of \(X_{1}\)
-    is unknown, then the sample variance
+\[
+    \expc[\overline{X_n}] = \mu
+\]
 
-    \[
-        s_{n}^{2}
-        = \frac{1}{n-1} \sum_{i=1}^{n} (X_{i} - \overline{X}_{n})^{2}
-    \]
+\[
+    \sigma(\overline{X_n}) = \frac{\sigma}{\sqrt{n}}
+\]
 
-    is an unbiased and consistent estimator for \(\Var(X_{1})\).
+\[
+    \var(\overline{X_n}) = \frac{\sigma^2}{n}
+\]
 
-\end{enumerate}
+\subsubsection*{Errors in the Method of Moments}
+
+Approximating the error when estimating the mean with the sample mean or variance can be 
+challenging depending on the size of the population and the kind distribution of the data. 
+
+Sometimes we can use our methods for unbiased and consistent estimators, but they might not be accurate enough. 
+
+Another method is bootstrapping, which consists of resampling with replacement from the sample and calculating the estimator
+
+\subsection{Sample Variance as Estimator}
+
+The \emph{sample variance} is given by 
+
+\[
+    \hat{\sigma}_n^2 = \frac{1}{n - 1} \sum_{i = 1}^{n} (X_i - \overline{X_n})^2 = \frac{1}{n} \sum_{i = 1}^{n} \left( X_i^2 \right) - \overline{X_n^2}
+\]
+
+And 
+
+\[
+    \expc[\hat{\sigma}^2] = \frac{\sigma^2}{n} \cdot \frac{N(n - 1)}{N - 1}
+\]
+
+\textbf{Proof:} 
+
+\[
+    \expc[X_i^2] = \var(X_i) + \expc[X_i]^2 = \sigma^2 + \mu^2
+\]
+
+From this fact we can derive that 
+
+\begin{align*}
+    \expc[\hat{\sigma}^2] &= \expc\left[\frac{1}{n} \sum_{i = 1}^{n} X_i^2 - \overline{X_n^2}\right] \\
+    &= \frac{1}{n} \sum_{i = 1}^{n} \expc\left[ X_i^2 - \overline{X_n^2} \right] \\
+    &= \frac{1}{n} \sum \left[(\var(X_i) + \expc[X_i]^2 - \var(X_i) - \expc[\overline{X_n}]^2\right] \quad \text{apply the n-correction result} \\ 
+    &= \frac{1}{n} \sum_{i = 1}^{n} \sigma^2 + \mu^2 - \frac{\sigma^2}{n}\left(1 - \frac{n - 1}{N - 1}\right) - \mu^2 \\ 
+    &= \frac{\sigma^2}{n} \left[n - \left(1 - \frac{n - 1}{N - 1}\right)\right] \\ 
+    &= \frac{\sigma^2}{n} \cdot \frac{N(n - 1)}{N - 1}
+\end{align*}
+
+\QED 
+
+\subsection{Normal Approximation to Distribution of the Sample Mean}
+
+Let \(X_1, \ldots, X_n\) be random variables from a population with mean \(\mu\) and variance \(\sigma^2\). The 
+\emph{sample mean} \(\overline{X_n}\) is approximately normally distributed with mean \(\mu\) and variance \(\frac{\sigma^2}{n}\) for large \(n\).
+
+Note, that this fact comes from the \emph{Central Limit Theorem} which only applies for independent random variables. In our case 
+because our population is very large we can assume independence due to the covariance between samples being very small.
+
+This approximation gives us the ability to calculate probabilities about the sample mean using the normal distribution. 
+
+\[
+    \prob\left(\frac{\overline{X} - \mu}{\sigma / \sqrt{n}} \le z\right) \approx \Phi(z)
+\]
+
+\subsection{Linear Regression}
+
+Given samples \((x_{1}, y_{1}), \ldots, (x_{n}, y_{n})\) of random variables
+\(X\) and \(Y\). The \emph{linear regression} of \(Y\) on \(X\) is an approximation 
+using the linear function 
+
+\[
+    Y = aX + b 
+\]
+
+where we minimize \emph{the sum of squared errors}
+
+\[
+    Q (a, b) = \sum_{i = 1}^{n}(y_i - (a x_i + b))^2
+\]
+
+by differentiating with respect to \(a\) and \(b\).
+
+\[
+    \frac{\partial Q}{\partial a}  = \sum_{i = 1}^{n} ax_i^2 + b x_i - y_i x_i = 0
+\]
+
+\[
+    \frac{\partial Q}{\partial b}  = \sum_{i = 1}^{n} a x_i + b - y_i = 0
+\]
+
+We proceed by  defining the following terms 
+
+\[
+    S = \sum_{i = 1}^{n} x_i^w
+\]
+
+\[
+    R = \sum_{i = 1}^{n} y_i x_i
+\]
+
+Then 
+
+\[
+    \frac{\partial Q}{\partial a}  = \sum_{i = 1}^{n} ax_i^2 + b x_i - y_i x_i = aS +bn\overline{X_n} - R
+\]
+
+\[
+    \frac{\partial Q}{\partial b}  = \sum_{i = 1}^{n} a x_i + b - y_i = an \overline{X_n} + nB - \overline{Y_n}
+\]
+
+The Hessian is given then by 
+
+\[
+    H = 
+    \begin{bmatrix}
+        S & n \overline{X_n} \\ 
+        n \overline{X_n} & n
+    \end{bmatrix}
+\]
+
+With \(\det(H_f) = n\sum_{i = 1}^{n} x_i^2 - \left(\sum_{i = 1}^{n} x_i\right)^2 > 0\)
+
+In general, this comes from 
+
+\[
+    \begin{bmatrix}
+        S & n \overline{X_n} \\
+        n \overline{X_n} & n
+    \end{bmatrix}
+    \begin{bmatrix}
+        a \\ 
+        b
+    \end{bmatrix}
+    = 
+    \begin{bmatrix}
+        R \\ 
+        n \overline{Y_n}
+    \end{bmatrix}
+\]
+
+by solving for \(a\) and \(b\) we get using the inverse of the Hessian 
+
+\[
+    \begin{bmatrix}
+        a \\ 
+        b
+    \end{bmatrix}
+    =
+    \frac{1}{nS - n^2 \overline{X_n}^2} 
+    \begin{bmatrix}
+        n & -n \overline{X_n} \\ 
+        -n \overline{X_n} & S
+    \end{bmatrix}
+    \begin{bmatrix}
+        R \\ 
+        n \overline{Y_n}
+    \end{bmatrix}
+\]
+
+Thus, our square error is minimized when \(S > 0, \det(H_f) > 0\)
+
+With a simple calculation we get 
+
+\[
+    b = \frac{s_{XY}}{s_{X}^2} \quad a = \overline{Y_n} - b \overline{X_n}
+\]
+
+where the \emph{variance}
+
+\[
+    s_{X}^2 = \frac{1}{n - 1} \sum_{i = 1}^{n} (x_i - \overline{X_n})^2
+\]
+
+and the \emph{covariance}
+
+\[
+    s_{XY} = \frac{1}{n - 1} \sum_{i = 1}^{n} (x_i - \overline{X_n})(y_i - \overline{Y_n})
+\]
+
+\subsubsection{Simplified Linear Regression}
+
+\emph{Ordinary least square} with \(y = b_0 + b_1 x + \cdots\) or for the simple case 
+\(\hat{y} = mx + b\). 
+
+\begin{itemize}
+
+    \item \(m = b_1 = \frac{\sum_{i = 1}^{n}(X_i - \overline{X_n}) (Y_i - \overline{Y_n})}{\sum_{i = 1}^{n}(X_i - \overline{X_n})^2}\) 
+    
+    \item \(b = b_0 = \overline{Y_n} - b_1 \overline{X_n}\)
+
+\end{itemize}
+
+\subsection{Monte Carlo Sampling}
+
+When we can not estimate the error of our estimators analytically, we can use \emph{Monte Carlo Sampling}
+by assuming that our estimator \(\hat{\theta}\) is true. Then we create simulated data from our estimated 
+parameter, and we repeat the process \(k\) times to examine how our estimator behaves across the different simulations.
+
+This not really done on paper, but with computers. 
+
+\subsection{Likelihood}
+
+The \emph{Likelihood} represents how likely a certain parameter \(\theta\) is given in some \textbf{independent} data. We can change the target 
+parameter or parameters and see how the likelihood changes. If the likelihood increases the parameter is more probable given the data.
+
+For example, if we  have data which we assume to be normally distributed, we can calculate the likelihood of different \(\mu\) and \(\sigma\) values
+given the data. The higher the likelihood the more probable that parameter is given in the data.
+
+\textbf{Example:}
+
+A coin has been flipped 4 times as we observed the following data: H H H H. Our intuition tells us that the coin is biased; 
+thus we want to find the probability \(p \in [0,1]\) of getting heads,  with counter probability \(1 - p\) of getting tails. 
+
+Our sequence is given by
+
+\[
+    \prob(X = HHHH) = p^4
+\]
+
+As we increase \(p\) the likelihood of observing our data increases. Thus, the maximum likelihood is achieved when \(p = 1\).
 
 \subsection{Maximum Likelihood}
 
-Let \(X = (X_{1}, \ldots, X_{n})^{T} : \Omega \to \mathcal{X}\) be a random variable with
-statistical model \(P = \{ P^{n}_{\theta} : \theta \in \Theta \}\).
-Furthermore, let \(x_{1}, \ldots, x_{n}\) be a sample.
+Let \(X = (X_{1}, \ldots, X_{n})^{T} : \Omega \to \mathcal{X}\) be independent random variables with
+statistical model \(P = \{ P^{n}_{\theta} : \theta \in \Theta \}\). Furthermore, let \(x_{1}, \ldots, x_{n}\) be a sample.
+
 The function \(L : \Theta \to [0,1]\), defined by
 
 \[
     L(\theta) = 
     \begin{cases}
-    \Prob_{\theta} (X_1 = x_1) \cdot \dots \cdot \Prob_{\theta} (X_n = x_n) &\text{ for disc. random vars.} \\ 
+    \prob_{\theta} (X_1 = x_1) \cdot \dots \cdot \prob_{\theta} (X_n = x_n) &\text{ for disc. random vars.} \\ 
     f_{\theta} (x_1) \cdot \cdots \cdot f_{\theta} (x_n) &\text{ for cont. random vars.}
     \end{cases}
 \]
@@ -499,7 +808,10 @@ The parameter \(\hat{\theta}\) that maximizes \(L(\theta)\) is called the
 The mapping \(\hat{\theta}(x_{1}, \ldots, x_{n})\) is called the
 \emph{maximum-likelihood estimator}.
 
-\subsection{Log-Likelihood-Estimator}
+The idea is that given some data we want to find the parameter \(\theta\) that allows us to achieve the highest probability of 
+observing the data in the ideal probability distribution.
+
+\subsection*{Log-Likelihood-Estimator}
 
 The likelihood function can be pretty challenging to optimize, therefore, 
 the less complicated \emph{Log-Likelihood-function} is often used for maximation
@@ -508,15 +820,128 @@ problem.
 \[
     l(\theta) = 
     \begin{cases}
-        \sum_{i = 1}^{n} \log(\Prob_{\theta} (X_i = x_i)) &\text{ for disc. random vars.} \\
+        \sum_{i = 1}^{n} \log(\prob_{\theta} (X_i = x_i)) &\text{ for disc. random vars.} \\
         \sum_{i = 1}^{n} \log( f_\theta(x_i)) &\text{ for cont. random vars.}
     \end{cases}
 \]
 
+\textbf{Example:}
+
+Given \(X_1, \dots, X_n \sim \mathrm{Poisson}(\lambda)\)
+
+\[
+    f(x_1, \dots, x_n | \lambda) = \prod_{i = 1}^{n} \frac{\lambda^{x_i} e^{-\lambda}}{x_i!}
+\]
+
+We can calculate the log-likelihood function with \(\theta = \lambda\) as 
+
+\begin{align*}
+    l(\lambda) &= \prod_{i = 1}^{n} \frac{\lambda^{x_i} e^{-\lambda}}{x_i!} \\ 
+    &\iff \ln \left(\prod_{i = 1}^{n} \frac{\lambda^{x_i} e^{-\lambda}}{x_i!} \right) \\ 
+    &= \sum_{i = 1}^{n} \ln \left(\frac{\lambda^{x_i} e^{-\lambda}}{x_i!} \right) \\ 
+    &= \sum_{i = 1}^{n} \ln(\lambda^{x_i} e^{-\lambda}) - \ln(x_i!) \\ 
+    &= \sum_{i = 1}^{n} \ln(\lambda^{x_i}) + \ln(e^{-\lambda}) - \ln(x_i!) \\ 
+    &= \sum_{i = 1}^{n} x_i \ln(\lambda) - \lambda - \ln(x_i!)
+\end{align*}
+
+Now we can derive with respect to \(\lambda\) and set to zero to find the maximum. 
+
+\[
+    \frac{d l(\lambda)}{d \lambda} = \sum_{i = 1}^{n} \frac{x_i}{\lambda} - 1 = 0
+\]
+
+The second derivative is
+
+\[
+    \frac{d^2 l(\lambda)}{d \lambda^2} = \sum_{i = 1}^{n} -\frac{x_i}{\lambda^2} < 0
+\]
+
+Always less than zero, thus we have a maximum.
+
+The first derivative gives us
+
+\begin{align*} 
+    \sum_{i = 1}^{n} \frac{x_i}{\lambda} - 1 = 0 \\ 
+    \frac{1}{\lambda}\sum_{i = 1}^{n} \left[x_i\right] - n = 0 \\  
+    \frac{1}{\lambda} \sum_{i = 1}^{n} \left[x_i\right] = n \\ 
+    \lambda = \frac{1}{n} \sum_{i = 1}^{n} x_i = \overline{X_n}
+\end{align*}
+
+We get the sample mean as the maximum likelihood estimator for \(\lambda\) in a Poisson distribution.
+
+\subsubsection{Properties of the Maximum Likelihood Estimator}
+
+Given 
+
+\[
+    l(\theta) = \sum \ln (\prob(x_i \mid \theta))
+\]
+
+where \(\hat{\theta} = \argmax_\theta l(\theta)\). We get the following properties 
+
+\begin{itemize}
+
+    \item \(\hat{\theta}\) is consistent, \(\hat{\theta} \to \theta_{\text{true}}\) for \(n \to \infty\)
+
+    \item \(\hat{\theta} \sim \mathcal{N}\left(\theta_{\text{true}}, \frac{1}{n I(\theta_{\text{true}})}\right)\)
+    where \(I(\theta) = \expc \left[\frac{\partial}{\partial \theta} \ln(\prob(x \mid \theta))\right]^2 = - \expc \left[\frac{\partial^2}{\partial \theta^2} \ln(\prob(x \mid \theta))\right]\)
+
+    \item \emph{Crammer-Rao Inequality:} Given \(X_1, \dots, X_n\) i.i.d. random variables with with the unbiased estimator \(\hat{\theta} = \hat{\theta}(X_1, \dots, X_n)\)
+    \[
+        \var(\hat{\theta}) \ge \frac{1}{n I(\theta)} 
+    \]
+
+    for all \(\prob(X \mid \theta)\) smooth.
+
+\end{itemize}
+
 \subsection{Confidence Interval}
 
+A \emph{confidence interval} \(p\) for \(\mu\) is a random interval centered at \(\overline{X_n}\) 
+that contains the true mean \(\mu\) with probability \(p\). 
+
+\[
+    \prob\left(- \epsilon \le  \overline{X_n} - \mu \le \epsilon\right) = p = 1 - \alpha
+\]
+
+Given \(\Phi(z) = 1 - \alpha\)
+
+If we standardize the expression we get 
+
+\[
+    \prob\left(- Z_{\frac{\alpha}{2}} \le  \frac{\overline{X_n} - \mu}{\sigma / \sqrt{n}} \le Z_{\frac{\alpha}{2}}\right) = p = 1 - \alpha
+\]
+
+This allows us to find the confidence interval given an \(\alpha\) by: 
+Finding the critical value \(Z_{\frac{\alpha}{2}}\) from the \(Z-\)table.
+
+This is done by looking for \(1 - \frac{\alpha}{2}\) in the body of the table and finding the corresponding \(z\) value.
+
+In general 
+
+\[
+    (x,y) = \overline{X_n} \pm Z_{\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}}
+\]
+
+\textbf{Example:}
+
+Given \emph{Confidence}\(= 0.95\), \(\alpha = 0.05\), \(\overline{X_n} = 8978814.2\)
+
+The critical probability is \(1 - \alpha/2 = 0.975\) which leads us to look at the \(Z-\)table it gives 
+us \(1.96\). 
+
+Next we have \(\sigma - 12471455.74\) and \(n = 15\)
+
+giving the result 
+
+\[
+    (2667401.97, 15290226.43) = \overline{X_n} \pm Z_{\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}}
+\]
+
+\subsection{Confidence Interval Formal Definition}
+
 Let \(X = (X_{1}, \ldots, X_{n})^{T} : \Omega \to \mathcal{X}\) be a random variable with
-statistical model \(P = \{ \Prob^{n}_{\theta} : \theta \in \Theta \}\).
+statistical model \(P = \{ \prob^{n}_{\theta} : \theta \in \Theta \}\).
 Furthermore, let \(x_{1}, \ldots, x_{n}\) be a sample and let \(\alpha \in [0,1]\).
 
 A mapping \(I\) that assigns to each sample
@@ -524,11 +949,541 @@ A mapping \(I\) that assigns to each sample
 is called a \((1 - \alpha)\)-confidence region for \(\theta\) if
 
 \[
-    \Prob_{\theta}\bigl( \theta \in I(X_{1}, \ldots, X_{n}) \bigr)
+    \prob_{\theta}\bigl( \theta \in I(X_{1}, \ldots, X_{n}) \bigr)
     \ge 1 - \alpha
 \]
 
 for all \(\theta \in \Theta\).
 
-If \(\Theta \subset \Reals\) and \(I(x)\) is an interval for all \(x \in X\),
+If \(\Theta \subset \R\) and \(I(x)\) is an interval for all \(x \in X\),
 then \(I\) is called a \((1 - \alpha)\)-\emph{confidence interval}.
+
+\subsection{\(t_{n - 1}\) Distribution}
+
+The \(t_{n - 1}\) distribution is used when the standard deviation \(\sigma\) is not known. 
+It is defined as
+
+\[
+    t_{n - 1} = \frac{\overline{X_n} - \mu}{s_n/\sqrt{n}}
+\]
+
+This distribution is symmetric to the \(y\)-axis and approximates the standard normal distribution for 
+large \(n\).
+
+\subsection{Confidence Intervals for the Expected Value and Standard Deviation of Normal Distributions}
+
+\subsubsection*{Confidence Interval for \(\mu\) with known \(\sigma\):}
+
+Given \(X_1,  \dots, X_n \sim \mathcal{N}(\mu, \sigma^2)\). We can build a confidence interval for \(\mu\) as follows:
+
+\[
+    \left[\overline{X_n} - \frac{ q \sigma}{\sqrt{n}}, \overline{X_n} + \frac{q \sigma}{\sqrt{n}}\right]
+\]
+
+where \(q\) is the \((1 - \alpha/2)\)-quantile of the standard normal distribution. This is computed 
+using the formula
+
+\[
+    q = \Phi^{-1}(1 - \alpha/2)
+\]
+
+If \(\sigma^2\) is not known, we can use the \(s_n^2\)
+
+\subsubsection*{Confidence Interval for \(\mu\) with unknown \(\sigma\):}
+
+Given \(X_1,  \dots, X_n \sim \mathcal{N}(\mu, \sigma^2)\). We can build a confidence interval for \(\mu\) as follows:
+
+\[
+    \left[\overline{X_n} - \frac{t_{n - 1, \alpha/2} s_n}{\sqrt{n}}, \overline{X_n} + \frac{t_{n - 1, \alpha/2} s_n}{\sqrt{n}}\right]
+\]
+
+where \(t_{n - 1, \alpha/2}\) is the \((1 - \alpha/2)\)-quantile of the t-distribution with \(n - 1\) degrees of freedom.
+
+\subsubsection*{Confidence Interval for \(\sigma\) with known \(\mu\):}
+
+Given \(X_1,  \dots, X_n \sim \mathcal{N}(\mu, \sigma^2)\). We can build a confidence interval for \(\sigma\) as follows:
+
+\[
+    \left[\frac{\sum_{i = 1}^{n} (X_i - \mu)^2}{\chi^2_{n, 1 - \alpha/2}}, \frac{\sum_{i = 1}^{n} (X_i - \mu)^2}{\chi^2_{n,\alpha/2}}\right]
+\]
+
+\subsubsection*{Confidence Interval for \(\sigma\) with unknown \(\mu\):}
+
+Given \(X_1,  \dots, X_n \sim \mathcal{N}(\mu, \sigma^2)\). We can build a confidence interval for \(\sigma\) as follows:
+
+\[
+    \left[\frac{(n - 1) s_n^2}{\chi^2_{n - 1, 1 - \alpha/2}}, \frac{(n - 1) s_n^2}{\chi^2_{n - 1, \alpha/2}}\right]
+\]
+
+\subsection{Degrees of Freedom}
+
+The \emph{degrees of freedom} of a random variable is the number of independent values or quantities which can be 
+assigned to a statistical distribution.
+
+For example, if we have \(n\) samples, and we know the mean, then we have \(n - 1\) degrees of freedom because
+the last value is determined by the mean and the other \(n - 1\) values.
+
+\subsection{Hypothesis Testing}
+
+Given \(X: \Omega \to \mathcal{X}\) be random variable with statistical model
+\(P = \{\prob_\theta : \theta \in \Theta\}\). A subset \(\Theta_i\) of \(\Theta\) with \(H_1 \in \Theta_i\) is 
+called a \emph{hypothesis}.
+
+The \emph{null-hypothesis} is denoted by \(H_0: \theta \in \Theta_0\) and the \emph{alternative hypothesis} by \(H_1: \theta \in \Theta_1\).
+The \emph{hypothesis test} is a decision rule to decide whether to reject \(H_0\) or not based on the sample.
+
+\textbf{Example:}
+
+We want to test if a coin is fair. 
+
+\begin{itemize}
+
+    \item \(\Theta = [0,1]\)
+
+    \item \(\Theta_0 = \{0.5\}, H_0: p = 0.5\)
+
+    \item \(\Theta_1 = [0,1] \setminus \{0.5\}, H_1: p \ne 0.5\)
+
+\end{itemize} 
+
+\subsection{Test Statistic}
+
+Given \(X: \Omega \to \mathcal{X}\) be random variable with statistical model \(P = \{\prob_\theta : \theta \in \Theta\}\). 
+A \emph{test statistic} is a mapping \(\varphi: \mathcal{X} \to \{0,1\}\) where \(\varphi(x) = 1\) means that we reject \(H_0\) and \(\varphi(x) = 0\) 
+means that we do not reject \(H_0\).
+
+\subsubsection*{Right Assertions}
+
+\begin{itemize}
+
+    \item \emph{Type I Assertion:} Accepting \(H_0\) when it is true. 
+
+    \item \emph{Type II Assertion:} Rejecting \(H_0\) when it is false. 
+
+\end{itemize}
+
+\subsubsection*{Error Types}
+
+\begin{itemize}
+
+    \item \emph{Type I Error:} Rejecting \(H_0\) when it is true. The probability of this error is called the \emph{significance level} \(\alpha\).
+
+    \item \emph{Type II Error:} Not rejecting \(H_0\) when it is false. The probability of this error is called \(\beta\).
+
+\end{itemize}
+
+We can sadly not minimize both errors at the same time, therefore, we choose a significance level \(\alpha\)
+and try to minimize \(\beta\).
+
+\subsection{Quality, Power and Level}
+
+Let \(X: \Omega \to \mathcal{X}\) be random variable with statistical model \(P = \{\prob_\theta : \theta \in \Theta\}\).
+For the test \(\varphi: \mathcal{X} \to \{0,1\}\) of the hypothesis \(H_0: \theta \in \Theta_0\) against \(H_1: \theta \in \Theta_1\): 
+
+\subsubsection*{Quality Function}
+
+The function \(\beta_{\varphi} \theta \to [0,1]\) defined by 
+
+\[
+    \beta_{\varphi}(\theta) = \prob_{\theta}(\varphi(X) = 1) 
+\]
+
+is called the \emph{quality function} of the test \(\varphi\).
+
+Properties of the quality function: 
+
+
+\begin{itemize}
+
+    \item The probability of a Type I error is given by \(\beta_\varphi (\theta) = \prob_{\theta}(\varphi(X) = 1)\) for \(\theta \in \Theta_0\)
+
+    \item The probability of a Type II error is given by \(1 - \beta_\varphi (\theta) = \prob_{\theta}(\varphi(X) = 0)\) for \(\theta \in \Theta_1\)
+   
+\end{itemize}
+
+\subsubsection*{Significance Level}
+
+For \(\alpha \in [0,1]\) the test \(\varphi\) is called a \emph{significance level} \(\alpha\) test if 
+
+\[
+    \sup_{\theta \in \Theta_0} \beta_{\varphi}(\theta) \le \alpha
+\]
+
+\(\sup_{\theta \in \Theta_0} \beta_\varphi (\theta)\) is called the \emph{level} of the test
+    
+
+\subsubsection*{Power}
+
+For \(\theta \in \Theta_1\) is \(\beta_\varphi (\theta)\) called the \emph{power} of the test \(\varphi\) at \(\theta\). 
+
+Note the following:
+
+\begin{itemize}
+  
+    \item In practice, we choose a significance level \(\alpha\) and look for a test \(\varphi\) with level \(\le \alpha\) that maximizes the power \(\beta_\varphi (\theta)\) for \(\theta \in \Theta_1\).
+
+    \item A good test should have  for \(n \to \infty\), \(\beta_\varphi (\theta) \to 1\)
+
+\end{itemize}
+
+\subsubsection*{Ideal Matrix}
+
+\begin{tabular}{c|c|c}
+                & \(H_0\) true          & \(H_0\) false         \\ \hline
+    Reject \(H_0\)   & \(1 - \beta_\varphi (\theta) \ge 1 - \alpha\)     & \(1 - \beta_\varphi (\theta)\)          \\ \hline
+    Do not reject \(H_0\) & \(\beta_\varphi (\theta) \le \alpha\)        & \(\beta_\varphi (\theta)\)
+\end{tabular}
+
+\subsection{Critical Value}
+
+Given \(X: \Omega \to \mathcal{X}\) be random variable with statistical model 
+\(P = \{\prob_\theta : \theta \in \Theta\}\). For the test \(H_0 : \theta \in \Theta_0\) vs. \(H_1: \theta \in \Theta_1\) 
+and test \(\varphi\) with level \(\alpha\). A value \(c_\alpha \in \R\) is called a \emph{critical value} if
+
+\[
+    \varphi(x) = 
+    \begin{cases}
+        1 &\text{ if } t(x) > c_\alpha \\ 
+        0 &\text{ else }
+    \end{cases}
+\]
+
+\subsection{Test-Statistic}
+
+Given \(X: \Omega \to \mathcal{X}\) be random variable with statistical model 
+\(P = \{\prob_\theta : \theta \in \Theta\}\). \(t : \mathcal{X} \to \R\) is 
+a called a \emph{test-statistic} for the test \(H_0 : \theta \in \Theta_0\) vs. \(H_1: \theta \in \Theta_1\) and 
+\(c_\alpha\) the critical value for the choice rule 
+
+\[
+    \text{Reject } H_0 \text{ if } t(x) > c_\alpha
+\]
+
+of test \(\varphi\) with level \(\alpha\). 
+
+\subsection{p-Value}
+
+The \emph{p-value} of a test-statistic \(t\) for the observation \(x\) is defined as
+
+\[
+    p =  \sup_{\theta \in \Theta_0} \prob_{\theta}(t(X) \ge t(x)) = 1 - \prob_{\theta}(t(X) < t(x))
+\]
+
+where \(\theta\) is a parameter under the null-hypothesis \(H_0\), \(t(x)\) is the value of the test-statistic for the observation \(x\) and \(X\) is the random variable.
+
+The p-value gives us the probability of observing a test-statistic value as extreme or more extreme than the one observed, 
+assuming that the null hypothesis \(H_0\) is true.
+
+\begin{itemize}
+
+    \item A small p-value means the observed data would be rare under \(H_0\)
+
+    \item A large p-value means the data are consistent with  \(H_0\)
+
+\end{itemize}
+
+\textbf{Example:}
+
+We use the number of heads in \(n\) coin tosses to test if the coin is fair. 
+\(X \sim \mathrm{Bin}(n,p)\)
+
+Our hypotheses are 
+
+\begin{itemize}
+
+    \item \(H_0: p = 0.5\)
+
+    \item \(H_1: p \ne 0.5\)
+
+\end{itemize}
+
+We define our test \(\varphi\) as follows: 
+
+\[
+    \varphi(x) = 
+    \begin{cases}
+        1 &\text{ if } |X - \frac{n}{2}| > k \\ 
+        0 &\text{ else }
+    \end{cases}
+\]
+
+\(\frac{n}{2}\) is the expected value for our random variable \(X\) under \(H_0\). 
+
+Our quality function is given by 
+
+\begin{align*} 
+    \beta_\varphi (p) = \prob_p( \varphi(X) = 1) &= \prob_p(|X - \frac{n}{2}| > k) \\ 
+    &= 1 - \prob_p( \left|X - \frac{n}{2} \right| \le k) \\ 
+    &= 1 - \prob_p(\frac{n}{2} - k \le X \le \frac{n}{2} + k) \\ 
+    &= \sum_{i = \left\lceil \frac{n}{2}\right\rceil  - k}^{\left\lfloor \frac{n}{2} \right\rfloor + k} \binom{n}{i} p^i (1 - p)^{n - i}
+\end{align*}
+
+To find the level of the test we compute for \(n = 100\) and \(k = 13\), and get 
+\(\beta_\varphi\left(\frac{1}{2}\right) = 0.0066\). Which is less than \(0.05\) thus our test is a level \(0.05\) test.
+
+In summary, we have: 
+
+\begin{itemize}
+
+    \item \textbf{Significance Level:} \(\alpha = 0.01\)
+
+    \item \textbf{Sample:} \(x = (x_1, \dots, x_{100}) \in \{0,1\}^{100}\)
+
+    \item \textbf{Test-Statistic:} \(t(x) = \left|\sum_{i = 1}^{100} x_i - 50 \right|\)
+
+    \item \textbf{Critical Value:} \(c_\alpha = 13\)
+    If we get heads 33 times then \(H_0\) will be rejected since \(t(x) = |33  - 50| = 17 > 13 = c_\alpha\)
+
+    \item \textbf{p-Value:}
+    
+    \[
+        p = \prob_{1/2}(t(X) \ge 17) = \frac{1}{2^{100}} \sum_{i = 0}^{33} \binom{100}{i} + \sum_{i = 67}^{100} \binom{100}{i} \approx 0.0087
+    \]
+
+    Due to \(p = 0.0087 < \alpha = 0.01\) our observation seems to be rare under \(H_0\) thus we reject \(H_0\).
+
+\end{itemize}
+
+\subsection{Standard Error}
+
+The \emph{standard error} (SE) of a statistic is the standard deviation of its sampling distribution or an estimate of that standard deviation.
+It is often used to measure the precision of a sample mean by estimating the variability between sample means that one would obtain if
+multiple samples were drawn from the same population.
+
+\[
+    SE = \frac{\sigma}{\sqrt{n}}
+\]
+
+\subsection{General Procedure for Hypothesis Testing}
+
+You are given a sample \(X = (X_1, \dots, X_n)\) and you want to test some hypothesis about the distribution of the data. Mostly, 
+you will have \(n\), the sample size, \(\alpha\) the significance level and some information about the distribution like 
+the mean or variance. 
+
+The general procedure is as follows:
+
+\begin{itemize}
+
+    \item Compute the missing information about the distribution (mean, variance, standard deviation, etc.) as needed.
+
+    \item State the null and alternative hypothesis \(H_0\) and \(H_1\). This will influence the test statistic and rejection region. 
+
+    \item Determine the test statistic and the rejection region based on the hypotheses and significance level (Z-test, Chi-Test, t-Test, etc.). 
+    
+    \item Compute the test statistic value from the sample data.
+    
+    \item Using the significance level \(\alpha\) and the test statistic distribution, find the critical value(s) for the rejection region. 
+
+    \item Compute the p-value for the test statistic value if needed. 
+    
+    \item Compute the quality function if needed.
+
+\end{itemize}
+
+We will take a look at the kind of tests that can be performed. 
+
+\subsection{Hypothesis Testing on Normal Distributed Random Variables}
+
+Given \(X_1, \dots, X_n \sim \mathcal{N}(\mu, \sigma^2)\) i.i.d. random variables. We would 
+want to test the following hypotheses:  
+
+\begin{itemize}
+
+    \item \(H_0: \mu = \mu_0\) vs. \(H_1: \mu \ne \mu_0\) (two-sided)
+
+    \item \(H_0: \mu \le \mu_0\) vs. \(H_1: \mu > \mu_0\) (right-sided)
+
+    \item \(H_0: \mu \ge \mu_0\) vs. \(H_1: \mu < \mu_0\) (left-sided)
+
+\end{itemize}
+
+If \(\sigma^2\) is known we use the \emph{Gauss-Test}, otherwise we use the \emph{t-Test}. 
+
+\subsubsection{Gauss-Test (Z-Test)}
+
+Given \(X = (X_1, \dots, X_n) \in \mathcal{X}\). We denote with \(z_\alpha\) the \(\alpha-\)quantile of \(\mathcal{N}(0,1)\). 
+We also have the test-statistic 
+
+\[
+    Z = \frac{\overline{X_n} - \mu_0}{ \frac{\sigma}{\sqrt{n}}}
+\]
+
+if \(\mu = \mu_0: Z \sim \mathcal{N}(0,1)\)
+
+\begin{table*}[h!]
+    \centering
+    \begin{tabular}{c|c|c|c}
+        Test Type & Rejection Region & Critical Value & p-Value \\ \hline
+        Two-Sided & \(|Z| > z_{1 - \alpha/2}\) & \(z_{1 - \alpha/2}\) & \(2(1 - \Phi(|z|))\) \\ \hline
+        Right-Sided & \(Z > z_{1 - \alpha}\) & \(z_{1 - \alpha}\) & \(1 - \Phi(z)\) \\ \hline
+        Left-Sided & \(Z < -z_{1 - \alpha}\) & \(-z_{1 - \alpha}\) & \(\Phi(z)\)
+    \end{tabular}
+\end{table*}
+
+\textbf{Use Case:} This test is used when we want to know if the mean of a normal distribution is equal to some value \(\mu_0\) 
+when the variance \(\sigma^2\) is known.
+
+\subsubsection*{Error Types in Gauss-Test}
+
+\begin{center}
+    \begin{tabular}{c|c|c}[h!]
+                & Error Type I          & Error Type II        \\ \hline
+    \(H_0: \mu \le \mu_0\)   & \(1 - \Phi\left(z_{1  -\alpha} + \sqrt{n}\frac{\mu_0 - \mu}{\sigma}\right)\)     & \(\Phi\left(z_{1  -\alpha}\sqrt{n}\frac{\mu_0 - \mu}{\sigma}\right)\)          \\ \hline
+    \(H_0: \mu \ge \mu_0\) & \(\Phi\left(z_{\alpha} + \sqrt{n}\frac{\mu_0 - \mu}{\sigma}\right)\) & \(1 - \Phi\left(z_{\alpha} + \sqrt{n}\frac{\mu_0 - \mu}{\sigma}\right)\) \\ \hline
+    \(H_0: \mu = \mu_0\) & \(2 - \xi\)& \(\xi - 1\)
+    \end{tabular}
+\end{center}
+
+with \(\xi = \Phi\left(z_{1 - \frac{\alpha}{2}} + \sqrt{n}\frac{\mu_0 - \mu}{\sigma}\right) + \Phi\left(z_{1 - \frac{\alpha}{2}} - \sqrt{n}\frac{\mu_0 - \mu}{\sigma}\right)\)
+
+\textbf{Example:}
+
+Given a sample of size \(n = 400\) \(\mu_0 = 1,74m \) and \(\sigma_0^2 = 0.1m\) from height measurement of men in a city. 
+We get a sample mean of \(\overline{X_n} = 1.72m\). We want to test if the mean height is less than \(1.74m\) with a significance level of \(\alpha = 0.05\). 
+
+Following hypotheses are stated:
+
+\begin{itemize}
+
+    \item \(H_0: \mu \ge 1.74m\)
+
+    \item \(H_1: \mu < 1.74m\)  
+
+\end{itemize}
+
+We compute the test-statistic
+
+\[
+    Z = \frac{\overline{X_n} - \mu_0}{\frac{\sigma}{\sqrt{n}}} = \frac{1.72 - 1.74}{\frac{\sqrt{0.1}}{\sqrt{400}}} = -4
+\]
+
+The critical value is given by \(z_{0.05} = -1.645\). Since \(-4 < -1.645\) we reject \(H_0\) and conclude that the mean height is less than \(1.74m\).
+
+\subsubsection{t-Test}
+
+Given \(X = (X_1, \dots, X_n) \in \mathcal{X}\). We denote with \(t_{n - 1, \alpha}\) the \(\alpha-\)quantile of 
+the \(t_{n - 1}\) distribution. We also have the test-statistic
+
+\[
+    T = \sqrt{n} \frac{\overline{X_n} - \mu_0}{s_n}
+\]
+
+if \(\mu = \mu_0: T \sim t_{n - 1}\) 
+
+\begin{center} 
+    \begin{tabular}{c|c|c|c}[h!]
+        Test Type & Rejection Region & Critical Value & p-Value \\ \hline
+        Two-Sided & \(|T| > t_{n - 1, 1 - \alpha/2}\) & \(t_{n - 1, 1 - \alpha/2}\) & \(2(1 - F_{t_{n - 1}}(|t|))\) \\ \hline
+        Right-Sided & \(T > t_{n - 1, 1 - \alpha}\) & \(t_{n - 1, 1 - \alpha}\) & \(1 - F_{t_{n - 1}}(t)\) \\ \hline
+        Left-Sided & \(T < -t_{n - 1, 1 - \alpha}\) & \(-t_{n - 1, 1 - \alpha}\) & \(F_{t_{n - 1}}(t)\)
+    \end{tabular}
+\end{center}
+
+\textbf{Use Case:} This is test is used when we want to know if the mean of a normal distribution is equal to some value \(\mu_0\) 
+when the variance \(\sigma^2\) is unknown.
+
+\textbf{Example:}
+
+Given a sample of size \(n = 25\) \(\mu_0 = 100\), and we observed the following data:
+
+\begin{center}
+    \begin{tabular}{|c|c|c|c|c|}[h!]
+        102 & 98 & 96 & 100 & 101 \\ \hline
+        99 & 97 & 100 & 102 & 100 \\ \hline
+        98 & 97 & 96 & 101 & 99 \\ \hline
+        100 & 98 & 97 & 101 & 99 \\ \hline
+        100 & 102 & 98 & 97 & 101 \\ \hline
+    \end{tabular}
+\end{center}
+
+We want to test if the mean is different from \(100\) with a significance level of \(\alpha = 0.05\).
+
+We compute the sample mean \(\overline{X_n} = 99.32\) and the sample standard deviation \(s_n = 1.683\).
+
+The test-statistic gives us
+
+\[
+    T = \sqrt{n} \frac{\overline{X_n} - \mu_0}{s_n} = \sqrt{25} \frac{99.32 - 100}{1.683} = -1.618
+\]
+
+The critical value is given by \(t_{24, 0.975} = 2.064\). Since \(|-1.618| < 2.064\) we do not reject \(H_0\) and conclude that the mean is 
+not significantly different from \(100\).
+
+\subsection{Between-Sample t-Tests}
+
+Given two independent samples \(X_1, \dots, X_n \sim \mathcal{N}(\mu_X, \sigma_X^2)\) and 
+\(Y_1, \dots, Y_m \sim \mathcal{N}(\mu_Y, \sigma_Y^2)\). 
+
+Define \(D_i := X_i - Y_i \sim \mathcal{N}(\mu_X - \mu_Y, \sigma_{X + Y}^{2})\).
+
+\textbf{Use Case:} The null hypothesis is given by \(H_0: \mu_X = \mu_Y\) vs. \(H_1: \mu_X \ne \mu_Y\).
+
+We get the test-statistic 
+
+\[
+    T = \frac{\overline{X_n} - \overline{Y_m}}{\sqrt{\frac{\sigma_X^2}{n} + \frac{\sigma_Y^2}{m}}} \sim \mathcal{N} \left( \frac{\mu_X - \mu_Y}{\sqrt{\frac{\sigma_X^2}{n} + \frac{\sigma_Y^2}{m}}}, 1 \right) 
+\]
+
+We reject \(H_0\) if \(|T| > z_{1 - \alpha/2}\). 
+
+\subsubsection*{Case with Unknown Variances}
+
+If the \(\sigma_X^2\) and \(\sigma_Y^2\) are unknown we use the test-statistic 
+
+\[
+    T = \frac{\overline{X_n} - \overline{Y_m}}{\sqrt{\frac{m + n}{mn}s^2}}
+\]
+
+with 
+
+\[
+    s^2 = \frac{1}{n + m - 2}((n -1)s_X^2 + (m - 1)s_Y^2)
+\]
+
+where \(s_X^2\) and \(s_Y^2\) are the sample variances of \(X\) and \(Y\).
+
+\textbf{Use Case:} Reject \(H_0\) if \(|T| > t_{n + m - 2, 1 - \alpha/2}\).
+
+\subsection{Chi-Square-Test}
+
+Given \(X_1, \dots, X_n \sim \mathcal{N}(\mu, \sigma^2)\) i.i.d. random variables.
+
+\textbf{Use Case:} We want to test \(H_0: \sigma^2 = \sigma_0^2\) vs. \(H_1: \sigma^2 \ne \sigma_0^2\).
+
+If \(\mu\) is known we use the test-statistic 
+
+\[
+    T_0 := \hat{\sigma}_n^2 = \frac{1}{n} \sum_{i = 1}^{n} (X_i - \mu)^2 \sim \frac{\sigma^2}{n} \chi^2_n 
+\]
+
+If \(\mu\) is unknown we use the test-statistic 
+
+\[
+    T_1 := s_n^2 = \frac{1}{n - 1} \sum_{i = 1}^{n} (X_i - \overline{X_n})^2 \sim \frac{\sigma^2}{n - 1} \chi^2_{n - 1} 
+\]
+
+Reject \(H_0\) if \(\frac{n - i}{\sigma_0^2} T_i \notin [\chi_{n - i, \alpha/2}^2, \chi_{n - i, 1 - \alpha/2}^2]\) for \(i = 0,1\)
+
+\textbf{Example:}
+
+Given \(n = 18\), \(\overline{x} = 109\), \(s = 13,5\), \(\mu = 100\) and \(\sigma = 15\). We 
+want to test if the standard deviation is less than \(15\) with a significance level of \(\alpha = 0.05\). 
+
+We state the hypotheses:
+
+\begin{itemize}
+
+    \item \(H_0: \sigma^2 \ge 15^2\)
+
+    \item \(H_1: \sigma^2 < 15^2\)
+
+\end{itemize}
+
+We compute the test-statistic
+
+\[
+    T_1 = \frac{(n - 1)s^2}{\sigma_0^2} = \frac{17 \cdot 13.5^2}{15^2} = 16.38
+\]
+
+The critical value is given by \(\chi_{17, 0.05}^2 = 8.672\). Since \(16.38 > 8.672\) we do not reject \(H_0\) and conclude that the 
+standard deviation is not significantly less than \(15\).

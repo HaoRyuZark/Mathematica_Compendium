@@ -1,14 +1,14 @@
 \newpage
 \section{Analytical Geometry}
 
-In this section, we will cover the topics for the geometry of \(\Reals^2\) and \(\Reals^3\).
+In this section, we will cover the topics for the geometry of \(\R^2\) and \(\R^3\).
 And maybe also in higher dimensions.
 
 \subsection{Vectors and Points}
 
 In analytical geometry, points and vectors are the basic elements.
 
-A point in \(\Reals^3\) is represented as \(\vec{P} = \begin{bmatrix} x \\ y \\ z \end{bmatrix}\).
+A point in \(\R^3\) is represented as \(\vec{P} = \begin{bmatrix} x \\ y \\ z \end{bmatrix}\).
 Or as \((x_1, x_2, \dots , x_n)\).
 
 A vector is an object with direction and magnitude (in this case), also represented as \(\vec{v} = \begin{bmatrix} v_x \\ v_y \\ v_z \end{bmatrix}\).
@@ -44,7 +44,7 @@ For a scalar \(\lambda\) and vector \(\vec{a}\):
 A line is defined by a point \(\vec{P}\) and a direction vector \(\vec{v}\):
 
 \[
-	\vec{r}(t) = \vec{P} + t\vec{v}, \quad t \in \Reals
+	\vec{r}(t) = \vec{P} + t\vec{v}, \quad t \in \R
 \]
 
 \subsection{Equation of a Plane}
@@ -111,7 +111,7 @@ Then: \(\|v - u\|^2 = {(v_1 - u_1)}^2 + {(v_2 - u_2)}^2\) and by re-grouping aft
 
 \QED
 
-And if we manipulates this expression we can also prove the angle formulas.
+And if we manipulate this expression we can also prove the angle formulas.
 And with that information we can prove that
 
 \[
@@ -121,15 +121,135 @@ And with that information we can prove that
 Only if the Dot Product is equal to zero so, like that we have also proved that
 only orthogonal vector have a dot product of zero.
 
-\subsubsection{Dot Product as Projection}
+\subsection{Orthogonal Vectors}
 
-The dot product of two vectors can be interpreted as projecting one onto another and 
-then multiplying the length of the projecting to the magnitude of the other. For real vectors.
+Two vectors \(\vec{a}\) and \(\vec{b}\) are orthogonal if:
+
+\[
+	\langle\vec{a}, \vec{b}\rangle = 0
+\]
+
+\subsection{The Orthogonal Projection}
+
+The \emph{orthogonal projection of vector} \(\vec{a}\) onto vector \(\vec{b}\) is given by:
+
+\[
+	\mathrm{Proj}_{\vec{b}}(\vec{a}) = \frac{\langle\vec{a}, \vec{b}\rangle}{\|\vec{b}\|^2} \cdot \vec{b}
+\]
+
+\textbf{Proof:}
+
+We know that 
+
+\[
+	p \| q \implies p = \alpha q \quad \forall \alpha \in \field\ \text{and}\ \forall\ p, q \in V
+\]
+
+Then let us define the orthogonal projection of vector \(\vec{a}\) on vector \(\vec{b}\) as \(p\). 
+We want to find \(\alpha\) such that \(p = \alpha q\) where \(q = \vec{b}\).
+We also know that the vector \(a - p\) is orthogonal to \(q\):
+
+\begin{align*}
+	\langle a - p, q\rangle = 0 &\implies \langle a - \alpha q, q\rangle = 0 \\  
+	&\implies \langle a, q\rangle - \alpha \langle q, q\rangle = 0 \quad \text{ by the properties of the inner product}\\
+	\alpha &= \frac{\langle a, q\rangle}{\langle q, q\rangle}
+\end{align*}
+
+Therefore, the orthogonal projection of vector \(\vec{a}\) on \(\vec{b}\) is given by
+multiplying \(\vec{b}\) by the scalar \(\alpha\).
+
+\QED
+
+\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}[scale=2, >=Stealth]
+
+		% Axes
+		\draw[->, thick] (-0.5, 0) -- (2.2, 0) node[right] {\(x\)};
+		\draw[->, thick] (0, -0.5) -- (0, 2) node[above] {\(y\)};
+
+		% Coordinates
+		\coordinate (O) at (0,0);
+		\coordinate (A) at (1.1,1.5);       % vector a
+		\coordinate (B) at (1.2,0.6);       % vector b
+		\coordinate (P) at (1.48,0.74);     % projection of a onto b
+
+		% Vectors
+		\draw[->, thick, blue] (O) -- (A) node[above left] {\(\vec{a}\)};
+		\draw[->, thick, red] (O) -- (B) node[below left] {\(\vec{b}\)};
+		\draw[->, thick, green!60!black, dashed] (O) -- (P) node[above left] {\(\text{Proj}_{\vec{b}}(\vec{a})\)};
+
+		% Orthogonal component
+		\draw[->, thick, gray, dashed] (P) -- (A) node[midway, right] {\(\vec{a} - \text{Proj}_{\vec{b}}(\vec{a})\)};
+
+		% Right angle marker
+		\draw ($(P)!0.1!(A)$) -- ++(0.1,0) -- ++(0,-0.1);
+
+	\end{tikzpicture}
+	\caption{Orthogonal projection of \(\vec{a}\) onto \(\vec{b}\)}
+\end{figure}
+
+\subsection{Vector Projections in Data Science}
+
+In data science, vector projections are used in various applications such as dimensionality reduction, feature extraction, and data 
+visualization. For example, in Principal Component Analysis (PCA), data points are projected onto the directions of maximum variance to reduce the dimensionality 
+of the dataset while preserving as much information as possible.
+
+We find a unit vector in the direction of interest (e.g., a principal component) \(\vec{u_i}\) onto which we want to project our data points \(\vec{x_j}\). Note 
+we can find multiple such vectors \(\vec{u_1}, \vec{u_2}, \dots , \vec{u_k}\) to project onto a lower-dimensional subspace.
+
+\[
+	\text{Proj}_{\vec{u}}(\vec{v}) = \langle \vec{v}, \vec{u}\rangle \vec{u} = k \vec{u}
+\]
+
+\textbf{Proof:}
+
+Let us start with the derivation. We have a vector \(\vec{v}\), and we want to project it onto a unit vector \(\vec{u}\) The
+
+\[
+	\vec{u} = \frac{\vec{v}}{\|\vec{v}\|}
+\]
+
+and 
+
+\[
+	p = k \vec{u} \quad \text{ and } d = \vec{v} - p
+\]
+
+also \(\langle d, u\rangle = 0\)
+
+Analog to the derivation of the formula of the orthogonal projection we get 
+
+\[
+	d = \vec{v} - k \vec{u} \implies \langle \vec{v} - k \vec{u}, \vec{u}\rangle = 0 \implies \langle \vec{v}, \vec{u}\rangle - k \langle \vec{u}, \vec{u}\rangle = 0
+\]
+
+Notice that \(\langle \vec{u}, \vec{u}\rangle = 1\) because \(\vec{u}\) is a unit vector. Therefore, 
+
+\[
+	k = \langle \vec{v}, \vec{u}\rangle
+\]
+
+Thus, the projection of \(\vec{v}\) onto the unit vector \(\vec{u}\) is given by:
+
+\[
+	\text{Proj}_{\vec{u}}(\vec{v}) = \langle \vec{v}, \vec{u}\rangle \vec{u} = k \vec{u}
+\]
+
+\QED
+
+`'\subsection{Dot Product as Projection}
+
+The \emph{dot product} of two vectors can be interpreted as projecting one vector onto the other and then multiplying the length of the projecting vector to the magnitude of the other. For real vectors.
 
 This comes from the fact that taking a dot product of real vectors is the same as 
 multiplying one of them with the linear transformation formed by the transpose version of the other vector. 
 
-The transformation will take a vector from our space and take it to the number line and it is also 
+\[
+	\langle \vec{a}, \vec{b}\rangle = \vec{a}^T \vec{b}
+\]
+
+The transformation will take a vector from our space and take it to the number line, and it is also 
 linear. In our case,
 
 \[
@@ -255,65 +375,9 @@ To normalize a vector \(\vec{a}\), we divide it by its length:
 	\hat{\vec{a}} = \frac{\vec{a}}{\|\vec{a}\|} = \frac{\begin{bmatrix} a_x \\ a_y \\ a_z \end{bmatrix}}{\sqrt{a_x^2 + a_y^2 + a_z^2}} = \begin{bmatrix} \frac{a_x}{\|\vec{a}\|} \\ \frac{a_y}{\|\vec{a}\|} \\ \frac{a_z}{\|\vec{a}\|} \end{bmatrix}
 \]
 
-\subsection{Orthogonal Vectors and the Orthogonal Projection}
-
-Two vectors \(\vec{a}\) and \(\vec{b}\) are orthogonal if:
-
-\[
-	\langle\vec{a}, \vec{b}\rangle = 0
-\]
-
-The orthogonal projection of vector \(\vec{a}\) onto vector \(\vec{b}\) is given by:
-
-\[
-	\text{p}_{\vec{b}}(\vec{a}) = \frac{\langle\vec{a}, \vec{b}\rangle}{\|\vec{b}\|^2} \cdot \vec{b}
-\]
-
-\textbf{Proof of the projection formula}
-
-\begin{align*}
-	p \| q \implies \alpha q &= p\ \forall \alpha \in \mathbb{K}\ \text{and}\ \forall\ p, q \in V\\
-	\langle a - p, q\rangle &= 0 \implies \langle a - \alpha q, q\rangle = 0 \implies \langle a, q\rangle - \alpha \langle q, q\rangle = 0\\
-	\alpha &= \frac{\langle a, q\rangle}{\langle q, q\rangle}
-\end{align*}
-
-Therefore, the orthogonal projection of vector \(\vec{a}\) on \(\vec{b}\) is given by
-multiplying \(\vec{b}\) by the scalar \(\alpha\).
-
-\QED
-
-\begin{figure}[H]
-	\centering
-	\begin{tikzpicture}[scale=2, >=Stealth]
-
-		% Axes
-		\draw[->, thick] (-0.5, 0) -- (2.2, 0) node[right] {\(x\)};
-		\draw[->, thick] (0, -0.5) -- (0, 2) node[above] {\(y\)};
-
-		% Coordinates
-		\coordinate (O) at (0,0);
-		\coordinate (A) at (1.1,1.5);       % vector a
-		\coordinate (B) at (1.2,0.6);       % vector b
-		\coordinate (P) at (1.48,0.74);     % projection of a onto b
-
-		% Vectors
-		\draw[->, thick, blue] (O) -- (A) node[above left] {\(\vec{a}\)};
-		\draw[->, thick, red] (O) -- (B) node[below left] {\(\vec{b}\)};
-		\draw[->, thick, green!60!black, dashed] (O) -- (P) node[above left] {\(\text{p}_{\vec{b}}(\vec{a})\)};
-
-		% Orthogonal component
-		\draw[->, thick, gray, dashed] (P) -- (A) node[midway, right] {\(\vec{a} - \text{p}_{\vec{b}}(\vec{a})\)};
-
-		% Right angle marker
-		\draw ($(P)!0.1!(A)$) -- ++(0.1,0) -- ++(0,-0.1);
-
-	\end{tikzpicture}
-	\caption{Orthogonal projection of \(\vec{a}\) onto \(\vec{b}\)}
-\end{figure}
-
 \subsection{The Cross Product}
 
-The cross product of two vectors \(\vec{a}\) and \(\vec{b}\) in \(\Reals^3\) is defined as:
+The cross product of two vectors \(\vec{a}\) and \(\vec{b}\) in \(\R^3\) is defined as:
 
 \[
 	\vec{a} \times \vec{b} = \begin{bmatrix} a_1 \\ a_2 \\ a_3 \end{bmatrix} \times \begin{bmatrix} b_1 \\ b_2 \\ b_3 \end{bmatrix} = \begin{bmatrix} a_2 b_3 - a_3 b_2 \\ a_3 b_1 - a_1 b_3 \\ a_1 b_2 - a_2 b_1 \end{bmatrix}
@@ -344,13 +408,13 @@ The cross product has the following properties:
 
 	\item \(\langle\vec{a}, (\vec{b} \times \vec{c})\rangle = 0\) (scalar triple product)
 
-	\item \(\vec{a} \times \vec{b} = \vec{0} \Leftrightarrow \vec{a} = \lambda\vec{b}\) for some \(\lambda \in \Reals\) (parallel vectors)
+	\item \(\vec{a} \times \vec{b} = \vec{0} \Leftrightarrow \vec{a} = \lambda\vec{b}\) for some \(\lambda \in \R\) (parallel vectors)
 
 	\item \(\vec{a} \times \vec{b} = \vec{0} \Leftrightarrow \vec{a} = \vec{0} \vee \vec{b} = \vec{0}\) (zero vector)
 
 \end{itemize}
 
-The cross product is not defined in \(\Reals^2\).
+The cross product is not defined in \(\R^2\).
 The cross product is not commutative, but it is associative:
 
 \[
@@ -381,11 +445,11 @@ The cross product is not distributive over scalar multiplication:
 	\lambda(\vec{a} \times \vec{b}) \neq (\lambda\vec{a}) \times \vec{b}
 \]
 
-The length of the cross product in \(\Reals^3\) is the area of the parallelogram spanned by the two vectors.
+The length of the cross product in \(\R^3\) is the area of the parallelogram spanned by the two vectors.
 
 \subsubsection{Determinant Trick}
 
-For two vectors \(\vec{a}\) \(\vec{b}\) in \(\Complex^3\) we can compute the cross product by: 
+For two vectors \(\vec{a}\) \(\vec{b}\) in \(\C^3\) we can compute the cross product by: 
 
 \[
     \vec{n} = 
@@ -478,16 +542,16 @@ Thus, we have gotten the formula for the cross product.
 
 \QED
 
-\subsection{Orthogonal vectors in \texorpdfstring{\(\Reals^2\ \Reals^3\)}{}}
+\subsection{Orthogonal vectors in \texorpdfstring{\(\R^2\ \R^3\)}{}}
 
-\subsubsection{Orthogonal vectors in \texorpdfstring{\(\Reals^2\)}{}}
+\subsubsection{Orthogonal vectors in \texorpdfstring{\(\R^2\)}{}}
 
 \begin{enumerate}
 	\item Interchange the components
 	\item Change the sign of one component
 \end{enumerate}
 
-\subsubsection{Orthogonal vectors in \texorpdfstring{\(\Reals^3\)}{}}
+\subsubsection{Orthogonal vectors in \texorpdfstring{\(\R^3\)}{}}
 \begin{enumerate}
 	\item Interchange two components
 	\item the one that was not changed, set to zero
@@ -747,7 +811,7 @@ Now compute the dot product:
 
 \subsubsection{Distance between two points}
 
-The distance between two points \(\vec{P_1}\) and \(\vec{P_2}\) in \(\Reals^n\) is given by:
+The distance between two points \(\vec{P_1}\) and \(\vec{P_2}\) in \(\R^n\) is given by:
 \[
 	d(\vec{P_1}, \vec{P_2}) = \|\vec{P_1} - \vec{P_2}\| = \sqrt{{(x_1 - x_2)}^2 + {(y_1 - y_2)}^2 + \cdots + {(z_1 - z_2)}^2}
 \]
@@ -765,7 +829,7 @@ where \(\vec{P_0}\) is a point on the hyperplane and \(\vec{n}\) is the normal v
 
 \subsubsection{Distance between two lines}
 
-The distance between two lines in \(\Reals^3\) can be calculated using the formula:
+The distance between two lines in \(\R^3\) can be calculated using the formula:
 
 \[
 	d = \frac{|\langle \vec{v_1} \times \vec{v_2}, \vec{P_2} - \vec{P_1} \rangle|}{\|\vec{v_1} \times \vec{v_2}\|}

@@ -6,17 +6,17 @@
 \subsection{Measurability of Random Variables and Random Vectors}
 
 Let \( X_1, X_2, \ldots, X_n \) be random variables on \((\Omega, \mathcal{A}, P)\).
-Then each \( X_i : \Omega \to \Reals \) is measurable.
+Then each \( X_i : \Omega \to \R \) is measurable.
 
-\emph{Measurability in \(\Reals\).}
+\emph{Measurability in \(\R\).}
 
 \[
-    X_i^{-1}((-\infty, z]) \in \mathcal{A} \quad \text{for all } z \in \Reals
+    X_i^{-1}((-\infty, z]) \in \mathcal{A} \quad \text{for all } z \in \R
 \]
 
 \emph{Alternative Representation.}
 
-Define \( X : \Omega \to \Reals^n \) by
+Define \( X : \Omega \to \R^n \) by
 
 \[
     X(\omega) = (X_1(\omega), \ldots, X_n(\omega))
@@ -24,16 +24,16 @@ Define \( X : \Omega \to \Reals^n \) by
 
 It can be shown (from measure theory) that \( X \) is measurable.
 
-\emph{Measurability in \(\Reals^n\).}
+\emph{Measurability in \(\R^n\).}
 
 \[
     X^{-1}(R) \in \mathcal{A}, \quad \text{where }
     R = (a_1, b_1] \times (a_2, b_2] \times \cdots \times (a_n, b_n]
 \]
 
-for arbitrary \( a_1, \ldots, a_n, b_1, \ldots, b_n \in \Reals \).
+for arbitrary \( a_1, \ldots, a_n, b_1, \ldots, b_n \in \R \).
 
-From this (by measure theory) it follows that for any set \( A \subseteq \Reals^n \),
+From this (by measure theory) it follows that for any set \( A \subseteq \R^n \),
 
 \[
     X^{-1}(A) \in \mathcal{A}
@@ -42,10 +42,10 @@ From this (by measure theory) it follows that for any set \( A \subseteq \Reals^
 Hence, the probability
 
 \[
-    \Prob(X \in A) = \Prob(\{\omega \in \Omega : X(\omega) \in A\})
+    \prob(X \in A) = \prob(\{\omega \in \Omega : X(\omega) \in A\})
 \]
 
-is well-defined for all \( A \subseteq \Reals^n \).
+is well-defined for all \( A \subseteq \R^n \).
 
 \subsection{Joint Distribution and Random Vectors}
 
@@ -53,7 +53,7 @@ Let \( X_1, \ldots, X_n \) be random variables on a probability space \((\Omega,
 Then \( P_X \) (respectively \( P_{X_1, \ldots, X_n} \)) is defined as
 
 \[
-    \Prob_X(A) = P((X_1, \ldots, X_n) \in A), \quad A \subseteq \Reals^n
+    \prob_X(A) = P((X_1, \ldots, X_n) \in A), \quad A \subseteq \R^n
 \]
 
 and is called the \emph{joint distribution} of \( X_1, \ldots, X_n \).
@@ -65,22 +65,22 @@ Let \( X_1, \ldots, X_n \) be discrete random variables.
 The function \( p_X \), defined as
 
 \[
-    \Prob_X(x) = \Prob(X_1 = x_1, X_2 = x_2, \ldots, X_n = x_n)
+    \prob_X(x) = \prob(X_1 = x_1, X_2 = x_2, \ldots, X_n = x_n)
 \]
 
-for \( x \in X(\Omega) \subseteq \Reals^n \),
+for \( x \in X(\Omega) \subseteq \R^n \),
 is the \emph{joint probability function} of \( X_1, \ldots, X_n \),
 or equivalently, of the random vector \( X \).
 
 As before, the distribution \( P_X \) is uniquely determined by the probability function \( p_X \):
 
 \[
-    \Prob_X(A) = \Prob\big((X_1, \ldots, X_n) \in A\big)
-           = \sum_{x \in A} \Prob(X_1 = x_1, \ldots, X_n = x_n)
+    \prob_X(A) = \prob\big((X_1, \ldots, X_n) \in A\big)
+           = \sum_{x \in A} \prob(X_1 = x_1, \ldots, X_n = x_n)
            = \sum_{x \in A} p_X(x)
 \]
 
-Furthermore, for probability functions \( p : \Reals^n \to \Reals \), the following holds:
+Furthermore, for probability functions \( p : \R^n \to \R \), the following holds:
 
 \[
     \sum_{(x_1, \ldots, x_n) \in X(\Omega)} p(x_1, \ldots, x_n) = 1
@@ -115,16 +115,16 @@ Let \( X, Y \) be two discrete random variables.
 In general, the following holds:
 
 \[
-    \Prob(X = x) = \sum_{y \in Y(\Omega)} \Prob(X = x, Y = y)
+    \prob(X = x) = \sum_{y \in Y(\Omega)} \prob(X = x, Y = y)
 \]
 
 and
 
 \[
-    \Prob(Y = y) = \sum_{x \in X(\Omega)} \Prob(X = x, Y = y)
+    \prob(Y = y) = \sum_{x \in X(\Omega)} \prob(X = x, Y = y)
 \]
 
-The probabilities \( \Prob(X = x) \) and \( \Prob(Y = y) \) are called
+The probabilities \( \prob(X = x) \) and \( \prob(Y = y) \) are called
 \emph{marginal distributions} (also known as \emph{marginals} or \emph{marginal distributions}).
 
 Generalized, let \( X_1, \ldots, X_n \) be random variables and
@@ -154,14 +154,14 @@ The joint distribution of \( X_1 \) and \( Y \) is given by:
 
 \[
     \begin{array}{c|ccccccccccc|c}
-    X_1 \backslash Y & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & \Prob(X_1 = x) \\ \hline
+    X_1 \backslash Y & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & \prob(X_1 = x) \\ \hline
     1 & \tfrac{1}{36} & \tfrac{1}{36} & \tfrac{1}{36} & \tfrac{1}{36} & \tfrac{1}{36} & \tfrac{1}{36} & 0 & 0 & 0 & 0 & 0 & \tfrac{1}{6} \\
     2 & 0 & \tfrac{1}{36} & \tfrac{1}{36} & \tfrac{1}{36} & \tfrac{1}{36} & \tfrac{1}{36} & \tfrac{1}{36} & 0 & 0 & 0 & 0 & \tfrac{1}{6} \\
     3 & 0 & 0 & \tfrac{1}{36} & \tfrac{1}{36} & \tfrac{1}{36} & \tfrac{1}{36} & \tfrac{1}{36} & \tfrac{1}{36} & 0 & 0 & 0 & \tfrac{1}{6} \\
     4 & 0 & 0 & 0 & \tfrac{1}{36} & \tfrac{1}{36} & \tfrac{1}{36} & \tfrac{1}{36} & \tfrac{1}{36} & \tfrac{1}{36} & 0 & 0 & \tfrac{1}{6} \\
     5 & 0 & 0 & 0 & 0 & \tfrac{1}{36} & \tfrac{1}{36} & \tfrac{1}{36} & \tfrac{1}{36} & \tfrac{1}{36} & \tfrac{1}{36} & 0 & \tfrac{1}{6} \\
     6 & 0 & 0 & 0 & 0 & 0 & \tfrac{1}{36} & \tfrac{1}{36} & \tfrac{1}{36} & \tfrac{1}{36} & \tfrac{1}{36} & \tfrac{1}{36} & \tfrac{1}{6} \\ \hline
-    \Prob(Y = y) & \tfrac{1}{36} & \tfrac{2}{36} & \tfrac{3}{36} & \tfrac{4}{36} & \tfrac{5}{36} & \tfrac{6}{36} & \tfrac{5}{36} & \tfrac{4}{36} & \tfrac{3}{36} & \tfrac{2}{36} & \tfrac{1}{36} &
+    \prob(Y = y) & \tfrac{1}{36} & \tfrac{2}{36} & \tfrac{3}{36} & \tfrac{4}{36} & \tfrac{5}{36} & \tfrac{6}{36} & \tfrac{5}{36} & \tfrac{4}{36} & \tfrac{3}{36} & \tfrac{2}{36} & \tfrac{1}{36} &
     \end{array}
 \]
 
@@ -171,11 +171,11 @@ of the row this still holds for \(Y \le 7\).  For the next row \(X_1 = 2\) and \
 \subsection{Transformation Formula for the Expected Value of Multiple-variable Distributions}
 
 Let \( X_1, \ldots, X_n \) be discrete random variables with joint probability function \( p \),
-and let \( u : \Reals^n \to \Reals \).
+and let \( u : \R^n \to \R \).
 Then, if the expectation exists, the following holds:
 
 \[
-    \Expc[u(X_1, \ldots, X_n)]
+    \expc[u(X_1, \ldots, X_n)]
     = \sum_{(x_1, \ldots, x_n) \in X(\Omega)}
       u(x_1, \ldots, x_n) \, p(x_1, \ldots, x_n)
 \]
@@ -192,10 +192,10 @@ Let \( X \) and \( Y \) be random variables with the following joint probability
     \end{array}
 \]
 
-What is \( \Expc[XY] \)?
+What is \( \expc[XY] \)?
 
 \[
-    \Expc[XY] = \sum_{(x,y)} xy \, p(x,y)
+    \expc[XY] = \sum_{(x,y)} xy \, p(x,y)
     = 1 \cdot 3 \cdot \frac{1}{6} + 2 \cdot 3 \cdot 0 + 3 \cdot 3 \cdot \frac{1}{4}
     + 1 \cdot 4 \cdot \frac{1}{8} + 2 \cdot 4 \cdot \frac{1}{3} + 3 \cdot 4 \cdot \frac{1}{8}
     \approx 7.42
@@ -207,33 +207,33 @@ Let \( X, Y \) be discrete random variables with joint probability function \( p
 With \( u(x, y) = x \), the transformation formula gives:
 
 \[
-    \Expc[X] = \sum_{(x, y) \in (X, Y)(\Omega)} x \, p(x, y)
+    \expc[X] = \sum_{(x, y) \in (X, Y)(\Omega)} x \, p(x, y)
 \]
 
 \subsection{Joint Probability Density Function}
 
-An integrable function \( f : \Reals^n \to [0, \infty) \) is called the \emph{joint (probability) density} of the random variables
+An integrable function \( f : \R^n \to [0, \infty) \) is called the \emph{joint (probability) density} of the random variables
 \( X_1, \ldots, X_n \) if, for all rectangles
 
 \[
-    R = (a_1, b_1] \times \cdots \times (a_n, b_n] \subseteq \Reals^n,
+    R = (a_1, b_1] \times \cdots \times (a_n, b_n] \subseteq \R^n,
 \]
 
 the following holds:
 
 \[
-    \Prob((X_1, \ldots, X_n) \in R)
+    \prob((X_1, \ldots, X_n) \in R)
     = \int_R f(x_1, \ldots, x_n) \, dx_1 \cdots dx_n.
 \]
 
 \textbf{Example I:}
 
-Find the probability of \(\Prob(X \le \frac{2}{3}, Y \le \frac{1}{2})\), with
+Find the probability of \(\prob(X \le \frac{2}{3}, Y \le \frac{1}{2})\), with
 the constraint \(\Delta = \{(x,y) \in [0,1]^2 : 0 \le y \le x \le 1 \}\)
 
 \begin{align*}
     \int_{0}^{\frac{2}{3}} \int_{0}^{\frac{1}{2}} f(x,y) dy dx \\
-    &= \int_{0}^{\frac{2}{3}} \int_{0}^{\frac{1}{2}} \text{ind}_{\Delta} dy dx \\
+    &= \int_{0}^{\frac{2}{3}} \int_{0}^{\frac{1}{2}} \ind_{\Delta} dy dx \\
     &= 2\int_{0}^{\frac{2}{3}} \int_{0}^{\frac{1}{2}} 1 dy dx \\
     &= 2\int_{0}^{\frac{2}{3}} \int_{0}^{\min (x, \frac{1}{2})} 1 dy dx \\
     &= 2\left(\int_{0}^{\frac{1}{2}} x dx  + \int_{\frac{1}{w}}^{\frac{2}{3}} \frac{1}{2} dx \right) = \frac{5}{12}
@@ -275,11 +275,11 @@ Density of \(Y\)
 
 \subsection{Uniform Distribution on a Measurable Set}
 
-Let \( I \subseteq \Reals^n \) be a measurable set.
-Random variables \( (X_1, \ldots, X_n) \in \Reals^n \) with joint density
+Let \( I \subseteq \R^n \) be a measurable set.
+Random variables \( (X_1, \ldots, X_n) \in \R^n \) with joint density
 
 \[
-    f(x_1, \ldots, x_n) = \frac{1}{|I|} \, \text{ind}_I(x_1, \ldots, x_n)
+    f(x_1, \ldots, x_n) = \frac{1}{|I|} \, \ind_I(x_1, \ldots, x_n)
 \]
 
 are called \emph{uniformly distributed}, where \( |I| \) denotes the volume (Lebesgue measure) of the set \( I \).
@@ -288,20 +288,20 @@ The distribution \( P_{X_1, \ldots, X_n} \) is called the \emph{uniform distribu
 \subsection{Probability over Measurable Sets}
 
 Let \( X_1, \ldots, X_n \) be random variables with joint density \( f(x_1, \ldots, x_n) \).
-For every measurable set \( R \subseteq \Reals^n \), the following holds:
+For every measurable set \( R \subseteq \R^n \), the following holds:
 
 \[
-    \Prob\big((X_1, \ldots, X_n) \in R\big)
+    \prob\big((X_1, \ldots, X_n) \in R\big)
     = \int_R f(x_1, \ldots, x_n) \, dx_1 \cdots dx_n
 \]
 
 \subsection{Joint Distribution Function for multiple Variables}
 
 Let \( X_1, \ldots, X_n \) be random variables.
-The function \( F : \Reals^n \to \Reals \), defined by
+The function \( F : \R^n \to \R \), defined by
 
 \[
-    F(x_1, \ldots, x_n) = \Prob(X_1 \le x_1, \ldots, X_n \le x_n),
+    F(x_1, \ldots, x_n) = \prob(X_1 \le x_1, \ldots, X_n \le x_n),
 \]
 
 is called the \emph{joint distribution function} of \( X_1, \ldots, X_n \).
@@ -330,22 +330,22 @@ The idea for higher dimensions is to eliminate all variables we are not interest
 \subsection{Expectation with Respect to a Joint Density}
 
 Let \( X_1, \ldots, X_n \) be random variables with joint density \( f(x_1, \ldots, x_n) \),
-and let \( u : \Reals^n \to \Reals \) be a measurable function.
+and let \( u : \R^n \to \R \) be a measurable function.
 Then the following holds:
 
 \[
-    \Expc[u(X_1, \ldots, X_n)]
+    \expc[u(X_1, \ldots, X_n)]
     = \int u(x_1, \ldots, x_n) f(x_1, \ldots, x_n) \, dx_1 \cdots dx_n
 \]
 
 \subsection{Stochastic Independence of Random Variables}
 
 The random variables \( X_1, \ldots, X_n \) are \emph{stochastically independent} if,
-for all intervals \( I_1, \ldots, I_n \subseteq \Reals \), the following holds:
+for all intervals \( I_1, \ldots, I_n \subseteq \R \), the following holds:
 
 \[
-    \Prob(X_1 \in I_1, \ldots, X_n \in I_n)
-    = \prod_{k=1}^{n} \Prob(X_k \in I_k)
+    \prob(X_1 \in I_1, \ldots, X_n \in I_n)
+    = \prod_{k=1}^{n} \prob(X_k \in I_k)
 \]
 
 \subsection{Independence of Densities}
@@ -369,7 +369,7 @@ The random variables \( X \) and \( Y \) are said to be \emph{independent} if an
 Also, if \(X_1, \dots, X_n\) are independent random variables and
 
 \[
-    f_1, \cdots, f_n : \Reals \to \Reals
+    f_1, \cdots, f_n : \R \to \R
 \]
 
 Then are \(f_1(X_1), \dots, f_n(X_n)\) also independent random variables.
@@ -403,7 +403,7 @@ We test \(f_{X,Y}(x,y) \stackrel{?}{=} f_X(x) \cdot f_Y(y)\)
 Given the independent random variables \(X_1, \dots, X_n\) then
 
 \[
-    \Var \left(\sum_{i = 1}^n X_i\right) = \sum_{i = 1}^{n} \Var(X_i)
+    \var \left(\sum_{i = 1}^n X_i\right) = \sum_{i = 1}^{n} \var(X_i)
 \]
 
 \textbf{Proof:}
@@ -411,34 +411,34 @@ Given the independent random variables \(X_1, \dots, X_n\) then
 For \(i \ne j\) we have due to independence
 
 \[
-    \Expc[(X_i - \Expc[X_i])](X_j - \Expc[X_j]) = \Expc[X_i - \Expc[X_i]] \cdot \Expc[X_j - \Expc[X_j]] = 0
+    \expc[(X_i - \expc[X_i])](X_j - \expc[X_j]) = \expc[X_i - \expc[X_i]] \cdot \expc[X_j - \expc[X_j]] = 0
 \]
 
 This implies that
 
 \begin{align*}
-    \Var\left(\sum_{i=1}^n X_i\right) &= \Expc\left[\left(\sum_{i=1}^n X_i - \Expc[X_i]\right)^2\right] \\
-    &= \Expc\left[\sum_{i=1}^n (X_i - \Expc[X_i])^2  + \sum_{i \ne j}(X_i - \Expc[X_i])(X_j - \Expc[X_j])\right] \\
-    &= \sum_{i=1}^n \Expc[(X_i - \Expc[X_i])^2] + \sum_{i \ne j} \Expc[(X_i - \Expc[X_i])(X_j - \Expc[X_j])] \\
-    &= \sum_{i=1}^n \Var(X_i)
+    \var\left(\sum_{i=1}^n X_i\right) &= \expc\left[\left(\sum_{i=1}^n X_i - \expc[X_i]\right)^2\right] \\
+    &= \expc\left[\sum_{i=1}^n (X_i - \expc[X_i])^2  + \sum_{i \ne j}(X_i - \expc[X_i])(X_j - \expc[X_j])\right] \\
+    &= \sum_{i=1}^n \expc[(X_i - \expc[X_i])^2] + \sum_{i \ne j} \expc[(X_i - \expc[X_i])(X_j - \expc[X_j])] \\
+    &= \sum_{i=1}^n \var(X_i)
 \end{align*}
 
 \subsection{Conditional Distribution of Discrete Random Variables}
 
-Let \( X, Y \) be discrete random variables and \( x \in \Reals \) such that \( \Prob(X = x) > 0 \).
+Let \( X, Y \) be discrete random variables and \( x \in \R \) such that \( \prob(X = x) > 0 \).
 The mapping
 
 \[
-    A \mapsto \Prob(Y \in A \mid X = x),
+    A \mapsto \prob(Y \in A \mid X = x),
 \]
 
-for measurable \( A \subseteq \Reals \), defines a probability distribution on \( \Reals \)
+for measurable \( A \subseteq \R \), defines a probability distribution on \( \R \)
 and is called the \emph{conditional distribution of \( Y \) given \( X = x \)}.
 
 The corresponding \emph{conditional probability function} of \( Y \) given \( X = x \) is defined by
 
 \[
-    p_{Y|X}(y \mid x) = \Prob(Y = y \mid X = x)
+    p_{Y|X}(y \mid x) = \prob(Y = y \mid X = x)
     = \frac{p_{X,Y}(x, y)}{p_X(x)}.
 \]
 
@@ -453,10 +453,10 @@ not dependent on \(x\) i.e.
     p_{Y|X}(y|x) = \frac{p_{X,Y}(x,y)}{p_X(x)} = \frac{p_X(x)p_Y(y)}{p_X(x)} = p_Y(y)
 \]
 
-Otherwise, if \(p_{Y \mid X}(y \mid x) = \Prob(Y = y \mid X = x)\) is not dependent on \(x\) then
+Otherwise, if \(p_{Y \mid X}(y \mid x) = \prob(Y = y \mid X = x)\) is not dependent on \(x\) then
 
 \[
-    p_{Y|X}(y|x) = \Prob(Y = y) = p_Y(y)
+    p_{Y|X}(y|x) = \prob(Y = y) = p_Y(y)
 \]
 
 Then \(p_{X, Y}(x,y) =  p_X(x) p_{Y \mid X}(y \mid x)= p_X(x)p_Y(y)\)
@@ -476,10 +476,10 @@ The conditional density \(f_{Y\mid X}(y\mid x)\) of \(Y\) given \(X = x\) is def
 \]
 
 The conditional distribution of \(Y\) given \(X = x\) is the distribution with density \(f_{Y\mid X}(y\mid x)\).
-Thus, for any measurable set \(A \subseteq \Reals\),
+Thus, for any measurable set \(A \subseteq \R\),
 
 \[
-    \Prob(Y \in A \mid X = x) = \int_A f_{Y\mid X}(y\mid x)\, dy.
+    \prob(Y \in A \mid X = x) = \int_A f_{Y\mid X}(y\mid x)\, dy.
 \]
 
 \subsection{Covariance and Correlation of Random Variables}
@@ -488,30 +488,30 @@ Let \(X, Y\) be random variables with existing variances.
 The \emph{covariance}, joint dependence, is defined by
 
 \[
-    \cov(X, Y) = E[(X - \Expc[X])(Y - \Expc[Y])].
+    \cov(X, Y) = E[(X - \expc[X])(Y - \expc[Y])] = \sum_{i = 1}^{n} \sum_{j = 1}^{m} (x_i - \expc[X])(y_j - \expc[Y]) \, \prob(X = x_i, Y = y_j)
 \]
 
-If the variances are positive, the correlation coefficient \(\rho_{X,Y}\) is defined as
+If the variances are positive, the \emph{correlation coefficient} \(\rho_{X,Y}\) is defined as
 
 \[
     \rho_{X,Y}
-    = \frac{\cov(X,Y)}{\sqrt{\Var(X)\,\Var(Y)}}.
+    = \frac{\cov(X,Y)}{\sqrt{\var(X)\,\var(Y)}}.
 \]
 
 If \(\rho_{X,Y} = 0\), the random variables \(X\) and \(Y\) are called \emph{uncorrelated}.
 
 
-\subsubsection{Properties of Covariance}
+\subsubsection*{Properties of Covariance}
 
 \begin{itemize}
 
-    \item \(\cov(X, X) = \Var(X)\)
+    \item \(\cov(X, X) = \var(X)\)
 
-    \item \(\cov(X, Y) = \Expc[XY] - \Expc[X]\Expc[Y]\)
+    \item \(\cov(X, Y) = \expc[XY] - \expc[X]\expc[Y]\)
 
     \item \(\cov(X_1 + X_2, Y) = \cov(X_1, Y) + \cov(X_2, Y)\)
 
-    \item \(\Var(X + Y) = \Var(X) + \Var(Y) + 2\cov(X, Y)\)
+    \item \(\var(X + Y) = \var(X) + \var(Y) + 2\cov(X, Y)\)
 
     \item If \(X\) and \(Y\) are independent, then \(\cov(X, Y) = 0\)
 
@@ -522,30 +522,30 @@ If \(\rho_{X,Y} = 0\), the random variables \(X\) and \(Y\) are called \emph{unc
 Given the random variables \(X_1, \dots, X_n\) then
 
 \[
-    \Var\left(\sum_{i=1}^n X_i\right) = \sum_{i=1}^n \Var(X_i) + 2 \sum_{i \ne j} \cov(X_i, X_j)
+    \var\left(\sum_{i=1}^n X_i\right) = \sum_{i=1}^n \var(X_i) + 2 \sum_{i \ne j} \cov(X_i, X_j)
 \]
 
 If the random variables are independent then
 
 \[
-    \Var\left(\sum_{i=1}^n X_i\right) = \sum_{i=1}^n \Var(X_i)
+    \var\left(\sum_{i=1}^n X_i\right) = \sum_{i=1}^n \var(X_i)
 \]
 
-Special case: \(n = 2\): \(\Var(X + Y) = \Var(X) + \Var(Y) + 2 \cov(X, Y)\)
+Special case: \(n = 2\): \(\var(X + Y) = \var(X) + \var(Y) + 2 \cov(X, Y)\)
 
 \subsubsection{Cauchy-Schwarz Inequality for Random Variables}
 
-Let \(X, Y\) be random variables with \(\Expc[X^2]\) and \(\Expc[Y^2]\) finite.
+Let \(X, Y\) be random variables with \(\expc[X^2]\) and \(\expc[Y^2]\) finite.
 Then the following holds:
 
 \[
-    |\Expc[X, Y]| \le \sqrt{\Expc[X^2] \Expc[Y^2]}
+    |\expc[X, Y]| \le \sqrt{\expc[X^2] \expc[Y^2]}
 \]
 
 Following
 
 \[
-    |\cov(X, Y)| \le \sqrt{\Var(X) \Var(Y)}
+    |\cov(X, Y)| \le \sqrt{\var(X) \var(Y)}
 \]
 
 \subsubsection{Correlation between minus and plus one}
@@ -564,11 +564,12 @@ Then the following holds:
 \subsection{Multivariable Normal Distribution}
 
 Given \(X_1, \dots, X_n\) independent \(\mathcal{N}(0,1)\) the density function of their joint distribution is given by
+
 \[
     f(x_1, \dots ,x_n) = \prod_{i = 1}^{n} \frac{1}{\sqrt{2\pi}} e^{\left(-\frac{1}{2}x_{i}^{2}\right)} = \frac{1}{(2\pi)^{n/2}} e^{\left(-\frac{1}{2} X^T \cdot X\right)}
 \]
 
-Thus, for \(\mu \ne \vec{0} \in \Reals^n\) and \(\Sigma \in \Reals^{n \times n}\) positive definite,
+Thus, for \(\mu \ne \vec{0} \in \R^n\) and \(\Sigma \in \R^{n \times n}\) positive definite,
 
 \[
     f(x_1, \dots ,x_n) = \frac{1}{(2\pi)^{\frac{d}{2}} |\Sigma|^{\frac{1}{2}}} e^{-\frac{1}{2} (X - \mu)^T \Sigma^{-1}(X - \mu)}
@@ -585,9 +586,9 @@ With \(d\) being the dimension of the space and \(|\Sigma|\) being the determina
     \end{bmatrix}
 \]
 
-where \(\mu_i = \Expc[X_i]\) and \((X - \mu)^T \Sigma^{-1}(X - \mu)\) is a generalization of \(\frac{(x - \mu)^2}{\sigma^2}\).
+where \(\mu_i = \expc[X_i]\) and \((X - \mu)^T \Sigma^{-1}(X - \mu)\) is a generalization of \(\frac{(x - \mu)^2}{\sigma^2}\).
 
-Given \(\mu \in \Reals^{n}\) and \(A \in \Reals^{n \times n}\), if \(Z \sim \mathcal{N}(\vec{0}, I_n)\), then
+Given \(\mu \in \R^{n}\) and \(A \in \R^{n \times n}\), if \(Z \sim \mathcal{N}(\vec{0}, I_n)\), then
 
 \[
     X = AZ + \mu \sim \mathcal{N}(\mu, AA^T)
@@ -596,10 +597,10 @@ Given \(\mu \in \Reals^{n}\) and \(A \in \Reals^{n \times n}\), if \(Z \sim \mat
 \subsubsection{Computing Expected Values and Variances of Linear Combinations}
 
 \paragraph{Expected Value of Linear Combinations}
-For random variables \(X_1, \dots, X_n\) (not necessarily independent) with \(\Expc[X_i] = \mu_i\) and constants \(a_1, \dots, a_n, b \in \Reals\), the expected value of a linear combination is always:
+For random variables \(X_1, \dots, X_n\) (not necessarily independent) with \(\expc[X_i] = \mu_i\) and constants \(a_1, \dots, a_n, b \in \R\), the expected value of a linear combination is always:
 
 \[
-    \Expc\left[b + \sum_{i=1}^{n} a_i X_i\right] = b + \sum_{i=1}^{n} a_i \mu_i
+    \expc\left[b + \sum_{i=1}^{n} a_i X_i\right] = b + \sum_{i=1}^{n} a_i \mu_i
 \]
 
 This holds regardless of independence or correlation structure.
@@ -610,10 +611,10 @@ The variance formula depends on whether the variables are independent:
 
 \textbf{Case 1: Independent Variables}
 
-If \(X_1, \dots, X_n\) are mutually independent with \(\Var(X_i) = \sigma_i^2\), then:
+If \(X_1, \dots, X_n\) are mutually independent with \(\var(X_i) = \sigma_i^2\), then:
 
 \[
-    \Var\left(\sum_{i=1}^{n} a_i X_i\right) = \sum_{i=1}^{n} a_i^2 \sigma_i^2
+    \var\left(\sum_{i=1}^{n} a_i X_i\right) = \sum_{i=1}^{n} a_i^2 \sigma_i^2
 \]
 
 \textbf{Case 2: Dependent Variables (General Case)}
@@ -621,13 +622,13 @@ If \(X_1, \dots, X_n\) are mutually independent with \(\Var(X_i) = \sigma_i^2\),
 If \(X_1, \dots, X_n\) are not independent, we must account for covariances:
 
 \[
-    \Var\left(\sum_{i=1}^{n} a_i X_i\right) = \sum_{i=1}^{n} a_i^2 \sigma_i^2 + 2\sum_{i<j} a_i a_j \cov(X_i, X_j)
+    \var\left(\sum_{i=1}^{n} a_i X_i\right) = \sum_{i=1}^{n} a_i^2 \sigma_i^2 + 2\sum_{i<j} a_i a_j \cov(X_i, X_j)
 \]
 
 Equivalently, in matrix notation with \(a = (a_1, \dots, a_n)^T\):
 
 \[
-    \Var\left(\sum_{i=1}^{n} a_i X_i\right) = a^T \Sigma a
+    \var\left(\sum_{i=1}^{n} a_i X_i\right) = a^T \Sigma a
 \]
 
 \textbf{Special Cases:}
@@ -636,9 +637,9 @@ Equivalently, in matrix notation with \(a = (a_1, \dots, a_n)^T\):
     \item If \(\cov(X_i, X_j) = 0\) for all \(i \ne j\), we recover the independent case
     \item If \(a_i = 1\) for all \(i\) (simple sum), then:
     \[
-        \Var\left(\sum_{i=1}^{n} X_i\right) = \sum_{i=1}^{n} \sigma_i^2 + 2\sum_{i<j} \cov(X_i, X_j)
+        \var\left(\sum_{i=1}^{n} X_i\right) = \sum_{i=1}^{n} \sigma_i^2 + 2\sum_{i<j} \cov(X_i, X_j)
     \]
-    \item Adding a constant \(b\) does not affect variance: \(\Var(b + Y) = \Var(Y)\)
+    \item Adding a constant \(b\) does not affect variance: \(\var(b + Y) = \var(Y)\)
 \end{itemize}
 
 \subsection{Example: Bivariate Normal Distribution}
@@ -675,7 +676,9 @@ and covariance matrix
 where \(-1 < \rho < 1\) is the correlation coefficient.
 
 \textbf{Density:}
+
 The density of \(X\) is
+
 \[
     f_X(x) =
     \frac{1}{2\pi |\Sigma|^{1/2}}
@@ -683,13 +686,17 @@ The density of \(X\) is
     -\frac{1}{2}(x-\mu)^{\top}\Sigma^{-1}(x-\mu)
     \right),
 \]
+
 where
+
 \[
     |\Sigma|
     =
     \sigma_1^{2}\sigma_2^{2}(1-\rho^{2}),
 \]
+
 and
+
 \[
     \Sigma^{-1}
     =
@@ -700,15 +707,22 @@ and
     \end{pmatrix}.
 \]
 
-\subsection{Detailed Example: Spare Parts Delivery}
+\subsubsection*{Detailed Example: Spare Parts Delivery}
 
 Consider a delivery containing:
+
 \begin{itemize}
+
     \item One box of ball bearings: \(X_1 \sim \mathcal{N}(125, 1)\)
+
     \item Two boxes of gears: \(Y_1, Y_2 \sim \mathcal{N}(84, 4)\)
+
     \item Three boxes of screws: \(Z_1, Z_2, Z_3 \sim \mathcal{N}(65, 3)\)
+
 \end{itemize}
+
 All variables are independent. The total weight is:
+
 \[
     G = X_1 + Y_1 + Y_2 + Z_1 + Z_2 + Z_3
 \]
@@ -716,8 +730,9 @@ All variables are independent. The total weight is:
 \textbf{Step 1: Expected Total Weight}
 
 Using linearity of expectation:
+
 \begin{align*}
-    \Expc[G] &= \Expc[X_1] + \Expc[Y_1] + \Expc[Y_2] + \Expc[Z_1] + \Expc[Z_2] + \Expc[Z_3] \\
+    \expc[G] &= \expc[X_1] + \expc[Y_1] + \expc[Y_2] + \expc[Z_1] + \expc[Z_2] + \expc[Z_3] \\
     &= 125 + 84 + 84 + 65 + 65 + 65 \\
     &= 488 \text{ kg}
 \end{align*}
@@ -726,7 +741,7 @@ Using linearity of expectation:
 
 Since all variables are independent:
 \begin{align*}
-    \Var(G) &= \Var(X_1) + \Var(Y_1) + \Var(Y_2) + \Var(Z_1) + \Var(Z_2) + \Var(Z_3) \\
+    \var(G) &= \var(X_1) + \var(Y_1) + \var(Y_2) + \var(Z_1) + \var(Z_2) + \var(Z_3) \\
     &= 1 + 4 + 4 + 3 + 3 + 3 \\
     &= 18 \text{ kg}^2
 \end{align*}
@@ -753,7 +768,7 @@ Thus, there is approximately a 4.95\% probability that the delivery weighs more 
 
 Suppose instead that \(Y_1\) and \(Y_2\) are correlated with \(\cov(Y_1, Y_2) = 2\) (perhaps they're from the same production batch). Then:
 \begin{align*}
-    \Var(G) &= 1 + 4 + 4 + 3 + 3 + 3 + 2\cov(Y_1, Y_2) \\
+    \var(G) &= 1 + 4 + 4 + 3 + 3 + 3 + 2\cov(Y_1, Y_2) \\
     &= 18 + 2(2) \\
     &= 22 \text{ kg}^2
 \end{align*}
@@ -766,9 +781,9 @@ Given \(X_1, \dots, X_n\) random variables with a joint normal distribution. If 
 \textbf{Important:} This equivalence between zero correlation and independence is special to the multivariate normal distribution and does not hold in general.
 
 \subsubsection{Linear Combinations of the Joint Normal Distribution}
-Given \(X_1, \dots, X_n\) random variables with a joint normal distribution \(\mathcal{N}(\mu, \Sigma)\). For any sequence of coefficients \(a_1, \dots, a_n \in \Reals\), the linear combination \(\sum_{i = 1}^{n} a_i X_i\) is also normally distributed.
+Given \(X_1, \dots, X_n\) random variables with a joint normal distribution \(\mathcal{N}(\mu, \Sigma)\). For any sequence of coefficients \(a_1, \dots, a_n \in \R\), the linear combination \(\sum_{i = 1}^{n} a_i X_i\) is also normally distributed.
 
-Specifically, if \(X \sim \mathcal{N}(\mu, \Sigma)\) and \(a \in \Reals^n\), then:
+Specifically, if \(X \sim \mathcal{N}(\mu, \Sigma)\) and \(a \in \R^n\), then:
 \[
     a^T X \sim \mathcal{N}(a^T \mu, a^T \Sigma a)
 \]

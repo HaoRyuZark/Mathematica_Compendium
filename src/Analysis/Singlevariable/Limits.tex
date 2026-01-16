@@ -31,7 +31,7 @@ of \(x_0\). For \(\delta > 0\) we defined
 
 Using this we can then define the limit as: 
 
-Given \(f: D \to \Reals\) with \(x_0 \in D\) being an accumulation point. \(L\) is the limit if 
+Given \(f: D \to \R\) with \(x_0 \in D\) being an accumulation point. \(L\) is the limit if 
 for all \(\varepsilon > 0 \) there is a \(\delta > 0\) such that 
 
 \[
@@ -51,6 +51,10 @@ for all \(\varepsilon > 0 \) there is a \(\delta > 0\) such that
 \emph{Power Rule:} \( \lim_{x \to a} {f(x)}^n = {(\lim_{x \to a} f(x))}^n\)
 
 \emph{Root Rule:} \( \lim_{x \to a} \sqrt[n]{f(x)} = \sqrt[n]{\lim_{x \to a} f(x)}\) (when defined)
+
+\emph{Logarithm Rule:} \( \lim_{x \to a} \ln(f(x)) = \ln(\lim_{x \to a} f(x))\) (when defined)
+
+\emph{e limit Rule:}   \(\lim_{x \to 0} (1 + f(x))^{\frac{1}{f(x)}} = e\)
 
 \textbf{Proof of the Sum Rule:}
 
@@ -73,15 +77,84 @@ This using now the triangle inequality we get
 
 \QED
 
+\textbf{Example:}
+
+Find the limit of \(\lim_{x \to 0} \frac{e^x - 1}{x}\) 
+
+Apply a change of variable 
+
+\[
+    z = e^x - 1 \iff z + 1 = e^x
+\]
+
+Use the logarithm 
+
+\[
+    z + 1 = e^x \iff \ln(z + 1) = x
+\]
+
+The trend for \(x \to 0 \) tells us that \(z \to 0\) because \(\lim_{x \to 0} z = \lim_{x \to 0} e^x - 1 = 0\)
+
+Our limit is now 
+
+\[
+    \lim_{z \to 0} \frac{z}{\ln(z + 1)} = \lim_{z \to 0} \frac{1}{\frac{1}{z}\ln(z + 1)} = \lim_{z \to 0} \frac{1}{ \ln\left((z + 1)^{\frac{1}{z}}\right)}
+\]
+
+The limit of a logarithm is the limit of the logarithm, and we also use the quotient rule
+
+\[
+    \frac{1}{ \ln\left(\lim_{z \to 0}(z + 1)^{\frac{1}{z}}\right) = \ln(e)} = \frac{1}{\ln e} = 1
+\]
+
 \subsection{Limits at Infinity}
 
 \[
-    \lim_{x \to \infty} f(x) = L \quad \text{means that } f(x) \text{ approaches } L \text{ as } x \to \infty
+    \lim_{n \to \infty} f(n) \iff \forall \varepsilon > 0, \exists N > 0 : \forall n > N: |a_n - L| < \varepsilon 
 \]
 
+with \(a_n = f(n)\) as a sequence.
+
+Some common limits at infinity are:
+
 \[
-    \lim_{x \to \infty} \frac{1}{x} = 0, \quad \lim_{x \to \infty} e^x = \infty, \quad \lim_{x \to \infty} \frac{1}{x^2} = 0
+    \lim_{n \to \infty} \frac{1}{n} = 0, \quad \lim_{n \to \infty} e^n = \infty, \quad \lim_{n \to \infty} \frac{1}{n^2} = 0
 \]
+
+\textbf{Example:}
+
+Prove that \(\lim_{n \to \infty} \frac{2n + 1}{3n + 7} = \frac{2}{3}\)
+
+We start with the definition. Let \(\varepsilon > 0\) be given. We need to find \(N > 0\) such that for all \(n > N\): 
+
+\begin{align*}
+    \left| \frac{2n + 1}{3n + 7} - \frac{2}{3} \right| &< \varepsilon \\ 
+    \left| \frac{(6n + 3) - (6n + 14)}{9n + 21} \right| &< \varepsilon \\ 
+    \left| \frac{-11}{9n + 21} \right| \le  \frac{|-11|}{|9n| + |21|} =  \frac{|-11|}{9n + 21} < \frac{11}{9n} &< \varepsilon
+\end{align*}
+
+Thus, we get 
+
+\[
+    n > \frac{11}{9 \varepsilon}
+\]
+
+By the Archimedean property, there exists an integer \(N\) such that    
+
+\[
+    N > \frac{11}{9 \varepsilon}
+\]
+
+Then for all \(n > N\) we have
+
+\[
+    \left| \frac{2n + 1}{3n + 7} - \frac{2}{3} \right| < \varepsilon \text{ for all } n > N > \frac{11}{9 \varepsilon}
+\]  
+
+Thus, \(\varepsilon > \frac{11}{9n}\) which satisfies the definition of the limit.
+
+\QED
+
 
 \subsection{Indeterminate Forms}
 
@@ -362,12 +435,12 @@ More generally:
 
 \subsection{Bolzano-Weierstraß Theorem}
 
-Every bounded, convergent sequence in \(\Complex\) has a convergent subsequence.
+Every bounded, convergent sequence in \(\C\) has a convergent subsequence.
 More precisely the sequence \(a\) has biggest and smallest accumulation point \(h^*\) and \(h_*\)
 
 \[
     \forall \varepsilon > 0 : h_* - \varepsilon < a_n < h^{*} + \varepsilon \text{ for all-most all } 
-    b \in \Naturals
+    b \in \N
 \]
 
 \[
@@ -380,7 +453,7 @@ More precisely the sequence \(a\) has biggest and smallest accumulation point \(
 
 \subsection{Uniqueness of the Limit}
 
-Let \( f: D \subset \Reals \to \Reals \), and suppose \(a\) is a limit point of \( D \). Then:
+Let \( f: D \subset \R \to \R \), and suppose \(a\) is a limit point of \( D \). Then:
 If \( \lim_{x \to a} f(x) = L_1 \) and \( \lim_{x \to a} f(x) = L_2 \), then \( L_1 = L_2 \).
 
 In other words, a function can have at most one limit at a given point. This is the \emph{uniqueness of limits}.
@@ -432,14 +505,14 @@ This contradiction tells us that, our assumption was false. Hence, \( L_1 = L_2 
 
 \subsection{Every Convergent Sequence is a Cauchy Sequence}
 
-Let \( (a_n) \) be a sequence in \( \Reals \). We say:
+Let \( (a_n) \) be a sequence in \( \R \). We say:
 
 If \( (a_n) \) converges, then it is a Cauchy sequence.
 
 A sequence \( (a_n) \) is a \emph{Cauchy sequence} if:
 
 \[
-    \forall \varepsilon > 0, \ \exists N \in \Naturals \text{ such that } \forall n, m \ge N, \quad |a_n - a_m| < \varepsilon
+    \forall \varepsilon > 0, \ \exists N \in \N \text{ such that } \forall n, m \ge N, \quad |a_n - a_m| < \varepsilon
 \]
 
 \textbf{Proof:}
@@ -448,7 +521,7 @@ Assume \( \lim_{n \to \infty} a_n = L \). Then:
 
 \begin{itemize}
 
-    \item For every \( \varepsilon > 0 \), there exists \( N \in \Naturals \) such that:
+    \item For every \( \varepsilon > 0 \), there exists \( N \in \N \) such that:
 
     \[
         \forall n \ge N, \quad |a_n - L| < \frac{\varepsilon}{2}

@@ -17,10 +17,10 @@ An \emph{internal composition law} is a binary operation that takes two elements
 An \emph{external composition law} involves a second set acting on the structure, such as scalar multiplication in vector spaces:
 
 \[
-  \cdot: \Field \times V \rightarrow V
+  \cdot: \field \times V \rightarrow V
 \]
 
-where \(\Field\) is a field and \(V\) is a vector space.
+where \(\field\) is a field and \(V\) is a vector space.
 
 \subsection{Properties of Operations}
 
@@ -121,17 +121,17 @@ A \emph{commutative ring} is a ring where multiplication is also \emph{commutati
     a \odot b = b \odot a \quad \text{for all } a, b \in R.
 \]
 
-This is the kind of ring most often encountered in basic algebra, such as the integers \(\Integers\).
+This is the kind of ring most often encountered in basic algebra, such as the integers \(\Z\).
 
-\subsection{Field \texorpdfstring{\((\Field, \oplus, \odot)\)}{}}
+\subsection{Field \texorpdfstring{\((\field, \oplus, \odot)\)}{}}
 
 A \emph{field} is a commutative ring where every nonzero element has a \emph{multiplicative inverse}:
 
 \[
-    (\Field \setminus \{0\}, \odot) \text{ is an Abelian group}.
+    (\field \setminus \{0\}, \odot) \text{ is an Abelian group}.
 \]
 
-Fields like \(\Rationals\), \(\Reals\), and \(\Complex\) allow division (except by zero), enabling the full range of arithmetic operations.
+Fields like \(\Q\), \(\R\), and \(\C\) allow division (except by zero), enabling the full range of arithmetic operations.
 
 \subsubsection{Field Proofs}
 
@@ -148,7 +148,7 @@ This contradicts our initial assumption, therefore, they are the same. Analog fo
 
 \begin{align*}
     a \cdot a^{-1}  &= a \cdot 'a^{-1} \\ 
-    \cdot a^{-1}  = 'a^{-1} \\ 
+    a^{-1}  &= 'a^{-1}
 \end{align*}
 
 \textbf{Neutral Element for the Addition is well-defined:}
@@ -202,13 +202,13 @@ Thus, we have got our equality \(ab = (-a)(-b)\).
 
 \subsection{Vector Space \texorpdfstring{\((V, \oplus, \cdot)\)}{}}
 
-A \emph{vector space} over a field \(\Field\) consists of:
+A \emph{vector space} over a field \(\field\) consists of:
 
 \begin{itemize}
 
     \item An Abelian group \((V, \oplus)\) for vector addition.
 
-    \item A scalar multiplication \(\cdot: \Field \times V \to V\) satisfying:
+    \item A scalar multiplication \(\cdot: \field \times V \to V\) satisfying:
 
     \begin{itemize}
 
