@@ -5,13 +5,24 @@
 
 These principles are \emph{Addition}, \emph{Multiplication} and \emph{Inclusion-Exclusion}.
 
+\subsection{The Basic Counting Principle}
+
+For \(n\) outcomes of event \(A\) and \(m\) of \(B\) there are 
+\(n \cdot m\) outcomes for event \(A\) and \(B\).
+
+In combinatorics we can model a lot of problems as having \(n\) elements from which we can take one at the time 
+a certain number of times, and then we take into consideration if we allow repetition or the order matters or not.
+
 \subsection{Permutation}
 
 Number of ways of ordering \(n\) distinct elements. In other words the number of tuples of n distinct elements.
+Of course the order matters.
 
 \[
     n!
 \]
+
+\textbf{Example:}
 
 \subsection{Permutation with repetition}
 
@@ -35,50 +46,68 @@ which comes from
     \binom{n}{n_1} \binom{n - n_1}{n_2}\binom{n - n_1 - n_2}{n_3} \dots \binom{n - n_1 - \cdots n_{m - 1}}{n_m} 
 \]
 
+This is also a kind of \emph{partition problem}, because it can be formulated as if you have 
+\(n\) different elements, and you want to divide them into \(m\) bins with capacities \(m_1, m_2, \cdots, m_m\) how 
+many possibles way are there for these partitions. 
+
+In this case the order matters but only for the different elements. 
+
+\textbf{Example:}
+
+\subsection{Combination with repetition}
+
+We can think of it as having \(n\) types of objects, and we want 
+to take with repetition until we fill our \(k\) slots.
+
+\[
+    \binom{n + k - 1}{n - 1} 
+\]
+
+For understanding, we have \(n\) types of objects and because we want a combination of those objects the order does not matter.
+Thus, we can put them together as contiguous groups. We have \(k\) slots and \(n\) types thus we can separate our groups 
+with \(n - 1\) separators \(|\). The question becomes how many ways are there to put \(n - 1\) separator into \(n + k - 1\) slots. Note 
+that we have \(n + k - 1\) positions if we count the actual slots and the separator slots in between.
+
+\[
+    *|* * *|* *, \quad n = 6, \quad k = 2, \quad \text{positions in between } = 7
+\]
+
+\textbf{Example:}
+
 \subsection{Variation}
 
-Ways of put \(n\) objects in \(k\) slots with repetition.
+Ways of put \(n\) objects in \(k\) slots with repetition. Here the order does not matter.
 
 \[
     n^k
 \]
 
+\textbf{Example:}
+
 \subsection{Variation without repetition}
 
 Ways of put \(n\) objects in \(k\) slots without repetition. Number of tuples with \(k\) 
-elements which can be selected from \(n\) elements, without repetition.
+elements which can be selected from \(n\) elements, without repetition. The order matters.
 
 \[
     \frac{n!}{(n - k)!}
 \]
 
+\textbf{Example:}
+
 \subsection{Combination without repetition}
 
-Ways of choose \(k\) objects of \(n\) elements.
+Ways of choose \(k\) objects of \(n\) elements. Or put \(k\) elements from \(n\) into \(k\) slots where the order does not matter.
 
 \[
     \binom{n}{k} = \frac{n!}{k!(n-k)!}
 \]
 
-Here \(n!\) is the number of permutations of the original set, the tuples.
-\((n-k)!\) has the function of eliminating the permutations with more elements we are not interested in, and
-\(k!\) has the function to eliminate the duplicates because for a combination the order does not matter, contrary to
-the permutations. It is chosen that way because for each choice of \(k\) objects there are \(k!\) possible orderings, and we only 
-want one.
+Note that like in the variation we use \(\frac{n!}{(n - k)!}\) to limit our slots to \(k\). Then for the \(k\) objects 
+we choose we can arrange them in \(k!\) ways but because the order does not matter we divide by \(k!\) to get rid of the  
+repeated combinations
 
-\subsection{Combination with repetition}
-
-This focuses not on the slots but in the separations between the slots.
-More specific the number of ways to distribute \(k\) identical objects into \(n\) identical boxes. 
-
-\[
-    \binom{k + n - 1}{n - 1} = \binom{k + n - 1}{k} = \frac{(k + n - 1)!}{k!(n - 1)!}
-\]
-
-This comes from modeling our possible combinations. If we have a tuple \((a_1, a_2, \dots, a_n)\) where \(a_i\) gives us 
-the number of occurrences of the object \(i\), then we can imagine using \(\mid\) a number of times for the occurrences of each object 
-and \(\cdot\) as the separator between each set of \(\mid\). For each possible combination we have \(k\) lines, \(k + n - 1\) 
-positions, and \(n - 1\) points. Therefore, the question becomes: How many ways are there of putting \(k\) lines into  \(k + n - 1\) positions.
+\textbf{Example:}
 
 \subsection{Multinomial Coefficients}
 
@@ -98,6 +127,27 @@ Given \(x_1, \dots, x_p \in \R\) and \(\N\) then
 \[
     (x_1 + \cdots, x_n)^n = \sum_{k_1 + \cdots + k_{p = n}}  \binom{n}{k_1, \dots, k_p} x_{1}^{k_1} \cdots x_{p}^{k_p}
 \]
+
+\subsection{Example Problems}
+
+\subsubsection*{Defected Machines}
+
+A new delivery with 10 machines from which 2 are not working properly have to be tested. For that purpose a 
+man in charge selects 5 of the machines randomly, and then he proceeds to make a decision based on the number of faulty machines found 
+in the delivery. If among the 5 samples only 1 machine does not work it will be accepted otherwise it will be rejected. What is the 
+probability of a delivery being accepted?
+
+\textbf{Answer:}
+
+Total cases: \(\binom{10}{5}\)
+
+\(\prob(\text{accepted}) = \frac{\binom{8}{5}}{\binom{10}{5}} + \frac{\binom{2}{1}\binom{8}{4}}{\binom{10}{5}}\)
+
+\(\binom{8}{5}\) represents no faulty machine in the choice, \(\binom{2}{1}\binom{8}{4}\) represents only one machine does not work. 
+
+\subsubsection*{Defected Machines}
+
+\textbf{Answer:}
 
 \subsection{Disarray}
 

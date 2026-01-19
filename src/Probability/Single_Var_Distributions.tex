@@ -98,7 +98,7 @@ Given our probability space and a R.V. \(X\). The probability measurement \(\pro
     \prob_X (A) := \prob(\{\omega: X(w) \in A\}), \text{ for } A \subseteq \R
 \]
 
-is called as the \emph{distribution} of \(X\). Also we write \(\prob(X \in A)\) as a abbreviation for
+is called as the \emph{distribution} of \(X\). Also we write \(\prob(X \in A)\) as an abbreviation for
 \(\prob(\{\omega: X(w) \in A\}) \).
 
 \subsection{Distribution Function}
@@ -116,11 +116,11 @@ as the \emph{distribution function}.
 
 \begin{itemize}
     
-    \item \(F_X\) is monotonic growing 
+    \item \(\mathbb{F}_X\) is monotonic growing 
 
     \item It is right-sided continuous 
 
-    \item \(\lim_{x \to - \infty} F_X (x) = 0\) and \(\lim_{x \to \infty} F_X = 1 \)
+    \item \(\lim_{x \to - \infty} \mathbb{F}_X (x) = 0\) and \(\lim_{x \to \infty} \mathbb{F}_X = 1 \)
 
 \end{itemize}
 
@@ -143,242 +143,6 @@ as the \emph{distribution function}.
     \item \(\prob(|X - a| < b) = \prob(-b < |X - a| < b) = \prob(b) - \prob(-b) \)
 
 \end{itemize}
-
-\subsection{Uniform Distribution}
-
-A random variable \(X \in \{1, 2, \dots, n\}\) with 
-\(\prob(X = i) = \frac{1}{n}\) for \(i = 1, \dots, n\) is uniformly distributed. 
-The distribution \(\prob_X\) is called the (discrete) \emph{uniform distribution}. Noted as 
-\(\mathcal{U}(a, b)\)
-
-\[
-    \frac{1}{n}
-\]
-
-The expected value is given by 
-
-\[
-    \expc(X) = \frac{n + 1}{2}
-\]
-
-and the standard deviation is given by
-
-\[
-    \sigma = \frac{n^2 - 1}{12}
-\]
-
-where \(a\) and \(b\) are the boundaries of our distribution.
-
-\subsection{Bernoulli Distribution}
-
-Distribution for binary events with only one trial, noted as \(\mathcal{B}(p)\)
-
-\[
-    \prob(X = k) = p^k (1 - p)^{1 - k}, \quad k \in \{0, 1\}
-\]
-
-\subsection{Binomial Distribution}
-
-From the Bernoulli distribution we can derive the \emph{binomial distribution} \(\text{Bino}(n, p)\)as having a number 
-of consecutive independent Bernoulli experiments.
-
-This distribution is for discrete binary experiments. Either an event occurs or it does not. 
-
-\[
-    \prob(X = k) = \binom{n}{k} p^k {(1 - p)}^{n - k}
-\]
-
-With 
-
-\[
-    \expc[X] = np
-\]
-
-\[
-    \var(X) = \expc[X](1-p)
-\]
-
-
-We also get the standard deviation and our distribution function
-
-\[
-    \sigma = \sqrt{ \frac{ {(\overline{x} - x_1)}^2 + \cdots + {(\overline{x} - x_n)}^2 }{ n } }
-\]
-
-\[
-    \mathbb{F}_X = \sum_{i = P(X=k)}^{P(X=n) (P(X=i))}
-\]
-
-
-If we let \(n \to \infty\) with \(np\) being not to small then the limit of this distribution becomes the normal distribution.
-
-\subsection{Normal Distribution}
-
-The \emph{normal distribution} \(\mathcal{N}(\mu, \sigma^2)\) is the limit of the \emph{binomial distribution} under certain conditions, and it is given by 
-
-\[
-    f(x) = \frac{1}{\sqrt{2\pi \sigma^2} e^{\frac{1}{2}{\left(\frac{x - u}{\sigma}\right)}^2}}
-\]
-
-It also has 
-
-     
-\[
-    \expc[X] = np = \mu
-\]
-    
-\[
-    \var(X) = \expc[X] (1-p)
-\]
-
-To compute its cumulative probability we need to use special tables, due to the fact that the function can not be analytically integrated. 
-To get a specific we use tables which pre-calculated values computed numerically using the so called \(\Phi\) function. 
-This function is used in the following manner:
-
-We plug the values in the expression, our expected value and the standard deviation 
-
-\[
-    Z = \frac{X - \mu}{\sigma}
-\]
-
-\(\Phi(Z)\) you use the portion before the comma as the row and after the comma as the column to read the value from.
-
-
-\subsubsection{Standard Normal Distribution}
-
-The \emph{standard} normal distribution has the parameters \(\mu = 0\) and \(\sigma^2 = \var = 1\). 
-
-To transform a normal distributed random variable \(X\) you can define a new random variable 
-
-\[
-    Z = \frac{X - \mu}{\sigma}
-\]
-
-\textbf{Example:}
-
-Given \(X \sim N(10, 4)\). What is \(\prob(8 \le X \le 12)\)?
-
-We define \(Z = \frac{X - 10}{2}\). Then we get 
-
-\[
-    \prob(8 \le X \le 12) = \prob\left(\frac{8 - 10}{2} \le Z \le \frac{12 - 10}{2}\right) = \prob(-1 \le Z \le 1)
-\]
-
-Using the standard normal distribution table we get
-
-\[
-    \prob(-1 \le Z \le 1) = \mathbb{F}_Z(1) - \mathbb{F}_Z(-1) = 0.8413 - 0.1587 = 0.6826
-\]
-
-\subsection{Geometric Distribution}
-
-A random variable \(X \in \N_0\) with 
-\(\prob(X = n) = p(1 - p)^n\) for some \(p \in (0, 1)\) and \(n \in \N_0\) 
-is geometrically distributed. The distribution \(\prob_X\) is called the \emph{geometric distribution}.
-
-Similar to the binomial distribution, the \emph{geometric} \(\mathcal{G}(n, p)\) distribution is used for an experiment with two 
-outcomes, and we want to know the probability of \(k - 1\) non-successes until a success happens  
-
-\[
-    \prob(X = k) = (1 - p)^{k - 1}p
-\]
-
-We also get
-
-\[
-    \expc[X] = \mu = \frac{1 - p}{p}
-\]
-
-\[
-    \var = \frac{1 - p}{p^2}
-\]
-
-and 
-
-\[
-    \sigma = \sqrt{\var(X)}
-\]
-
-\subsection{Poisson Distribution}
-
-A random variable \(X \in \N_0\) with 
-
-\[
-    \prob(X = n) = \frac{\lambda^n}{n!} e^{-\lambda}, \quad \text{ for some } \lambda > 0,
-\] 
-
-We also define the distribution function 
-
-\[
-    \mathbb{F}_X(n) = \sum_{i = 0}^{n} \frac{\lambda^i}{i!} i^{-\lambda}
-\]
-
-is Poisson distributed. The distribution \(\prob_X\) is called the \emph{Poisson distribution} \(\text{Poi}(\lambda)\)
-In simple words, it is the number of events x, in a specific interval. This is 
-a limit of the binomial distribution for large \(n\) and small \(p\).
-
-We also get our expected result and variance 
-
-\[
-    \expc[X] = \lambda = np
-\]
-
-and 
-
-\[
-    \var(X) = \lambda
-\]
-
-The derivation is the following, let \(\lambda = np\)
-
-\begin{align*}
-    \lim_{n \to \infty} &\binom{n}{k} p^k (1 - p)^{n - k} \\ 
-                        &= \frac{n!}{k!(n - k)!} \left(\frac{\lambda}{n}\right)^k \left(1 - \frac{\lambda}{n}\right)^{n - k} \\ 
-                        &= \frac{n(n-1)\dots(n - k + 1)}{k!} \left(\frac{\lambda}{n}\right)^k \left(1 - \frac{\lambda}{n}\right)^{n - k} \\ 
-                        &= \frac{n(n-1)\dots(n - k + 1)}{k!} \frac{\lambda^k}{n^k} \left(1 - \frac{\lambda}{n}\right)^{n - k} \\ 
-                        &= \frac{\lambda^k}{k!} \frac{n(n-1)\dots(n - k + 1)}{n^k} \left(1 - \frac{\lambda}{n}\right)^{n} \left(1 - \frac{\lambda}{n}\right)^{-k}  \\ 
-                        &= \frac{\lambda^k}{k!} \cdot 1 \cdot e^{-\lambda} \cdot 1 \\ 
-                        &= \frac{\lambda^k}{k!} \cdot e^{-\lambda} 
-\end{align*}
-
-\subsection{Hyper-geometric Distribution}
-
-Similar to the binomial distribution, but we keep track of the changes after each choice. In other words, 
-binomial distribution without repetition. We notate this as \(\text{HG}(M, N, n)\).
-
-\[
-    \prob(X = k) = \frac{\binom{M}{k} \binom{N - M}{n - k}}{\binom{N}{n}}
-\]
-
-\textbf{Nomenclature:}
-
-\begin{itemize}
-
-    \item \(N\): Total number of elements
-
-    \item \(M\): Elements with the trait \(A\)
-
-    \item \(N - M\): Elements without the trait \(A\)
-
-    \item \(k\): Number to elements to take
-
-    \item \(n\): Number of iterations
-
-\end{itemize}
-
-Each part of the formula has a different meaning. \(\binom{N}{n}\) represents the total number of ways to choose the elements from the total.
-\(\binom{M}{k}\) gives us the ways of choose \(k\) elements with the trait from its total \(M\) and finally, \(\binom{N - M}{n - k}\) represents the remaining ways of choosing 
-elements we are not interested in.
-
-We also get 
-
-\[
-    \expc[X] = n \frac{M}{N}
-\]
-
-\[
-    \var(X) = \expc[X]\left(1 - \frac{M}{N}\right) \left(\frac{N - n}{N - 1}\right)
-\]
 
 \subsection{The Expected Value for Discrete Random Variables}
 
@@ -424,7 +188,7 @@ This represents the expectation of the function.
 
 \subsubsection{Properties of  Expected Values}
 
-Given two random variables \(X\) and \(Y\), if both have an expected results then 
+Given two random variables \(X\) and \(Y\), if both have an expected value then 
 
 \begin{itemize}
 	
@@ -440,7 +204,7 @@ Given two random variables \(X\) and \(Y\), if both have an expected results the
 
 \subsection{Variance}
 
-Given a random variable \(X\) for which \(\expc[(X - \expc)^2]\) exists. The we define 
+Given a random variable \(X\) for which \(\expc[(X - \expc)^2]\) exists. Then we define 
 the \emph{variance} of \(X\) as 
 
 \[
@@ -593,40 +357,399 @@ with \(\int |u(x)|f(x)dx < \infty\) then the following applies
     \expc[u(X)] = \int u(x) f(x) dx
 \]
 
-\subsubsection{Continuous Uniform Distribution}
+\subsection{Transformation Theorem for Densities}
 
-A random variable \(X \in [0,1]\) with 
+Given a random variable \(X\) with values in the open interval \(I \subseteq \R\) and the density \(f_X\). If 
+\(j \subseteq \R\) is an open interval and \(u: I \to J\) is a diffeomorphism then has \(Y = u(X)\) the density 
 
 \[
-    \prob (X \le x) = 
+    f_Y (y) = f_X(u^{-1}(y)) | (u^{-1})'(y)|
+\]
+
+For \(y \in J\) and \(f_Y(y) = 0\) for \(y \in \R \setminus J\).
+
+\subsection{Quantile}
+
+Let \( X \) be a random variable with distribution \( F \).
+For \( p \in (0, 1) \), a value \( q_p \) is called a \emph{p-quantile} of \( X \) (or of \( F \)) if:
+
+\[
+    \prob(X \le q_p) \ge p \text{ and }\prob(q_p \le X) \ge 1 - p,
+\]
+
+or equivalently,
+
+\[
+    F(q_p) \ge p \text{ and } \lim_{x \nearrow q_p} F(x) \le p.
+\]
+
+In general, the \( p \)-quantile is not unique.
+If \( F \) is strictly increasing and continuous, then \( q_p \) is unique.
+If \( q_p \) is not unique, we can make it “unique” by defining the smallest quantile as
+
+\[
+    F^{-1}(p) = \inf \{ x \in \R : F(x) \ge p \}.
+\]
+
+\subsection{The Moment Generating Function}
+
+The \(n-th\)\emph{moment} of a distribution are given by \(\expc[X^n]\). We also 
+know that the first moment is the mean and the variance is closely related to the second moment.
+The moments \emph{uniquely} determine the distribution.
+
+The \emph{moment generating function} is defined as 
+
+\[
+    M(t) = 
     \begin{cases}
-	0, & \text{ if } x < 0 \\
-	x, & \text{ if } x \in [0,1] \\
-	1, & \text{ if } x > 1 \\
+        \sum_{x} e^{tx} \prob(X = x) & \text{ if } X \text{ discrete} \\
+        \int_{-\infty}^{\infty} e^{tx} \prob(X = x) dx & \text{ if } X \text{ continuous}
     \end{cases}
 \]
 
-is considered \emph{continuous equally distributed}. The distribution function 
-\(\prob_X\) is called \emph{continuous uniform distribution}. Generalized 
+\(M(t)\) uniquely determines the cumulative probability distribution of \(\prob(X = x)\)
+
+\subsubsection{Derivative of the Moment Generating Function}
+
+The \(n-th\) derivative of the \emph{moment generating function} has the following property 
 
 \[
-    f(x) = \frac{1}{b  - a}
+    M^{n}(0) = \expc[X^n]
 \]
 
-And 
+\textbf{Proof (Informal):}
+
+We will handle only the continuous case, but the same holds for the discrete case 
 
 \[
-    \prob (X \le x) = \frac{x - a}{b - a}, x \in [a, b]
+    \frac{d}{dt} \int_{-\infty}^{\infty} e^{tx} \prob(X = x) dx  = \int_{-\infty}^{\infty} xe^{tx} \prob(X = x) dx
 \]
 
-with 
+\[
+    \frac{d}{dt} \int_{-\infty}^{\infty} xe^{tx} \prob(X = x) dx  = \int_{-\infty}^{\infty} x^2 e^{tx} \prob(X = x) dx
+\]
+
+And the pattern repeats. This is just given us the definition of each of the moments. 
+
+\QED
+
+\subsubsection{The Additive Property of the Moment Generating Function}
+
+Let \(X_1, X_2, \dots, X_n\) be random variables with their corresponding moment generating functions.
+Let \(Z = \sum_i X_i\) then 
 
 \[
-    \expc[X] =  \frac{a + b}{2}
+    M_Z (t) = \prod_{i} M_{X_i}(t)
+\]
+
+\subsection{Discrete Uniform Distribution}
+
+A random variable \(X \in \{1, 2, \dots, n\}\) with 
+\(\prob(X = i) = \frac{1}{n}\) for \(i = 1, \dots, n\) is uniformly distributed. 
+The distribution \(\prob_X\) is called the \emph{discrete uniform distribution}. Noted as 
+\(\mathcal{U}(n)\)
+
+\[
+    \prob(X = i) = 
+    \begin{cases}
+    \frac{1}{n}, & i = 1, \dots, n \\ 
+    0, & \text{ else }
+    \end{cases}
+\]
+
+The expected value is given by 
+
+\[
+    \expc(X) = \frac{n + 1}{2}
+\]
+
+and the standard deviation is given by
+
+\[
+    \sigma = \frac{n^2 - 1}{12}
+\]
+
+Finally, its cumulative distribution is  given by 
+
+\[
+    \mathbb{F}_X(x) = \sum_{i = 1}^{x} \frac{i}{n}
+\]
+
+\subsection{Continuous Uniform Distribution}
+
+A random variable \(X \in \{1, 2, \dots, n\}\) with 
+\(\prob(X = i) = \frac{1}{n}\) for \(i = \in [a, b]\) is uniformly distributed. 
+The distribution is called the \emph{continuous uniform distribution}. Noted as 
+\(\mathcal{U}(a,b)\)
+
+\[
+    \prob(X = i) = 
+    \begin{cases}
+    \frac{1}{b - a}, & i \in [a, b]\\ 
+    0, & \text{ else }
+    \end{cases}
+\]
+
+The expected value is given by 
+
+\[
+    \expc(X) = \frac{a + b}{2}
+\]
+
+and the standard deviation is given by
+
+\[
+    \sigma = \frac{(b - a)^2}{12}
+\]
+
+
+Finally, its cumulative distribution is  given by 
+
+\[
+    \mathbb{F}_X(x) =
+    \begin{cases}
+        0, &  x < a \\ 
+        \frac{x - a}{b - a}, & x \in [a, b] \\
+        1, & x > b
+    \end{cases}
+\]
+
+\subsection{Bernoulli Distribution}
+
+ The Bernoulli distribution is used modeling for binary events with only one trial, noted as \(\mathcal{B}(p)\)
+
+\[
+    \prob(X = x) =
+    \begin{cases}
+        p, & x = 1 \\ 
+        1 - p, & x = 0
+    \end{cases}
+\]
+
+The expected value, variance and cumulative distribution function are give by 
+
+\[
+    \expc(X) = p
+\]
+
+\[
+    \var(X) = p(1 - p)
+\]
+
+\[
+    \mathbb{F}_X = 
+    \begin{cases}
+        0, & x < 0 \\ 
+        1 - p, & 0 \ge x < 1 \\ 
+        1, & x \ge 1 
+    \end{cases}
+\]
+
+\subsection{Binomial Distribution}
+
+From the Bernoulli distribution we can derive the \emph{binomial distribution} \(\mathrm{Bin}(n, p)\)as having a number 
+of consecutive independent Bernoulli experiments.
+
+This distribution is for discrete binary experiments. Either an event occurs or it does not. 
+
+\[
+    \prob(X = k) = \binom{n}{k} p^k {(1 - p)}^{n - k}
+\]
+
+With 
+
+\[
+    \expc[X] = np
+\]
+
+\[
+    \var(X) = \expc[X](1-p)
+\]
+
+The cumulative distribution function is given by
+
+\[
+    \mathbb{F}_X = \sum_{i = 0}^{k} \prob(X = i)
+\]
+
+If we let \(n \to \infty\) with \(np\) being not to small then the limit of this distribution becomes the normal distribution.
+
+\subsection{Normal Distribution}
+
+The \emph{normal distribution} \(\mathcal{N}(\mu, \sigma^2)\) is the limit of the \emph{binomial distribution} under certain conditions, and it is given by 
+
+\[
+    f(x) = \frac{1}{\sqrt{2\pi \sigma^2} e^{\frac{1}{2}{\left(\frac{x - u}{\sigma}\right)}^2}}
+\]
+
+It also has 
+
+     
+\[
+    \expc[X] = np = \mu
 \]
     
 \[
-    \var(X) = \frac{(b - a)^2}{12}
+    \var(X) = \expc[X] (1-p)
+\]
+
+To compute its cumulative probability we need to use special tables, due to the fact that the function can not be analytically integrated. 
+To get a specific we use tables which pre-calculated values computed numerically using the so called \(\Phi\) function. 
+This function is used in the following manner:
+
+We plug the values in the expression, our expected value and the standard deviation 
+
+\[
+    Z = \frac{X - \mu}{\sigma}
+\]
+
+\(\Phi(Z)\) you use the portion before the comma as the row and after the comma as the column to read the value from.
+
+
+\subsubsection{Standard Normal Distribution}
+
+The \emph{standard} normal distribution has the parameters \(\mu = 0\) and \(\sigma^2 = \var = 1\). 
+
+To transform a normal distributed random variable \(X\) you can define a new random variable 
+
+\[
+    Z = \frac{X - \mu}{\sigma}
+\]
+
+\textbf{Example:}
+
+Given \(X \sim N(10, 4)\). What is \(\prob(8 \le X \le 12)\)?
+
+We define \(Z = \frac{X - 10}{2}\). Then we get 
+
+\[
+    \prob(8 \le X \le 12) = \prob\left(\frac{8 - 10}{2} \le Z \le \frac{12 - 10}{2}\right) = \prob(-1 \le Z \le 1)
+\]
+
+Using the standard normal distribution table we get
+
+\[
+    \prob(-1 \le Z \le 1) = \mathbb{F}_Z(1) - \mathbb{F}_Z(-1) = 0.8413 - 0.1587 = 0.6826
+\]
+
+\subsection{Geometric Distribution}
+
+A random variable \(X \in \N_0\) with 
+\(\prob(X = n) = p(1 - p)^n\) for some \(p \in (0, 1)\) and \(n \in \N_0\) 
+is geometrically distributed. The distribution \(\prob_X\) is called the \emph{geometric distribution}.
+
+Similar to the binomial distribution, the \emph{geometric} \(\mathrm{Geo}(n, p)\) distribution is used for an experiment with two 
+outcomes, and we want to know the probability of \(k - 1\) non-successes until a success happens  
+
+\[
+    \prob(X = k) = (1 - p)^{k - 1}p
+\]
+
+We also get
+
+\[
+    \expc[X] = \mu = \frac{1 - p}{p}
+\]
+
+\[
+    \var(X) = \frac{1 - p}{p^2}
+\]
+
+The cumulative distribution function is given by 
+
+\[
+    \mathbb{F}_X = 
+    \begin{cases}
+        0, & x < 1 \\ 
+        1 - (p - 1)^{\lfloor x \rfloor}, & x \ge 1
+    \end{cases}
+\]
+
+\subsection{Poisson Distribution}
+
+A random variable \(X \in \N_0\) with 
+
+\[
+    \prob(X = n) = \frac{\lambda^n}{n!} e^{-\lambda}, \quad \text{ for some } \lambda > 0,
+\] 
+
+We also define the distribution function 
+
+\[
+    \mathbb{F}_X(n) = \sum_{i = 0}^{n} \frac{\lambda^i}{i!} i^{-\lambda}
+\]
+
+is Poisson distributed. The distribution \(\prob_X\) is called the \emph{Poisson distribution} \(\text{Poi}(\lambda)\)
+In simple words, it is the number of events x, in a specific interval. This is 
+a limit of the binomial distribution for large \(n\) and small \(p\).
+
+We also get our expected result and variance 
+
+\[
+    \expc[X] = \lambda = np
+\]
+
+and 
+
+\[
+    \var(X) = \lambda
+\]
+
+The derivation is the following, let \(\lambda = np\)
+
+\begin{align*}
+    \lim_{n \to \infty} &\binom{n}{k} p^k (1 - p)^{n - k} \\ 
+                        &= \frac{n!}{k!(n - k)!} \left(\frac{\lambda}{n}\right)^k \left(1 - \frac{\lambda}{n}\right)^{n - k} \\ 
+                        &= \frac{n(n-1)\dots(n - k + 1)}{k!} \left(\frac{\lambda}{n}\right)^k \left(1 - \frac{\lambda}{n}\right)^{n - k} \\ 
+                        &= \frac{n(n-1)\dots(n - k + 1)}{k!} \frac{\lambda^k}{n^k} \left(1 - \frac{\lambda}{n}\right)^{n - k} \\ 
+                        &= \frac{\lambda^k}{k!} \frac{n(n-1)\dots(n - k + 1)}{n^k} \left(1 - \frac{\lambda}{n}\right)^{n} \left(1 - \frac{\lambda}{n}\right)^{-k}  \\ 
+                        &= \frac{\lambda^k}{k!} \cdot 1 \cdot e^{-\lambda} \cdot 1 \\ 
+                        &= \frac{\lambda^k}{k!} \cdot e^{-\lambda} 
+\end{align*}
+
+\subsection{Hyper-geometric Distribution}
+
+Similar to the binomial distribution, but we keep track of the changes after each choice. In other words, 
+binomial distribution without repetition. We notate this as \(\text{HG}(M, N, n)\).
+
+\[
+    \prob(X = k) = \frac{\binom{M}{k} \binom{N - M}{n - k}}{\binom{N}{n}}
+\]
+
+\textbf{Nomenclature:}
+
+\begin{itemize}
+
+    \item \(N\): Total number of elements
+
+    \item \(M\): Elements with the trait \(A\)
+
+    \item \(N - M\): Elements without the trait \(A\)
+
+    \item \(k\): Number to elements to take
+
+    \item \(n\): Number of iterations
+
+\end{itemize}
+
+Each part of the formula has a different meaning. \(\binom{N}{n}\) represents the total number of ways to choose the elements from the total.
+\(\binom{M}{k}\) gives us the ways of choose \(k\) elements with the trait from its total \(M\) and finally, \(\binom{N - M}{n - k}\) represents the remaining ways of choosing 
+elements we are not interested in.
+
+We also get 
+
+\[
+    \expc[X] = n \frac{M}{N}
+\]
+
+\[
+    \var(X) = \expc[X]\left(1 - \frac{M}{N}\right) \left(\frac{N - n}{N - 1}\right)
+\]
+
+The cumulative distribution function is given by 
+
+\[
+    \mathbb{F}_X (x) = \sum_{i = 1}^{x} \prob(X = i)
 \]
 
 \subsection{Exponential Distribution}
@@ -657,7 +780,6 @@ We also define the distribution function
 \]
 
 We also have 
-
      
 \[
     \expc(X) = \frac{1}{\lambda}
@@ -667,8 +789,7 @@ We also have
     \var(X) = \frac{1}{\lambda^2}
 \]
     
-
-\subsubsection{Memory-less Property of the Exponential Distribution}
+\subsubsection*{Memory-less Property of the Exponential Distribution}
 
 This distribution is \emph{memory-less}. This means that the future probabilities of an event are independent 
 of the previous ones. 
@@ -678,7 +799,7 @@ of the previous ones.
     \prob (X \ge x + y \mid X > y) = \prob(X \ge x)
 \]
 
-\subsubsection{The Connection between the Exponential Distribution and the Poisson Process}
+\subsubsection*{The Connection between the Exponential Distribution and the Poisson Process}
 
 A neat connection between these two concepts is that given an exponential distribution 
 over some time \(t\) then the number of events which occurred during that interval is given by a Poisson distribution \(\mathrm{Poi}(\lambda t)\) 
@@ -775,89 +896,15 @@ This gives us
            &= \frac{1}{\sqrt{2\pi}} y^{-\frac{1}{2}} e^{-\frac{y}{2}}
 \end{align*}
 
-\subsection{Transformation Theorem for Densities}
 
-Given a random variable \(X\) with values in the open interval \(I \subseteq \R\) and the density \(f_X\). If 
-\(j \subseteq \R\) is an open interval and \(u: I \to J\) is a diffeomorphism then has \(Y = u(X)\) the density 
+\subsection{Students t-Distribution}
 
-\[
-    f_Y (y) = f_X(u^{-1}(y)) | (u^{-1})'(y)|
-\]
-
-For \(y \in J\) and \(f_Y(y) = 0\) for \(y \in \R \setminus J\).
-
-\subsection{Quantile}
-
-Let \( X \) be a random variable with distribution \( F \).
-For \( p \in (0, 1) \), a value \( q_p \) is called a \emph{p-quantile} of \( X \) (or of \( F \)) if:
+This is a distribution mostly used in statistics for hypothesis testing.
 
 \[
-    \prob(X \le q_p) \ge p \text{ and }\prob(q_p \le X) \ge 1 - p,
+    f_n(x) = \frac{\Gamma \left(\frac{n + 1}{2}\right)}{\sqrt{n \pi} \Gamma \left(\frac{n}{2}\right)} \left(1 + \frac{x^2}{n}\right)^{- \frac{n + 1}{2}}
 \]
 
-or equivalently,
-
-\[
-    F(q_p) \ge p \text{ and } \lim_{x \nearrow q_p} F(x) \le p.
-\]
-
-In general, the \( p \)-quantile is not unique.
-If \( F \) is strictly increasing and continuous, then \( q_p \) is unique.
-If \( q_p \) is not unique, we can make it “unique” by defining the smallest quantile as
-
-\[
-    F^{-1}(p) = \inf \{ x \in \R : F(x) \ge p \}.
-\]
-
-\subsection{The Moment Generating Function}
-
-The \(n-th\)\emph{moment} of a distribution are given by \(\expc[X^n]\). We also 
-know that the first moment is the mean and the variance is closely related to the second moment.
-The moments \emph{uniquely} determine the distribution.
-
-The \emph{moment generating function} is defined as 
-
-\[
-    M(t) = 
-    \begin{cases}
-        \sum_{x} e^{tx} \prob(X = x) & \text{ if } X \text{ discrete} \\
-        \int_{-\infty}^{\infty} e^{tx} \prob(X = x) dx & \text{ if } X \text{ continuous}
-    \end{cases}
-\]
-
-\(M(t)\) uniquely determines the cumulative probability distribution of \(\prob(X = x)\)
-
-\subsubsection{Derivative of the Moment Generating Function}
-
-The \(n-th\) derivative of the \emph{moment generating function} has the following property 
-
-\[
-    M^{n}(0) = \expc[X^n]
-\]
-
-\textbf{Proof (Informal):}
-
-We will handle only the continuous case, but the same holds for the discrete case 
-
-\[
-    \frac{d}{dt} \int_{-\infty}^{\infty} e^{tx} \prob(X = x) dx  = \int_{-\infty}^{\infty} xe^{tx} \prob(X = x) dx
-\]
-
-\[
-    \frac{d}{dt} \int_{-\infty}^{\infty} xe^{tx} \prob(X = x) dx  = \int_{-\infty}^{\infty} x^2 e^{tx} \prob(X = x) dx
-\]
-
-And the pattern repeats. This is just given us the definition of each of the moments. 
-
-\QED
-
-\subsubsection{The Additive Property of the Moment Generating Function}
-
-Let \(X_1, X_2, \dots, X_n\) be random variables with their corresponding moment generating functions.
-Let \(Z = \sum_i X_i\) then 
-
-\[
-    M_Z (t) = \prod_{i} M_{X_i}(t)
-\]
+This used to test the mean \(\overline{X_n}\) against the true \(\mu\) when \(\sigma^2\) is unknown.
 
 

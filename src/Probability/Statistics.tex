@@ -502,6 +502,17 @@ Let \(X : \Omega \to \mathcal{X}\) be a random variable with statistical model
 
 In simpler terms, an estimator is a function that takes in our samples and gives us an estimate of the parameter we are looking for.
 
+\subsection{Consistence of an Estimate}
+
+If \(\hat{\theta}_n\) is an estimate of \(\theta\) based on the sample size \(n\). Then \(\hat{\theta}_n\) is 
+consistent if 
+
+\[
+    \prob(| \hat{\theta}_n - \theta| < \varepsilon) \to 0 \quad as n \to \infty
+\]
+
+This means that \(\hat{\theta}_n\) is an \emph{unbiased estimate}.
+
 \subsection{Distortion}
 
 Let \(X : \Omega \to \mathcal{X}\) be a random variable with statistical model  
@@ -886,7 +897,7 @@ where \(\hat{\theta} = \argmax_\theta l(\theta)\). We get the following properti
     \item \(\hat{\theta} \sim \mathcal{N}\left(\theta_{\text{true}}, \frac{1}{n I(\theta_{\text{true}})}\right)\)
     where \(I(\theta) = \expc \left[\frac{\partial}{\partial \theta} \ln(\prob(x \mid \theta))\right]^2 = - \expc \left[\frac{\partial^2}{\partial \theta^2} \ln(\prob(x \mid \theta))\right]\)
 
-    \item \emph{Crammer-Rao Inequality:} Given \(X_1, \dots, X_n\) i.i.d. random variables with with the unbiased estimator \(\hat{\theta} = \hat{\theta}(X_1, \dots, X_n)\)
+    \item \emph{Crammer-Rao Inequality:} Given \(X_1, \dots, X_n\) i.i.d. random variables with the unbiased estimator \(\hat{\theta} = \hat{\theta}(X_1, \dots, X_n)\)
     \[
         \var(\hat{\theta}) \ge \frac{1}{n I(\theta)} 
     \]
@@ -894,6 +905,23 @@ where \(\hat{\theta} = \argmax_\theta l(\theta)\). We get the following properti
     for all \(\prob(X \mid \theta)\) smooth.
 
 \end{itemize}
+
+\subsubsection{Bayesian Maximum Aposteriori Estimation}
+
+Recall the MLE but, we model the probability for the observations of the samples as \(\prob(x_i \mid \theta)\) and treat 
+them as real conditional probabilities instead as a notational trick for probability of \(x\) with the parameter \(\theta\) then we get 
+
+\[
+    \prob(\theta \mid x) = \frac{\prob(x \mid \theta) \prob(\theta)}{\prob(x)}
+\]
+
+If we optimize \(\theta\) we get 
+
+\[
+    MAP = \max \log(\prob(x \mid \theta) \prob(\theta))
+\]
+
+the \emph{maximum aposteriori estimation}.
 
 \subsection{Confidence Interval}
 
@@ -1487,3 +1515,31 @@ We compute the test-statistic
 
 The critical value is given by \(\chi_{17, 0.05}^2 = 8.672\). Since \(16.38 > 8.672\) we do not reject \(H_0\) and conclude that the 
 standard deviation is not significantly less than \(15\).
+
+\subsection{Bayesian Inference}
+
+The big idea is 
+
+\[
+    \prob(X \mid\theta) \to \prob(\theta \mid X) = \frac{\prob(X \mid \theta) \prob(\theta)}{\prob(X)}
+\]
+
+where \(\prob(X \mid \theta)\) is the \emph{likelihood} and \(\prob(\theta)\) is the \emph{prior}.
+
+We want to create derive a statistical model for some collected data with its corresponding parameters 
+using prior beliefs.
+
+\subsubsection{Bayesian Update}
+
+Iterative \emph{Bayesian Update Process}
+
+\[
+    \prob_{k + 1}(\theta \mid X) = \frac{\prob_k(X \mid \theta) \prob_k(\theta)}{\prob_k(X)}
+\]
+
+with \(\prob_{k + 1} = \prob_k(\theta \mid X)\) and its base value is our defined prior.
+
+
+
+
+

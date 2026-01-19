@@ -11,32 +11,32 @@ in abstract algebra and has applications in computer science, cryptography, codi
 An \emph{internal composition law} is a binary operation that takes two elements from a set and returns another element in the same set. Formally, for a set \(S\) and operation \(\circ\), we have:
 
 \[
-  \circ: S \times S \rightarrow S
+  \oplus: S \times S \to S
 \]
 
 An \emph{external composition law} involves a second set acting on the structure, such as scalar multiplication in vector spaces:
 
 \[
-  \cdot: \field \times V \rightarrow V
+  \oplus: \field \times V \to V
 \]
 
 where \(\field\) is a field and \(V\) is a vector space.
 
 \subsection{Properties of Operations}
 
-Let \(\ast\) be a binary operation on a set \(S\). The most important properties include:
+Let \(\circledcirc\) and \(\circledast\) be a binary operations on a set \(S\). The most important properties include:
 
 \begin{itemize}
-
-    \item \emph{Associativity:} \((a \ast b) \ast c = a \ast (b \ast c)\) for all \(a,b,c \in S\)
     
-    \item \emph{Commutativity:} \(a \ast b = b \ast a\) for all \(a,b \in S\)
+    \item \emph{Associativity:} \((a \circledcirc b) \circledcirc c = a \circledcirc (b \circledcirc c)\) for all \(a,b,c \in S\)
     
-    \item \emph{Identity Element:} There exists \(e \in S\) such that \(a \ast e = e \ast a = a\) for all \(a \in S\)
+    \item \emph{Commutativity:} \(a \circledcirc b = b \circledcirc a\) for all \(a,b \in S\)
     
-    \item \emph{Inverse Element:} For every \(a \in S\), there exists \(a^{-1} \in S\) such that \(a \ast a^{-1} = a^{-1} \ast a = e\)
+    \item \emph{Identity Element:} There exists \(e \in S\) such that \(a \circledcirc e = e \circledcirc a = a\) for all \(a \in S\)
     
-    \item \emph{Distributivity:} \(a \circ (b \bullet c) = (a \circ b) \bullet (a \circ c)\) and/or \((b \bullet c) \circ a = (b \circ a) \bullet (c \circ a)\)
+    \item \emph{Inverse Element:} For every \(a \in S\), there exists \(a^{-1} \in S\) such that \(a \circledcirc a^{-1} = a^{-1} \circledcirc a = e\)
+    
+    \item \emph{Distributivity:} \(a \circledast (b \circledcirc c) = (a \circledast b) \circledcirc (a \circledast c)\) and/or \((b \circledcirc c) \circledast a = (b \circledast a) \circledcirc (c \circledast a)\)
 
 \end{itemize}
 
@@ -44,13 +44,14 @@ Let \(\ast\) be a binary operation on a set \(S\). The most important properties
 
 Let \((G, \oplus)\) and \((H, \oplus')\) be two algebraic structures.
 
-A \emph{homomorphism} is a function \(\varphi: G \rightarrow H\) such that:
+A \emph{homomorphism} is a function \(\varphi: G \to H\) such that:
     
 \[
-  \varphi(a \oplus b) = \varphi(a) \oplus' \varphi(b), \quad \forall a,b \in G
+  \varphi(a \oplus b) = \varphi(a) \oplus \varphi(b), \quad \forall a,b \in G
 \]
     
-An \emph{isomorphism} is a bijective homomorphism. If such a map exists, we say the structures are \emph{isomorphic}, written as \(G \cong H\).
+An \emph{isomorphism} is a bijective homomorphism. If such a map exists, we say the structures are \emph{isomorphic}, 
+written as \(G \cong H\).
 
 \subsection{Semigroup \texorpdfstring{\((S, \oplus)\)}{}}
 
@@ -140,16 +141,18 @@ Fields like \(\Q\), \(\R\), and \(\C\) allow division (except by zero), enabling
 We know \(a + -a = 0\). Now let us say \(-a' \ne -a\) and \(a -a' = 0\).
 
 \begin{align*}
-    a + -a  &= a - 'a \\ 
+    a + -a  &= a - a' \quad \mid - a \\ 
         -a &= -a'
 \end{align*}
 
 This contradicts our initial assumption, therefore, they are the same. Analog for the multiplication
 
 \begin{align*}
-    a \cdot a^{-1}  &= a \cdot 'a^{-1} \\ 
-    a^{-1}  &= 'a^{-1}
+    a \cdot a^{-1} &= a \cdot a'^{-1} \quad \mid * a^{-1} \\ 
+    a^{-1}  &= a'^{-1} 
 \end{align*}
+
+\QED
 
 \textbf{Neutral Element for the Addition is well-defined:}
 
@@ -158,17 +161,17 @@ We know \(a + 0 = a\). Now let us say \(0' \ne 0\) and \(a + 0' = a\).
 \begin{align*}
   a + 0 = a + (a - a) &=  a + 0' \\ 
           a - a + a   &= a + 0' \\
-           a   &= a + 0' \text{ add -a to both sides} \\ 
+           a   &= a + 0' \quad \mid -a \\ 
            0 &= 0'
 \end{align*}
 
 There is a contradiction to the assumption that there are more than one neutral element for the addition. Thus, 
 it is well-defined.
 
+Neutral Element for the Multiplication is well-defined: This proof is 
+very similar to the other, thus it will be skipped. 
 
-\textbf{Neutral Element for the Multiplication is well-defined:}
-
-This proof is very similar to the other, thus it will be skipped. 
+\QED
 
 \textbf{Minus times Minus is Plus:}
 
