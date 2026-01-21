@@ -1,5 +1,4 @@
-\newpage
-\section{Statistics}
+\newpage \section{Statistics}
 
 In \emph{probability}, we had models, and we assumed that have its ideal form. 
 In \emph{Statistics}, we try to estimate the model from samples. We will approximate its parameters and 
@@ -1481,16 +1480,18 @@ Given \(X_1, \dots, X_n \sim \mathcal{N}(\mu, \sigma^2)\) i.i.d. random variable
 If \(\mu\) is known we use the test-statistic 
 
 \[
-    T_0 := \hat{\sigma}_n^2 = \frac{1}{n} \sum_{i = 1}^{n} (X_i - \mu)^2 \sim \frac{\sigma^2}{n} \chi^2_n 
+    T_0 := \frac{1}{\sigma_0^2} \sum_{i = 1}^{n} (X_i - \mu)^2 \sim \chi^2_n 
 \]
+
+Reject \(H_0\) if \(|T_0| > \chi^2_{n, 1 - \alpha/2}\) or \(|T_0| < \chi^2_{n, \alpha/2}\).
 
 If \(\mu\) is unknown we use the test-statistic 
 
 \[
-    T_1 := s_n^2 = \frac{1}{n - 1} \sum_{i = 1}^{n} (X_i - \overline{X_n})^2 \sim \frac{\sigma^2}{n - 1} \chi^2_{n - 1} 
+    T_1 := \frac{(n  - 1)\frac{1}{n - 1} \sum_{i = 1}^{n} (X_i - \overline{X_n})^2}{\sigma_0^2} \sim \chi^2_{n - 1} 
 \]
 
-Reject \(H_0\) if \(\frac{n - i}{\sigma_0^2} T_i \notin [\chi_{n - i, \alpha/2}^2, \chi_{n - i, 1 - \alpha/2}^2]\) for \(i = 0,1\)
+Reject \(H_0\) if \(|T_1| > \chi^2_{n - 1, 1 - \alpha/2}\) or \(|T_1| < \chi^2_{n - 1, \alpha/2}\).
 
 \textbf{Example:}
 

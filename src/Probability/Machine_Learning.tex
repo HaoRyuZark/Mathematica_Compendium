@@ -2206,3 +2206,40 @@ where the rate of decrease sharply changes.
     \item Choose \(k\) at the "elbow" point where the decrease in \(J(k)\) starts to slow down significantly.
 
 \end{itemize}
+
+\subsection{Scaling}
+
+Feature scaling is a technique used to standardize the range of independent variables or features of data.
+In machine learning, it is crucial because many algorithms are sensitive to the scale of the input data.
+
+Common methods for feature scaling include:
+
+\begin{itemize}
+    
+    \item \emph{Min-Max Scaling (Normalization)}: This technique scales the data to a fixed range, usually 0 to 1. The formula is:
+    
+    \[
+        X' = \frac{X - X_{min}}{X_{max} - X_{min}}
+    \]
+
+    By adding \((b - a)\) to the formula we can scale it to any range \([a, b]\):
+
+    \[
+        X' = a + \frac{(X - X_{min})(b - a)}{X_{max} - X_{min}}
+    \]
+
+    \item \emph{Standardization (Z-score Normalization)}: This method transforms the data to have a mean of 0 and a standard deviation of 1. The formula is:
+    
+    \[
+        Z = \frac{X - \mu}{\sigma}
+    \]
+
+    where \(\mu\) is the mean and \(\sigma\) is the standard deviation of the feature.
+
+    \item \emph{Robust Scaling}: This method uses the median and the interquartile range (IQR) for scaling, making it robust to outliers. The formula is:
+    
+    \[
+        X' = \frac{X - \text{median}}{\text{IQR}}
+    \]
+
+\end{itemize}
