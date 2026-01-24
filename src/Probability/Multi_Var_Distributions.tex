@@ -27,8 +27,8 @@ It can be shown (from measure theory) that \( X \) is measurable.
 \emph{Measurability in \(\R^n\).}
 
 \[
-    X^{-1}(R) \in \mathcal{A}, \quad \text{where }
-    R = (a_1, b_1] \times (a_2, b_2] \times \cdots \times (a_n, b_n]
+    X^{-1}(\R) \in \mathcal{A}, \quad \text{where }
+    \R = (a_1, b_1] \times (a_2, b_2] \times \cdots \times (a_n, b_n]
 \]
 
 for arbitrary \( a_1, \ldots, a_n, b_1, \ldots, b_n \in \R \).
@@ -58,6 +58,8 @@ Then \( P_X \) (respectively \( P_{X_1, \ldots, X_n} \)) is defined as
 
 and is called the \emph{joint distribution} of \( X_1, \ldots, X_n \).
 The vector \( X = (X_1, \ldots, X_n) \) is called a \emph{random vector}.
+
+This is just the probability of \(n\) events happening simultaneously.
 
 \subsection{Joint Probability Function}
 
@@ -112,40 +114,23 @@ Their combined probability function is
 \subsection{Marginal Distributions of Discrete Random Variables}
 
 Let \( X, Y \) be two discrete random variables.
-In general, the following holds:
+The \emph{marginal probability functions} of \( X \) and \( Y \) are given by
 
 \[
-    \prob(X = x) = \sum_{y \in Y(\Omega)} \prob(X = x, Y = y)
+    p_X(x) = \sum_{y} p_{X,Y}(x, y) \quad \text{and} \quad p_Y(y) = \sum_{x} p_{X,Y}(x, y).
 \]
 
-and
 
-\[
-    \prob(Y = y) = \sum_{x \in X(\Omega)} \prob(X = x, Y = y)
-\]
-
-The probabilities \( \prob(X = x) \) and \( \prob(Y = y) \) are called
-\emph{marginal distributions} (also known as \emph{marginals} or \emph{marginal distributions}).
+This means that we fix one variable and sum over all possible values of the other variable. For the 2d case, 
+if we want a marginal distribution of \(X\) we sum over all rows for a fixed column.
 
 Generalized, let \( X_1, \ldots, X_n \) be random variables and
 \( 1 \leq i_1 < \cdots < i_k \leq n \).
+
 The joint distribution of \( X_{i_1}, \ldots, X_{i_k} \) is a \emph{\(k\)-dimensional marginal distribution} of \( X_1, \ldots, X_n \).
 
 For discrete random variables, the joint probability function of
 \( X_{i_1}, \ldots, X_{i_k} \) is called the \emph{marginal probability function}.
-
-\subsubsection{Marginal Probability Function for Multiple Variables}
-
-Let \( X_1, \ldots, X_n \) be discrete random variables with joint probability function
-\( p(x_1, \ldots, x_n) \), and let \( 1 \le i_1 < \cdots < i_k \le n \).
-For the \emph{marginal probability function} of \( X_{i_1}, \ldots, X_{i_k} \), the following holds:
-
-\[
-    p_{i_1, \ldots, i_k}(x_{i_1}, \ldots, x_{i_k})
-    = \sum_{x_{j_1}, \ldots, x_{j_{n-k}}} p(x_1, \ldots, x_n),
-\]
-
-where \( \{ j_1, \ldots, j_{n-k} \} = \{1, \ldots, n\} \setminus \{ i_1, \ldots, i_k \} \).
 
 \textbf{Example:}
 
@@ -165,10 +150,22 @@ The joint distribution of \( X_1 \) and \( Y \) is given by:
     \end{array}
 \]
 
-The process in short, for \(Y = 2\) there is only one possible combination \(X_1 = 1, X_2 = 1\). For the rest
-of the row this still holds for \(Y \le 7\).  For the next row \(X_1 = 2\) and \(Y = 2\) we encounter an impossible probability.
+In the last column and row we get the marginal distributions of \(X_1\) and \(Y\) respectively.
 
-\subsection{Transformation Formula for the Expected Value of Multiple-variable Distributions}
+\subsubsection{Marginal Probability Function for Multiple Discrete Variables}
+
+Let \( X_1, \ldots, X_n \) be discrete random variables with joint probability function
+\( p(x_1, \ldots, x_n) \), and let \( 1 \le i_1 < \cdots < i_k \le n \).
+For the \emph{marginal probability function} of \( X_{i_1}, \ldots, X_{i_k} \), the following holds:
+
+\[
+    p_{X_{i_1}, \ldots, X_{i_k}}(x_{i_1}, \ldots, x_{i_k})
+    = \sum_{(x_j)_{j \notin \{i_1, \ldots, i_k\}}} p(x_1, \ldots, x_n)
+\]
+
+This is just notation for summing over all variables that are not of interest.
+
+\subsection{Multivariate Expected Value for Discrete Random Variables}
 
 Let \( X_1, \ldots, X_n \) be discrete random variables with joint probability function \( p \),
 and let \( u : \R^n \to \R \).
@@ -186,22 +183,22 @@ Let \( X \) and \( Y \) be random variables with the following joint probability
 
 \[
     \begin{array}{c|ccc}
-    Y \backslash X & 1 & 2 & 3 \\ \hline
+    Y \backslash X & 1 & 2 & 3 \\
     3 & \frac{1}{6} & 0 & \frac{1}{4} \\
     4 & \frac{1}{8} & \frac{1}{3} & \frac{1}{8}
     \end{array}
 \]
 
-What is \( \expc[XY] \)?
+Let \(u(X,Y) = xy\) then our expected value is given by: 
 
 \[
-    \expc[XY] = \sum_{(x,y)} xy \, p(x,y)
+    \expc[XY] = \sum_{(x,y) \in (X, Y)(\Omega)} xy \, p(x,y)
     = 1 \cdot 3 \cdot \frac{1}{6} + 2 \cdot 3 \cdot 0 + 3 \cdot 3 \cdot \frac{1}{4}
     + 1 \cdot 4 \cdot \frac{1}{8} + 2 \cdot 4 \cdot \frac{1}{3} + 3 \cdot 4 \cdot \frac{1}{8}
     \approx 7.42
 \]
 
-\subsubsection{Expectation as a Special Case of the Transformation Formula}
+\subsubsection*{Expected Value as a Special Case of the Transformation Formula}
 
 Let \( X, Y \) be discrete random variables with joint probability function \( p \).
 With \( u(x, y) = x \), the transformation formula gives:
@@ -271,6 +268,19 @@ Density of \(Y\)
     2y & \text{ if } 0 \leq y \leq 1 \\
     0 & \text{ else}
     \end{cases}
+\]
+
+\subsection{Multivariate Expected Value for Continuous Random Variables}
+
+Let \( X_1, \ldots, X_n \) be random variables with joint density \( f(x_1, \ldots, x_n) \),
+or equivalently, with joint distribution \( P_{X_1, \ldots, X_n} \).
+
+Let \( u : \R^n \to \R \) be a measurable function.
+Then, if the expectation exists, the following holds:
+
+\[
+    \expc[u(X_1, \ldots, X_n)]
+    = \int_{\R^n} u(x_1, \ldots, x_n) f(x_1, \ldots, x_n) \, dx_1 \cdots dx_n
 \]
 
 \subsection{Uniform Distribution on a Measurable Set}
@@ -566,13 +576,13 @@ Then the following holds:
 Given \(X_1, \dots, X_n\) independent \(\mathcal{N}(0,1)\) the density function of their joint distribution is given by
 
 \[
-    f(x_1, \dots ,x_n) = \prod_{i = 1}^{n} \frac{1}{\sqrt{2\pi}} e^{\left(-\frac{1}{2}x_{i}^{2}\right)} = \frac{1}{(2\pi)^{n/2}} e^{\left(-\frac{1}{2} X^T \cdot X\right)}
+    f(x_1, \dots ,x_n) = \prod_{i = 1}^{n} \frac{1}{\sqrt{2\pi}} e^{\left(-\frac{1}{2}x_{i}^{2}\right)} = \frac{1}{(2\pi)^{n/2}} e^{\left(-\frac{1}{2} X^T \cdot X\right)} \sim \mathcal{N}(\vec{0}, I_n)
 \]
 
 Thus, for \(\mu \ne \vec{0} \in \R^n\) and \(\Sigma \in \R^{n \times n}\) positive definite,
 
 \[
-    f(x_1, \dots ,x_n) = \frac{1}{(2\pi)^{\frac{d}{2}} |\Sigma|^{\frac{1}{2}}} e^{-\frac{1}{2} (X - \mu)^T \Sigma^{-1}(X - \mu)}
+    f(x_1, \dots ,x_n) = \frac{1}{(2\pi)^{\frac{d}{2}} |\Sigma|^{\frac{1}{2}}} e^{-\frac{1}{2} (X - \mu)^T \Sigma^{-1}(X - \mu)} \sim \mathcal{N}(\mu, \Sigma)
 \]
 
 With \(d\) being the dimension of the space and \(|\Sigma|\) being the determinant of the covariance matrix
@@ -587,12 +597,6 @@ With \(d\) being the dimension of the space and \(|\Sigma|\) being the determina
 \]
 
 where \(\mu_i = \expc[X_i]\) and \((X - \mu)^T \Sigma^{-1}(X - \mu)\) is a generalization of \(\frac{(x - \mu)^2}{\sigma^2}\).
-
-Given \(\mu \in \R^{n}\) and \(A \in \R^{n \times n}\), if \(Z \sim \mathcal{N}(\vec{0}, I_n)\), then
-
-\[
-    X = AZ + \mu \sim \mathcal{N}(\mu, AA^T)
-\]
 
 \subsubsection{Computing Expected Values and Variances of Linear Combinations}
 
@@ -688,6 +692,14 @@ The density of \(X\) is
 \]
 
 where
+
+\[
+    \Sigma =
+    \begin{pmatrix}
+    \sigma_1^2 & \rho\, \sigma_1 \sigma_2 \\[4pt]
+    \rho\, \sigma_1 \sigma_2 & \sigma_2^2
+    \end{pmatrix}
+\]
 
 \[
     |\Sigma|
