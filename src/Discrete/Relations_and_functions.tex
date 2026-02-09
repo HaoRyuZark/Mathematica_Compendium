@@ -164,9 +164,96 @@ That is, for each \( x \in A \), there exists at most one \( y \in B \) such tha
 
 \subsection{The Graph}
 
+We can also consider the graph as a set of ordered pairs \(x, y\) where \(y = f(x)\).
+
 \[
 	\text{graph}(f):= \{(x, f(x)) \mid x \in X\}
 \]
+
+\subsubsection{Basic Properties of Graphs}
+
+\subsubsection*{The Inverse Graph}
+
+Let \(G\) be a graph. We define 
+
+\[
+    G^{-1} := \{(x,y) \mid (y, x) \in G\}
+\]
+
+as \emph{inverse graph} of \(G\).
+
+\subsubsection*{The Composite Graph}
+
+Let \(G\) and \(H\) be graphs. We define 
+
+\[
+    G \circ H := \{(x,y) \mid \exists z \in (x, z) \in H \land (z, y) \in G\}
+\]
+
+as the \emph{composite graph} of \(G\) and \(H\).
+
+\begin{itemize}
+
+    \item \(G \circ (H \circ J) = (G \circ H) \circ J\)
+
+    \item \((G^{-1})^{-1} = G\)
+
+    \item \((G \circ H)^{-1} = H^{-1} \circ G^{-1}\)
+
+\end{itemize}
+
+\textbf{Proof I:}
+
+\((G \circ H) \circ J) = G \circ (H \circ J)\)
+
+\[
+	G \circ H = \{(z, y) \mid \exists w \in (z, w) \in H \land (w, y) \in G\} 
+\]
+
+Proceeding 
+
+\[
+	(G \circ H) \circ J = \{(x, y) \mid \exists z,w \text{ s.t. }  (x, z) \in J \land  (z, w) \in H \land (w, y) \in G  \} 
+\]
+
+For \(G \circ (H \circ J)\)
+
+\[
+	H \circ J = \{(x, w) \mid \exists z \in (x, z) \in J \land (z, w) \in H\}
+\]
+
+Proceeding
+
+\[
+	G \circ (H \circ J) = \{(x, y) \mid \exists z,w \in  (x, z) \in J \land  (z, w) \in H \land (w, y) \in G  \} 
+\]
+
+\QED
+
+\textbf{Proof III:}
+
+\((G \circ H)^{-1} = H^{-1} \circ G^{-1}\)
+
+\[
+    (G \circ H)^{-1} =  \{(y, x) \mid \exists z \in (y, z) \in G \land (z, x) \in H\}
+\]
+
+This is the equivalent to \(H^{-1} \circ G^{-1}\)
+
+\QED
+
+\subsection{Domain}
+
+The \emph{domain} of a relation \emph{R} from set \(A\) to set \(B\) is the set of all elements in 
+\(A\) that are related to at least one element in \(B\). Formally, if \(R \subseteq A \times B\) 
+is a relation, then the domain of \emph{R} is defined as:
+
+\[
+	\mathrm{dom}(R) = \{a \in A \mid \exists b \in B \text{ such that } (a,b) \in R\}
+\]
+
+In other words, the domain consists of all the input values that appear in the ordered pairs of the 
+relation. For example, if \(R = \{(1,4), (2,5), (3,4), (2,6)\}\), then \(\text{Dom}(R) = \{1, 2, 3\}\).
 
 \subsection{The identity}
 
@@ -174,22 +261,14 @@ That is, for each \( x \in A \), there exists at most one \( y \in B \) such tha
 	\text{id}(f):= idx:= \{(x, x)\mid x \in X\}
 \]
 
-\subsection{The Range}
+\subsection{Image/Range}
 
-The \emph{range}  is defined as 
-
-\[
-	\text{ran}(R) = \{y \mid \exists x: x R y\}
-\]
-
-\subsection{Image}
-
-The \emph{image} of a relation \emph{R} from set \(A\) to set \(B\) is the set 
+The \emph{image} or \emph{range} of a relation \emph{R} from set \(A\) to set \(B\) is the set 
 of all elements in \(B\) that are related to at least one element in \(A\). Formally, if 
 \(R \subseteq A \times B\) is a relation, then the image of \emph{R} is defined as:
 
 \[
-	\img(R) = \{b \in B \mid \exists a \in A \text{ such that } (a,b) \in R\}
+	\mathrm{ran}(R) = \img(R) = \{b \in B \mid \exists a \in A \text{ such that } (a,b) \in R\}
 \]
 
 or 
@@ -201,18 +280,30 @@ or
 In other words, the image consists of all the output values that appear in the ordered pairs of the 
 relation. For example, if \(R = \{(1,4), (2,5), (3,4), (2,6)\}\), then \(\img(R) = \{4, 5, 6\}\).
 
-\subsection{Domain}
+\subsubsection*{Proof that the Domain And Range are Sets}
 
-The \emph{domain} of a relation \emph{R} from set \(A\) to set \(B\) is the set of all elements in 
-\(A\) that are related to at least one element in \(B\). Formally, if \(R \subseteq A \times B\) 
-is a relation, then the domain of \emph{R} is defined as:
+Given a graph \(G\) which is a set. Prove that the domain and range are also sets.
 
 \[
-	\text{Dom}(R) = \{a \in A \mid \exists b \in B \text{ such that } (a,b) \in R\}
+	\forall (x,y) \in G: (x,y) = \{x, \{x, y\}\}
 \]
 
-In other words, the domain consists of all the input values that appear in the ordered pairs of the 
-relation. For example, if \(R = \{(1,4), (2,5), (3,4), (2,6)\}\), then \(\text{Dom}(R) = \{1, 2, 3\}\).
+Thus, the union of all the elements in \(G\) has a structure of the form
+
+\[
+	\bigcup G = \{x, y, z, \dots, \{x, y\}, \{x, z\}, \{y, z\}, \dots\}
+\]
+
+By iterating one more time with get the union of the union
+
+\[
+	\bigcup \bigcup G = \{x, y, z, \dots\}
+\]
+
+Hence, by the definition of the domain and the range of the graph we can directly see that they are subsets of the union of the union of the graph 
+\(G\), and thus they are sets.
+
+\QED
 
 \subsection{Composition of Maps}
 

@@ -439,3 +439,23 @@ Let \(f(n) = a_n\) where \(f\) is continuous, decreasing, and positive for \(n \
 
 \(\sum \frac{1}{n^p}\) converges \(\iff p > 1\)
 
+\subsection{Integrals with Absolute Value}
+
+When given an integral with an absolute value in it, we have to take a look at the function to see how it behaves when \(x\) is negative and then 
+split the integral into two or more integrals where the border contain the critical point.
+
+\textbf{Example:}
+
+Integrate
+
+\[
+    \int_{-\infty}^{\infty}e^{-|x|}\,dx
+\]
+
+This is function will be split at zero, and we will get
+
+\begin{align*} 
+    \int_{-\infty}^{\infty}e^{-|x|}\,dx \\ 
+    \lim_{R \to \infty} \int_{-R}^{0}e^{x}\,dx +  \int_{0}^{R}e^{-x}\,dx \\ 
+    \lim_{R \to \infty}  1 - e^{-R} + - e^{-R} + 1  = 2
+\end{align*}

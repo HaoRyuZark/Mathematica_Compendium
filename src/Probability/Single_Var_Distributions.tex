@@ -34,15 +34,26 @@ Given two R.V. \(X\),\(Y\) and some number \(\alpha \in \R\), then
 
     \item \(X \cdot Y\) 
 
-    \item \(\text{max}(X,Y)\)
+    \item \(\max(X,Y)\)
 
-    \item \(\text{min}(X,Y)\)
+    \item \(\min(X,Y)\)
 
     \item \(\alpha X\) or \(\alpha Y\)
 
 \end{itemize}
 
 are also R.V.
+
+\textbf{Example:}
+
+A company has fixed costs of 250 euros per month. It produces toys for a price of 6 euros with a production price of 3 euros. On 
+average, it sells 1000, \(\mu = 1000\) toys with a \(\sigma = \sqrt{500}\). Determine the random variables of the costs, the sales volume and the profit.
+
+Costs: \(X_c = 250 + 3X\) with \(\mu_c =  250 + 3 \mu = 3250\) and \(\sigma^2 = 9\cdot 500 = 1500\)
+
+Sales volume: \(X_s = 6X\) with \(\mu_c =   6\mu = 6000\) and \(\sigma^2 = 6\cdot 500 = 3000\)
+
+Profit: \(X_p = X_s - X_c = 250 + 6X - 3X\) with \(\mu_s = 3X - 250 = 2750\) and \(\sigma^2 = 3 \cdot 500 = 1500\)
 
 \subsection{Indicator Function} 
 
@@ -98,7 +109,7 @@ Given our probability space and a R.V. \(X\). The probability measurement \(\pro
     \prob_X (A) := \prob(\{\omega: X(w) \in A\}), \text{ for } A \subseteq \R
 \]
 
-is called as the \emph{distribution} of \(X\). Also we write \(\prob(X \in A)\) as an abbreviation for
+is called as the \emph{distribution} of \(X\). Also, we write \(\prob(X \in A)\) as an abbreviation for
 \(\prob(\{\omega: X(w) \in A\}) \).
 
 \subsection{Distribution Function}
@@ -204,11 +215,11 @@ Given two random variables \(X\) and \(Y\), if both have an expected value then
 
 \subsection{Variance}
 
-Given a random variable \(X\) for which \(\expc[(X - \expc)^2]\) exists. Then we define 
+Given a random variable \(X\) for which \(\expc[(X - \expc[X])^2]\) exists. Then we define 
 the \emph{variance} of \(X\) as 
 
 \[
-    \var(X) = \expc[(X - \expc)^2] = \sum_{x \in X} (x -  \expc^2)\prob(X = x)
+    \var(X) = \expc[(X - \expc[X])^2] = \sum_{x \in X} (x -  \expc[X]^2)\prob(X = x)
 \]
 
 And its root is the \emph{standard deviation}.
@@ -616,7 +627,7 @@ To transform a normal distributed random variable \(X\) you can define a new ran
     Z = \frac{X - \mu}{\sigma}
 \]
 
-\textbf{Example:}
+\textbf{Example I:}
 
 Given \(X \sim N(10, 4)\). What is \(\prob(8 \le X \le 12)\)?
 
@@ -630,6 +641,35 @@ Using the standard normal distribution table we get
 
 \[
     \prob(-1 \le Z \le 1) = \mathbb{F}_Z(1) - \mathbb{F}_Z(-1) = 0.8413 - 0.1587 = 0.6826
+\]
+
+\textbf{Example II:}
+
+The diameter of mass-produced balls is normally distributed. The mean and standard deviation can be estimated using the following experiment:
+
+Of two sieves, sieve A has holes with a diameter of 69 mm, and sieve B has holes with a diameter of 72 mm. It is observed that 30.85 percent 
+of the balls pass through sieve A, while 15.87 percent of the balls are retained by sieve B.
+
+Determine estimates for the mean and standard deviation of the ball diameters based on these experimental results.
+
+First we have: 
+
+\[
+    \prob(X \le 69) = 0.3085 \quad \prob(X \ge 72) = 0.1587 \implies  \prob(X \le  72) = 0.8413
+\]
+
+If we look at the \(Z\)-table we get the \(z\)-values \(-0.5\) and 1
+
+This means 
+
+\[
+    \frac{69 - \mu}{ \sigma} = -0.5 \quad \frac{72 - \mu}{ \sigma} = 1
+\]
+
+Now we can solve the system of equations and the results will be:
+
+\[
+    \mu = 70  \quad \sigma = 2
 \]
 
 \subsection{Geometric Distribution}
@@ -906,5 +946,36 @@ This is a distribution mostly used in statistics for hypothesis testing.
 \]
 
 This used to test the mean \(\overline{X_n}\) against the true \(\mu\) when \(\sigma^2\) is unknown.
+
+
+\subsection{Activity Examples}
+
+\subsubsection*{Night guard}
+
+A night guard has 2 methods for finding the correct key out of 10. The first one \(A\), consists in 
+just testing each key without repetition. The second one \(B\), consists on choosing one random key and then 
+if it was not the correct one it just shuffles the keys and repeats the process. 
+
+What are the distributions of both the methods? 
+
+The distribution for \(A\) is the uniform with \(n = 10\), for \(B\) it is the geometric distribution \(P(X = k) = \left(\frac{9}{10}\right)^{k - 1} \frac{1}{10}\)
+
+The guard is drunk \(1/3\) of times. When it is drunk it uses method \(B\), else \(A\). What is the conditional probability of him 
+being caught drunk during work after failing 8 times. 
+
+\[
+    \prob(\text{drunk} \mid X > 8) = \frac{\prob(\text{drunk}) \prob(X > 8 \mid \text{not drunk})}{\prob(X > 8)}
+\]
+
+This is
+
+\[
+    \prob(B \mid X \le 8) = \frac{\frac{1}{3} \cdot  \left(1- \left(\frac{9}{10}\right)^{8 - 1} \frac{1}{10} \right) }
+    {\frac{1}{3} \cdot  \left(1- \left(\frac{9}{10}\right)^{8 - 1} \frac{1}{10} \right) + \frac{2}{3} \cdot \left(1 -\frac{8}{10} \right)  }
+\]
+
+
+
+
 
 

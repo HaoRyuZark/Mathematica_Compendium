@@ -525,7 +525,7 @@ We also get
 
 \subsubsection{Multiplication Theorem}
 
-Given \(A_1, dots, A_n\) events with \(\prob(A_1 \cap \cdots \cap A_{n - 1}) \ne 0\). Then 
+Given \(A_1, \dots, A_n\) events with \(\prob(A_1 \cap \cdots \cap A_{n - 1}) \ne 0\). Then 
 
 \[
     \prob(A_1 \cap \cdots \cap A_n) = \prob(A_1)\cdot\prob(A_2 \mid A_1) \cdot \dots \cdot \mathbb(A_n \mid A_1 \cap \dots \cap A_{n - 1})
@@ -722,12 +722,14 @@ Given \(X_1, X_2, \dots\) independent random variables with the same distributio
     Z_n \to \expc[X_1]
 \]
 
+where \(Z_n = \frac{1}{n} \sum_{i = 1}^{n}X_i\)
+
 \subsection{Central Limit Theorem}
 
 Given the same conditions of the \emph{Law of large Numbers}. The sample mean 
 
 \[
-    Z_n = \frac{1}{n} \sum_{i = 1}^{n}X_i \sim \mathcal{N}(\mu, \frac{\sigma^2}{n})
+    Z_n = \frac{1}{n} \sum_{i = 1}^{n}X_i \sim \mathcal{N}\left(\mu, \frac{\sigma^2}{n}\right)
 \]
 
 or equivalently
@@ -764,6 +766,37 @@ We get
     \Phi(Z_2) - \Phi(Z_1) = 0.9545
 \]
 
+\subsection{Approximating the Binomial Distribution with the Normal Distribution}
+
+Given a binomial distribution with parameters \(n\) and \(p\). For large \(n\) the distribution can be approximated
+by a normal distribution with parameters \(\mu = np\) and \(\sigma = \sqrt{np(1 - p)}\).
+
+\textbf{Example:}
+
+Given \(n = 75\) and \(p = 0.6\) approximate the probability of getting between \(\prob(X \ge 52)\)
+
+\(\mu = np = 45\), \(\sigma^2 = np(1 - p) = 18\)
+
+\[
+    Z = \frac{X - \mu}{\sigma} = \frac{X - 45}{\sqrt{18}}
+\]
+
+Therefore,
+
+\[
+    \prob \left( Z \ge \frac{52 - \mu}{\sqrt{18}} \right)
+\]
+
+\[
+    = 1 - \Phi \left( \frac{52 - 45}{\sqrt{18}} \right) = 0.0582
+\]
+
+For \(\prob( 50 \le X \le 52)\) we have 
+
+\[
+    \prob \left( \frac{50 - \mu}{\sqrt{18}} \le Z \le \frac{52 - \mu}{\sqrt{18}} \right) = \Phi \left( \frac{52 - 45}{\sqrt{18}} \right) - \Phi \left( \frac{50 - 45}{\sqrt{18}} \right)
+\]
+
 \subsection{Theorem of Moivre-Laplace}
 
 Given \(X_1, X_2, \dots, X_n\) Bernoulli distributed random variables and \(S_n = \sum_{i = 1}^{n} X_i\) then the 
@@ -771,4 +804,44 @@ number of successes is given by
 
 \[
     \lim_{n \to \infty} \prob \left( \frac{S_n - np}{\sqrt{np (1 - p)} \le x}\right) = \Phi(X)
+\]
+
+For the case that we have a region with two bounds \(a < S_n < b\) we get
+
+\[
+    \prob \left( \frac{S_n - np}{\sqrt{np (1 - p)} \le Z_2}\right) - \prob \left( \frac{S_n - np}{\sqrt{np (1 - p)} \le Z_1}\right)
+\]
+
+If normal approximation is used for a discrete distribution we have to apply the continuity correction.
+
+\[
+    \prob (a < S_n < b) \approx \Phi \left( \frac{b + 0.5 - np}{\sqrt{np(1 - p)}}\right) - 
+    \Phi \left( \frac{a - 0.5 - np}{\sqrt{np(1 - p)}}\right)
+\]
+
+\subsubsection*{Continuity Correction}
+
+An approximation is useful if \(np(1 - p) \ge 9\)
+
+
+\textbf{Example:}
+
+Approximate the probability of getting between \(4900 < X < 5100\) heads when throwing a tricked coin
+\(n = 10000\) times with \(p = 0.5\).
+
+\[
+    \prob \left( \frac{S_n - np}{\sqrt{np (1 - p)} \le Z_2}\right) - \prob \left( \frac{S_n - np}{\sqrt{np (1 - p)} \le Z_1}\right)
+\]
+
+with \(Z_1 = \frac{4900 - 5000}{50}, Z_2 = \frac{5100 - 5000}{50}\)
+
+\[
+    \Phi(Z_2) - \Phi(Z_1) = 0.9545
+\]
+
+The complete formula for this case looks like this
+
+\[
+    \prob (4900 < S_n < 5100) \approx \Phi \left( \frac{5100 + 0.5 - np}{\sqrt{np(1 - p)}}\right) - 
+    \Phi \left( \frac{4900 - 0.5 - np}{\sqrt{np(1 - p)}}\right)
 \]

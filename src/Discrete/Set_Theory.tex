@@ -21,7 +21,8 @@ Here is a list of common symbols for set theory.
 \begin{itemize}
 
 	\item \emph{Empty set (\(\emptyset\))}: The set that contains no elements. It is the unique set with 
-	      zero elements. Every statement with \(\forall x \in \emptyset\) is true, because there are no counterexamples.
+	      zero elements. Every statement with \(\forall x \in \emptyset\) is true, because there are no counterexamples. This leads to interesting 
+		  equalities like \(\mathcal{U} = \emptyset\).
 
 	\item \(A \subseteq B\): Set \(A\) is a subset of \(B\). This means every element of 
 		  \(A\) is also in \(B\).
@@ -32,7 +33,7 @@ Here is a list of common symbols for set theory.
 	\item \(A \cup B\): The union of sets \(A\) and \(B\). It includes all elements 
 	      that are in \(A\), in \(B\), or in both.
 
-	\item \(A \cap B\): The intersection of sets \(A\) and \(B\). It includes only the elements 
+	\item \(A \cap B = A \setminus (A \setminus B)\): The intersection of sets \(A\) and \(B\). It includes only the elements 
 	      that are in both sets.
 
 	\item \(A \setminus B\): The difference of sets. Elements in \(A\) that are not in \(B\).
@@ -43,7 +44,6 @@ Here is a list of common symbols for set theory.
 	\item \(|A|\): The cardinality of set \(A\), which is the number of elements in the set.
 
 \end{itemize}
-\smallskip
 
 \subsubsection{Visuals}
 
@@ -155,41 +155,37 @@ Here is a list of common symbols for set theory.
 \end{figure}
 \smallskip
 
-\subsection{Set Complement Proof}
+\subsection*{Short History Lesson}
 
-Given \(A, B \subseteq M\) then \(A \subseteq B \implies B^c \subseteq A^c\)
+When set theory was invented back then by Cantor, he had no formal axioms but a set of basic 'common sense' rules he assumed when 
+creating his theory. This choice lead to a famous paradox known as \emph{Russell's Paradox}. The paradox states that: "Given a set S which is 
+the set containing all sets which do not contain themselves. The S does not contain itself, but if it does not contain itself it must contain itself". 
+In short \(S = \{x: x \notin x\}\), this is a so-called \emph{logical} paradox. This is of course a huge contradiction in the hearth of naive set theory. The choice to take a more 
+formal and axiomatic approach was to eliminate such fundamental faults.
 
-For some \(x \in B^c\) we know that \(x \notin B\). If \(x \in A\) then \(x \in B\) which is a contradiction. 
-Hence \(x \notin A\) therefore, for every \(x \in B^c\) we conclude \(B^c \subseteq A^c\).
+As a short teasing we will declare the \textbf{Axiom of Selection:} \(\{x \in A: S(x)\}\) this means that we can construct a set of elements 
+of an existing set as long as they satisfy a condition. Now the paradox of \(x: x \notin x\) can not be state directly in our new system. We can emulate it by 
+declaring 
 
-\QED
-
-\subsection{Equality of Sets}
-
-To prove that two sets are equal the following property is very useful.
-
-\[
-	A = B \iff A \subseteq B \land B \subseteq A
+\[	
+	S = \{x \in A \mid x \notin x\}
 \]
 
-\textbf{Proof:}
+By analyzing the expression we get that, if \(S \notin S\) then \(S \in S \land S \in A\) which will be a contradiction, 
+therefore, \(S \notin A\).
 
-For the case \(A \subseteq B\)
+Continuing this small historic section, we will also need to limit the power of our condition of statements \(S(x)\) to get rid of another type 
+of paradoxes considered as \emph{semantic}.
 
-\[
-	x \in A \implies x \in B 
-\]
-
-Also for the case \(B \subseteq A \)
+For example, we could define the following set:
 
 \[
-	x \in B \implies x \in A 
+	\{x \in \N : \text{ x can be described in less than 20 words of the English language}\}
 \]
 
-If both statements are true on the same time then every element in \(A\) is also in \(B\) and vice versa.
-The other way of the equivalence is trivial.
-
-\QED
+Note that this set would need to be finite because it there is only a limited amount of combination of words in the English language. But we could 
+for example say: 'the natural number which can not be described in less than 20 words' this number. This is again an example of an element in 
+a set if and only if it is not in the set. To formalize our conditions we 
 
 \subsection{Axioms of Set Theory (Zermelo Fraenkel)}
 
@@ -201,6 +197,9 @@ These are Zermelo Fraenkel axioms of set theory including \emph{The Axiom of Cho
 	      \iff C \in B)\)
 	
 	\item \emph{Empty-Set Axiom:} \quad \(\exists \emptyset : \forall X: X \notin \emptyset\)
+	
+	\item \emph{Axiom of Class Construction:} \quad Let \(P(x)\) be a statement about \(x\) which can be expressed in terms of \(\in, \land, \lor ,\neg, \implies, \exists, \forall \) 
+	with variables \(x,y,z,\dots\) then there exists a class \(C\) whose elements consist of all the elements \(x\) which satisfy \(P(x)\). \(\{x : P(x)\}\)
 	
 	\item \emph{Axiom of Pairing:} \quad \(\forall A, B: \exists C: \forall D: D \in C \iff (D = A \lor 
 	      D = B)\)	
@@ -228,6 +227,85 @@ These are Zermelo Fraenkel axioms of set theory including \emph{The Axiom of Cho
 
 \end{enumerate}
 
+\subsection{Sets and Classes}
+
+One important distinction is the system of Neumann is notion difference between a \emph{set} and \emph{class}.
+Classes can not be contained inside sets, while sets can. Formally:
+
+If \(X \in Y\) for some class \(Y\) then \(X\) is a set. If \(X \notin Y\) for any class \(Y\) then \(X\) is a class.
+
+\textbf{Example Proof:}
+
+Given a proper class \(A \subseteq B\) prove that \(B\) is a proper class and that the union of two proper classes is also 
+a proper class. 
+
+Given \(A \subseteq B\) if \(A\) would be a subset of \(B\) would this means that \(A \in Y\) which leads to the contradiction that 
+\(A\) can not be proper class which leads to the conclusion that \(A = B\) and thus \(B\) is a proper class. 
+
+Proceeding, \(A \subseteq A \cup C\) given \(A\) and \(C\) are proper classes. We arrive with the same argument that \(A \cup C\) has to 
+be proper class due to it being \(A\) itself.
+
+\subsection{The Universal Class}
+
+By the axiom of construction we define \(\mathcal{U}\) with \(P(x)\) is \(x = x\) as the \emph{universal class} of all elements.
+
+\subsubsection*{Proofs Using the Axioms}
+
+\begin{itemize}
+
+	\item \(A = A\) and also \(A = B \implies B = A\): The statements is trivial by the first axiom 
+
+	\item \(A \subseteq B \land B \subseteq A \implies A = B\): \((\forall x \in A \implies x \in B) \land (\forall x \in B \implies x \in A)\) Let us 
+	suppose for the sake of contradiction that \(A \neq B\) then \(\exists x \in A: x \notin B\) or the other way around. Note that this statement contradicts our 
+	initial conditions. Thus, the statement is true.
+
+	\item \(A \subseteq B \land B \subseteq C \implies A \subseteq C\): \((\forall x \in A \implies x \in B) \land (\forall x \in B \implies x \in C)\) By a similar manner 
+	let us assume that \(A\) is not a subset of \(C\) this means that for some \(x\) the condition holds that \(x \in A \land x \notin B\) because else it would be in \(C\). 
+	Note that because \(A \subseteq B\) such an \(x\) can not exist due to our initial condition and also \(B \subseteq A\) for that case. Thus \(A \subseteq C\)
+
+	\item \(\emptyset \subseteq A\): By definition \(x \in \emptyset \implies x \in A\), by contrapositive \(x \notin A \implies x notint \emptyset\). This is true 
+	because of the contrapositive being true.
+
+\end{itemize}
+
+\QED 
+
+\subsection{Set Complement Proof}
+
+Given \(A, B \subseteq M\) then \(A \subseteq B \implies B^c \subseteq A^c\)
+
+For some \(x \in B^c\) we know that \(x \notin B\). If \(x \in A\) then \(x \in B\) which is a contradiction. 
+Hence, \(x \notin A\) therefore, for every \(x \in B^c\) we conclude \(B^c \subseteq A^c\).
+
+\QED
+
+\subsection{Equality of Sets}
+
+To prove that two sets are equal the following property is very useful.
+
+\[
+	A = B \iff A \subseteq B \land B \subseteq A
+\]
+
+\textbf{Proof:}
+
+For the case \(A \subseteq B\)
+
+\[
+	x \in A \implies x \in B 
+\]
+
+Also, for the case \(B \subseteq A \)
+
+\[
+	x \in B \implies x \in A 
+\]
+
+If both statements are true on the same time then every element in \(A\) is also in \(B\) and vice versa.
+The other way of the equivalence is trivial.
+
+\QED
+
 \subsection{Proof The Power Set of a Set is not an Element of the Set}
 
 Let \(X\) be a set and \(Y = \{x \in X \mid x \notin x\}\). 
@@ -241,6 +319,56 @@ Assume \(\mathcal{P}(X) \subseteq X\) then \(Y \subseteq X, Y \in X\) but
 \]
 
 Because our assumption was proven false, then \(\mathcal{P}(X)\) is not a subset of \(X\).
+
+\QED 
+
+\subsection{Proof of the Union of Subsets}
+
+Let \(A\) and \(B\) be sets then: 
+
+\begin{itemize}
+
+    \item \(A \subseteq B\) if and only if \(A \cup B = B\)
+	
+	\item \(A \subseteq B\) if and only if \(A \cap B = A\)
+
+\end{itemize}
+
+\textbf{Proof:}
+
+For \(A \subseteq B \iff A \cup B = B\) we know that \(x \in A \implies x \in B \) Then
+
+\begin{align*}
+	A \cup B &\iff x \in A \lor x \in B \quad \text{ as subset then } \\ 	
+	&\iff x \in B \lor x \in B \\ 
+	&\iff x \in B = B
+\end{align*}
+
+The other direction will be skipped due to it being very similar to the \(\Rightarrow\) direction. 
+
+Similarly, for \(A \subseteq B \iff A \cap B = A\) We know that for some \((y \in B \land y \notin A) \notin A \cap B\) because of 
+the definition of the subset. Then this tells us that \(\forall x \in A \cap B: x \in A\) thus \(A \cap B = A\)
+
+\QED
+
+\subsubsection*{Cut of Set and Complement}
+
+\(A \cap B^c = \emptyset \iff A \subseteq B\)
+
+\(\Rightarrow\):
+
+\begin{align*}
+	A \cap B^c = \emptyset &\implies \nexists x \in A \land x \nexists x \in B^c \\ 
+	&\implies \forall x \in A: x \in B \\ 
+	&\iff A \subseteq B
+\end{align*}
+
+\(\Leftarrow:\) Let us assume that \(A\) is not a subset of \(B\) then
+
+\begin{align*}
+	\exists x \in A \land x \notin B &\implies x \in A \land x \in B^c \\ 
+	&\implies x \in A \cap B^c \implies A \cap B^c \neq \emptyset
+\end{align*}
 
 \QED 
 
@@ -300,7 +428,7 @@ and
 
 as ordered pairs which are elements of \(A \times B\) and \(B \times A\) respectively.
 
-\subsubsection{Distributive Law for the Cartesian Product}
+\subsubsection*{Distributive Law for the Cartesian Product}
 
 Let \(A, A' \subseteq X\) and \(B, B' \subseteq Y\). Then
 
@@ -314,23 +442,50 @@ We prove the equality by showing both inclusions.
 
 \begin{align*}
 	&\text{Let } (x,y) \in (A \times B) \cap (A' \times B'). \\
-	&\Rightarrow (x,y) \in A \times B \text{ and } (x,y) \in A' \times B' \\
-	&\Rightarrow x \in A,\, y \in B \text{ and } x \in A',\, y \in B' \\
-	&\Rightarrow x \in A \cap A' \text{ and } y \in B \cap B' \\
-	&\Rightarrow (x,y) \in (A \cap A') \times (B \cap B').
+	&\iff (x,y) \in A \times B \text{ and } (x,y) \in A' \times B' \\
+	&\iff x \in A,\, y \in B \text{ and } x \in A',\, y \in B' \\
+	&\iff x \in A \cap A' \text{ and } y \in B \cap B' \\
+	&\iff (x,y) \in (A \cap A') \times (B \cap B').
 \end{align*}
 
 2. Direction: \((A \cap A') \times (B \cap B') \subseteq (A \times B) \cap (A' \times B')\).
 
 \begin{align*}
 	&\text{Let } (x,y) \in (A \cap A') \times (B \cap B'). \\
-	&\Rightarrow x \in A \cap A' \text{ and } y \in B \cap B' \\
-	&\Rightarrow x \in A,\, x \in A' \text{ and } y \in B,\, y \in B' \\
-	&\Rightarrow (x,y) \in A \times B \text{ and } (x,y) \in A' \times B' \\
-	&\Rightarrow (x,y) \in (A \times B) \cap (A' \times B').
+	&\iff x \in A \cap A' \text{ and } y \in B \cap B' \\
+	&\iff x \in A,\, x \in A' \text{ and } y \in B,\, y \in B' \\
+	&\iff (x,y) \in A \times B \text{ and } (x,y) \in A' \times B' \\
+	&\iff (x,y) \in (A \times B) \cap (A' \times B').
 \end{align*}
 
 Thus, both inclusions hold and the equality follows.
+
+\QED 
+
+\subsubsection*{Proof the empty set of the Cartesian Product}
+
+\(A \times B = \emptyset \iff A = \emptyset \lor B = \emptyset\). We will prove the negation of the 
+statement which logically equivalent.
+
+\[
+	A \times B \ne \emptyset \iff A \neq \emptyset \land B \neq \emptyset
+\]
+
+\(\Rightarrow\): 
+
+\begin{align*}
+		A \times B \ne \emptyset &\implies \exists (x,y) \in A \times B: x \in A \land y \in B \\ 
+		&\implies \exists x \in A \land \exists y \in B \\ 
+		&\implies A \neq \emptyset \land B \neq \emptyset
+\end{align*}
+
+
+\(\Leftarrow\):
+
+\begin{align*}
+	A \neq \emptyset \land B \neq \emptyset &\implies\exists x \in A \land \exists y \in B \\ 
+	&\implies A \times B \neq \emptyset
+\end{align*}
 
 \QED 
 
@@ -377,15 +532,15 @@ Let \(X\) be the universal set and \(A, B, C \subseteq X\).
 
 \end{itemize}
 
-\subsubsection{Proof of the Distributive Law}
+\subsubsection*{Proof of the Distributive Law}
 
 \begin{align*}
 	&\text{Let } x \in A \cap (B \cup C). \\
-	&\Rightarrow x \in A \text{ and } x \in B \cup C \\
-	&\Rightarrow x \in A \text{ and } (x \in B \text{ or } x \in C) \\
-	&\Rightarrow (x \in A \text{ and } x \in B) \text{ or } (x \in A \text{ and } x \in C) \\
-	&\Rightarrow x \in A \cap B \text{ or } x \in A \cap C \\
-	&\Rightarrow x \in (A \cap B) \cup (A \cap C).
+	&\iff x \in A \text{ and } x \in B \cup C \\
+	&\iff x \in A \text{ and } (x \in B \text{ or } x \in C) \\
+	&\iff (x \in A \text{ and } x \in B) \text{ or } (x \in A \text{ and } x \in C) \\
+	&\iff x \in A \cap B \text{ or } x \in A \cap C \\
+	&\iff x \in (A \cap B) \cup (A \cap C).
 \end{align*}
 
 Thus,
@@ -396,11 +551,11 @@ Thus,
 
 \begin{align*}
 	&\text{Conversely, let } x \in (A \cap B) \cup (A \cap C). \\
-	&\Rightarrow x \in A \cap B \text{ or } x \in A \cap C \\
-	&\Rightarrow (x \in A \text{ and } x \in B) \text{ or } (x \in A \text{ and } x \in C) \\
-	&\Rightarrow x \in A \text{ and } (x \in B \text{ or } x \in C) \\
-	&\Rightarrow x \in A \text{ and } x \in B \cup C \\
-	&\Rightarrow x \in A \cap (B \cup C).
+	&\iff x \in A \cap B \text{ or } x \in A \cap C \\
+	&\iff (x \in A \text{ and } x \in B) \text{ or } (x \in A \text{ and } x \in C) \\
+	&\iff x \in A \text{ and } (x \in B \text{ or } x \in C) \\
+	&\iff x \in A \text{ and } x \in B \cup C \\
+	&\iff x \in A \cap (B \cup C).
 \end{align*}
 
 Thus,
@@ -410,7 +565,7 @@ Thus,
 
 \QED
 
-\subsubsection{Proof of De Morgans's Law for sets and logic}
+\subsection{Proof of De Morgans's Law for sets and logic}
 
 The complement of \( A \cup B \) is \( \overline{(A \cup B)} \), and the law on disjoint decomposition 
 states:
@@ -457,42 +612,33 @@ To show:
 
 \QED
 
+
 \subsection{Indexed Sets}
 
-Let \(X\) be a set, and \( A_i \subseteq X \) for all \( i \in J \), where \emph{J} is the 
+Let \(X\) be a set, and \( A_i \subseteq X \) for all \( i \in J \), where \(I\) is the 
 \emph{index set}.
 
-If \( J = \{1, 2, \dots, n\} \):
+If \( I = \{1, 2, \dots, n\} \):
 
 \[
-	\bigcup_{i=1}^{n} A_i := A_1 \cup A_2 \cup \dots \cup A_n = \{ x \mid \exists i \in J \ (x \in A_i) \}
+	\bigcup_{i=1}^{n} A_i := A_1 \cup A_2 \cup \dots \cup A_n = \{ x \mid \exists i \in I (x \in A_i) \}
 \]
 
 \[
-	\bigcap_{i=1}^{n} A_i := A_1 \cap A_2 \cap \dots \cap A_n = \{ x \mid \forall i \in J \ (x \in A_i) \}
+	\bigcap_{i=1}^{n} A_i := A_1 \cap A_2 \cap \dots \cap A_n = \{ x \mid \forall i \in I (x \in A_i) \}
 \]
 
 \[
 	X_{i=1}^{n} A_i = \{(a_1, \dots, a_n) \mid a_i \in A_i \}
 \]
 
-If \( J \) is any set:
+If \(I\) is any set, then \( {(A_i)}_{i \in I} \) are pairwise disjoint if and only if:
 
 \[
-	\bigcup_{i \in J} A_i := \{ x \mid \exists i \in J \ (x \in A_i) \}
+	\forall i_1, i_2 \in I, \ i_1 \neq i_2 \implies A_{i_1} \cap A_{i_2} = \emptyset
 \]
 
-\[
-	\bigcap_{i \in J} A_i := \{ x \mid \forall i \in J \ (x \in A_i) \}
-\]
-
-If \emph{J} is any set, then \( {(A_i)}_{i \in J} \) are pairwise disjoint if and only if:
-
-\[
-	\forall i_1, i_2 \in J, \ i_1 \neq i_2 \implies A_{i_1} \cap A_{i_2} = \emptyset
-\]
-
-If \emph{J} is any set, then \( {(A_i)}_{i \in J} \) forms a (disjoint) decomposition of \(X\) if 
+If \(I\) is any set, then \( {(A_i)}_{i \in I} \) forms a (disjoint) decomposition of \(X\) if 
 and only if:
 
 \[
@@ -512,23 +658,24 @@ Let \( A_i, B_j \subseteq X \) for \( i \in I \) and \( j \in J \). Then the fol
 		\overline{\bigcup_{i \in I} A_i} = \bigcap_{i \in I} \overline{A_i}
 	\]
 
-	\item\(
-		\bigcap_{i \in I} A_i \cup \bigcap_{j \in J} B_j = \bigcap_{i,j} (A_i \cup B_j) \quad \text{with} 
+	\item \emph{Generalized Distributive Laws:}
+	\[
+		\left(\bigcap_{i \in I} A_i \right)\cup \left(\bigcap_{j \in J} B_j \right)= \bigcap_{i,j} (A_i \cup B_j) \quad \text{with} 
 		\quad \bigcap_{i,j} = \bigcap_{(i,j) \in I \times J}
-	\)
+	\]
 
-	\item\(
-		\bigcup_{i \in I} A_i \cap \bigcup_{j \in J} B_j = \bigcup_{i,j} (A_i \cap B_j) \quad \text{with} 
+	\[
+		\left(\bigcup_{i \in I} A_i \right) \cap \left(\bigcup_{j \in J} B_j \right) = \bigcup_{i,j} (A_i \cap B_j) \quad \text{with} 
 		\quad \bigcup_{i,j} = \bigcup_{(i,j) \in I \times J}
-	\)
+	\]
 
 \end{itemize}
 
 Here, \( I = \{ 1, 2, 3, \dots, n \} \) and \( J = \{ 1, 2, 3, \dots, m \} \). Then:
 
 \begin{align*}
-&I \times J = \{ (i, j) \mid 1 \leq i \leq n, 1 \leq j \leq m, i, j \in \N \} \\
-&= \{ (1, 1), (1, 2), \dots, (1, m), (2, 1), (2, 2), \dots, (2, m), \dots, (n, 1), (n, 2), \dots, (n, m) \}
+	&I \times J = \{ (i, j) \mid 1 \leq i \leq n, 1 \leq j \leq m, i, j \in \N \} \\
+	&= \{ (1, 1), (1, 2), \dots, (1, m), (2, 1), (2, 2), \dots, (2, m), \dots, (n, 1), (n, 2), \dots, (n, m) \}
 \end{align*}
 
 

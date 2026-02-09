@@ -57,14 +57,16 @@
 \newcommand{\var}{\mathrm{var}}
 \newcommand{\cov}{\mathrm{cov}}
 \newcommand{\med}{\mathrm{med}}
-\newcommand{\ind}{\mathbb{1}}
+\newcommand{\ind}{\mathbbm{1}}
 \newcommand{\argmax}{\mathrm{argmax}}
 \newcommand{\argmin}{\mathrm{argmin}}
 
+% Styles for the automata
 \tikzstyle{terminator} = [rectangle, rounded corners, minimum width=3.5cm, minimum height=1cm, text centered, draw=black, fill=red!30]
 \tikzstyle{decision} = [diamond, aspect=2, minimum width=3.5cm, text centered, draw=black, fill=blue!30, inner sep=1pt]
 \tikzstyle{connector} = [draw, -latex']
 
-\def\func(#1){0.75*#1+0.58}  % Linear regression function
+% Linear regression funct. To be removed
+\def\func(#1){0.75*#1+0.58}  
 \pgfmathsetmacro\y{\func(2)}
 

@@ -5,6 +5,8 @@
 
 A \emph{relation} is a set of the Cartesian Product of two sets. It contains ordered pairs \((a,b)\).
 
+\subsection{The Cartesian Product for Relation Algebra}
+
 The Cartesian Product for our entities is defined as
 
 \[
@@ -85,6 +87,12 @@ S \times T = \bigcup_{(s_1, \dots, s_n) \in S} \left[ \bigcup_{(t_1, \dots, t_n)
 
 With size \(|S \times T|  = |S| \times |T|\).
 
+\begin{verbatim}
+SELECT * FROM T, S;
+-- or equivalently:
+SELECT * FROM T CROSS JOIN S;
+\end{verbatim}
+
 \subsubsection{Union \texorpdfstring{\((\cup)\)}{}}
 
 Combines tuples from two relations with the \emph{same schema}.
@@ -103,6 +111,12 @@ For the union of relations they have to be \emph{union compatible} which means:
 
 \end{itemize}
 
+\begin{verbatim}
+SELECT * FROM T
+UNION
+SELECT * FROM S;
+\end{verbatim}
+
 \subsubsection{Set Difference \texorpdfstring{\((\setminus)\)}{}}
 
 Returns tuples in one relation but \textbf{not} in another.
@@ -111,13 +125,29 @@ Returns tuples in one relation but \textbf{not} in another.
     A \setminus B
 \]
 
+\begin{verbatim}
+    SELECT * FROM T
+    EXCEPT
+    SELECT * FROM S;
+    -- or in some SQL dialects:
+    SELECT * FROM T
+    MINUS
+    SELECT * FROM S;
+\end{verbatim}
+
 \subsubsection{Intersection \texorpdfstring{\(\cap\)}{}}
 
 Returns tuples common to both relations.
 
 \[
-    A \cap B
+    A \cap B = A \setminus (A \setminus B)
 \]
+
+\begin{verbatim}
+SELECT * FROM T
+INTERSECT
+SELECT * FROM S;
+\end{verbatim}
 
 \subsubsection{Selection \texorpdfstring{\(\sigma\)}{}}
 
@@ -126,6 +156,10 @@ Filters tuples based on a predicate.
 \[
     \sigma_{\theta}(S) = \{s \in S \mid s \text{ satisfies } \Theta\}
 \]
+
+\begin{verbatim}
+SELECT * FROM T WHERE a > 10;
+\end{verbatim}
 
 \subsubsection{Projection \texorpdfstring{\(\pi\)}{}}
 
@@ -137,6 +171,12 @@ Selects specific attributes.
 
 This gives us the same tuples of the original relational but only with the columns we selected. 
 
+It can also be noted as \(\pi\).
+
+\begin{verbatim}
+SELECT a, b FROM T;
+\end{verbatim}
+
 \subsubsection{Symmetric Difference \texorpdfstring{\(\triangle\)}{}}
 
 Tuples in either relation but \textbf{not in both}.
@@ -145,6 +185,12 @@ Tuples in either relation but \textbf{not in both}.
     A \triangle B = (A \setminus B) \cup (B \setminus A)
 \]
 
+\begin{verbatim}
+(SELECT * FROM T EXCEPT SELECT * FROM S)
+UNION
+(SELECT * FROM S EXCEPT SELECT * FROM T);
+\end{verbatim}
+
 \subsubsection{Rename \texorpdfstring{\(\rho\)}{}}
 
 Renames relations or attributes.
@@ -152,6 +198,12 @@ Renames relations or attributes.
 \[
     \rho_{A'(key, data)}(A)
 \]
+
+\begin{verbatim}
+SELECT a AS x, b AS y, c AS z FROM T;
+-- or rename the table:
+SELECT * FROM T AS T_new;
+\end{verbatim}
 
 \subsubsection{\texorpdfstring{\(\mathrm{with}\)}{with}}
 
@@ -173,6 +225,16 @@ A \emph{theta join} combines tuples that satisfy a condition.
     S \bowtie_{\theta } T = \sigma_\theta (S \times T)
 \]
 
+\[
+    S \bowtie_{\theta} T = \sigma_{\theta}(S \times T)
+\]
+
+\begin{verbatim}
+SELECT * FROM T INNER JOIN S ON T.a = S.d;
+-- or with theta condition:
+SELECT * FROM T INNER JOIN S ON T.a < S.d;
+\end{verbatim}
+
 \paragraph{Equi-Join}
 
 An equi-join is a join where the join condition consists only of equality 
@@ -184,22 +246,106 @@ comparisons between attributes of the two relations.
 
 The name and domain of the attributes must be the same.
 
+\[
+    R \bowtie_{R.a_1 = S.b_1 \land \dots \land R.a_k = S.b_k} S = \sigma_{R.a_1 = S.b_1 \land \dots \land R.a_k = S.b_k}(R \times S)
+\]
+
+\begin{verbatim}
+SELECT * FROM T JOIN S ON T.a = S.d AND T.b = S.e;
+\end{verbatim}
+
 \paragraph{Natural Join}
 
 It is a special case of the equi-join which can only be performed only if there 
 is a common attribute.
 
-\textbf{Natural Join = Cartesian Product + Selection + Projection}
+\[
+    R \bowtie S
+\]
+
+Let \(C = \mathrm{ident}(R) \cap \mathrm{ident}(S)\) be the common attributes.
+
+\[
+    R \bowtie S = \pi_{\mathrm{ident}(R) \cup \mathrm{ident}(S)}\left(\sigma_{\bigwedge_{c \in C} R.c = S.c}(R \times S)\right)
+\]
+
+\begin{verbatim}
+SELECT * FROM T NATURAL JOIN S;
+-- assumes T and S have common column names
+\end{verbatim}
+
+\paragraph{Semi-Join}
+
+It is a case were we only care about the attribute names but not its values.
+
+\[
+    R \ltimes S
+\]
+
+\[
+    R \ltimes S = \pi_{\mathrm{ident}(R)}(R \bowtie S)
+\]
+
+Or alternatively:
+
+\[
+    R \ltimes S = \pi_{\mathrm{ident}(R)}\left(\sigma_{\bigwedge_{c \in C} R.c = S.c}(R \times S)\right)
+\]
+
+where \(C = \mathrm{ident}(R) \cap \mathrm{ident}(S)\).
+
+\begin{verbatim}
+SELECT T.* FROM T WHERE EXISTS 
+  (SELECT 1 FROM S WHERE T.a = S.d);
+-- or using IN:
+SELECT * FROM T WHERE a IN (SELECT d FROM S);
+\end{verbatim}
+
+\paragraph{Anti Semi-Join}
+
+In this case, it works very similar to the semi join, but we take the attributes which do not participate in the natural join.
+
+\[
+    R \triangleright S
+\]
+
+\[
+    R \triangleright S = R \setminus (R \ltimes S) = R \setminus \pi_{\mathrm{ident}(R)}(R \bowtie S)
+\]
+
+\begin{verbatim}
+SELECT T.* FROM T WHERE NOT EXISTS 
+  (SELECT 1 FROM S WHERE T.a = S.d);
+-- or using NOT IN:
+SELECT * FROM T WHERE a NOT IN (SELECT d FROM S);
+\end{verbatim}
 
 \paragraph{Outer Join}
 
 Preserves non-matching tuples.
 
-\begin{itemize}
-\item Left outer join 
-\item Right outer join
-\item Full outer join
-\end{itemize}
+\textbf{Left Outer Join:}
+
+It returns all tuples from the left relation and matching tuples from the right relation. 
+
+\textbf{Right Outer Join:}
+
+It returns all tuples from the right relation and matching tuples from the left relation.
+
+\textbf{Full Outer Join:}
+
+It returns all tuples from both relations, filling in NULLs for non-matching tuples.
+
+\begin{verbatim}
+-- Left Outer Join:
+SELECT * FROM T LEFT OUTER JOIN S ON T.a = S.d;
+
+-- Right Outer Join:
+SELECT * FROM T RIGHT OUTER JOIN S ON T.a = S.d;
+
+-- Full Outer Join:
+SELECT * FROM T FULL OUTER JOIN S ON T.a = S.d;
+\end{verbatim}
 
 \textbf{Example (Left Outer Join)}
 
@@ -209,24 +355,6 @@ ID & A.value & B.value \\
 \hline
 1 & X & NULL \\
 2 & Y & Y \\
-\hline
-\end{tabular}
-
-\paragraph{Semi Join}
-
-Returns tuples from one relation that \emph{have a match} in the other.
-
-\[
-A \ltimes B
-\]
-
-\textbf{Example:}
-
-\begin{tabular}{|c|c|}
-\hline
-ID & value \\
-\hline
-2 & Y \\
 \hline
 \end{tabular}
 
@@ -244,16 +372,41 @@ Let:
 Then:
 
 \[
-R \div S
+R \div S = \{x \mid \forall y \in S: (x, y) \in R\}
 \]
+
+\[
+R \div S = \pi_{X}(R) \setminus \pi_{X}\left((\pi_{X}(R) \times S) \setminus R\right)
+\]
+
+where \(X = \mathrm{ident}(R) \setminus \mathrm{ident}(S)\).
 
 \textbf{Example Concept}  
 
 If \(A(id, value)\) contains all values in \(B(value)\), division returns the corresponding ID's.
 
+\begin{verbatim}
+-- Find tuples in T that match all tuples in S
+SELECT DISTINCT T.a FROM T 
+WHERE NOT EXISTS (
+  SELECT S.d FROM S 
+  WHERE NOT EXISTS (
+    SELECT * FROM T AS T2 
+    WHERE T2.a = T.a AND T2.b = S.d
+  )
+);
+\end{verbatim}
+
 \subsubsection{Assignment \texorpdfstring{\((=)\)}{}}
 
 This is just using to store the result of a relational algebra operation.
+
+\begin{verbatim}
+-- Create a view or temporary table
+CREATE VIEW Result AS SELECT * FROM T WHERE a > 5;
+-- or
+CREATE TEMPORARY TABLE Result AS SELECT * FROM T WHERE a > 5;
+\end{verbatim}
 
 \subsection{Types of Keys}
 
@@ -296,14 +449,12 @@ This is called the \emph{constraint}.
 
 A \emph{functional relation} is dependence between one or more attributes commonly noted \(A \to B\).
 
-Formally \(\alpha \to \beta\), \(\beta\) is dependent on \(\alpha\) if
+Formally, given \(\alpha \subseteq \mathrm{ident}(R)\) and \(\beta \subseteq \mathrm{ident}(R)\) and \(D \subseteq \mathrm{dom}(R)\)
+\(\alpha \to \beta\), \(\beta\) is dependent on \(\alpha\) if
 
 \[
-    \forall \, r(\mathcal{R}), \forall d_1, d_2 \in r (d_1[\alpha] = d_2[\alpha] \implies d_1[\beta] = d_2[\beta])
+    \forall d_1, d_2 \in D: d_1[\alpha] = d_2[\alpha] \implies d_1[\beta] = d_2[\beta]
 \]
-
-where \(r(\mathcal{R})\) is a relation in the Schema \((\mathcal{R}, \tau)\) and \(\alpha\)
-is a tuple in the schema.
 
 In simple terms the notation \( X \to Y\) means "we know \(Y\) if we know \(X\)".
 
@@ -343,8 +494,8 @@ the starting point.
 \(R = \{A,B,C,D\}\) with \(FD = \{A \to B, B \to C, AB \to CD\}\)
 
 \begin{itemize}
-\item \(AC(FD, A) = \{A, AB, ABC, ABCD\} = ABCD\)
-\item \(AC(FD, B) = \{B, BC\} = BC\)
+    \item \(AC(FD, A) = \{A, AB, ABC, ABCD\} = ABCD\)
+    \item \(AC(FD, B) = \{B, BC\} = BC\)
 \end{itemize}
 
 \subsection{Canonical Overlapping}
@@ -369,10 +520,14 @@ For a schema \(R\) with a set of functional dependencies \(FD\) we denote \(FC^c
 
 \end{itemize}
 
+The following steps are always performed for the whole set of functional dependencies one after the other.
+
 \subsubsection*{Left-Reduction}
 
 For all \(\alpha \to \beta \in FD\) check if there is a redundant \(a \in \alpha\). \(\beta \subseteq AC(FD, \alpha \setminus a)\).
 If that is the case then replace \(\alpha \to \beta\) with \(\alpha \setminus a \to \beta\).
+
+After that 
 
 \subsubsection*{Right-Reduction}
 
@@ -380,9 +535,13 @@ For all \(\alpha \to \beta \in FD\) check if there is a redundant \(b \in \beta\
 \(\beta \subseteq AC(FD \setminus \{\alpha \to \beta \} \cup \{\alpha \to \beta \setminus b, \alpha\})\).
 If that is the case then replace \(\alpha \to \beta\) with \(\alpha \to \beta \setminus b\).
 
+Then 
+
 \subsubsection*{Elimination}
 
 Remove \(\alpha \to \emptyset\).
+
+And finally
 
 \subsubsection*{Union}
 
@@ -451,7 +610,7 @@ Given a set of attributes \(\{A,B,C,D\}\) with the following functional dependen
 
 The set is already left-reduced. 
 
-\begin{itemize}
+\begin{itemize} 
    
     \item \(AC(F, A) = ABD\)
     
@@ -568,96 +727,212 @@ Our table in the forth normal form cannot be describable as the logical result o
 
 \subsection{Synthesis Algorithm}
 
-The \emph{synthesis algorithm} is used to convert relations to the 3NF.
+The \emph{synthesis algorithm} transforms a relation schema into a set of schemas that are in Third Normal Form (3NF), 
+while ensuring \emph{lossless join} and \emph{dependency preservation}. The algorithm proceeds as follows:
 
 \begin{itemize}
-    
-    \item Find the Canonical Overlapping.
+
+    \item Compute the \emph{canonical cover} \(F_c\) of the given set of functional dependencies \(F\):
+
+    \begin{itemize}
+
+        \item Decompose all dependencies so that each has a single attribute on the right-hand side.
+
+        \item Remove extraneous attributes from the left-hand sides.
+
+        \item Eliminate redundant dependencies.
+
+    \end{itemize}
+
+    \item For each functional dependency \(\alpha \to \beta \in F_c\), construct a relation schema
+    \[
+        R_k = \alpha \cup \beta.
+    \]
    
-    \item For all \(\alpha \to \beta \in FD^c\) we get a schema \(R_k = \alpha \cup \beta\) in which 
-    the attributes of functional dependencies which are in \(R_k\) will be ordered to \(R_k\).
-  
-    \item A key candidate has to be in \(R_k\). Else, we create another relation with the attributes of 
-    the key candidate.
- 
-    \item Individual \(R_k\) can contain other \(R_m\). Those schemata are not necessary and can be removed.
+    All dependencies whose attributes are contained in \(R_k\) are associated with this schema.
+
+    \item If none of the generated schemas contains a candidate key of the original relation, create an additional schema whose attributes form a candidate key.
+
+    \item If a schema \(R_k\) is completely contained in another schema \(R_m\), remove \(R_k\), since it is redundant.
 
 \end{itemize}
 
 \textbf{Example:}
 
-Given \(R = \{A,B,C,D,E,F\}\) with \(FD = \{A \to A, A \to B, C \to DEF, E \to F\}\).
+Given
 
-\emph{Left-Reduction}
+\[
+    R = \{A, B, C, D, E\}
+\]
 
-Nothing to do.
+with
 
-\emph{Right Reduction}
+\[
+    F = \{ ADE \to BE,\; B \to ACD,\; D \to AC,\; ACE \to BD,\; C \to B \}.
+\]
 
-\(A \to \emptyset\) (trivial)  
+\emph{Step 1: Right-hand side decomposition}
 
-\(A \to B\) nothing to do.  
+\begin{align*}
+    & ADE \to B,\quad ADE \to E,\quad B \to A,\quad B \to C,\quad B \to D, \\
+    & D \to A,\quad D \to C,\quad ACE \to B,\quad ACE \to D,\quad C \to B
+\end{align*}
 
-\(C \to DEF\) discard \(F\) due to \(C \to DE \implies C \to DEF\).  
-
-\(E \to F\) nothing to do.
-
-Result: \(FC^c = \{A \to B, C \to DE, E \to F\}\).
-
-\emph{Schemata}
-
-\(\mathcal{R}_{AB}\) with \(F_{AB} = \{A \to B\}\).  
-
-\(\mathcal{R}_{CDE}\) with \(F_{CDE} = \{C \to DE\}\).  
-
-\(\mathcal{R}_{EF}\) with \(F_{EF} = \{E \to F\}\).
-
-\emph{Test for key candidates}
-
-No relation has the key-candidate \(AC\).
-
-\subsection{Decomposition Algorithm for BCNF}
-
-The \emph{decomposition algorithm} is used to convert relations to the BCNF. 
-
-A schema \(R\) is in the BCNF if for all \( \alpha \to \beta \in FD\) at least one of the following statements
-is true:
+\emph{Step 2: Left reduction}
 
 \begin{itemize}
 
-    \item \(\alpha \to \beta\) is trivial \(\beta \subseteq \alpha\)
+    \item \(ADE \to B\): \(A\) and \(E\) are extraneous since \(D^+ = \{D,B,A,C,E\}\), hence \(D \to B\).
 
-    \item \(\alpha\) is a superkey 
+    \item \(ADE \to E\) is trivial and removed.
+
+    \item \(ACE \to B\): \(A\) and \(E\) are extraneous, yielding \(C \to B\).
+
+    \item \(ACE \to D\): \(A\) and \(E\) are extraneous, yielding \(C \to D\).
+
+    \item All other dependencies already have minimal left-hand sides.
 
 \end{itemize}
 
-\subsubsection*{Algorithm}
+Current set:
+
+\[
+    \{ D \to B,\; B \to A,\; B \to C,\; B \to D,\; D \to A,\; D \to C,\; C \to B,\; C \to D \}
+\]
+
+\emph{Step 3: Remove redundant dependencies}
 
 \begin{itemize}
-    
-    \item Let \(Z = \{R\}\).
-    
-    \item As long as there schemata \(R_i \in Z\) gives which are not in BCNF proceed to 
-    
-        \subitem Split \(R_i\) into \(R_{i1} = \alpha \cup \beta\) and \(R_{i2} = R_i - \beta\).
 
-        \subitem Remove \(R_i\) from \(Z\) and add \(R_{i1}\) and \(R_{i2}\).
+    \item \(D \to A\) is redundant since \(D \to C\) and \(C \to B\) and \(B \to A\).
 
-    \item The algorithm works recursively on the subschemas.
+    \item \(B \to C\) is redundant since \(B \to D\) and \(D \to C\).
+
+    \item \(C \to D\) is redundant since \(C \to B\) and \(B \to D\).
+
+\end{itemize}
+
+Thus, the canonical cover is:
+
+\[
+    F_c = \{ B \to A,\; B \to D,\; D \to C,\; C \to B \}
+\]
+
+\emph{Step 4: Construct relation schemas}
+
+\begin{align*}
+    R_1 &= \{B, A\}, \\
+    R_2 &= \{B, D\}, \\
+    R_3 &= \{D, C\}, \\
+    R_4 &= \{C, B\}
+\end{align*}
+
+\emph{Step 5: Remove redundant schemas}
+
+None of these schemas is contained in another, so all are kept.
+
+\emph{Step 6: Test for candidate keys}
+
+For the original relation \(R = \{A, B, C, D, E\}\), attribute \(E\) does not appear on any right-hand side and must be part of every key.
+
+\[
+    (BE)^+ = \{A, B, C, D, E\}
+\]
+
+so \(\{B, E\}\) is a candidate key.
+
+Since no schema contains \(\{B, E\}\), we add:
+
+\[
+    R_5 = \{B, E\}
+\]
+
+\textbf{Final 3NF Decomposition:}
+
+\[
+    \{ \{B,A\},\; \{B,D\},\; \{D,C\},\; \{C,B\},\; \{B,E\} \}
+\]
+
+\subsection{Decomposition Algorithm}
+
+The \emph{decomposition algorithm} transforms a relation schema into Boyce-Codd Normal Form (BCNF) by repeatedly decomposing 
+relations that violate the BCNF condition. A relation schema \(R\) is in BCNF if for every non-trivial functional dependency 
+\(\alpha \to \beta\) on \(R\), \(\alpha\) is a superkey of \(R\)
+
+\begin{itemize}
+
+    \item If \(R\) is already in BCNF, stop
+
+    \item Otherwise, choose a functional dependency \(\alpha \to \beta\) that violates BCNF, meaning \(\alpha\) is not a superkey of \(R\)
+
+    \item Decompose \(R\) into two schemas
+
+    \[
+        R_1 = \alpha \cup \beta
+        \quad\text{and}\quad
+        R_2 = R \setminus (\beta \setminus \alpha)
+    \]
+
+    \item Apply the algorithm recursively to \(R_1\) and \(R_2\) until all resulting schemas are in BCNF
 
 \end{itemize}
 
 \textbf{Example:}
 
-\(R = \{A,B,C,D\}\) with \(F = \{BC \to D, AB \to A\}\).
+Given
 
-\(AB \to A\) is in BCNF due to \(AB\) being a key-candidate and \(A \subseteq AB\)
+\[
+    R = \{A, B, C, D\}
+\]
 
-On the other hand \(BC \to D\) is not in BCNF due to \(BC\) not being a key-candidate. 
+with
 
-Thus, we split \(R\) into
+\[
+    F = \{ A \to B,\; B \to C,\; C \to D \}
+\]
 
-\(F_{R_1} = \{BC \to D\}\) and \(F_{R_2} = \{AB \to A\}\).
+\textbf{Step 1: Check BCNF}
+
+\(A \to B\) violates BCNF since \(A\) is not a superkey of \(R\)
+
+\textbf{Step 2: First decomposition}
+
+Using \(A \to B\), decompose into
+\[
+R_1 = \{A, B\}
+\quad\text{and}\quad
+R_2 = \{A, C, D\}
+\]
+
+\textbf{Step 3: Check BCNF of \(R_1\)}
+
+In \(R_1(A,B)\), \(A \to B\) holds and \(A\) is a key, so \(R_1\) is in BCNF
+
+\textbf{Step 4: Check BCNF of \(R_2\)}
+
+From \(B \to C\) and \(C \to D\), we obtain \(A \to C\) and \(A \to D\), but \(A\) is not a key of \(R_2\), so BCNF is violated by \(A \to C\)
+
+\textbf{Step 5: Second decomposition}
+
+Using \(A \to C\), decompose \(R_2\) into
+
+\[
+    R_3 = \{A, C\}
+    \quad\text{and}\quad
+    R_4 = \{A, D\}
+\]
+
+\textbf{Step 6: Check BCNF of remaining schemas}
+
+In \(R_3(A,C)\), \(A\) is a key, so \(R_3\) is in BCNF
+
+In \(R_4(A,D)\), \(A \to D\) holds and \(A\) is a key, so \(R_4\) is in BCNF
+
+\textbf{Final BCNF Decomposition:}
+
+\[
+    \{ \{A,B\},\; \{A,C\},\; \{A,D\} \}
+\]
 
 \subsection{Optimization}
 
@@ -665,7 +940,7 @@ The following equivalences hold for relational algebra expressions:
 
 \begin{itemize}
     
-    \item \(\sigma C_1 \land C_2 \land \dots \land C_n \cong \sigma_{C_1} ( \sigma_{C_2} ( \dots ( \sigma_{C_n} (R)) \dots ))\)
+    \item \(\sigma_{C_1 \land C_2 \land \dots \land C_n} \cong \sigma_{C_1} ( \sigma_{C_2} ( \dots ( \sigma_{C_n} (R)) \dots ))\)
     
     \item \(\sigma_{C_1} (\sigma_{C_2} (R)) \cong \sigma_{C_1} (\sigma_{C_2} (R))\)
     
@@ -690,7 +965,7 @@ The following equivalences hold for relational algebra expressions:
     
     \item \(\times, \cup, \cap\) and \(\bowtie\) are associative
    
-    \item \(\sigma\) is distributive with \(\cup, \cap, -\) 
+    \item \(\sigma\) is distributive with \(\cup, \cap, \setminus\) 
 
     \[
         \sigma_C (R \Theta S) = \sigma_C (R) \Theta \sigma_C (S)
