@@ -1,41 +1,14 @@
 \newpage
 \section{Generating Functions}
 
-\emph{Generating functions} are a central tool in combinatorics and discrete mathematics. At their 
-core, a generating function is a formal power series in one or more variables, 
-typically used to encode sequences of numbers.
-
-\subsection{Definition}
-
-Given a sequence \( {\{a_n\}}_{n \ge 0} \), its (ordinary) generating function is defined as:
+Given a sequence \( {\{a_n\}}_{n \ge 0} \), its \emph{generating function} is defined as:
 
 \[
-    G(x) = \sum_{n=0}^{\infty} a_n x^n
+    F(x) = \sum_{n=0}^{\infty} a_n x^n.
 \]
 
 Here, \(x\) is an indeterminate, and the series is usually treated formally, meaning we do not 
 worry about convergence unless the context requires it.
-
-\subsection{Applications}
-
-Generating functions are used to:
-
-\begin{itemize}
-
-    \item Encode and manipulate sequences algebraically.
-
-    \item Solve recurrence relations.
-
-    \item Find closed-form expressions for sequences.
-
-    \item Prove combinatorial identities.
-
-    \item Model and solve counting problems in partitions, compositions, and permutations.
-
-\end{itemize}
-
-For example, if \( a_n \) counts the number of ways to form a sum \(n\) using coins of certain 
-denominations, the generating function helps derive a formula for \( a_n \) or analyze its properties.
 
 \subsection{Connection to Subsets}
 
@@ -43,7 +16,7 @@ There is a deep similarity between generating functions and the process of formi
 generating function for the set \( \{1, x\} \):
 
 \[
-    {(1 + x)}^n = \sum_{k=0}^n \binom{n}{k} x^k
+    (1 + x)^n = \sum_{k=0}^n \binom{n}{k} x^k.
 \]
 
 This expansion encodes all subsets of an \(n\)-element set, where each term \( x^k \) corresponds to 
@@ -59,32 +32,34 @@ yield concrete combinatorial results.
 
 Let us use generating function to find a closed form for the Fibonacci number. 
 
-We know that \(F_0 = 1\) and \(F_1 = 1\) and for \(n \ge 2\) \(F_n = F_{n-1} + F_{n-2}\)
+We know that \(F_0 = 1\) and \(F_1 = 1\) and for \(n \ge 2\) \(F_n = F_{n-1} + F_{n-2}\).
 
 Now let us use the following function
-\[
-    F(x) = \sum_{n = 0}^{\infty} F_n x^{n}
-\]
-
-Which is going to have the Fibonacci numbers as the coefficients of the power series.
 
 \[
-    1 + x + 2x^2 + 3x^3 + 5x^4 + \dots
+    F(x) = \sum_{n = 0}^{\infty} F_n x^{n},
 \]
 
-But before that we have to look at when our recursive formula is defined.
-In this case \(n = 2\). Thus, we have to write our expression in the following way.
+which is going to have the Fibonacci numbers as the coefficients of the power series.
+
+\[
+    1 + x + 2x^2 + 3x^3 + 5x^4 + \dots,
+\]
+
+but before that we have to look at when our recursive formula is defined.
+
+In this case \(n = 2\). Thus, we have to write our expression in the following way:
 
 \begin{align*}
     F(x) &= 1 + x + \sum_{n = 2}^{\infty} F_n x^{n}\\
-    &= 1 + x + \sum_{n = 2}^{\infty} F_{n -1} x^{n} + \sum_{n = 2}^{\infty} F_{n - 2}x^n 
+    &= 1 + x + \sum_{n = 2}^{\infty} F_{n -1} x^{n} + \sum_{n = 2}^{\infty} F_{n - 2}x^n.
 \end{align*}
 
-Here we are going to adjust our expression by making our \(n\) be equal.
+Here we are going to adjust our expression by making our \(n\) be equal
 
 \begin{align*}
     F(x) &= 1 + x + \sum_{n = 2}^{\infty} F_{n -1} x^{n} + \sum_{n = 2}^{\infty} F_{n - 2}x^n \\ 
-    F(x) &= 1 + x + x \left( \sum_{n = 2}^{\infty} F_{n -1} x^{n-1}\right) + x^2 \left( \sum_{n = 2}^{\infty} F_{n -2} x^{n-2}\right)
+    F(x) &= 1 + x + x \left( \sum_{n = 2}^{\infty} F_{n -1} x^{n-1}\right) + x^2 \left( \sum_{n = 2}^{\infty} F_{n -2} x^{n-2}\right).
 \end{align*}
 
 And now we are going to reset our sum to start from zero by adding a smart zero to our term with 
@@ -95,19 +70,19 @@ And now we are going to reset our sum to start from zero by adding a smart zero 
     F(x) &= 1 + x + x \left( -F_{0}x^0 + F_{0}x^0 + \sum_{n = 2}^{\infty} F_{n-1} x^{n-1}\right) + x^2 \left( \sum_{n = 2}^{\infty} F_{n} x^{n}\right)\\
     F(x) &= 1 + x + x \left( -F_{0}x^0 + \sum_{n = 1}^{\infty} F_{n-1} x^{n-1}\right) + x^2 \left( \sum_{n = 2}^{\infty} F_{n} x^{n}\right)\\
     F(x) &= 1 + x + x \left( \sum_{n = 0}^{\infty} F_{n} x^{n}\right) + x^2 \left( \sum_{n = 2}^{\infty} F_{n} x^{n}\right)\\
-    F(x) &= 1 + x + x F(x) - x + x^2 F(x)
+    F(x) &= 1 + x + x F(x) - x + x^2 F(x),
 \end{align*}
 
-Which at end simplifies to:
+which at the end simplifies to:
 
 \[
-    F(x) = \frac{1}{1 - x - x^2}
+    F(x) = \frac{1}{1 - x - x^2}.
 \]
 
-If you start with \(F_0 = 0\) then the result  is
+If you start with \(F_0 = 0\) then the result is
 
 \[
-    F(x) = \frac{x}{1 - x - x^2}
+    F(x) = \frac{x}{1 - x - x^2}.
 \]
 
 Now we can use partial fraction decomposition to make this expression even more explicit
@@ -115,26 +90,27 @@ by using the following expression where \(\alpha\) and \(\beta\) are zeroes of t
 denominator.
 
 \[
-    \frac{1}{\left(1 - \alpha x\right)\left(1 - \beta x\right)}
+    \frac{1}{\left(1 - \alpha x\right)\left(1 - \beta x\right)}.
 \]
 
 The zeros of the polynomial are:
 
 \[
-    x_1 = \frac{1 + \sqrt{5}}{2} \text{ and }  x_2 = \frac{1 - \sqrt{5}}{2}    
+    x_1 = \frac{1 + \sqrt{5}}{2} \quad \text{and} \quad  x_2 = \frac{1 - \sqrt{5}}{2}.
 \]
 
 Now we can write our expression like:
+
 \[
     F(x) = \frac{1}{1 - x - x^2} = \frac{1}{\left(1 - x \cdot \frac{1 + \sqrt{5}}{2}\right)\left(1 - x 
-    \cdot \frac{1 - \sqrt{5}}{2}\right)}
+    \cdot \frac{1 - \sqrt{5}}{2}\right)},
 \]
 
-Which after performing the partial fraction decomposition left us with:
+which after performing the partial fraction decomposition left us with:
 
 \[
     F(x) = \left( {\left( \frac{1}{\sqrt{5}} (1 + \sqrt{5}) \right)}^n - {\left( \frac{1}{\sqrt{5}} 
-    (1 - \sqrt{5}) \right)}^n \right)
+    (1 - \sqrt{5}) \right)}^n \right).
 \]
 
 \QED

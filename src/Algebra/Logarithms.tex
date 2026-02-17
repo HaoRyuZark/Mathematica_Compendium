@@ -1,18 +1,17 @@
 \newpage
 \section{Logarithms}
 
-The \emph{Logarithm} of a number \(x\) 
-with base \(b\) is the exponent to which the base must be raised to produce that number. It is 
-denoted as:
+The \emph{logarithm} of a number \(x\) with base \(b\) is the exponent to which the base must be 
+raised to produce that number. It is denoted as:
 
 \[
-    \log_b(x) = y \iff b^y = x
+    \log_b(x) = y \iff b^y = x,
 \]
 
-Where \(b > 0\), \(b \neq 1\), and \(x > 0\).
+where \(b > 0\), \(b \neq 1\), and \(x > 0\).
 
 \[
-    \log_2(8) = 3 \quad \text{because} \quad 2^3 = 8
+    \log_2(8) = 3 \quad \text{because} \quad 2^3 = 8.
 \]
 
 We can also approximate a logarithm by dividing our target \(x\) by the basis \(b\) repeatedly until 
@@ -61,15 +60,20 @@ we get 1 or less.
 \subsection{Change of Basis Formula}
 
 \[
-    \log_b(x) = \frac{\log_k(x)}{\log_k(b)}
+    \log_b(x) = \frac{\log_k(x)}{\log_k(b)},
 \]
 
-Where \(k\) is any positive number different from 1.
+where \(k\) is any positive number different from 1.
+
+\textbf{Proof:}
 
 \subsection{The Chain Rule}
+
 \[
     \log_y(a) \log_a(b) = \log_y(b)
 \]
+
+\textbf{Proof:}
 
 \subsection{The derivative of the Natural Logarithm}
 
@@ -103,7 +107,7 @@ Therefore, the derivative of the natural logarithm is:
 
 \QED
 
-\subsection{Demonstration of the Properties}
+\subsection{Proofs of the Properties}
 
 \subsubsection{Product}
 
@@ -114,7 +118,7 @@ Let \(a^n a^m = a^{n + m}\) and \(a^n = x\) and \(a^m = y\) then
 \]
 
 \[
-    \log_a xy = \log_a x + \log_a y
+    \log_a (xy) = \log_a x + \log_a y
 \]
 
 \QED
@@ -131,7 +135,7 @@ Let \(\frac{a^n}{a^m} = a^{n - m}\) and \(a^n = x\) and \(a^m = y\) then like in
 
 \subsubsection{Power}
 
-Let \({(a^n)}^m = a^{nm}\) and \(a^n = x\) and \(a^{nm} = y\)
+Let \((a^n)^m = a^{nm}\) and \(a^n = x\) and \(a^{nm} = y\)
 
 \[
     \log_x y = m \text{ and } \log_a x = n \text{ thus, } \log_a y = (\log_a x )m
@@ -141,7 +145,7 @@ Let \({(a^n)}^m = a^{nm}\) and \(a^n = x\) and \(a^{nm} = y\)
 
 \subsubsection{Power Rule General Case:}
 
-Let \({(a^n)}^m = b^x\) then \(\log_{a^n} b^x = m\) now let us manipulate the original expression
+Let \((a^n)^m = b^x\), then \(\log_{a^n} b^x = m\). Now let us manipulate the original expression
 
 \begin{align*}
     \log_a {(a^n)}^m &= \log_a b^x\\

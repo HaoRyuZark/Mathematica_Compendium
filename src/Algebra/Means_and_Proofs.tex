@@ -1,26 +1,33 @@
 \newpage
-\section{Means and Proofs}
-In math there are a lot of means. In this section I will show some of them with the corresponding proofs.
+\section{Means}
 
-\emph{Arithmetic Mean:} The arithmetic mean of \(n\) numbers \( x_1, x_2, \dots, x_n \) is given by:
+\subsection{Arithmetic Mean}
+
+The \emph{arithmetic mean} of \(n\) numbers \( x_1, x_2, \dots, x_n \) is given by:
 
 \[
 	A = \frac{x_1 + x_2 + \cdots + x_n}{n}
 \]
 
-\emph{Geometric Mean:} The geometric mean of \(n\) numbers \( x_1, x_2, \dots, x_n \) is given by:
+\subsection{Geometric Mean}
+
+The \emph{geometric mean} of \(n\) numbers \( x_1, x_2, \dots, x_n \) is given by:
 
 \[
 	G = \sqrt[n]{x_1 \cdot x_2 \cdots x_n}
 \]
 
-\emph{Harmonic Mean:} The harmonic mean of \(n\) numbers \( x_1, x_2, \dots, x_n \) is given by:
+\subsection{Harmonic Mean}
+
+The \emph{harmonic mean} of \(n\) numbers \( x_1, x_2, \dots, x_n \) is given by:
 
 \[
 	H = \frac{n}{\frac{1}{x_1} + \frac{1}{x_2} + \cdots + \frac{1}{x_n}}
 \]
 
-\emph{Quadratic Mean:} The quadratic mean of \(n\) numbers \( x_1, x_2, \dots, x_n \) is given by:
+\subsection{Quadratic Mean}
+
+The \emph{quadratic mean} of \(n\) numbers \( x_1, x_2, \dots, x_n \) is given by:
 	      
 \[
 	Q = \sqrt{\frac{x_1^2 + x_2^2 + \cdots + x_n^2}{n}}
@@ -31,10 +38,10 @@ In math there are a lot of means. In this section I will show some of them with 
 Let \( a_1, a_2, \dots, a_n > 0 \). We will prove by induction that:
 
 \[
-	\frac{a_1 + a_2 + \cdots + a_n}{n} \geq \sqrt[n]{a_1 a_2 \cdots a_n}
+	\frac{a_1 + a_2 + \cdots + a_n}{n} \geq \sqrt[n]{a_1 a_2 \cdots a_n},
 \]
 
-With equality if and only if \( a_1 = a_2 = \cdots = a_n \).
+with equality if and only if \( a_1 = a_2 = \cdots = a_n \).
 
 \textbf{Base Case: \( n = 2 \)}
 
@@ -63,6 +70,7 @@ So,
 \]
 
 and taking square roots gives the desired result:
+
 \[
 	\frac{a_1 + a_2}{2} \geq \sqrt{a_1 a_2}.
 \]
@@ -70,15 +78,17 @@ and taking square roots gives the desired result:
 \textbf{For \( n \geq 2 \)}
 
 \begin{align*}
-	A_{n + 1} &:= (\sum_{i=1}^{n + 1} a_i) / (n + 1) = \frac{a_1 + a_2 + \cdots + a_n + a_{n + 1}}{n + 1}\\
+	A_{n + 1} &:= \left(\sum_{i=1}^{n + 1} a_i\right) / (n + 1) = \frac{a_1 + a_2 + \cdots + a_n + a_{n + 1}}{n + 1}\\
 	G_{n + 1} &:= \sqrt[n + 1]{a_1 a_2 \cdots a_n a_{n + 1}} = \sqrt[n + 1]{(a_1 a_2 \cdots a_n) a_{n + 1}}\\
-	A_{n - 1}^{n + 1}&= {(\frac{a_1 + a_2 + \cdots + a_{n + 1}}{n + 1})}^{n - 1} = A_{n + 1}^{n - 1}\\
-	G_{n + 1}^{n + 1} &:= {(\sqrt[n + 1]{a_1 a_2 \cdots a_n a_{n + 1}})}^{n + 1} = (a_1 a_2 \cdots a_n) a_{n + 1} = \sqrt[n]{{(a_1 a_2 \cdots a_n)}^{n}} a_{n + 1}^{n + 1} = G_{n}^{n} a_{n + 1}^{n + 1}
+	A_{n - 1}^{n + 1} &:= {(\frac{a_1 + a_2 + \cdots + a_{n + 1}}{n + 1})}^{n - 1} = A_{n + 1}^{n - 1}\\
+	G_{n + 1}^{n + 1} &:= {(\sqrt[n + 1]{a_1 a_2 \cdots a_n a_{n + 1}})}^{n + 1} = (a_1 a_2 \cdots a_n) a_{n + 1} = \sqrt[n]{{(a_1 a_2 \cdots a_n)}^{n}} a_{n + 1}^{n + 1} = G_{n}^{n} a_{n + 1}^{n + 1}.
 \end{align*}
 
 Then
 
-\[G_{n + 1}^{n + 1}  A_{n + 1}^{n - 1} = G_{n}^{n} a_{n + 1}^{n + 1} A_{n + 1}^{n - 1} \leq A_{n}^{n} A_{n + 1}^{n - 1}\]
+\[
+	G_{n + 1}^{n + 1}  A_{n + 1}^{n - 1} = G_{n}^{n} a_{n + 1}^{n + 1} A_{n + 1}^{n - 1} \leq A_{n}^{n} A_{n + 1}^{n - 1}.
+\]
 
 This comes from
 
@@ -89,31 +99,32 @@ This comes from
 		G_{n}^{n} a_{n + 1}^{n + 1} A_{n + 1}^{n - 1} \leq A_{n}^{n} A_{n + 1}^{n - 1} = {\left(A_{n}^{n} {\left( a_{n + 1} A_{n +1}\right)}^{n -1} \right)}^{\frac{n}{n}}\\
 		\leq A_{n}^{n} {\left( \frac{a_{n + 1} + A_{n + 1} + \cdots A_{n + 1}}{n} \right)}^{n}\\
 		A_{n}^{n} {\left( \frac{a_{n + 1} + (n - 1)A_{n + 1}}{n} \right)}^{n}\\
-		{\left( A_{n} \frac{a_{n + 1} + (n - 1)A_{n + 1}}{n} \right)}^{n}
+		{\left( A_{n} \frac{a_{n + 1} + (n - 1)A_{n + 1}}{n} \right)}^{n}.
 \end{align*}
 
 Note that
 
 \begin{align*}
 	\left( A_{n} \frac{a_{n + 1} + (n - 1)A_{n + 1}}{n} \right) \rightarrow  {\left( \sqrt{A_{n} \frac{a_{n + 1} + (n - 1)A_{n + 1}}{n}} \right)}^{2}\\
-	\leq {\left( \frac{ A_n + \frac{a_{n + 1} + (n - 1)A_{n + 1}}{n}}{2} \right)}^{2n}
+	\leq {\left( \frac{ A_n + \frac{a_{n + 1} + (n - 1)A_{n + 1}}{n}}{2} \right)}^{2n}.
 \end{align*}
 
 Now with power of \(n\) we have
+
 \begin{align*}
 		{\left( A_{n} + \frac{a_{n + 1} + (n - 1)A_{n + 1}}{n} \right)}^{n} \leq {\left( \frac{A_{n} + \frac{a_{n + 1} + (n - 1)A_{n + 1}}{n}}{2} \right)}^{2n}\\
 		= {\left( \frac{A_n}{2} + \frac{a_{n + 1} + (n - 1)A_{n + 1}}{2n}\right)}^{2n}\\
 		= {\left( \frac{A_n n}{2n} + \frac{a_{n + 1} + (n - 1)A_{n + 1}}{2n}\right)}^{2n}\\
 		= {\left( \frac{A_n n  + a_{n + 1} + (n - 1)A_{n + 1}}{2n}\right)}^{2n}\\
 		= {\left( \frac{A_{n + 1}(n + 1) + (n - 1)A_{n + 1}}{2n}\right)}^{2n}\\
-		= {\left( \frac{2n A_{n + 1}}{2n}\right)}^{2n} = {\left(A_{n + 1}\right)}^{2n}
+		= {\left( \frac{2n A_{n + 1}}{2n}\right)}^{2n} = {\left(A_{n + 1}\right)}^{2n}.
 \end{align*}
 
 Now we have proven that \(G_{n + 1}^{n + 1} A_{n + 1}^{n - 1}\leq {\left(A_{n + 1}\right)}^{2n}\) 
 by dividing both sides by \( A_{n + 1}^{n - 1} \) we get
 
 \[
-	G_{n + 1}^{n + 1}\leq A_{n + 1}^{n + 1}
+	G_{n + 1}^{n + 1}\leq A_{n + 1}^{n + 1}.
 \]
 
 \QED
@@ -122,12 +133,12 @@ by dividing both sides by \( A_{n + 1}^{n - 1} \) we get
 
 Let \( a_1, a_2, \dots, a_n > 0 \). We will prove the inequality.
 
-We know that \(G_n \leq A_n \)
+We know that \(G_n \leq A_n\) which implies
 
 \begin{align*}
 		G_n \leq A_n\\
 		\sqrt[n]{x_1 \dots x_2 \cdots x_n} \leq \frac{x_1 + x_2 + \cdots + x_n}{n}\\
-		\frac{n}{\frac{1}{x_1} + \frac{1}{x_2} + \cdots + \frac{1}{x_n}} \leq \sqrt[n]{x_1 \cdot x_2 \cdots x_n}
+		\frac{n}{\frac{1}{x_1} + \frac{1}{x_2} + \cdots + \frac{1}{x_n}} \leq \sqrt[n]{x_1 \cdot x_2 \cdots x_n}.
 \end{align*}
 
 This concludes the proof of the harmonic mean-geometric mean inequality.

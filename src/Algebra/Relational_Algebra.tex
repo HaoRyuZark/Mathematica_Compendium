@@ -7,7 +7,7 @@ A \emph{relation} is a set of the Cartesian Product of two sets. It contains ord
 
 \subsection{The Cartesian Product for Relation Algebra}
 
-The Cartesian Product for our entities is defined as
+The Cartesian Product for our entities is defined as:
 
 \[
     S \times T := \bigcup_{(s_1, \dots, s_n) \in S} \left[ \bigcup_{(t_1, \dots, t_k) \in T} \{(s_1, \dots, s_n, t_1, \dots, t_k)\}\right]
@@ -20,9 +20,8 @@ In the relational algebra relations represent tables and their rows the tuples.
 
 \subsection{Relational Algebra}
 
-Relational Algebra is a \emph{formal, procedural query language} for the relational model. It provides a set of \textbf{operators} that take relations (tables) as input and produce relations as output. It forms the \textbf{theoretical foundation of SQL} and relational database systems.
-
-Throughout this section, we use two example relations to illustrate each concept.
+Relational Algebra is a \emph{formal, procedural query language} for the relational model. It provides a set of operators that 
+take relations (tables) as input and produce relations as output. 
 
 \subsubsection{Axioms of Relational Algebra}
 
@@ -67,7 +66,7 @@ Relation \(A(id, value)\) is a set of tuples:
 We define  
 
 \[
-    \mathrm{ident}(R) = \{a_i\}_i \quad \text{and} \quad \mathrm{schema} (R) = \{[a_1:T_1, \dots, a_n:T_n]\}
+    \mathrm{ident}(R) = \{a_i\}_i \quad \text{and} \quad \mathrm{schema} (R) = \{[a_1:T_1, \dots, a_n:T_n]\}.
 \]
 
 \(\mathrm{ident}\) returns the names of the attributes of the relation, while 
@@ -82,15 +81,16 @@ The \emph{domain} of an attribute \(a\) in a relation \(R\) is the set of all po
 The \emph{Cartesian product} combines every tuple of one relation with every tuple of another.
 
 \[
-S \times T = \bigcup_{(s_1, \dots, s_n) \in S} \left[ \bigcup_{(t_1, \dots, t_n) \in T} \{(s_1, \dots, s_n, t_1, \dots, t_k)\} \right]
+    S \times T = \bigcup_{(s_1, \dots, s_n) \in S} \left[ \bigcup_{(t_1, \dots, t_n) \in T} \{(s_1, \dots, s_n, t_1, \dots, t_k)\} 
+    \right]
 \]
 
 With size \(|S \times T|  = |S| \times |T|\).
 
 \begin{verbatim}
-SELECT * FROM T, S;
--- or equivalently:
-SELECT * FROM T CROSS JOIN S;
+    SELECT * FROM T, S;
+    -- or equivalently:
+    SELECT * FROM T CROSS JOIN S;
 \end{verbatim}
 
 \subsubsection{Union \texorpdfstring{\((\cup)\)}{}}
@@ -107,19 +107,19 @@ For the union of relations they have to be \emph{union compatible} which means:
 
     \item They have the same numbers of elements in the tuple. 
 
-    \item  The relations need to have the same columns.
+    \item The relations need to have the same columns.
 
 \end{itemize}
 
 \begin{verbatim}
-SELECT * FROM T
-UNION
-SELECT * FROM S;
+    SELECT * FROM T
+    UNION
+    SELECT * FROM S;
 \end{verbatim}
 
 \subsubsection{Set Difference \texorpdfstring{\((\setminus)\)}{}}
 
-Returns tuples in one relation but \textbf{not} in another.
+Returns tuples in one relation but not in another.
 
 \[
     A \setminus B
@@ -144,9 +144,9 @@ Returns tuples common to both relations.
 \]
 
 \begin{verbatim}
-SELECT * FROM T
-INTERSECT
-SELECT * FROM S;
+    SELECT * FROM T
+    INTERSECT
+    SELECT * FROM S;
 \end{verbatim}
 
 \subsubsection{Selection \texorpdfstring{\(\sigma\)}{}}
@@ -158,7 +158,7 @@ Filters tuples based on a predicate.
 \]
 
 \begin{verbatim}
-SELECT * FROM T WHERE a > 10;
+    SELECT * FROM T WHERE a > 10;
 \end{verbatim}
 
 \subsubsection{Projection \texorpdfstring{\(\pi\)}{}}
@@ -174,21 +174,21 @@ This gives us the same tuples of the original relational but only with the colum
 It can also be noted as \(\pi\).
 
 \begin{verbatim}
-SELECT a, b FROM T;
+    SELECT a, b FROM T;
 \end{verbatim}
 
 \subsubsection{Symmetric Difference \texorpdfstring{\(\triangle\)}{}}
 
-Tuples in either relation but \textbf{not in both}.
+Tuples in either relation but not in both.
 
 \[
     A \triangle B = (A \setminus B) \cup (B \setminus A)
 \]
 
 \begin{verbatim}
-(SELECT * FROM T EXCEPT SELECT * FROM S)
-UNION
-(SELECT * FROM S EXCEPT SELECT * FROM T);
+    (SELECT * FROM T EXCEPT SELECT * FROM S)
+    UNION
+    (SELECT * FROM S EXCEPT SELECT * FROM T);
 \end{verbatim}
 
 \subsubsection{Rename \texorpdfstring{\(\rho\)}{}}
@@ -200,14 +200,14 @@ Renames relations or attributes.
 \]
 
 \begin{verbatim}
-SELECT a AS x, b AS y, c AS z FROM T;
--- or rename the table:
-SELECT * FROM T AS T_new;
+    SELECT a AS x, b AS y, c AS z FROM T;
+    -- or rename the table:
+    SELECT * FROM T AS T_new;
 \end{verbatim}
 
 \subsubsection{\texorpdfstring{\(\mathrm{with}\)}{with}}
 
-\(\mathrm{with}\) allows us to store products of specific operation with a special name which can be used later in other Operations.
+\(\mathrm{with}\) allows us to store products of specific operation with a special name which can be used later in other operations.
 
 \subsubsection{Join \texorpdfstring{\(\bowtie\)}{}}
 
@@ -217,9 +217,9 @@ A \emph{theta join} is the Cartesian product plus a selection.
     S \bowtie_{\theta } T = \sigma_\theta (S \times T)
 \]
 
-\paragraph{Inner Join \(\bowtie\)}
+\subsubsection*{Inner Join \(\bowtie\)}
 
-A \emph{theta join} combines tuples that satisfy a condition.
+It is a \emph{theta join} combines tuples that satisfy a condition.
 
 \[
     S \bowtie_{\theta } T = \sigma_\theta (S \times T)
@@ -230,18 +230,18 @@ A \emph{theta join} combines tuples that satisfy a condition.
 \]
 
 \begin{verbatim}
-SELECT * FROM T INNER JOIN S ON T.a = S.d;
--- or with theta condition:
-SELECT * FROM T INNER JOIN S ON T.a < S.d;
+    SELECT * FROM T INNER JOIN S ON T.a = S.d;
+    -- or with theta condition:
+    SELECT * FROM T INNER JOIN S ON T.a < S.d;
 \end{verbatim}
 
-\paragraph{Equi-Join}
+\subsubsection*{Equi-Join}
 
-An equi-join is a join where the join condition consists only of equality 
+An \emph{equi-join} is a join where the join condition consists only of equality 
 comparisons between attributes of the two relations.
 
 \[
-    R \bowtie_{R.a_1 = S.b_1 \land \dots \land R.a_k = S.b_k} S
+    R \bowtie_{R.a_1 = S.b_1 \land \dots \land R.a_k = S.b_k} S.
 \]
 
 The name and domain of the attributes must be the same.
@@ -251,10 +251,10 @@ The name and domain of the attributes must be the same.
 \]
 
 \begin{verbatim}
-SELECT * FROM T JOIN S ON T.a = S.d AND T.b = S.e;
+    SELECT * FROM T JOIN S ON T.a = S.d AND T.b = S.e;
 \end{verbatim}
 
-\paragraph{Natural Join}
+\subsubsection*{Natural Join}
 
 It is a special case of the equi-join which can only be performed only if there 
 is a common attribute.
@@ -270,11 +270,11 @@ Let \(C = \mathrm{ident}(R) \cap \mathrm{ident}(S)\) be the common attributes.
 \]
 
 \begin{verbatim}
-SELECT * FROM T NATURAL JOIN S;
--- assumes T and S have common column names
+    SELECT * FROM T NATURAL JOIN S;
+    -- assumes T and S have common column names
 \end{verbatim}
 
-\paragraph{Semi-Join}
+\subsubsection*{Semi-Join}
 
 It is a case were we only care about the attribute names but not its values.
 
@@ -295,13 +295,13 @@ Or alternatively:
 where \(C = \mathrm{ident}(R) \cap \mathrm{ident}(S)\).
 
 \begin{verbatim}
-SELECT T.* FROM T WHERE EXISTS 
-  (SELECT 1 FROM S WHERE T.a = S.d);
--- or using IN:
-SELECT * FROM T WHERE a IN (SELECT d FROM S);
+    SELECT T.* FROM T WHERE EXISTS 
+    (SELECT 1 FROM S WHERE T.a = S.d);
+    -- or using IN:
+    SELECT * FROM T WHERE a IN (SELECT d FROM S);
 \end{verbatim}
 
-\paragraph{Anti Semi-Join}
+\subsubsection*{Anti Semi-Join}
 
 In this case, it works very similar to the semi join, but we take the attributes which do not participate in the natural join.
 
@@ -314,69 +314,54 @@ In this case, it works very similar to the semi join, but we take the attributes
 \]
 
 \begin{verbatim}
-SELECT T.* FROM T WHERE NOT EXISTS 
-  (SELECT 1 FROM S WHERE T.a = S.d);
--- or using NOT IN:
-SELECT * FROM T WHERE a NOT IN (SELECT d FROM S);
+    SELECT T.* FROM T WHERE NOT EXISTS 
+    (SELECT 1 FROM S WHERE T.a = S.d);
+    -- or using NOT IN:
+    SELECT * FROM T WHERE a NOT IN (SELECT d FROM S);
 \end{verbatim}
 
-\paragraph{Outer Join}
+\subsubsection*{Outer Join}
 
 Preserves non-matching tuples.
 
-\textbf{Left Outer Join:}
+\emph{Left Outer Join}: It returns all tuples from the left relation and matching tuples from the right relation. 
 
-It returns all tuples from the left relation and matching tuples from the right relation. 
+\emph{Right Outer Join}: It returns all tuples from the right relation and matching tuples from the left relation.
 
-\textbf{Right Outer Join:}
-
-It returns all tuples from the right relation and matching tuples from the left relation.
-
-\textbf{Full Outer Join:}
-
-It returns all tuples from both relations, filling in NULLs for non-matching tuples.
+\emph{Full Outer Join}: It returns all tuples from both relations, filling in NULLs for non-matching tuples.
 
 \begin{verbatim}
--- Left Outer Join:
-SELECT * FROM T LEFT OUTER JOIN S ON T.a = S.d;
+    -- Left Outer Join:
+    SELECT * FROM T LEFT OUTER JOIN S ON T.a = S.d;
 
--- Right Outer Join:
-SELECT * FROM T RIGHT OUTER JOIN S ON T.a = S.d;
+    -- Right Outer Join:
+    SELECT * FROM T RIGHT OUTER JOIN S ON T.a = S.d;
 
--- Full Outer Join:
-SELECT * FROM T FULL OUTER JOIN S ON T.a = S.d;
+    -- Full Outer Join:
+    SELECT * FROM T FULL OUTER JOIN S ON T.a = S.d;
 \end{verbatim}
-
-\textbf{Example (Left Outer Join)}
-
-\begin{tabular}{|c|c|c|}
-\hline
-ID & A.value & B.value \\
-\hline
-1 & X & NULL \\
-2 & Y & Y \\
-\hline
-\end{tabular}
 
 \subsubsection{Division \texorpdfstring{\(\div\)}{}}
 
 Used to express \emph{"for all"} queries. It can only be performed when 
 the relation on the right is a proper subset of the left relation.
 
-Let:
+Let
+
 \begin{itemize}
-\item \(R(X, Y)\)
-\item \(S(Y)\)
+    \item \(R(X, Y)\)
+    
+    \item \(S(Y)\)
 \end{itemize}
 
 Then:
 
 \[
-R \div S = \{x \mid \forall y \in S: (x, y) \in R\}
+    R \div S = \{x \mid \forall y \in S: (x, y) \in R\}
 \]
 
 \[
-R \div S = \pi_{X}(R) \setminus \pi_{X}\left((\pi_{X}(R) \times S) \setminus R\right)
+    R \div S = \pi_{X}(R) \setminus \pi_{X}\left((\pi_{X}(R) \times S) \setminus R\right),
 \]
 
 where \(X = \mathrm{ident}(R) \setminus \mathrm{ident}(S)\).
@@ -386,15 +371,15 @@ where \(X = \mathrm{ident}(R) \setminus \mathrm{ident}(S)\).
 If \(A(id, value)\) contains all values in \(B(value)\), division returns the corresponding ID's.
 
 \begin{verbatim}
--- Find tuples in T that match all tuples in S
-SELECT DISTINCT T.a FROM T 
-WHERE NOT EXISTS (
-  SELECT S.d FROM S 
-  WHERE NOT EXISTS (
-    SELECT * FROM T AS T2 
-    WHERE T2.a = T.a AND T2.b = S.d
-  )
-);
+    -- Find tuples in T that match all tuples in S
+    SELECT DISTINCT T.a FROM T 
+    WHERE NOT EXISTS (
+    SELECT S.d FROM S 
+    WHERE NOT EXISTS (
+        SELECT * FROM T AS T2 
+        WHERE T2.a = T.a AND T2.b = S.d
+    )
+    );
 \end{verbatim}
 
 \subsubsection{Assignment \texorpdfstring{\((=)\)}{}}
@@ -402,15 +387,15 @@ WHERE NOT EXISTS (
 This is just using to store the result of a relational algebra operation.
 
 \begin{verbatim}
--- Create a view or temporary table
-CREATE VIEW Result AS SELECT * FROM T WHERE a > 5;
--- or
-CREATE TEMPORARY TABLE Result AS SELECT * FROM T WHERE a > 5;
+    -- Create a view or temporary table
+    CREATE VIEW Result AS SELECT * FROM T WHERE a > 5;
+    -- or
+    CREATE TEMPORARY TABLE Result AS SELECT * FROM T WHERE a > 5;
 \end{verbatim}
 
 \subsection{Types of Keys}
 
-A \emph{key} is an attribute or combination of attributes (\textbf{composite key}) which uniquely identifies an entity.
+A \emph{key} is an attribute or combination of attributes (composite key) which uniquely identifies an entity.
 
 \begin{itemize}
 
@@ -449,11 +434,11 @@ This is called the \emph{constraint}.
 
 A \emph{functional relation} is dependence between one or more attributes commonly noted \(A \to B\).
 
-Formally, given \(\alpha \subseteq \mathrm{ident}(R)\) and \(\beta \subseteq \mathrm{ident}(R)\) and \(D \subseteq \mathrm{dom}(R)\)
+Formally, given \(\alpha \subseteq \mathrm{ident}(R)\) and \(\beta \subseteq \mathrm{ident}(R)\) and \(D \subseteq \dom(R)\)
 \(\alpha \to \beta\), \(\beta\) is dependent on \(\alpha\) if
 
 \[
-    \forall d_1, d_2 \in D: d_1[\alpha] = d_2[\alpha] \implies d_1[\beta] = d_2[\beta]
+    \forall d_1, d_2 \in D: d_1[\alpha] = d_2[\alpha] \implies d_1[\beta] = d_2[\beta].
 \]
 
 In simple terms the notation \( X \to Y\) means "we know \(Y\) if we know \(X\)".
@@ -463,7 +448,8 @@ so that we still get \(B\).
 
 \subsection{Armstrong Axioms}
 
-For a relation \(R = \{a_1, \dots, a_n\}\) with the schema \(\alpha, \beta, \gamma \subseteq \mathrm{ident}(R)\)
+For a relation \(R = \{a_1, \dots, a_n\}\) with the schema \(\alpha, \beta, \gamma \subseteq \mathrm{ident}(R)\).
+
 The Armstrong axioms are given: 
 
 \begin{enumerate}[label = \Roman*.]
@@ -491,32 +477,35 @@ the starting point.
 
 \textbf{Example:}
 
-\(R = \{A,B,C,D\}\) with \(FD = \{A \to B, B \to C, AB \to CD\}\)
+\(R = \{A,B,C,D\}\) with \(FD = \{A \to B, B \to C, AB \to CD\}\).
 
 \begin{itemize}
+
     \item \(AC(FD, A) = \{A, AB, ABC, ABCD\} = ABCD\)
+
     \item \(AC(FD, B) = \{B, BC\} = BC\)
+
 \end{itemize}
 
-\subsection{Canonical Overlapping}
+\subsection{Canonical Cover}
 
 We consider two sets of functional dependencies if and only if their 
 attribute closures \(FD^+\) are identical.
 
 For a schema \(R\) with a set of functional dependencies \(FD\) we denote \(FC^c\) as 
-\emph{the Canonical Overlapping} of \(FD\) if the following criteria are satisfied: 
+\emph{the canonical cover} of \(FD\) if the following criteria are satisfied: 
 
 \begin{itemize}
 
     \item \(FD^c \cong FD\), \(FD^{c+} = FD^+\)
 
-   \item For all \(\alpha \to \beta \in FD^c\) are minimal in the sense that 
+    \item For all \(\alpha \to \beta \in FD^c\) are minimal in the sense that 
 
         \subitem \(\forall a \in \alpha: FD^c \setminus (\alpha \to \beta) \cup (\alpha \setminus a \to \beta) \ne FD^c\)
         
         \subitem \(\forall b \in \beta: FD^c \setminus (\alpha \to \beta) \cup (\alpha \to \beta \setminus b ) \ne FD^c\)
 
-  \item All left side attributes appear only one time 
+    \item All left side attributes appear only one time 
 
 \end{itemize}
 
@@ -646,7 +635,6 @@ Given a relation which needs to be split into more relations:
 
 A \emph{normalized} table are protected from data inconsistencies and make the tables more readable.
 
-
 \subsubsection*{I Normal Form}
 
 \begin{itemize}
@@ -678,7 +666,6 @@ The relation is in the second normal form if it is already in the first normal f
 \(R = \{A,B,C,D\}, \quad FD = \{A \to B, B \to A, AD \to C\}\)
 
 Candidates \(AD, BD\), not prime attribute \(C\). Thus, it obeys the 2NF.
-
 
 \subsubsection*{III Normal Form} 
 
@@ -745,13 +732,15 @@ while ensuring \emph{lossless join} and \emph{dependency preservation}. The algo
     \end{itemize}
 
     \item For each functional dependency \(\alpha \to \beta \in F_c\), construct a relation schema
+   
     \[
         R_k = \alpha \cup \beta.
     \]
    
     All dependencies whose attributes are contained in \(R_k\) are associated with this schema.
 
-    \item If none of the generated schemas contains a candidate key of the original relation, create an additional schema whose attributes form a candidate key.
+    \item If none of the generated schemas contains a candidate key of the original relation, create an additional schema whose 
+    attributes form a candidate key.
 
     \item If a schema \(R_k\) is completely contained in another schema \(R_m\), remove \(R_k\), since it is redundant.
 
@@ -833,7 +822,8 @@ None of these schemas is contained in another, so all are kept.
 
 \emph{Step 6: Test for candidate keys}
 
-For the original relation \(R = \{A, B, C, D, E\}\), attribute \(E\) does not appear on any right-hand side and must be part of every key.
+For the original relation \(R = \{A, B, C, D, E\}\), attribute \(E\) does not appear on any right-hand side and must be part of 
+every key.
 
 \[
     (BE)^+ = \{A, B, C, D, E\}
@@ -857,7 +847,7 @@ Since no schema contains \(\{B, E\}\), we add:
 
 The \emph{decomposition algorithm} transforms a relation schema into Boyce-Codd Normal Form (BCNF) by repeatedly decomposing 
 relations that violate the BCNF condition. A relation schema \(R\) is in BCNF if for every non-trivial functional dependency 
-\(\alpha \to \beta\) on \(R\), \(\alpha\) is a superkey of \(R\)
+\(\alpha \to \beta\) on \(R\), \(\alpha\) is a superkey of \(R\).
 
 \begin{itemize}
 
@@ -882,13 +872,13 @@ relations that violate the BCNF condition. A relation schema \(R\) is in BCNF if
 Given
 
 \[
-    R = \{A, B, C, D\}
+    R = \{A, B, C, D\},
 \]
 
 with
 
 \[
-    F = \{ A \to B,\; B \to C,\; C \to D \}
+    F = \{ A \to B,\; B \to C,\; C \to D \}.
 \]
 
 \textbf{Step 1: Check BCNF}
@@ -899,9 +889,9 @@ with
 
 Using \(A \to B\), decompose into
 \[
-R_1 = \{A, B\}
-\quad\text{and}\quad
-R_2 = \{A, C, D\}
+    R_1 = \{A, B\}
+    \quad\text{and}\quad
+    R_2 = \{A, C, D\}
 \]
 
 \textbf{Step 3: Check BCNF of \(R_1\)}

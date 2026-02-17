@@ -1295,17 +1295,6 @@ The \emph{radial basis function (RBF) kernel} is defined as
 where \(\sigma > 0\) is a parameter that controls the width of the Gaussian function, and 
 \(\sigma\) is the standard deviation of the Gaussian distribution.
 
-It maps data points into an infinite-dimensional space. The RBF kernel is particularly effective in handling non-linear 
-relationships in data.
-
-The way it works is by measuring the similarity between two data points based on their distance. 
-Points that are closer together in the input space will have a higher similarity score, while points that are farther apart will have a 
-lower score.
-
-The parameter \(\sigma\) controls the width of the Gaussian function. A smaller \(\sigma\) leads to a narrower kernel, meaning that only 
-points very close to each other will have a significant similarity score. Conversely, a larger \(\sigma\) results in a wider kernel, 
-allowing points that are farther apart to have a higher similarity score. The parameter is optimized via cross-validation. 
-
 The infinite-dimensional property comes from the fact that the RBF kernel can be expressed as an infinite series expansion,
 
 \[

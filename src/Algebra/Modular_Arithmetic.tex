@@ -4,7 +4,7 @@
 We define an equivalence relation 
 
 \[
-    a \cong b \mod n \iff n | (a - b) \land  a,b \in \Z
+    a \cong b \mod n \iff n | (a - b) \land  a,b \in \Z.
 \]
 
 Means that both have the same residual when divided by \(n\). 
@@ -12,7 +12,7 @@ Means that both have the same residual when divided by \(n\).
 \subsection{Residual-class  and Residual-class Rings}
 
 Because we have an equivalence relation we can classify the partitions of our set \(\Z\) into classes which we will 
-call \emph{Residual-classes}. 
+call \emph{residual classes}. 
 
 \textbf{Example:}
 
@@ -22,28 +22,27 @@ call \emph{Residual-classes}.
 
 The set of all Residual-classes can be written as \(\Z / n \Z\) where \(n\) is the modulo. 
 
-
 \subsection{Properties}
 
-\emph{Addition}
+\subsubsection*{Addition}
 
 \[
     (a + b) \mod n = (a \mod n + b \mod n) \mod n
 \]
 
-\emph{Multiplication}
+\subsubsection*{Multiplication}
 
 \[
     (a * b) \mod n = (a \mod n * b \mod n) \mod n
 \]
 
-\emph{Exponentiation}
+\subsubsection*{Exponentiation}
 
 \[
     (a^m) \mod n = ({(a \mod n)}^n) \mod n
 \]
 
-\emph{Division}
+\subsubsection*{Division}
 
 \[
     \left(\frac{a}{b}\right) \mod n \ne  \frac{a \mod n}{b \mod n}
@@ -51,7 +50,7 @@ The set of all Residual-classes can be written as \(\Z / n \Z\) where \(n\) is t
 
 \subsection{General Division Rules}
 
-\subsubsection{Sum Rules}
+\subsubsection*{Sum Rules}
 
 If the number \(a\) can be expressed as a sum and \(b\) is a common divisor of all the terms, 
 then \(b\) is also a divisor of \(a\).
@@ -60,7 +59,7 @@ then \(b\) is also a divisor of \(a\).
 
 \( 742 = 700 + 42 \). Then 7, as a common divisor of 700 and 42, is a divisor of 742.
 
-\subsubsection{Product Rule}
+\subsubsection*{Product Rule}
 
 If the number \(a\) can be written as a product of two factors and \(b\) is a divisor of one of these 
 factors, then \(b\) is also a divisor of \(a\).
@@ -70,7 +69,7 @@ factors, then \(b\) is also a divisor of \(a\).
 \( 1500 = 15 \cdot 100 \). Then 3 and 5 are divisors of 15, and 2, 4, 5, 10, 25, and 50 are divisors of 
 100—thus, all are divisors of 1500.
 
-\subsubsection{Divisor Pair Rules}
+\subsubsection*{Divisor Pair Rules}
 
 If the number \(a\) has \(b\) as a divisor, then \( \frac{a}{b} \) is also a divisor of \(a\).
 
@@ -78,7 +77,7 @@ If the number \(a\) has \(b\) as a divisor, then \( \frac{a}{b} \) is also a div
 
 3 is a divisor of 315. Then \( 105 = \frac{315}{3} \) is also a divisor of 315.
 
-\subsubsection{Divisor Rule}
+\subsubsection*{Divisor Rule}
 
 If the number \(a\) has \(b\) as a divisor, then every divisor of \(b\) is also a divisor of 
 \(a\).
@@ -87,19 +86,19 @@ If the number \(a\) has \(b\) as a divisor, then every divisor of \(b\) is also 
 
 45 is a divisor of 450. Then 3, 5, 9, and 15 (divisors of 45) are also divisors of 450.
 
-\subsubsection{Difference Rule}
+\subsubsection*{Difference Rule}
 
 If the number \(a\) can be expressed as a difference and \(b\) is a common divisor of the minuend 
-and subtrahend, then \(b\) is also a divisor of \(a\). \\
+and subtrahend, then \(b\) is also a divisor of \(a\).
 
 \textbf{Example:}
 
 \( 686 = 700 - 14 \). Then 7, as a common divisor of 700 and 14, is a divisor of 686.
 
-\subsubsection{Relative Prime Rule}
+\subsubsection*{Relative Prime Rule}
 
 If the number \(a\) has two relatively prime numbers \(b\) and \( c \) as divisors, then their 
-product \( b \cdot c \) is also a divisor of \(a\). \\
+product \( b \cdot c \) is also a divisor of \(a\).
 
 \textbf{Example:}
 
@@ -110,18 +109,20 @@ of 1540.
 
 What is the last digit of the number \(13^{2023}\)
 
-Note that \(13 \mod 10 = 3\) and  \(13^2 \mod 10 =  ((13 \mod 10)  (13\mod 10)) \mod 10 = 9 \)
+Note that \(13 \mod 10 = 3\) and  \(13^2 \mod 10 =  ((13 \mod 10)  (13\mod 10)) \mod 10 = 9 \).
 
 We can continue this process, and we will notice a pattern. After some iteration we will now that
 
-\[(13^{2020} 13) \mod 10 = 7\]
+\[
+    (13^{2020} 13) \mod 10 = 7.
+\]
 
 \subsection{Gaussian Brackets}
 
 The Gaussian brackets refer to two closely related functions used to round real numbers to integers 
 in specific ways:
 
-\emph{Floor Function}
+\subsubsection*{Floor Function}
 
 The floor function, denoted by \(\lfloor x \rfloor\), gives the greatest integer less than or equal 
 to a real number \(x\).
@@ -130,7 +131,7 @@ to a real number \(x\).
 
 \(\lfloor 3.7 \rfloor = 3\), \(\lfloor -1.2 \rfloor = -2\)
 
-\emph{Ceiling Function} 
+\subsubsection*{Ceiling Function} 
     
 The ceiling function, denoted by \(\lceil x \rceil\), gives the smallest integer greater than or 
 equal to a real number \(x\).
@@ -147,7 +148,7 @@ and rounding operations, where precise integer bounds of real numbers are requir
 Given \(n \in \N\). We define the relation \(\sim_n\) for \(\Z\).
 
 \[
-    a \sim b \iff n mid (a - b)
+    a \sim b \iff n mid (a - b).
 \]
 
 Also, \(a / n\) and \(b / n\) have the same residual 
@@ -163,7 +164,7 @@ For \(i, n \in \Z\)
 and 
 
 \[
-    \Z_N = \Z / n \Z = \{\overline{0}:= n \Z, \overline{1}:= 1 + n \Z, \dots, \overline{n - 1} := n - 1 + n \Z \}    
+    \Z_N = \Z / n \Z = \{\overline{0}:= n \Z, \overline{1}:= 1 + n \Z, \dots, \overline{n - 1} := n - 1 + n \Z \},
 \]
 
 is the set of all equivalence relationships for \(\Z\) with respect to the relation 
@@ -181,6 +182,6 @@ representatives
 For all \(a, b \in \Z\). Therefore, 
 
 \[
-    \overline{a} + \overline{b} = \overline{a + b}, \quad \overline{a} \cdot \overline{b} = \overline{ab}
+    \overline{a} + \overline{b} = \overline{a + b}, \quad \overline{a} \cdot \overline{b} = \overline{ab}.
 \]
 

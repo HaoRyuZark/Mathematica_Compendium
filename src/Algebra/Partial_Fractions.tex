@@ -12,7 +12,7 @@ In the most common partial fraction decomposition, we split:
 into a sum of the form:
 
 \[
-    \frac{A_1}{x - a_1} + \cdots + \frac{A_d}{x - a_d}
+    \frac{A_1}{x - a_1} + \cdots + \frac{A_d}{x - a_d}.
 \]
 
 We now show that this decomposition can always be achieved, under the assumption that the \(a_i\) are 
@@ -25,7 +25,7 @@ Suppose that \(a\) is not a root of \(D(x)\). Then there exists a polynomial \(P
 and a number \(A\) such that:
 
 \[
-    \frac{N(x)}{D(x)(x - a)} = \frac{P(x)}{D(x)} + \frac{A}{x - a}
+    \frac{N(x)}{D(x)(x - a)} = \frac{P(x)}{D(x)} + \frac{A}{x - a}.
 \]
 
 \textbf{Proof:} 
@@ -33,17 +33,17 @@ and a number \(A\) such that:
 Let \(z = x - a\). Define:
 
 \[
-    \tilde{N}(z) = N(z + a), \quad \tilde{D}(z) = D(z + a)
+    \tilde{N}(z) = N(z + a), \quad \tilde{D}(z) = D(z + a).
 \]
 
-Then:
+Then
 
 \[
     \frac{\tilde{N}(z)}{\tilde{D}(z)z} = \frac{\tilde{P}(z)}{\tilde{D}(z)} + \frac{A}{z}
     \Rightarrow \frac{\tilde{P}(z)z + A\tilde{D}(z)}{\tilde{D}(z)z}
 \]
 
-We equate:
+We equate
 
 \[
     \tilde{P}(z)z + A\tilde{D}(z) = \tilde{N}(z)
@@ -60,28 +60,28 @@ Thus, \(\tilde{P}(z)\) is a polynomial of degree \(< d\).
 
 \subsubsection{Recursive Decomposition}
 
-Now, consider:
+Now, consider
 
 \[
-    \frac{N(x)}{(x - a_1)(x - a_2)\cdots(x - a_d)}
+    \frac{N(x)}{(x - a_1)(x - a_2)\cdots(x - a_d)}.
 \]
 
-Apply Lemma 1 recursively:
+Apply Lemma 1 recursively
 
 \[
-    \frac{N(x)}{(x - a_1)\cdots(x - a_d)} = \frac{A_1}{x - a_1} + \frac{P(x)}{(x - a_2)\cdots(x - a_d)}
+    \frac{N(x)}{(x - a_1)\cdots(x - a_d)} = \frac{A_1}{x - a_1} + \frac{P(x)}{(x - a_2)\cdots(x - a_d)}.
 \]
 
-Then:
+Then
 
 \[
-    \frac{P(x)}{(x - a_2)\cdots(x - a_d)} = \frac{A_2}{x - a_2} + \frac{Q(x)}{(x - a_3)\cdots(x - a_d)}
+    \frac{P(x)}{(x - a_2)\cdots(x - a_d)} = \frac{A_2}{x - a_2} + \frac{Q(x)}{(x - a_3)\cdots(x - a_d)}.
 \]
 
-Continue until:
+Continue until
 
 \[
-    \frac{N(x)}{(x - a_1)\cdots(x - a_d)} = \frac{A_1}{x - a_1} + \cdots + \frac{A_d}{x - a_d}
+    \frac{N(x)}{(x - a_1)\cdots(x - a_d)} = \frac{A_1}{x - a_1} + \cdots + \frac{A_d}{x - a_d}.
 \]
 
 \subsection{Lemma 2}
@@ -92,7 +92,7 @@ numbers \(A_1, \dots, A_m\) such that
 
 \[
     \frac{N(x)}{D(x) {(x-a)}^m} = \frac{P(x)}{D(x)} + \frac{A_1}{x-a} + \frac{A_2}{{(x-a)}^2} + \cdots + 
-    \frac{A_m}{{(x-a)}^m}
+    \frac{A_m}{{(x-a)}^m}.
 \]
 
 \textbf{Proof:} 
@@ -122,7 +122,7 @@ Recall that \(\tilde{D}(0) \neq 0\). Now move \(A_m \tilde{D}(z)\) to the right-
 
 \[
     \tilde{P}(z)z^m + A_1 z^{m-1} \tilde{D}(z) + A_2 z^{m-2} \tilde{D}(z) + \cdots + A_{m-1} z 
-    \tilde{D}(z) = \tilde{N}(z) - A_m \tilde{D}(z)
+    \tilde{D}(z) = \tilde{N}(z) - A_m \tilde{D}(z).
 \]
 
 The constant terms in \(\tilde{N}(z)\) and \(A_m \tilde{D}(z)\) are the same, so the right-hand side 
@@ -132,24 +132,24 @@ a polynomial of degree at most \(d + m - 2\). (Recall that \(\tilde{N}\) is of d
 
 \[
     \tilde{P}(z)z^{m-1} + A_1 z^{m-2} \tilde{D}(z) + A_2 z^{m-3} \tilde{D}(z) + \cdots + A_{m-1} 
-    \tilde{D}(z) = \tilde{N}_1(z)
+    \tilde{D}(z) = \tilde{N}_1(z).
 \]
 
 Now, we can repeat the previous argument. The constant term on the left-hand side, which
 is exactly \(A_{m-1} \tilde{D}(0)\) matches the constant term on the right-hand side, which is 
 \(\tilde{N}_1(0)\) if we choose \(A_{m-1} = \frac{\tilde{N}_1(0)}{\tilde{D}(0)}\). With this choice of 
-\(A_{m-1}\)
+\(A_{m-1}\).
 
 \[
     \tilde{P}(z)z^{m-1} + A_1 z^{m-2} \tilde{D}(z) + A_2 z^{m-3} \tilde{D}(z) + \cdots + A_{m-2} z 
-    \tilde{D}(z) = \tilde{N}_1(z) - A_{m-1} \tilde{D}(z) = \tilde{N}_2(z)z
+    \tilde{D}(z) = \tilde{N}_1(z) - A_{m-1} \tilde{D}(z) = \tilde{N}_2(z)z.
 \]
 
 With \(\tilde{N}_2\) a polynomial of degree at most \(d + m - 3\). Divide by \(z\) and continue. 
 After \(m\) steps like this, we end up with
 
 \[
-    \tilde{P}(z)z = \tilde{N}_{m-1}(z) - A_1 \tilde{D}(z)
+    \tilde{P}(z)z = \tilde{N}_{m-1}(z) - A_1 \tilde{D}(z).
 \]
 
 After having chosen \(A_1 = \frac{\tilde{N}_{m-1}(0)}{\tilde{D}(0)}\). There is no constant term on the 
@@ -160,7 +160,7 @@ the proof.
 Now back to
 
 \[
-    \frac{N(x)}{{(x-a_1)}^{n_1} \times \cdots \times {(x-a_d)}^{n_d}}
+    \frac{N(x)}{{(x-a_1)}^{n_1} \times \cdots \times {(x-a_d)}^{n_d}}.
 \]
 
 Apply Lemma 2, with \(D(x) = {(x - a_2)}^{n_2} \times \cdots \times {(x - a_d)}^{n_d}\), \(m = n_1\) and 
@@ -169,7 +169,7 @@ Apply Lemma 2, with \(D(x) = {(x - a_2)}^{n_2} \times \cdots \times {(x - a_d)}^
 \[
     \frac{N(x)}{{(x-a_1)}^{n_1} \times \cdots \times {(x-a_d)}^{n_d}} = \frac{P(x)}{{(x-a_2)}^{n_2} 
     \times \cdots \times {(x-a_d)}^{n_d}} + \frac{A_{1,1}}{x-a_1} + \frac{A_{1,2}}{{(x-a_1)}^2} + \cdots + 
-    \frac{A_{1,n_1}}{{(x-a_1)}^{n_1}}
+    \frac{A_{1,n_1}}{{(x-a_1)}^{n_1}}.
 \]
 
 Apply Lemma 2 a second time, with \(D(x) = {(x - a_3)}^{n_3} \times \cdots \times {(x - a_d)}^{n_d}\), 
@@ -178,5 +178,5 @@ Apply Lemma 2 a second time, with \(D(x) = {(x - a_3)}^{n_3} \times \cdots \time
 \[
     \frac{N(x)}{{(x-a_1)}^{n_1} \times \cdots \times {(x-a_d)}^{n_d}} = \left[ \frac{A_{1,1}}{x-a_1} + 
     \cdots + \frac{A_{1,n_1}}{{(x-a_1)}^{n_1}} \right] + \cdots + \left[ \frac{A_{d,1}}{x-a_d} + \cdots + 
-    \frac{A_{d,n_d}}{{(x-a_d)}^{n_d}} \right]
+    \frac{A_{d,n_d}}{{(x-a_d)}^{n_d}} \right].
 \]

@@ -1,14 +1,13 @@
 \newpage
 \section{The Binomial Coefficient}
 
-In this short section we will cover the definition and Properties of the binomial coefficient
-without going to deep into the combinatorics meaning or Pascal's Triangle.
+In this short section we will cover the definition and Properties of the \emph{binomial coefficient}.
 
 \[
-    \binom{n}{k} := \frac{n!}{k!(n-k)!}
+    \binom{n}{k} := \frac{n!}{k!(n-k)!},
 \]
 
-or as Product 
+or as a product 
 
 \[
     \prod_{j = 1}^{n} \frac{n-k+j}{j},
@@ -16,7 +15,7 @@ or as Product
 
 with \(n\) and \(k\) as natural numbers (for the moment).
 
-\subsection{Properties}
+\subsubsection*{Properties}
 
 \begin{itemize}
     
@@ -42,24 +41,24 @@ with \(n\) and \(k\) as natural numbers (for the moment).
     (a + b)^n =\sum_{k = 0}^{n} \binom{n}{k}a^{n - k}b^k
 \]
 
-
 \textbf{Proof:}
 
 We will prove that the inequality holds for any \(n\). 
 
-For \(n\) we have \( (a + b)^n =\sum_{k = 0}^{n} \binom{n}{k}a^{n - k}b^k\)
+For \(n\) we have \( (a + b)^n =\sum_{k = 0}^{n} \binom{n}{k}a^{n - k}b^k\).
 
-For \(n + 1\) we get 
+For \(n + 1\) we get:
 
 \[
-    (a + b)^{n + 1} =\sum_{k = 0}^{n + 1} \binom{n + 1}{k}a^{n + 1 - k}b^k
+    (a + b)^{n + 1} =\sum_{k = 0}^{n + 1} \binom{n + 1}{k}a^{n + 1 - k}b^k.
 \]
 
 Now let us manipulate the expression to demonstrate our theorem.
-Assume that the statement is true for some integer \(n \ge 0\), i.e.
+
+Assume that the statement is true for some integer \(n \ge 0\).
 
 \[
-    (a+b)^n = \sum_{k=0}^n \binom{n}{k} a^{\,n-k} b^{\,k}.
+    (a+b)^n = \sum_{k=0}^n \binom{n}{k} a^{n-k} b^{k}.
 \]
 
 Now for some greater \(n\)
@@ -71,17 +70,17 @@ Now for some greater \(n\)
 Using the induction hypothesis,
 
 \[
-    (a+b)^{n+1} = (a+b) \sum_{k=0}^n \binom{n}{k} a^{\,n-k} b^{\,k}.
+    (a+b)^{n+1} = (a+b) \sum_{k=0}^n \binom{n}{k} a^{n-k} b^{k}.
 \]
 
-Distribute:
+We distribute 
 
 \[
     (a+b)^{n+1} = \sum_{k=0}^n \binom{n}{k} a^{\,n+1-k} b^{\,k}
     + \sum_{k=0}^n \binom{n}{k} a^{\,n-k} b^{\,k+1}.
 \]
 
-In the second sum, change the index of summation by setting $j = k + 1$, then rename $j$ back to $k$:
+In the second sum, change the index of summation by setting \(j = k + 1\), then rename \(j\) back to \(k\):
 
 \[
     \sum_{k=0}^n \binom{n}{k} a^{\,n-k} b^{\,k+1}
@@ -93,10 +92,10 @@ Now combine both sums:
 \[
     (a+b)^{n+1} = \sum_{k=0}^{n+1} 
     \left( \binom{n}{k} + \binom{n}{k-1} \right)
-    a^{\,n+1-k} b^{\,k},
+    a^{n+1-k} b^{k},
 \]
 
-where we use the convention \(\binom{n}{k} = 0$ for $k < 0$ or $k > n\).
+where we use the convention \(\binom{n}{k} = 0\) for \(k < 0\) or \(k > n\).
 
 By \emph{Pascal’s Identity},
 
@@ -111,3 +110,45 @@ Therefore,
 \]
 
 \QED
+
+\subsection{Pascals Triangle}
+
+This is a triangle build by the formula \(\binom{n + 1}{k + 1} = \binom{n}{k}\binom{n}{k + 1}\).
+
+\begin{center}
+    \begin{tabular}{>{$n=}l<{$\hspace{12pt}}*{13}{c}}
+    0 &&&&&&&1&&&&&&\\
+    1 &&&&&&1&&1&&&&&\\
+    2 &&&&&1&&2&&1&&&&\\
+    3 &&&&1&&3&&3&&1&&&\\
+    4 &&&1&&4&&6&&4&&1&&\\
+    5 &&1&&5&&10&&10&&5&&1&\\
+    6 &1&&6&&15&&20&&15&&6&&1
+    \end{tabular}
+\end{center}
+\vspace{1cm}
+
+Here is the triangle but with the binomial coefficients.
+
+\begin{center}
+    \begin{tabular}{>{$n=}l<{$\hspace{12pt}}*{13}{c}}
+    0 &&&&&&&\(\binom{0}{0}\)&&&&&&\\
+    1 &&&&&&\(\binom{1}{0}\)&&\(\binom{1}{1}\)&&&&&\\
+    2 &&&&&\(\binom{2}{0}\)&&\(\binom{2}{1}\)&&\(\binom{2}{2}\)&&&&\\
+    3 &&&&\(\binom{3}{0}\)&&\(\binom{3}{1}\)&&\(\binom{3}{2}\)&&\(\binom{3}{3}\)&&&\\
+    \end{tabular}
+\end{center}
+
+It can be used with the Binomial Theorem to get the Coefficients of a polynomial of degree \(n\).
+
+\textbf{Example:}
+
+\[
+    {(a + b)}^2 = 1 a^2b^0 + 2a^1b^1 + 1a^0b^2,
+\]
+
+or
+
+\[
+    {(a - b)}^2 = 1 a^2b^0 - 2a^1b^1 + 1a^0b^2.
+\]

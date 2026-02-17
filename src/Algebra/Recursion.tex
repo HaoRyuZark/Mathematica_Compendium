@@ -1,7 +1,7 @@
 \newpage
 \section{Recursion}
 
-Recursion is term used to refer to a thing define in terms
+\emph{Recursion} is term used to refer to a thing define in terms
 of itself. An example the factorial \(n! = (n - 1)\)! with \(0! = 1\) being the
 base case where the recursion stops.
 
@@ -13,7 +13,23 @@ A sequence defined recursively can often be rewritten in an explicit or closed f
 
 \emph{Closed form} expresses \( a_n \) directly in terms of \(n\), with no reference to previous terms.
 
-\subsubsection{General Method (when linear):}
+\subsection{Linear Recursion}
+
+A linear recurrence has the form:
+
+\begin{align*}
+    a_n & = \lambda a_{n -1} + c \\
+    a_1 & = \lambda a_0 + c \implies a_2 = \lambda (\lambda a_0 + c) + c \\
+    \implies a_n & = \lambda^n a_0 + (1 + \lambda + \lambda^2 + \cdots + \lambda^{n - 1})c.
+\end{align*}
+
+Therefore,
+
+\[
+    a_n = \lambda^n a_0 + \frac{\lambda^n - 1}{\lambda - 1}c.
+\]
+
+\subsubsection{General Method for Linear Recursion}
 
 \begin{enumerate}
 
@@ -28,21 +44,6 @@ A sequence defined recursively can often be rewritten in an explicit or closed f
 
 \end{enumerate}
 
-\subsection{Linear Recursion}
-
-A linear recurrence has the form:
-
-\begin{align*}
-    a_n & = \lambda a_{n -1} + c \\
-    a_1 & = \lambda a_0 + c \implies a_2 = \lambda (\lambda a_0 + c) + c \\
-    \implies a_n & = \lambda^n a_0 + (1 + \lambda + \lambda^2 + \cdots + \lambda^{n - 1})c
-\end{align*}
-
-Therefore,
-
-\[
-    a_n = \lambda^n a_0 + \frac{\lambda^n - 1}{\lambda - 1}c
-\]
 
 \subsection{Recursive Inequalities}
 
@@ -53,10 +54,10 @@ A \emph{recursive inequality} bounds a sequence rather than defines it exactly.
 Suppose
 
 \[
-    a_{n+1} \le \frac{1}{2} a_n + 3
+    a_{n+1} \le \frac{1}{2} a_n + 3.
 \]
 
-To analyze:
+To analyze
 
 \begin{itemize}
 
@@ -72,22 +73,22 @@ These techniques are common in analysis, approximation, and numerical algorithms
 
 \subsection{Fibonacci Numbers and Closed Form}
 
-The Fibonacci sequence is defined recursively:
+The Fibonacci sequence is defined recursively
 
 \[
-    F_0 = 0, \quad F_1 = 1, \quad F_n = F_{n-1} + F_{n-2}
+    F_0 = 0, \quad F_1 = 1, \quad F_n = F_{n-1} + F_{n-2}.
 \]
 
 The characteristic equation is:
 
 \[
-    x^2 - x - 1 = 0 \Rightarrow x = \varphi = \frac{1 + \sqrt{5}}{2}, \quad \psi = \frac{1 - \sqrt{5}}{2}
+    x^2 - x - 1 = 0 \Rightarrow x = \varphi = \frac{1 + \sqrt{5}}{2}, \quad \psi = \frac{1 - \sqrt{5}}{2}.
 \]
 
-The closed form (Binet’s Formula) is:
+The closed form (Binet’s Formula) is
 
 \[
-    F_n = \frac{1}{\sqrt{5}} \left( \varphi^n - \psi^n \right)
+    F_n = \frac{1}{\sqrt{5}} \left( \varphi^n - \psi^n \right).
 \]
 
 \begin{itemize}

@@ -20,10 +20,6 @@ Here is a list of common symbols for set theory.
 
 \begin{itemize}
 
-	\item \emph{Empty set (\(\emptyset\))}: The set that contains no elements. It is the unique set with 
-	      zero elements. Every statement with \(\forall x \in \emptyset\) is true, because there are no counterexamples. This leads to interesting 
-		  equalities like \(\mathcal{U} = \emptyset\).
-
 	\item \(A \subseteq B\): Set \(A\) is a subset of \(B\). This means every element of 
 		  \(A\) is also in \(B\).
 
@@ -187,46 +183,6 @@ Note that this set would need to be finite because it there is only a limited am
 for example say: 'the natural number which can not be described in less than 20 words' this number. This is again an example of an element in 
 a set if and only if it is not in the set. To formalize our conditions we 
 
-\subsection{Axioms of Set Theory (Zermelo Fraenkel)}
-
-These are Zermelo Fraenkel axioms of set theory including \emph{The Axiom of Choice}.
-
-\begin{enumerate}[label = \Roman*.]
-	
-	\item \emph{Axiom of Extensionality:} \quad \(\forall A, B: A = B \implies (\forall C: C \in A 
-	      \iff C \in B)\)
-	
-	\item \emph{Empty-Set Axiom:} \quad \(\exists \emptyset : \forall X: X \notin \emptyset\)
-	
-	\item \emph{Axiom of Class Construction:} \quad Let \(P(x)\) be a statement about \(x\) which can be expressed in terms of \(\in, \land, \lor ,\neg, \implies, \exists, \forall \) 
-	with variables \(x,y,z,\dots\) then there exists a class \(C\) whose elements consist of all the elements \(x\) which satisfy \(P(x)\). \(\{x : P(x)\}\)
-	
-	\item \emph{Axiom of Pairing:} \quad \(\forall A, B: \exists C: \forall D: D \in C \iff (D = A \lor 
-	      D = B)\)	
-	
-	\item \emph{Axiom of Union:} \quad \(\forall A: \exists B: \forall C: C \in B \iff (\exists D: C 
-	      \in D \land D \in A)\)
-	
-	\item \emph{Axiom of Infinity:} \quad \(\exists N: \emptyset \in N \land (\forall x: x \in N \implies 
-	      x \cup \{x\} \in N)\)
-	
-	\item \emph{Axiom Schema of Specification:} \quad \(\forall A: \exists B: \forall C: C \in B \iff 
-	      (C \in A \land P(C))\)
-	
-	\item \emph{Axiom Schema of Replacement:} \quad \(\forall A: \exists B: \forall y: y \in B \implies 
-	      \exists x \in A: y = F(x)\)
-	
-	\item \emph{Power Set Axiom:} \quad \(\forall A: \exists B: \forall C: C \subseteq A \implies C \in B\)
-	
-	\item \emph{Foundation Axiom:} \quad \(\forall A \ne \emptyset: \exists B \in A: A \cap B = \emptyset\)
-	
-	\item \emph{Axiom of Choice:} \quad \(\forall X:
-		      \left( \left[ \forall A \in X: A \ne \emptyset \right] \land
-		      \left[ \forall B, C \in X: B \ne C \implies B \cap C = \emptyset \right] \right) \\
-		      \qquad \implies \exists Y: \forall I \in X: \exists! J \in Y: J \in I\)
-
-\end{enumerate}
-
 \subsection{Sets and Classes}
 
 One important distinction is the system of Neumann is notion difference between a \emph{set} and \emph{class}.
@@ -234,20 +190,28 @@ Classes can not be contained inside sets, while sets can. Formally:
 
 If \(X \in Y\) for some class \(Y\) then \(X\) is a set. If \(X \notin Y\) for any class \(Y\) then \(X\) is a class.
 
-\textbf{Example Proof:}
+\subsection{Axioms of Set Theory}
 
-Given a proper class \(A \subseteq B\) prove that \(B\) is a proper class and that the union of two proper classes is also 
-a proper class. 
+\begin{enumerate}[label = \Roman*.]
+	
+	\item \emph{Axiom of Equality}: Let \(A\) and \(B\) be classes then \(A = B \iff \forall X : A \in X \implies B \in X \land B \in X \implies A \in X\)
 
-Given \(A \subseteq B\) if \(A\) would be a subset of \(B\) would this means that \(A \in Y\) which leads to the contradiction that 
-\(A\) can not be proper class which leads to the conclusion that \(A = B\) and thus \(B\) is a proper class. 
+	\item \emph{Empty-Set Axiom}: \(\emptyset\) is a set. 
+	
+	\item \emph{Axiom of Class Construction}: Let \(P(x)\) be a statement about \(x\) which can be expressed in terms of \(\in, \land, \lor ,\neg, \implies, \exists, \forall \) 
+	with variables \(x,y,z,\dots\) then there exists a class \(C\) whose elements consist of all the elements \(x\) which satisfy \(P(x)\). \(\{x : P(x)\}\)
+	
+	\item \emph{Axiom of Subset}: Every subclass of a set is a set.
 
-Proceeding, \(A \subseteq A \cup C\) given \(A\) and \(C\) are proper classes. We arrive with the same argument that \(A \cup C\) has to 
-be proper class due to it being \(A\) itself.
+	\item \emph{Axiom of Union}: Is \(a\) and \(b\) are sets, then \(\{a, b\}\) is a set
 
-\subsection{The Universal Class}
+	\item \emph{Axiom of the Big Union}: If \(A\) is a set of sets, then \(\bigcup_{a \in A} a\) is a set.
 
-By the axiom of construction we define \(\mathcal{U}\) with \(P(x)\) is \(x = x\) as the \emph{universal class} of all elements.
+	\item \emph{Axiom of the Power Set}: If \(A\) is a set then \(\mathcal{P}(A)\) is a set.
+
+	\item \emph{Axiom of Foundation}: If \(A\) is any set, there is an element \(a \in A\) such that \(a \cap A = \emptyset\)
+
+\end{enumerate}
 
 \subsubsection*{Proofs Using the Axioms}
 
@@ -266,9 +230,36 @@ By the axiom of construction we define \(\mathcal{U}\) with \(P(x)\) is \(x = x\
 	\item \(\emptyset \subseteq A\): By definition \(x \in \emptyset \implies x \in A\), by contrapositive \(x \notin A \implies x notint \emptyset\). This is true 
 	because of the contrapositive being true.
 
+	\item Given a proper class \(A \subseteq B\) prove that \(B\) is a proper class and that the union of two proper classes is also a proper class. 
+	
+	Given \(A \subseteq B\), if \(B\) would be not be a proper class then by the property which states that every subclass of a class 
+	is a set we would have a contradiction. Therefore, \(B\) is a proper class.
+
+	\(A \cap C\) were \(A\) and \(C\) are proper classes, gives us that their union is also a proper class due to \(A, C \subseteq A \cup C\)
+
 \end{itemize}
 
 \QED 
+
+\subsection{The Universal Class}
+
+By the axiom of construction we define \(\mathcal{U}\) with \(P(x)\) is \(x = x\) as the \emph{universal class} of all elements.
+
+It also as the following property
+
+\[
+	A \subseteq \mathcal{U},
+\]
+
+which gives us the following: \(A \cup \mathcal{U} = \mathcal{U}\) and \(A \cap \mathcal{U} = A\) for any class or set \(A\).
+
+\subsection{The Empty Set}
+
+The set that contains no elements \(\emptyset\). It is the unique set with 
+zero elements. Every statement with \(\forall x \in \emptyset\) is true, because there are no counterexamples. 
+This leads to interesting equalities like \(\mathcal{U} = \emptyset\).
+
+It also has the property that \(\emptyset \subseteq A\) for any class or set \(A\).
 
 \subsection{Set Complement Proof}
 
@@ -276,33 +267,6 @@ Given \(A, B \subseteq M\) then \(A \subseteq B \implies B^c \subseteq A^c\)
 
 For some \(x \in B^c\) we know that \(x \notin B\). If \(x \in A\) then \(x \in B\) which is a contradiction. 
 Hence, \(x \notin A\) therefore, for every \(x \in B^c\) we conclude \(B^c \subseteq A^c\).
-
-\QED
-
-\subsection{Equality of Sets}
-
-To prove that two sets are equal the following property is very useful.
-
-\[
-	A = B \iff A \subseteq B \land B \subseteq A
-\]
-
-\textbf{Proof:}
-
-For the case \(A \subseteq B\)
-
-\[
-	x \in A \implies x \in B 
-\]
-
-Also, for the case \(B \subseteq A \)
-
-\[
-	x \in B \implies x \in A 
-\]
-
-If both statements are true on the same time then every element in \(A\) is also in \(B\) and vice versa.
-The other way of the equivalence is trivial.
 
 \QED
 
@@ -372,6 +336,78 @@ the definition of the subset. Then this tells us that \(\forall x \in A \cap B: 
 
 \QED 
 
+\subsection{The Singleton and Doubleton}
+
+We define the \emph{singleton} as 
+
+\[
+	\{a\} := \{x \mid x = a\},
+\]
+
+and the \emph{doubleton} as
+
+\[
+	\{a, b\} := \{x \mid x = a \lor x = b\},
+\]
+
+\subsubsection*{Properties}
+
+\begin{itemize}
+
+	\item \(\{a\} = \{b\} \iff a = b\)
+	
+	\item \(\{a, b\} = \{a\} \iff a = b\)
+
+	\item \(\{a, b\} = \{x, y\} \iff (a = x \land b = y) \lor (a = y \land b = x)\)
+
+\end{itemize}
+
+\textbf{Proofs:}
+
+\(\{a\} = \{b\} \iff a = b\), by the axiom of the equality of sets if 
+
+\[
+	\exists x \in \{a\}: x \notin \{b\} \implies \{a\} \neq \{b\},
+\]
+
+which is a contradiction to our condition thus \(a = b\). Similarly, we can use the same argument for the other 
+direction of the proof.
+
+\QED 
+
+\(\{a, b\} = \{a\} \iff a = b\) can be proven using the definition and the equivalence \(P \lor P = P\)
+
+\[
+	\{a, b\} := \{x \mid x = a \lor x = a\} \implies \{x \mid x = a\}
+\]
+
+\QED
+
+\(\{a, b\} = \{x, y\} \iff (a = x \land b = y) \lor (a = y \land b = x)\), we need to first the case \(a = b\). In 
+that case our problems simplifies to \(\{a\} = \{x, y\}\) which by the axiom guarantees the equality for \(\{a\} = \{x\} \lor \{a\} = \{y\}\) 
+because otherwise we will arrive at a contradiction.
+
+For the case \(a \neq b\) we have the following cases \((x = a \land y = b) \lor (x = b \land y = a)\) which against by the use of the axiom of 
+the equality we can discard the cases where the equality does not hold.
+
+\QED
+
+\subsection{Ordered Pair}
+
+Let \(A\) and \(B\) be two non-empty sets and \(m \in A, n \in B\). We define 
+
+\[
+	(m,n) := \{\{m, n\}, {m}\}	
+\]
+
+and 
+
+\[
+	(n,m) := \{\{m, n\}, {n}\}	
+\]
+
+as ordered pairs which are elements of \(A \times B\) and \(B \times A\) respectively.
+
 \subsection{The Cartesian Product}
 
 The Cartesian product of two sets \(A\) and \(B\), written \(A \times B\), is the set of 
@@ -412,22 +448,6 @@ The general Cartesian product of \(n\) sets can be written as:
 	M^n                   & := M \times M \times \cdots \times M = X_{i = 1}^{n} M \quad \text{with} \quad M^1 = M
 \end{align*}
 
-\subsubsection{Ordered Pair}
-
-Let \(A\) and \(B\) be two non-empty sets and \(m \in A, n \in B\). We define 
-
-\[
-	(m,n) := \{\{m, n\}, {m}\}	
-\]
-
-and 
-
-\[
-	(n,m) := \{\{m, n\}, {n}\}	
-\]
-
-as ordered pairs which are elements of \(A \times B\) and \(B \times A\) respectively.
-
 \subsubsection*{Distributive Law for the Cartesian Product}
 
 Let \(A, A' \subseteq X\) and \(B, B' \subseteq Y\). Then
@@ -461,6 +481,19 @@ We prove the equality by showing both inclusions.
 Thus, both inclusions hold and the equality follows.
 
 \QED 
+
+\subsubsection*{Proof that the Cartesian Product is a Set}
+
+We need to prove that \(A \times B \subseteq \mathcal{P}(A \cup B)\). By the definition of the ordered pair we know that 
+for \(x \in A \cup B \implies \{x\} \subseteq A \cup B\) the same for \(x,y \in A \cup B\) which implies 
+\(\{x, y\} \subseteq A \cup B\). By our axiom of union we know that \(\{\{x\}, \{x, y\}\}\) is a set a and this is a 
+subset of \(\mathcal{P}(\mathcal{P}(A \cup B))\) for free \(x\) and \(y\). Hence 
+
+\[
+	(x, y) \subseteq A \times B \subseteq \mathcal{P}(\mathcal{P}(A \cup B))
+\]
+
+\QED
 
 \subsubsection*{Proof the empty set of the Cartesian Product}
 
@@ -618,7 +651,21 @@ To show:
 Let \(X\) be a set, and \( A_i \subseteq X \) for all \( i \in J \), where \(I\) is the 
 \emph{index set}.
 
-If \( I = \{1, 2, \dots, n\} \):
+If \( I = \{1, 2, \dots, n\} \) then we define 
+
+\[
+	\{A_i\}_{i \in I},
+\]
+
+as the set of all classes/sets for which an index in \(I\) exists.
+
+We also can define the graph of the sets with their respective indexes:
+
+\[
+	G_{A_i} = A_i \times I = \{(i, A_i) \mid i \in I \land  A_i \in \{A_i\}_{i \in I}\}
+\]
+
+\subsubsection*{Union, Intersection and Cartesian Product}
 
 \[
 	\bigcup_{i=1}^{n} A_i := A_1 \cup A_2 \cup \dots \cup A_n = \{ x \mid \exists i \in I (x \in A_i) \}
@@ -644,6 +691,7 @@ and only if:
 \[
 	{(A_i)}_{i \in J} \text{ are pairwise disjoint and } \bigcup_{i \in J} A_i = X
 \]
+
 
 \subsubsection{Cardinality Laws}
 
@@ -825,7 +873,7 @@ where
 \]
 
 By construction, \( r \) differs from each \( f(i) \) in at least the \( i \)-th decimal place.  
-Hence \( r \neq f(i) \) for all \( i \in \N \), contradicting the assumption that \( f \) is surjective.
+Hence, \( r \neq f(i) \) for all \( i \in \N \), contradicting the assumption that \( f \) is surjective.
 
 Therefore, the interval \( (0,1) \), and thus the set of real numbers \( \R \), is uncountable.
 
@@ -900,9 +948,9 @@ element which satisfies such a requirement is the empty-set.
 
 \QED
 
-\subsection{Partition}
 
-A \emph{partition} \(P\) of a set \(M\) is a subset of non-empty subsets of \(P \subseteq \mathcal{P} (M)\), such that:
+\subsubsection{Union and Intersection of Set Systems}
+
 \[
 	M = \bigcup_{X \in P, X \ne \emptyset} X 
 \]
@@ -914,15 +962,66 @@ A \emph{partition} \(P\) of a set \(M\) is a subset of non-empty subsets of \(P 
 Therefore, \(M\) is a disjoint union of the element in \(P\). Even simpler a partition is way 
 of dividing a set into disjoint subsets such that the union of all subsets gives back the original set.
 
+\subsubsection{Subset-property of Set Systems}
+
+Let \(A \in \mathcal{B}\) then \(A \subseteq \bigcup \mathcal{B} \land \bigcap \mathcal{B} \subseteq A\).
+
+\textbf{Proof:}
+
+\(A \in \mathcal{B}\) gives us two cases for \(A \subseteq \bigcup \mathcal{B}\). 
+
+Case \(A = \bigcup \mathcal{B}\): this case is given when \(A\) is the only set in \(\mathcal{B}\) and the equality holds, 
+because otherwise we will have a contradiction.
+
+Case \(A \subset \bigcup \mathcal{B}\): Assume that \(\exists x \in A: x \notin \bigcup \mathcal{B} \implies A \notin B\), and therefore we have 
+a contradiction. Hence, \(A\) is a proper subset of the union of the members of \(B\). 
+
+For our second statement \(\bigcap \mathcal{B} \subseteq A\), we have again the two cases of 
+
+Case \(\bigcap \mathcal{B} = A\) which is true if \(A\) is already the intersection of all members and due to \(A \cap A = A\) it is proven true.
+
+For the case \(\bigcap \mathcal{B} \subset A\), we assume that the opposite is the case which implies \(\exists b \in \bigcap \mathcal{B}: b \notin A\), which 
+is a big contradiction to the definition of \(\bigcap \mathcal{B}\). Therefore, the intersection must be a proper subset of \(A\).
+
+\QED
+
+One application of this property is for example: Given \(\{A_i\}_{i \in I}\) proof that \(\bigcap A_i\) is a set.
+
+We know that \(\bigcap A_i \subseteq A_i\) for some \(i \in I\). Hence, it is a subset which means by the axiom of subsets of classes and sets 
+that it has to be a set.
+
+\QED
+
+\subsubsection{Inclusion Function}
+
+Let \(A \subseteq B\) the function 
+
+\[
+	E_{B}(x): A \to B, \quad x \mapsto x, \quad \forall x \in B
+\]
+
+as the \emph{inclusion function} of \(B\) in \(A\).
+
 \subsubsection{Partition Function}
 
 If \(P\) is a partition of \(M\) then each element of \(M\) to exactly one \(X \in P\)
 
 \[
-	f_p : M \to P : m \mapsto X \in P \text{ with }m \in X
+	f_p : M \to P : m \mapsto X \in P \text{ with }m \in X,
 \]
 
 is a map, called \emph{natural map} of \(P\).
+
+\subsubsection{Characteristic Function}
+
+Given two sets \(A\) and \(B\), we define the \emph{characteristic function} of \(B\) as:
+
+\[
+	C_{B}(x): A \to \{0, 1\}, x \mapsto \begin{cases}
+		0 & x \notin B \\ 
+		1 & x  \in B
+	\end{cases}
+\]
 
 \subsection{Classes}
 
@@ -1086,6 +1185,31 @@ Let \(\mathscr{F}\) be a system of sets (a family of subsets) on the set \(X\). 
 	\bigcap_{M \in F} M := \bigcap F := \{ x \in X : x \in M \text{ for all } M \in F \} .
 \]
 
+
+\subsection{Product of Classes}
+
+Given a family of classes \(\{A_i\}_{i \in I}\) we define the \emph{product of classes} as 
+
+\[
+	\prod A_i = \{f: I \to A \mid f(i) \in A_i \land i \in I\}
+\]
+
+Is the set of all functions from \(I\) to \(\bigcup A_i\).
+
+
+\subsubsection*{Correspondence of \(\mathcal{P}(A)\) and \(2^A\)}
+
+We denote \(2^A\) as the set of all functions from \(A\) to a class of 2 elements.
+
+We know that for any set \(B \in \mathcal{P}(A)\) we can define the characteristic function \(C_B\) which due to mapping 
+to a binary space it is in \(2^A\). This already satisfies the function property due to all elements having exactly one 
+characteristic function due to the sets in the power set being unique.
+
+By the last statement we already know the injectivity is satisfied. For the surjectivity, we have defined our map to take 
+the shape of the characteristic function, thus the one to one correspondence is granted.
+
+\QED
+
 \subsection{Pigeon Principle}
 
 For \(g: A \to B\) and \(|A| = n + 1\), \(|B| = n\) then there exists \(b \in B\) such that \(|g^{-1}(\{ b \})| \ge 2\). 
@@ -1096,9 +1220,12 @@ In other words if you have \(n\) boxes and \(n + 1\) objects, then at least one 
 
 In the following, we want to study the Cantor set \(\mathcal{C}\subseteq\R\).
 
-First, we describe its construction informally: We start with the unit interval \(A_0:=[0,1]\) and remove from it the "middle third" (where the boundary points are not removed). The result \(A_1\) thus consists of the subintervals \(\left[0,\frac{1}{3}\right]\) and \(\left[\frac{2}{3},1\right]\). Now we remove from each of these two subintervals the middle third and continue in this manner.
+First, we describe its construction informally: We start with the unit interval \(A_0:=[0,1]\) and remove from it the "middle third" (where the boundary points are not removed).
+The result \(A_1\) thus consists of the sub-intervals \(\left[0,\frac{1}{3}\right]\) and \(\left[\frac{2}{3},1\right]\). 
+Now we remove from each of these two sub-intervals the middle third and continue in this manner.
 
-For fixed but arbitrary \(n\in\N_0\), \(A_n\) thus consists of \(2^n\) pairwise disjoint closed sub-intervals of length \(3^{-n}\), and \(A_{n+1}\) arises from \(A_n\) by removing the middle third from each of these subintervals. What "remains" is the Cantor set.
+For fixed but arbitrary \(n\in\N_0\), \(A_n\) thus consists of \(2^n\) pairwise disjoint closed sub-intervals of length \(3^{-n}\), 
+and \(A_{n+1}\) arises from \(A_n\) by removing the middle third from each of these sub-intervals. What "remains" is the Cantor set.
 
 Now mathematically precise: For \(n\in\N_0\), let 
 
@@ -1177,7 +1304,7 @@ For the inductive step, assume there exists a closed interval
 \]
 
 When passing from \(A_{n}\) to \(A_{n+1}\), the middle third of each interval is removed.
-Therefore, \(I_{n}\) splits into exactly two disjoint closed subintervals of \(A_{n+1}\).
+Therefore, \(I_{n}\) splits into exactly two disjoint closed sub-intervals of \(A_{n+1}\).
 
 Since \(c(n+1)\) can lie in only one of these two intervals, we choose the other and call it \(I_{n+1}\).
 

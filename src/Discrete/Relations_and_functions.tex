@@ -149,12 +149,18 @@ Given \(T \subseteq M\) we define the \emph{characteristic map} as
 	\end{cases}
 \]
 
-This map tell us if an element is in the subset. Also each map \(\alpha : M \to \{0, 1\}\) defines a 
+This map tell us if an element is in the subset. Also, each map \(\alpha : M \to \{0, 1\}\) defines a 
 unique subset \(T\) of \(M\), \(T := M \mid \alpha(m) = 1\).
 
 \subsection{Functions} 
 
-A subset \( f \subseteq A \times B \) is called a \textbf{function} if:
+A subset \( f \subseteq A \times B \) is called a \emph{function} if:
+
+\[
+	\forall x \in A: \exists y \in B: f(x) = y
+\]
+
+and 
 
 \[
 	(x, y) \in f \text{ and } (x, y') \in f \implies y = y'.
@@ -167,7 +173,7 @@ That is, for each \( x \in A \), there exists at most one \( y \in B \) such tha
 We can also consider the graph as a set of ordered pairs \(x, y\) where \(y = f(x)\).
 
 \[
-	\text{graph}(f):= \{(x, f(x)) \mid x \in X\}
+	\mathrm{graph}(f):= \{(x, f(x)) \mid x \in X\} = G
 \]
 
 \subsubsection{Basic Properties of Graphs}
@@ -213,13 +219,13 @@ as the \emph{composite graph} of \(G\) and \(H\).
 Proceeding 
 
 \[
-	(G \circ H) \circ J = \{(x, y) \mid \exists z,w \text{ s.t. }  (x, z) \in J \land  (z, w) \in H \land (w, y) \in G  \} 
+	(G \circ H) \circ J = \{(x, y) \mid \exists z,w \text{ s.t. }  (x, z) \in J \land  (z, w) \in H \land (w, y) \in G  \}.
 \]
 
 For \(G \circ (H \circ J)\)
 
 \[
-	H \circ J = \{(x, w) \mid \exists z \in (x, z) \in J \land (z, w) \in H\}
+	H \circ J = \{(x, w) \mid \exists z \in (x, z) \in J \land (z, w) \in H\}.
 \]
 
 Proceeding
@@ -230,17 +236,33 @@ Proceeding
 
 \QED
 
-\textbf{Proof III:}
+\textbf{Proof II:}
 
-\((G \circ H)^{-1} = H^{-1} \circ G^{-1}\)
+\((G^{-1})^{-1} = G\)
 
-\[
-    (G \circ H)^{-1} =  \{(y, x) \mid \exists z \in (y, z) \in G \land (z, x) \in H\}
-\]
-
-This is the equivalent to \(H^{-1} \circ G^{-1}\)
+\begin{align*}
+	(x, y) \in (G^{-1})^{-1} &\iff (y, x) \in G^{-1} \\ 
+	&\iff (x, y) \in (G^{-1})^{-1}
+\end{align*}
 
 \QED
+
+\textbf{Proof III:}
+
+\((G \circ H)^{-1} = H^{-1} \circ G^{-1}\).
+
+\begin{align*}	
+    (G \circ H)^{-1} &=  \{(x, y) \mid \exists z \in (y, z) \in H \land (z, x) \in G\} \\ 
+	&\iff (y, z) \in H \land (z, x) \in G \\
+	&\iff (z, y) \in H^{-1} \land (x, z) \in G^{-1} 
+\end{align*}
+
+\QED
+
+\subsubsection*{Functional Graph}
+
+A functional graph is a graph that satisfies the second constraint of functions. Therefore, it is corresponds to a function. Hence, 
+all of our graphs properties are applicable to functions.
 
 \subsection{Domain}
 
@@ -249,7 +271,7 @@ The \emph{domain} of a relation \emph{R} from set \(A\) to set \(B\) is the set 
 is a relation, then the domain of \emph{R} is defined as:
 
 \[
-	\mathrm{dom}(R) = \{a \in A \mid \exists b \in B \text{ such that } (a,b) \in R\}
+	\dom(R) = \{a \in A \mid \exists b \in B \text{ such that } (a,b) \in R\}
 \]
 
 In other words, the domain consists of all the input values that appear in the ordered pairs of the 
@@ -340,6 +362,25 @@ by \(g(x) = x+3\). Then:
 
 Note that \(g \circ f \neq f \circ g\) in general, which shows that function composition is not 
 commutative.
+
+\subsubsection*{Domain and Range Under Composition Corollary}
+
+Let \(G\) and \(H\) be graphs, then \(\img(H) \subseteq \dom(G) \implies \dom(G \circ H) = \dom(H)\)
+
+\textbf{Proof:}
+
+Note that for 
+
+\[
+	\forall y \in \img(H) : y \in \dom (G).
+\]
+
+Also, when constructing \(G \circ H\) we get a map from \(\dom(H)\) to the \(\img(G)\), because for all 
+of our \(y \in \img(H)\) we have can always find a pair \((y, w) \in \img(G)\) due to the structure of our graph. Hence, 
+the domain is of our composite graph is \(\dom(H)\).
+
+\QED
+
 
 \subsection{Types of Functions}
 
@@ -521,6 +562,20 @@ And
 	f(A) \cap f(B) = 3
 \]
 
+\subsection{Restriction Function}
+
+Let \(G\) be a graph and \(B \subseteq \dom(G)\) then we denote the \emph{restriction} of \(G\) as:
+
+\[
+	G_{[B]} = \{(x, y) \mid (x, y) \in G \land x \in B\}.
+\]
+
+The range of this restricted map can be denoted as;
+
+\[
+	G(B) = \{y \mid x \in \dom(B) \land )(x, y) \in G\}
+\]
+
 \subsection{Even Function}
 
 A real function \(f\) is \emph{even} if
@@ -550,11 +605,11 @@ A real function \(f\) is \emph{odd} if
 Given \(f: M \to N\). For \(n \in N\) we define 
 
 \[
-	f^{-1}(\{n\}) := \{m \in M \mid f(m) = n\}
+	f^{-1}(\{n\}) := \{m \in M \mid f(m) = n\},
 \]
 
 as the \emph{pre-image} of \(n\). The complete \emph{pre-image} for 
-\(T \subseteq N\) is defined as 
+\(T \subseteq N\) is defined as:
 
 \[
 	f^{-1}(T) := \bigcup_{t \in T}f^{-1}(\{t\}) = \{m \in M \mid f(m) \in T\}
@@ -571,11 +626,11 @@ if and only if \(f\) is bijective (both injective and surjective). The inverse f
 following properties:
 
 \[
-	f^{-1}(f(a)) = a \quad \text{for all } a \in A
+	f^{-1}(f(a)) = a \quad \text{for all } a \in A,
 \]
 
 \[
-	f(f^{-1}(b)) = b \quad \text{for all } b \in B
+	f(f^{-1}(b)) = b \quad \text{for all } b \in B.
 \]
 
 In other words, composing a function with its inverse yields the identity function. That is:
@@ -593,11 +648,11 @@ Where \(id_A\) and \(id_B\) are the identity functions on sets \(A\) and \(B\), 
 \(\Leftarrow\): Our function has the following properties:
 
 \[
-	f^{-1}(f(a)) = a \quad \text{for all } a \in A
+	f^{-1}(f(a)) = a \quad \text{for all } a \in A,
 \]
 
 \[
-	f(f^{-1}(b)) = b \quad \text{for all } b \in B
+	f(f^{-1}(b)) = b \quad \text{for all } b \in B.
 \]
 
 The first condition, gives us the injectivity due to the constraint the for all \(b \in B\) there exist exactly one \(a \in A\)

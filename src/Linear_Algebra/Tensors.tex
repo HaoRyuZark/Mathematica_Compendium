@@ -1,0 +1,24 @@
+\newpage
+\section{Tensors}
+
+A \emph{tensor} \(T\) of \(\rank(k,l)\) is a multilinear map from \(k\) dual vectors and \(l\)
+vectors to the \(\field\).
+
+\[
+    T: V^* \times \dots \times V^* \times V \times \dots \times V \to \field
+\]
+
+\textbf{Example:}
+
+Suppose \(k = 1, \quad l = 1\) and our field is \(\R\). Then a tensor \(T(\varphi, v) \to \R\) where 
+\(\varphi = \alpha f + \beta g, f,g \in V^*\) and \(v = \gamma v_1 + \lambda v_2, v_1, v_2 \in V\) and \(\alpha, \beta, \gamma, 
+\gamma \in \R\). We get 
+
+\[
+    T(\varphi, v) = T(\alpha f + \beta g, \gamma v_1 + \lambda v_2) = \alpha\gamma T(f, v_1) + \alpha\lambda T(f, v_2) + \beta \gamma T(g, v_1) + \beta \lambda T(g, v_2)
+\]
+
+where each term is a real number.
+
+Another examples: a \(\rank(0, 1)\) tensor is dual vector and a \(\rank(1, 0)\) this is a vector and finally a scalar 
+is \(\rank(0, 0)\)
