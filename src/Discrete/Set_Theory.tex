@@ -211,6 +211,8 @@ If \(X \in Y\) for some class \(Y\) then \(X\) is a set. If \(X \notin Y\) for a
 
 	\item \emph{Axiom of Foundation}: If \(A\) is any set, there is an element \(a \in A\) such that \(a \cap A = \emptyset\)
 
+	\item \emph{Axiom of Replacement}: If \(A\) is a set and \(f: A \to B\) is a surjective function, than \(B\) is a set.
+
 \end{enumerate}
 
 \subsubsection*{Proofs Using the Axioms}
@@ -240,6 +242,18 @@ If \(X \in Y\) for some class \(Y\) then \(X\) is a set. If \(X \notin Y\) for a
 \end{itemize}
 
 \QED 
+
+\subsection{Consequences of the Axiom of Replacement}
+
+\begin{itemize}
+	
+	\item Every singleton is a set. 
+
+	\item If \(A\) is in a one-to-one correspondence with \(B\), than \(B\) is a set.
+	
+	\item If \(\{A_i\}_{i \in I}\) is an indexed family of sets and \(I\) is a set, then \(\{A_i \mid i \in I\}\) is a set.
+
+\end{itemize}
 
 \subsection{The Universal Class}
 
@@ -1196,19 +1210,15 @@ Given a family of classes \(\{A_i\}_{i \in I}\) we define the \emph{product of c
 
 Is the set of all functions from \(I\) to \(\bigcup A_i\).
 
+\subsubsection*{Properties}
 
-\subsubsection*{Correspondence of \(\mathcal{P}(A)\) and \(2^A\)}
+\begin{itemize}
 
-We denote \(2^A\) as the set of all functions from \(A\) to a class of 2 elements.
+	\item \(\left(\prod_{i \in I} A_i\right) \cap \left(\prod_{j \in J} B_j\right) = \prod_{(i, j) \in I \times J}(A_i \cap B_i)\)
+	
+	\item \(\left(\prod_{i \in I} A_i\right) \cup \left(\prod_{j \in J} B_j\right) = \prod_{(i, j) \in I \times J}(A_i \cup B_i)\)	
 
-We know that for any set \(B \in \mathcal{P}(A)\) we can define the characteristic function \(C_B\) which due to mapping 
-to a binary space it is in \(2^A\). This already satisfies the function property due to all elements having exactly one 
-characteristic function due to the sets in the power set being unique.
-
-By the last statement we already know the injectivity is satisfied. For the surjectivity, we have defined our map to take 
-the shape of the characteristic function, thus the one to one correspondence is granted.
-
-\QED
+\end{itemize}
 
 \subsection{Pigeon Principle}
 

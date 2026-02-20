@@ -53,12 +53,31 @@ Let \(A\) be a set and \(X\) be a relation on \(A\).
 	\item \emph{Symmetric:} \(\forall a, b \in A: (a, b) \in X \to (b, a) \in X\) (or written as 
 		  \((a \sim b) \Rightarrow (b \sim a)\))
 
-	\item \emph{Antisymmetric:} \(\forall a, b \in A: (a, b) \in X \text{ and } (b, a) \in X \to a = b\)
+	\item \emph{Antisymmetric:} \(\forall a, b \in A: (a, b) \in X \text{ and } (b, a) \in X \implies a = b\)
 
 	\item \emph{Transitive:} \(\forall a, b, c \in A: (a, b) \in X \text{ and } (b, c) \in X \to (a, c) 
 		  \in X\) (or written as \((a \sim b) \text{ and } (b \sim c) \Rightarrow (a \sim c)\))
 
 	\item \emph{Total:} \(\forall a,b \in A: a \neq b \to (a, b) \in X \text{ or } (b, a) \in X\)
+
+\end{itemize}
+
+\subsection{Diagonal Graph}
+
+Given a relation, the graph \(I_A\) is defined as: \(\{(x, x) \mid x \in A\}\) and 
+denoted as the \emph{diagonal graph} of \(A\).
+
+\subsubsection*{Lemmi for Proofs}
+
+Let the graph \(G\) be a relation, on \(A\).
+
+\begin{itemize}
+	
+	\item \(G\) is symmetric if and only if \(G = G^{-1}\)
+
+	\item \(G\) is antisymmetric if and only if \(G \cap G^{-1} \subseteq I_A\)
+
+	\item \(G\) is transitive if and only if \(G \circ G \subseteq G\).
 
 \end{itemize}
 
@@ -561,6 +580,31 @@ And
 \[
 	f(A) \cap f(B) = 3
 \]
+
+\subsection{Bijection of the Power Set and \texorpdfstring{\(2^A\)}{}}
+
+We denote \(2^A\) as the set of all functions from \(A\) to a set of two elements.
+The statement goes as following: there is a bijection between the power set \(\mathcal{P}(A)\) and 
+\(2^A\).
+
+\textbf{Proof:}
+
+Let \(\gamma: \mathcal{P}(A) \to 2^A\). If \(B \in \mathcal{P}\) let 
+
+\[
+	\gamma (B) = C_B, \forall B \in \mathcal{P}(A).
+\]
+
+By this definition we get the properties of a function directly. Now we have to prove that 
+the function is a one-to-one correspondence.
+
+For the injectivity, we already know that each for \(\gamma(B) = \gamma(C) \implies B = C\) due to 
+else being the case that we have to elements in the power set which are identical.
+
+For the surjectivity, if \(f \in 2^A\), and we let \(B = f^{-1}(0)\), then \(f = C_B = \gamma(B)\). Thus, 
+\(\gamma\) satisfies the surjectivity.
+
+\QED
 
 \subsection{Restriction Function}
 
