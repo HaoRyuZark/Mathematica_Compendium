@@ -1,7 +1,136 @@
 \newpage
 \section{Order}
 
-\subsection{Principle of the Ordering}
+\subsection{Partially Ordered Classes}
+
+A \emph{partially ordered class} is a pair of objects \(\langle A, G \rangle\) where \(A\) is a class and \(G\) is 
+and order relation in \(A\). Remember that an order relation is one which is : irreflexivel, antisymmetric and transitive.
+
+\subsection{Lexicographical Ordering}
+
+Let \(A\) and \(B\) be partially ordered classes; by the \emph{lexicographical ordering} of \(A \times B\) we 
+mean the following order relation in \(A \times B\): If \((a_1, b_1), (a_2, b_2) \in A \times B\) and \((a_1, b_1) \le (a_2, b_2) \) 
+if and only if
+
+\[
+	a_1 < a_2 
+\]
+
+or 
+
+\[
+	a_1 = a_2 \land b_1 \le b_2
+\]
+
+\subsection{Antilexicographical Ordering}
+
+Let \(A\) and \(B\) be partially ordered classes; by the \emph{antilexicographical ordering} of \(A \times B\) we 
+mean the following order relation in \(A \times B\): If \((a_1, b_1), (a_2, b_2) \in A \times B\) and \((a_1, b_1) \le (a_2, b_2) \) 
+if and only if
+
+\[
+	b_1 < b_2 
+\]
+
+or 
+
+\[
+	b_1 = b_2 \land a_1 \le a_2
+\]
+
+\subsection{Comparable}
+
+Let \(A\) be a partially ordered class. Tow elements \(x, y \in A\) are considered \emph{comparable} if 
+either \(x \le y\) or \(y \le x\); otherwise, they are said to \emph{incomparable}.
+
+\subsection{Fully Ordered Subclass}
+
+Let \(A\) be a partially ordered class, and let \(B \subseteq  A\). If two elements of \(B\) are comparable, 
+then we call \(B\) a \emph{fully ordered subclass of \(A\)}, or \emph{linearly ordered subclass of \(A\)}, or more 
+commonly, a \emph{chain} of \(A\). If every two elements of \(A\) are comparable, then \(A\) is also considered as such.
+
+\subsection{Initial segments of a determined Class determined by an Element}
+
+Let \(A\) be a partially ordered class and suppose \(a \in A\). The \emph{initial segment of \(A\) determined by \(a\)} is the 
+class \(S_a\), defined as follows: 
+
+\[
+	S_a = \{x \in A \mid x < a\}.
+\]
+
+Initial segments are transitive, which means that if we have an initial segment of an initial segment, then the last one  is also 
+an initial segment of the parent class.
+
+\subsection{Cuts}
+
+If \(A\) is a partially ordered class, then a \emph{cut} of \(A\) is a pair \((L, U)\) of nonempty subclasses of \(A\) with 
+the following properties:
+
+\begin{itemize}
+
+	\item \(L \cup U = \emptyset \land L \cup U = A\).
+	\item If \(x \in L \land y \le x \implies y \in L\).
+	\item If \(x \in U \land y \ge x \implies y \in U\).
+
+\end{itemize}
+
+We use \(U\) and \(L\) for upper and lower respectively.
+
+\subsection{Order Preserving Functions}
+
+Let \(A\) and \(B\) be partially ordered classes; a function \(f: A \to B\) is said to \emph{increasing} or 
+\emph{decreasing}, if it satisfies the following condition: For every two elements \(x, y \in A\), 
+
+\[
+	x \le y \implies f(x) \le f(y).
+\]
+
+We consider \(f\) strictly increasing if it satisfies that:
+
+\[
+	x < y \implies f(x) < f(y).
+\]
+
+If \(f\) is bijective, we call it an \emph{isomorphism}.
+
+\subsection{Order by Inverses}
+
+Let \(A\) and \(B\) be partially ordered classes and let \(f: A \to  B\) be a bijective function. Then \(f\) is 
+an isomorphism if and only if \(f: A \to B\) and \(f^{-1}: B \to A\) are increasing functions. 
+
+\textbf{Proof:}
+
+\[
+	f(x) \le f(y) \implies f^{-1}(f(x)) \le f^{-1}(f(y)) \implies x \le y
+\]
+
+Thus, there is no element for which \(f(x)\) is not defined and also every \(x \in A\) has only one image in \(B\).
+Conversely, we get from the fact that 
+
+\[
+	x \le y \implies f(x) \le f(y) \implies f^{-1}(f(x)) \le f^{-1}(f(y))
+\]
+
+Thus, \(f\) and \(f^{-1}\) are increasing functions.
+
+\subsection{Common Isomorphism on Partially Ordered Classes}
+
+Let \(A\), \(B\) and \(C\) be partially ordered classes. 
+
+\begin{itemize}
+
+	\item \(I_A\) is an isomorphism. 
+	\item If \(f: A \to B\) is an isomorphism, then \(f^{-1}: B \to A\) is an isomorphism.
+	\item If \(f: A \to B\) and \(g: B \to C\) is an isomorphism, then \(g \circ f: A \to C\) is an isomorphism.
+
+\end{itemize}
+
+\subsection{Isomorphic Definition}
+
+Let \(A\), and \(B\) be partially ordered classes. If there exist and order preserving isomorphism between the two 
+classes, we say that \(A\) is \emph{isomorphic} with \(B\).
+
+\subsection{Principle of the Well-ordering}
 
 Every non-empty set of natural numbers has a minimum.
 

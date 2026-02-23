@@ -28,13 +28,13 @@ counting, with the exponents representing sizes or weights, and the coefficients
 Generating functions serve as a bridge between algebra and combinatorics, allowing abstract operations to 
 yield concrete combinatorial results.
 
-\subsection{Closed form of the Fibonacci Sequence}
+\subsection{Closed Form of the Fibonacci Sequence}
 
-Let us use generating function to find a closed form for the Fibonacci number. 
+Let us use generating functions to find a closed form for the Fibonacci numbers.
 
-We know that \(F_0 = 1\) and \(F_1 = 1\) and for \(n \ge 2\) \(F_n = F_{n-1} + F_{n-2}\).
+We know that \(F_0 = 1\) and \(F_1 = 1\), and for \(n \ge 2\), \(F_n = F_{n-1} + F_{n-2}\).
 
-Now let us use the following function
+Now, let us use the following function:
 
 \[
     F(x) = \sum_{n = 0}^{\infty} F_n x^{n},
@@ -46,24 +46,24 @@ which is going to have the Fibonacci numbers as the coefficients of the power se
     1 + x + 2x^2 + 3x^3 + 5x^4 + \dots,
 \]
 
-but before that we have to look at when our recursive formula is defined.
+But before that, we have to look at when our recursive formula is defined.
 
-In this case \(n = 2\). Thus, we have to write our expression in the following way:
+In this case, \(n = 2\). Thus, we have to write our expression in the following way:
 
 \begin{align*}
     F(x) &= 1 + x + \sum_{n = 2}^{\infty} F_n x^{n}\\
     &= 1 + x + \sum_{n = 2}^{\infty} F_{n -1} x^{n} + \sum_{n = 2}^{\infty} F_{n - 2}x^n.
 \end{align*}
 
-Here we are going to adjust our expression by making our \(n\) be equal
+Here, we are going to adjust our expression by making our \(n\) be equal.
 
 \begin{align*}
     F(x) &= 1 + x + \sum_{n = 2}^{\infty} F_{n -1} x^{n} + \sum_{n = 2}^{\infty} F_{n - 2}x^n \\ 
     F(x) &= 1 + x + x \left( \sum_{n = 2}^{\infty} F_{n -1} x^{n-1}\right) + x^2 \left( \sum_{n = 2}^{\infty} F_{n -2} x^{n-2}\right).
 \end{align*}
 
-And now we are going to reset our sum to start from zero by adding a smart zero to our term with 
-\(n - 1\). This allows us to shift the sum to start from 0 because when \(n = 1\) for 
+Now, we are going to reset our sum to start from zero by adding a smart zero to our term with 
+\(n - 1\). This allows us to shift the sum to start from 0, because when \(n = 1\), 
 \(F_{n - 1}x^{n - 1}\) turns into \(F_0 x^0\).
 
 \begin{align*}
@@ -73,7 +73,7 @@ And now we are going to reset our sum to start from zero by adding a smart zero 
     F(x) &= 1 + x + x F(x) - x + x^2 F(x),
 \end{align*}
 
-which at the end simplifies to:
+which, at the end, simplifies to:
 
 \[
     F(x) = \frac{1}{1 - x - x^2}.
@@ -85,9 +85,9 @@ If you start with \(F_0 = 0\) then the result is
     F(x) = \frac{x}{1 - x - x^2}.
 \]
 
-Now we can use partial fraction decomposition to make this expression even more explicit
-by using the following expression where \(\alpha\) and \(\beta\) are zeroes of the polynomial in the
 denominator.
+Now, we can use partial fraction decomposition to make this expression even more explicit
+by using the following expression, where \(\alpha\) and \(\beta\) are zeros of the polynomial in the denominator.
 
 \[
     \frac{1}{\left(1 - \alpha x\right)\left(1 - \beta x\right)}.
@@ -99,14 +99,14 @@ The zeros of the polynomial are:
     x_1 = \frac{1 + \sqrt{5}}{2} \quad \text{and} \quad  x_2 = \frac{1 - \sqrt{5}}{2}.
 \]
 
-Now we can write our expression like:
+Now, we can write our expression as:
 
 \[
     F(x) = \frac{1}{1 - x - x^2} = \frac{1}{\left(1 - x \cdot \frac{1 + \sqrt{5}}{2}\right)\left(1 - x 
     \cdot \frac{1 - \sqrt{5}}{2}\right)},
 \]
 
-which after performing the partial fraction decomposition left us with:
+which, after performing the partial fraction decomposition, leaves us with:
 
 \[
     F(x) = \left( {\left( \frac{1}{\sqrt{5}} (1 + \sqrt{5}) \right)}^n - {\left( \frac{1}{\sqrt{5}} 

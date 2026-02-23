@@ -36,10 +36,6 @@ Common types of relations include:
 
 \end{itemize}
 
-Relations can be represented using diagrams, matrices, or sets of
-ordered pairs, and they're fundamental to many areas of mathematics including algebra, calculus, and 
-discrete mathematics.
-
 \subsection{Types of relations}
 
 Let \(A\) be a set and \(X\) be a relation on \(A\).
@@ -81,6 +77,10 @@ Let the graph \(G\) be a relation, on \(A\).
 
 \end{itemize}
 
+\subsection{Order Relation}
+
+A relation is called an \emph{order relation} if it is reflexive, antisymmetric and transitive.
+
 \subsection{Equivalence relation}
 
 An \emph{equivalence relation} is a relation that is symmetric, transitive and reflexive.
@@ -90,6 +90,19 @@ An \emph{equivalence relation} is a relation that is symmetric, transitive and r
 \[
 	R:= \{ (a,b) \in \N \times \N: a = b\}
 \]
+
+\subsubsection*{Properties of Equivalence Relations}
+
+Given the equivalence relations \(G\) and \(H\), the following properties apply:
+
+\begin{itemize}
+
+	\item \(G \circ H\) is an E.R. if and only if \(G \circ H = H \circ G\).
+	\item \(G \cup H\) is an E.R. if and only if  \(G \circ H \subseteq G \cup H \land H \circ G \subseteq G \cup H\).
+
+\end{itemize}
+
+The proofs are left as an exercise for the reader. (Hint: use the first property to prove the second).
 
 \subsection{Equivalence Class}
 
@@ -795,11 +808,11 @@ Let \(f:X\to Y\) be a function.
 
 	\item Consider the quotient set \( X_f := X/\sim \), where \( \sim \) is the equivalence relation 
 	      defined by \( x \sim x' \iff f(x) = f(x') \). Let \( q_f : X \to X_f \) be the canonical 
-		  projection defined by \( q_f(x) = [x] \), and let \( \iota_f : f(X) \to Y \) be the inclusion  
+		  projection defined by \( q_f(x) = [x]_{\sim} \), and let \( \iota_f : f(X) \to Y \) be the inclusion  
 		  map, \( y \mapsto y \). Then the function
 	      
 		  \[
-		      \hat{f} : X_f \to f(X), \quad [x] \mapsto f(x)
+		      \hat{f} : X_f \to f(X), \quad [x]_{\sim} \mapsto f(x)
 	      \]
 	  
 		  is a bijection, and the original map \(f\) can be written as the composition

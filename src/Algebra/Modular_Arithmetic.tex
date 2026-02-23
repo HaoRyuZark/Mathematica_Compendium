@@ -7,12 +7,11 @@ We define an equivalence relation
     a \cong b \mod n \iff n | (a - b) \land  a,b \in \Z.
 \]
 
-Means that both have the same residual when divided by \(n\). 
+This means that both have the same remainder when divided by \(n\).
 
-\subsection{Residual-class  and Residual-class Rings}
+\subsection{Residual Classes and Residual Class Rings}
 
-Because we have an equivalence relation we can classify the partitions of our set \(\Z\) into classes which we will 
-call \emph{residual classes}. 
+Because we have an equivalence relation, we can classify the partitions of our set \(\Z\) into classes, which we will call \emph{residual classes}.
 
 \textbf{Example:}
 
@@ -20,7 +19,7 @@ call \emph{residual classes}.
     [13]_7 + \{m \in \Z \mid m \cong 13 \mod 7\}
 \]
 
-The set of all Residual-classes can be written as \(\Z / n \Z\) where \(n\) is the modulo. 
+The set of all residual classes can be written as \(\Z / n \Z\), where \(n\) is the modulus. 
 
 \subsection{Properties}
 
@@ -61,8 +60,7 @@ then \(b\) is also a divisor of \(a\).
 
 \subsubsection*{Product Rule}
 
-If the number \(a\) can be written as a product of two factors and \(b\) is a divisor of one of these 
-factors, then \(b\) is also a divisor of \(a\).
+If the number \(a\) can be written as a product of two factors and \(b\) is a divisor of one of these factors, then \(b\) is also a divisor of \(a\).
 
 \textbf{Example:}
 
@@ -105,13 +103,13 @@ product \( b \cdot c \) is also a divisor of \(a\).
 1540 has the relatively prime numbers 7 and 11 as divisors. Then \( 77 = 7 \cdot 11 \) is also a divisor 
 of 1540.
 
-\subsection{Using Modular Arithmetic to find the n digit of a big number}
+\subsection{Using Modular Arithmetic to Find the n-th Digit of a Large Number}
 
-What is the last digit of the number \(13^{2023}\)
+What is the last digit of the number \(13^{2023}\)?
 
 Note that \(13 \mod 10 = 3\) and  \(13^2 \mod 10 =  ((13 \mod 10)  (13\mod 10)) \mod 10 = 9 \).
 
-We can continue this process, and we will notice a pattern. After some iteration we will now that
+We can continue this process, and we will notice a pattern. After some iterations, we will know that
 
 \[
     (13^{2020} 13) \mod 10 = 7.
@@ -119,8 +117,8 @@ We can continue this process, and we will notice a pattern. After some iteration
 
 \subsection{Gaussian Brackets}
 
-The Gaussian brackets refer to two closely related functions used to round real numbers to integers 
 in specific ways:
+The Gaussian brackets refer to two closely related functions used to round real numbers to integers in specific ways:
 
 \subsubsection*{Floor Function}
 
@@ -140,20 +138,20 @@ equal to a real number \(x\).
 
 \(\lceil 3.7 \rceil = 4\), \(\lceil -1.2 \rceil = -1\)
 
-These functions are particularly useful: in number theory, computer science 
 and rounding operations, where precise integer bounds of real numbers are required.
+These functions are particularly useful in number theory, computer science, and rounding operations, where precise integer bounds of real numbers are required.
 
-\subsection{Residual Class Rind modulo \texorpdfstring{\(n\)}{}}
+\subsection{Residual Class Ring modulo \texorpdfstring{\(n\)}{}}
 
-Given \(n \in \N\). We define the relation \(\sim_n\) for \(\Z\).
+Given \(n \in \N\), we define the relation \(\sim_n\) for \(\Z\).
 
 \[
-    a \sim b \iff n mid (a - b).
+    a \sim b \iff n \mid (a - b).
 \]
 
-Also, \(a / n\) and \(b / n\) have the same residual 
+Also, \(a / n\) and \(b / n\) have the same remainder.
 
-\subsection{Equivalence Class of \texorpdfstring{\(Z\)}{}} 
+\subsection{Equivalence Class of \texorpdfstring{\(\Z\)}{}} 
 
 For \(i, n \in \Z\) 
 
@@ -167,13 +165,14 @@ and
     \Z_N = \Z / n \Z = \{\overline{0}:= n \Z, \overline{1}:= 1 + n \Z, \dots, \overline{n - 1} := n - 1 + n \Z \},
 \]
 
-is the set of all equivalence relationships for \(\Z\) with respect to the relation 
-\(k \sim l \iff n \mid (k - l)\). We define the addition and multiplication for \(\Z / n \Z\) using the 
-representatives 
+is the set of all equivalence classes for \(\Z\) with respect to the relation 
+\(k \sim l \iff n \mid (k - l)\). We define the addition and multiplication for \(\Z / n \Z\) using the representatives:
 
 \[
     (a  + n \Z) + (b + n \Z) := (a + b) + n\Z
 \]
+
+and 
 
 \[
     (a  + n \Z) \cdot (b + n \Z) := ab + n\Z

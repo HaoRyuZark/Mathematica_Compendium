@@ -13,6 +13,10 @@ ideas logically, and resolve paradoxes that arise from dealing with collections.
 
 In essence, set theory provides the building blocks upon which much of modern mathematics is constructed.
 
+Note, that I will start with sets as such instead of going through classes and then exporting some of their 
+properties to sets. Classes will only be handled shortly with the axioms and some proofs but some of their properties will be 
+directed presented as set properties. 
+
 \subsection{Basics}
 
 To be concise, a set is a collection of mathematical objects that can also be other sets.
@@ -249,7 +253,7 @@ If \(X \in Y\) for some class \(Y\) then \(X\) is a set. If \(X \notin Y\) for a
 	
 	\item Every singleton is a set. 
 
-	\item If \(A\) is in a one-to-one correspondence with \(B\), than \(B\) is a set.
+	\item If \(A\) is in a one-to-one correspondence with \(B\), then \(B\) is a set.
 	
 	\item If \(\{A_i\}_{i \in I}\) is an indexed family of sets and \(I\) is a set, then \(\{A_i \mid i \in I\}\) is a set.
 
@@ -267,11 +271,28 @@ It also as the following property
 
 which gives us the following: \(A \cup \mathcal{U} = \mathcal{U}\) and \(A \cap \mathcal{U} = A\) for any class or set \(A\).
 
+\subsection{The Empty Class}
+
+The \emph{empty class} is class with no elements. 
+
+\[
+	\emptyset = \{x \mid x \neq x\}
+\]
+
+We can not use existence quantifiers \(\exists\) with this class.
+Every statement with \(\forall x \in \emptyset\) is true, because there are no counterexamples. 
+This leads to interesting equalities like \(\mathcal{U} = \emptyset\).
+
+We can prove that the empty class exist by letting \(\emptyset = \{x \mid x \ne x\}\) this is a perfectly valid statement.
+
+Now we need to prove that it is unique, and this is given by the axiom of extensionality.
+
+\QED
+
 \subsection{The Empty Set}
 
 The set that contains no elements \(\emptyset\). It is the unique set with 
-zero elements. Every statement with \(\forall x \in \emptyset\) is true, because there are no counterexamples. 
-This leads to interesting equalities like \(\mathcal{U} = \emptyset\).
+zero elements. It inherits the properties of its class counterpart.
 
 It also has the property that \(\emptyset \subseteq A\) for any class or set \(A\).
 
@@ -908,27 +929,30 @@ Its cardinality is \(2^n\) with \(n\) being the number of elements in the origin
 Let \(\mathcal{U}\) be a non-empty set. A subset \(\mathscr{F}\) of the power set of \(X\) is called a 
 \emph{set system} of \(X\). 
 
-We also define 
-
-\[
-	\bigcap_{x \in \mathcal{U}} x := \{m \in X \mid \forall m \in x: m \in \mathcal{U}\}
-\]
-
-and 
-
-\[
-	\bigcup_{x \in \mathcal{U}} x := \{m \in X \mid \exists m \in x: m \in \mathcal{U}\}
-\]
-
-where \(T_i \in \mathcal{P}(X)\) as the \emph{intersection} and \emph{union} of the set system.
-
 \textbf{Example:}
 
 Let \(M \neq M\), if \(\mathcal{U} :=  \emptyset \subseteq \mathcal{P}(M)\) then 
 
 \[
-	\bigcap_{T \in \mathcal{U}} T = M \text{ and } \bigcup_{T \in \mathcal{U}} T = \emptyset
+	\bigcap_{T \in \mathcal{U}} T = M \quad \text{and} \quad \bigcup_{T \in \mathcal{U}} T = \emptyset
 \]
+
+\subsection{Intersection and Union of Sets}
+
+We can define 
+
+\[
+	\bigcap T := \{x \mid \forall A_i, x \in T \implies m \in A_i\}.
+\]
+
+and 
+
+\[
+	\bigcup T := \{x \mid \exists A_i, A_i \in T \land x \in A_i\}
+\]
+
+as the \emph{intersection} and \emph{union} of the sets.
+\subsubsection{The Intersection of the Empty Set is the Universal Class}
 
 \textbf{Proof:}
 
@@ -936,20 +960,23 @@ The set intersection of the empty-set gives us the set of all elements that are 
 We have defined our definition 
 
 \[
-	\bigcap_{i \in I} T_i := \{x \in X \mid \forall i \in I: x \in T_i\}
+	\bigcap T = \{x \mid \forall A_i, x \in T \implies m \in A_i\}.
 \]
 
-for our case 
+For our case 
 
-\begin{align*}
-	\bigcap_{T \in \mathcal{U}} T &= \{m \in M \mid \forall T \in \mathcal{U} : m \in T\} \\ 
-								  &= \{m \in M \mid T \in \mathcal{U} \implies m \in T\} \\ 
-								  &= M
-\end{align*}
+\[
+	\bigcap \emptyset = \{x \mid \forall A_i, x \in \emptyset \implies m \in A_i\}.
+\]
 
-Because the statement \(T \in \mathcal{U}\) in the implication \(T \in \mathcal{U} \implies m \in T\) is 
-always true. In other words, the condition says, for all elements of an empty-set, \(m \in T\) holds true, but there are no 
-elements in the empty-set therefore there is no counter example. Ergo the condition is true.
+We can see that that due to the implication our left side is always false which leads 
+our right side to be always true which means that the statement is valid for all \(x\). 
+Resulting in 
+
+\[
+	\bigcap \emptyset = \mathcal{U}
+\]
+
 
 For the union 
 
@@ -961,7 +988,6 @@ The condition is that there exists an element in \(T\) such that, that element i
 element which satisfies such a requirement is the empty-set.
 
 \QED
-
 
 \subsubsection{Union and Intersection of Set Systems}
 
@@ -1037,7 +1063,7 @@ Given two sets \(A\) and \(B\), we define the \emph{characteristic function} of 
 	\end{cases}
 \]
 
-\subsection{Classes}
+\subsection{Equivalence Classes}
 
 Given a partition \(P\) of a set \(M\), the elements of \(P\) are called \emph{classes}. 
 If \(X\) is a class, then its members are called \emph{representatives} of the class.
@@ -1046,14 +1072,41 @@ A subset of \(M\) with an element of each of the classes of \(M\) is called the 
 
 The function \(v: P \to M\) with \(v(X) \in X\) for all \(X \in P\) is called \emph{representative function}.
 
-\subsubsection{Properties of Partitions}
+\subsection{Partitions}
+
+Let \(A\) be a set. A partition of \(A\) is a subset non-empty sets of \(\mathcal{P}(A)\) with the following properties:
+
+\[
+	\forall i, j \in I A_i \cap A_j = \emptyset \quad \text{for} \quad i \neq j
+\]
+
+and 
+
+\[
+	bigcup_{i \in I} A_i = A \quad \text{ or equivalently } \quad bigcup_{i \in I} A_i \subseteq A
+\]
+
+\textbf{Example:}
+
+Prove that \(B_n = \{m \in \Z \mid \exists q, m = n + 5q\}\) is a partition of \(\Z\). 
+
+First, we prove that disjoint property which means \(m \in B_x \land m \in B_y \iff x = y\)
+
+
+For the union, we need to prove that every \(B_n\) is not empty which is very easy by letting \(m = n + 5\cdot0 \implies m = n\) and then 
+combining all of them with the union will give us the entire set of integers because every of the sets \(B_n\) has at least the number 
+\(n\) in it which can be any integer.
+
+\QED
+
+\subsubsection*{Properties of Partitions}
 
 \begin{itemize}
 
 	\item Every equivalence relation corresponds to a partition:
 
 		  \[
-		      J: \{ R : R\ \text{is an equivalence relation on } X\} \to \{ F: F\ \text{is a partition of } X\}
+		      J: \{ R : R \text{ is an equivalence relation on } X\} \to \{ F: F\ \text{is a partition of } X\}
 	      \]
 
 	      where \( J(R) := X / R \) is a bijection.
@@ -1072,20 +1125,23 @@ The function \(v: P \to M\) with \(v(X) \in X\) for all \(X \in P\) is called \e
 
 \textbf{Proof: Equivalence Relations Correspond to Partitions}
 
-Let \(A / E = \{[a]_e \mid A\}\)
+We want to prove that there exists a one-to-one correspondence between equivalence relations and 
+partitions. We first start by start proving that from a family of equivalence classes we get a partition. 
 
-Assume \([a]_E \ne [b]_E\) then \(a \neg E b\)
+Let \(\mathscr{C}\) be the set of all the equivalence classes for an equivalence relation on \(A\), and 
+\(C_x\) be some of those sets of equivalence classes.
 
-For different equivalence classes the union is disjoint thus one of properties is fulfilled. 
+We must prove that each of its equivalence classes are disjoint if not equal. By the definition 
+if \(\exists y \in [a]_{\sim} \land y \in [b]_{\sim}\), then this would imply that \(y\) is related to both 
+\(a\) and \(b\) which means that they are in the same equivalence class, because otherwise \(a \sim y \land b \sim y \iff \neg (a \sim b)\), which 
+is a contradiction. Hence, equivalence classes are either equal or disjoint.
 
-Continuing, for any 
+Now, for the union. We can state that \(\bigcap [a]_{\sim} \subseteq A\) due to all of its elements 
+forming at least a proper subset of \(A\). The equality, can be shown via the definition of the equivalence class which 
+states that each element in \(A\) in has its own equivalence class.
 
-\[
-	x \in \bigcup A/E \implies x \in [a]_E \in A/E \implies x \in A \land x E a 
-\]
-
-Because of that \(a \in [a]_E \in A/E\) together with \(x \in A\) gives us the certainty that the union 
-of the equivalence classes is the set \(A\).
+Analogously, we can prove it the other way around. By having disjoint sets, we know that they have to be 
+in different equivalence classes \(A_i \cap A_j = \emptyset \implies \forall x \in A_i, x \neg(\sim) y, \forall y \in A_j\).
 
 \QED
 
@@ -1096,10 +1152,12 @@ Let \( M \) be a set.
 \begin{enumerate}
 
 	\item If \( \sim \) is an equivalence relation on \( M \), then the equivalence classes defined by  
-    \[
+    
+	\[
         [m_0] := [m_0]_{\sim} := \{\, m \in M \mid m \sim m_0 \,\}
     \]
-    for \( m_0 \in M \) form a \emph{partition} of \( M \).  
+
+	for \( m_0 \in M \) form a \emph{partition} of \( M \).  
     This partition is usually denoted by \( M / \!\sim \).
 
     \item If \( P \) is a partition of \( M \), then the relation \( \sim_P \) defined by  
@@ -1113,19 +1171,92 @@ Let \( M \) be a set.
     \item The following holds:
 
 	\[
-        M / \!\sim_P = P
+        M / \!\sim_P = P,
         \quad \text{for all partitions } P \text{ of } M,
     \]
 
 	and
 
 	\[
-        \sim_{(M / \!\sim)} = \sim
-        \quad \text{for every equivalence relation } \sim \text{ on } M.
+        \sim_{(M / \!\sim)} = \sim, \text{ for every equivalence relation } \sim \text{ on } M.
     \]
 
 \end{enumerate}
 
+\subsection{Equivalence Relations under Functions}
+
+\subsubsection*{Pre-image}
+
+Let \(f: A \to B\) and \(G\)be an equivalence relation in \(B\). The \emph{pre-image} of \(G\) in 
+\(A\) is defined as  
+
+\[
+	f^{-1} (G) = \{(x, y) \mid (f(x), f(y)) \in G\},
+\]
+
+and it is also an equivalence relation.
+
+\subsubsection*{Restriction}
+
+Similarly, we can also define the \emph{restriction} for when \(B \subseteq A\)
+
+\[
+	G_{[B]} = \{(x, y) \mid x \in B \land y \in B \land (x, y) \in G\}
+\]
+
+\subsection{Refinement}
+
+Let \(G\) and \(H\) be equivalence relations in \(A\). We call \(G\) a \emph{refinement} of \(H\) if 
+\(G \subseteq H\); we also say that \(G\) is \emph{finer} than \(H\), and that \(H\) is \emph{coarser} than \(G\).
+
+\subsection{Quotient Space for Refinements}
+
+Let \(G\) and \(H\) be equivalence relations on a set \(A\) and let \(G\) be a refinement of \(H\). 
+The \emph{quotient} of \(H\) by \(G\) usually denoted as \(H/G\), is a relation in \(A/G\) defined as follows: 
+
+\[
+	H/G = \{([x]_{G}, [y]_{G}) \mid (x, y) \in H\}
+\]
+
+In simpler words, it is a set of the pairs consisting of the equivalence classes of a pair \((x, y) \in H\).
+
+\subsubsection*{The Quotient is an Equivalence Relation}
+
+The Quotient is an Equivalence Relation.
+
+\textbf{Proof:}
+
+\emph{Reflexivity}: For \(([x]_{G}, [y]_{G}) \in H/G\) we know claim that \([x]_{G} \sim [x]_{G}\). By the reflexivity 
+of \(H\) we know that \(x \sim x\), which means that \((x, x) \in H\); and therefore, \([x]_{G} \sim [x]_{G}\). 
+
+\emph{Symmetry}: For \(([x]_{G}, [y]_{G}) \in H/G\) we know claim that \(([x]_{G} \sim [y]_{G}) \land ([y]_{G} \sim [x]_{G})\). Analogously to our last property, 
+if \((x \sim y \land (y \sim x)\) were not true then \(H\) would not be an equivalence relation which leads to a contradiction of our initial conditions. Hence, 
+the symmetric property is present.
+
+\emph{Transitivity}: Lastly, the transitivity we again use the same argument as before using our base elements and pairs from \(H\) to arrive at a contradiction, which 
+guarantees us that their equivalence class counterpart are also part of an equivalence relation.
+
+\QED
+
+\subsubsection*{Equivalence Classes under Refinements}
+
+Let \(G\) and \(H\) be equivalence relations in \(A\), suppose \(G \subseteq H\). Then 
+\(z \in [x]_{H} \implies [z]_G \subseteq [x]_H\).
+
+\textbf{Proof:}
+
+\(z \in [x]_{H}\) means that \((z, x) \in H\), then 
+
+\begin{align*}
+	y \in [z]_G	\implies (y, z) \in G \subseteq H &\implies (y, x) \in H \\ 
+	&\implies y \in [x]_H
+\end{align*}
+
+Thus, \([z]_G \subseteq [x]_H\).
+
+\QED
+
+This can also be extended for all elements \(x \in A\), as \([x]_G \subseteq [x]_H\).
 
 \subsection{Equivalence Relations and Surjective Mappings}
 
@@ -1152,7 +1283,7 @@ Let \( M \) be a set.
 
 \subsection{Homomorphism Theorem for Sets}
 
-First, given \(f: M \to N\) with \( M / \!\sim_f = \{f^{-1}(\{n\}) \mid m \in f(M)\}\)  
+Given \(f: M \to N\) with \( M / \!\sim_f = \{f^{-1}(\{n\}) \mid m \in f(M)\}\)  
 
 By factorizing \(f\) as \(f = \overline{f} \circ \iota_f\) with 
 \(\iota_f\) surjective and \(\overline{f}\) injective, we obtain the following:
@@ -1166,7 +1297,7 @@ By factorizing \(f\) as \(f = \overline{f} \circ \iota_f\) with
 
 \end{itemize}
 
-The Homomorphism Theorem for Sets can be visualized through the following commutative diagram:
+The homomorphism theorem for Sets can be visualized through the following commutative diagram:
 
 \begin{figure}[H]
 	\centering

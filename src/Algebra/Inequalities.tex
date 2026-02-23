@@ -1,18 +1,13 @@
 \newpage
 \section{Inequalities}
 
-\subsection{Triangle Inequalities}
+\subsection{Triangle Inequality}
 
 \begin{itemize}
-    
     \item \(|x + y| \le |x| + |y|\)
-    
     \item \(|x - y| \ge |x| - |y|\)
-     
     \item \(||x| - |y|| \le |x - y|\)
-
     \item \(xy \le |x| \cdot |y|\)
-
 \end{itemize}
 
 \subsection{Reciprocal Inequality}
@@ -23,7 +18,7 @@
 
 \subsection{Bernoulli Inequality}
 
-Given \(x \in \R, x > -1, x \ne 0\). Then for \(n \in \N, n \ge 2\) we have
+Given \(x \in \R, x > -1, x \ne 0\), then for \(n \in \N, n \ge 2\), we have
 
 \[
     (1 + x)^n > 1 + nx
@@ -37,7 +32,7 @@ For \(n = 2\)
     (1 + x)^2 > 1 + 2x.
 \]
 
-Then for \(n + 1\) with \(n > 2\)
+Then, for \(n + 1\) with \(n > 2\):
 
 \begin{align*}
     (1 + x)^{n + 1} &> 1 + (n + 1)x \\
@@ -60,52 +55,52 @@ For \(x,y \in \R\) the following holds:
 
 \textbf{Proof:}
 
-For the first, if \(x > y\) then I can choose some epsilon only at some point where \(y + \varepsilon > x\) therefore, 
-not all epsilons satisfy the Inequality.
+For the first, if \(x > y\), then I can choose some epsilon only at some point where \(y + \varepsilon > x\); therefore, 
+not all epsilons satisfy the inequality.
 
-For the second one, if \(x \ne 0\) then \(|x| \ne 0 \land |x| > 0\) therefore, the only valid option is for 
+For the second one, if \(x \ne 0\), then \(|x| \ne 0 \land |x| > 0\); therefore, the only valid option is for 
 \(x\) to be zero.
 
 \QED
 
 \subsection{Elementary Young Inequalities}
 
-For all \(x,y \in \R\) holds 
+For all \(x,y \in \R\), the following holds:
 
 \[
     xy \le \frac{1}{2}x^2 + \frac{1}{2}y^2.
 \]
 
-And this implies 
+And this implies:
 
-\[ 
+\[
     \sqrt{xy} \le \frac{1}{2}x + \frac{1}{2}y, \quad \forall x,y \ge 0
 \]
 
-and 
+and
 
 \[
-    xy \le \frac{\varepsilon}{2}x^2 + \frac{1}{\varepsilon 2}y^2, \quad \forall x,y \in \R, \varepsilon > 0.
+    xy \le \frac{\varepsilon}{2}x^2 + \frac{1}{2\varepsilon}y^2, \quad \forall x,y \in \R, \varepsilon > 0.
 \]
 
 \subsection{Inequalities with and without Absolute Value}
 
-\emph{Inequalities} are like normal \emph{equalities} but with ranges of solutions 
+\emph{Inequalities} are like normal \emph{equalities}, but with ranges of solutions 
 instead of one particular solution. The inequalities without absolute value are straightforward 
-to solve, just like equations with the particularity of when dividing both sides by a negative number 
-the relation \(<, > \ge, \le\) has to be converted to its opposite.
+to solve, just like equations, with the particularity that when dividing both sides by a negative number, 
+the relation \(<, >, \ge, \le\) has to be converted to its opposite.
 
-The with absolute value is similar but here we have to account for different cases depending on the 
+The case with absolute value is similar, but here we have to account for different cases depending on the 
 expression inside the \(|\circ|\).
 
 \textbf{Example:}
 
-Solve \(\|x + 1 \| \le 10 + \|2x - 6\|\).
+Solve \(|x + 1| \le 10 + |2x - 6|\).
 
 \textbf{Main cases:}
 
 \[
-    F_1: x + 1 \ge 0 \implies x \ge 1
+    F_1: x + 1 \ge 0 \implies x \ge -1
 \]
 
 \[
@@ -120,7 +115,7 @@ Solve \(\|x + 1 \| \le 10 + \|2x - 6\|\).
 
 \begin{align*}
     x + 1 &\ge 10 + 2x - 6 \\
-    x &\ge -3 \\
+    x &\le 5 \\
     \mathcal{L} &= [3; \infty )
 \end{align*}
 
@@ -140,7 +135,7 @@ Solve \(\|x + 1 \| \le 10 + \|2x - 6\|\).
 
 \begin{align*}
    -(x + 1 ) &\ge 10 + 2x - 6 \\
-    x &\ge \frac{-5}{3} \\
+    x &\le \frac{-5}{3} \\
     \mathcal{L} &= \emptyset
 \end{align*}
 

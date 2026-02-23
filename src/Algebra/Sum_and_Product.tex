@@ -1,9 +1,9 @@
 \newpage
 \section{Sum and Product Notation}
 
-In mathematics, the sum and product notations are compact ways to represent repeated addition and 
 multiplication, respectively. These notations are essential for working with sequences, series, and 
 algebraic expressions.
+In mathematics, the sum and product notations are compact ways to represent repeated addition and multiplication, respectively. These notations are essential for working with sequences, series, and algebraic expressions.
 
 \subsection{Sum Notation \texorpdfstring{\(\sum\)}{∑}}
 
@@ -13,7 +13,7 @@ The summation symbol \(\sum\) represents the addition of a sequence of terms:
     \sum_{i = m}^{n} a_i = a_m + a_{m+1} + \cdots + a_n
 \]
 
-Where \(i\) is the index of summation, \(m\) is the lower bound, and \(n\) is the upper bound.
+Here, \(i\) is the index of summation, \(m\) is the lower bound, and \(n\) is the upper bound.
 
 \emph{Linearity:}
 
@@ -71,7 +71,7 @@ Plug in small values of \(n\) (e.g., 1, 2, 3), solve the system of equations to 
 
 \subsubsection{Telescoping Sum}
 
-A telescoping sum is a sum where intermediate terms cancel out, leaving only the first and last terms.
+A telescoping sum is a sum in which intermediate terms cancel out, leaving only the first and last terms.
 
 \[
     \sum_{k=m}^{n} (a_k - a_{k+1}) = a_m - a_{n+1}
@@ -141,7 +141,7 @@ Let \(j = i + k\), then:
 
 \subsubsection{Telescoping Product}
 
-A telescoping product occurs when consecutive terms simplify or cancel.
+A telescoping product occurs when consecutive terms simplify or cancel each other.
 
 \[
     \prod_{k=m}^{n} \frac{a_k}{a_{k+1}} = \frac{a_m}{a_{n+1}}
@@ -158,13 +158,13 @@ A telescoping product occurs when consecutive terms simplify or cancel.
 
 Let \(S_n = \sum_{k = 0}^{n}aq^k\) with \(|q| < 1\).
 
-Then \(S_n q = a(\sum_{k = 0}^{n + 1})q^k = a\left( \sum_{k= 0}^{n} q^k + q^{n + 1}\right)\)
+Then \(S_n q = a(\sum_{k = 0}^{n + 1})q^k = a\left( \sum_{k= 0}^{n} q^k + q^{n + 1}\right)\).
 
 \[
     a + S_n q = \sum_{k = 0}^{n}aq^k + aq^{n + 1}  = S_n + aq^{n + 1}
 \]
 
-Finally, we subtract \(S_n\) and \(a\) and after that divide by \(q - 1\)
+Finally, we subtract \(S_n\) and \(a\), and then divide by \(q - 1\):
 
 \[
     S_n = \frac{a - aq^{n + 1}}{q - 1}

@@ -1,9 +1,8 @@
 \newpage
 \section{Factorization}
 
-\emph{Factorization} is the process of writing a mathematical expression as a product 
-of its factors. This is a fundamental technique in algebra used to simplify expressions, 
-solve equations, and analyze functions.
+\emph{Factorization} is the process of writing a mathematical expression as a product of its factors. 
+This is a fundamental technique in algebra, used to simplify expressions, solve equations, and analyze functions.
 
 \subsection{Common Factor}
 
@@ -41,7 +40,7 @@ Factor out the greatest common divisor (GCD) of all terms.
 
 \subsection{Trinomial: Special Case \texorpdfstring{\(x^2 + bx + c\)}{x² + bx + c}}
 
-This is the case where \(a = 1\). Find two numbers whose product is \(c\) and sum is \(b\).
+This is the case where \(a = 1\). Find two numbers whose product is \(c\) and whose sum is \(b\).
 
 \textbf{Example:}
 
@@ -51,8 +50,7 @@ This is the case where \(a = 1\). Find two numbers whose product is \(c\) and su
 
 \subsection{Trinomial: General Form \texorpdfstring{\(ax^2 + bx + c\)}{ax² + bx + c}}
 
-Like in the previous case we are going to use a similar procedure, but we start by
-multiplying and diving by \(\frac{a}{a}\) and then proceed to do the rest. Look at the example
+As in the previous case, we are going to use a similar procedure, but we start by multiplying and dividing by \(\frac{a}{a}\), and then proceed with the rest. Look at the example:
 
 \begin{align*}
 3x^2 -5x - 2 &= \frac{3(3x^2 -5x - 2)}{3} \\
@@ -85,7 +83,7 @@ Substitute a more complex expression with a single variable, factor, then back-s
 
 \textbf{Example:}
 
-Given \(x^4 + 2x^2 + 1\). Let \(y = x^2\) then 
+Given \(x^4 + 2x^2 + 1\). Let \(y = x^2\), then
 
 \[
     y^2 + 2y + 1 = (y + 1)^2  = (x^2 + 1)^2
@@ -109,30 +107,23 @@ Rationalizing removes radicals from the denominator.
 
 \subsection{Horner’s Method}
 
-Used to divide a polynomial by a binomial of the form \((x - r)\).
+This method is used to divide a polynomial by a binomial of the form \((x - r)\).
 
 We can apply this method by following these steps:
 
 \begin{enumerate}
 
-  \item Write coefficients of the polynomial \(P_1(x)\).
-
-  \item Find the factors of the term with \(x^0\).
-   
-  \item Bring down the first coefficient.
-
-  \item Multiply it by \(r\), add to next coefficient. Repeat until you get to 
-        the term with \(x^0\).
-  
-  \item If the final addition gives zero then you have found a zero of the polynomial which  
-        Now can be written in the following form \(P_2(x)(x - r)\). With \(P(x)\) being the 
-        new polynomial with the coefficients which were computed during the process to get the zero.
+    \item Write the coefficients of the polynomial \(P_1(x)\).
+    \item Find the factors of the term with \(x^0\).
+    \item Bring down the first coefficient.
+    \item Multiply it by \(r\), and add to the next coefficient. Repeat until you reach the term with \(x^0\).
+    \item If the final addition gives zero, then you have found a zero of the polynomial. Now, it can be written in the following form: \(P_2(x)(x - r)\), with \(P(x)\) being the new polynomial whose coefficients were computed during the process to get the zero.
 
 \end{enumerate}
 
 \textbf{Example:}
 
-Given is \(P_1(x) = x^3 - 6x^2 + 11x - 6\).
+Given \(P_1(x) = x^3 - 6x^2 + 11x - 6\).
 
 The factors of -6 are \(\{\pm 1, \pm 2, \pm 3, \pm 6\}\). We use \(r = 1\):
 
@@ -146,7 +137,7 @@ The factors of -6 are \(\{\pm 1, \pm 2, \pm 3, \pm 6\}\). We use \(r = 1\):
   \implies P_2(x) = (x^2 - 5x + 6)(x - 1)
 \]
 
-Now by repeating the process with \(r = 2\)
+Now, by repeating the process with \(r = 2\):
 
 \[
   \begin{array}{r|rrr}
@@ -158,16 +149,16 @@ Now by repeating the process with \(r = 2\)
   \implies P_3(x) = (x - 3)(x - 2)(x - 1)
 \]
 
-The result final result is \((x - 3)(x - 2)(x - 1)\)
+The final result is \((x - 3)(x - 2)(x - 1)\).
 
 \subsection{Long Division of Polynomials}
 
-Another way of factorization is the so-called \emph{long division for polynomials}. This works 
-exactly as the division algorithm for real numbers, but we use powers of \(x\) and the scalars of \(\field\) for 
-the multiplication step.
+Another way of factorization is the so-called \emph{long division for polynomials}. This works exactly as the 
+division algorithm for real numbers, but we use powers of \(x\) and the scalars of \(\field\) for the 
+multiplication step.
 
 \textbf{Example:}
 
 \polylongdiv{x^3+x^2-1}{x-1}
 
-with the result: \(x^2 +2x + 2 + \frac{1}{x-1}\).
+with the result: \(x^2 + 2x + 2 + \frac{1}{x-1}\).

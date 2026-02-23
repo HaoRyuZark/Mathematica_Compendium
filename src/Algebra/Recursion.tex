@@ -1,13 +1,13 @@
 \newpage
 \section{Recursion}
 
-\emph{Recursion} is term used to refer to a thing define in terms
-of itself. An example the factorial \(n! = (n - 1)\)! with \(0! = 1\) being the
+\emph{Recursion} is a term used to refer to something defined in terms
+of itself. An example is the factorial: \(n! = (n - 1)!\), with \(0! = 1\) being the
 base case where the recursion stops.
 
 \subsection{From Recursive to Closed Form}
 
-A sequence defined recursively can often be rewritten in an explicit or closed form.
+Often, a sequence defined recursively can be rewritten in an explicit or closed form.
 
 \emph{Recursive form} defines \( a_n \) based on previous terms (e.g., \( a_n = a_{n-1} + 2 \)).
 
@@ -15,7 +15,7 @@ A sequence defined recursively can often be rewritten in an explicit or closed f
 
 \subsection{Linear Recursion}
 
-A linear recurrence has the form:
+Linear recursion has the form:
 
 \begin{align*}
     a_n & = \lambda a_{n -1} + c \\
@@ -33,13 +33,12 @@ Therefore,
 
 \begin{enumerate}
 
-    \item Calculate some terms and watch the difference or quotient between them
-          maybe the difference is clear, and you can build a geometric or arithmetic sequence directly.
+    \item Calculate some terms and observe the difference or quotient between them.
+    Maybe the pattern is clear, and you can build a geometric or arithmetic sequence directly.
 
     \item Identify the type (e.g., linear, homogeneous, constant coefficients).
 
     \item Solve the characteristic equation (if linear).
-    
     \item Use initial conditions to determine constants.
 
 \end{enumerate}
@@ -47,7 +46,7 @@ Therefore,
 
 \subsection{Recursive Inequalities}
 
-A \emph{recursive inequality} bounds a sequence rather than defines it exactly.
+\emph{Recursive inequalities} bound a sequence rather than define it exactly.
 
 \textbf{Example:}
 
@@ -61,11 +60,9 @@ To analyze
 
 \begin{itemize}
 
-    \item Guess a bound (e.g., show \( a_n \le M \) for all \(n\))
-
-    \item Use induction or iteration to justify convergence or boundedness
-
-    \item Compare with a simpler sequence (e.g., geometric series)
+    \item Guess a bound (e.g., show \( a_n \le M \) for all \(n\)).
+    \item Use induction or iteration to justify convergence or boundedness.
+    \item Compare with a simpler sequence (e.g., geometric series).
 
 \end{itemize}
 
@@ -73,7 +70,7 @@ These techniques are common in analysis, approximation, and numerical algorithms
 
 \subsection{Fibonacci Numbers and Closed Form}
 
-The Fibonacci sequence is defined recursively
+The Fibonacci sequence is defined recursively:
 
 \[
     F_0 = 0, \quad F_1 = 1, \quad F_n = F_{n-1} + F_{n-2}.
@@ -95,7 +92,7 @@ The closed form (Binet’s Formula) is
     
     \item \( \varphi \approx 1.618 \) is the golden ratio
     
-    \item This formula demonstrates exponential growth of \( F_n \)
+    \item This formula demonstrates exponential growth of \( F_n \).
 
 \end{itemize}
 

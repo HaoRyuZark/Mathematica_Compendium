@@ -3,7 +3,7 @@
 
 \subsection{Relations}
 
-A \emph{relation} is a set of the Cartesian Product of two sets. It contains ordered pairs \((a,b)\).
+In mathematics, a \emph{relation} is a set formed from the Cartesian product of two sets. It contains ordered pairs \((a,b)\).
 
 \subsection{The Cartesian Product for Relation Algebra}
 
@@ -13,15 +13,14 @@ The Cartesian Product for our entities is defined as:
     S \times T := \bigcup_{(s_1, \dots, s_n) \in S} \left[ \bigcup_{(t_1, \dots, t_k) \in T} \{(s_1, \dots, s_n, t_1, \dots, t_k)\}\right]
 \]
 
-Simplified each element of \(S\) is combined with each element of \(T\). The size of this
-special product is \( |T \times S| = |S| \cdot |T| \).
+Simplified: each element of \(S\) is combined with each element of \(T\). The size of this
+special product is \( |S \times T| = |S| \cdot |T| \).
 
-In the relational algebra relations represent tables and their rows the tuples.
+In relational algebra, relations represent tables and their rows are the tuples.
 
 \subsection{Relational Algebra}
 
-Relational Algebra is a \emph{formal, procedural query language} for the relational model. It provides a set of operators that 
-take relations (tables) as input and produce relations as output. 
+Relational Algebra is a \emph{formal, procedural query language} for the relational model. It provides a set of operators that take relations (tables) as input and produce relations as output.
 
 \subsubsection{Axioms of Relational Algebra}
 
@@ -45,7 +44,7 @@ If \(\sigma_{id > 1}(A)\) returns a relation, it can be used as input to another
 
 \subsubsection{Relations}
 
-A \emph{relation} is a finite set of tuples over a fixed set of attributes.
+In database theory, a \emph{relation} is a finite set of tuples over a fixed set of attributes.
 
 Formally:
 
@@ -63,14 +62,14 @@ Relation \(A(id, value)\) is a set of tuples:
 
 \subsubsection{Identifier and Schema}
 
-We define  
+We define:
 
 \[
     \mathrm{ident}(R) = \{a_i\}_i \quad \text{and} \quad \mathrm{schema} (R) = \{[a_1:T_1, \dots, a_n:T_n]\}.
 \]
 
 \(\mathrm{ident}\) returns the names of the attributes of the relation, while 
-\(\mathrm{schema}\) the attributes and its corresponding types.
+\(\mathrm{schema}\) returns the attributes and their corresponding types.
 
 \subsection{Domain of an Attribute}
 
