@@ -186,10 +186,10 @@ unique subset \(T\) of \(M\), \(T := M \mid \alpha(m) = 1\).
 
 \subsection{Functions} 
 
-A subset \( f \subseteq A \times B \) is called a \emph{function} if:
+A subset \( f \subseteq X \times Y \) is called a \emph{function} if:
 
 \[
-	\forall x \in A: \exists y \in B: f(x) = y
+	\forall x \in X: \exists y \in Y: f(x) = y
 \]
 
 and 
@@ -198,17 +198,15 @@ and
 	(x, y) \in f \text{ and } (x, y') \in f \implies y = y'.
 \]
 
-That is, for each \( x \in A \), there exists at most one \( y \in B \) such that \((x, y) \in f.\)
+That is, for each \( x \in X \), there exists at most one \( y \in Y \) such that \((x, y) \in f\).
 
 \subsection{The Graph}
 
 We can also consider the graph as a set of ordered pairs \(x, y\) where \(y = f(x)\).
 
 \[
-	\mathrm{graph}(f):= \{(x, f(x)) \mid x \in X\} = G
+	\mathrm{graph}(f):= \{(x, f(x)) \mid x \in X, f(x) \in Y\} = G
 \]
-
-\subsubsection{Basic Properties of Graphs}
 
 \subsubsection*{The Inverse Graph}
 

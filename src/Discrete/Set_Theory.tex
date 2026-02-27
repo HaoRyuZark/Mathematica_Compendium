@@ -163,7 +163,7 @@ the set containing all sets which do not contain themselves. The S does not cont
 In short \(S = \{x: x \notin x\}\), this is a so-called \emph{logical} paradox. This is of course a huge contradiction in the hearth of naive set theory. The choice to take a more 
 formal and axiomatic approach was to eliminate such fundamental faults.
 
-As a short teasing we will declare the \textbf{Axiom of Selection:} \(\{x \in A: S(x)\}\) this means that we can construct a set of elements 
+As a short teasing we will declare the \emph{Axiom of Selection:} \(\{x \in A: S(x)\}\) this means that we can construct a set of elements 
 of an existing set as long as they satisfy a condition. Now the paradox of \(x: x \notin x\) can not be state directly in our new system. We can emulate it by 
 declaring 
 
@@ -198,6 +198,8 @@ If \(X \in Y\) for some class \(Y\) then \(X\) is a set. If \(X \notin Y\) for a
 
 \begin{enumerate}[label = \Roman*.]
 	
+	\item \emph{Axiom of Selection}: Given a class \(A\), a class \(S\) can be build in the following manner \(S = \{x \in A \mid P(x)\}\)
+	 
 	\item \emph{Axiom of Equality}: Let \(A\) and \(B\) be classes then \(A = B \iff \forall X : A \in X \implies B \in X \land B \in X \implies A \in X\)
 
 	\item \emph{Empty-Set Axiom}: \(\emptyset\) is a set. 
@@ -211,11 +213,11 @@ If \(X \in Y\) for some class \(Y\) then \(X\) is a set. If \(X \notin Y\) for a
 
 	\item \emph{Axiom of the Big Union}: If \(A\) is a set of sets, then \(\bigcup_{a \in A} a\) is a set.
 
-	\item \emph{Axiom of the Power Set}: If \(A\) is a set then \(\mathcal{P}(A)\) is a set.
+	\item \emph{Axiom of the Power Set}: If \(A\) is a set then the set of all the subsets of the original set, \(\mathcal{P}(A)\), is a set.
 
 	\item \emph{Axiom of Foundation}: If \(A\) is any set, there is an element \(a \in A\) such that \(a \cap A = \emptyset\)
 
-	\item \emph{Axiom of Replacement}: If \(A\) is a set and \(f: A \to B\) is a surjective function, than \(B\) is a set.
+	\item \emph{Axiom of Replacement}: If \(A\) is a set and \(f: A \to B\) is a surjective function, then \(B\) is a set.
 
 \end{enumerate}
 
@@ -243,6 +245,9 @@ If \(X \in Y\) for some class \(Y\) then \(X\) is a set. If \(X \notin Y\) for a
 
 	\(A \cap C\) were \(A\) and \(C\) are proper classes, gives us that their union is also a proper class due to \(A, C \subseteq A \cup C\)
 
+	\item \(\mathcal{P}(A) \nsubseteq A\): Let \(x \in \mathcal{P}(a)\), then \(\forall x \in \mathcal{P}(A) \implies x \in A\). By definition, \(A \in \mathcal{P}(A)\), but 
+	\(A \notin A\); hence we have contradiction and the power set of a set is not a subset of the original set.
+	 
 \end{itemize}
 
 \QED 
@@ -258,6 +263,14 @@ If \(X \in Y\) for some class \(Y\) then \(X\) is a set. If \(X \notin Y\) for a
 	\item If \(\{A_i\}_{i \in I}\) is an indexed family of sets and \(I\) is a set, then \(\{A_i \mid i \in I\}\) is a set.
 
 \end{itemize}
+
+\subsection{Subclasses/Subsets}
+
+A subset/subclass \(A\) of the set/class \(B\) is a set which obeys the following property:
+
+\[
+	A \subseteq B \iff \forall x \in A, x \in A \implies x \in B
+\]
 
 \subsection{The Universal Class}
 
@@ -700,35 +713,40 @@ We also can define the graph of the sets with their respective indexes:
 	G_{A_i} = A_i \times I = \{(i, A_i) \mid i \in I \land  A_i \in \{A_i\}_{i \in I}\}
 \]
 
-\subsubsection*{Union, Intersection and Cartesian Product}
+\subsection{Generalized Union, Intersection and Cartesian Product for Indexed Sets}
+
+For a class of classes or sets of sets with an index set \(I\) we define the generalized \emph{union}, \emph{intersection} and \emph{Cartesian product} as:
 
 \[
-	\bigcup_{i=1}^{n} A_i := A_1 \cup A_2 \cup \dots \cup A_n = \{ x \mid \exists i \in I (x \in A_i) \}
+	\bigcup_{i=1}^{n} A_i := A_1 \cup A_2 \cup \dots \cup A_n = \{ x \mid \exists i \in I, (x \in A_i) \}
 \]
 
 \[
-	\bigcap_{i=1}^{n} A_i := A_1 \cap A_2 \cap \dots \cap A_n = \{ x \mid \forall i \in I (x \in A_i) \}
+	\bigcap_{i=1}^{n} A_i := A_1 \cap A_2 \cap \dots \cap A_n = \{ x \mid \forall i \in I, (x \in A_i) \}
 \]
 
 \[
 	X_{i=1}^{n} A_i = \{(a_1, \dots, a_n) \mid a_i \in A_i \}
 \]
 
-If \(I\) is any set, then \( {(A_i)}_{i \in I} \) are pairwise disjoint if and only if:
+\subsection{Pairwise Disjoint}
+
+If \(I\) is any set, then \( {(A_i)}_{i \in I} \) are \emph{pairwise disjoint} if and only if:
 
 \[
 	\forall i_1, i_2 \in I, \ i_1 \neq i_2 \implies A_{i_1} \cap A_{i_2} = \emptyset
 \]
 
-If \(I\) is any set, then \( {(A_i)}_{i \in I} \) forms a (disjoint) decomposition of \(X\) if 
+\subsection{Disjoint Decomposition}
+
+If \(I\) is any set, then \( {(A_i)}_{i \in I} \) forms a \emph{disjoint decomposition} of \(X\) if 
 and only if:
 
 \[
 	{(A_i)}_{i \in J} \text{ are pairwise disjoint and } \bigcup_{i \in J} A_i = X
 \]
 
-
-\subsubsection{Cardinality Laws}
+\subsection{Cardinality Laws}
 
 Let \( A_i, B_j \subseteq X \) for \( i \in I \) and \( j \in J \). Then the following holds:
 
@@ -769,13 +787,13 @@ The cardinality of a set is the number of elements in that set.
 Let \(A\) and \(B\) be finite sets with \( |A| = n \), \( |B| = m \), and let \(X\) be the finite 
 universal set. Then the following holds:
 
-\subsubsection{Cardinality of a Set}
+\subsubsection*{Cardinality of a Set}
 
 \[
 	A = (A \cap B) \cup (A \setminus B), \quad |A| = |A \cap B| + |A \setminus B|
 \]
 
-\subsubsection{Cardinality of the complements}
+\subsubsection*{Cardinality of the complements}
 
 \[
 	|A| = |X \setminus A| = |X| - |A|
@@ -784,19 +802,19 @@ universal set. Then the following holds:
 	A \setminus B = A \cap (X \setminus B), \quad |A \setminus B| = |A| - |A \cap B|
 \]
 
-\subsubsection{Cardinality of the Cartesian Product}
+\subsubsection*{Cardinality of the Cartesian Product}
 
 \[
 	|A \times B| = |A| \cdot |B| = n \cdot m
 \]
 
-\subsubsection{Inclusion-Exclusion Formula for Two Disjoint Sets}
+\subsubsection{*Inclusion-Exclusion Formula for Two Disjoint Sets}
 
 \[
 	|A \cup B| = |A| + |B| = n + m
 \]
 
-\subsubsection{Inclusion-Exclusion Formula for Two Non-Disjoint Sets}
+\subsubsection*{Inclusion-Exclusion Formula for Two Non-Disjoint Sets}
 
 Let \( |A \cap B| = k \), then:
 
@@ -805,7 +823,7 @@ Let \( |A \cap B| = k \), then:
 	twice)}
 \]
 
-\subsubsection{Inclusion-Exclusion Formula for Three Non-Disjoint Sets}
+\subsubsection*{Inclusion-Exclusion Formula for Three Non-Disjoint Sets}
 
 \begin{align*}
 	|A \cup B \cup C| &= |(A \cup B) \cup C| \\ 
@@ -924,34 +942,27 @@ The Power Set of a set is the set of all subsets of a given set
 
 Its cardinality is \(2^n\) with \(n\) being the number of elements in the original set \(X\).
 
-\subsection{Set System}
+\subsection{Set Systems}
 
-Let \(\mathcal{U}\) be a non-empty set. A subset \(\mathscr{F}\) of the power set of \(X\) is called a 
-\emph{set system} of \(X\). 
+Let \(A\) be a non-empty set. A subset \(\mathscr{F}\) of the power set of \(A\) is called a 
+\emph{set system} or \emph{family of sets} of \(A\). 
 
-\textbf{Example:}
-
-Let \(M \neq M\), if \(\mathcal{U} :=  \emptyset \subseteq \mathcal{P}(M)\) then 
-
-\[
-	\bigcap_{T \in \mathcal{U}} T = M \quad \text{and} \quad \bigcup_{T \in \mathcal{U}} T = \emptyset
-\]
-
-\subsection{Intersection and Union of Sets}
+\subsection{Intersection and Union of Set Systems}
 
 We can define 
 
 \[
-	\bigcap T := \{x \mid \forall A_i, x \in T \implies m \in A_i\}.
+	\bigcap \mathscr{F}  := \{x \mid \forall F, F \in \mathscr{F} \implies x \in F\}
 \]
 
 and 
 
 \[
-	\bigcup T := \{x \mid \exists A_i, A_i \in T \land x \in A_i\}
+	\bigcup \mathscr{F}  := \{x \mid \exists F, F \in \mathscr{F}, x \in F\}.
 \]
 
 as the \emph{intersection} and \emph{union} of the sets.
+
 \subsubsection{The Intersection of the Empty Set is the Universal Class}
 
 \textbf{Proof:}
@@ -960,13 +971,14 @@ The set intersection of the empty-set gives us the set of all elements that are 
 We have defined our definition 
 
 \[
-	\bigcap T = \{x \mid \forall A_i, x \in T \implies m \in A_i\}.
+	\bigcap \mathscr{F}  := \{x \mid \forall F, F \in \mathscr{F} \implies x \in F\}
 \]
+
 
 For our case 
 
 \[
-	\bigcap \emptyset = \{x \mid \forall A_i, x \in \emptyset \implies m \in A_i\}.
+	\bigcap \emptyset = \{x \mid \forall F, F \in \emptyset \implies x \in F\}.
 \]
 
 We can see that that due to the implication our left side is always false which leads 
@@ -981,26 +993,12 @@ Resulting in
 For the union 
 
 \[
-	\bigcup_{T \in \mathcal{U}} T = \{m \in M \mid \exists T \in \mathcal{U} : m \in T \}
+	\bigcup \emptyset = \{x \mid \exists F \in \emptyset, x \in F\}
 \]
 
-The condition is that there exists an element in \(T\) such that, that element is also in every other set. Therefore, the only 
-element which satisfies such a requirement is the empty-set.
+The condition is always false; therefore the union has to be the empty set.
 
 \QED
-
-\subsubsection{Union and Intersection of Set Systems}
-
-\[
-	M = \bigcup_{X \in P, X \ne \emptyset} X 
-\]
-
-\[
-	X \cap Y = \emptyset, \forall X, Y \in P, X \ne Y
-\]
-
-Therefore, \(M\) is a disjoint union of the element in \(P\). Even simpler a partition is way 
-of dividing a set into disjoint subsets such that the union of all subsets gives back the original set.
 
 \subsubsection{Subset-property of Set Systems}
 
