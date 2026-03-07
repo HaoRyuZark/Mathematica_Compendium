@@ -1,4 +1,4 @@
-\newpage
+=\newpage
 \section{Set Theory}
 
 \emph{Set theory} is a foundational branch of mathematics that studies \emph{sets}, which are simply 
@@ -1081,7 +1081,7 @@ Let \(A\) be a set. A partition of \(A\) is a subset non-empty sets of \(\mathca
 and 
 
 \[
-	bigcup_{i \in I} A_i = A \quad \text{ or equivalently } \quad bigcup_{i \in I} A_i \subseteq A
+	\bigcup_{i \in I} A_i = A \quad \text{ or equivalently } \quad \bigcup_{i \in I} A_i \subseteq A
 \]
 
 \textbf{Example:}
@@ -1090,10 +1090,79 @@ Prove that \(B_n = \{m \in \Z \mid \exists q, m = n + 5q\}\) is a partition of \
 
 First, we prove that disjoint property which means \(m \in B_x \land m \in B_y \iff x = y\)
 
-
 For the union, we need to prove that every \(B_n\) is not empty which is very easy by letting \(m = n + 5\cdot0 \implies m = n\) and then 
 combining all of them with the union will give us the entire set of integers because every of the sets \(B_n\) has at least the number 
 \(n\) in it which can be any integer.
+
+\QED
+
+\subsubsection*{The Quotient Space satisfies the Partition Properties}
+
+Given \(A/R\), it satisfies the properties of a partition.
+
+\textbf{Proof:}
+
+For \(X, Y \in A/R\), we know by the one of the properties of equivalence classes that \([a]_R \cap [b]_R \neq \emptyset \iff [a]_R = [b]_R\).
+Therefore, the first condition is satisfied. 
+
+To prove: \(\bigcup_{[a]_R \in A/R} [a]_R = A\).
+
+\(x \in \bigcup A/R \implies x \in [a]_R \in A/R\), this implies that \(x \in A\) because \(\nexists a \in A, a \notin (x, y) \in R\). This was also already proven in the section 
+subsection dedicated to the quotient space.
+
+\QED
+
+\subsubsection*{Equivalence Relation from a Partition}
+
+Given the partition \(S\) of the set \(A\), then 
+
+\[
+	R_S = \{(a, b) \mid (a, b) \in A \times A, \exists X \in S, a,b \in X\}
+\]
+
+is an equivalence relation.
+
+\textbf{Proof:}
+
+\emph{Reflexivity}: \(a \in A = \bigcup S \implies a \in X \in S \implies (a, a) \in R_S\).
+
+\emph{Symmetry}: \(a, b \in A \bigcup S \implies a,b \in X \in S \implies (a, b), (b, a) \in R_S\).
+
+\emph{Reflexivity}: \((a, b), (b, c) \in R_S \implies a,b \in X \in S \land b,y \in Y \in S \implies b \in X \cap Y\) by definition 
+\(X \cap Y \neq \emptyset \iff X = Y\), therefor, \(a, c \in X, (a, c) \in R_S\).
+
+\QED
+
+\subsection{Relation from the Relation of the Quotient Space and Partition from the Quotient Space}
+
+Given \(R\) on \(A\), \(R_{A/R} = R\) with 
+
+\[
+	R_{A/R} = \{(a, b) \mid (a, b) \in A \times A, \exists X \in A/R, a,b \in X\}.
+\]
+
+And for \(S\) a partition of \(A\), then \(A/R_S = S\).
+
+\textbf{Proof:}
+
+For the first statement we need to prove the condition of an equivalence relation: 
+
+\emph{Reflexivity}: \((a, b) \in R_{A/R} \implies a, b \in [x]_R \in A/R \implies a \sim x \land b \sim x \land a \sim b \land a \sim a \implies (a, a) \in R_{A/R}\).
+
+\emph{Symmetry}: \((a, b), (b, a) \in R_{A/R} \implies a, b \in [x]_R \in A/R \implies a \sim x \land b \sim x \land a \sim b \land b \sim a \implies (a, b),(b,a) \in R_{A/R}\).
+
+\emph{Transitivity}: \((a, b), (b, c) \in R_{A/R} \implies a, b \in [x]_R \in A/R \land b,c \in [y]_R \in A/R \implies a \sim x \land b \sim x \land b \sim y \land a \sim y \implies (a, b),(b,c),(a, c) \in R_{A/R} \).
+
+Thus, \(R_{A/R} = R\). For the other direction \((a, b) \in R \implies b \in [a]_R \in A/R \implies a R_{A/R} b\)
+
+For the second part: \(A/R_S = S\):
+
+Let \(S\) be a partition of \(A\), and \(X \in A/R_S\). For \(X = [a]_{R_S} = \{x \in A \mid a R_S x\}\). 
+For \(a\) and \(b\) to be in a relation they need to be part of the same element \(Y \in S\). We need to prove that 
+\(Y = [a]_{R_S}\). 
+
+This is proven directly by the very definition of the relation \(R_S\) which implies that all elements belong to the same set \(Y\).
+For the other direction if \(a, b \in Y \implies a E_S b \implies b \in [a]_{R_S} \in A/R_S\).
 
 \QED
 
@@ -1314,6 +1383,14 @@ The homomorphism theorem for Sets can be visualized through the following commut
 
 This is saying us to first form collections of elements and then use our second function to associate that connections to their 
 respective images. 
+
+\subsection{Representatives}
+
+Given a set \(X \subseteq A\), we consider it a set of \emph{representatives} for a partition \(S\) if 
+
+\[
+	\forall Y \in S X \cap Y = \{a\}, a \in A
+\]
 
 \subsection{Family of Subsets Operations}
 

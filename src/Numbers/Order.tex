@@ -4,7 +4,7 @@
 \subsection{Partially Ordered Classes}
 
 A \emph{partially ordered class} is a pair of objects \(\langle A, G \rangle\) where \(A\) is a class and \(G\) is 
-and order relation in \(A\). Remember that an order relation is one which is : irreflexivel, antisymmetric and transitive.
+and order relation in \(A\). Remember that an order relation is one which is : reflexive, antisymmetric and transitive.
 
 \subsection{Lexicographical Ordering}
 
@@ -40,8 +40,13 @@ or
 
 \subsection{Comparable}
 
-Let \(A\) be a partially ordered class. Tow elements \(x, y \in A\) are considered \emph{comparable} if 
-either \(x \le y\) or \(y \le x\); otherwise, they are said to \emph{incomparable}.
+Let \(A\) be a partially ordered class. Tow elements \(x, y \in A\) are considered \emph{comparable}. If
+if either \(x \le y\) or \(y \le x\).
+
+\subsection{Incomparable}
+
+Let \(A\) be a partially ordered class. Tow elements \(x, y \in A\) are considered \emph{incomparable} 
+if \(x \nle y\) or \(y \nle x\), with \( a \ne b\).
 
 \subsection{Fully Ordered Subclass}
 
@@ -148,13 +153,335 @@ Let \(A\), and \(B\) be partially ordered classes
 
 \end{itemize}
 
+\subsection{Maximal Element}
+
+An element \(m \in A\) is considered \emph{maximal element of } \(A\) if \(\forall x \in A\) 
+
+\[
+	x \le m
+\]
+
+and if 
+
+\[
+	x \ge m \implies x = m.
+\]
+
+\subsection{Minimal Element}
+
+An element \(m \in A\) is considered \emph{minimal element of } \(A\) if \(\forall x \in A\) 
+
+\[
+	x \ge m
+\]
+
+and if 
+
+\[
+	 x \le m \implies x = m.
+\]
+
+\subsection{Upper Bound}
+
+Let \(B \subseteq A\). An \emph{upper bound} of \(B\) in \(A\) is an element \(a \in A\) such that 
+\(a \ge x, \forall x \in B\).
+
+\subsubsection*{Set of Upper Bounds}
+
+Let \(B \subset A\), we define the function \(v\) as 
+
+\[
+	v(B) := \{a \in A \mid a \ge x, \forall x \in B \}.
+\]
+
+\subsection{Lower Bound}
+
+Let \(B \subseteq A\). A \emph{lower bound} of \(B\) in \(A\) is an element \(a \in A\) such that 
+\(a \le x, \forall x \in B\).
+
+\subsubsection*{Set of Lower Bounds}
+
+Let \(B \subset A\), we define the function \(\lambda\) as 
+
+\[
+	\lambda(B) := \{a \in A \mid a \le x, \forall x \in B\}.
+\]
+
+\subsection{Infimum and Supremum}
+
+The least upper bound of a set \(A\) is called the \emph{supremum} and the greatest lower bound is its \emph{infimum}.
+
+\subsection{Duality}
+
+Let \(\mathscr{S}\) be a statement about partially ordered classes with \(\ge, \le\). If we replace the occurrences of 
+\(\ge, \le\) with their contrary, then the resulting statement \(\mathscr{S}'\) is called the \emph{dual} of \(\mathscr{S}\).
+
+We know that given an order relation \(G\) on \(A\), then \(G^{-1}\) is also an order relation on \(A\). For the dual this means that for 
+any true statement on \(G\) the dual of the statement is also true for \(G^{-1}\).
+
+\subsection{Greatest and Least Elements under Inclusion}
+
+If \(A\) has a greatest element \(a\), and \(B\) has a greatest element \(b\), and \(A \subseteq B\), then 
+
+\[
+	a \leq b.
+\]
+
+\textbf{Proof:} 
+
+By definition, \(b \geq x\) for every \(x \in B\); but \(a \in A \subseteq B\); hence \(b \geq a\), that is, \(a \leq b\).
+
+\textbf{Dual:} If \(A\) has a least element \(a\), and \(B\) has a least element \(b\), and \(A \subseteq B\), then 
+
+\[
+	a \geq b.
+\]
+
+\subsection{Upper and Lower Bounds under Inclusion}
+
+Let \(B\) and \(C\) be subclasses of \(A\). If \(B \subseteq C\), then 
+
+\[
+	v(C) \subseteq v(B).
+\]
+
+\textbf{Proof:} 
+
+\(x \in v(C) \implies x \geq y, \ \forall y \in C \implies x \geq y, \ \forall y \in B \implies x \in v(B).\)
+
+\textbf{Dual:} If \(B \subseteq C\), then 
+
+\[
+	\lambda(C) \subseteq \lambda(B).
+\]
+
+\subsection{Suprema and Infima under Inclusion}
+
+Let \(B\) and \(C\) be subclasses of \(A\), and suppose that \(B\) and \(C\) each has a \(\sup\) in \(A\). If \(B \subseteq C\), then 
+
+\[
+	\sup B \leq \sup C.
+\]
+
+\textbf{Proof:} 
+
+By the previous theorems, \(v(C) \subseteq v(B)\),
+
+\[
+	\sup B \leq \sup C.
+\]
+
+\textbf{Dual:} If \(B\) and \(C\) each has an \(\inf\) in \(A\), and if \(B \subseteq C\), then 
+
+\[
+	\inf B \geq \inf C.
+\]
+
+\subsection{Relation between a Set and Bounds of Bounds}
+
+Let \(B\) be a subclass of \(A\). Then 
+
+\[
+	B \subseteq v(\lambda(B)).
+\]
+
+\textbf{Proof:} Suppose \(x \in B\); for each \(y \in \lambda(B)\), \(y \leq x\); hence \(x \in v(\lambda(B))\).
+
+\textbf{Dual:} 
+
+\[
+	B \subseteq \lambda(v(B)).
+\]
+
+\subsection{Infimum via Lambda Function}
+
+Let \(B \subseteq A\), then
+
+\[
+	\sup(\lambda(B)) \in A \implies \inf(B) \in A \land \inf(B) = \sup(\lambda(B))
+\]
+
+\textbf{Dual:} \(\inf(v(B)) \in A \implies \sup(B) \in A \land \sup(B) = \inf(v(B))\).
+
+\textbf{Proof:}
+
+Let \(s = \sup(\lambda(B))\), \(\forall b \in B, s \le b\), by that \(s\) is a lower bound of \(B\). Suppose \(\inf(B) \neq s\), then \(s > \inf(B) \lor s < \inf(B)\).
+
+Case \(s > \inf(B)\): this leads quickly to a contradiction because if \(s \in A\) and  \(s\) is a lower bound of \(B\), but it is greater than its infimum then 
+\(\inf(B)\) is can not be the greatest lower bound of \(B\), which does not make sense by the definition.
+
+Case \(s < \inf(B)\): \(\inf(B)\) is a lower bound of \(B\); therefore, \(\inf(B) \in \lambda(B)\). If \(\inf(B) \ne \sup(\lambda(B))\), then we also 
+arrive at a contradiction because by the definition of the supremum \(\inf(B) = \sup(\lambda(B))\)
+
+Thus, by exhaustion \(s = \inf(B)\). 
+
+\QED
+
+\subsection*{Example Exercises}
+
+1. Prove that given \(B \subseteq A\), \(\sup(B) = b \in A \implies \lambda(v(B)) \cap v(B) = \{b\}\)
+
+\textbf{Proof:}
+
+By definition \(b \in v(B)\). Also, by the definition of \(\lambda(v(B))\):
+
+\[
+	\{a \in A \mid x \le b, \forall v(B)\};
+\]
+
+we can guarantee that \(b \in lambda(v(B))\). It is leftover to prove that the intersection only consists of \(b\). 
+
+Suppose that there also exists another \(x\) in the intersection such that \(x \ne b\), then \(x \in v(B) \land x \in \lambda(v(B))\). 
+
+If \(x \in v(B)\) and \(x \ne b\), then \(x < b\) or \(x > b\) which when handled separately lead to the following conclusion: 
+
+If \(x < b\), then \(b\) is not the least upper bound of \(B\) which is a contradiction to the definition of the supremum. Hence, by the \(\land\) in our original 
+statement, we arrive at the conclusion that such an \(x\) can not exist.
+
+\subsection{Equality of Suprema}
+
+2. Let \(B \subseteq A\), \(C \subseteq A\), then \(\sup(B) = \sup(C) \implies v(B) = v(C)\).
+
+\textbf{Proof:}
+
+Let \(a \in v(B)\) with \(a > \sup(B)\), we want to prove that if \(a \in v(B)\) then \(a \in v(C)\).
+
+Suppose that there exists some element \(x \in v(B)\) such that \(x \notin v(C)\), by our initial condition 
+\(x \neq \sup(C)\), \(x > \sup(B)\) and \(x < \sup(C)\). Such an element can not exist due to 
+the fact that we have a clear violation of the transitive property of partially ordered relations. 
+
+\[
+	\sup(B) = \sup(C) \iff x > \sup(B) \land x < \sup(C)
+\]
+
+Therefore, all elements in the sets \(v(B)\) and \(v(C)\) have to equal.
+
+\QED 
+
+\subsection{Bounded}
+
+Let \(A\) be a partially ordered class. If \(A\) has both a lower an upper bound then it is \emph{bounded}.
+
+\subsection{Conditionally Complete}
+
+Let \(A\) be a partially ordered class. If every non-empty subclass of \(A\) that is bounded has a \(\sup\), then \(A\) 
+is said to be \emph{conditionally complete}.
+
+\subsection{Lattices}
+
+Let \(A\) be a partially ordered class. If every doubleton \(\{x, y\}\) in \(A\) has a 
+\(\sup\) and \(\inf\) then \(A\) is called a \emph{lattice}.
+
+When dealing with lattices, we denote \(\sup(\{x, y\}):= x \lor y\) and \(\inf(\{x, y\}) := x \land y\).
+
+\subsubsection*{Properties}
+
+For \(a, b \in A\)
+
+\begin{enumerate}
+
+	\item We know that \(a \le a \lor b\) and \( b \le a \lor b\). Furthermore, if \(c \in A\), then 
+	\(a \le c\) and  \(b \le c\) implies that \(a \lor b \le c\).
+	
+	\item Analogously, \(a \ge a \land b\) and \( b \ge a \land b\), then \((c \le a) \land (c \le b) \implies c \le a \land b\).
+
+	\item \(a \lor a = a\) and \(a \land a = a\)
+
+	\item \(a \lor b = b \lor a\) and \(a \land b = b \land a\)
+
+	\item \((a \lor b) \lor c = a \lor (b \lor c)\) and \((a \land b) \land c = a \lor (b \land c)\)
+	
+	\item \((a \lor b) \land a =  a\) and \((a \and b) lor a = a\)
+
+\end{enumerate}
+
+\textbf{Proof 3:}
+
+To prove: \(a \lor a = a\) and \(a \land a = a\). 
+
+If \(a \lor a \ge x, \forall x \in \{a, a\}\) is easy to see that 
+\(a \lor a \ge a\). Analogously for the infimum.
+
+\QED
+
+\textbf{Proof 4:}
+
+By the definition of the supremum and infimum, \(\sup({x, y}) = \sup(\{y, x\}) \) because the sets are the same. Hence, 
+\(a \lor b = b \lor a\) and \(a \land b = b \land a\).
+
+\QED
+
+\textbf{Proof 5:}
+
+\((a \lor b) \lor c = a \lor (b \lor c)\). We want to prove that \((a \lor b) \lor c \le a \lor (b \lor c)\) and 
+\((a \lor b) \lor c \ge a \lor (b \lor c)\).
+
+Starting with \((a \lor b) \lor c \le a \lor (b \lor c)\): 
+
+We know that \(a \le a \lor b \le (a \lor b) \lor c\), \(a \le c \le (a \lor b) \lor c\) and 
+\(b \le b \lor c \le a \lor (b \lor c)\),\(b \le c \le a \lor (b \lor c)\). Hence, if \(a \le a \lor (b \lor c)\) and \(a \le (a \lor b) \lor c\) we can assume that
+
+\[
+	(a \lor b) \lor c \le a \lor (b \lor c).
+\]
+
+Thus, our inequality is proven.
+
+Now, for \(a \lor (b \lor c) \le (a \lor b) \lor c\) we use \( c \le b \lor c \le a \lor (b \lor c)\), \( c \le a \le a \lor (b \lor c)\),
+\(a \le a \lor b \le (a \lor b) \lor c\), \(a \le c \le (a \lor b) \lor c\). If \(a \le a \lor (b \lor c)\) and \(a \le a \lor b \le (a \lor b) \lor c\) we can assume that:
+
+\[
+	a \lor (b \lor c) \le (a \lor b) \lor c.
+\]
+
+Hence, they are equal.
+
+\QED
+
+\subsection{Definition of Less Than}
+
+Let \(A\) be a \emph{lattice}, we define the symbol \(\le\) as:
+
+\[
+	x \le y \iff x \lor y = y
+\]
+
+\subsection{Sublattices}
+
+Let \(A\) be a lattice, and let \(B\) be a subclass of \(A\). If 
+
+\[
+	x \in B \text{ and } y \in B \implies x \lor y \in B \text{ and } x \land y \in B,
+\]
+
+the \(B\) is called a \emph{sublattice} of \(A\).
+
+\subsection{Boolean Algebra}
+
+A \emph{Boolean algebra} is defined to be a lattice \(A\) with the following additional properties:
+
+\begin{enumerate}
+
+	\item \(\exists 0 \in A\) and \(1 \in A\) such that \(x \lor 0 = x\) and \(x \land 1 = x\).
+
+	\item \(\forall x \in A, \exists \overline{x} \in A: x \land \overline{x} = 0 \text{ and } x \lor \overline{x} = 1\).
+
+	\item \(x \lor (y \land z) = (x \lor y) \land (x \lor z)\) and \(x \land ( y \lor z) = (x \land y) \lor (x \land z)\)
+
+\end{enumerate}
+
+\subsection{Complete Lattice}
+
+Let \(A\) be a partially ordered class; \(A\) is called a \emph{complete lattice} if every subclass of \(A\) has a \(\sup\).
+Alternatively, if every subclass of \(A\) has an \(\inf\).
+
 \subsection{Principle of the Well-ordering}
 
 Every non-empty set of natural numbers has a minimum.
 
 \subsection{Order in Fields}
 
-An \emph{ordered field} is a field \(F\) equipped with a total order \( < \) that is compatible with 
+An \emph{ordered field} is a field \(\field\) equipped with a total order \( < \) that is compatible with 
 the field operations + and \( \cdot \). That is, the order satisfies both algebraic and ordering 
 properties.
 

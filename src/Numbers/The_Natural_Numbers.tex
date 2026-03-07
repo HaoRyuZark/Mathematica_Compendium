@@ -1,24 +1,94 @@
 \newpage
 \section{The Natural Numbers}
 
-In this section we will take a look at the natural numbers, which are the numbers we use for counting. 
-The natural numbers are defined as follows:
+\subsection{Definition as Sets}
 
-We will now define the set of natural numbers, \( \N \), via the following 9 axioms. 
+We define the members of \(\N\) as:
+
+\begin{itemize}
+	\item \(0 := \emptyset\)
+	\item \(1:= \{0\} = \{\emptyset, \{\emptyset\}\}\)
+	\item \(2:= \{0, 1\} = \{\emptyset, \{\emptyset, \{\emptyset\}\}\}\)
+	\item \(n:= \{n_1, \dots, 0\}\)
+\end{itemize}
+
+\subsection{Addition}
+
+\[
+	S(n) := n \cup {n} := n + 1
+\]
+
+\subsection{Inductive Sets}
+
+A set \(I\) is inductive if
+
+\[
+	0 \in I, x \in I \implies S(x) \in I.
+\]
+
+\subsection{Axiom of Infinity}
+
+An inductive set exists.
+
+\subsection{Definition of the Sets of Naturals Numbers}
+
+\[
+	\N := \{x \mid x \in I, \text{ for every inductive set }\}
+\]
+
+\textbf{Proof that \(\N\) is inductive for every inductive set \(I, \N \subseteq I\):}
+
+\(\forall I, \emptyset \in I\), hence \(0 \in \N\), for \(n \in \N\), let \(I\) be inductive then 
+
+\[
+	S(n) \in I \therefore S(n) \in \N
+\]
+
+\subsection{The Standard Order}
+
+We define \(<\) for the natural numbers as: 
+
+\[
+	\forall m, n \in \N, m < n \iff m \in n.
+\]
+
+\subsubsection*{Lemma}
+
+\begin{itemize}
+	\item \(0 < n, \forall n \in \N\)
+	\item \(\forall k,n \in \N, k < S(n) \iff k < n \lor k = n\)
+\end{itemize}
+
+\textbf{Proof:}
+
+Suppose for the sake of contradiction that \(\exists n \in \N, n \ne 0: n < 0\). By definition 
+\(n < 0 \iff n \in 0 = \emptyset\). Hence, we arrive at our desired contradiction.
+
+For the second part of the lemma \(k < S(n) \iff k < n \lor k = n\):
+
+\begin{align*}
+	k < S(n) \implies k \in \{n\} \cup n &\iff k \in n \lor k = n \\ 
+										 &\iff k < n \lor k = n \\
+										 &\iff k < n
+\end{align*}
+
+\QED
+
+\subsection{The Peano Axioms}
+
+We will define the set of natural numbers, \( \N \), via the following 9 axioms. 
 These axioms are known as the \emph{Peano Axioms}. The first 4 axioms define equality on 
 the set \( \N \).
 
 \begin{enumerate}[label=\Roman*.]
 
-	\item For every \( x \in \N \), we have \( x = x \).\hfill (Reflexivity)
+	\item \emph{Axiom of Reflexivity}: For every \( x \in \N \), we have \( x = x \).
 	
-	\item For every \( x, y \in \N \), if \( x = y \) then \( y = x \).\hfill (Symmetry)
+	\item \emph{Axiom of Symmetry}: For every \( x, y \in \N \), if \( x = y \) then \( y = x \).
 	
-	\item For every \( x, y, z \in \N \), if \( x = y \) and \( y = z \) then \( x = z \).\hfill 
-	      (Transitivity)
+	\item \emph{Axiom of Transitivity}: For every \( x, y, z \in \N \), if \( x = y \) and \( y = z \) then \( x = z \). 
 	
-	\item For all \( x, y \), if \( x \in \N \) and \( x = y \), then \( y \in \N \).\hfill 
-	      (Closure of Equality)
+	\item \emph{Axiom of the Closure of Equality}: For all \( x, y \), if \( x \in \N \) and \( x = y \), then \( y \in \N \).\hfill 
 
 \end{enumerate}
 

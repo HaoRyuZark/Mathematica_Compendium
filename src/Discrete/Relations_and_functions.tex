@@ -3,12 +3,7 @@
 
 \subsection{Relations}
 
-A \emph{relation} in mathematics is a connection or relationship between elements of two sets. It's 
-formally defined as a \emph{subset} of the Cartesian product of two sets.
-
-For example, if we have sets \(A\) and \(B\), a relation \emph{R} from \(A\) to \(B\) consists
-of ordered pairs \((a,b)\) where \(a \in A\) and \(b \in B\), such that \(a\) is related to \(b\) 
-according to some rule or property.
+Given two classes \(A\) and \(B\) a \emph{relation} \(R\) is subset of its Cartesian product \(R \subseteq A \times B\). 
 
 \textbf{Example:} 
 
@@ -79,11 +74,23 @@ Let the graph \(G\) be a relation, on \(A\).
 
 \subsection{Order Relation}
 
-A relation is called an \emph{order relation} if it is reflexive, antisymmetric and transitive.
+A relation is called an \emph{order relation} \(R \subseteq A \times A\) if it is reflexive, antisymmetric and transitive.
+
+\subsubsection*{Inverse Order Relation}
+
+Given an order relation \(G\) on \(A\), then \(G^{-1}\) is also an order relation on \(A\).
+
+\subsection{Strict Order Relation}
+
+A relation is called a \emph{strict order relation} \(R \subseteq A \times A\) if it is irreflexive, antisymmetric and transitive.
+
+\subsubsection*{Inverse Strict Order Relation}
+
+Given a strict order relation \(G\) on \(A\), then \(G^{-1}\) is also a strict order relation on \(A\).
 
 \subsection{Equivalence relation}
 
-An \emph{equivalence relation} is a relation that is symmetric, transitive and reflexive.
+An \emph{equivalence relation} is a relation \(R \subseteq A \times A\) that is symmetric, transitive and reflexive.
 
 \textbf{Example:}
 
@@ -103,6 +110,12 @@ Given the equivalence relations \(G\) and \(H\), the following properties apply:
 \end{itemize}
 
 The proofs are left as an exercise for the reader. (Hint: use the first property to prove the second).
+
+\subsubsection*{Inverse Equivalence Relation}
+
+Given an equivalence relation \(G\) on \(A\), then \(G^{-1}\) is also an equivalence relation on \(A\).
+
+\textbf{Proof:}
 
 \subsection{Equivalence Class}
 
@@ -153,6 +166,18 @@ elements in \(A\). Formally, it is defined as:
 
 The quotient space \(A/\sim\) is a partition of the original set \(A\) into disjoint equivalence classes. 
 Each element of the quotient space is an equivalence class \([x]\), which itself is a subset of \(A\).
+
+\subsubsection*{The Union of the Quotient Space}
+
+Given \(A/R\), then \(\bigcup A/R = A\).
+
+\textbf{Proof:}
+Suppose \(a_0 \in A \land a_0 \notin [a]_R, \forall [a]_R \in A/R\). If \(R\) is an equivalence relation then 
+\( a_0 \in A\) with \(R\) implies that \((a_0, a_0) \in R\). Therefore, the only way for \(a_0\) to not belong to any equivalence class is if \(R\)
+were not an equivalence relation, which contradicts our initial condition; hence, we know that the union of the equivalence classes 
+given an equivalence relation must be equal to the original set.
+
+\QED
 
 \subsection{Map Definition}
 
