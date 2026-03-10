@@ -40,13 +40,8 @@ or
 
 \subsection{Comparable}
 
-Let \(A\) be a partially ordered class. Tow elements \(x, y \in A\) are considered \emph{comparable}. If
-if either \(x \le y\) or \(y \le x\).
-
-\subsection{Incomparable}
-
-Let \(A\) be a partially ordered class. Tow elements \(x, y \in A\) are considered \emph{incomparable} 
-if \(x \nle y\) or \(y \nle x\), with \( a \ne b\).
+Let \(A\) be a partially ordered class. Tow elements \(x, y \in A\) are considered \emph{comparable} if 
+either \(x \le y\) or \(y \le x\); otherwise, they are said to \emph{incomparable}.
 
 \subsection{Fully Ordered Subclass}
 
@@ -155,7 +150,7 @@ Let \(A\), and \(B\) be partially ordered classes
 
 \subsection{Maximal Element}
 
-An element \(m \in A\) is considered \emph{maximal element of } \(A\) if \(\forall x \in A\) 
+An element \(m \in A\) is considered \emph{maximal element of } \(A\) under the partially order relation \(R\) if \(\forall x \in A\) 
 
 \[
 	x \le m
@@ -167,9 +162,15 @@ and if
 	x \ge m \implies x = m.
 \]
 
+Or equivalently \(m\) under the relation rule does not relate to anything except itself:
+
+\[
+	(m, y) \in R \implies m = y.
+\]
+
 \subsection{Minimal Element}
 
-An element \(m \in A\) is considered \emph{minimal element of } \(A\) if \(\forall x \in A\) 
+An element \(m \in A\) is considered \emph{minimal element of } \(A\) under the partially order relation \(R\) if \(\forall x \in A\) 
 
 \[
 	x \ge m
@@ -179,6 +180,12 @@ and if
 
 \[
 	 x \le m \implies x = m.
+\]
+
+Or \(m\) is under the relation rule does not relate to anything except itself: 
+
+\[
+	(x, m) \in R \implies m = x.
 \]
 
 \subsection{Upper Bound}
@@ -205,6 +212,22 @@ Let \(B \subset A\), we define the function \(\lambda\) as
 
 \[
 	\lambda(B) := \{a \in A \mid a \le x, \forall x \in B\}.
+\]
+
+\subsection{Maximum}
+
+An element \(x\) is a partially ordered class \(A\) is a \emph{maximum} if 
+
+\[
+	(a, x) \in R \forall a \in A.
+\]
+
+\subsection{Minimum}
+
+An element \(x\) is a partially ordered class \(A\) is a \emph{minimum} if 
+
+\[
+	(x, a) \in R \forall a \in A.
 \]
 
 \subsection{Infimum and Supremum}
@@ -240,6 +263,12 @@ By definition, \(b \geq x\) for every \(x \in B\); but \(a \in A \subseteq B\); 
 \subsection{Upper and Lower Bounds under Inclusion}
 
 Let \(B\) and \(C\) be subclasses of \(A\). If \(B \subseteq C\), then 
+
+\[
+	v(C) \subseteq v(B).
+\]
+
+\textbf{Proof:} 
 
 \[
 	v(C) \subseteq v(B).
@@ -467,11 +496,6 @@ A \emph{Boolean algebra} is defined to be a lattice \(A\) with the following add
 	\item \(\forall x \in A, \exists \overline{x} \in A: x \land \overline{x} = 0 \text{ and } x \lor \overline{x} = 1\).
 
 	\item \(x \lor (y \land z) = (x \lor y) \land (x \lor z)\) and \(x \land ( y \lor z) = (x \land y) \lor (x \land z)\)
-
-\end{enumerate}
-
-\subsection{Complete Lattice}
-
 Let \(A\) be a partially ordered class; \(A\) is called a \emph{complete lattice} if every subclass of \(A\) has a \(\sup\).
 Alternatively, if every subclass of \(A\) has an \(\inf\).
 
