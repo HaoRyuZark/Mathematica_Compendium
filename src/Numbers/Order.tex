@@ -3,7 +3,7 @@
 
 \subsection{Partially Ordered Classes}
 
-A \emph{partially ordered class} is a pair of objects \(\langle A, G \rangle\) where \(A\) is a class and \(G\) is 
+A \emph{partially ordered class} is a pair of objects \(\langle A, R \rangle\) where \(A\) is a class and \(R\) is 
 and order relation in \(A\). Remember that an order relation is one which is : reflexive, antisymmetric and transitive.
 
 \subsection{Lexicographical Ordering}
@@ -74,7 +74,64 @@ the following properties:
 
 \end{itemize}
 
-We use \(U\) and \(L\) for upper and lower respectively.
+The two second conditions simply tell us that, we can compare its elements.
+
+\textbf{Example:} 
+
+Given the partially ordered classes \(A\) and \(B\), and let \(A \times B\) be ordered antilexicographically. Prove that 
+\((L, U) \text{ is a cut of } B \implies (A \times L, A \times U) \text{ is a cut of } A \times B\)
+
+\textbf{Proof:}
+
+Let \((L,U)\) be a cut of \(B\) and define
+
+\[
+	L' = A \times L, \qquad U' = A \times U .
+\]
+
+We show \((L',U')\) is a cut of \(A \times B\) under the antilexicographical order.
+
+\textbf{Nonempty, disjoint, and covering:}
+
+Suppose \(L' \cap U' \neq \emptyset\). Then,
+
+\[
+	\exists (x,y) \in L' \cap U': x \in A \land (y \in L \lor y \in U)
+\]
+
+Hence, \(L \cap U \neq \emptyset\), a contradiction. Therefore, they must be disjoint.
+
+For the covering, we use the distributive property of the Cartesian product under set union, 
+\(A \times (L \cup U) = A \times L \cup A \times U = A \times B\).
+
+\textbf{Downward closure of \(L'\):}
+
+Let \((a_1,b_1) \in A \times L\) and \((a_2,b_2) \le (a_1,b_1)\).
+
+By antilexicographical order,
+
+\[
+	b_2 < b_1 \text{ or } (b_2 = b_1 \land a_2 \le a_1).
+\]
+
+Since \(b_1 \in L\) and \(L\) is downward closed in \(B\), we have \(b_2 \in L\).
+Hence \((a_2,b_2) \in A \times L\).
+
+\textbf{Upward closure of \(U'\):}
+
+Let \((a_1,b_1) \in A \times U\) and \((a_1,b_1) \le (a_2,b_2)\).
+Then
+
+\[
+	b_1 < b_2 \quad \text{or} \quad (b_1 = b_2 \land a_1 \le a_2).
+\]
+
+Since \(b_1 \in U\) and \(U\) is upward closed in \(B\), we have \(b_2 \in U\).
+Thus \((a_2,b_2) \in A \times U\).
+
+Therefore \((A \times L, A \times U)\) is a cut of \(A \times B\).
+
+\QED
 
 \subsection{Order Preserving Functions}
 
@@ -113,6 +170,9 @@ Conversely, we get from the fact that
 
 Thus, \(f\) and \(f^{-1}\) are increasing functions.
 
+\QED
+
+
 \subsection{Common Isomorphism on Partially Ordered Classes}
 
 Let \(A\), \(B\) and \(C\) be partially ordered classes. 
@@ -150,7 +210,7 @@ Let \(A\), and \(B\) be partially ordered classes
 
 \subsection{Maximal Element}
 
-An element \(m \in A\) is considered \emph{maximal element of } \(A\) under the partially order relation \(R\) if \(\forall x \in A\) 
+An element \(m \in A\) is considered \emph{maximal element} of \(A\) under the partially order relation \(R\) if \(\forall x \in A\) 
 
 \[
 	x \le m
@@ -165,12 +225,12 @@ and if
 Or equivalently \(m\) under the relation rule does not relate to anything except itself:
 
 \[
-	(m, y) \in R \implies m = y.
+	\forall (m, y) \in R \implies m = y \text{ or equivalently } (x, m) \in R, \forall x \in A.
 \]
 
 \subsection{Minimal Element}
 
-An element \(m \in A\) is considered \emph{minimal element of } \(A\) under the partially order relation \(R\) if \(\forall x \in A\) 
+An element \(m \in A\) is considered \emph{minimal element} of \(A\) under the partially order relation \(R\) if \(\forall x \in A\) 
 
 \[
 	x \ge m
@@ -185,13 +245,17 @@ and if
 Or \(m\) is under the relation rule does not relate to anything except itself: 
 
 \[
-	(x, m) \in R \implies m = x.
+	\forall (x, m) \in R \implies m = x \text{ or equivalently } (m, x) \in R, \forall x \in A.
 \]
 
 \subsection{Upper Bound}
 
 Let \(B \subseteq A\). An \emph{upper bound} of \(B\) in \(A\) is an element \(a \in A\) such that 
-\(a \ge x, \forall x \in B\).
+\(a \ge x, \forall x \in B\). Equivalently
+
+\[
+	\forall x \in B, (x, a) \in R.
+\]
 
 \subsubsection*{Set of Upper Bounds}
 
@@ -204,7 +268,11 @@ Let \(B \subset A\), we define the function \(v\) as
 \subsection{Lower Bound}
 
 Let \(B \subseteq A\). A \emph{lower bound} of \(B\) in \(A\) is an element \(a \in A\) such that 
-\(a \le x, \forall x \in B\).
+\(a \le x, \forall x \in B\). Equivalently
+
+\[
+	\forall x \in B, (a, x) \in R
+\]
 
 \subsubsection*{Set of Lower Bounds}
 
@@ -219,7 +287,7 @@ Let \(B \subset A\), we define the function \(\lambda\) as
 An element \(x\) is a partially ordered class \(A\) is a \emph{maximum} if 
 
 \[
-	(a, x) \in R \forall a \in A.
+	(a, x) \in R, \forall a \in A.
 \]
 
 \subsection{Minimum}
@@ -227,12 +295,22 @@ An element \(x\) is a partially ordered class \(A\) is a \emph{maximum} if
 An element \(x\) is a partially ordered class \(A\) is a \emph{minimum} if 
 
 \[
-	(x, a) \in R \forall a \in A.
+	(x, a) \in R, \forall a \in A.
 \]
 
-\subsection{Infimum and Supremum}
+\subsection{Supremum and Infimum}
 
-The least upper bound of a set \(A\) is called the \emph{supremum} and the greatest lower bound is its \emph{infimum}.
+Given a partially ordered class \(B \subseteq A\), the least upper bound is called the \emph{supremum} \(s \in A\) and defined as:
+
+\[
+	\forall b \in B, (b, s) \in R \text{ and } \forall a \in A, [(\forall b \in B, (b, a) \in R) \implies (s, a) \in R],
+\]
+
+and the greatest lower bound is its \emph{infimum} \(i \in A\) is defined as:
+
+\[
+	\forall b \in B, (i, b) \in R \text{ and } \forall a \in A [(\forall b \in B, (a, b) \in R) \implies (a, i) \in R].
+\]
 
 \subsection{Duality}
 
@@ -496,8 +574,10 @@ A \emph{Boolean algebra} is defined to be a lattice \(A\) with the following add
 	\item \(\forall x \in A, \exists \overline{x} \in A: x \land \overline{x} = 0 \text{ and } x \lor \overline{x} = 1\).
 
 	\item \(x \lor (y \land z) = (x \lor y) \land (x \lor z)\) and \(x \land ( y \lor z) = (x \land y) \lor (x \land z)\)
-Let \(A\) be a partially ordered class; \(A\) is called a \emph{complete lattice} if every subclass of \(A\) has a \(\sup\).
-Alternatively, if every subclass of \(A\) has an \(\inf\).
+	Let \(A\) be a partially ordered class; \(A\) is called a \emph{complete lattice} if every subclass of \(A\) has a \(\sup\).
+	Alternatively, if every subclass of \(A\) has an \(\inf\).
+
+\end{enumerate}
 
 \subsection{Principle of the Well-ordering}
 

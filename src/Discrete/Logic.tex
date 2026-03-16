@@ -4,7 +4,7 @@
 Propositional logic is also called Boolean logic as 
 it works on 0 and 1. In propositional logic, we use symbolic variables to represent the 
 logic, and we can use any symbol for a representing a proposition, such 
-\emph{A, B, C, P, Q, R}, etc. Propositions can be either \emph{true} \emph{false}, but it cannot be both.
+\(p,q,r,s,t,\) etc. Propositions can be either \emph{true} (\(1\), T) or \emph{false} (\(0\), F) but it cannot be both.
 
 \subsection{Logic Operators and Truth Tables}
 \smallskip
@@ -14,7 +14,7 @@ logic, and we can use any symbol for a representing a proposition, such
 
 	\begin{tabular}{cc}
 		\toprule
-		\(A\) & \(\neg A\) \\
+		\(p\) & \(\neg q\) \\
 		\midrule
 		0   & 1        \\
 		1   & 0        \\
@@ -27,7 +27,7 @@ logic, and we can use any symbol for a representing a proposition, such
 
 	\begin{tabular}{ccc}
 		\toprule
-		\(A\) & \(B\) & \(A \land B\) \\
+		\(p\) & \(q\) & \(p \land q\) \\
 		\midrule
 		0   & 0   & 0           \\
 		0   & 1   & 0           \\
@@ -42,7 +42,7 @@ logic, and we can use any symbol for a representing a proposition, such
 
 	\begin{tabular}{ccc}
 		\toprule
-		\(\)A\(\) & \(B\) & \(A \lor B\) \\
+		\(p\) & \(q\) & \(p \lor q\) \\
 		\midrule
 		0   & 0   & 0          \\
 		0   & 1   & 1          \\
@@ -57,7 +57,7 @@ logic, and we can use any symbol for a representing a proposition, such
 
 	\begin{tabular}{ccc}
 		\toprule
-		\(A\) & \(B\) & \(A \implies B\) \\
+		\(p\) & \(q\) & \(p \implies q\) \\
 		\midrule
 		0   & 0   & 1        \\
 		0   & 1   & 1        \\
@@ -72,7 +72,7 @@ logic, and we can use any symbol for a representing a proposition, such
 
 	\begin{tabular}{ccc}
 		\toprule
-		\(A\) & \(B\) & \(A \iff B\) \\
+		\(p\) & \(q\) & \(p \iff q\) \\
 		\midrule
 		0   & 0   & 1         \\
 		0   & 1   & 0         \\
@@ -87,7 +87,7 @@ logic, and we can use any symbol for a representing a proposition, such
 
 	\begin{tabular}{ccc}
 		\toprule
-		\(A\) & $B$ & $A \oplus B$ \\
+		\(p\) & \(q\) & \(p \oplus q\) \\
 		\midrule
 		0   & 0   & 0            \\
 		0   & 1   & 1            \\
@@ -102,7 +102,7 @@ logic, and we can use any symbol for a representing a proposition, such
 
 	\begin{tabular}{ccc}
 		\toprule
-		\(A\) & \(B\) & \(A \downarrow B\) \\
+		\(p\) & \(q\) & \(p \downarrow q\) \\
 		\midrule
 		0   & 0   & 1                \\
 		0   & 1   & 0                \\
@@ -117,7 +117,7 @@ logic, and we can use any symbol for a representing a proposition, such
 
 	\begin{tabular}{ccc}
 		\toprule
-		\(A\) & \(B\) & \(A \uparrow B\) \\
+		\(p\) & \(q\) & \(p \uparrow q\) \\
 		\midrule
 		0   & 0   & 1              \\
 		0   & 1   & 1              \\
@@ -129,7 +129,7 @@ logic, and we can use any symbol for a representing a proposition, such
 \end{multicols}
 \medskip
 
-As a side not for the implication we can think about it as \emph{if, then}. For the cases 
+As a side not for the \emph{implication} we can think about it as \emph{if, then}. For the cases 
 false, true; and false false; we call them \emph{vacously} true. From a false premise can come everything out.
 
 \subsection{Tautology and Contradiction}
@@ -140,116 +140,115 @@ Common tautologies
 
 \begin{itemize}
 
-	\item \(P \implies Q \lor P\)
+	\item \(p \implies q \lor p\)
 
-	\item \(Q \implies P \lor Q\)
+	\item \(q \implies p \lor q\)
 	
-	\item \(P \land Q \implies P\)
+	\item \(p \land q \implies p\)
 	
-	\item \(Q \land Q \implies Q \)
+	\item \(q \land q \implies q \)
 
-	\item \([(P \implies Q) \land (Q \implies R)] \implies  (P \implies R)\)
+	\item \([(p \implies q) \land (q \implies r)] \implies  (p \implies r)\)
 
 \end{itemize}
-
 
 \emph{Contradiction}: A formula that is always false.
 
 \subsection{Logical Equivalences}
 
-\emph{Commutative Laws}
+\subsubsection*{Commutative Laws}
 
 \[
 	p \land q \iff q \land p \qquad p \lor q \iff q \lor p
 \]
 
-\emph{Associative Laws}
+\subsubsection*{Associative Laws}
 
 \[
 	(p \land q) \land r \iff p \land (q \land r) \qquad (p \lor q) \lor r \iff p \lor (q \lor r)
 \]
 
-\emph{Distributive Laws}
+\subsubsection*{Distributive Laws}
 
 \[
 	p \land (q \lor r) \iff (p \land q) \lor (p \land r) \qquad
 	p \lor (q \land r) \iff (p \lor q) \land (p \lor r)
 \]
 
-\emph{Identity Laws}
+\subsubsection*{Identity Laws}
 
 \[
 	p \land \text{T} \iff p \qquad p \lor \text{F} \iff p
 \]
 
-\emph{Negation Laws}
+\subsubsection*{Negation Laws}
 
 \[
 	p \lor \sim p \iff \text{T} \qquad p \land \sim p \iff \text{F}
 \]
 
-\emph{Double Negation Law}
+\subsubsection*{Double Negation Law}
 
 \[
 	\sim(\sim p) \iff p
 \]
 
-\emph{Idempotent Laws}
+\subsubsection*{Idempotent Laws}
 
 \[
 	p \land p \iff p \qquad p \lor p \iff p
 \]
 
-\emph{Universal Bound Laws}
+\subsubsection*{Universal Bound Laws}
 
 \[
 	p \lor \text{T} \iff \text{T} \qquad p \land \text{F} \iff \text{F}
 \]
 
-\emph{De Morgan’s Laws}
+\subsubsection*{De Morgan’s Laws}
 
 \[
 	\sim (p \land q) \iff (\sim p) \lor (\sim q) \qquad
 	\sim (p \lor q) \iff (\sim p) \land (\sim q)
 \]
 
-\emph{Absorption Laws}
+\subsubsection*{Absorption Laws}
 
 \[
 	p \lor (p \land q) \iff p \qquad p \land (p \lor q) \iff p
 \]
 
-\emph{Conditional Laws}
+\subsubsection*{Conditional Laws}
 
 \[
 	(p \implies q) \iff (\sim p \lor q) \qquad \sim(p \implies q) \iff (p \land \sim q)
 \]
 
-\emph{Complement Law}
+\subsubsection*{Complement Law}
 
 \[
 	p \lor \neg p \iff \text{T} \qquad p \land \neg p \iff \text{F}
 \]
 
-\emph{Biconditional}
+\subsubsection*{Biconditional Law}
 
 \[
 	p \iff q \iff (p \implies q) \land (q \implies p)
 \]
 
-\emph{Transitivity}
+\subsubsection*{Transitivity Law}
 
 \[
 	(p \implies q) \land (q \implies r) \implies (p \Rightarrow r)
 \]
 
-\emph{Indirect Proof (Contrapositive)}
+\subsubsection*{Indirect Proof (Contrapositive)}
 
 \[
 	(p \implies q) \iff (\neg q \implies \neg p)
 \]
 
-\emph{Disjunctive Syllogism (Disjunctive Exclusion)}
+\subsubsection*{Disjunctive Syllogism (Disjunctive Exclusion)}
 
 \[
 	p \nabla q \equiv (p \lor q) \land \neg p \implies q
@@ -321,7 +320,7 @@ in the following order:
 \[
 	\begin{array}{|c|c|c|c|}
 		\hline
-		A & B & C & \text{Expression Result} \\
+		p & q & r & \text{Expression Result} \\
 		\hline
 		T & T & T &       -                  \\
 		T & T & F &       -                  \\
@@ -339,23 +338,23 @@ The pattern for filling the input truth values
 
 \begin{itemize}
 
-	\item The first column (A) alternates every 4 rows: `T, T, F, F, T, T, F, F`.
+	\item The first column \(p\) alternates every 4 rows: `T, T, F, F, T, T, F, F`.
 
-	\item The second column (B) alternates every 2 rows: `T, T, F, F, T, T, F, F`.
+	\item The second column \(q\) alternates every 2 rows: `T, T, F, F, T, T, F, F`.
 
-	\item The third column (C) alternates every row: `T, F, T, F, T, F, T, F`.
+	\item The third column \(r\) alternates every row: `T, F, T, F, T, F, T, F`.
 
 \end{itemize}
 
-This ensures that all combinations of \(A\), \(B\), and \(C\) are covered, and you 
+This ensures that all combinations of \(p\), \(q\), and \(r\) are covered, and you 
 can then evaluate the logical expression for each combination.
 
-\subsubsection{Truth Table for the Expression \texorpdfstring{\( (A \land B) \lor C \)}{}}
+\subsubsection{Truth Table for the Expression \texorpdfstring{\( (p \land q) \lor q \)}{}}
 
 \[
 	\begin{array}{|c|c|c|c|}
 		\hline
-		A & B & C & (A \land B) \lor C \\
+		p & q & r & (p \land q) \lor r \\
 		\hline
 		T & T & T & T                  \\
 		T & T & F & T                  \\
@@ -384,7 +383,7 @@ Repeat it with each of true rows and connect all parenthesis with OR's
 Consider the logical expression:
 
 \[
-	(A \land B) \lor (\neg A \land C) \lor (B \land \neg C)
+	(p \land q) \lor (\neg p \land r) \lor (q \land \neg r)
 \]
 
 This is in DNF because it is a disjunction (OR) of conjunctions (ANDs) of literals.
@@ -404,7 +403,7 @@ Also add a negation before each parenthesis.
 Consider the logical expression:
 
 \[
-	\neg (A \lor B) \land \neg (\neg A \lor C) \land \neg (B \lor \neg C)
+	\neg (p \lor q) \land \neg (\neg p \lor r) \land \neg (q \lor \neg r)
 \]
 
 This is in CNF because it is a conjunction (AND) of disjunctions (ORs) of literals.
