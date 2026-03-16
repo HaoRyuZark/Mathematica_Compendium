@@ -1,5 +1,5 @@
 \newpage
-\section{Order}
+\chapter{Order}
 
 \subsection{Partially Ordered Classes}
 
@@ -412,19 +412,17 @@ Let \(B \subseteq A\), then
 
 \textbf{Proof:}
 
-Let \(s = \sup(\lambda(B))\), \(\forall b \in B, s \le b\), by that \(s\) is a lower bound of \(B\). Suppose \(\inf(B) \neq s\), then \(s > \inf(B) \lor s < \inf(B)\).
+Let \(s = \sup(\lambda(B)),\ \forall b \in B,\ s \le b\); hence, \(s\) is a lower bound of \(B\). Suppose \(\inf(B) \neq s\), then \(s > \inf(B) \lor s < \inf(B)\).
 
-Case \(s > \inf(B)\): this leads quickly to a contradiction because if \(s \in A\) and  \(s\) is a lower bound of \(B\), but it is greater than its infimum then 
+Case \(s > \inf(B)\): this leads to a contradiction because if \(s \in A\) and  \(s\) is a lower bound of \(B\), but it is greater than its infimum then 
 \(\inf(B)\) is can not be the greatest lower bound of \(B\), which does not make sense by the definition.
 
-Case \(s < \inf(B)\): \(\inf(B)\) is a lower bound of \(B\); therefore, \(\inf(B) \in \lambda(B)\). If \(\inf(B) \ne \sup(\lambda(B))\), then we also 
-arrive at a contradiction because by the definition of the supremum \(\inf(B) = \sup(\lambda(B))\)
-
-Thus, by exhaustion \(s = \inf(B)\). 
+Case \(s < \inf(B)\): \(\inf(B)\) is a lower bound of \(B\); therefore, \(\inf(B) \in \lambda(B)\). If \(\inf(B) \ne \sup(\lambda(B))\) and \(s < \inf(B)\), then we also 
+arrive at a contradiction because by the definition of the supremum being the least upper bound. Hence, \(\inf(B) = \sup(\lambda(B))\)
 
 \QED
 
-\subsection*{Example Exercises}
+\subsection*{Example Exercise}
 
 1. Prove that given \(B \subseteq A\), \(\sup(B) = b \in A \implies \lambda(v(B)) \cap v(B) = \{b\}\)
 
@@ -433,10 +431,10 @@ Thus, by exhaustion \(s = \inf(B)\).
 By definition \(b \in v(B)\). Also, by the definition of \(\lambda(v(B))\):
 
 \[
-	\{a \in A \mid x \le b, \forall v(B)\};
+	\{a \in A \mid x \le b, \forall b \in v(B)\};
 \]
 
-we can guarantee that \(b \in lambda(v(B))\). It is leftover to prove that the intersection only consists of \(b\). 
+we can guarantee that \(b \in \lambda(v(B))\). It is leftover to prove that the intersection only consists of \(b\). 
 
 Suppose that there also exists another \(x\) in the intersection such that \(x \ne b\), then \(x \in v(B) \land x \in \lambda(v(B))\). 
 
@@ -445,23 +443,20 @@ If \(x \in v(B)\) and \(x \ne b\), then \(x < b\) or \(x > b\) which when handle
 If \(x < b\), then \(b\) is not the least upper bound of \(B\) which is a contradiction to the definition of the supremum. Hence, by the \(\land\) in our original 
 statement, we arrive at the conclusion that such an \(x\) can not exist.
 
-\subsection{Equality of Suprema}
+\QED
 
 2. Let \(B \subseteq A\), \(C \subseteq A\), then \(\sup(B) = \sup(C) \implies v(B) = v(C)\).
 
 \textbf{Proof:}
 
-Let \(a \in v(B)\) with \(a > \sup(B)\), we want to prove that if \(a \in v(B)\) then \(a \in v(C)\).
-
-Suppose that there exists some element \(x \in v(B)\) such that \(x \notin v(C)\), by our initial condition 
-\(x \neq \sup(C)\), \(x > \sup(B)\) and \(x < \sup(C)\). Such an element can not exist due to 
-the fact that we have a clear violation of the transitive property of partially ordered relations. 
+By definition for \(\sup(B) \ge b, \forall b \in B\), and also \(\sup(B) \in v(B)\), but because it is the least upper bound we can write 
 
 \[
-	\sup(B) = \sup(C) \iff x > \sup(B) \land x < \sup(C)
+	v(B) = \{a \in A \mid a \ge \sup(B)\}
 \]
 
-Therefore, all elements in the sets \(v(B)\) and \(v(C)\) have to equal.
+Therefore, if \(\sup(B) = \sup(C) = s\), then \(v(B) = \{a \in A \mid a \ge s\}\), and because they are shared then 
+\(v(C) = \{a \in A \mid a \ge s\}\)
 
 \QED 
 
