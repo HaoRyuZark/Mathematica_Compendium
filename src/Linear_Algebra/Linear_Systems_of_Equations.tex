@@ -714,3 +714,344 @@ Now in two dimensions, think of the area spanned by the basis vectors \(A = xy\)
 The signed area of the original parallelogram gets
 stretched by \(\det(A)\) this gives us \(Area = \det(A)y \Rightarrow y = \frac{Area}{\det(A)}\). This
 also works for \(x\).
+
+\subsection{LU Decomposition}
+
+Given a regular system \(Ax = b\) with \(a_{kk}^{(k - 1)} \ne 0\), then the Gaussian elimination delivers a so called 
+\emph{\(LU\)-Decomposition} 
+
+\[
+    A = LU
+\]
+
+of \(A\), where \(L\) is a under triangular matrix with main diagonal consisting of only of ones and 
+\(U\) being a upper triangular matrix. \(a_{kk}^{(k - 1)} \ne 0\) depicts the elements of the main diagonal for the 
+\(k - 1\) matrix generated after applying a Gauss operation.
+
+\subsubsection*{Origin}
+
+Given our matrix \(A\), we want to eliminate the coefficients underneath the main diagonal. This is accomplished by applying an elementary matrix of the form: 
+
+\[
+    F = 
+    \begin{bmatrix}
+        1 &        &         &   &        \\
+          & \ddots &         &   &        \\
+          &        & 1       &   &        \\
+          &        & \lambda & 1 &        \\
+          &        &         &   & \ddots \\
+    \end{bmatrix}
+\]
+
+Hence, to get to the row-echelon-form we apply a series of such \(F\) matrices, where for the 
+elimination of the \(k\)-th row we use the \emph{Frobenius} matrix 
+
+\[
+    F_k = 
+    \begin{bmatrix}
+        1 &        &         &   &        \\
+          & \ddots &         &   &        \\
+          &        & 1       &   &        \\
+          &        & -l_{k +1, k} & 1 &        \\
+          &        &  -l_{nk}       &   & \ddots \\
+    \end{bmatrix}
+\]
+
+where \(-l_{ik} = \frac{a_{ik}^{(k - 1)}}{a_{kk}^{k - 1}}\). 
+
+For example: 
+
+\[
+    A = 
+    \begin{bmatrix}
+        a_{11} & a_{12} \\ 
+        a_{21} & a_{22}
+    \end{bmatrix}
+    ,
+    a_{11} \ne 0
+\]
+
+To eliminate \(a_{21}\) we need to subtract \(\frac{a_{21}}{a_{11}}\) times the first row.
+
+\[
+
+    F = 
+    \begin{bmatrix}
+        1 & 0 \\ 
+       - \frac{a_{21}}{a_{11}} & 0
+    \end{bmatrix}
+    = 
+    \begin{bmatrix}
+        1 & 0 \\ 
+        - l_{21} & 0
+    \end{bmatrix}
+\]
+
+The multiplication results into
+
+\[
+    FA = 
+    \begin{bmatrix}
+        a_{11} & a_{12} \\ 
+        a_{21}  - \frac{a_{21}}{a_{11}} & a_{22} - \frac{a_{21}}{a_{11}}
+    \end{bmatrix}
+    = 
+    \begin{bmatrix}
+        a_{11} & a_{12} \\ 
+        0 & a_{22} - \frac{a_{21}}{a_{11}}
+    \end{bmatrix}
+\]
+
+Note that the main diagonal does not have to be normalized.
+
+By repeating this process we get 
+
+\[
+    U = A^{(n - 1)} = F_{n - 1} \cdot \cdots \cdot F_1 A
+\]
+
+and 
+
+\[
+    y = b^{(n - 1)} = F_{n - 1} \cdot \cdots \cdot F_1 b
+\]
+
+Due to all \(F_k\) being regular, we get that \(Ax = b\) and \(Ux = y\) are equivalent.
+Hence, by applying the inverses 
+
+\[
+    A = F_{1}^{n - 1} \cdot \cdots \cdot F_{n - 1} U
+\]
+
+This chain of the inverses is called 
+
+\[
+
+    L = 
+    \begin{bmatrix}
+        1 &        &         &   &        \\
+        l_{21}  & \ddots &         &   &        \\
+        \vdots &        & 1       &   &        \\
+          &        &  & 1 &        \\
+        l_{n1} &        &  \cdots      &  l_{nn-1} & 1 \\
+    \end{bmatrix}
+
+\]
+
+The individual members are 
+
+\[
+
+    F_{k}^{-1} = 
+    \begin{bmatrix}
+        1 &        &         &   &        \\
+          & \ddots &         &   &        \\
+          &        & 1       &   &        \\
+          &        & l_{k+1 k} & 1 &        \\
+          &        & l_{nk}      &   & 1 \\
+    \end{bmatrix}
+
+\]
+
+Therefore \(A = LU\) and \(Ly = b\).
+
+\subsubsection{Algorithm}
+
+Overview: 
+
+\begin{enumerate}
+    
+    \item Get \(L\) and \(U\) via Gaussian Elimination. 
+
+    \item Solve \(Ly = b\). 
+
+    \item Solve \(Ux = y\). 
+
+\end{enumerate}
+
+Concrete algorithm: 
+
+Start with the your \(n \times n\) matrix perform the following steps accross all of the 
+entries in the main diagonal and its corresponding sub-square-matrix.
+
+\begin{enumerate}
+
+    \item \textbf{Division}: For the next \(k+n\) rows divide the elements in the current column by \(a_{kk}\). Only to apply to the \(k \times k\) matrix.
+
+    \item \textbf{Column Elimination}: Subtract from the current row \(a_{k + n}\)-times the \(k\) row, also your current first row. Apply only for the inner sub-matrix \((k - 1) \times (k - 1)\)
+
+    \item \textbf{Scoping}: Now proceed with the next diagonal element which is going to give you an inner \((n - 1) \times (n - 1)\) matrix. To repeat 
+    the process. Note that when performing the row addition, this will only affect the inner matrix; hence, our old results remain intact.
+    
+    \item \textbf{Getting \(L\) and \(U\)}: After the previous process, the resulting matrix will be divided into two matrices. \(L\) consisting on 
+    the elements underneath the main diagonal with it being all ones and above all zeros; and \(U\) begin the rest upper triangular matrix.
+\end{enumerate}
+
+\textbf{Example:}
+
+Given
+
+\[
+    A = 
+    \begin{bmatrix}
+        2 & 1 & 1 \\ 
+        4 & 4 & 0 \\ 
+        2 & 7 & 1
+    \end{bmatrix}, 
+
+    b = 
+    \begin{bmatrix}
+        7 \\ 
+        12 \\ 
+        19
+    \end{bmatrix}
+    \text{ and }
+
+    b' = 
+    \begin{bmatrix}
+        3 \\ 
+        4 \\ 
+        9
+    \end{bmatrix}
+\]
+
+solve using the \(LU\)-decomposition.
+
+First iteration:
+
+\[
+    \begin{bmatrix}
+        2 & 1 & 1 \\ 
+        4 & 4 & 0 \\ 
+        2 & 7 & 1
+    \end{bmatrix}  
+
+    \arrow 
+
+    \begin{bmatrix}
+        2 & 1 & 1 \\ 
+        2 & 4 & 0 \\ 
+        1 & 7 & 1
+    \end{bmatrix}
+
+    \arrow 
+
+    \begin{bmatrix}
+        2 & 1 & 1 \\ 
+        2 & 2 & -2 \\ 
+        1 & 6 & 0
+    \end{bmatrix}
+
+\]
+
+Second iteration; 
+
+\[
+    \begin{bmatrix}
+        2 & 1 & 1 \\ 
+        2 & 2 & -2 \\ 
+        1 & 6 & 0
+    \end{bmatrix}
+
+    \arrow 
+
+    \begin{bmatrix}
+        2 & 1 & 1 \\ 
+        2 & 2 & -2 \\ 
+        1 & 3 & 0
+    \end{bmatrix}
+
+    \arrow 
+
+    \begin{bmatrix}
+        2 & 1 & 1 \\ 
+        2 & 2 & -2 \\ 
+        1 & 3 & 6
+    \end{bmatrix}
+\]
+
+Hence 
+
+\[
+    L = 
+    \begin{bmatrix}
+        1 & 0 & 0 \\ 
+        2 & 1 & 0 \\ 
+        1 & 3 & 1
+    \end{bmatrix}
+
+    \quad 
+
+    U = 
+    \begin{bmatrix}
+        2 & 1 & 1 \\ 
+        0 & 2 & -2 \\ 
+        0 & 0 & 6
+    \end{bmatrix}
+\]
+
+We solve \(Ly = b\)
+
+\[
+    \begin{bmatrix}
+        1 & 0 & 0 \\ 
+        2 & 1 & 0 \\ 
+        1 & 3 & 1
+    \end{bmatrix}
+    y 
+    = 
+    \begin{bmatrix}
+        7 \\ 
+        12 \\ 
+        19
+    \end{bmatrix}
+    \iff 
+    y = 
+    \begin{bmatrix}
+        7 \\ 
+        -2 \\ 
+        18
+    \end{bmatrix}
+\]
+
+Then we solve \(Ux = y\)
+
+\[
+    \begin{bmatrix}
+        2 & 1 & 1 \\ 
+        0 & 2 & -2 \\ 
+        0 & 0 & 6
+    \end{bmatrix}
+    x 
+    = 
+    \begin{bmatrix}
+        7 \\ 
+        -2 \\ 
+        18
+    \end{bmatrix}
+    
+    \iff
+    x = 
+    \begin{bmatrix}
+        1 \\ 
+        2 \\ 
+        3
+    \end{bmatrix} 
+\]
+
+\subsubsection{Extended Algorithm for Any Regular Matrix}
+
+We want to expand the algorithm to be compatible with the swap rows operations. Given a regular matrix 
+\(A^{(k - 1)} = F_{k - 1} \cdot \dots \cdot F_1 A\), where after a Gaussian operations we get \(a_{kk}^{(k - 1)} = 0\), then 
+there exists in the \(k\)-th. row underneath at a least a \(a_{ik}^{(k - 1)} \ne 0, i > k\), so that we can swap the rows.
+
+\textbf{Proof:}
+
+Let us suppose, that there does not exists such an element; then the \(k-th\) column must be a linear combination of the other 
+columns because there is a free variable, which contradicts our initial assumption. Note that due to \(F_{i}\) also being regular, the multiplication 
+of \(A^{(k - 1)}\) must also be regular. Therefore, it is always possible to swap rows.
+
+\QED
+
+
+\subsection{Cholesky Decomposition}

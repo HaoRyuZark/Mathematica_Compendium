@@ -1,0 +1,249 @@
+\newpage
+\section{State Machines and Languages}
+
+\subsection{Languages and Alphabets}
+
+A \emph{language} \(L\) is a subset of words of an \emph{alphabet} \(\Sigma\) which is a finite 
+non-empty set of symbols which always includes the \(\varepsilon\)-word, the empty word.
+
+\subsubsection{Concatenation}
+
+An operation which can be done with members of an alphabet is the so called \emph{concatenation} which is like 
+basic addition. Therefore, it is associative and when added \(\varepsilon\), the zero of alphabets it odes not affect the words 
+or its length.
+
+\subsection{Inductive Definitions}
+
+In the field of languages and alphabets an inductive function \(f: \Sigma^* \to X\) will be defined 
+in the following way.
+
+\begin{enumerate}
+
+    \item \emph{The base case}: \(f(\varepsilon)\)
+    
+    \item \emph{The induction step}: where the actual behavior of the function is defined. Helper 
+          functions can also be defined using the same structure.
+
+\end{enumerate}
+
+It also has the following properties 
+
+\begin{itemize}
+    
+    \item \(|\varepsilon| = 0\)
+    
+    \item For \(w = v + a\) then \(|w| = |v| + 1\) for \(a \ne \varepsilon\)
+
+\end{itemize}
+
+\textbf{Example:}
+
+Define a function which count the occurrences of \(ue\) in a word with letters of the alphabet 
+\(\Sigma = \{a, \dots, z\}\).
+
+\begin{align*}
+    f(\varepsilon) &= 0 \\
+    f(w \cdot x) &=
+    \begin{cases}
+        f(w) & \text{if } x \ne e \\
+        \text{help}(w) & \text{if } x = e
+    \end{cases}
+\end{align*}
+
+The auxiliary function \( \text{help}: \Sigma^* \to \mathbb{N} \) is defined as:
+
+\[
+    \text{help}(w \cdot x) =
+    \begin{cases}
+        f(w) + 1 & \text{if } x = u \\
+        f(w)     & \text{otherwise}
+    \end{cases}
+\]
+
+That is, \( \text{help}(w) = f(w) + 1 \) if the last letter of \( w \) is \( u \), and \( f(w) \) otherwise.
+
+\subsubsection{Head and Tail}
+
+Head returns the first symbol of a word and is defined by 
+
+\begin{align*}
+    \operatorname{head}(\varepsilon) = \varepsilon \\ 
+    \operatorname{head}(\varepsilon + a) = a \\ 
+    \operatorname{head}(v + a) = \operatorname{head}(v) 
+\end{align*}
+
+Tail removes the first symbol of a word and is defined by 
+
+\begin{align*}
+    \operatorname{tail}(\varepsilon) = \varepsilon \\ 
+    \operatorname{tail}(\varepsilon + a) = \varepsilon \\ 
+    \operatorname{tail}(v + a) = \operatorname{tail}(v) + a  
+\end{align*}
+
+
+\subsection{Fixes}
+
+Let \(\Sigma\) be an alphabet and let \(v, w \in \Sigma^{*}\) be words.  
+
+\begin{itemize}
+
+    \item \(v\) is called a \emph{substring} of \(w\) iff \(\exists s, t \in \Sigma^{*} : w = s v t\).  
+
+    \item \(v\) is called a \emph{suffix} of \(w\) iff \(\exists s \in \Sigma^{*} : w = s v\) - we write \(v \sqsupseteq w\).  
+
+    \item \(v\) is called a \emph{prefix} of \(w\) iff \(\exists t \in \Sigma^{*} : w = v t\) - we write \(v \sqsubseteq w\).  
+
+    \item \(v\) is called a \emph{proper substring (prefix/suffix)} of \(w\) iff \(v \neq \varepsilon \wedge v \neq w\) and \(v\) is a substring (prefix/suffix) of \(w\).  
+    We then write \(v \sqsubset w\) or \(v \sqsupset w\).  
+
+\end{itemize}
+
+\(\varepsilon\) is prefix suffix and substring, of all words. 
+
+\subsection{The Canonical Order}
+
+Let \(\Sigma = \{a_{1}, \dots, a_{n}\}\) be an alphabet with \(n \geq 1\), and let 
+\(< \subseteq \Sigma \times \Sigma\) be an order on \(\Sigma\) with
+\(a_{1} < a_{2} < \dots < a_{n}\).  
+
+We define the \emph{canonical order} on \(\Sigma^{*}\) as follows:  
+
+\[
+    u < v 
+    \quad \text{iff} \quad 
+    \lvert u \rvert < \lvert v \rvert 
+    \;\;\vee\;\; 
+    \bigl(\lvert u \rvert = \lvert v \rvert \;\wedge\; 
+    u = w \cdot a_{i} \cdot u' \;\wedge\; v = w \cdot a_{j} \cdot v' 
+    \;\wedge\; i < j \bigr)
+\]
+
+for arbitrary \(w, u, u', v, v' \in \Sigma^{*}\).  
+
+\subsection{Languages}
+
+Let \(\Sigma\) be an alphabet. A \emph{language} \(L\) over \(\Sigma\) is a subset of \(\Sigma^{*}\) (\(L \subseteq \Sigma^{*}\)).  
+
+\[
+    \mathcal{P}(\Sigma^{*}) = \{ L \mid L \subseteq \Sigma^{*} \},
+\]
+
+the power set of \(\Sigma^{*}\), is the set of all languages over \(\Sigma\).  
+
+Furthermore, \(L_{\emptyset} = \emptyset\) and \(L_{\varepsilon} = \{\varepsilon\}\).  
+
+Another parts of a language is the \emph{syntax} which defines the words in the language, and the  \emph{semantic} which determines 
+the meaning of words. 
+
+\subsection{Pumping Lemma}
+
+For a language \(L\) which can be recognized by a state machine, there is a natural number \(n\) such 
+that for each word in \(L\) with length greater than or equal to \(n\), the word \(w\) can be decomposed 
+into three subwords \(x, y, z\).
+
+\begin{itemize}
+    
+    \item \(|xy| \leq n\)
+    
+    \item \(y \neq \varepsilon\)
+    
+    \item \(xy^i z \in L\) for all \(i \geq 0\)
+
+\end{itemize}
+
+\textbf{Example:}
+
+Let \(L = \{ a^n b^n \mid n \geq 0 \}\). This language is \textbf{not} regular, and the Pumping 
+Lemma can be used to prove this by contradiction.
+
+\subsection{Algorithm}
+
+Given two alphabet \(\Sigma_1, \Sigma_2\) and \(\mathcal{D} \subseteq \Sigma_{1}^{*}\). An \emph{algorithm} is a total function 
+
+\[
+    A: \mathcal{D} \to \Sigma_{2}^{*}
+\]
+
+Two algorithms are equivalent if and only if 
+
+\[
+    \forall x \in \mathcal{D} : A(x) = B(x)
+\]
+
+\subsection{The Decision Problem}
+
+The \emph{decision problem} \(\langle \Sigma, L \rangle\) for a given alphabet \(\Sigma\) and a language \(L \subseteq \Sigma^{*}\) is to decide, for each \(w \in \Sigma^{*}\), whether  
+
+\[
+    w \in L 
+    \quad \text{or} \quad 
+    w \notin L .
+\]
+
+Therefore, one also speaks of the \emph{word problem} \(\langle \Sigma, L \rangle\).  
+
+An algorithm \(A \colon \Sigma^{*} \to \{0, 1\}\) \emph{solves} the decision problem \(\langle \Sigma, L \rangle\) if, for all \(w \in \Sigma^{*}\), we have
+
+\[
+    A(w) =
+    \begin{cases}
+    1 & \text{if } w \in L , \\
+    0 & \text{if } w \notin L .
+    \end{cases}
+\]
+
+We also say: \(A\) \emph{recognizes} \(L\).  
+
+\subsection{Recursive Languages}
+
+Let \(\Sigma\) be an alphabet and let \(L \subseteq \Sigma^{*}\) be a language.  
+\(L\) is called \emph{recursive} if and only if there exists an algorithm \(A\) that solves the decision problem \(\langle \Sigma, L \rangle\).  
+
+\subsection{Enumeration Problem}
+
+Let \(\Sigma\) be an alphabet, \(L \subseteq \Sigma^{*}\) a language, and \(n \in \mathbb{N}\).  
+The \emph{enumeration problem} \(\langle \Sigma, L, n \rangle\) for \(L\) consists of listing the canonical first \(n\) words of \(L\).  
+
+An algorithm \(A \colon N \to \mathcal{P}(L)\) is an \emph{enumeration algorithm} for \(L\) if, for every input \(n \in N\), \(A\) outputs 
+the canonical first \(n\) words \(w_{0}, w_{1}, \dots, w_{n-1}\) of the language \(L\).  
+
+\subsection{Grammars}
+
+Let 
+
+\[
+    G = (V, \Sigma, R, S)
+\]
+
+where:
+
+\begin{itemize}
+
+    \item \( V \) is a finite set of \emph{variables} (also called non-terminal symbols).
+    
+    \item \( \Sigma \) is a finite set of \emph{terminal symbols}, such that \( V \cap \Sigma = \emptyset \).
+    
+    \item \( R \) is a finite set of \emph{production rules} of the form 
+    
+        \[
+            A \rightarrow \alpha,
+        \]
+
+        where \( A \in V \) and \( \alpha \in (V \cup \Sigma)^* \).
+    
+    \item \( S \in V \) is the \textbf{start symbol}.
+
+\end{itemize}
+
+Thus, a grammar \( G \) defines a \emph{formal language} \( L(G) \) as:
+
+\[
+    L(G) = \{\, w \in \Sigma^* \mid S \Rightarrow^* w \,\}
+\]
+
+where \( \Rightarrow^* \) denotes the reflexive and transitive closure of the derivation relation defined by \( R \).
+
+\subsubsection{Context Free Grammars}
+
+
+

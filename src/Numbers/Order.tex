@@ -49,7 +49,19 @@ Let \(A\) be a partially ordered class, and let \(B \subseteq  A\). If two eleme
 then we call \(B\) a \emph{fully ordered subclass of \(A\)}, or \emph{linearly ordered subclass of \(A\)}, or more 
 commonly, a \emph{chain} of \(A\). If every two elements of \(A\) are comparable, then \(A\) is also considered as such.
 
-\subsection{Initial segments of a determined Class determined by an Element}
+
+\textbf{Example:} 
+
+Let \(C\) and \(D\) be chains of \(A\) and \(B\) respectively, prove that \(A \times B \text{ lex. sorted } \implies C \times D \text{ is chain of } A \times B\).
+
+\textbf{Proof:}
+
+By the contraposite, if \(C \times D\) is not a chain of \(A \times B\), then there some element \((c,d)\) can not be compared, because \((c, d)\) can 
+not be compared, but \((c,d) \in A \times B\), then \(A \times B\) can not lexicographicaly sorted.
+
+\QED
+
+\subsection{Initial Segments}
 
 Let \(A\) be a partially ordered class and suppose \(a \in A\). The \emph{initial segment of \(A\) determined by \(a\)} is the 
 class \(S_a\), defined as follows: 
@@ -60,6 +72,15 @@ class \(S_a\), defined as follows:
 
 Initial segments are transitive, which means that if we have an initial segment of an initial segment, then the last one  is also 
 an initial segment of the parent class.
+
+\subsubsection*{An initial segment of an initial segment of a class is an initial segment of the same class}
+
+\textbf{Proof:}
+
+Let \(P = \{x \in A \mid x < a\}\) for some \(a \in A\) and let \(Q = \{p \in P \mid p < c\}\) for some \(c \in P\). By definition 
+\(Q \subseteq A\). Because \(c \in A\) it is clear that \(Q\) is an initial segment of \(A\).
+
+\QED
 
 \subsection{Cuts}
 
@@ -142,13 +163,31 @@ Let \(A\) and \(B\) be partially ordered classes; a function \(f: A \to B\) is s
 	x \le y \implies f(x) \le f(y).
 \]
 
+\subsection{Isomorphism}
+
+If \(f\) is bijective and \(x \le y \iff f(x) \le f(y)\) for every two elements \(x \in A, y \in B\), we call it an \emph{isomorphism}.
+
+
+\subsection{Strictly Increasing Function}
+
 We consider \(f\) strictly increasing if it satisfies that:
 
 \[
 	x < y \implies f(x) < f(y).
 \]
 
-If \(f\) is bijective, we call it an \emph{isomorphism}.
+\textbf{Example:} 
+
+Prove that if \(f : A \to B\) is an injective, increasing function, then it is strictly increasing.
+
+\textbf{Proof:}
+
+Suppose it is not increasingly increasingly. The negation is \(x < y \implies f(x) \ge f(y)\).
+
+Now we have that \(x \le y \implies f(x) \ge f(y) \land  x \le y \implies f(x) \le f(y) \iff f(x) = f(y)\) for some \(x, y \in A\), hence we have a contradiction 
+to the injectivity.
+
+\QED
 
 \subsection{Order by Inverses}
 
@@ -161,8 +200,7 @@ an isomorphism if and only if \(f: A \to B\) and \(f^{-1}: B \to A\) are increas
 	f(x) \le f(y) \implies f^{-1}(f(x)) \le f^{-1}(f(y)) \implies x \le y
 \]
 
-Thus, there is no element for which \(f(x)\) is not defined and also every \(x \in A\) has only one image in \(B\).
-Conversely, we get from the fact that 
+By the isomorphic property we get the increasing property for \(f\) and also for \(f^{-1}\) because else for \(f(x) \le f(y): y \le x\) violates our initial condition that \(x \le y\)
 
 \[
 	x \le y \implies f(x) \le f(y) \implies f^{-1}(f(x)) \le f^{-1}(f(y))
@@ -172,23 +210,63 @@ Thus, \(f\) and \(f^{-1}\) are increasing functions.
 
 \QED
 
-
 \subsection{Common Isomorphism on Partially Ordered Classes}
 
 Let \(A\), \(B\) and \(C\) be partially ordered classes. 
 
 \begin{itemize}
 
-	\item \(I_A\) is an isomorphism. 
+	\item \(I_A: A \to A\) with \(I_A(x) = x, \quad x \in A\) is an isomorphism. 
 	\item If \(f: A \to B\) is an isomorphism, then \(f^{-1}: B \to A\) is an isomorphism.
 	\item If \(f: A \to B\) and \(g: B \to C\) is an isomorphism, then \(g \circ f: A \to C\) is an isomorphism.
 
 \end{itemize}
 
+\textbf{Proof I:}
+
+Let \(I_A = f\), for \(x, y \in A\) we have that \(x \le y\) gives us \(x < y \iff f(x) < f(y)\) and \(x = y \iff f(x) = f(y)\).
+
+\QED
+
+\textbf{Proof II:}
+
+In one of our previous results we got that \(f^{-1}\) is increasing if and only \(f\) is an isomorphism. We prove that \(f^{-1}\) is also one by 
+assuming it is not, then \(\exists y \in B: f(x) \ne y, \forall x \in A\) which is a contradiction.
+
+\QED
+
+\textbf{Proof III:}
+
+We keep in mind the bijectivity of \(f\) and \(g\) and state the following
+
+\[
+	x \le y \iff f(x) \le f(y) \iff g(f(x)) \iff (f(y))
+\]
+
+\QED
+
+\textbf{Example:} 
+
+Given the isomorphism \(f:A \to B\), if \((L,U)\) is a cut of \(A\), then \((f(L), f(U))\) is a cut of \(B\).
+
+\textbf{Proof:}
+
+Suppose \((f(L), f(U))\) is not a cut, then \(y \in f(L) \cap f(U)\), then \(y \in f^{-1}(f(L)) \cap f^{-1}(f(U))\) but this is a contradiction. 
+Therefore, \((f(L), f(U))\) must be disjoint.
+
+For the covering, we use a similar argument \(f(L) \cup f(U) \neq B\), then \(f\) would not be bijective, hence, another contradiction.
+
+For the downward and upward closure, we know that our function targets the whole set \(B\) and by its isomorphic properties 
+it respects the order. Therefore, this properties are also satisfied. 
+
+\QED
+
 \subsection{Isomorphic Definition}
 
 Let \(A\), and \(B\) be partially ordered classes. If there exist and order preserving isomorphism between the two 
 classes, we say that \(A\) is \emph{isomorphic} with \(B\).
+
+Note, that the isomorphic property allows us to define an equivalence relation between classes.
 
 \subsection{Convex}
 
@@ -207,6 +285,20 @@ Let \(A\), and \(B\) be partially ordered classes
 	equivalence classes of \(A / H\) are convex subsets of \(A\).
 
 \end{itemize}
+
+\textbf{Proof I:}
+
+Given  \(f(a), f(b) \in C\), then using the properties of the increasing functions we get \(f^{-1}(f(a)) \le f^{-1}(f(x)) \le f^{-1}(f(b))\) which gives us \(a \le x \le b\) which 
+is the definition of a convex class.
+
+\QED
+
+\textbf{Proof II:}
+
+Given the equivalence relation given by the function \(f\) we have that for every member of an arbitratry equivalence class 
+\(f(a) = f(x) = f(b)\) can be written as \(f(a) \le f(x) \le f(b)\) hence we the defintion of convex classes.
+
+\QED
 
 \subsection{Maximal Element}
 
@@ -322,20 +414,24 @@ any true statement on \(G\) the dual of the statement is also true for \(G^{-1}\
 
 \subsection{Greatest and Least Elements under Inclusion}
 
-If \(A\) has a greatest element \(a\), and \(B\) has a greatest element \(b\), and \(A \subseteq B\), then 
+If \(A\) has a greatest element \(a\), and \(B\) has a greatest element \(b\), and \(B \subseteq A\), then 
 
 \[
-	a \leq b.
+	b \le a.
 \]
 
 \textbf{Proof:} 
 
-By definition, \(b \geq x\) for every \(x \in B\); but \(a \in A \subseteq B\); hence \(b \geq a\), that is, \(a \leq b\).
+\[
+	a \ge x, \forall x \in A \implies a \ge b, \forall b \in B \implies a \ge b
+\]
 
-\textbf{Dual:} If \(A\) has a least element \(a\), and \(B\) has a least element \(b\), and \(A \subseteq B\), then 
+\QED 
+
+\textbf{Dual:} If \(A\) has a least element \(a\), and \(B\) has a least element \(b\), and \(B \subseteq A\), then 
 
 \[
-	a \geq b.
+	b \ge a.
 \]
 
 \subsection{Upper and Lower Bounds under Inclusion}
@@ -348,13 +444,12 @@ Let \(B\) and \(C\) be subclasses of \(A\). If \(B \subseteq C\), then
 
 \textbf{Proof:} 
 
-\[
-	v(C) \subseteq v(B).
-\]
+\(x \in v(C) \implies x \geq y, \ \forall y \in C\) because \(y \in B \implies b \in C\), then \( x \geq y, \forall y \in B \implies x \in v(B).\)
 
-\textbf{Proof:} 
+The opposite is not always true, due to the fact that if \(z \in V(B)\), such that \(z \in C\), but \(z \notin v(C)\), which 
+is possible if \(z\) is not an upper bound of \(C\), then the theorem does not hold.
 
-\(x \in v(C) \implies x \geq y, \ \forall y \in C \implies x \geq y, \ \forall y \in B \implies x \in v(B).\)
+\QED 
 
 \textbf{Dual:} If \(B \subseteq C\), then 
 
@@ -372,11 +467,13 @@ Let \(B\) and \(C\) be subclasses of \(A\), and suppose that \(B\) and \(C\) eac
 
 \textbf{Proof:} 
 
-By the previous theorems, \(v(C) \subseteq v(B)\),
+By the dual of the greatest element under inclusion applied to \(v(C) \subseteq v(B)\),
 
 \[
-	\sup B \leq \sup C.
+	\sup(B) \le \sup(C).
 \]
+
+\QED 
 
 \textbf{Dual:} If \(B\) and \(C\) each has an \(\inf\) in \(A\), and if \(B \subseteq C\), then 
 
@@ -393,6 +490,8 @@ Let \(B\) be a subclass of \(A\). Then
 \]
 
 \textbf{Proof:} Suppose \(x \in B\); for each \(y \in \lambda(B)\), \(y \leq x\); hence \(x \in v(\lambda(B))\).
+
+\QED 
 
 \textbf{Dual:} 
 
@@ -415,14 +514,14 @@ Let \(B \subseteq A\), then
 Let \(s = \sup(\lambda(B)),\ \forall b \in B,\ s \le b\); hence, \(s\) is a lower bound of \(B\). Suppose \(\inf(B) \neq s\), then \(s > \inf(B) \lor s < \inf(B)\).
 
 Case \(s > \inf(B)\): this leads to a contradiction because if \(s \in A\) and  \(s\) is a lower bound of \(B\), but it is greater than its infimum then 
-\(\inf(B)\) is can not be the greatest lower bound of \(B\), which does not make sense by the definition.
+\(\inf(B)\) can not be the greatest lower bound of \(B\), which does not make sense by the definition.
 
-Case \(s < \inf(B)\): \(\inf(B)\) is a lower bound of \(B\); therefore, \(\inf(B) \in \lambda(B)\). If \(\inf(B) \ne \sup(\lambda(B))\) and \(s < \inf(B)\), then we also 
-arrive at a contradiction because by the definition of the supremum being the least upper bound. Hence, \(\inf(B) = \sup(\lambda(B))\)
+Case \(s < \inf(B)\): \(\inf(B)\) is a lower bound of \(B\); therefore, \(\inf(B) \in \lambda(B)\). If \(s < \inf(B)\) then \(s\) can not be the supremum 
+of \(\lambda(B)\) since there exists a greater element in it; hence \(s = \inf(B)\).
 
 \QED
 
-\subsection*{Example Exercise}
+\subsection*{Example Exercises}
 
 1. Prove that given \(B \subseteq A\), \(\sup(B) = b \in A \implies \lambda(v(B)) \cap v(B) = \{b\}\)
 
@@ -457,6 +556,14 @@ By definition for \(\sup(B) \ge b, \forall b \in B\), and also \(\sup(B) \in v(B
 
 Therefore, if \(\sup(B) = \sup(C) = s\), then \(v(B) = \{a \in A \mid a \ge s\}\), and because they are shared then 
 \(v(C) = \{a \in A \mid a \ge s\}\)
+
+\QED 
+
+3. Suppose \(B \subseteq A\); prove that \(v(B) = v(\lambda(v(B)))\). 
+
+For \(x \in v(B)\) holds that \(x \ge b, \forall b \in B\), then for \(y \in \lambda(v(B))\) holds \(y \le z, \forall z \in v(B)\) which 
+implies that \(y \le b, \forall b \in B\). Finally, if \(y \le b, b \in B\), then for \(w \in v(\lambda(v(B)))\) it must be true that 
+\(w \ge y, \forall y \in \lambda(v(B))\), which by transitivity implies that \(w \ge b, \forall b \in B\); hence, \(v(B) = v(\lambda(v(B)))\).
 
 \QED 
 

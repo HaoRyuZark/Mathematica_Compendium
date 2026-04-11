@@ -263,9 +263,9 @@ is defined this way because when we project our basis vector \(\vec{b}_i\) onto 
 because of the symmetry we will get the same value as if we were projecting \(\vec{u}\) onto 
 the line \(\vec{b}_i\) lives in.
 
-\subsection{Norm of a Vector}
+\subsection{Metrics for Vectors}
 
-The norm of a vector \(\vec{a}\) is described by different norms:
+The metric of a vector \(\vec{a}\) is described by different norms:
 
 It also has the following properties:
 
@@ -281,23 +281,24 @@ It also has the following properties:
 
 \end{itemize}
 
-These are the most common norms, although we will be using primarily the euclidean norm:
+These are the most common metric, although we will be using primarily the euclidean metric:
 
 \begin{itemize}
 
-	\item \emph{Euclidean norm}:
+	\item \emph{Euclidean metric}:
 	      \[
 		      \|\vec{a}\| = \sqrt{\langle\vec{a}, \vec{a}\rangle} = \sqrt{a_1^2 + a_2^2 + \cdots + a_n^2}
 	      \]
-	\item \emph{Manhattan norm}:
+	\item \emph{Manhattan metric}:
 	      \[
 		      \|\vec{a}\|_1 = |a_1| + |a_2| + \cdots + |a_n|
 	      \]
-	\item \emph{Maximum norm}:
+	\item \emph{Maximum metric}:
 	      \[
 		      \|\vec{a}\|_\infty = \max(|a_1|, |a_2|, \dots , |a_n|)
 	      \]
 \end{itemize}
+
 
 \subsection{Angle Relations}
 
@@ -414,8 +415,7 @@ The cross product has the following properties:
 
 \end{itemize}
 
-The cross product is not defined in \(\R^2\).
-The cross product is not commutative, but it is associative:
+The cross product is not defined in \(\R^2\). The cross product is not commutative, but it is associative:
 
 \[
 	(\vec{a} \times \vec{b}) \times \vec{c} = \vec{a} \times (\vec{b} \times \vec{c})

@@ -1,0 +1,95 @@
+\newpage
+\section{Graph Theory}
+
+ A \emph{Graph} \(G = \langle V, E \rangle \) consists of a finite set of vertices \(V\) and a relation 
+ \(E \subseteq V \times V\) over the set. Depending on the traits of \(E\) it can be categorized into 
+
+ \begin{itemize}
+    
+    \item \emph{Undirected}: \(E\) is symmetric.
+
+    \item \emph{Directed}: \(E\) is not symmetric.
+
+    \item \emph{Complete}: \(E = V \times V\) for directed and \(|E| \approx |V| (|V| - 1) / 2\) for undirected graphs.
+    
+    \item \emph{Loop-free}: \(\forall(v,v) \in V \times V : (v,v) \notin E \)
+
+    \item \emph{Weighted}: \(G = \langle V, E, \phi \rangle\), where \(\phi: E \to R\) and \(R\) is an arbitrary set.
+    It mostly refers to adding a cost to each edge.
+    
+    \item \emph{Dense}: \(|E| \approx |V|^2\) for directed and \(|E| \approx |V| (|V| - 1) / 2\) for undirected graphs.
+
+    \item \emph{Sparse}: \(|E| << |V|^2\) for directed and \(|E| << |V| (|V| - 1) / 2\) for undirected graphs.
+
+ \end{itemize}
+
+ In computer science the density of a graph is a main criteria when modeling a graph. 
+
+ \subsection{Connected Graphs}
+
+ A graph \(G = (V,E)\) undirected, then it is called \emph{connected} if for all pairs \((v_i, v_j) \subseteq V \times V\) there exists a 
+ path from \(v_i\) to \(v_j\). We define \(E_S\) the symmetric relation. 
+
+ \[
+    (v_1, v_2) \in E \iff (v_1, v_2) \in E_S \land (v_2, v_1) \in E_S
+ \]
+
+ If \(G\) is directed then it is connected if and only if its undirected version is connected.
+ 
+ \subsection{Paths}
+
+ Given a graph \(G\), we call a \emph{path} a set of vertices if 
+
+ \[
+    \forall i \in \{1, \dots, k - 1\} : (w_i, w_{i + 1}) \in E
+ \]
+
+ The most common types of paths are 
+
+\begin{itemize}
+    
+    \item \emph{Circle}: \(w_1 = w_k\)
+
+    \item \emph{Eulerian Circuit}: Each edge will be visited one time. \(\forall(s,t) \in E : \exists_1 i: s = w_i \land t = w_{i + 1}\)
+
+    \item \emph{Hamiltonian Circuit}: Each vertex will be visited one time \(\forall v \in V : \exists_1 i : v = w_i\) 
+    
+    \item \emph{Loop-free}: \(\forall(v,v) \in V \times V : (v,v) \notin E \)
+
+ \end{itemize}
+
+ \subsubsection{Path Cost}
+
+ We define the \emph{path cost} for a weighted graph as 
+
+ \[
+    \phi (p) = \sum_{i = 1}^{k - 1} \phi(w_i, w_{i+1})
+ \]
+
+ \subsection{The Adjacency Matrix}
+
+ For a graph \(G\) with vertices \(V = \{v_1, \dots, v_n\}\), we define the \emph{the adjacency matrix} \(A = (a_{ij})\) as a 
+ \(n \times n\) matrix with 
+
+ \[
+    a_{ij} = \begin{cases}
+        1 & if (v_i, v_j) \in E \\ 
+        0 & else
+    \end{cases}
+ \]
+
+\subsection{The Relax Operation}
+
+In graph theory when referring to the action of updating the cost of visiting a vertex in a weigthed graph we call this operation 
+\emph{relaxation}. 
+
+\[
+    \operatorname{relaz}(u,v, \text{weight}) = 
+    \begin{cases}
+        d[u] + \text{weight}(u,v) &\text{if} d[u] + \text{weight}(u,v) < d[v] \\ 
+        d[u] & \text{else}
+    \end{cases}
+\]
+
+
+

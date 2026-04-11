@@ -1,0 +1,247 @@
+\newpage
+\section{Computability}
+
+
+\subsection{Church Turing Thesis}
+
+The intuitive computable functions are exactly all functions which can be computed 
+by a \emph{Turing Machine}. In other words every computational model can be expressed as such.
+
+\subsection{Textual Substitution}
+
+For a given condition of the form \(\{E[x:=R]\}\) we perform the substitution in the following way 
+
+\[
+    (2x + y)[x:= 4y] = 8y + y = 9y
+\]
+
+If there are multiple replacements of the form \([\dots], \dots, [\dots]\) we perform those from left to right.
+
+\subsection{Leibniz Inference Rule}
+
+To clarify the notation we will be using from now looks like fraction but it means that assuming 
+the statement above is true then the following (bellow) is also true. 
+
+\[
+    \frac{X = Y}{E[z:=X] = E[z:= Y]} 
+\]
+
+\subsection{Correctness of Algorithms}
+
+The \emph{correctness} of algorithm is determined by the sum of the following properties 
+the \emph{partial correctness}, this means the algorithm at each step does the right thing, and 
+\emph{termination}, which like the name means that the algorithm terminates. 
+
+\subsubsection{Partial Correctness}
+
+If before running \(P\) the condition \(\varphi\) is true, then after the termination \(P\) should 
+\(\psi\) be true; these are the pre- and post-conditions.
+
+\textbf{Example:}
+
+\[
+    <x=0> x:= x+1 <x>0>
+\]
+
+\subsubsection{Hoare Calculus}
+
+To read the following expression which look like fraction but are not, use the following:
+
+\begin{itemize}
+    
+    \item \emph{Above}: if this is true 
+    
+    \item \emph{Below}: then this is also true
+
+\end{itemize}
+
+\emph{Assignation Rule}
+
+If \textbf{x} is a variable, \textbf{t} is an expression without side effects \(\varphi \text{x/t}\) is 
+\(\psi\) with all \textbf{x} substituted for \textbf{t}.
+
+\[
+    <\varphi [\text{x/t}]> \text{ x} = \text{t; } <\psi>
+\]
+
+Note that this rule only has the part below, this means that this rule has no precondition.
+
+\textbf{Example I:} 
+
+\(<\text{y } = 5>\) x = 5; \(<\text{x } = \text{ y}>\)
+
+\textbf{Example II:} 
+
+\(<5 > 4>\) x = 5; \(<\text{x } > 4>\)
+
+
+\emph{Consequence Rule (Strong pre-condition)} 
+
+Here \(\alpha\) is a stronger condition than \(\phi\). This way our condition \(\phi\) has an extra layer of protection.
+\[
+    \frac{<\varphi> P <\psi> \quad \alpha \implies \varphi}{ <\alpha> P <\psi>}
+\]
+
+\textbf{Example:} 
+
+\[
+    \frac{<5 = 5> \text{x } = 5; <\text{x } = 5> \text{ true } \implies 5 = 5}{<\text{true} > x = 5; <\text{x } = 5>}
+\]
+
+In code 
+
+\begin{verbatim*}
+<true> 
+<5=5> 
+x=5;
+<x=5>
+\end{verbatim*}
+
+\emph{Consequence Rule (Weak post-condition)} 
+
+This let us make the post-condition weaker.
+
+\[
+    \frac{<\varphi> P <\psi> \quad \psi \implies \beta}{ <\varphi> P <\beta>}
+\]
+
+\textbf{Example:} 
+
+\[
+    \frac{<5 = 5> \text{x } = 5; <\text{x } = 5> \text{ x } = 5 \implies x \ge 5}{<\text{true}> x = 5; <\text{x } \ge 5>}
+\]
+
+Note that two guards can only be consecutive if from the one above the one below is implied 
+
+\emph{Sequence Rule}
+
+This rule allows us to compress our conditions.
+
+\[
+    \frac{<\psi> P <\psi> \quad <\psi> Q <\beta>}{ <\psi> P Q <\beta>}
+\]
+
+\textbf{Example:}
+
+\(<\text{true}>\) 
+x = 5;
+res = x * x + 6;
+\(<\text{res } = 31>\)
+
+\emph{Condition Rule I}
+
+This rule enforces that no matter in which branch of the program  is taken the post-condition  
+is true.
+
+\[
+    \frac{<\phi \land B > P <\psi> \quad \phi \land \neg B \implies \psi}{ <\phi> \text{ if } (B) \{P\} <\psi>}
+\]
+
+\textbf{Example:}
+
+\begin{verbatim*}
+<true>
+<y=y>
+res=y
+<res=y>
+
+if (x > y) {
+    <res = y \land x > y>
+    <x = max(x,y)>
+    res = x 
+    <res = max(x,y)>   
+}
+<res = max(x,y)>
+\end{verbatim*}
+
+\emph{Condition Rule II}
+
+Similar to the previous case, we want to make sure that independent of the branch 
+we have a correct post-condition.
+
+\[
+    \frac{<\phi \land B > P <\psi> \quad <\phi \land \neg B> Q <\psi>}{ <\phi> \text{ if } (B) \text{ else } \{Q\} <\psi>}
+\]
+
+\textbf{Example:}
+
+\begin{verbatim*}
+<true>
+<x=x>
+res=x
+<res=x>
+
+if (x < 0) {
+    <true \land x < 0>
+    <-x = |x|>
+    res = -x 
+    <res = |x|>   
+} else {
+    <true \land -x < 0 >
+    <x = |x|>
+    res = x 
+    <res = |x>
+}
+<res = |x|>
+\end{verbatim*}
+
+\emph{Loop Rule}
+
+In this rule we look for some \emph{invariant} \(\phi\) which before and after the loop is true.
+
+\[
+    \frac{<\phi \land B > P <\phi>}{ <\phi> \text{ while } (B) \{Q\} <\phi \land \neg B>}
+\]
+
+Note that from the guard before the loop \(<\alpha>\), we have \(\alpha \implies \phi\)
+Finding the invariant can be tricky, but it commonly involves finding an integer expression, also some formula which 
+holds for the entire loop.
+
+\textbf{Example:}
+
+In this case the invariant is \(i! res = n!\)
+
+\begin{verbatim*}
+    <true>
+    i = n;
+    res = 1;
+    <i = n \land res = 1>
+    <i! res = n!>
+    while (i > 1) {
+    <i! res = n! \land i > 1>
+    <(i - 1)! res i = n!>
+        res = res * i;
+    <(i - 1)! res = n!>
+        i = i - 1;
+    <i! res = n!>
+    }
+    <\phi \land \neg i > 1>
+    <res = n!>
+\end{verbatim*}
+
+\subsection{Termination}
+
+For each loop \textbf{while} \((B) \{P\}\) we have to find some \textbf{int} expression \(V\) 
+called the \emph{variant} such that 
+
+\[
+    B \implies V \ge 0 \text{ and } <V = m \land B> P <V < m> >
+\]
+
+In simpler words, we look for an integer expression which continuously decreases.
+
+\textbf{Example:}
+
+\begin{verbatim*} 
+    <i = m \land i > 1>
+    while ( i > q) {
+
+    <i - 1 < m >
+        res  = res * i;
+    <i -1 < m>
+        i = i - 1;;
+    <i < m>
+    }
+\end{verbatim*}
+
+

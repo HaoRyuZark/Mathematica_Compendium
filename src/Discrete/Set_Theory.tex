@@ -200,7 +200,7 @@ If \(X \in Y\) for some class \(Y\) then \(X\) is a set. If \(X \notin Y\) for a
 	
 	\item \emph{Axiom of Selection}: Given a class \(A\), a class \(S\) can be build in the following manner \(S = \{x \in A \mid P(x)\}\)
 	 
-	\item \emph{Axiom of Equality}: Let \(A\) and \(B\) be classes then \(A = B \iff \forall X : A \in X \implies B \in X \land B \in X \implies A \in X\)
+	\item \emph{Axiom of Extensionality}: Let \(A\) and \(B\) be classes then \(A = B \iff \forall X : A \in X \implies B \in X \land B \in X \implies A \in X\)
 
 	\item \emph{Empty-Set Axiom}: \(\emptyset\) is a set. 
 	
@@ -211,18 +211,29 @@ If \(X \in Y\) for some class \(Y\) then \(X\) is a set. If \(X \notin Y\) for a
 
 	\item \emph{Axiom of Paring}: Is \(a\) and \(b\) are sets, then \(\{a, b\}\) is a set
 
-	\item \emph{Axiom of Union}: If \(A\) is a set of sets, then \(\bigcup_{a \in A} a\) is a set.
+	\item \emph{Axiom of Union}: If \(A\) is a set of sets, then \(\bigcup_{a \in A} a\) is a set. \(\forall a \exists b \forall c(c \in a \implies \forall d (d \in c \implies d \in d))\).
 
 	\item \emph{Axiom of the Power Set}: If \(A\) is a set then the set of all the subsets of the original set, \(\mathcal{P}(A)\), is a set.
+	\(\forall a \exists b \forall c (\forall d (f \in c \implies d \in a) \implies d \in b)\).
 
-	\item \emph{Axiom of Foundation}: If \(A\) is any set, there is an element \(a \in A\) such that \(a \cap A = \emptyset\). Alternatively, there exists not such set, 
-	which is formed from a chain like: \(a_1 \in a_2 \in a_3 \in \dots\). \(\forall S(S \neq \emptyset \implies \exists x \in S \forall y \in S y \notin x)\)
+	\item \emph{Axiom of Foundation / Regularity}: If \(A\) is any set, there is an element \(a \in A\) such that \(a \cap A = \emptyset\). Alternatively, there exists not such set, 
+	which is formed from a chain like: \(a_1 \in a_2 \in a_3 \in \dots\). \(\forall a (\exists b ( b \in a) \implies \exists c (c \in a \land \forall d ( d \in c \implies d \notin a)))\)
 
-	\item \emph{Axiom of Replacement}: If \(A\) is a set and \(f: A \to B\) is a surjective function, then \(B\) is a set.
+	\item \emph{Axiom of Replacement}: If \(A\) is a set and \(f: A \to B\) is a surjective function, then \(B\) is a set. Let \(P\) be a predicate on \(a, b, c\) and let \(d,e,f,g\) not be yet introduced, 
+	\begin{align*}
+		\forall a \exists b ((\forall c((c \in a \land \exists d P) \implies \exists e ( e \exists (e \in b \land [e/d]P)) \\ 
+		\land \forall f (f \in b \implies \exists g (g \in a \land [g/c][f/d]P)))
+	\end{align*}	
 
-	\item \emph{Axiom of Infinity}: An infinity set exists.
+	\item \emph{Axiom of Infinity}: An infinity set exists. \(\exists a( \exists b (b \in a) \land \forall c (c \in a \implies \exists d ( d \in a \land c \in d)))\).
 
 	\item \emph{Axiom of Choice}: Given a non-empty set, \(A_1, A_2, \dots\), there is a set containing exactly one element from each \(A_i\).
+	\begin{align*}
+		\forall a (\forall b (b \in a \implies (\exists c ( c \in b) \\ 
+		\land \forall d ((d \in a \land \exists e ( e \in b \land e \in d)) \implies b = d))) \\ 
+		\implies \exists f \forall g (g \in a \implies \exists h ((h \in g \land h \in f) \\ 
+		\land \forall i ((i \in g \land i \in f) \implies i = h))))
+	\end{align*}
 
 \end{enumerate}
 

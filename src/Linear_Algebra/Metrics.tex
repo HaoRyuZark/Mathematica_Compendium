@@ -1,0 +1,154 @@
+\chapter{Metrics}
+
+\section{Metrics for Vectors}
+
+The metric of a vector \(\vec{a}\) is described by different norms:
+
+It also has the following properties:
+
+\begin{itemize}
+
+	\item \(\|\vec{a}\| \geq 0\) and \(\|\vec{a}\| = 0 \Leftrightarrow \vec{a} = \vec{0}\)
+
+	\item \(\|\lambda \vec{a}\| = |\lambda| \|\vec{a}\|\)
+
+	\item \(\|\vec{a} + \vec{b}\| \leq \|\vec{a}\| + \|\vec{b}\|\) (Triangle inequality)
+
+	\item \(\|\vec{a} + \vec{b}\|^2 = \|\vec{a}\|^2 + \|\vec{b}\|^2 + 2\langle\vec{a}, \vec{b}\rangle\) (Pythagorean theorem)
+
+\end{itemize}
+
+These are the most common metric, although we will be using primarily the euclidean metric:
+
+\begin{itemize}
+
+	\item \emph{Euclidean metric}:
+	      \[
+		      \|\vec{a}\| = \sqrt{\langle\vec{a}, \vec{a}\rangle} = \sqrt{a_1^2 + a_2^2 + \cdots + a_n^2}
+	      \]
+	\item \emph{Manhattan metric}:
+	      \[
+		      \|\vec{a}\|_1 = |a_1| + |a_2| + \cdots + |a_n|
+	      \]
+	\item \emph{Maximum metric}:
+	      \[
+		      \|\vec{a}\|_\infty = \max(|a_1|, |a_2|, \dots , |a_n|)
+	      \]
+\end{itemize}
+
+\section{Metrics for Vectors}
+
+The metric of a vector \(\vec{a}\) is described by different norms:
+
+It also has the following properties:
+
+\begin{itemize}
+
+	\item \(\|\vec{a}\| \geq 0\) and \(\|\vec{a}\| = 0 \Leftrightarrow \vec{a} = \vec{0}\)
+
+	\item \(\|\lambda \vec{a}\| = |\lambda| \|\vec{a}\|\)
+
+	\item \(\|\vec{a} + \vec{b}\| \leq \|\vec{a}\| + \|\vec{b}\|\) (Triangle inequality)
+
+	\item \(\|\vec{a} + \vec{b}\|^2 = \|\vec{a}\|^2 + \|\vec{b}\|^2 + 2\langle\vec{a}, \vec{b}\rangle\) (Pythagorean theorem)
+
+\end{itemize}
+
+These are the most common metric, although we will be using primarily the euclidean metric:
+
+\begin{itemize}
+
+	\item \emph{Euclidean metric}:
+	      \[
+		      \|\vec{a}\| = \sqrt{\langle\vec{a}, \vec{a}\rangle} = \sqrt{a_1^2 + a_2^2 + \cdots + a_n^2}
+	      \]
+	\item \emph{Manhattan metric}:
+	      \[
+		      \|\vec{a}\|_1 = |a_1| + |a_2| + \cdots + |a_n|
+	      \]
+	\item \emph{Maximum metric}:
+	      \[
+		      \|\vec{a}\|_\infty = \max(|a_1|, |a_2|, \dots , |a_n|)
+	      \]
+\end{itemize}
+
+
+
+\section{Metric for Matrices}
+
+Given a metric \(\|\cdot\|\) over \(\R^n\), \(A \in \R^{n \times n}\), we define 
+
+\[
+    \|A\| := \sup_{x \ne 0} \frac{\|Ax\|}{\|x\|} = \max_{\|x\| = 1 \|Ax\|},
+\]
+
+as the \emph{matrix metric} for \(\R^{n \times n}\).
+
+\begin{itemize}
+    \item This norm is dependent on the chosen vector metric, hence is it called an \emph{induced matrix metric}.
+
+    \item The vector metric and the induced metric norm are compatible, which means: 
+
+    \[
+        \|Ax\|_{\text{vector}} \le \|A\|_{\text{matrix}} \cdot \|x\|_{\text{vector}}.
+    \]
+
+    \item For matrix metrics the following holds:
+
+    \[
+        \|AB\| \le \|A\| \cdot \|B\|.
+    \]
+
+    \item For \|\R^{n \times n}\| are all matrix metrics equivalent.
+
+\end{itemize}
+
+\subsection{Spectral Metric}
+
+
+For \(\| \cdot \|_2\) there is the so called \emph{spectral metric}. 
+
+\[
+    \|A\|_2 = \sqrt{\ro (A^T A)},
+\]
+
+where the \emph{spectral radius} \(\ro(B)\) is the by absolute-value-sorted greates eigenvalue of \(B\).
+
+\subsection{Row Metric}
+
+For \(\| \cdot \|_\infty\) there is the \emph{row-sum metric} 
+
+\[
+    \|A\|_\infty = \max_{i=1,\dots,n} \sum_{j = 1}^n |a_{ij}|.
+\]
+
+\subsection{Column Metric}
+
+For \(\| \cdot \|_1\) we get the \emph{column-sum metric} 
+
+\[ 
+    \|A\|_1 = \max_{j=1,\dots,n} \sum_{i = 1}^n |a_{ij}|.
+\]
+
+\subsection{Frobenius Metric}
+
+The \emph{frobenius metric} given by 
+
+\[
+    \|A\|_F = \sqrt{\dig(A^T, A)}
+\]
+
+is not induced, but for it holds 
+
+\[
+    \|AB\|_F \le \|A\|_F \cdot \|B\|_F,
+\]
+
+and is due to 
+
+\[ 
+    \|Ax\|_2 \le \|A\|_F \cdot \|x\|_2, \forall x
+\]
+
+it is compatible with the vector metric \(\|\cdot\|\). More precisely, \(\|A\|_F\) is an upper bound for \(\|A\|_2\).
+

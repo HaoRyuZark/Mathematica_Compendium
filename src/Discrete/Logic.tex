@@ -12,6 +12,56 @@ logic, and we can use any symbol for a representing a proposition, such
 
 It is statement which contains variables linked by some property stated in the language of formal logic whose value can be true or false.
 
+\subsection{Predicate Substitution}
+
+Given a predicate \(P\) on the variable \(v\) we can substitute every free instance of \(v\) with the term \(v\) to extend 
+our predicate to another variable space.
+
+\[
+	[t/v] P
+\]
+
+Types of substitution:
+
+\begin{itemize}
+	
+	\item Full replacement: \([y/x]\forall z((z = x) \land (y \in x))\), converted to \(\forall z((z = y) \land (y \in y))\),
+
+	\item Partial replacement: \([y/ x]x = y \land \forall x (x \in y)\), the \(x\) of \(\forall x(x \in y)\) is not a free variable, hence it can not be
+	replaced completely, just \(y = y \land \forall x (x \in y)\)
+
+\end{itemize}
+
+
+\textbf{Example:}
+
+Prove \(\forall a (a = a)\):
+
+Let \(P:= x = a\) be a predicate in \(x\) and \(a\). We apply:
+
+\[
+	[a /x](x = a) \text{ to } a = a \text{, then by extension of our predicate } \forall a (a = a).
+\]
+
+\QED
+
+Prove \(\forall a \forall b (a = b \implies b = a )\):
+
+Let \(P:= x = a\) be a predicate in \(a\) and \(x\). We apply:
+
+\[
+	[b / x](x = a) \text{ to } b = a \text{, then by extension of our predicate } \forall a \forall ( a = b \implies b = a )).
+\]
+
+\QED 
+
+Prove \(\forall a (a = b \land b = c \implies c = a)\):
+
+We know \(a = b \land b = a\), let this be our predicate with \(x\) and apply the substitution \([c/b]\), which gives 
+us \(a = x\), \(a = b\) and finally \(a = c\).
+
+\QED
+
 \subsection{Logic Operators and Truth Tables}
 \smallskip
 \begin{multicols}{2}
@@ -134,6 +184,8 @@ It is statement which contains variables linked by some property stated in the l
 
 \end{multicols}
 \medskip
+
+\subsubsection{Implications}
 
 As a side not for the \emph{implication} we can think about it as \emph{if, then}. For the cases 
 false, true; and false false; we call them \emph{vacously} true. From a false premise can come everything out.
