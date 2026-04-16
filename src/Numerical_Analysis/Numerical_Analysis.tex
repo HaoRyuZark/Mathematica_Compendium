@@ -17,6 +17,393 @@
 
 \subsection{Trapezoid Sum}
 
+\section{Matrix Decompositions}
 
 
+\section{Floating Point Numbers}
 
+\section{Errors}
+
+Almost all problems in the numerical analysis can be described as zero's problem with a function \(g\), 
+input \(x\) and output \(y\); \(g(x, y) = 0\)
+
+For example linear system of equations \(Ax = b\) is equivalent to 
+
+\[
+    g(x, y) = 0, \quad x = (A, b), \quad g(x, y) = Ay - b
+\]
+
+\subsubsection{Criteria For Problems in the N.A.}
+
+The 3 criteria for problems in the numerical analysis are: 
+
+\begin{enumerate}
+
+    \item A solution should exists. \(g(x, y) = 0 \iff y = f(x)\).
+  
+    \item For each \(x\) there should be exactly one \(y\). 
+   
+    \item There should be a continuous dependence of \(y\) on \(x\), i.e. \(x' \to x \implies y' \to y\). Also, 
+    small changes in the input mean small changes is the output. 
+    
+\end{enumerate}
+
+\subsection{Well- and Ill-Posed Problems}
+
+Given a problem \(g(x, y) = 0\) for which a solution: exists, is unique and continuous dependence are defined, so is the problem 
+\emph{well-posed}, if not it is \emph{ill-posed}.
+
+\subsection{Error Measurement}
+
+Given a well-posed problem with \(x\) and  
+
+\[
+    y = f(x) \quad f: X \to V,
+\]
+
+where \(X\) and \(Y\) are vector spaces with metrics \(\|\cdot\|_X\) and \(\|\cdot\|_Y\). We denote 
+the following scenarios: 
+
+\begin{center}
+\begin{tikzpicture}[node distance=2cm, auto]
+    \node (A) {$x$}; 
+    \node (B) [below of=A] {$x$};
+    \node (C) [below of=B] {$\tilde{x}$};
+    \node (D) [right of=A] {$y$ Original problem};
+    \node (E) [right of=B] {$\hat{y}$ Substitute problem};
+    \node (F) [right of=C] {$\tilde{y}$ Floating Point Implementation of the substitute problem}; 
+    \draw [->] (A) to node {$f$} (D);
+    \draw [->] (B) to node {$\hat{f}$} (E);
+    \draw [->] (C) to node {$\tilde{f}$} (F);
+    \draw [->] (A) -- (B);
+    \draw [->] (B) -- (C);
+\end{tikzpicture}
+\end{center}
+
+\begin{itemize}
+   
+    \item \(y\) is the exact solution. 
+  
+    \item \(\tilde{x}\) is the floating point representation of \(x\). 
+ 
+    \item \(\hat{y}\) is the result of solution via exact arithmetic with the exact data of \(x\). 
+
+    \item \(\tilde{y}\) is the floating point solution obtained by using \(\tilde{x}\).
+
+    \item \(f\) is the original function. 
+
+    \item \(\hat{f}\) is the discrete (finite), simplification of the problem with which we replace \(f\). 
+
+    \item \(\tilde{f}\) is the floating point implementation of \(\hat{f}\).
+    
+\end{itemize}
+
+\textbf{Example:}
+
+Given 
+
+\[
+    f(x) = e^x = \sum_{k = 0}^{\infty} \frac{x^k}{k!}, \quad x = \frac{5}{3}
+\]
+
+With the exact solution \(y = e^\frac{5}{3} \approx 5.29449\). 
+
+We use the substitute problem 
+
+\[
+    \hat{f}(x) = \sum_{k = 0}^{4} \frac{x^k}{k!} = \frac{10009}{1944} \approx 5.14866
+\]
+
+Using a three decimals places for FP we get \(\tilde{x} = 1.67\) and hence, \(\tilde{y} = 5.16\). 
+
+\subsection{Error Types}
+
+Given \(y\) and \(\tilde{y}\) we get the following error types:
+
+\begin{itemize}
+
+    \item \(e = \tilde{y} - y\) is the \emph{error}.
+
+    \item \(e = \|\tilde{y} - y\|_Y\) is the \emph{absolute error}.
+
+    \item \(e = \frac{\|\tilde{y} - y\|_Y}{\|y\|_Y}\), for \(\|y\|_Y \ne 0\) is the \emph{relative error}.
+
+\end{itemize}
+
+\textbf{Example:}
+
+Given is \(t_2 = -p + \sqrt{p^2 + q}\). 
+
+First 
+
+\[
+    x = (p, q), \quad y = f(x), \quad f(x_1, x_2) = -x_1 + \sqrt{x_1^2 + x_2}, \quad f: \R^2 \to \R
+\]
+
+In this case \(\hat{f} = f\), hence we do not need a substitute problem. We use for the metric \(\|y\|_Y = |y|\). 
+For \(p = 10, q = 1\) we get  
+
+\[
+    y = \sqrt{101} - 10 \approx 0.04988, \quad \tilde{y} = 0
+\]
+
+with 
+
+\begin{align*}    
+    e &= \tilde{y} - y \approx -0.4988, \\ 
+    e &= |\tilde{y} - y| \approx 0.4988, \\ 
+    e &= \frac{|\tilde{y} - y|}{|y|} = 1
+\end{align*}
+
+\subsection{Error Criteria}
+
+Given \(\varepsilon_a, \varepsilon_{r}\) as bounds for the absolute and relative errors. We try 
+to find an approximation \(\tilde{y}\) of \(y\) such that: 
+
+\[
+    \|\tilde{y} - \tilde{y} \|_Y \le \varepsilon_a + \|y\|_Y \varepsilon_r.
+\]
+
+We call this a \emph{mixed error criterion}.
+
+Note that if \(\|y\|_Y\) is small, then \(\varepsilon_a\) is dominant and 
+
+\[
+    e_a = \|\tilde{y} - \tilde{y} \|_Y \lessapprox \varepsilon_a.
+\]
+
+Else, then the dominant term is \(\varepsilon_r\) resulting in
+
+\[
+    \|\tilde{y} - \tilde{y} \|_Y  \lessapprox \|y\|_Y \varepsilon_r 
+\]
+
+i.e 
+
+\[
+    e_r = \frac{\|\tilde{y} - \tilde{y} \|_Y }{\|y\|_Y} \lessapprox \varepsilon_r
+\]
+
+\textbf{Example:}
+
+Let us take the last example and add \(\varepsilon_a = \varepsilon_r = 10^{-2}\). 
+
+\[
+    y = \sqrt{101} - 10 \approx 0.04988, \quad \tilde{y} = 0
+\]
+
+Then, 
+
+\[
+    \|\tilde{y} - y \| \approx 0.04988, \quad \varepsilon_a + |y|\varepsilon_r \approx 1.04988 \cdot 10^{-2}
+\]
+
+Therefore, 
+
+\[
+    \|\tilde{y} - \tilde{y} \|_Y  > \|y\|_Y \varepsilon_r.
+\]
+
+Hence, we reject the approximation \(\tilde{y}\). 
+
+\subsection{Error Kinds}
+
+Starting from the error \(\tilde{y} - y = \tilde{f}(\tilde{x}) - f(x)\), let us expand by adding zero. 
+
+\[
+    \tilde{y} - y = \tilde{f}(\tilde{x}) - + \hat{f}(\tilde{x}) + \hat{f}(\tilde{x}) - f(\tilde{x}) + f(\tilde{x}) - f(x)
+\]
+
+From this we define the following error kinds: 
+
+\begin{itemize}
+
+    \item \emph{Input Error}: \(f(\tilde{x}) - f(x)\). Caused by the conversion to the floating point format. It describes 
+    the sensitivity of the original problem in correlation to changes in the input data. Can not be really influenced, perspective highly depends on our choices.
+
+    \item \emph{Procedural Error}: \(\hat{f}(\tilde{x}) - f(\tilde{x})\). Caused by the quality of the substitute problem.
+    It gives a hint about the quality of the substitute problem. Can be reduced by using a better substitute problem.
+
+    \item \emph{Accumulation Error}: \(\tilde{f}(\tilde{x})- \hat{f}(\tilde{x})\). Accumulation of the rounding errors with FP. Can be handled by 
+    taking the properties of FP into consideration by ordering our operations accordingly and/or using more stable representations for decimal numbers.
+
+\end{itemize}
+
+In practice, all error kinds should be considered.
+
+\subsection{Input Error}
+
+Due to our problem being well-posed, we know that 
+
+\[
+    \| \tilde{x} - x \|_X \implies \|f(\tilde{x}) - f(x)\|_Y < \varepsilon 
+\]
+
+We want to study how the the conversion to the floating point format affects the results and how 
+we can solve our problems with if possible small divergences. 
+
+\subsubsection{Condition}
+
+Given \(f: X \to Y\). The smallest constants \(c_a, c_r\) such that: 
+
+\[
+    \|f(x') - f(x) \|_Y \le c_a \|x' - x\|_X, \quad  
+    \frac{\|f(x') - f(x) \|_Y}{\|f(x)\|} \le c_r \frac{\|x' - x\|_X}{\|x\|_X}
+\]
+
+with \(\|x' - x\|_X \le \delta\); are called \emph{absolute condition} and \emph{relative condition} of \(f\).
+
+The interpretation of \(c_a\) is closely related to the Lipschitz continuity, meaning that a small variation in the 
+input data due to conversion problems does not affect the results drastically.
+
+For \(c_r\), it is useful for when a users wants to limit the relative error by some amount \(\varepsilon_r\), then
+
+\[
+    c_r \le \frac{\varepsilon_r}{\varepsilon_M} \implies e_r (y) \le \varepsilon_r
+\]
+
+\subsubsection{Approximations}
+
+For a continuous, differentiable \(f\) the following approximations are valid: 
+
+\[
+    c_a \le \max_{|\xi - x| \le \delta} |f'(\xi)|, \quad k_r \le \frac{|x|}{|f(x|} \max_{|\xi - x| \le \delta} |f'(\xi))|
+\]
+
+where \(\xi \in \{z \mid z = x + t(x' - x), t \in [0, 1]\{\) from the mean value theorem 
+
+\[
+    \frac{f(x') - f(x)}{x' - x} = f'(\xi)
+\]
+
+\textbf{Example:}
+
+Given \(f(x) = 1 + \sqrt{x - 1}\) for \(x > 1\).
+
+The function is differentiable 
+
+\[
+    f'(x) = \frac{1}{2\sqrt{x - 1}}.
+\]
+
+\(|\xi - x| \le \delta\) means \(\xi \in [x - \delta, x + \delta]\), therefore: 
+
+\[
+    \max_{|\xi - x| \le \delta} \frac{1}{2\sqrt{\xi - 1}} = \frac{1}{2\sqrt{x - \delta - 1}}
+\]
+
+For \(x = 2, \delta = 10^{-8}\) we get 
+
+\[
+    \max_{|\xi - x| \le \delta} |f'(\xi)| = \frac{1}{2\sqrt{1 - 10^{-8}}} \le \frac{1}{2 \sqrt{\frac{1}{2}}} = \sqrt{\frac{1}{2}} < 1
+\]
+
+Hence \(c_a < 1\) and \(c_r < \frac{|2|}{|f(2)|} = 1\).
+
+
+\subsubsection{Error Propagation Formulas of The Differential Error Analysis}
+
+The approximations
+
+\[
+    c_a \approx |f'(x)|, \quad c_r \approx \frac{|x|}{|f(x)|}|f'(x)|
+\]
+
+are considered the \emph{error propagation formulas of the error analysis}.
+
+
+For the general case \(f: \R^n \to \R^m\) we take the generalized mean value theorem 
+
+\[
+    f(x') = f(x) + \left(\int_{0}^{1} f'((x + t(x' - x)))dt\right)(x' - x),
+\]
+
+where 
+
+\[
+    f'(x) = 
+    \begin{bmatrix}
+        \partial_{x_1} f_1 (x) & \dots & \partial_{x_n} f_1 (x) \\ 
+        \dots & \dots & \dots \\ 
+        \partial_{x_1} f_m (x) & \dots & \partial_{x_n} f_m (x)
+    \end{bmatrix}
+\]
+
+We apply the metric 
+
+\begin{align*}
+    \|f(x') - f(x)\|_X &\le \left\|\int_{0}^{1} f'((x + t(x' - x)))dt \right\|_{X,Y} \|x' - x\|_X \\ 
+    \le \max_{\xi \in [x - \delta, x + \delta]} \|f'(\xi)\|_{X,Y} \|x' - x\|_X
+\end{align*}
+
+For all \(x'\) holds that \(\|x' - x\|_X \le \delta\), then 
+
+\[
+    c_a \le \max_{\|\xi - x\|_X \le \delta} \|f'(\xi)\|_{X,Y}
+\]
+
+and 
+
+\[
+    c_r \le \frac{\|x\|_X}{\|f(x)\|_Y}\max_{\|\xi - x\|_X \le \delta} \|f'(\xi)\|_{X,Y}
+\]
+
+\textbf{Example:}
+
+We observe \(f: \R^2 \to \R \mapsto x_1 + x_2\) with the metrics 
+
+\[
+    \|x\|_X = \|x\|_{\infty} = \max(\|x_1\|, \|x_2\|), \quad \|y\|_Y = \|y\|_{\infty} = |y|
+\]
+
+For the Jacobian we get 
+
+\[
+    f'(x) = [\partial_{x_1} f(x), \partial_{x_2} f(x)] = [1, 1]
+\]
+
+Due to our chosen vector metrics we use the infinite metric for matrices 
+
+\[
+    \|f'(x)\|_{X,Y} = \|f'(x)\|_{\infty} = \|[1, 1]\| = 2
+\]
+
+Therefore, \(c_a \approx 2\) and \(c_r \approx 2 \frac{\|x\|_{\infty}}{|f(x)|}\)
+
+\subsection{Procedural Error}
+
+In contrast to the input error, this is much simpler and depends on the class of problem. For a linear system 
+of equations using just matrix decomposition the difference \(\hat{f}(\tilde(x)) - f(\tilde{x}) = 0\), while for 
+an infinite sum it can vary depending on the number of terms use of the infinite sum.
+
+\subsection{Accumulation Error}
+
+This error occurs due to the floating point arithmetic not being associative for multiplication and addition. In contrast, 
+they mostly preserve the commutativity. They are a commutative \emph{manga} with identity for each operation \((F, +), (F, \cdot)\).
+
+
+\subsection{Error Analysis For Linear Systems}
+
+We have square system \(Ax = b\) as a the well-posed problem 
+
+\[
+    f(A, b) = A^{-1} b = x.
+\]
+
+We analyze the problem with the condition, i.e the sensibility of \(x\) by changes in the input, and denote 
+this as \(\tilde{A}\tilde{x} = \tilde{b}\). Then 
+
+\begin{align*}
+    \Delta A &= \tilde{A} - A \\
+    \Delta b &= \tilde{b} - b \\
+    \Delta x &= \tilde{x} - x 
+\end{align*}
+
+Given a metric \(\|\cdot \|\) on \(\R^n\) with \(A\) being regular and \(\|\Delta A\| < \frac{1}{\|A^{-1}\|}\), where \(\|\cdot\|\) is an induced metric. 
+Then, \(\tilde{A}\) is regular and the followings holds: 
+
+\[
+    \frac{\|\Delta x\|}{\|x\|} \le \frac{\kappa(A)}{1 - \kappa(A) \frac{\|\Delta A\|}{\|A\|}} \left(\frac{\|\Delta A\|}{\|A\|} - \frac{\|\Delta b\|}{\|b\|}\right),
+\]
+
+with \(\kappa(A) = \|A\|\|A^{-1}\|\) being the condition number of the matrix.

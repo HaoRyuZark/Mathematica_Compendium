@@ -589,11 +589,14 @@ For \(a, b \in A\)
 
 \begin{enumerate}
 
-	\item We know that \(a \le a \lor b\) and \( b \le a \lor b\). Furthermore, if \(c \in A\), then 
-	\(a \le c\) and  \(b \le c\) implies that \(a \lor b \le c\).
+	\item \(a \le a \lor b\) and \(b \le a \lor b\)
 	
-	\item Analogously, \(a \ge a \land b\) and \( b \ge a \land b\), then \((c \le a) \land (c \le b) \implies c \le a \land b\).
+	\item \(a \ge a \land b\) and \(b \ge a \land b\)
 
+	\item If \(a \le c\) and \(b \le c\), then \(a \lor b \le c\)
+	
+	\item If \(a \ge c\) and \(b \ge c\), then \(a \land b \ge c\)
+	
 	\item \(a \lor a = a\) and \(a \land a = a\)
 
 	\item \(a \lor b = b \lor a\) and \(a \land b = b \land a\)
@@ -608,42 +611,10 @@ For \(a, b \in A\)
 
 To prove: \(a \lor a = a\) and \(a \land a = a\). 
 
-If \(a \lor a \ge x, \forall x \in \{a, a\}\) is easy to see that 
-\(a \lor a \ge a\). Analogously for the infimum.
+\(a \lor a \ge x, \forall x \in \{a\}\). Using the defintion of the infimum we can also prove 
+the statement for infimum.
 
-\QED
-
-\textbf{Proof 4:}
-
-By the definition of the supremum and infimum, \(\sup({x, y}) = \sup(\{y, x\}) \) because the sets are the same. Hence, 
-\(a \lor b = b \lor a\) and \(a \land b = b \land a\).
-
-\QED
-
-\textbf{Proof 5:}
-
-\((a \lor b) \lor c = a \lor (b \lor c)\). We want to prove that \((a \lor b) \lor c \le a \lor (b \lor c)\) and 
-\((a \lor b) \lor c \ge a \lor (b \lor c)\).
-
-Starting with \((a \lor b) \lor c \le a \lor (b \lor c)\): 
-
-We know that \(a \le a \lor b \le (a \lor b) \lor c\), \(a \le c \le (a \lor b) \lor c\) and 
-\(b \le b \lor c \le a \lor (b \lor c)\),\(b \le c \le a \lor (b \lor c)\). Hence, if \(a \le a \lor (b \lor c)\) and \(a \le (a \lor b) \lor c\) we can assume that
-
-\[
-	(a \lor b) \lor c \le a \lor (b \lor c).
-\]
-
-Thus, our inequality is proven.
-
-Now, for \(a \lor (b \lor c) \le (a \lor b) \lor c\) we use \( c \le b \lor c \le a \lor (b \lor c)\), \( c \le a \le a \lor (b \lor c)\),
-\(a \le a \lor b \le (a \lor b) \lor c\), \(a \le c \le (a \lor b) \lor c\). If \(a \le a \lor (b \lor c)\) and \(a \le a \lor b \le (a \lor b) \lor c\) we can assume that:
-
-\[
-	a \lor (b \lor c) \le (a \lor b) \lor c.
-\]
-
-Hence, they are equal.
+The other statements are easily proved by cases. 
 
 \QED
 
@@ -654,6 +625,41 @@ Let \(A\) be a \emph{lattice}, we define the symbol \(\le\) as:
 \[
 	x \le y \iff x \lor y = y
 \]
+
+\textbf{Example I:}
+
+Given a lattice \(A\) with \(\le\), prove that it is an order relation. 
+
+\emph{Reflexivity:} \((a, a) \in R\) because \(a \le a\) implies \(a \lor a = a\).
+
+\emph{Antisymmetry}: \(a \le b \implies a \lor b = b\) if by supposition \(b \le a\), then \(b \lor a = a\), but our property 
+tells us that \(a \lor b = b \lor a\); therefore, \(a = b\).
+
+\emph{Transitivity}: \((a, b), (b, z) \in R \implies (a, z) \in R\), if \(a \lor b = b\) and  \(b \lor z = z\), then 
+\(a \le b\) and \(a \le z\), hence; \(a \le b \lor z = z \implies (a, z) \in R\).
+
+\QED
+
+\textbf{Example II:}
+
+Given \(a \le b\) and \(c \le d\), prove that \(a \lor c \le b \lor d\).
+
+Proceeding by cases note that: \(a \ge c\) delivers \(a \lor b \lor d\). If \(b \ge c\), then \(a \le b\); 
+if \(d \ge b\) then \(a \le d\) by transitivity. Similarly, for the case \(a \lor c = c\), then if \(b \ge d\) gives  us 
+\(c \le b\); else if \(b \le d\) then \(c \le b \le d\).
+
+\QED
+
+\subsubsection{Distributive Laws for Lattices}
+
+\begin{itemize}
+
+	\item \(x \land (y \lor z) \ge (x \land y) \lor (x \land z)\).
+	
+	\item \((x \lor y) \land z \le (x \lor y) \land (x \lor z)\).
+
+\end{itemize} 
+
 
 \subsection{Sublattices}
 
@@ -680,6 +686,17 @@ A \emph{Boolean algebra} is defined to be a lattice \(A\) with the following add
 	Alternatively, if every subclass of \(A\) has an \(\inf\).
 
 \end{enumerate}
+
+In other words \(1\) the biggest and \(0\) the smallest element in \(A\).
+
+\subsubsection*{Distributive Lattices}
+
+A \emph{distributive lattice} is boolean algebra.
+
+
+
+\subsection{Fully Ordered Classes}
+
 
 \subsection{Principle of the Well-ordering}
 
