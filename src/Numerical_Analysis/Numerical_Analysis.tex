@@ -22,6 +22,57 @@
 
 \section{Floating Point Numbers}
 
+A \emph{floating point number} of a basis \(b\) has the representation
+
+\[
+    z = v \cdot m \cdot b^c,
+\]
+
+where 
+
+\begin{itemize} 
+
+    \item \(b \in \N \setminus \{1\}\). 
+
+    \item \(v \in \{-1, 1\}\). 
+
+    \item \(m\) is the \emph{mantis}, a \(b\)-adic fraction
+    \[
+        m = m_{-k} \cdot \dots \cdot m_{-1} m_0 m_{1} \cdot \dots \cdot m_{l} = m_{-k}b^k + \dots + m_l b^{-l} = \sum_{i = -k}^{l} m_i b^{-i}
+    \]
+
+    with \(m_i \in \{0, 1, \dots, b - 1\}\).
+
+    \item \(e \in \N\).
+
+\end{itemize}
+
+In this representation are numbers not really well differentiable, hence 0 can not represented properly.
+
+\textbf{Example:}
+
+\(b = 2, \quad 10.11\cdot 2^1 = (1 \cdot 2^1 + 0 \cdot 2^0 + 1 \cdot 2^{-1} + 1 \cdot 2^{-2}) \cdot 2 = \frac{11}{2}\).
+
+\subsection{Normalized Representation}
+
+The \emph{normalized representation} of floating point numbers is given by 
+
+\[
+    \pm (m_0 \cdot m_1 \cdot \dots \cdot m_l)b^c = \pm \left(\sum_{i = 0}^{l} m_i b^{-i} \right)b^c, \cdot m_0 \ne 0
+\]
+
+is for numbers \(\ne 0\) well defined.
+
+\subsection{Machine Precision}
+
+Given a floating point number in a basis \(b\) with mantis length \(l\) 
+
+\[
+    \varepsilon_M = \frac{1}{2} b^{-l}
+\]
+
+is called the \emph{machine precision}.
+
 \section{Errors}
 
 Almost all problems in the numerical analysis can be described as zero's problem with a function \(g\), 
@@ -124,9 +175,9 @@ Given \(y\) and \(\tilde{y}\) we get the following error types:
 
     \item \(e = \tilde{y} - y\) is the \emph{error}.
 
-    \item \(e = \|\tilde{y} - y\|_Y\) is the \emph{absolute error}.
+    \item \(e_a = \|\tilde{y} - y\|_Y\) is the \emph{absolute error}.
 
-    \item \(e = \frac{\|\tilde{y} - y\|_Y}{\|y\|_Y}\), for \(\|y\|_Y \ne 0\) is the \emph{relative error}.
+    \item \(e_r = \frac{\|\tilde{y} - y\|_Y}{\|y\|_Y}\), for \(\|y\|_Y \ne 0\) is the \emph{relative error}.
 
 \end{itemize}
 
@@ -134,7 +185,7 @@ Given \(y\) and \(\tilde{y}\) we get the following error types:
 
 Given is \(t_2 = -p + \sqrt{p^2 + q}\). 
 
-First 
+First,
 
 \[
     x = (p, q), \quad y = f(x), \quad f(x_1, x_2) = -x_1 + \sqrt{x_1^2 + x_2}, \quad f: \R^2 \to \R
@@ -144,15 +195,15 @@ In this case \(\hat{f} = f\), hence we do not need a substitute problem. We use 
 For \(p = 10, q = 1\) we get  
 
 \[
-    y = \sqrt{101} - 10 \approx 0.04988, \quad \tilde{y} = 0
+    y = \sqrt{101} - 10 \approx 0.04988, \quad \tilde{y} = 0,
 \]
 
 with 
 
 \begin{align*}    
     e &= \tilde{y} - y \approx -0.4988, \\ 
-    e &= |\tilde{y} - y| \approx 0.4988, \\ 
-    e &= \frac{|\tilde{y} - y|}{|y|} = 1
+    e_a &= |\tilde{y} - y| \approx 0.4988, \\ 
+    e_r &= \frac{|\tilde{y} - y|}{|y|} = 1
 \end{align*}
 
 \subsection{Error Criteria}
@@ -161,7 +212,7 @@ Given \(\varepsilon_a, \varepsilon_{r}\) as bounds for the absolute and relative
 to find an approximation \(\tilde{y}\) of \(y\) such that: 
 
 \[
-    \|\tilde{y} - \tilde{y} \|_Y \le \varepsilon_a + \|y\|_Y \varepsilon_r.
+    \|\tilde{y} - y \|_Y \le \varepsilon_a + \|y\|_Y \varepsilon_r.
 \]
 
 We call this a \emph{mixed error criterion}.
@@ -169,19 +220,19 @@ We call this a \emph{mixed error criterion}.
 Note that if \(\|y\|_Y\) is small, then \(\varepsilon_a\) is dominant and 
 
 \[
-    e_a = \|\tilde{y} - \tilde{y} \|_Y \lessapprox \varepsilon_a.
+    e_a = \|\tilde{y} - y \|_Y \lessapprox \varepsilon_a.
 \]
 
 Else, then the dominant term is \(\varepsilon_r\) resulting in
 
 \[
-    \|\tilde{y} - \tilde{y} \|_Y  \lessapprox \|y\|_Y \varepsilon_r 
+    \|\tilde{y} - y \|_Y  \lessapprox \|y\|_Y \varepsilon_r 
 \]
 
 i.e 
 
 \[
-    e_r = \frac{\|\tilde{y} - \tilde{y} \|_Y }{\|y\|_Y} \lessapprox \varepsilon_r
+    e_r = \frac{\|\tilde{y} - y \|_Y }{\|y\|_Y} \lessapprox \varepsilon_r
 \]
 
 \textbf{Example:}
@@ -201,7 +252,7 @@ Then,
 Therefore, 
 
 \[
-    \|\tilde{y} - \tilde{y} \|_Y  > \|y\|_Y \varepsilon_r.
+    \|\tilde{y} - y \|_Y  > \|y\|_Y \varepsilon_r.
 \]
 
 Hence, we reject the approximation \(\tilde{y}\). 
@@ -382,7 +433,7 @@ This error occurs due to the floating point arithmetic not being associative for
 they mostly preserve the commutativity. They are a commutative \emph{manga} with identity for each operation \((F, +), (F, \cdot)\).
 
 
-\subsection{Error Analysis For Linear Systems}
+\section{Error Analysis For Linear Systems}
 
 We have square system \(Ax = b\) as a the well-posed problem 
 
@@ -399,6 +450,34 @@ this as \(\tilde{A}\tilde{x} = \tilde{b}\). Then
     \Delta x &= \tilde{x} - x 
 \end{align*}
 
+\subsection{Condition Number of A Matrix}
+
+Given a metric \(\|\cdot \|\) on \(\R^n\) with \(A\) being regular. We define 
+
+\[
+    \kappa(A) = \|A\|\|A^{-1}\|
+\] 
+
+as the \emph{condition number} of the matrix.
+
+It has the following properties: 
+
+\begin{itemize}
+   
+    \item \(\kappa\) depends highly on the metric. 
+    
+    \item If \(\alpha \|B\|' \le \|B\| \le \beta \|B\|'\), then \(\alpha^2 \kappa '(B) \le \kappa(B) \le \beta^2\kappa '(B)\).
+    
+    \item \(\kappa(A) \ge 1 \implies \|I\| = \|A A^{-1}\| \le \|A\| \|A^{-1}\| = \kappa(A)\).
+
+    \item \(\kappa(A) = \kappa(A^{-1})\). 
+
+    \item \(\kappa(AB) \le \kappa(A)\kappa(B)\).
+
+\end{itemize}
+
+\subsection{Inequality For Error Analysis in Linear Systems}
+
 Given a metric \(\|\cdot \|\) on \(\R^n\) with \(A\) being regular and \(\|\Delta A\| < \frac{1}{\|A^{-1}\|}\), where \(\|\cdot\|\) is an induced metric. 
 Then, \(\tilde{A}\) is regular and the followings holds: 
 
@@ -406,4 +485,71 @@ Then, \(\tilde{A}\) is regular and the followings holds:
     \frac{\|\Delta x\|}{\|x\|} \le \frac{\kappa(A)}{1 - \kappa(A) \frac{\|\Delta A\|}{\|A\|}} \left(\frac{\|\Delta A\|}{\|A\|} - \frac{\|\Delta b\|}{\|b\|}\right),
 \]
 
-with \(\kappa(A) = \|A\|\|A^{-1}\|\) being the condition number of the matrix.
+This the case for an error of type \((A + \Delta A)(x + \Delta x) = (b + \Delta b)\). 
+
+There are also the cases 
+
+\begin{itemize}
+
+    \item \(A(x + \Delta x) = (b + \Delta b)\): 
+    \[
+        \frac{\|\Delta x \|}{\|x\|} \le \kappa(A) \frac{\|\Delta b \| }{\|b\|}
+    \]
+
+    \item \((A + \Delta A)(x + \Delta x) = b\): 
+    \[
+        \frac{\|\Delta x \|}{\|x\|} \le \frac{\kappa(A)}{1 - \kappa(A)} \frac{\|\Delta b \| }{\|b\|}
+    \]
+
+\end{itemize}
+
+\textbf{Example:}
+
+Given are 
+
+\[
+    A = 
+    \begin{bmatrix}
+        -1 & 2 \\ 
+        3 & 4 
+    \end{bmatrix}
+    \quad 
+    A^{-1} = 
+    \begin{bmatrix}
+        -0.4 & 0.2 \\ 
+        0.2 & 0.1 
+    \end{bmatrix}
+    \quad 
+    b = 
+    \begin{bmatrix}
+        1 \\ 
+        1
+    \end{bmatrix}
+\]
+
+\subsection{Prager Oettli}
+
+For \(x \in \R^{n}, A \in \R^{n \times n}\) is 
+
+\[
+    |x| = [|x_1|, \dots, |x_2|]^T, \quad |A| = (|a_{i,j}|)_{i,j}.
+\]
+
+If \(\det(A) \ne 0\) and \(\tilde{x}\) is an approximation of \(Ax = b\) with \emph{residuum} \(\tilde{r} = b - A\tilde{x}\) and 
+
+\[
+    B \in \R^{n \times n}, \, c \in \R^n, b_{i,j} \ge 0, \, c_i \ge 0, \forall i, j
+\]
+
+with 
+
+\[
+    |\tilde{r}| \le B |\tilde{x}| + c
+\]
+
+Then there are \(|\Delta A| \le B\) and \(|\Delta b| \le c\) such that \(\tilde{x}\) becomes the exact 
+solution of 
+
+\[
+    (A + \Delta A) \tilde{x} = b + \Delta b
+\]

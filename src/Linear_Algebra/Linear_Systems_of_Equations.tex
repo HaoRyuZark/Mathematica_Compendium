@@ -79,9 +79,9 @@ We define the \emph{echelon form} as the sequence
 
 If the index of all \(Ei_i(A)\) coincides with the column number, then we call it the \emph{strict echelon form}.
 
-\subsection{Equality of the Rank \texorpdfstring{\(\operatorname{rg}(A) = \operatorname{rg}_S(A)\)}{}}
+\subsection{Equality of the Rank \texorpdfstring{\(\rank(A) = \rank_S(A)\)}{}}
 
-We have \(\operatorname{rg}(A) = \operatorname{rg}_S(A)\).
+We have \(\rank(A) = \rank_S(A)\).
 
 \textbf{Proof:}
 
@@ -94,14 +94,14 @@ For \(x = {(x_1, \ldots, x_n)}^T \in \field^n\), it holds that
 It follows that
 
 \[
-    \operatorname{rg}(A) = \operatorname{rg}(L_A) = \dim(\img(L_A))
+    \rank(A) = \rank(L_A) = \dim(\img(L_A))
     = \dim\left(\{L_A(x) \mid x \in \field^n\}\right)
     = \dim\left(\{Ax \mid x \in \field^n\}\right)
 \]
 
 \[
     = \dim\left\{ \sum_{i=1}^{n} x_i a_i \,\middle|\, x_i \in K \right\}
-    = \dim(L(a_1, \ldots, a_n)) = \operatorname{rg}_S(A).
+    = \dim(L(a_1, \ldots, a_n)) = \rank_S(A).
 \]
 
 \subsection{Solvability of the Linear System \texorpdfstring{\(Ax = b\)}{}}
@@ -109,13 +109,13 @@ It follows that
 The linear system \(Ax = b\) is solvable if and only if
 
 \[
-    \operatorname{rg}(a_1, \ldots, a_n) = \operatorname{rg}(a_1, \ldots, a_n, b).
+    \rank(a_1, \ldots, a_n) = \rank(a_1, \ldots, a_n, b).
 \]
 
 More concisely, we write
 
 \[
-    \operatorname{rg}(A) = \operatorname{rg}(A, b).
+    \rank(A) = \rank(A, b).
 \]
 
 \textbf{Proof:}
@@ -129,7 +129,7 @@ We have
 Therefore, a solution vector \(x\) exists if and only if
 
 \[
-    b \in L(a_1, \ldots, a_n) \quad \Leftrightarrow \quad \operatorname{rg}(A) = \operatorname{rg}(A, b),
+    b \in L(a_1, \ldots, a_n) \quad \iff \quad \rank(A) = \rank(A, b),
 \]
 
 where \(L(a_1, \ldots, a_n)\) denotes the linear span of \(a_1, \ldots, a_n\).
@@ -145,7 +145,7 @@ Let \(x_s \in \field^n\) be a solution of \(Ax = b\). Then the solution set is g
 \textbf{Proof:}
 
 \[
-    x \in \ker(A) \;\Leftrightarrow\; Ax = 0 \;\Leftrightarrow\; A(x_s + x) = Ax_s + Ax = Ax_s = b.
+    x \in \ker(A) \;\iff\; Ax = 0 \;\iff\; A(x_s + x) = Ax_s + Ax = Ax_s = b.
 \]
 
 \subsection{Free Variables}
@@ -185,21 +185,21 @@ of these free variables.
 
 \subsection{Gaussian Elimination}
 
-Gaussian elimination is a method for solving linear systems by transforming the system into an upper
+\emph{Gaussian elimination} is a method for solving linear systems by transforming the system into an upper
 triangular form. The steps involved in Gaussian elimination are:
 
 \begin{enumerate}
 
-    \item Forward elimination: Transform the system into an upper triangular form by eliminating the
+    \item \emph{Forward elimination}: Transform the system into an upper triangular form by eliminating the
           variables from the equations.
 
-    \item Back substitution: Solve for the variables starting from the last equation and substituting
+    \item \emph{Back substitution}: Solve for the variables starting from the last equation and substituting
           back into the previous equations.
 
 \end{enumerate}
 
 The forward elimination process involves performing row operations on the augmented matrix
-\([A | \mathbf{b}]\) to create zeros below the diagonal. The row operations include:
+\([A | b]\) to create zeros below the diagonal. The row operations include:
 
 \begin{itemize}
 
@@ -218,6 +218,46 @@ is accomplished via the \emph{elementary matrices}.
 Once the matrix is in upper triangular form, back substitution is used to find the values of the
 variables. The last equation gives the value of the last variable, which can then be substituted into
 the previous equations to find the other variables.
+
+\subsubsection*{Procedure}
+
+Starting with \(Ax = b\)
+
+\[  
+    \left[
+    \begin{array}{cccc|c}
+        a_{1,1} &  a_{1,2} & \cdots & a_{1,n}  & b_1    \\
+        a_{2,1} &  a_{2,2} & \cdots & a_{2,n}  & b_2    \\
+        \vdots  &   \vdots & \ddots & \vdots   & \vdots \\
+        a_{m,1} &  a_{m,2} & \cdots & a_{m,n}  & b_m
+    \end{array}
+    \right]
+\]
+
+For eliminating the elements underneath a pivot element we apply 
+
+\[
+    \text{Row}_n - \frac{a_{n, i}}{a_{n - 1, i}} \text{Row}_{n - 1},
+\]
+
+where \(n\) the index of the target row and \(i\) the index of the column.
+
+We denote the coefficient \(\frac{a_{n, i}}{a_{n - 1, i}} = l_{n, i}\) 
+
+This results into
+
+\[  
+    \left[
+    \begin{array}{cccc|c}
+        a_{1,1} &  a_{1,2} & \cdots & a_{1,n}  & b_1    \\
+        0 &  a_{2,2} - a_{1,2}\frac{a_{2,1}}{a_{1,1}} & \cdots & a_{2,n} - a_{1,n}\frac{a_{2,1}}{a_{1,1}}  & b_2 - b_1 \frac{a_{2,1}}{a_{1,1}}   \\
+        \vdots  &   \vdots & \ddots & \vdots   & \vdots \\
+        0 & 0  & \cdots & \lambda &  \gamma
+    \end{array}
+    \right]
+\]
+
+With \(\lambda\) and \(\gamma\) being a complex sums of results of the other manipulations.
 
 \subsection{Invariability of the Solution Set}
 
@@ -453,18 +493,18 @@ Consider the following system of linear equations:
 
 From Row 3:
 \[
-    2x_3 = 1 \Rightarrow x_3 = \frac{1}{2}
+    2x_3 = 1 \implies x_3 = \frac{1}{2}
 \]
 
 From Row 2:
 \[
-    x_2 - x_3 + x_4 = 2 \Rightarrow x_2 = 2 + x_3 - x_4 = 2 + \frac{1}{2} - x_4 = \frac{5}{2} - x_4
+    x_2 - x_3 + x_4 = 2 \implies x_2 = 2 + x_3 - x_4 = 2 + \frac{1}{2} - x_4 = \frac{5}{2} - x_4
 \]
 
 From Row 1:
 \[
     x_1 + 2x_2 + x_3 + x_4 = 4
-    \Rightarrow x_1 = 4 - 2x_2 - x_3 - x_4
+    \implies x_1 = 4 - 2x_2 - x_3 - x_4
 \]
 Substitute:
 \[
@@ -531,7 +571,6 @@ A linear system of three equation has the following properties:
 \subsection{Chart for the number of solutions}
 
 \begin{tikzpicture}[node distance=1cm and 2cm]
-    % Nodes
     \node [terminator] (start) {Linear \(n \times n\) System};
     \node [decision, below=of start] (decision1) {\(\det(A) = 0?\)};
     \node [decision, below=of decision1] (decision2) {\(\rank(A) = \rank(A,b)?\)};
@@ -539,7 +578,6 @@ A linear system of three equation has the following properties:
     \node [terminator, below left=of decision2] (inS) {Inf. sol. with \((n - \rank(A))\) parameters};
     \node [terminator, below=of decision2] (noS) {No solution};
 
-    % Arrows
     \path [connector] (start) -- (decision1);
     \path [connector] (decision1.west) -- node[above] {No} (oneS.east);
     \path [connector] (decision1) -- node[right] {Yes} (decision2);
@@ -550,7 +588,6 @@ A linear system of three equation has the following properties:
 \bigskip
 
 \begin{tikzpicture}[node distance=1cm and 2cm]
-    % Nodes
     \node [terminator] (start) {Linear \(m \times n\) System};
     \node [decision, below=of start] (decision1) {\(\rank(A) = \rank(A,b)?\)};
     \node [terminator, left=of decision1] (noS) {No solution};
@@ -558,7 +595,6 @@ A linear system of three equation has the following properties:
     \node [terminator, below left=of decision2] (inS) {Inf. sol. with \((n - \rank(A))\) parameters};
     \node [terminator, below right=of decision2] (oneS) {Exactly one solution};
 
-    % Arrows
     \path [connector] (start) -- (decision1);
     \path [connector] (decision1.west) -- node[above] {No} (noS.east);
     \path [connector] (decision1) -- node[right] {Yes} (decision2);
@@ -713,7 +749,7 @@ basis vector but with one of the vector substituted by \(b\).
 
 Now in two dimensions, think of the area spanned by the basis vectors \(A = xy\).
 The signed area of the original parallelogram gets
-stretched by \(\det(A)\) this gives us \(Area = \det(A)y \Rightarrow y = \frac{Area}{\det(A)}\). This
+stretched by \(\det(A)\) this gives us \(Area = \det(A)y \implies y = \frac{Area}{\det(A)}\). This
 also works for \(x\).
 
 \subsection{LU Decomposition}
@@ -729,7 +765,7 @@ of \(A\), where \(L\) is a under triangular matrix with main diagonal consisting
 \(U\) being a upper triangular matrix. \(a_{k,k}^{(k - 1)} \ne 0\) depicts the elements of the main diagonal for the 
 \(k - 1\) matrix generated after applying a Gauss operation.
 
-\subsubsection*{Origin}
+\subsubsection*{Derivation}
 
 Given our matrix \(A\), we want to eliminate the coefficients underneath the main diagonal. This is accomplished by applying an elementary matrix of the form: 
 
