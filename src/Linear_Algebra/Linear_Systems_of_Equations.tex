@@ -1380,9 +1380,14 @@ Finally, \(Ux = y\):
     \end{bmatrix}
 \]
 
+\subsubsection*{Greatest Pivot Strategy}
+
+As a side note, to mitigate the rounding errors in scientific computing, the swap row strategy is 
+modified to always take the row with biggest element in the current column.
+
 \subsection{Cholesky Decomposition}
 
-Given \(A \in \R^{n \times n}\) a symmetric, positive definite matrix it can be decomposed as 
+This is a special a special case of the \(LU\)-Decomposition. Given \(A \in \R^{n \times n}\) a symmetric, positive definite matrix it can be decomposed as 
 
 \[
     A = \tilde{L}D\tilde{L}^T,

@@ -3,23 +3,6 @@
 
 \emph{Numerical analysis is the study of algorithms for the problems of continuous mathematics} (Lloyd Trefethen, 1992).
 
-\section{Common Functions}
-
-\subsection{Natural Logarithm}
-
-\section{Trigonometric Functions}
-
-\section{Derivatives}
-
-\section{Integrals}
-
-\subsection{Riemann Sum}
-
-\subsection{Trapezoid Sum}
-
-\section{Matrix Decompositions}
-
-
 \section{Floating Point Numbers}
 
 A \emph{floating point number} of a basis \(b\) has the representation
@@ -175,9 +158,9 @@ Given \(y\) and \(\tilde{y}\) we get the following error types:
 
     \item \(e = \tilde{y} - y\) is the \emph{error}.
 
-    \item \(e_a = \|\tilde{y} - y\|_Y\) is the \emph{absolute error}.
+    \item \(e_a = \|\tilde{y} - y\|_Y\) is the \emph{absolute error}, actual amount of deviation.
 
-    \item \(e_r = \frac{\|\tilde{y} - y\|_Y}{\|y\|_Y}\), for \(\|y\|_Y \ne 0\) is the \emph{relative error}.
+    \item \(e_r = \frac{\|\tilde{y} - y\|_Y}{\|y\|_Y}\), for \(\|y\|_Y \ne 0\) is the \emph{relative error}, percentage of deviation.
 
 \end{itemize}
 
@@ -362,8 +345,7 @@ The approximations
 
 are considered the \emph{error propagation formulas of the error analysis}.
 
-
-For the general case \(f: \R^n \to \R^m\) we take the generalized mean value theorem 
+For the \textbf{general case} \(f: \R^n \to \R^m\) we take the generalized mean value theorem 
 
 \[
     f(x') = f(x) + \left(\int_{0}^{1} f'((x + t(x' - x)))dt\right)(x' - x),
@@ -527,6 +509,33 @@ Given are
     \end{bmatrix}
 \]
 
+\[
+    x =
+    \begin{bmatrix}
+        1 \\ 
+        1
+    \end{bmatrix}
+    ,\ 
+    \|\Delta b\|_1 = 10^{-5}, \ \|\Delta A \|_1 = 0
+\]
+
+We are looking for an upper bound for \(\|\Delta x\|_1\).
+
+In this case we are handling the case \(A(x + \Delta x) = (b + \Delta b)\): 
+
+\begin{align*}
+    \kappa(A) &= \|A\|_1 \cdot \|A^{-1}\|_1 = \frac{42}{10} \\ 
+    \|b\|_1 &= 8 \\
+    \|x\|_1 &= 2
+\end{align*}
+
+Resulting into 
+
+\begin{align*} 
+    \frac{\|\Delta x \|}{\|x\|} &\le \kappa(A) \frac{\|\Delta b \| }{\|b\|} \\
+    &\le \frac{42}{10} \cdot \frac{10^{-5}}{8} 2 = 105\cdot 10^{-5}
+\end{align*}
+
 \subsection{Prager Oettli}
 
 For \(x \in \R^{n}, A \in \R^{n \times n}\) is 
@@ -553,3 +562,100 @@ solution of
 \[
     (A + \Delta A) \tilde{x} = b + \Delta b
 \]
+
+This is used when for example when we have system were we know \(A\) and \(b\) have a certain degree of noise 
+\(B\) and \(c\). This is means that our system \(Ax = b\) has a level of uncertainty. Accordingly, we can not expect an 
+exact solution, but we can limit ourselves to a solution in a certain degree of uncertainty.
+
+\textbf{Example:}
+
+\[
+    A = 
+    \begin{bmatrix}
+        2 & -1 \\ 
+        -1 & 2
+    \end{bmatrix}
+    , \quad 
+    b = 
+    \begin{bmatrix}
+        -8 \\
+        19
+    \end{bmatrix}
+\]
+
+With the exact solution \(x = [1, 10]^T\).
+
+The coefficients for \(A\) and \(B\) are have a noise of 
+
+\[
+    |\Delta A| \le \frac{1}{10} 
+    \begin{bmatrix}
+        2 & 1 \\ 
+        1 & 2
+    \end{bmatrix}
+    = B
+    , \quad 
+    |\Delta b| \le \frac{1}{10}
+    \begin{bmatrix}
+        1 \\ 
+        1
+    \end{bmatrix}
+    = c
+\]
+
+We assume that we have two different approximations \(\tilde{x_1} = [1, 9]^T\) and 
+\(\tilde{x_2} = [0, 10]^T\). 
+
+We apply our formula for \(\tilde{x_1}\)
+
+\[
+    \tilde{r} = b - A\tilde{x_1} = 
+    \begin{bmatrix}
+        -1 \\ 
+        2
+    \end{bmatrix}
+\]
+
+Also, 
+
+\[
+    |\tilde{r}| = 
+    \begin{bmatrix}
+        1 \\ 
+        2
+    \end{bmatrix}
+\]
+
+Continuing, 
+
+\[
+    B|\tilde{x_1}| + c = 
+    \begin{bmatrix}
+        1.2 \\ 
+        2
+    \end{bmatrix}
+\]
+
+Therefore, 
+
+\[
+    |\tilde{r}|
+    =
+    \begin{bmatrix}
+        1 \\ 
+        2
+    \end{bmatrix}
+    \le
+    \begin{bmatrix}
+        1.2 \\ 
+        2
+    \end{bmatrix}
+    = 
+    B|\tilde{x_1}| + c
+\]
+
+Hence, we can accept \(\tilde{x_1}\) because of \(|\Delta A| \le B\) and \(|\Delta b| \le c\) 
+with \((A = \Delta A)\tilde{x_1} = b + \Delta b\).
+
+For \(\tilde{x_2}\) the reader can complete the example and note that the key inequality 
+\(|\tilde{r} \le B|\tilde{x_1}| + c\) does not hold.
