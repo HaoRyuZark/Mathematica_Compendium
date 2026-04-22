@@ -432,7 +432,26 @@ this as \(\tilde{A}\tilde{x} = \tilde{b}\). Then
     \Delta x &= \tilde{x} - x 
 \end{align*}
 
-\subsection{Condition Number of A Matrix}
+Under this conditions we can write 
+
+\begin{align*}
+    x - \tilde{x} &= A^{-1}b - A^{-1}\tilde{b}\\ 
+    \Delta x & = A^{-1}(\Delta b)
+\end{align*}
+
+Hence, if we take the metric and divide by \(\|x\|\)
+
+\begin{align*} 
+    \frac{\|\Delta x\|}{\|x\|} &= \frac{\|A^{-1}(\Delta b)\|}{\|x\|} \\ 
+                               &\le \frac{\|b\|}{\|x\|} \|A^{-1}\| \frac{\|\Delta b\|}{\|b\|} \\   
+                               &= \frac{\|Ax\|}{\|x\|} \|A^{-1}\| \frac{\|\Delta b\|}{\|b\|} \\ 
+                               &\le \frac{\|A\|\|x\|}{\|x\|} \|A^{-1}\| \frac{\|\Delta b\|}{\|b\|} \\ 
+                               &= \|A\| \|A^{-1}\| \frac{\|\Delta b\|}{\|b\|}
+\end{align*}
+
+We used two important facts; first, \(Ax = b\) and second, \(\|Ax\| \le \|A\|\|x\|\).
+
+\subsection{Condition of A Matrix}
 
 Given a metric \(\|\cdot \|\) on \(\R^n\) with \(A\) being regular. We define 
 
@@ -457,6 +476,32 @@ It has the following properties:
     \item \(\kappa(AB) \le \kappa(A)\kappa(B)\).
 
 \end{itemize}
+
+\subsubsection{Extended Condition}
+
+Our condition is until now only defined for regular square matrices, which means that they are invertible.
+We will expand this concept in the following way.
+
+Start with  
+
+\[
+    \|A^{-1}\| = \sup_{x \ne 0} \frac{\|Ax\|}{\|x\|} = \sup_{z \ne 0} \frac{\|z\|}{\|x\|}
+\]
+
+Note that because our matrices is bijective map we assume that we never get zero vector, but all other real numbers.
+
+\begin{align*} 
+    \sup_{z \ne 0} \frac{\|z\|}{\|x\|} &= \sup_{z \ne 0} \frac{1}{\left\|A \frac{z}{\|z\|}\right\|} \\ 
+                                       &= \sup_{\|z\| = 1} \frac{1}{\|Az\|} \\ 
+                                       &= \max_{\|z\| = 1} \frac{1}{\|Az\|} = \frac{1}{\min_{\|z\| = 1} \|Az\|}
+\end{align*}
+
+By the fact that we are in a compact space we assume the equality of the supremum and maximum and now we can define the 
+condition for any real matrix as follows: 
+
+\[
+    \kappa(A) = \|A\|\|A^{-1}\| = \frac{\max_{\|y\| = 1} \|Ay\|}{\min_{\|z\| = 1}\|Az\|}
+\]
 
 \subsection{Inequality For Error Analysis in Linear Systems}
 
