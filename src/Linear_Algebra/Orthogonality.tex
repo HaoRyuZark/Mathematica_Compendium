@@ -1,20 +1,19 @@
 \newpage
 \chapter{Orthogonality}
-
 \subsection{Orthogonality and Projection}
 
 Let \( a, b \in V \). The vectors \(a\) and \(b\) are orthogonal to each other if
 
 \[
-    \langle a, b \rangle = 0.
+    \inner{a}{b} = 0.
 \]
 
 This is written as \( a \perp b \).
 
-With the same proof as in Theorem 2.25, the Pythagorean Theorem holds
+Also, the Pythagorean Theorem holds
 
 \[
-    \|a + b\|^2 = \|a\|^2 + \|b\|^2,
+    \metric{a + b}^2 = \metric{a}^2 + \metric{b}^2,
 \]
 
 for \( a \perp b \) in all unitary vector spaces.
@@ -23,8 +22,102 @@ For the orthogonal projection \( p_b(a) \) of a vector \(a\) onto \(b\), with \(
 formula in every unitary vector space is:
 
 \[
-    p_b(a) = \frac{\langle a, b \rangle}{\langle b, b \rangle} b.
+    p_b(a) = \frac{\inner{a}{b}}{\inner{b}{b}} b.
 \]
+
+\subsection{Induced Metric}
+
+Given \((V, \metric{\cdot})\) a metric space there is an inner product \(\inner{\cdot}{\cdot}\) on \(\field\) such that 
+\(\metric{x}^2 = \inner{x}{x}\) if and only if the \emph{parallelepiped equation} holds. 
+
+\[
+    \metric{x + y}^2 + \metric{x - y}^2 = 2(\metric{x}^2 + \metric{y}), \ \forall x,y \in V
+\]
+
+In such a case, the inner product is given by 
+
+\[
+    \inner{x}{y} = \frac{1}{4} (\metric{x + y}^2 - \metric{x - y}^2)
+\]
+
+\textbf{Proof:}
+
+\(\Rightarrow\): If \(\|x\|^2 = \inner{x}{x}\) then 
+
+\begin{align*} 
+    \metric{x + y}^2 + \metric{x - y}^2 &= \inner{x + y}{x + y} + \inner{x - y}{x - y} \\ 
+    &= 2 (\inner{x}{x} + \inner{y}{y}) \\ 
+    \inner{x}{x + y} + \inner{y}{x + y} + \inner{x}{x - y} - \inner{y}{x - y} &= 2 (\inner{x}{x} + \inner{y}{y}) \\ 
+    \inner{x}{x} + \inner{x}{y} + \inner{y}{y} + \inner{x}{y} + \inner{x}{x} - \inner{x}{y} - \inner{y}{x} + \inner{y}{y} &= 2 (\inner{x}{x} + \inner{y}{y}) \\ 
+    2\inner{x}{x} +  2\inner{y}{y} +  &= 2 (\inner{x}{x} + \inner{y}{y})
+\end{align*}
+
+\(\Leftarrow\): The parallelepiped equation holds, then want to show that the equation 
+
+\[
+    f(x, y) = \frac{1}{4} (\metric{x + y}^2 - \metric{x - y}^2)
+\]
+
+Satisfies the properties of a inner product:
+
+\begin{itemize}
+
+    \item \(f(x,y) \ge 0\) trivial. 
+
+    \item \(f(x,y) = 0 \iff x = y = 0\) is also trivial and
+
+    \item \(f(x, y) = f(y,x)\) is also trivial by our definition.
+
+    \item \(f(\alpha x + y, z) = \alpha f(x, y) + f(y, z)\) Must be shown in a two step process.
+
+\end{itemize}
+
+First we show that \(f(x + y, z) = f(x,z) + f(y,z)\):
+
+\begin{align*}
+    4(f(x,y) + f(z, y)) &= \metric{x + y}^2 - \metric{x - y}^2 + \metric{z + y}^2 - \metric{z - y}^2 \\ 
+    &= \metric{x + y}^2 +\metric{z}^2 \\ 
+    &- \metric{x - y}^2 - \metric{z}^2  \\ 
+    &+ \metric{z + y}^2 + \metric{x}^2 \\ 
+    &- \metric{z - y}^2 - \metric{x}^2 
+\end{align*}
+
+Hence, by adding this clever zero and using the parallelepiped equation we get
+
+\begin{align*}
+    2(f(x, y) + f(z, y)) &= \metric{x + y + z}^2 + \metric{x + y - z}^2 \\
+    &- \metric{x - y + z}^2 - \metric{x - y - z}^2 \\
+    &+ \metric{z + y + x}^2 + \metric{z + y - x}^2 \\
+    & - \metric{z - y + x}^2 - \metric{z - y - x}^2 \\
+    &= 2(\metric{x + z + y}^2 - \metric{x + z - y}^2) \\
+    &= 2f(x + z, y)
+\end{align*}
+
+Therefore, \(f(x + z, y) = f(x,y) + f(z, y)\).
+
+Now we need to prove that \(f(\alpha x, y) = \alpha f(x, y)\):
+
+For the Natural starting with \(n = 2\): \(f(2x, y) = f(x + x, y) = f(x, y) + f(x, y) = 2f(x, y)\), hence 
+using induction for \(n \in \N\) with base case 2 and summation, the prove is concluded.
+
+For the Rationals, \(r \in \Q\) with \(r = \frac{m}{n}\) we have that 
+
+\[
+    f(rx, y) = f\left(\frac{mx}{n}, y\right) = m f\left(\frac{1}{n}x, y\right) =
+    \frac{m}{n}n f\left(\frac{1}{n}x, y\right) = \frac{m}{n} f\left(x, y\right)
+\]
+
+Finally, for the Reals; each Real number can be approximated as a limit of an infinite sequence of Rationals.
+
+For \(\alpha \in \R\) there is \(r_K \in \Q\) such that \(\lim_{k \to \infty} r_k = \alpha\). 
+
+Given that \(f\) is continuous we can then use the following 
+
+\[
+    f\left(\lim_{k \to \infty} r_K x, y\right) = \lim_{k \to \infty}f(r_K x, y) = \lim_{k \to \infty}r_k f(x, y) = \alpha f(x, y)
+\]
+
+\QED
 
 \subsection{Orthogonal Projection and Orthogonal Complement}
 
@@ -55,14 +148,14 @@ We need to check the closure property. For \( u \in M \), \( x, y \in M^\perp \)
 \( \lambda \in \R \), we have:
 
 \[
-    \langle x + y, u \rangle = \langle x, u \rangle + \langle y, u \rangle = 0
+    \inner{x + y}{u} = \inner{x}{u} + \inner{y}{u} = 0
 \]
 \[
-    \langle \lambda x, u \rangle = \lambda \langle x, u \rangle = 0.
+    \inner{\lambda x}{u} = \lambda \inner{x}{u} = 0.
 \]
 
-Let \( a \in U \cap U^\perp \). Then, we have \( \langle a, u \rangle = 0 \) for all \( u \in U \), 
-because \( a \in U^\perp \), and in particular, \( \langle a, a \rangle = 0 \) since \( a \in U \), 
+Let \( a \in U \cap U^\perp \). Then, we have \( \inner{a}{u} = 0 \) for all \( u \in U \), 
+because \( a \in U^\perp \), and in particular, \( \inner{a}{a} = 0 \) since \( a \in U \), 
 which implies \( a = 0 \).
 
 \subsection{Orthogonality of the basis to the Complement}
@@ -71,7 +164,7 @@ Let \( U \) be as before, and let \( (u_1, \ldots, u_m) \) be a basis of \( U \)
 have:
 
 \[
-    v \in U^\perp \quad \text{if and only if} \quad \langle v, u_i \rangle = 0 \quad \forall 1 \leq i \leq m.
+    v \in U^\perp \quad \text{if and only if} \quad \inner{v}{u_i} = 0 \quad \forall 1 \leq i \leq m.
 \]
 
 \subsection{How to find the orthogonal complement}
@@ -80,7 +173,7 @@ Let \( U \) be a finitely generated subspace of \( V \) with basis \( (u_1, \ldo
 orthogonal complement \( U^\perp \), we can solve the system of equations:
 
 \[
-\langle v, u_i \rangle = 0 \quad \forall 1 \leq i \leq m.
+\inner{v}{u_i} = 0 \quad \forall 1 \leq i \leq m.
 \]
 
 This system can be expressed in matrix form as \( A \cdot v = 0 \), where \(A\) is the matrix whose rows 
@@ -93,7 +186,7 @@ Let \( B = (v_1, \ldots, v_m) \) be an \( m \)-tuple of vectors in \( V \setminu
 \begin{itemize}
     \item \(B\) is called an orthogonal system in \( V \) if all the vectors \( v_i \) are pairwise 
           orthogonal.
-    \item An orthogonal system is called an orthonormal system if, in addition, \( \|v_i\| = 1 \) for 
+    \item An orthogonal system is called an orthonormal system if, in addition, \( \metric{v_i} = 1 \) for 
           all \( i = 1, \ldots, m \).
     \item An orthogonal system that forms a basis of \( V \) is called an orthogonal basis of \( V \).
     \item An orthonormal system that forms a basis of \( V \) is called an orthonormal basis of \( V \).
@@ -115,7 +208,7 @@ Using the Kronecker delta symbol \( \delta_{i,j} \):
     \end{cases}
 \]
 
-we have \( \langle v_i, v_j \rangle = \delta_{i,j} \) for any orthonormal system.
+we have \( \inner{v_i}{v_j} = \delta_{i,j} \) for any orthonormal system.
 
 \subsection{Writing a vector in terms of the Orthogonal Basis}
 
@@ -175,18 +268,17 @@ An orthogonal system \( (v_1, \ldots, v_n) \) is linearly independent.
 Let \( \sum_{i=1}^n \lambda_i v_i = 0 \). Then, for any \( v_j \), it follows that
 
 \[
-    \left\langle \sum_{i=1}^n \lambda_i v_i, v_j \right\rangle = \sum_{i=1}^n \lambda_i \langle v_i, v_j 
-    \rangle = 0.
+    \inner{\sum_{i=1}^n \lambda_i v_i}{v_j} = \sum_{i=1}^n \lambda_i \inner{v_i}{v_j} = 0.
 \]
 
-Due to the orthogonality of the system, all terms vanish except \( \lambda_j \langle v_j, v_j \rangle \), 
+Due to the orthogonality of the system, all terms vanish except \( \lambda_j \inner{v_j}{v_j} \), 
 so
 
 \[
-    \lambda_j \langle v_j, v_j \rangle = 0.
+    \lambda_j \inner{v_j}{v_j} = 0.
 \]
 
-Since \( v_j \neq 0 \) in any orthogonal system, we have \( \langle v_j, v_j \rangle = \|v_j\|^2 > 0 \), 
+Since \( v_j \neq 0 \) in any orthogonal system, we have \( \inner{v_j}{v_j} = \metric{v_j}^2 > 0 \), 
 implying \( \lambda_j = 0 \) for all \( 1 \leq j \leq n \).
 
 \QED
@@ -197,13 +289,13 @@ Let \( B = (v_1, \ldots, v_n) \) be an orthogonal basis of a vector space \( V \
 \( v \in V \), we have:
 
 \[
-    v = \sum_{k=1}^n \frac{\langle v, v_k \rangle}{\langle v_k, v_k \rangle} v_k,
+    v = \sum_{k=1}^n \frac{\inner{v}{v_k}}{\inner{v_k}{v_k}} v_k,
 \]
 
 that is, the coordinates of \( v \) with respect to the basis \(B\) are given by
 
 \[
-    \left( \frac{\langle v, v_k \rangle}{\|v_k\|^2} \right)_{1 \leq k \leq n}^T.
+    \left( \frac{\inner{v}{v_k}}{\metric{v_k}^2} \right)_{1 \leq k \leq n}^T.
 \]
 
 \subsection{Orthogonal Projection and Direct Sum Decomposition}
@@ -215,7 +307,7 @@ subspace of \( V \) spanned by \(B\).
     \item For every \( v \in V \), the orthogonal projection of \( v \) onto \( U \) is given by:
         
           \[
-               p_U(v) = \sum_{i=1}^{m} \frac{\langle v, v_i \rangle}{\langle v_i, v_i \rangle} v_i.
+               p_U(v) = \sum_{i=1}^{m} \frac{\inner{v}{v_i}}{\inner{v_i}{v_i}} v_i.
           \]
 
     \item Every vector \( v \in V \) can be uniquely written as the sum \( v = p_U(v) + w \), with 
@@ -243,15 +335,15 @@ Given a finite set of linearly independent vectors \( (v_1, \ldots, v_n) \), the
 
 \begin{enumerate}
 
-    \item Set \( u_1 = \frac{v_1}{\|v_1\|} \).
+    \item Set \( u_1 = \frac{v_1}{\metric{v_1}} \).
     
     \item For \( k = 2, \ldots, n \):
 
     \begin{enumerate}
         
-        \item Set \( w_k = v_k - \sum_{j=1}^{k-1} \langle v_k, u_j \rangle u_j \).
+        \item Set \( w_k = v_k - \sum_{j=1}^{k-1} \inner{v_k}{u_j} u_j \).
         
-        \item Set \( u_k = \frac{w_k}{\|w_k\|} \).
+        \item Set \( u_k = \frac{w_k}{\metric{w_k}} \).
     
     \end{enumerate}
 
@@ -271,7 +363,7 @@ Let \(W\) be a non-zero finite-dimensional subspace of an inner product space an
 Let \(v_1 = u_1\), then compute the vector \(u_2\) orthogonal to the space \(W_1\) spanned by \(v_1\)
 
 \[
-    v_2 = u_2 - proj_{w_1} u_2 = u_2 - \frac{\langle u_2, v_1\rangle}{\|v_1\|} u_2
+    v_2 = u_2 - proj_{w_1} u_2 = u_2 - \frac{\inner{u_2}{v_1}}{\metric{v_1}} u_2
 \]
 
 Then normalize the vector.
@@ -290,12 +382,12 @@ Let \( v_1 = (1, 0, 0) \), \( v_2 = (1, 1, 0) \), and \( v_3 = (1, 1, 1) \). The
 yields:
 
 \[
-    u_1 = \frac{v_1}{\|v_1\|} = (1, 0, 0), \quad
-    u_2 = \frac{v_2 - \langle v_2, u_1 \rangle u_1}{\|v_2 - \langle v_2, u_1 \rangle u_1\|} = 
+    u_1 = \frac{v_1}{\metric{v_1}} = (1, 0, 0), \quad
+    u_2 = \frac{v_2 - \inner{v_2}{u_1} u_1}{\|v_2 - \inner{v_2}{u_1} u_1\|} = 
     \left(0, 1, 0\right), \quad
 \]
 \[
-    u_3 = \frac{v_3 - \langle v_3, u_1 \rangle u_1 - \langle v_3, u_2 \rangle u_2}{\|v_3 - \langle v_3, u_1 \rangle u_1 - \langle v_3, u_2 \rangle u_2\|} = \left(0, 0, 1\right).
+    u_3 = \frac{v_3 - \inner{v_3}{u_1} u_1 - \inner{v_3}{u_2} u_2}{\|v_3 - \inner{v_3}{u_1} u_1 - \inner{v_3}{u_2} u_2\|} = \left(0, 0, 1\right).
 \]
 
 Thus, the orthonormal basis is \( (1, 0, 0), (0, 1, 0), (0, 0, 1) \).

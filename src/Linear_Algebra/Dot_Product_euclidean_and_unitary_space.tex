@@ -39,10 +39,10 @@ Let \(V\) be a vector space over a field \(\field\). A mapping \(\langle \cdot, 
 For all \(a, b \in V\):
 
 \[
-    \langle a, b \rangle = 
+    \inner{a}{b} = 
     \begin{cases}
-    \langle b, a \rangle & \text{if } K = \R, \\
-    \overline{\langle b, a \rangle} & \text{if } K = \C.
+    \inner{b}{a} & \text{if } K = \R, \\
+    \overline{\inner{b}{a}} & \text{if } K = \C.
     \end{cases}
 \]
 
@@ -51,13 +51,13 @@ For all \(a, b \in V\):
 For all \(a, b, c \in V\):
 
 \[
-    \langle a, b + c \rangle = \langle a, b \rangle + \langle a, c \rangle
+    \inner{a}{b + c} = \inner{a}{b} + \inner{a}{c}
 \]
 
 and
 
 \[
-    \langle a + b, c \rangle = \langle a, c \rangle + \langle b, c \rangle.
+    \inner{a + b}{c} = \inner{a}{c} + \inner{b}{c}.
 \]
 
 \emph{Homogeneity in the First Argument}
@@ -65,7 +65,7 @@ and
 For all \(\alpha \in \field\), we have:
 
 \[
-    \langle \alpha a, b \rangle = \alpha \langle a, b \rangle = 
+    \inner{\alpha a}{b} = \alpha \inner{a}{b} = 
     \begin{cases}
     \langle a, \alpha b \rangle & \text{if } \field = \R, \\
     \langle a, \alpha b \rangle & \text{if } \field = \C.
@@ -77,13 +77,13 @@ For all \(\alpha \in \field\), we have:
 For all \(a \in V \setminus \{0\}\):
 
 \[
-    \langle a, a \rangle > 0,
+    \inner{a}{a} > 0,
 \]
 
 and
 
 \[
-    \langle 0, 0 \rangle = 0.
+    \inner{0}{0} = 0.
 \]
 
 It also can be interpreted as a linear transformation that takes a vector and maps it to a real number
@@ -94,11 +94,11 @@ It also can be interpreted as a linear transformation that takes a vector and ma
 
 Think about the orthogonal projection as a triangle. Now, remember that to find the adjacent side \(x\) 
 you need to take \(x = \cos(\theta)h\), which is the value \(\alpha\) in our projection formula 
-\(p_a (b) = \frac{\langle a, b\rangle}{\langle a, a\rangle} \alpha a\). 
+\(p_a (b) = \frac{\inner{a}{b}}{\inner{a}{a}} \alpha a\). 
 Here we add \(\|a\|\|b\|\) to make this function linear.
 
 \[
-    \langle a, b \rangle = \|a\| \|b\| \cos (\theta)
+    \inner{a}{b} = \|a\| \|b\| \cos (\theta)
 \]
 
 \subsection{Standard Inner Product for Complex Number}
@@ -107,23 +107,23 @@ Let \( a = {(a_i)}_{i=1}^n \) and \( b = {(b_i)}_{i=1}^n \) be vectors in \( \C^
 inner product is defined by
 
 \[
-    \langle a, b \rangle := \sum_{i=1}^n a_i \overline{b_i} = a^T \overline{b}
+    \inner{a}{b} := \sum_{i=1}^n a_i \overline{b_i} = a^T \overline{b}
 \]
 
 and by the \emph{hermitian inner product}
 
 \[
-   \langle a, b \rangle := \overline{a^{T}} b
+   \inner{a}{b} := \overline{a^{T}} b
 \]
 
-Here the \emph{symmetry} is given by \(\langle a, b \rangle = \overline{\langle b, a \rangle}\).
+Here the \emph{symmetry} is given by \(\inner{a}{b} = \overline{\inner{b}{a}}\).
 
 \subsection{Inner Product on \texorpdfstring{\( C[a, b] \)}{}}
 
 Let \( f, g \in C[a, b] \). The inner product on \( C[a, b] \) is defined by
 
 \[
-    \langle f, g \rangle := \int_a^b f(x) \cdot g(x) \, dx.
+    \inner{f}{g} := \int_a^b f(x) \cdot g(x) \, dx.
 \]
 
 \subsection{Euclidean and Unitary Vector Spaces}
@@ -164,7 +164,7 @@ In a unitary (or Euclidean) space, the inner product induces a (standard) norm d
 In all unitary vector spaces \( V \), the Cauchy-Schwarz inequality holds:
 
 \[
-    | \langle a, b \rangle | \leq \| a \| \| b \| \quad \forall a, b \in V.
+    | \inner{a}{b} | \leq \| a \| \| b \| \quad \forall a, b \in V.
 \]
 
 \subsubsection{Proof of the Triangle Inequality}
@@ -174,46 +174,46 @@ Therefore, it is sufficient to prove that the squares of both sides satisfy the
 desired inequality, i.e., we need to show:
 
 \[
-    \langle a + b, a + b \rangle \leq {(\|a\| + \|b\|)}^2.
+    \inner{a + b}{a + b} \leq {(\|a\| + \|b\|)}^2.
 \]
 
 First, we expand the left-hand side:
 
 \[
-    \langle a + b, a + b \rangle = \langle a, a \rangle + \langle a, b \rangle + \langle b, a \rangle + 
-    \langle b, b \rangle.
+    \inner{a + b}{a + b} = \inner{a}{a} + \inner{a}{b} + \inner{b}{a} + 
+    \inner{b}{b}.
 \]
 
-Since \( \langle b, a \rangle = \langle a, b \rangle \), we have:
+Since \( \inner{b}{a} = \inner{a}{b} \), we have:
 
 \[
-    \langle a, b \rangle + \langle b, a \rangle = 2 \, \text{Re} \langle a, b \rangle.
+    \inner{a}{b} + \inner{b}{a} = 2 \, \text{Re} \inner{a}{b}.
 \]
 
 Now, we know that the absolute value of a complex number is always greater than or equal to its 
 real part, so:
 
 \[
-    2 \, \text{Re} \langle a, b \rangle \leq 2 |\langle a, b \rangle|.
+    2 \, \text{Re} \inner{a}{b} \leq 2 |\inner{a}{b}|.
 \]
 
 Using the Cauchy-Schwarz inequality, we can further bound this by:
 
 \[
-    2 \, \text{Re} \langle a, b \rangle \leq 2 \|a\| \|b\|.
+    2 \, \text{Re} \inner{a}{b} \leq 2 \|a\| \|b\|.
 \]
 
 Thus, we have:
 
 \[
-    \langle a + b, a + b \rangle \leq \langle a, a \rangle + 2 \|a\| \|b\| + \langle b, b \rangle.
+    \inner{a + b}{a + b} \leq \inner{a}{a} + 2 \|a\| \|b\| + \inner{b}{b}.
 \]
 
-Using the definition of the norm, \( \|a\|^2 = \langle a, a \rangle \) and \( \|b\|^2 = \langle b, b 
+Using the definition of the norm, \( \|a\|^2 = \inner{a}{a} \) and \( \|b\|^2 = \langle b, b 
 \rangle \), we obtain:
 
 \[
-    \langle a + b, a + b \rangle \leq \|a\|^2 + 2 \|a\| \|b\| + \|b\|^2.
+    \inner{a + b}{a + b} \leq \|a\|^2 + 2 \|a\| \|b\| + \|b\|^2.
 \]
 
 This is exactly the expansion of \( {(\|a\| + \|b\|)}^2 \), which completes the proof.
@@ -228,14 +228,14 @@ properties we are interested in. Those being linearity for the columns, symmetry
 
 Let us start with a matrix \(A \in \R^{n \times n}\) and a map 
 \((\centerdot , \centerdot)_A \R^n \times \R^n : \to \R \) more specific 
-\((x,y)_A := \langle x, Ay\rangle\) using the standard Euclidean inner product.
+\((x,y)_A := \inner{x}{Ay}\) using the standard Euclidean inner product.
 
 For our first property, the linearity; it is granted for every matrix \(A = (a_1, a_2, \dots, a_n)\) 
 because of the rules of matrix-vector multiplication. For example for the basis vectors \(e_i, e_j\) 
 we get 
 
 \[
-    (e_i, e_j)_A = \langle e_i, Ae_j\rangle = e_{i}^{T} A e_j = e_{i}^{T} a_j = a_{ij} 
+    (e_i, e_j)_A = \inner{e_i}{Ae_j} = e_{i}^{T} A e_j = e_{i}^{T} a_j = a_{ij} 
 \]
 
 Therefore, \((e_i, e_j)_A = (e_j, e_i)_A \iff a_{ij} = a_{ji}\). This means that \(A\) has to be symmetric.
@@ -249,22 +249,22 @@ Given a symmetric \(A \in \R^{n \times n}\) then:
 
 \begin{enumerate}
     
-    \item The map \(x \to \langle x, Ax\rangle\) is called the \emph{Quadratic Form}
+    \item The map \(x \to \inner{x}{Ax}\) is called the \emph{Quadratic Form}
     
-    \item \(A\) is \emph{positive definite} if \(\langle x, Ax \rangle > 0 \forall x \in \R^n 
+    \item \(A\) is \emph{positive definite} if \(\inner{x}{Ax} > 0 \forall x \in \R^n 
           \backslash \{0\}\)
 
-    \item \(A\) is \emph{negative definite} if \(\langle x, Ax \rangle < 0 \forall x \in \R^n 
+    \item \(A\) is \emph{negative definite} if \(\inner{x}{Ax} < 0 \forall x \in \R^n 
           \backslash \{0\}\)
     
-    \item \(A\) is \emph{positive semidefinite} if \(\langle x, Ax \rangle \ge 0 \forall x \in \R^n 
+    \item \(A\) is \emph{positive semidefinite} if \(\inner{x}{Ax} \ge 0 \forall x \in \R^n 
           \backslash \{0\}\)
 
-    \item \(A\) is \emph{negative semidefinite} if \(\langle x, Ax \rangle \le 0 \forall x \in \R^n 
+    \item \(A\) is \emph{negative semidefinite} if \(\inner{x}{Ax} \le 0 \forall x \in \R^n 
           \backslash \{0\}\)
 
-    \item \(A\) is \emph{indefinite} if \(\exists x,y \in \R^n  \backslash \{0\}: \langle x, Ax\rangle 
-          < 0 \land \langle y, Ay \rangle > 0 \)
+    \item \(A\) is \emph{indefinite} if \(\exists x,y \in \R^n  \backslash \{0\}: \inner{x}{Ax} 
+          < 0 \land \inner{y}{Ay} > 0 \)
     
 \end{enumerate}
 
@@ -274,7 +274,7 @@ Given a symmetric \(A \in \R^{n \times n}\) then:
 
 Given is the term \(x_{1}^{2} - x_{3}^{2} + x_1 x_4\), show that it is a quadratic form.
 
-First write the formula for the quadratic form \(\langle x, Ax\rangle\) where \(A\) is real symmetric 
+First write the formula for the quadratic form \(\inner{x}{Ax}\) where \(A\) is real symmetric 
 matrix
 
 \[
@@ -472,7 +472,7 @@ because \(-A\) is positive definite.
 If \(A\) is negative definite then 
 
 \[
-    -\langle x, Ax \rangle = \langle x -Ax \rangle > 0
+    -\inner{x}{Ax} = \langle x -Ax \rangle > 0
 \]
 
 \subsection{Theorems for Non-squares matrices}
@@ -487,13 +487,13 @@ definite. For \(rg(A) < n\) is \(A^T A\) positive semidefinite.
 Because of \((A^T A)^T = A^T A\) is \(A^T A\) symmetric. Therefore, it applies that 
 
 \[
-    \langle x, A^T A x \rangle = x^T A^T A x  = (Ax)^T Ax = \langle Ax, Ax \rangle = \|Ax\|^2 \ge 0 
+    \inner{x}{A^T A x} = x^T A^T A x  = (Ax)^T Ax = \inner{Ax}{Ax} = \|Ax\|^2 \ge 0 
 \]
 
 Also, \(A^T A\) is positive semidefinite, and it is also invertible for \(rg(A) = n\). If there were an 
 \(x \ne 0\) such that \(\|Ax\| = 0\) this would imply that \(Ax = 0\), also \(A^T (Ax) = 0\) therefore 
 \(x \in ker(A^T A)\). And \(A^T A\) would not be invertible. Finally, 
-\(\langle x, A^T Ax \rangle > 0 \forall x \ne 0\),  and \(A^T A\) is symmetric and positive definite.
+\(\inner{x}{A^T Ax} > 0 \forall x \ne 0\),  and \(A^T A\) is symmetric and positive definite.
 
 \subsection{Theorem II}
 

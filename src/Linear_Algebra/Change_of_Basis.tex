@@ -1,70 +1,58 @@
 \newpage
 \chapter{Changing between Basis}
 
-The change of basis is a very important concept in linear algebra which allows us to change the way we describe vectors and linear transformations.
-This is particularly useful when we want to express vectors in a different coordinate systems, or we want to apply a linear transformation, in an easy-to-work basis.
-A good metaphor for this is to think of it as translating between different languages, where each basis is a different language. While keeping
-in mind that from the perspective of a user of a different basis, the basis vectors are not different from the canonical basis.
-
-\subsection{Understanding the change of basis}
-
 Given a vector \(\vec{x} = \lambda_1 \vec{v}_1 + \cdots + \lambda_n \vec{v}_n\)
 with \(\vec{v}_1, \dots, \vec{v}_n\) being the basis vectors, we can write \(\vec{x}\) in terms of its components \((x_1, \dots, x_n)^T\).
 
-Now imagine having another basis \(\vec{b}_1, \dots, \vec{b}_n\) and the same vector \(\vec{x}\)
-with all of its components. The key here is that we want to know how our original
-vector is described in terms of other basis. More precisely what are its coordinates
+Now imagine having another basis \(\vec{w}_1, \dots, \vec{w}_n\) and the same vector \(\vec{x}\) which know has other coefficients because 
+the basis is different. 
 
-So our vector \(\vec{x}\) is described:
+It is important to understand that the basis vectors \(\vec{w}_1, \dots, \vec{w}_n\) are written in terms of \textbf{our basis}, because 
+for the perspective of the user of the basis, the basis vectors are not different from the canonical basis. 
 
-\[
-    \lambda_1 \vec{v}_1 + \cdots + \lambda_n \vec{v}_n = \vec{x} =  \mu_1 \vec{b}_1 + \cdots + \mu_n \vec{b}_n,
-\]
-
-in the corresponding bases. Note, that the vectors \(\vec{v}_i\) are written in the standard basis. And same goes for the vectors \(\vec{b}_i\).
-
-Now let us write then as matrix vector multiplication
+We proceed to write our linear combination as matrix vector multiplication. 
 
 \[
-    (\vec{v}_1, \dots, \vec{v}_ n)
+    [\vec{v}_1, \dots, \vec{v}_ n]
     \begin{bmatrix} \lambda_1 \\ \vdots \\ \lambda_n \end{bmatrix}
-    = \vec
-    (\vec{b}_1, \dots, \vec{b}_ n)
+    =
+    B_v\vec{\lambda}_v
+\]
+
+Let us define another matrix with the other basis vectors as columns:
+
+\[
+    [\vec{w}_1, \dots, \vec{w}_ n] = B_w
+\]
+
+Now if we take vector written in the basis \(B_w\) and we want to write it in the canonical basis, we multiply
+
+\[
+    [\vec{w}_1, \dots, \vec{w}_ n]
     \begin{bmatrix} \mu_1 \\ \vdots \\ \mu_n \end{bmatrix}
+    =
+    B_w\vec{\mu}_w
 \]
 
-Now let us use the following notation for the basis and the coefficient vectors.
+Note that this matrix converts our grid into the other perspective, but it takes one vector in the other perspective 
+and gives us the vector in our perspective.
+
+But, we want to write the vector in the basis \(B_v\), therefore we need to apply the 
+inverse of \(B_v\).  Since the matrix \(B_w\) was written in terms of the basis \(B_v\), we need to un-doo the transformation of 
+\(B_v\) to get the change of basis.
 
 \[
-    P_\beta {(\vec{x})}_\beta = \vec{x} = P_\gamma {(\vec{x})}_\gamma
+    B_v^{-1} B_w\vec{\mu}_w = \vec{\lambda}_v
 \]
 
-Here \(P_{\beta}\) is the matrix of the basis \(V\) vectors and \({(\vec{x})}_\beta\) the coefficients of the
-vector described by that basis. The same goes for \(P_\gamma\) and \({(\vec{x})}_\gamma\).
-
-Now that conversion of basis is just a matter of solving for our desired vector by multiplying
-by the inverse of the corresponding basis matrix. We can also ignore the vector \(x\) in the middle
-and just use the equality where we can solve for the vector in the desired basis.
+Note we can write the following pseudo-equality for our translations
 
 \[
-    P_\beta {(\vec{x})}_\beta = P_\gamma {(\vec{x})}_\gamma
+    B_v \vec{\lambda}_v = B_w\vec{\mu}_w    
 \]
 
-
-Now let us understand what really is happening in the step where we multiply by the inverse matrix.
-
-\begin{align*}
-    P_{\gamma}^{-1} P_\beta & = P_{\gamma}^{-1}(\vec{b}_1, \dots, \vec{b}_n)                \\
-                            & = (P_{\gamma}^{-1}\vec{b}_1, \dots, P_{\gamma}^{-1}\vec{b}_n) \\
-                            & = ({(\vec{b}_1)}_\gamma, \dots, {(\vec{b}_n)}_\gamma)
-\end{align*}
-
-When we start from some basis, our perspective is that our basis look like the standard basis. Given a matrix \(P_\beta\) which consist of our basis vectors
-from the perspective of the 'real' standard basis, when we multiply a vector of coefficients in our basis with \(P_\beta\) we are going from our basis to the standard basis.
-If we then apply \(P_{\beta}^{-1}\) this takes us back to our basis.
-
-Knowing that, then if instead of  \(P_{\beta}^{-1}\) we apply the inverse matrix of another basis \(P_{\gamma}^{-1}\) then it will  translate our vector from the canonical basis
-to the basis \(\gamma\). Which at the end is simply getting the coordinate of the basis vectors of \(\beta\) in the basis \(\gamma\).
+Note, that we are cheating a bit here with th equal notation. Now by taking the corresponding 
+inverse we can write the change of basis as desired.
 
 \subsection{Coordinate mapping}
 

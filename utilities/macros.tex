@@ -62,13 +62,15 @@
 \newcommand{\argmin}{\mathrm{argmin}}
 \newcommand{\dom}{\mathrm{dom}}
 \newcommand{\dig}{\mathrm{dig}}
+\newcommand{\inner}[2]{\left\langle #1, #2\right\rangle}
+\newcommand{\metric}[1]{\left\| #1 \right\|}
 
 % Styles for the automata
 \tikzstyle{terminator} = [rectangle, rounded corners, minimum width=3.5cm, minimum height=1cm, text centered, draw=black, fill=red!30]
 \tikzstyle{decision} = [diamond, aspect=2, minimum width=3.5cm, text centered, draw=black, fill=blue!30, inner sep=1pt]
 \tikzstyle{connector} = [draw, -latex']
 
-% Linear regression funct. To be removed
+% Linear regression func. To be removed
 \def\func(#1){0.75*#1+0.58}  
 \pgfmathsetmacro\y{\func(2)}
 

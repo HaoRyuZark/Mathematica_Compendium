@@ -1,3 +1,4 @@
+\newpage
 \chapter{Metrics}
 
 \section{Metrics for Vectors}
@@ -36,44 +37,6 @@ These are the most common metric, although we will be using primarily the euclid
 	      \]
 \end{itemize}
 
-\section{Metrics for Vectors}
-
-The metric of a vector \(\vec{a}\) is described by different norms:
-
-It also has the following properties:
-
-\begin{itemize}
-
-	\item \(\|\vec{a}\| \geq 0\) and \(\|\vec{a}\| = 0 \Leftrightarrow \vec{a} = \vec{0}\)
-
-	\item \(\|\lambda \vec{a}\| = |\lambda| \|\vec{a}\|\)
-
-	\item \(\|\vec{a} + \vec{b}\| \leq \|\vec{a}\| + \|\vec{b}\|\) (Triangle inequality)
-
-	\item \(\|\vec{a} + \vec{b}\|^2 = \|\vec{a}\|^2 + \|\vec{b}\|^2 + 2\langle\vec{a}, \vec{b}\rangle\) (Pythagorean theorem)
-
-\end{itemize}
-
-These are the most common metric, although we will be using primarily the euclidean metric:
-
-\begin{itemize}
-
-	\item \emph{Euclidean metric}:
-	      \[
-		      \|\vec{a}\| = \sqrt{\langle\vec{a}, \vec{a}\rangle} = \sqrt{a_1^2 + a_2^2 + \cdots + a_n^2}
-	      \]
-	\item \emph{Manhattan metric}:
-	      \[
-		      \|\vec{a}\|_1 = |a_1| + |a_2| + \cdots + |a_n|
-	      \]
-	\item \emph{Maximum metric}:
-	      \[
-		      \|\vec{a}\|_\infty = \max(|a_1|, |a_2|, \dots , |a_n|)
-	      \]
-\end{itemize}
-
-
-
 \section{Metric for Matrices}
 
 Given a metric \(\|\cdot\|\) over \(\R^n\), \(A \in \R^{n \times n}\), we define 
@@ -99,7 +62,7 @@ as the \emph{matrix metric} for \(\R^{n \times n}\).
         \|AB\| \le \|A\| \cdot \|B\|.
     \]
 
-    \item For \|\R^{n \times n}\| are all matrix metrics equivalent.
+    \item For \(\|\R^{n \times n}\|\) are all matrix metrics equivalent.
 
 \end{itemize}
 
@@ -109,10 +72,10 @@ as the \emph{matrix metric} for \(\R^{n \times n}\).
 For \(\| \cdot \|_2\) there is the so called \emph{spectral metric}. 
 
 \[
-    \|A\|_2 = \sqrt{\ro (A^T A)},
+    \|A\|_2 = \sqrt{\rho (A^T A)},
 \]
 
-where the \emph{spectral radius} \(\ro(B)\) is the by absolute-value-sorted greates eigenvalue of \(B\).
+where the \emph{spectral radius} \(\rho(B)\) is the by absolute-value-sorted greates eigenvalue of \(B\).
 
 \subsection{Row Metric}
 

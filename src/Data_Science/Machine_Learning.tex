@@ -274,7 +274,7 @@ We distinguish between three types of supervised learning, which differ in their
 We also define our linear model as 
 
 \[
-    \theta(s(x)) = \theta \left(\langle w, x \rangle\right)
+    \theta(s(x)) = \theta \left(\inner{w}{x}\right)
 \]
 
 This just means that we handle our data with linear functions. 
@@ -324,11 +324,11 @@ The error-kinds for our model are going to be
     E_{in}(h) = \frac{1}{N} \sum_{n = 1}^{N}(h(x_n) - y_n)^2 
 \]
 
-Our hypothesis set \(\mathcal{H}\) is composed of hypotheses of the form \(h(x) = \langle x, w\rangle, x_0  = 1\).
+Our hypothesis set \(\mathcal{H}\) is composed of hypotheses of the form \(h(x) = \inner{x}{w}, x_0  = 1\).
 Our goal is to find some vector \(w\) such that \(E_{in}\) is minimal \(w_{lin} = {\text{arg min} E_{in}(w)}_{w \in \R^d}\)
 
 \[
-    E_{in}(w) = \frac{1}{N} \sum_{n = 1}^{N}(\langle w, x \rangle - y_n)^2 
+    E_{in}(w) = \frac{1}{N} \sum_{n = 1}^{N}(\inner{w}{x} - y_n)^2 
 \]
 
 and \(w_{lin} := X^{\dagger} y \).
@@ -369,7 +369,7 @@ what if our date can not be linearly separated. We can modify the input variable
 in a non-linear way to be able to separate the data linearly in another space and then apply our algorithms.
 
 For this purpose, we define the new space \(\mathcal{Z}\) whose elements are \(z_n = \phi(x_n)\), where 
-\(\phi: \mathcal{X} \to \mathcal{Z}\) is a non-linear transformation. We also define \(\hat{g}(z) = \text{sign}(\langle \hat{w}, z \rangle)\).
+\(\phi: \mathcal{X} \to \mathcal{Z}\) is a non-linear transformation. We also define \(\hat{g}(z) = \text{sign}(\inner{\hat{w}}{z})\).
 Finally, our hypothesis set \(\mathcal{H}_{\phi}\) contains functions of the form \(h(x) = \hat{h}(\phi(x))\).
 
 This can become very complex but for 3d or 2d cases with data visualization a non-linear transformation can be found 

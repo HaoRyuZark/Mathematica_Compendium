@@ -26,7 +26,7 @@ Also, because of the orthogonal property then
 \begin{align*}
 	b - p_{A}(b) \bot U &\implies b - Ax  \in U^{\bot}\\
 						&\implies b - Ax \bot a_k \quad \forall k\\
-						&\implies \langle a_k, b - Ax \rangle = 0 \quad \forall k\\
+						&\implies \inner{a_k}{b - Ax} = 0 \quad \forall k\\
 						&\iff A^{T} (b - Ax) = \vec{0}\\
 						&\implies A^{T}b = Ax 
 \end{align*}
@@ -282,7 +282,7 @@ Because of that \(kern(A A^T) = 0\) and \(rg(AA^T) = m\) thus, the invertibility
 \(x_s \bot kern(A)\) because for \(z \in kern)(A)\)
 
 \[
-	\langle z, x_s\rangle = z^T A^T {(A A^T)}^{-1} b = \langle Az, {(A A^T)}^{-1} b \rangle = 0
+	\inner{z}{x_s} = z^T A^T {(A A^T)}^{-1} b = \inner{Az}{{(A A^T)}^{-1} b} = 0
 \]
 
 doe to \(Az = 0\).

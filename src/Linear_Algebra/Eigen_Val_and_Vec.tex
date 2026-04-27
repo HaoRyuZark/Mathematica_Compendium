@@ -495,11 +495,11 @@ Given a symmetric matrix \(A \in \R^{n \times n}\) with \(\lambda \ne \mu \) as 
 \textbf{Proof:}
 
 \[
-    \langle w, Av \rangle = w^{T} Av = (A^T w)^T v = (Aw)^T v = \langle Aw, v\rangle
+    \inner{w}{Av} = w^{T} Av = (A^T w)^T v = (Aw)^T v = \inner{Aw}{v}
 \]
 
-Therefore, \(\lambda \langle v, w \rangle = \langle Av, w \rangle = \langle v, Aw\rangle 
-= \mu \langle v, w \rangle\). Because \(\mu \ne \lambda\) and \(\lambda - \mu \langle v, w\rangle = 0\)
+Therefore, \(\lambda \inner{v}{w} = \inner{Av}{w} = \inner{v}{Aw} 
+= \mu \inner{v}{w}\). Because \(\mu \ne \lambda\) and \(\lambda - \mu \inner{v}{w} = 0\)
 the vectors must be orthogonal.
 
 \QED

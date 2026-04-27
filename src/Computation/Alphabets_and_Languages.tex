@@ -172,7 +172,7 @@ Two algorithms are equivalent if and only if
 
 \subsection{The Decision Problem}
 
-The \emph{decision problem} \(\langle \Sigma, L \rangle\) for a given alphabet \(\Sigma\) and a language \(L \subseteq \Sigma^{*}\) is to decide, for each \(w \in \Sigma^{*}\), whether  
+The \emph{decision problem} \(\inner{\Sigma}{L}\) for a given alphabet \(\Sigma\) and a language \(L \subseteq \Sigma^{*}\) is to decide, for each \(w \in \Sigma^{*}\), whether  
 
 \[
     w \in L 
@@ -180,9 +180,9 @@ The \emph{decision problem} \(\langle \Sigma, L \rangle\) for a given alphabet \
     w \notin L .
 \]
 
-Therefore, one also speaks of the \emph{word problem} \(\langle \Sigma, L \rangle\).  
+Therefore, one also speaks of the \emph{word problem} \(\inner{\Sigma}{L}\).  
 
-An algorithm \(A \colon \Sigma^{*} \to \{0, 1\}\) \emph{solves} the decision problem \(\langle \Sigma, L \rangle\) if, for all \(w \in \Sigma^{*}\), we have
+An algorithm \(A \colon \Sigma^{*} \to \{0, 1\}\) \emph{solves} the decision problem \(\inner{\Sigma}{L}\) if, for all \(w \in \Sigma^{*}\), we have
 
 \[
     A(w) =
@@ -197,12 +197,12 @@ We also say: \(A\) \emph{recognizes} \(L\).
 \subsection{Recursive Languages}
 
 Let \(\Sigma\) be an alphabet and let \(L \subseteq \Sigma^{*}\) be a language.  
-\(L\) is called \emph{recursive} if and only if there exists an algorithm \(A\) that solves the decision problem \(\langle \Sigma, L \rangle\).  
+\(L\) is called \emph{recursive} if and only if there exists an algorithm \(A\) that solves the decision problem \(\inner{\Sigma}{L}\).  
 
 \subsection{Enumeration Problem}
 
 Let \(\Sigma\) be an alphabet, \(L \subseteq \Sigma^{*}\) a language, and \(n \in \mathbb{N}\).  
-The \emph{enumeration problem} \(\langle \Sigma, L, n \rangle\) for \(L\) consists of listing the canonical first \(n\) words of \(L\).  
+The \emph{enumeration problem} \(\inner{\Sigma}{L, n}\) for \(L\) consists of listing the canonical first \(n\) words of \(L\).  
 
 An algorithm \(A \colon N \to \mathcal{P}(L)\) is an \emph{enumeration algorithm} for \(L\) if, for every input \(n \in N\), \(A\) outputs 
 the canonical first \(n\) words \(w_{0}, w_{1}, \dots, w_{n-1}\) of the language \(L\).  

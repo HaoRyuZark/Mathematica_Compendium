@@ -1,14 +1,14 @@
 \newpage
-\chapter{Geometry of Linear Maps}
+\chapter{Orthogonal Linear Maps}
 
 In this section we are going to take a look at some special type of linear maps that are called \emph{orthogonal} 
 and at the term \emph{isometry}. It will be useful to remember some concepts about the dot product such as 
-\(\langle x, x \rangle = x^T \cdot x = \|x\|^2\).
+\(\inner{x}{x} = x^T \cdot x = \|x\|^2\).
 
 \subsection{Isometry}
 
 Given two vector spaces \((V, \|\centerdot\|_V)\) and \((W, \|\centerdot\|_W)\). Then a map 
-\(f: V \to W\) is called \emph{Isometric} if and only if \(\|x - y\|_V = \|f(x) - f(y)\|_W \).
+\(f: V \to W\) is called \emph{isometric} if and only if \(\|x - y\|_V = \|f(x) - f(y)\|_W \).
 
 It also has the following traits:
 
@@ -17,6 +17,16 @@ It also has the following traits:
 	\item \emph{Angle-Preserving}: \(\angle (x,y) = \angle (f(x),f(y)) \quad \forall x,y \in V\)
 	\item \emph{Linear}: If \(f(x + \lambda y) = f(x) + \lambda f(y)\)
 \end{enumerate}
+
+\subsection{Unit-sphere}
+
+For \((V, \R)\) with metric \(\|\cdot\|\) we denote 
+
+\[
+    S = \{x \mid x \in V : \|x\| = 1\}
+\]
+
+as the \emph{unit-sphere}.
 
 \subsection{The Rotation Matrix}
 
@@ -84,7 +94,7 @@ which gives us
 
 \QED
 
-\subsubsection{Other rotation matrices}
+\subsubsection{Rotation Matrices For \(\R^3\)}
 
 \[
     R_x (\phi) =
@@ -123,16 +133,22 @@ The set of all \emph{orthogonal} matrices is \(O(n)\).
 \subsubsection{Properties of orthogonal matrices}
 
 \begin{enumerate}
-    \item \(A \in O(n)\)
-    \item If \(A\) has an inverse then \(A^{-1} = A^T\)
-    \item \(A^T \in O(n)\)
+   
+    \item \(A \in O(n)\).
+   
+    \item If \(A\) has an inverse then \(A^{-1} = A^T\).
+   
+    \item \(A^T \in O(n)\).
+
+    \item \(\|Q\|_2 = \sup_{x \ne 0} \frac{\|Qx\|}{\|x\|_z} = 1\).
+
 \end{enumerate}
 
 \textbf{Proof 1-2:}
 
 \begin{align*}
     A^T = A^{-1} &\iff A^T A = E\\
-                 &\iff (A^T A)_{ij} = \langle a_i, a_j\rangle = \delta_{ij} 1 \le i,j \le n\\
+                 &\iff (A^T A)_{ij} = \inner{a_i}{a_j} = \delta_{ij} 1 \le i,j \le n\\
                  &\iff a_i \bot a_j, i \ne j, \text{ and } \|a_i\| = 1, 1 \le i \le n\\
                  &\iff A \in O(n)
 \end{align*}
@@ -198,7 +214,7 @@ We know that \(\det(I) = I \), therefore
 Given \(f: \R^n \to \R^n\) then this two statements are equivalent.
 
 \[
-    \langle f(x), f(y) \rangle = \langle x, y \rangle \quad \forall x,y \in \R^n
+    \inner{f(x)}{f(y)} = \inner{x}{y} \quad \forall x,y \in \R^n
 \]
 
 and 
@@ -210,25 +226,25 @@ and
 \textbf{Proof \(\Rightarrow\):}
  
 \[
-    \|x\|^2 = \langle x, x \rangle = \langle f(x), f(x) \rangle = \|f(x)\|^2
+    \|x\|^2 = \inner{x}{x} = \inner{f(x)}{f(x)} = \|f(x)\|^2
 \]
 
 This implies the length preservation. The isometry gives us:
 
 \begin{align*}
     \|f(x) - f(y)\|^2 
-    &= \langle f(x) - f(y), f(x) - f(y) \rangle \\
-    &= \langle f(x), f(x) \rangle - 2\langle f(x), f(y) \rangle + \langle f(y), f(y) \rangle \\
-    &= \langle x, x \rangle - 2\langle x, y \rangle + \langle y, y \rangle \\
-    &= \langle x - y, x - y \rangle = \|x - y\|^2
+    &= \inner{f(x) - f(y)}{f(x) - f(y)} \\
+    &= \inner{f(x)}{f(x)} - 2\inner{f(x)}{f(y)} + \inner{f(y)}{f(y)} \\
+    &= \inner{x}{x} - 2\inner{x}{y} + \inner{y}{y} \\
+    &= \inner{x - y}{x - y} = \|x - y\|^2
 \end{align*}
 
 Then
 
 \begin{align*}
     \angle(f(x), f(y)) 
-    &= \arccos\left( \frac{\langle f(x), f(y) \rangle}{\|f(x)\| \cdot \|f(y)\|} \right) \\
-    &= \arccos\left( \frac{\langle x, y \rangle}{\|x\| \cdot \|y\|} \right) \\
+    &= \arccos\left( \frac{\inner{f(x)}{f(y)}}{\|f(x)\| \cdot \|f(y)\|} \right) \\
+    &= \arccos\left( \frac{\inner{x}{y}}{\|x\| \cdot \|y\|} \right) \\
     &= \angle(x, y)
 \end{align*}
 
@@ -239,9 +255,81 @@ Then
 With \(\alpha = \angle(x, y) = \angle(f(x), f(y))\) gilt:
 
 \[
-    \langle f(x), f(y) \rangle = \cos(\alpha) \cdot \|f(x)\| \cdot \|f(y)\| = \cos(\alpha) 
-    \cdot \|x\| \cdot \|y\| = \langle x, y \rangle
+    \inner{f(x)}{f(y)} = \cos(\alpha) \cdot \|f(x)\| \cdot \|f(y)\| = \cos(\alpha) 
+    \cdot \|x\| \cdot \|y\| = \inner{x}{y}
 \]
+
+\QED
+
+\subsection{Orthonormal Matrices}
+
+A matrix \(Q \in \R^{n \times n}\) is \emph{orthonormal} if for each of its column vectors \(q_j\), they are pairwise orthonormal.
+
+\[
+    (q_i, q_j) = \delta_{i,j} = 
+    \begin{cases}
+        1 & i = j \\ 
+        0 & \text{ else }
+    \end{cases}
+\]
+
+\subsubsection*{Properties of Orthonormal Matrices}
+
+If \(Q, \tilde{Q} \in \R{n \times n}\) are orthonormal matrices, the following applies: 
+
+\begin{enumerate}
+
+    \item \(QQ^T = Q^TQ = I\), i.e. \(Q^{-1} = Q^T\).
+
+    \item \(\kappa_2(Q) = 1\). 
+
+    \item \(Q\tilde{Q}\) is an orthonormal matrix.
+
+\end{enumerate}
+
+\textbf{Proof 1:}
+
+When applying the matrix product, we note that our repeated inner product is applied to each of the 
+flipped columns. Since by our definition 
+
+\[
+    (q_i, q_j) = \delta_{i,j} = 
+    \begin{cases}
+        1 & i = j \\ 
+        0 & \text{ else }
+    \end{cases}
+\]
+
+We get a matrix with 1's at the entries \(QQ^t_{i,j}\) if \(i = j\) and else 0. in other words the identity.
+
+\QED
+
+\textbf{Proof 2:}
+
+For all \(x \in \R^n\) holds that 
+
+\[
+    \|Qx\|_2^2 = (Qx)^T(Qx) = x^T Q^T Q x = x^T x = \|x\|_2^2
+\]
+
+Since orthonormal matrices do not preserve the length. Therefore \(\|Q\|_2 = 1\) and 
+analogously, the same for \(Q^{-1}\) hence 
+
+\[
+    \kappa_2(Q) = \|Q\|_2 \|Q^{-1}\| = 1
+\]
+
+\QED
+
+\textbf{Proof 3:}
+
+Applying our first property, we need to show that \((Q\tilde{Q})^T = (Q\tilde{Q})^{-1}\).
+
+\[
+    (Q\tilde{Q})^T(\tilde{Q}Q) = Q^T \tilde{Q}^T (\tilde{Q}Q) = Q^T I Q = Q^T Q = I
+\]
+
+Therefore the columns are pairwise orthonormal.
 
 \QED
 
@@ -255,14 +343,14 @@ the associated matrix representation \( Q \) (with respect to the standard basis
 \(f\) is linear, and thus has a matrix representation \( Q \). It follows that
 
 \[
-    \langle Qx, Qy \rangle = \langle Q^\top Qx, y \rangle = \langle x, y \rangle \quad \forall x, y 
+    \inner{Qx}{Qy} = \inner{Q^\top Qx}{y} = \inner{x}{y} \quad \forall x, y 
     \in \R^n,
 \]
 
 thus,
 
 \[
-    \langle Q^\top Qx - x, y \rangle = 0 \quad \forall x, y.
+    \inner{Q^\top Qx - x}{y} = 0 \quad \forall x, y.
 \]
 
 Choosing \( y = Q^\top Qx - x \), we get
@@ -305,9 +393,10 @@ due to the group property of \( O(n) \).
 
 A use case of orthogonal matrices is the \emph{QR-Decomposition}. The goal is that given a system 
 \( Ax = b\) with a matrix \(A\in \R^{m \times n}\), \(m \ge n\) and \(rg(A) = n\) we can find 
-two matrices \(Q \text{ and } R\) such that \(A = QR \text{ with } R\in \R^{n \times n} 
-\text{ and } Q \in \R^{m \times n}\). \emph{R} is matrix with only an upper triangle and 
-\emph{Q} is orthogonal for the columns.
+two matrices \(Q\) and \(R\) such that \(A = QR \text{ with } R\in \R^{n \times n}\)  
+and \(Q \in \R^{m \times n}\). 
+
+\(R\) is an upper triangular matrix and \(Q\) is orthogonal for the columns.
 
 We know that the best approximation by the method of the least squares is given by
 
@@ -315,7 +404,7 @@ We know that the best approximation by the method of the least squares is given 
     x_s = (A^T A)^{-1} A^T b
 \]
 
-Because of the orthogonality of the columns \(rg(Q) = rg(A)\) therefore it can be inverted. Therefore,
+Because of the orthogonality of the columns \(rg(Q) = rg(A)\), therefore, it can be inverted. Hence,
 we get:
 
 \begin{align*}
@@ -335,10 +424,10 @@ inner products our \(A\) matrix and \emph{Q}
 \[
     R =
     \begin{bmatrix}
-        \langle q_1, a_1 \rangle & \langle q_1, a_2 \rangle & \cdots &\langle q_1, a_n\rangle \\ 
-        0 & \langle q_2, a_2 \rangle & \cdots & \langle q_2, a_n\rangle \\ 
+        \inner{q_1}{a_1} & \inner{q_1}{a_2} & \cdots &\inner{q_1}{a_n} \\ 
+        0 & \inner{q_2}{a_2} & \cdots & \inner{q_2}{a_n} \\ 
         \vdots & \vdots  & \ddots & \vdots \\
-        0 & 0  & \cdots & \langle q_n, a_n \rangle \\ 
+        0 & 0  & \cdots & \inner{q_n}{a_n} \\ 
     \end{bmatrix}
 \]
 
@@ -362,7 +451,7 @@ First, we find the orthonormal basis of the columns of our matrix \(A\)
 \]
 
 \[ 
-    r_2 = a_2 - \langle a_2, q_1\rangle q_1 
+    r_2 = a_2 - \inner{a_2}{q_1} q_1 
     = 
     \begin{bmatrix} 1 \\ 3 \end{bmatrix}
     - 

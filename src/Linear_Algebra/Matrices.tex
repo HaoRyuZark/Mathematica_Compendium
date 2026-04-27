@@ -76,7 +76,7 @@ Matrix multiplication is defined this way to think as each operation as dot prod
 An example of this is thinking about the dot product as the total price of a purchase in store.
 The total price is the sum of the amounts which are given by the number of items per price. Now to extend this idea
 for matrices we think about the number of items as a vector of size \(i\) and the prices of each item as
-another vector \(p_1\) with dot product \(\langle i, p_1 \rangle\). If we want to by other items with different prices, but in the
+another vector \(p_1\) with dot product \(\inner{i}{p_1}\). If we want to by other items with different prices, but in the
 same amounts given by the vector \(i\) we get a matrix \(A = (p_1, \dots, p_n)\). Now it makes sense that, if
 we take three different arrays of products we get a vector of three components which represent each of the
 total amounts to pay.
@@ -87,10 +87,10 @@ of the current row with the column vector of the other matrix.
 \[
     A \times \vec{v} =
     \begin{bmatrix}
-        \langle a_{1}^T, v\rangle \\
-        \langle a_{2}^T, v\rangle \\
+        \inner{a_{1}^T}{v} \\
+        \inner{a_{2}^T}{v} \\
         \vdots                    \\
-        \langle a_{n}^T, v\rangle
+        \inner{a_{n}^T}{v}
     \end{bmatrix}
 \]
 
@@ -99,9 +99,9 @@ As for the case with multiple columns
 \[
     A \times B =
     \begin{bmatrix}
-        \langle a_{1}^T, b_{j} \rangle & \dots  & \langle a_{1}^T, b_{n} \rangle \\
+        \inner{a_{1}^T}{b_{j}} & \dots  & \inner{a_{1}^T}{b_{n}} \\
         \vdots                         & \cdots & \vdots                         \\
-        \langle a_{n}^T, b_{j} \rangle & \dots  & \langle a_{n}^T, b_{n} \rangle
+        \inner{a_{n}^T}{b_{j}} & \dots  & \inner{a_{n}^T}{b_{n}}
     \end{bmatrix}
 \]
 
@@ -229,7 +229,7 @@ Here are given \(A = (a_1, \dots, a_n)\) with \(Ax\) as some vector and \(b\) so
 \(a_k\) is some row of \(A\).
 
 \[
-    \langle a_k, b - Ax \rangle = 0 \quad \forall k \iff A^{T} (b - Ax) = \vec{0}
+    \inner{a_k}{b - Ax} = 0 \quad \forall k \iff A^{T} (b - Ax) = \vec{0}
 \]
 
 \subsubsection{Proof that the inverse of the transpose is the transpose of the inverse}

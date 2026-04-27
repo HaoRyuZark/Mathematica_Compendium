@@ -57,7 +57,7 @@ A plane is defined by a point \(\vec{P}\) and a normal vector \(\vec{n}\):
 
 \subsection{Dot Product}
 
-The inner product of vectors \(\vec{a}\) and \(\vec{b}\) is a function \(\langle x, y\rangle :=V \times V \rightarrow \mathbb{K}\)
+The inner product of vectors \(\vec{a}\) and \(\vec{b}\) is a function \(\inner{x}{y} :=V \times V \rightarrow \mathbb{K}\)
 with the following properties:
 
 \(\forall \vec{a}, \vec{b} \in V\):
@@ -106,7 +106,7 @@ Now we expand:
 Then: \(\|v - u\|^2 = {(v_1 - u_1)}^2 + {(v_2 - u_2)}^2\) and by re-grouping after expansion we get
 
 \[
-	\langle v, u\rangle = v_1u_1 + v_2u_2 = \|v\|\|u\|\cos \theta \\ 
+	\inner{v}{u} = v_1u_1 + v_2u_2 = \|v\|\|u\|\cos \theta \\ 
 \]
 
 \QED
@@ -115,7 +115,7 @@ And if we manipulate this expression we can also prove the angle formulas.
 And with that information we can prove that
 
 \[
-	\cos \frac{\pi}{2}\ = \frac{\langle v, u\rangle}{\|v\|\|u\|} = 0
+	\cos \frac{\pi}{2}\ = \frac{\inner{v}{u}}{\|v\|\|u\|} = 0
 \]
 
 Only if the Dot Product is equal to zero so, like that we have also proved that
@@ -150,9 +150,9 @@ We want to find \(\alpha\) such that \(p = \alpha q\) where \(q = \vec{b}\).
 We also know that the vector \(a - p\) is orthogonal to \(q\):
 
 \begin{align*}
-	\langle a - p, q\rangle = 0 &\implies \langle a - \alpha q, q\rangle = 0 \\  
-	&\implies \langle a, q\rangle - \alpha \langle q, q\rangle = 0 \quad \text{ by the properties of the inner product}\\
-	\alpha &= \frac{\langle a, q\rangle}{\langle q, q\rangle}
+	\inner{a - p}{q} = 0 &\implies \inner{a - \alpha q}{q} = 0 \\  
+	&\implies \inner{a}{q} - \alpha \inner{q}{q} = 0 \quad \text{ by the properties of the inner product}\\
+	\alpha &= \frac{\inner{a}{q}}{\inner{q}{q}}
 \end{align*}
 
 Therefore, the orthogonal projection of vector \(\vec{a}\) on \(\vec{b}\) is given by
@@ -216,7 +216,7 @@ and
 	p = k \vec{u} \quad \text{ and } d = \vec{v} - p
 \]
 
-also \(\langle d, u\rangle = 0\)
+also \(\inner{d}{u} = 0\)
 
 Analog to the derivation of the formula of the orthogonal projection we get 
 
@@ -672,12 +672,12 @@ Steps:
 	\item Three planes can intersect in a point, a line, or not at all.
 
 	\item If we have a line \(G\) and a point on the line, for every vector \(\vec{n}\) that is orthogonal to the
- 	      direction vector of the line: \(x \in G \iff \langle x, n \rangle\)
+ 	      direction vector of the line: \(x \in G \iff \inner{x}{n}\)
 
-	\item If \(p\) and \(q\) are two points in the line \(G\) with a normal vector then \(\langle p, n\rangle = \langle q, n\rangle\)
+	\item If \(p\) and \(q\) are two points in the line \(G\) with a normal vector then \(\inner{p}{n} = \inner{q}{n}\)
 
 	\item Let \(E\) be a plane with the origin \(p\) and the direction vector \(\vec{v}\) and \(\vec{w}\), then there exist a normal vector and
-	      \(x \in E \iff \langle x, n\rangle = \langle p, n \rangle\)
+	      \(x \in E \iff \inner{x}{n} = \inner{p}{n}\)
 
 \end{itemize}
 
@@ -788,22 +788,22 @@ Now compute the dot product:
 \textbf{Proof:}
 
 \[
-	E: \langle x, n\rangle = \langle p, n \rangle
+	E: \inner{x}{n} = \inner{p}{n}
 \]
 \[
 	G: x = p + t \cdot v
 \]
 \[
-	\langle x, n \rangle = c
+	\inner{x}{n} = c
 \]
 \[
-	\langle p + t \cdot v, n \rangle = c
+	\inner{p + t \cdot v}{n} = c
 \]
 \[
-	\langle p, n \rangle + t \cdot \langle v, n \rangle = c
+	\inner{p}{n} + t \cdot \inner{v}{n} = c
 \]
 \[
-	t = \frac{c - \langle p, n \rangle}{\langle v, n \rangle}
+	t = \frac{c - \inner{p}{n}}{\inner{v}{n}}
 \]
 \QED
 
