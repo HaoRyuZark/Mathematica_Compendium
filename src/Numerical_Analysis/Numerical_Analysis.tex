@@ -1084,8 +1084,6 @@ Finally, for \(Rx = y\) we have
 
 which gives us \(x = [2, 1, 0]^T\).
 
-\subsubsection{Householder Algorithm}
-
 \section{Iterative Methods}
 
 An \emph{iterative method} 
@@ -1095,7 +1093,7 @@ An \emph{iterative method}
 \]
 
 is convergent if \(x^{(k)} \to x\) for all  \(x^{(0)} \in \R^n\). It also has the \emph{fixed point property} 
-\(x = \phi_k(x, \dots, x)\) for \(Ax = b\).
+\(x = \phi_(x) \iff Ax = b\).
 
 The \emph{error} \(e^{(k)}\) and the \emph{residuum} \(r^{(k)}\) are defined as
 
@@ -1195,6 +1193,15 @@ where \(\sigma(B)\) is the \emph{spectrum} of \(B\), i.e. the set of all eigenva
 
 \end{itemize}
 
+\subsection{Gelfand}
+
+For any matrix metric \(\metric{\cdot}\) the following holds:
+
+\[
+    \rho(B) = \lim_{k \to \infty} \sqrt[k]{\metric{B^k}}.
+\]
+
+Also for an induced matrix metric \(\metric{\cdot}_I\) \(\metric{B}_I^{\frac{1}{k}}\) converges towards \(\rho(B)\).
 \subsection{Splitting Method For Linear Systems}
 
 Given a regular matrix \(A \in \R^{n \times n}\) in a system \(Ax = b\), we can split \(A\) into 
@@ -1325,6 +1332,36 @@ The iteration is then given by
     x^{(k + 1)} = D^{-1}(L + U)x^{(k)} + D^{-1}b
 \]
 
+\subsection{The Residuum As Stopping Criterion}
+
+The \emph{residuum} is defined as
+
+\[
+    r^{(k)} = b - Ax^{(k)}
+\]
+
+When \(\metric{r^{(k)}} \le \varepsilon \metric{b}\) for a given \(\varepsilon > 0\) then we can stop the iteration because we are close enough to the solution.
+
+\subsection{Convergence For Semi Positive Definite Matrices}
+
+Given semi positive definite matrices \(A, M\); if \(2M - A\) is also semi positive definite, then 
+
+\[
+    \phi(x) = Bx + d,\ B = I - M^{-1}A, \ d = M^{-1}b
+\]
+
+converges and also \(\metric{B}_A = \metric{B}_M = \rho(B) < 1\).
+
+Also, the splitting \(M + M^T - A\) is also spd. and \(\rho(B) \le \metric{B}_A < 1\).
+
+\subsection{Strict Diagonal-dominant}
+
+\(A\) is strictly diagonal-dominant if 
+
+\[
+    |a_{i,i}| > \sum_{j \ne i} |a_{i,j}|, \ \forall i = 1, \dots, n
+\]
+
 \subsection{The Jacobi Method}
 
 The Jacobi method is a single step stationary iteration method with the splitting 
@@ -1421,5 +1458,93 @@ Giving us
         2.5 \\ 
         3.333\ldots
     \end{bmatrix}
+\]
+
+\subsection{Gauss-Seidel Method}
+
+The Gauss-Seidel method is a single step stationary iteration method with the splitting
+\(A = (D - L) - U\) and the iteration
+
+\[
+    x^{(k + 1)} = (D - L)^{-1}Ux^{(k)} + (D - L)^{-1}b
+\]
+
+\subsection{After Iteration}
+
+This process refers to using an iterative method after using a mathematical algorithm for solving a certain problem to 
+mitigate rounding errors. In our case we will present such a process with the \(LU\)-Decomposition.
+
+While performing the \(LU\)-Decomposition we will get \(\tilde{L}\tilde{U} = M\) which are the \(L,U\) matrices, but with rounding errors.
+We use the stationary linear iteration to improve the solution \(\tilde{x}\) for which \(A\tilde{x} = b\).
+
+\begin{enumerate}
+
+    \item Perform the \(LU\)-Decomposition to get the triangular matrices and the approximate solution with errors.
+
+    \item Set \(x_0 = \tilde{x}\) 
+
+    \item Repeat the following steps as long \(\frac{\metric{p_k}}{\metric{x_{k + 1}}} < \varepsilon\): 
+    
+    \begin{itemize}
+        \item \(r_k = b - Ax_k \).
+        \item \(p_k = M^{-1}r_K\) in other words \(\tilde{L}\tilde{U}p_k = r_k\).
+        \item \(x_{k + 1} = x_k + p_k\).
+    \end{itemize}
+\end{enumerate}
+
+\subsection{Gradient Descent}
+
+Given our stationary iteration 
+
+\[
+    x^{(k + 1)} = x^{(k)} + M^{-1}r^{(k)}
+\]
+
+We add the parameter \(\alpha^{(k)}\)
+
+\[
+    x^{(k + 1)} = x^{(k)} + \alpha^{(k)}M^{-1}r^{(k)}
+\]
+
+With the goal in each step to find an \(\alpha^{(k)}\) which gives us the "best" \(x^{(k + 1)}\).
+This means 
+
+\begin{align*} 
+    e^{(k + 1)} &= x - x^{(k + 1)} \\ 
+    &= x - x^{(k)} + \alpha^{(k)}M^{-1}r^{(k)} \\ 
+    &= e^{(k)} - \alpha^{(k)}p^{(k)}
+\end{align*}
+
+Geometrically, \(e^{(k + 1)}\) is on a straight line determined by \(e^{(k)}\) in the direction \(p^{(k)}\). This means 
+that \(\metric{e^{(k + 1)}}\) will be minimal when \(p_{(k)}\) is orthogonal to \(e^{(k + 1)}\)
+
+\begin{align*}
+    \inner{e^{(k + 1)}}{p^{(k)}} &= \inner{p^{(k)}}{e^{(k)} - \alpha^{(k)}p^{(k)}} \\ 
+    &= \inner{p^{(k)}}{e^{(k)}} - \alpha^{(k)} \inner{p^{(k)}}{p^{(k)}} \\ 
+    \alpha^{(k)} &= \frac{\inner{p^{(k)}}{e^{(k)}}}{\inner{p^{(k)}}{p^{(k)}}}
+\end{align*}
+
+Hence, we have constructed the following iterative algorithm 
+
+\begin{align*}
+   r^{(k)} &= b - Ax^{(k)}  \\
+   p^{(k)} &= M^{-1}r^{(k)} \\ 
+   \alpha^{(k)} &= \frac{\inner{p^{(k)}}{e^{(k)}}}{\inner{p^{(k)}}{p^{(k)}}} \\ 
+   x^{(k + 1)} &= x^{k} + \alpha^{(k)}p^{(k)}
+\end{align*}
+
+The problem is that technically we do not know the exact solution \(x\), but this can be solved using a 
+suited inner product with metric 
+
+\[
+    \metric{x} = \metric{x}_A = \sqrt{x^T A x}
+\]
+
+Giving us 
+
+\[
+   \alpha^{(k)} =  \frac{\inner{p^{(k)}}{e^{(k)}}_A}{\inner{p^{(k)}}{p^{(k)}}_A}
+   = \frac{\inner{p^{(k)}}{Ae^{(k)}}}{\inner{p^{(k)}}{Ap^{(k)}}}
+   = \frac{\inner{p^{(k)}}{r^{(k)}}}{\inner{p^{(k)}}{Ap^{(k)}}}
 \]
 

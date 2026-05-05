@@ -5,13 +5,13 @@
 
 An eigenvector of a square matrix \(A\) is a non-zero vector \(\vec{v}\) that, when multiplied by 
 \(A\), results in a vector that is a scalar multiple of itself. In other words, the direction of the 
-vector \(\mathbf{v}\) remains unchanged (up to scaling) when the linear transformation represented by 
+vector \(\vec{v}\) remains unchanged when the linear transformation represented by 
 \(A\) is applied to it.
 
 \emph{Eigenvalue:}
 
 The scalar multiple, denoted by \(\lambda\), is called the eigenvalue associated with the eigenvector 
-\(\mathbf{v}\). It represents the factor by which the eigenvector is scaled when transformed by 
+\(v\). It represents the factor by which the eigenvector is scaled when transformed by 
 the matrix \(A\).
 
 Mathematically, the relationship between a square matrix \(A\), an eigenvector \(\vec{v}\), 
@@ -29,16 +29,16 @@ The way we find a method to find them is by manipulating the equation above
     A\vec{v} &= \lambda\vec{v}\\
     A\vec{v} - \lambda\vec{v} &= \vec{0}\\
     A\vec{v} - \lambda I \vec{v} &= \vec{0}\\
-    (A\vec{v} - \lambda I) \vec{v} &= \vec{0}
+    (A - \lambda I) \vec{v} &= \vec{0}
 \end{align*}
 
-Here note that if \((A\vec{v} - \lambda I)\) were invertible then we could multiply both sides by 
+Here note that if \((A - \lambda I)\) were invertible then we could multiply both sides by 
 its inverse and then get \(\vec{v} = 0\). But we do not want that therefore, \((A\vec{v} - \lambda I)\) 
 must be linear transformation whose determinant is \(0\) which means that it can not ve invertible.
 
 \begin{align*}    
-    (A\vec{v} - \lambda I) \vec{v} &= \vec{0}\\
-    \det (A\vec{v} - \lambda I)  &= 0
+    (A - \lambda I) \vec{v} &= \vec{0}\\
+    \det (A - \lambda I)  &= 0
 \end{align*}
 
 \subsection{Characteristic Polynomial}
@@ -47,7 +47,7 @@ The polynomial which we get from the determinant \(\det (A\vec{v} - \lambda I)  
 the characteristic polynomial of \(A\).
 
 \[
-    \mathcal{X}_A = \det (A\vec{v} - \lambda I) = 0
+    \mathcal{X}_A = \det (A - \lambda I) = 0
 \]
 
 \subsubsection{Eigenspace}
@@ -55,7 +55,7 @@ the characteristic polynomial of \(A\).
 The \emph{Eigenspace} of an eigenvalue are the solution of the homogeneous system \(A - \lambda I\).
 
 \[
-    Eig(f;\lambda) = ker(A - \lambda I)
+    \mathrm{Eig}(f;\lambda) = ker(A - \lambda I)
 \]
 
 \subsection{Theorems of Eigenvalues and Eigenvectors}
@@ -75,11 +75,40 @@ For \(\lambda \in \C\) is \(Eig(f;\lambda):= \{c \in V | f(v) = \lambda v\}\) th
 
 For \(\lambda \ne \gamma \quad Eig(f;\lambda) \cap Eig(f;\gamma) = \{0\}\).
 
-\subsubsection{Theorem IV}
+\subsection{Linear Independence Of Eigenvectors With Distinct Eigenvalues}
 
 Eigenvectors with different eigenvalues are linearly independent.
 
-\subsubsection{Theorem V}
+\textbf{Proof:}
+
+If \(\alpha v + \beta w = 0\), where \(v\) and \(w\) are eigenvector of \(A \in \C^{n \times n}\); then it must be true that 
+
+\begin{align*}
+    \alpha \lambda v + \beta \lambda w &= 0 \\ 
+    \alpha \mu v + \beta \mu w &= 0
+\end{align*}
+
+With \(\lambda \ne \mu\) being eigenvalues of \(A\).
+
+This implies 
+
+\[
+    0 = A(\alpha v + \beta w) = \alpha \lambda v + \beta \mu w
+\]
+
+Resulting into 
+
+\begin{align*}
+    0 &= \alpha (\lambda - \mu)v \\
+    0 &= \beta (\mu - \lambda)w
+\end{align*}
+
+But since \(\mu \ne \lambda\) and \(v, w \ne \vec{0}\) it must be that \(\alpha = \beta = 0\). Thus, 
+they are linearly independent.
+
+\QED
+
+\subsection{The Determinant Via Eigenvalues}
 
 Given the following eigenvalues\(\lambda_1, \dots, \lambda_n\), then the 
 determinant of the matrix \(A\) is given by 
@@ -115,7 +144,7 @@ Or by using the definition of the diagonal matrix:
 
 \QED
 
-\subsubsection{Theorem VI}
+\subsection{Eigenvalues Under Isometric Maps}
 
 For all linear isometric map \(f\) with some eigenvalue \(\lambda\) it applies that
 
@@ -128,7 +157,7 @@ Also, \(\lambda = 1\).
 An example for this are rotation matrices which map to the same space and preserve the length and 
 whose eigenvalue are complex with a modulus of length of one.
 
-\subsubsection{Theorem VII}
+\subsection{Eigenvalues As Powers}
 
 For some eigenvector \(x\) with an eigenvalue \(\lambda\) of \(A\). It applies that
 
@@ -224,7 +253,7 @@ scalar versions.
 
 The process for the other eigenvalue is exactly the same.
 
-\subsubsection{Complex Eigenvalues}
+\subsection{Complex Eigenvalues}
 
 This is a special case of \emph{eigenvalues} which are not as easy to visualize.
 
@@ -306,26 +335,6 @@ Therefore, the second eigenvector is
     \end{bmatrix}
 \]
 
-\subsection{Similar Matrices}
-
-\(A \sim B\) if there is some \(X\) such that 
-
-\[
-    A = XDX^{-1} \iff X^{-1}AX = D
-\]
-
-If our matrices are really similar then:
-
-\begin{align*}
-    \det(A - \lambda I) &= \det(XDX^{-1} - \lambda I)\\
-    \det(A - \lambda I) &= \det(XDX^{-1} - \lambda X I X^{-1})\\
-    \det(A - \lambda I) &= \det(X[D - \lambda I] X^{-1})\\
-    \det(A - \lambda I) &= \det(X)\det(D - \lambda X) \det(X^{-1})\\
-    \det(A - \lambda I) &= \det(D - \lambda X) 
-\end{align*}
-
-Thus, similar matrices have the same eigenvalues with multiplicity.
-
 \subsection{Diagonal Matrices}
 
 A \emph{diagonal matrix} is matrix of dimensions \(n \times n\) where only the entries of the main diagonal 
@@ -333,25 +342,25 @@ are not zero. This kind of matrices make a lot of the computations in linear alg
 if our matrix is not diagonal we are interested in finding a way of transforming the original matrix 
 into a diagonal matrix.
 
-A matrix is diagonalizable if and only if the eigenvectors of it are linear independent.
+A matrix is diagonalisable if and only if the eigenvectors of it are linear independent.
 
 \subsubsection{Complex Diagonalization}
 
 Given a matrix \(A \in \C^{n \times n}\) with \(n\) distinct eigenvalues then is \(A\)
-diagonalizable. But this does not guaranty the diagonalizibility for \(\R\).
+diagonalisable. But this does not guaranty the diagonalisability for \(\R\).
 
 \subsubsection{Geometric and Algebraic Multiplicity}
 
 Given a matrix \(A \in \C^{n \times n}\) with \(\lambda\) as eigenvalue. The multiple occurrences 
 of the zero \(\lambda\) of \(\mathcal{X}_A\) is called \emph{algebraic multiplicity} \(\alg(\lambda)\). 
-Continuing, \(\geo(\lambda):= dim(Eig(A;\lambda))\) is the \emph{geometrical multiplicity} of \(\lambda\).
+Continuing, \(\geo(\lambda):= \dim(Eig(A;\lambda))\) is the \emph{geometrical multiplicity} of \(\lambda\).
 
-Also, \(A\) is diagonalizable if and only if the \emph{geometric multiplicity} of every eigenvalue is equal 
+Also, \(A\) is diagonalisable if and only if the \emph{geometric multiplicity} of every eigenvalue is equal 
 to its \emph{algebraic multiplicity}.
 
 \textbf{Example:}
 
-This example shows a matrix which is not diagonalizable:
+This example shows a matrix which is not diagonalisable:
 
 \[
     \begin{bmatrix}
@@ -405,7 +414,7 @@ Using the quadratic formula gives us
     &= \cos(\theta) \pm i\sin(\theta) = e^{\pm i\theta}
 \end{align*}
 
-Therefore, our eigenvalues are complex. Now, is the matrix diagonalizable? The answer is yes. 
+Therefore, our eigenvalues are complex. Now, is the matrix diagonalisable? The answer is yes. 
 
 Because of  \((\cos(\theta) - \lambda)^2\) \(\alg(\lambda) = 2\)
 
@@ -517,7 +526,7 @@ the fact that they can be normalized write the matrix \emph{Q} as an orthogonal 
 \subsubsection{Matrix Diagonalization}
 
 Diagonalizing a matrix involves finding a diagonal matrix that is similar to the given matrix. 
-A square matrix \(A\) is diagonalizable if there exists an invertible matrix \(X\) made of eigenvectors of 
+A square matrix \(A\) is diagonalisable if there exists an invertible matrix \(X\) made of eigenvectors of 
 \(A\) such that \(X^{-1}AX = D\), where \(D\) is a diagonal matrix made of eigenvalues.
 
 The order of the eigenvalue and eigenvectors matters if you choose 
@@ -525,7 +534,7 @@ The order of the eigenvalue and eigenvectors matters if you choose
 \(v_1, v_2, \dots, v_n\) must also correspond. This process only works if \(A\) 
 has unique eigenvalues or if they are duplicates they have to be linearly independent.
 
-The process of diagonalization is as follows:
+The process of diagonalisation is as follows:
 
 \textbf{1. Find the eigenvalues and eigenvectors of \(A\).}
 
@@ -539,11 +548,11 @@ Create a diagonal matrix \(D\) whose diagonal entries are the eigenvalues of \(A
 the order of the eigenvectors in \(P\). That is, if the \(i\)-th column of \(P\) is the eigenvector 
 corresponding to the eigenvalue \(\lambda_i\), then the \(i\)-th diagonal entry of \(D\) is \(\lambda_i\).
 
-\textbf{4. Verify the diagonalization:}
+\textbf{4. Verify the diagonalisation:}
     
 Check that \(X^{-1}AX = D\).
 
-A matrix \(A\) is diagonalizable if and only if it has \(n\) linearly independent eigenvectors, where 
+A matrix \(A\) is diagonalisable if and only if it has \(n\) linearly independent eigenvectors, where 
 \(n\) is the size of the matrix.
 
 \textbf{Example: }
@@ -654,25 +663,25 @@ A matrix \(A \in \C^{n \times n}\) is considered \emph{normal} if and only if
 \]  
 
 Also, then there exist with the euclidean inner product in \(\C^n\) an orthonormal basis 
-of eigenvector and therefore, \(A\) is diagonalizable.
+of eigenvector and therefore, \(A\) is diagonalisable.
 
 This implies that
 
 \begin{enumerate}
     
-    \item All real symmetric matrices are diagonalizable, and their eigenvalues are real.
+    \item All real symmetric matrices are diagonalisable, and their eigenvalues are real.
     
-    \item All real antisymmetric matrices \(A^T = -A\) are diagonalizable, and their eigenvalues are 
+    \item All real antisymmetric matrices \(A^T = -A\) are diagonalisable, and their eigenvalues are 
           purely imaginary or 0. 
 
-    \item All orthogonal matrices are diagonalizable.
+    \item All orthogonal matrices are diagonalisable.
 
 \end{enumerate}
 
 \subsection{Singular Value Decomposition (SVD)}
 
 The \emph{Singular Value Decomposition (SVD)} is a fundamental matrix factorization technique in linear 
-algebra. It expresses any real matrix \( A \in \mathbb{R}^{n \times n} \) as a product of three specific 
+algebra. It expresses any real matrix \( A \in \R^{n \times n} \) as a product of three specific 
 matrices:
 
 \[
@@ -683,31 +692,14 @@ where:
 
 \begin{itemize}
 
-    \item \( U \in \mathbb{R}^{n \times n} \) is an orthogonal matrix whose columns are called the 
-          \emph{left singular vectors} of \( A \),
+    \item \( U \in \R^{n \times n} \) is an orthogonal matrix whose columns are called the 
+          \emph{left singular vectors} of \( A \). A rotation.
 
-    \item \( V \in \mathbb{R}^{n \times n} \) is an orthogonal matrix whose columns are the 
-          \emph{right singular vectors} of \( A \),
+    \item \( V \in \R^{n \times n} \) is an orthogonal matrix whose columns are the 
+          \emph{right singular vectors} of \( A \). A stretching with dimension reduction.
 
-    \item \( S \in \mathbb{R}^{n \times n} \) is a diagonal matrix with non-negative entries 
-          \( \sigma_i \geq 0 \) on the diagonal, called the \emph{singular values} of \( A \).
-
-\end{itemize}
-
-
-The SVD has numerous applications in mathematics, science, and engineering, including:
-
-\begin{itemize}
-
-    \item Dimensionality reduction (e.g., Principal Component Analysis),
-
-    \item Solving ill-posed or overdetermined systems of linear equations,
-
-    \item Low-rank matrix approximations,
-
-    \item Signal processing and image compression,
-
-    \item Latent Semantic Analysis (LSA) in natural language processing.
+    \item \( S \in \R^{n \times n} \) is a diagonal matrix with non-negative entries 
+          \( \sigma_i \geq 0 \) on the diagonal, called the \emph{singular values} of \( A \). Another rotation.
 
 \end{itemize}
 
@@ -753,5 +745,127 @@ Again, \( S^T S \) is diagonal with entries \( \sigma_i^2 \), so the matrix \( A
 by \( V \), and the columns of \( V \) are eigenvectors of \( A^T A \), with eigenvalues \( \sigma_i^2 \).
 
 \QED
+
+\subsection{Similar Matrices}
+
+Given \(A \in \C^{n \times n}\) and \(X \in \C^{n \times n}\) then if
+
+\[
+    A = XDX^{-1} \iff X^{-1}AX = D
+\]
+
+we denote \(XDX^{-1}\) as \emph{similar} to \(A\).
+
+\subsubsection*{Case I}
+
+\(A\) is diagonalisable with eigenvalues and eigenvectors.
+
+\[
+    S^{-1}AS = D = 
+    \begin{bmatrix}
+        \lambda_1 & 0       & \cdots & 0         \\
+        0         & \ddots  &        & 0         \\
+        \vdots    &         & \ddots & \vdots    \\
+        0         & \cdots  &        & \lambda_n \\
+    \end{bmatrix}
+\]
+
+\subsubsection*{Case II}
+
+Any complex eigenvalue must come in complex conjugate pairs if \(A\) is real valued.
+
+\[
+    \lambda_1 = a + ib, \ \lambda_2 = a - bi
+\]
+
+\[ 
+    S^{-1}AS = D = 
+    \begin{bmatrix}
+        a & b \\
+        -b & a 
+    \end{bmatrix}
+    \to
+    e^{At}
+    = 
+    \begin{bmatrix}
+        \cos(bt) & \sin(bt) \\
+        -sin(bt) & cos(bt) 
+    \end{bmatrix}
+    e^{at}
+\]
+
+\subsubsection*{Case III}
+
+Repeated eigenvalues and not enough vector in the null-space.
+
+\[ 
+    S^{-1}AS = D = 
+    \begin{bmatrix}
+        \lambda & 1 \\
+        0 & \lambda 
+    \end{bmatrix}
+\]
+
+
+
+\subsubsection{Equality Of Eigenvalues}
+
+Given \(A \in \C^{n \times n}\) and \(X \in \C^{n \times n}\), both regular, then 
+\(XAX^{-1}\) has the same eigenvalues as \(A\).
+
+\textbf{Proof:}
+
+\begin{align*}
+    \det(A - \lambda I) &= \det(XAX^{-1} - \lambda I)\\
+     &= \det(XAX^{-1} - \lambda X I X^{-1})\\
+     &= \det(X[A - \lambda I] X^{-1})\\
+     &= \det(X)\det(A - \lambda I) \det(X^{-1})\\
+     &= \det(A - \lambda I) \\ 
+     &= \mathcal{X}_A
+\end{align*}
+
+Thus, similar matrices have the same \textbf{eigenvalues with their correspondent multiplicity}.
+
+\QED
+
+\subsection{Jordan Normal Form}
+
+Let \(A \in \C^{n \times n}\), it is diagonalisable   if 
+
+\[
+    X^{-1}AX = D \iff A = X D X^{-1}
+\]
+
+where \(D\) is a diagonal matrix. 
+
+Generalizing, we can also find a matrix \(J \in \C^{n \times n}\) in the \emph{Jordan normal form} such that \(A = S J S^{-1}\).
+The matrix \(J\) is then considered the most not diagonalisable matrix similar to our matrix \(A\). This comes in handy when 
+we have repeated eigenvalues with enough eigenvectors.
+
+\[
+    A = X J X^{-1}, J = 
+    \begin{bmatrix}
+        J_1 & & \\ 
+        & \ddots & \\ 
+        & & J_n
+    \end{bmatrix}
+\]
+
+Whereas \(J\) is a \emph{block-diagonal matrix}
+
+
+\[
+    J_i = 
+    \begin{bmatrix}
+        \lambda_i & 1         &     \\ 
+        & \ddots  & \ddots    &    \\ 
+        &         & \lambda_i & 1 \\ 
+        &         &           &  \lambda_i
+    \end{bmatrix}
+\]
+
+For each of these blocks the one corresponding eigenvalue is repeated  across the diagonal
+
+If \(A\) has exactly \(n\) linear independent eigenvectors then \(J\) is  just \(D\).
 
 
