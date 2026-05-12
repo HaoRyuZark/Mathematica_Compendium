@@ -1084,6 +1084,196 @@ Finally, for \(Rx = y\) we have
 
 which gives us \(x = [2, 1, 0]^T\).
 
+\subsection{Householder Algorithm}
+
+The \emph{Householder algorithm} similarly to Givens algorithm will given us a decomposition of a matrix \(A\) 
+such that \(A = QR\) with \(Q\) being orthonormal and \(R\) being upper triangular. The difference relies on the method of the transformations 
+which instead of being rotations, they are reflections.
+
+\subsubsection{Householder Transformation}
+
+Given a vector \(v \in \R^n\) we denote 
+
+\[
+    H_v = I - 2 \frac{vv^T}{v^Tv}
+\]
+
+as the \emph{Householder transformation} for \(v\). Equivalently 
+
+\[
+    H_v = I - 2 \frac{vv^T}{\metric{v}_2^2}.
+\]
+
+If \(v\) is normalized, then \(H_v = I - 2 vv^T\), which is a reflection across the hyperplane orthogonal to \(v\).
+
+\textbf{Example:}
+
+Given \(v = [1, 2]^T\) we have
+
+\[
+    H_v = 
+    \begin{bmatrix}
+        1 & 0 \\ 
+        0 & 1
+    \end{bmatrix}
+    - 2
+    \frac{
+        \begin{bmatrix}
+            1 \\ 2
+        \end{bmatrix}
+        \begin{bmatrix}
+            1 & 2
+        \end{bmatrix}
+    }{\begin{bmatrix}
+        1 & 2
+    \end{bmatrix}    
+    \begin{bmatrix}
+        1 \\ 2
+    \end{bmatrix}}
+    =
+    \begin{bmatrix}
+        1 & 0 \\ 
+        0 & 1
+    \end{bmatrix}
+    - 2 \frac{1}{5}
+    \begin{bmatrix}
+        1 & 2 \\ 
+        2 & 4
+    \end{bmatrix}
+    =
+    \frac{1}{5}
+    \begin{bmatrix}
+        -3 & -4 \\ 
+        -4 & 3
+    \end{bmatrix}
+\]
+
+\subsection{Effect of a Householder Transformation}
+
+Given \(x \in \R^n\) when multiplying \(H_k\), which is the \(k\)-th Householder transformation,
+with \(x\) we get
+
+\[
+    H_k x =
+    H_k
+    \begin{bmatrix}
+        x_1 \\ 
+        x_2 \\ 
+        \vdots \\
+        x_{k - 1} \\ 
+        x_k \\ 
+        x_{k + 1} \\ 
+        \vdots \\
+        x_n
+    \end{bmatrix}
+    = 
+    \begin{bmatrix}
+        x_1 \\ 
+        x_2 \\ 
+        \vdots \\
+        x_{k - 1} \\     
+        ? \\ 
+        0 \\ 
+        \vdots \\
+        0
+    \end{bmatrix}
+\]
+
+The vector to be used for the transformation defined as 
+
+\[
+    v = 
+    x \pm \metric{x}_2 e_k
+\]
+
+The sign is not really important, but it is usually chosen to avoid cancellation errors. 
+
+The \(k\)-th Householder transformation is then defined as \(\tilde{x}\) where all elements before the \(k\)-th element are zero, i.e. if we have to eliminate 
+all elements below the first element, then we have \(k = 1\) an \(\tilde{x} = x\), but if we have to eliminate all elements below the second element, then we have \(k = 2\) and \(\tilde{x} = [0, x_2, x_3, \dots, x_n]^T\) and so on.
+Note that the resulting transformation will be still be used with \(x\).
+
+
+\subsubsection*{Algorithm}
+
+Given \(A \in \R^{n \times n}\) we start with \(Q = I\) and \(R = A\).
+Similar to the \(LU\)-Decomposition we will start with the first column and then focus on the sub-matrix and so on.
+
+\begin{enumerate}
+
+    \item Eliminate the elements below the pivot element \(a_{i,i}\) by applying the Householder transformation \(H_i\) to the \(i\)-th column of the current matrix.
+
+    \item Multiply \(H_i\) with the current matrix and store the resulting matrix which will be used for the next step.
+
+    \item Continue with the next column and so on until we have an upper triangular matrix. The result should be \(H_k \cdot H_{k - 1} \cdot \dots \cdot H_1 \cdot A = R\) and \(Q = H_1 \cdot H_2 \cdot \dots \cdot H_k\).
+ 
+\end{enumerate}
+
+Note that the Householder matrices are self-inverse, i.e. \(H_i^{-1} = H_i\) and therefore \(A = Q R\).
+
+\textbf{Example}
+
+Given is  
+
+\[
+    A = 
+    \begin{bmatrix}
+        1 & 2 \\ 
+        3 & 4
+    \end{bmatrix}
+\]
+
+We start with the first column and compute the Householder transformation for the first column. We have
+
+\[
+    v = 
+    \begin{bmatrix}
+        1 \\ 
+        3
+    \end{bmatrix}
+    + \sqrt{10} 
+    \begin{bmatrix}
+        1 \\ 
+        0
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        1 + \sqrt{10} \\ 
+        3
+    \end{bmatrix}
+\]
+
+Then, we compute the Householder transformation
+
+\[
+    H_1 = I - 2 \frac{vv^T}{v^Tv} = 
+    \begin{bmatrix}
+        -\frac{1}{5} & -\frac{3}{5} \\ 
+        -\frac{3}{5} & \frac{1}{5}
+    \end{bmatrix}
+\]
+
+And we apply it to \(A\)
+
+\[
+    H_1 A = 
+    \begin{bmatrix}
+        -\frac{1}{5} & -\frac{3}{5} \\ 
+        -\frac{3}{5} & \frac{1}{5}
+    \end{bmatrix}
+    \begin{bmatrix}
+        1 & 2 \\ 
+        3 & 4
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        -\sqrt{10} & -\frac{4}{5}\sqrt{10} \\ 
+        0 & \frac{2}{5}\sqrt{10}
+    \end{bmatrix}
+    = R
+\]
+
+Now, we have an upper triangular matrix and we can compute \(Q\) as \(H_1\) and \(R\) as \(H_1 A\), and we have \(A = QR\).
+
 \section{Iterative Methods}
 
 An \emph{iterative method} 
@@ -1487,7 +1677,7 @@ We use the stationary linear iteration to improve the solution \(\tilde{x}\) for
     
     \begin{itemize}
         \item \(r_k = b - Ax_k \).
-        \item \(p_k = M^{-1}r_K\) in other words \(\tilde{L}\tilde{U}p_k = r_k\).
+        \item \(p_k = M^{-1}r_K\) in other words \(\tilde{L}\tilde{U}p_k = r_k\). Also \begin{verbatim}p_k = np.linalg.solve(A, r_k)\end{verbatim}
         \item \(x_{k + 1} = x_k + p_k\).
     \end{itemize}
 \end{enumerate}
@@ -1547,4 +1737,62 @@ Giving us
    = \frac{\inner{p^{(k)}}{Ae^{(k)}}}{\inner{p^{(k)}}{Ap^{(k)}}}
    = \frac{\inner{p^{(k)}}{r^{(k)}}}{\inner{p^{(k)}}{Ap^{(k)}}}
 \]
+
+\section{Iterative Methods For Eigenvalue Problems}
+
+\subsection{The Vector Iteration}
+
+Given a normal matrix \(A \in \C^{n \times n}\), which is unitarily diagonalizable, i.e. there exists an orthonormal basis of 
+eigenvectors, \(u_1, \dots, u_n\).
+
+Each vector \(x \in \C^n\) can be written as \(x = \sum_i x_i u_i\) and 
+
+\[
+    Ax = \sum_i x_i \lambda_i u_i, \quad A^k x = \sum_i x_i \lambda_i^k u_i
+\]
+
+If \(|\lambda_1| > |\lambda_2| \ge \dots \ge |\lambda_n|\) then the dominant eigenvalue is \(\lambda_1\). This 
+means that by applying \(A\) to \(x\) multiple times we get closer to the dominant eigenvector \(u_1\) and the dominant eigenvalue \(\lambda_1\).
+
+\subsubsection*{Algorithm}
+
+\begin{enumerate}
+    
+    \item Choose a \(x^{(0)}\) such that \(\metric{x^{(0)}}_2 = 1\) and \(\inner{x^{(0)}}{u_1} \neq 0\).
+
+    \item Repeat the following steps until convergence: 
+    
+    \begin{align*}
+        y^{(k + 1)} &= Ax^{(k)} \\
+        x^{(k + 1)} &= \frac{y^{(k + 1)}}{\metric{y^{(k + 1)}}_2} \\ 
+        \mu^{(k + 1)} &= \inner{x^{(k + 1)}}{Ax^{(k + 1)}} = \frac{\inner{x^{(k + 1)}}{y^{(k + 1)}}}{\metric{x^{(k)}}_2^2}
+    \end{align*}
+
+\end{enumerate}
+
+\subsection{The Jacobi Method}
+
+The \emph{Jacobi method} is an iterative method for computing the eigenvalues of a symmetric matrix \(A\) by applying a sequence 
+of orthogonal transformations to \(A\) to make it diagonal. 
+
+The eigenvalues of \(A\) are then given by the diagonal elements of the resulting matrix.
+
+
+\subsection{The QR Method}
+
+\subsection{The Hessenberg Transformation}
+
+\subsection{Parlett's Theorem}
+
+\subsection{The Shift Technique}
+
+\subsection{Deflation}
+
+\section{Zero's Problems}
+
+\subsection{The Bisection Algorithm}
+
+\subsection{The Regula-Falsi Algorithm}
+
+\subsection{The Secant Algorithm}
 

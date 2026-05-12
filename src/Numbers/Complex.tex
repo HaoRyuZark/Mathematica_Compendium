@@ -406,3 +406,77 @@ such that \(a_n \neq 0\), the polynomial equation
 
 has at least one solution \(z \in \C\).
 
+\subsection{Complex Numbers as Matrices}
+
+Given a complex number \( z = a + bi \), we can represent it as a real 2x2 matrix:
+
+\[
+	z \leftrightarrow \begin{bmatrix}
+		a & -b \\
+		b & a
+	\end{bmatrix},
+\]
+
+with the linear function \( f: M_2(\R) \to \C \) defined by:
+
+\[
+	f \left(
+		\begin{bmatrix}
+		a & -b \\
+		b & a
+	\end{bmatrix}
+	\right)
+	= a + bi
+\]
+
+By taking the determinant of this matrix gives us the modulus squared of the complex number:
+
+\[
+	\det\begin{bmatrix}
+		a & -b \\
+		b & a
+	\end{bmatrix} = a^2 + b^2 = |z|^2
+\]
+
+Note, that this matrix representation preserves addition and multiplication:
+
+\[
+	\begin{bmatrix}
+		a_1 & -b_1 \\
+		b_1 & a_1
+	\end{bmatrix} + \begin{bmatrix}
+		a_2 & -b_2 \\
+		b_2 & a_2
+	\end{bmatrix} = 
+	\begin{bmatrix}
+		a_1 + a_2 & -(b_1 + b_2) \\
+		b_1 + b_2 & a_1 + a_2
+	\end{bmatrix}
+\]
+
+\[
+	\begin{bmatrix}
+		a_1 & -b_1 \\
+		b_1 & a_1
+	\end{bmatrix} \cdot \begin{bmatrix}
+		a_2 & -b_2 \\
+		b_2 & a_2
+	\end{bmatrix} = 
+	\begin{bmatrix}
+		a_1 a_2 - b_1 b_2 & -(a_1 b_2 + b_1 a_2) \\
+		a_1 b_2 + b_1 a_2 & a_1 a_2 - b_1 b_2
+	\end{bmatrix}
+\]
+
+Hence, 
+
+\[
+	M_2(\R) \supseteq
+	\left\{
+		\begin{bmatrix}
+			a & -b \\ 
+			b & a
+		\end{bmatrix}
+	\right\}
+	\cong \C
+\]

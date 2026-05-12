@@ -90,13 +90,13 @@ If \(\alpha v + \beta w = 0\), where \(v\) and \(w\) are eigenvector of \(A \in 
 
 With \(\lambda \ne \mu\) being eigenvalues of \(A\).
 
-This implies 
+Also we have that 
 
 \[
     0 = A(\alpha v + \beta w) = \alpha \lambda v + \beta \mu w
 \]
 
-Resulting into 
+By subtracting this equation to the previous two equations we get
 
 \begin{align*}
     0 &= \alpha (\lambda - \mu)v \\
@@ -351,9 +351,12 @@ diagonalisable. But this does not guaranty the diagonalisability for \(\R\).
 
 \subsubsection{Geometric and Algebraic Multiplicity}
 
-Given a matrix \(A \in \C^{n \times n}\) with \(\lambda\) as eigenvalue. The multiple occurrences 
-of the zero \(\lambda\) of \(\mathcal{X}_A\) is called \emph{algebraic multiplicity} \(\alg(\lambda)\). 
-Continuing, \(\geo(\lambda):= \dim(Eig(A;\lambda))\) is the \emph{geometrical multiplicity} of \(\lambda\).
+Given a matrix \(A \in \C^{n \times n}\) with \(\lambda_i\) as an eigenvalue: 
+
+The multiple occurrences of the zero \(\lambda_i\) in \(\mathcal{X}_A\) is called \emph{algebraic multiplicity} \(\alg(\lambda)_i\). 
+
+Continuing, \(\geo(\lambda_i):= \dim(\mathrm{Eig}(A;\lambda_i))\) is the \emph{geometrical multiplicity} of \(\lambda_i\) i.e. the number 
+of linearly independent eigenvectors associated with \(\lambda_i\).
 
 Also, \(A\) is diagonalisable if and only if the \emph{geometric multiplicity} of every eigenvalue is equal 
 to its \emph{algebraic multiplicity}.
@@ -376,7 +379,9 @@ The corresponding multiplicities are:
     (1 - \lambda)^2 &= 0
 \end{align*}
 
-\(\alg(1)= 2\) and the \(\geo(1) = 1\) because of 
+With eigenvalue \(\lambda = 1\).
+
+This results into \(\alg(1)= 2\) and the \(\geo(1) = 1\) because of 
 
 \[
     \begin{bmatrix}
@@ -385,9 +390,9 @@ The corresponding multiplicities are:
     \end{bmatrix}
 \]
 
-More precisely \(\dim(Eig(A;1)) = 1\).
+More precisely \(\dim(\mathrm{Eig}(A;1)) = 1\).
 
-\textbf{Example of Complex Eigenvalues:}
+\subsubsection*{Example With Complex Eigenvalues}
 
 Given is the rotation matrix
 
@@ -416,16 +421,16 @@ Using the quadratic formula gives us
 
 Therefore, our eigenvalues are complex. Now, is the matrix diagonalisable? The answer is yes. 
 
-Because of  \((\cos(\theta) - \lambda)^2\) \(\alg(\lambda) = 2\)
+Because of  \((\cos(\theta) - \lambda)^2\) gives us \(\alg(\lambda) = 2\).
 
 \[
-    \alg(e^{i\theta}) =  2, \, \alg(e^{-i\theta}) = 2
+    \alg(e^{i\theta}) =  2, \quad \alg(e^{-i\theta}) = 2
 \]
 
 And 
 
 \[
-    \geo(e^{i\theta}) = 2, \, \geo(e^{-i\theta}) = 2
+    \geo(e^{i\theta}) = 2, \quad \geo(e^{-i\theta}) = 2
 \]
 
 For \(\lambda = e^{i\theta}\) we get two linearly independent vectors
@@ -659,8 +664,10 @@ Now we will complete the process by writing \(D, X, \text{ and } X^{-1}\).
 A matrix \(A \in \C^{n \times n}\) is considered \emph{normal} if and only if 
 
 \[
-    A \overline{A}^{T} = \overline{A}^T A
+    A \overline{A^T} = \overline{A^T} A
 \]  
+
+For real matrices, this condition simplifies to \(A A^T = A^T A\). 
 
 Also, then there exist with the euclidean inner product in \(\C^n\) an orthonormal basis 
 of eigenvector and therefore, \(A\) is diagonalisable.
@@ -868,4 +875,541 @@ For each of these blocks the one corresponding eigenvalue is repeated  across th
 
 If \(A\) has exactly \(n\) linear independent eigenvectors then \(J\) is  just \(D\).
 
+\subsubsection*{Algorithm For Jordan Blocks}
+
+\begin{itemize}
+
+    \item Determine the eigenvalues of \(A\) and their algebraic multiplicities. 
+
+    \item For each eigenvalue, determine the size of the largest Jordan block by finding the smallest \(k\) such that 
+          \(\mathrm{nullity}((A - \lambda I)^k) = \mathrm{nullity}((A - \lambda I)^{k+1})\).
+
+    \item Construct the Jordan normal form \(J\) by placing the Jordan blocks corresponding to each eigenvalue along the diagonal, 
+          with the size of each block determined in the previous step.
+\end{itemize}
+
+\textbf{Example:}
+
+Given the matrix
+
+\[
+    A = \begin{bmatrix}
+        5 & 4 & 2 \\
+        0 & 1 & -1 \\
+        0 & 0 & 3
+    \end{bmatrix}
+\]
+
+The characteristic polynomial is
+
+\[
+    \mathcal{X}_A = (5 - \lambda)(1 - \lambda)(3 - \lambda)
+\]
+
+Delivering the eigenvalues \(\lambda_1 = 5\), \(\lambda_2 = 1\), and \(\lambda_3 = 3\) with algebraic multiplicity of 1 for each.
+
+Hence the Jordan normal form of \(A\) is
+
+\[
+    J = \begin{bmatrix}
+        5 & 0 & 0 \\
+        0 & 1 & 0 \\
+        0 & 0 & 3
+    \end{bmatrix}
+\]
+
+If we had a matrix with repeated eigenvalues and not enough eigenvectors, for example
+
+\[
+    A = \begin{bmatrix}
+        2 & 1 \\
+        0 & 2
+    \end{bmatrix}
+\]
+
+The characteristic polynomial is
+
+\[
+    \mathcal{X}_A = (2 - \lambda)^2
+\]
+
+Delivering the eigenvalue \(\lambda = 2\) with algebraic multiplicity of 2. However, there is only one linearly independent eigenvector, so the Jordan normal form of \(A\) is
+
+\[
+    J = \begin{bmatrix}
+        2 & 1 \\
+        0 & 2
+    \end{bmatrix}
+\]
+
+Note that the Jordan block has a size equal to the algebraic multiplicity of the eigenvalue, and the superdiagonal entry is 1, indicating that there is a single Jordan block for the eigenvalue \(2\).
+
+\subsection{The Hermitian Transpose}
+
+For a matrix \(A \in \C^{n \times m}\), the \emph{hermitian transpose} \(A^H\) is the transpose of the conjugate matrix of a 
+matrix \(A\).
+
+\[
+    A^H = \bar{A}^T
+\]
+
+\subsection{Unitary Matrices}
+
+\emph{Unitary Matrices} are matrices whose columns form orthonormal vectors and
+
+\[
+    U^H = U^{-1}
+\]
+
+
+\subsection{Unitary Decomposition (Schur's Theorem)}
+
+For each matrix \(A \in \C^{n \times n}\), there exist an unitary matrix \(U \in \C^{n \times n}\) such that 
+
+\[
+    A = U T U^H, \quad
+    T = 
+    \begin{bmatrix}
+        \lambda_1 & t_{1,2} & \cdots & t_{1,n} \\ 
+        0 & \ddots & \ddots &  \vdots \\ 
+        \vdots & \ddots & \ddots &  t_{n-1, n} \\ 
+        0 & \cdots & 0 & \lambda_{n,n}
+    \end{bmatrix}
+\]
+
+As a reminder \(U^H = \overline{U^T}\).
+
+\subsubsection{Unitary Diagonalisation}
+
+For a matrix \(A \in \C^{n \times n}\), it is considered \emph{unitary diagonalisable} if there exist a matrix 
+\(U \in \C^{n \times n}\) such that
+
+\[
+    A = U \Lambda U^H, \
+    \Lambda = 
+    \begin{bmatrix}
+        \lambda_1 & 0 & \cdots & 0 \\ 
+        0 & \ddots & \ddots &  \vdots \\ 
+        \vdots & \ddots & \ddots &  0 \\ 
+        0 & \cdots & 0 & \lambda_{n,n}
+    \end{bmatrix}
+\]
+
+\subsection{Normal Matrices}
+
+A matrix \(A \in \C^{n \times n}\) is considered \emph{normal} if \(AA^H = A^H A\)
+
+\subsection{Diagonalisability Criteria Based On Normal Matrices}
+
+A matrix \(A \in \C^{n \times n}\) is unitary diagonalisable if and only if it is normal.
+
+\textbf{Proof:}
+
+\(A\) is unitary diagonalisable \(\Rightarrow\) \(A\) is normal:
+
+Then there exists a unitary matrix \(U\) such that \(A = U \Lambda U^H\). Therefore, 
+
+\[
+    A^H A = (U \Lambda U^H)^H (U \Lambda U^H) = U \Lambda^H U^H U \Lambda U^H = U \Lambda^H \Lambda U^H
+\]
+
+and 
+
+\[
+    A A^H = (U \Lambda U^H)(U \Lambda U^H)^H = U \Lambda U^H U \Lambda^H U^H = U \Lambda \Lambda^H U^H
+\]
+
+Hence, \(A A^H = A^H A\), so \(A\) is normal.
+
+\(A\) is normal \(\Rightarrow\) \(A\) is unitary diagonalisable:
+
+By Schur's theorem, there exists a unitary matrix \(U\) such that \(A = U T U^H\), where \(T\) is upper triangular.
+
+Since \(A\) is normal, we have:
+
+\[
+    A A^H = U T U^H (U T^H U^H) = U T T^H U^H
+\]
+
+and 
+
+\[
+    A^H A = (U T U^H)^H (U T U^H) = U T^H U^H U T U^H = U T^H T U^H
+\]
+
+Since \(A A^H = A^H A\), it follows that \(T T^H = T^H T\). This implies that \(T\) is a normal upper triangular 
+matrix, which must be diagonal. Therefore, \(T = \Lambda\) is diagonal, and we have \(A = U \Lambda U^H\), showing that \(A\) 
+is unitary diagonalisable.
+
+\QED
+
+\textbf{Example}
+
+The matrix
+
+\[
+    A = 
+    \begin{bmatrix}
+        1 & 2 & 0 \\
+        0 & 1 & 2 \\ 
+        2 & 0 & 1
+    \end{bmatrix}
+\]
+
+is normal and unitary diagonalisable. We can verify that \(A A^H = A^H A\) 
+and then find a unitary matrix \(U\) such that \(A = U \Lambda U^H\), where \(\Lambda\) is a diagonal matrix containing the eigenvalues of \(A\).
+
+\[
+    \Lambda = 
+    \begin{bmatrix}
+        3 & 0 & 0 \\
+        0 & -\sqrt{3}i & 0 \\
+        0 & 0 & \sqrt{3}i
+    \end{bmatrix}
+    \quad 
+    U = 
+    \begin{bmatrix}
+        \frac{\sqrt{3}}{3} & - \frac{\sqrt{3}}{6} - \frac{i}{2} & - \frac{\sqrt{3}}{6} + \frac{i}{2} \\
+        \frac{\sqrt{3}}{3} & - \frac{\sqrt{3}}{6} + \frac{i}{2} & - \frac{\sqrt{3}}{6} - \frac{i}{2} \\
+        \frac{\sqrt{3}}{3} & \frac{\sqrt{3}}{3}                 & \frac{-1 + i\sqrt{3}}{2\sqrt{3}}
+    \end{bmatrix}
+\]
+
+\subsection{Properties of Unitary Diagonalisable Matrices}
+
+For matrices \(A \in \C^{n \times n}\) that are unitary diagonalisable \(A = U \Lambda U^H\), the following properties hold:
+
+\begin{itemize}
+
+    \item For all eigenvalues \(\lambda_i\) its geometric and algebraic multiplicity are the same.
+
+    \item The column vectors of \(U\) form an orthonormal basis of \(\C^n\).
+    This means that for a vector \(x\)
+
+    \[
+        x = \sum_{i=1}^n x_i u_i, \quad x_i = \inner{u_i}{x}_2 = u_i^H x
+    \]
+
+    and  
+
+    \[
+        Ax = \sum_{i = 1}^{n} x_i A u_i = \sum_{i = 1}^{n} x_i \lambda_i u_i
+    \]
+
+    \item For any vector \(x,y \in \C^n\) we have that:
+
+    \[
+        \inner{x}{y}_2 = x^H y = \sum_{i = 1}^{n} \bar{x_i} y_i, \quad \metric{x}_2^2 = \sum_{i = 1}^{n} |x_i|^2
+    \]
+
+\end{itemize}
+
+\subsection{Hermitian Matrices}
+
+A matrix \(M \in \C^{n \times m}\) with the following property:
+
+\[
+    M^H = M
+\]
+
+is considered \emph{hermitian}.
+
+\subsubsection*{Properties of Hermitian Matrices}
+
+\begin{itemize}
+
+    \item All eigenvalues of a hermitian matrix are real.
+
+    \item Hermitian matrices are normal and therefore unitary diagonalisable.
+
+    \item Symmetric matrices are a special case of hermitian matrices where all entries are real.
+
+\end{itemize}
+
+\subsection{Real Eigenvalues Via Hermitian Matrices}
+
+Given a normal matrix \(A \in \C^{n \times n}\), the all eigenvalues of \(A\) are real if and only if \(A\) is hermitian.
+
+\textbf{Proof:}
+
+
+\(\Rightarrow\): A is normal which means that it is unitary diagonalisable. Therefore, there exists a unitary matrix \(U\) 
+such that \(A = U \Lambda U^H\), where \(\Lambda\) is a diagonal matrix containing the eigenvalues of \(A\). 
+
+Since all eigenvalues are real, \(\Lambda\) is a real diagonal matrix. Thus, 
+\(A^H = (U \Lambda U^H)^H = U \Lambda^H U^H = U \Lambda U^H = A\), showing that \(A\) is hermitian.
+
+\(\Leftarrow\): If \(A\) is hermitian, we know that \(A^H = A\). Since \(A\) is also normal, it is unitary diagonalisable. 
+Therefore, there exists a unitary matrix \(U\) such that \(A = U \Lambda U^H\), where \(\Lambda\) is a diagonal matrix containing the eigenvalues of \(A\).
+
+\[
+    A^H = (U \Lambda U^H)^H = U \Lambda^H U^H = U \Lambda U^H = A
+\] 
+
+Since, \(\Lambda^H = \Lambda\), follows that \(\Lambda\) is a real diagonal matrix, and thus all eigenvalues of \(A\) are real.
+
+\QED
+
+\subsection{Gerschgoring's Theorem}
+
+Given \(A \in \C^{n \times n}\) and 
+
+\[
+    K = \bigcup_{i=1}^n K_i, \quad K_i = \{ z \in \C : |z - a_{i,i}| \leq R_i\}, \quad R_i = \sum_{j \ne i} |a_{i,j}|
+\]
+
+Then, all eigenvalues of \(A\) are contained in \(K\), \(\lambda_i \in K \forall i\).
+
+In other words, all eigenvalues are contained in a circle with the spectral radius as the center and the sum of the absolute values of the non-diagonal entries of the corresponding row as the radius.
+
+\subsection{Eigenvalue Of Block Matrices}
+
+Given a block matrix
+
+\[
+    A = 
+    \begin{bmatrix}
+        B & C \\ 
+        0 & D \\ 
+    \end{bmatrix}
+    \in C^{n \times n},
+    \quad 
+    B \in C^{p \times p},
+    \quad
+    C \in C^{p \times (n-p)},
+    \quad
+    D \in C^{(n-p) \times (n-p)}
+\]
+
+Its eigenvalues are the eigenvalues of \(B\) and \(D\).
+
+\textbf{Proof:}
+
+This fact comes from the determinant of a block matrix 
+
+\[
+    \det(A - \lambda I) = \det(B - \lambda I) \cdot \det(D - \lambda I)
+\]
+
+\QED
+
+\subsection{Roth's Removal Rule}
+
+The matrices 
+
+\[
+    A = 
+    \begin{bmatrix}
+        B & C \\ 
+        0 & D \\ 
+    \end{bmatrix}
+    \quad 
+    \tilde{A} = 
+    \begin{bmatrix}
+        B & 0 \\ 
+        0 & D \\ 
+    \end{bmatrix}
+\]
+
+are similar 
+
+\[
+    A = V \tilde{A} V^{-1}
+\]
+
+if and only if the \emph{Sylvester equation} has a solution.
+
+\[
+    B X - X D = C
+\]
+
+In such a case, the matrix \(V\) is given by
+
+\[
+    V = 
+    \begin{bmatrix}
+        I & X \\ 
+        0 & I \\ 
+    \end{bmatrix},
+    \quad
+    V^{-1} =
+    \begin{bmatrix}
+        I & -X \\ 
+        0 & I \\
+    \end{bmatrix}
+\]
+
+\subsection{Eigenvalues/vectors of Matrices Representing Complex Numbers}
+
+Given a complex number \(z = a + ib\) we can represent it as a matrix
+
+\[
+    A = 
+    \begin{bmatrix}
+        a & -b \\
+        b & a
+    \end{bmatrix}
+\]
+
+Its eigenvalues are \(z\) and \(\bar{z}\) and the corresponding eigenvectors are
+
+\[
+    v_z = 
+    \begin{bmatrix}
+        \frac{a}{b} - \frac{a - ib}{b} \\
+        1
+    \end{bmatrix},
+    \quad
+    v_{\bar{z}} = \begin{bmatrix}
+        \frac{a}{b} - \frac{a + ib}{b} \\
+        1
+    \end{bmatrix}
+\]
+
+\subsection{Real Jordan Form}
+
+For every matrix \(A \in \R^{n \times n}\) there exists a regular matrix \(V \in \R^{n \times n}\) such that 
+
+\[
+    A = V J V^{-1}, \quad
+    J = 
+    \begin{bmatrix}
+        J_1 & & \\ 
+        & \ddots & \\ 
+        & & J_k
+    \end{bmatrix}
+    \quad 
+    J_i = 
+    \begin{bmatrix}
+        \Lambda_i & I & & \\ 
+        & \ddots & \ddots & \\
+        & & \Lambda_i & I \\
+        & & & \Lambda_i
+    \end{bmatrix}
+\]
+
+For \(\lambda_i \in \R\) is \(\Lambda_i = \lambda_i\) else 
+
+\[
+    \Lambda_i =
+    \begin{bmatrix}
+        a_i & b_i \\
+        -b_i & a_i
+    \end{bmatrix}
+\]
+
+where \(\lambda_i = a_i \pm jb_i \in \C\) are the complex conjugate eigenvalues of \(A\).
+
+\subsection{Real Schur Form}
+
+For every matrix \(A \in \R^{n \times n}\) there exists an orthogonal matrix \(Q \in \R^{n \times n}\) such that
+
+\[
+    A = Q T Q^T, \quad
+    T = 
+    \begin{bmatrix}
+        T_{1,1} & T_{1,2}&  \cdots & T_{1,m} \\ 
+        0 & \ddots & \ddots & \vdots \\
+        0 & 0 & \ddots & T_{m-1,m} \\
+        0 & 0 & 0 & T_{m , m}
+    \end{bmatrix}
+\]
+
+where \(T_{i,i} \in \R\) or \(T_{i,i} \in \R^{2 \times 2}\).
+
+\subsection{Orthonormal Standard Form}
+
+A matrix \(A \in \R^{2 \times 2}\) with complex eigenvalues \(\lambda = a + bi\), \(\bar{\lambda} = a - bi\) is then 
+transformable to the \emph{orthonormal standard form}
+
+\[
+    T = 
+    \begin{bmatrix}
+        a & -b \\
+        b & a
+    \end{bmatrix}
+\]
+
+If  \(A\) is normal.
+
+\subsection{Criterion For Orthonormal Diagonalisation}
+
+A matrix \(A \in \R^{n \times n}\) is orthonormal diagonalisable i.e 
+
+\[
+    A = Q D Q^T, \quad D = 
+    \begin{bmatrix}
+        \Lambda_1 & 0 & \cdots & 0 \\
+        0 & \ddots & \ddots & \vdots \\
+        0 & 0 & \ddots & 0 \\
+        0 & \cdots & 0 & \Lambda_n
+    \end{bmatrix}
+    ,
+    \quad
+    \Lambda_i \in \R \text{ or } \Lambda_i 
+    =
+    \begin{bmatrix}
+        a_i & b_i \\
+        -b_i & a_i
+    \end{bmatrix}
+\]
+
+if and only if \(A\) is normal, i.e. \(A A^T = A^T A\).
+
+\textbf{Example:}
+
+The matrix 
+
+\[
+    A = 
+    \begin{bmatrix}
+     41 & 12 & 60 \\ 
+     12 & 34 & 45 \\
+     -60 & 45 & 50        
+    \end{bmatrix} 
+\]
+
+is normal; hence it is unitary diagonalisable \(A = U \Lambda U^H\). 
+
+Its eigenvalues are \(\lambda = 25\), \(\lambda = 50 - 75i\) and \(\lambda = 50 + 75i\).
+
+\[
+    \Lambda =
+    \begin{bmatrix}
+        25 & 0 & 0 \\
+        0 & 50 - 75i & 0 \\
+        0 & 0 & 50 + 75i
+    \end{bmatrix}
+\]
+
+The eigenvectors will be skipped for the sake of brevity, but they are 3.
+
+We can diagonalize \(A\) as follows stated in the criterion for orthonormal diagonalisation. 
+
+\[
+    \Lambda = 
+    \begin{bmatrix}
+        25 & 0 & 0 \\
+        0 & 50 & -75 \\
+        0 & 75 & 50
+    \end{bmatrix}
+\]
+
+Note that the complex eigenvalues are represented as \(2 \times 2\) blocks in the diagonal of \(\Lambda\).
+
+Then \(Q\) is given by the matrix of the corresponding eigenvectors of \(A\) and we can verify that \(A = Q \Lambda Q^T\).
+
+\[
+    Q = 
+    \begin{bmatrix}
+        \frac{3}{5} & 0 & \frac{4}{5} \\ 
+        -\frac{4}{5} & 0 & -\frac{3}{5} \\
+        0 & 1 & 0
+    \end{bmatrix}
+\]
+
+\subsection{Normal Property Of Symmetric Matrices}
+
+All real symmetric matrices are normal, and therefore they are orthonormal diagonalisable.
+And also all of their eigenvalues are real by the properties of hermitian matrices.
 

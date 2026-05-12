@@ -2,48 +2,25 @@
 \chapter{Changing between Basis}
 
 Given a vector \(\vec{x} = \lambda_1 \vec{v}_1 + \cdots + \lambda_n \vec{v}_n\)
-with \(\vec{v}_1, \dots, \vec{v}_n\) being the basis vectors, we can write \(\vec{x}\) in terms of its components \((x_1, \dots, x_n)^T\).
+with \(\vec{v}_1, \dots, \vec{v}_n \in B_v\) being the basis vectors.
 
-Now imagine having another basis \(\vec{w}_1, \dots, \vec{w}_n\) and the same vector \(\vec{x}\) which know has other coefficients because 
-the basis is different. 
-
+Now imagine having another basis, coordinates, \(\vec{w}_1, \dots, \vec{w}_n \in B_w\).
 It is important to understand that the basis vectors \(\vec{w}_1, \dots, \vec{w}_n\) are written in terms of \textbf{our basis}, because 
 for the perspective of the user of the basis, the basis vectors are not different from the canonical basis. 
 
-We proceed to write our linear combination as matrix vector multiplication. 
+The translation between the two basis is given in the following way: 
 
 \[
-    [\vec{v}_1, \dots, \vec{v}_ n]
-    \begin{bmatrix} \lambda_1 \\ \vdots \\ \lambda_n \end{bmatrix}
-    =
-    B_v\vec{\lambda}_v
+    B_w \vec{\mu}_w = \vec{\lambda}_v, \quad \vec{\mu}_w = B_w^{-1} \vec{\lambda}_v
 \]
 
-Let us define another matrix with the other basis vectors as columns:
+This works because from the perspective of the user of the basis, the basis vectors are not different from the canonical basis, therefore we can write the basis vectors 
+in terms of the our basis and the apply a transformation to get the coordinates in the our basis.
 
-\[
-    [\vec{w}_1, \dots, \vec{w}_ n] = B_w
-\]
+If we then want to get the vector in the basis \(B_w\) we need to apply the inverse of \(B_w\) to the vector in the basis \(B_v\).
 
-Now if we take vector written in the basis \(B_w\) and we want to write it in the canonical basis, we multiply
 
-\[
-    [\vec{w}_1, \dots, \vec{w}_ n]
-    \begin{bmatrix} \mu_1 \\ \vdots \\ \mu_n \end{bmatrix}
-    =
-    B_w\vec{\mu}_w
-\]
-
-Note that this matrix converts our grid into the other perspective, but it takes one vector in the other perspective 
-and gives us the vector in our perspective.
-
-But, we want to write the vector in the basis \(B_v\), therefore we need to apply the 
-inverse of \(B_v\).  Since the matrix \(B_w\) was written in terms of the basis \(B_v\), we need to un-doo the transformation of 
-\(B_v\) to get the change of basis.
-
-\[
-    B_v^{-1} B_w\vec{\mu}_w = \vec{\lambda}_v
-\]
+\subsection{Pseudo-equality Of Translations}
 
 Note we can write the following pseudo-equality for our translations
 
@@ -51,7 +28,9 @@ Note we can write the following pseudo-equality for our translations
     B_v \vec{\lambda}_v = B_w\vec{\mu}_w    
 \]
 
-Note, that we are cheating a bit here with th equal notation. Now by taking the corresponding 
+This generalizes the notion of the change of basis, by not limiting ourselves to only the canonical basis.
+
+Note, that we are cheating a bit here with the equal notation. Now by taking the corresponding 
 inverse we can write the change of basis as desired.
 
 \subsection{Coordinate mapping}

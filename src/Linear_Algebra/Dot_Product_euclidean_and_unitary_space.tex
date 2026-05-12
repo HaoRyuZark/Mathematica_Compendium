@@ -227,7 +227,7 @@ manifestations of this element. We are going to see how inner products are const
 properties we are interested in. Those being linearity for the columns, symmetry and positive definiteness.
 
 Let us start with a matrix \(A \in \R^{n \times n}\) and a map 
-\((\centerdot , \centerdot)_A \R^n \times \R^n : \to \R \) more specific 
+\((\cdot , \cdot)_A : \R^n \times \R^n \to \R \) more specific 
 \((x,y)_A := \inner{x}{Ay}\) using the standard Euclidean inner product.
 
 For our first property, the linearity; it is granted for every matrix \(A = (a_1, a_2, \dots, a_n)\) 
@@ -252,23 +252,23 @@ Given a symmetric \(A \in \R^{n \times n}\) then:
     \item The map \(x \to \inner{x}{Ax}\) is called the \emph{Quadratic Form}
     
     \item \(A\) is \emph{positive definite} if \(\inner{x}{Ax} > 0 \forall x \in \R^n 
-          \backslash \{0\}\)
+          \setminus \{0\}\)
 
     \item \(A\) is \emph{negative definite} if \(\inner{x}{Ax} < 0 \forall x \in \R^n 
-          \backslash \{0\}\)
+          \setminus \{0\}\)
     
     \item \(A\) is \emph{positive semidefinite} if \(\inner{x}{Ax} \ge 0 \forall x \in \R^n 
-          \backslash \{0\}\)
+          \setminus \{0\}\)
 
     \item \(A\) is \emph{negative semidefinite} if \(\inner{x}{Ax} \le 0 \forall x \in \R^n 
-          \backslash \{0\}\)
+          \setminus \{0\}\)
 
-    \item \(A\) is \emph{indefinite} if \(\exists x,y \in \R^n  \backslash \{0\}: \inner{x}{Ax} 
+    \item \(A\) is \emph{indefinite} if \(\exists x,y \in \R^n  \setminus \{0\}: \inner{x}{Ax} 
           < 0 \land \inner{y}{Ay} > 0 \)
     
 \end{enumerate}
 
-\((\centerdot , \centerdot)_A\) is only an inner product if \(A\) is symmetric and positive definite.
+\((\cdot , \cdot)_A\) is only an inner product if \(A\) is symmetric and positive definite.
 
 \textbf{Example:}
 
@@ -355,6 +355,58 @@ because then we would have \(2x_1 x_4\). Because of that, we will take the only 
 \]
 
 And now we are done.
+
+\section{Positive Definite Matrices}
+
+A matrix \(A \in \R^{n \times n}\) is called \emph{positive definite} if it is hermitian and if the quadratic form
+
+\[
+    \inner{x}{Ax} > 0 = x^T Ax > 0, \ \forall x \in \R^n, \ x \ne 0.
+\]
+
+\subsubsection*{Properties of Positive Definite Matrices}
+
+\begin{itemize}
+    
+    \item All eigenvalues of \(A\) are positive.
+
+    \item If \(A\) is symmetric, then \(A\) is positive definite if and only if all eigenvalues of \(A\) are positive.
+
+    \item \(A\) is invertible and \(A^{-1}\) is also positive definite.
+
+    \item The determinant of \(A\) is positive.
+
+    \item The main diagonal entries of \(A\) are all positive.
+
+    \item The quadratic form \(\inner{x}{Ax}\) is strictly convex.
+
+\end{itemize}
+
+\subsection{Conditions for Positive Definiteness}
+
+\(A\) is positive definite if and only if one of the following conditions is satisfied:
+
+\[
+    A_s = \frac{1}{2} \left(A + A^T\right)
+\]
+
+is also positive definite. 
+
+\textbf{Proof:}
+
+\(A\) is positive definite then: 
+
+\[
+    \inner{x}{Ax} = \inner{A_x}{x} = (Ax)^Tx = x^T A^T x 
+\]
+
+Therefore, 
+
+\[
+    x^T Ax = x^T (A + A^T)x = 2x^TA_s x
+\]
+
+\QED
 
 \subsection{Minors}
 

@@ -51,6 +51,13 @@ Let \(x_1, x_2, \dots, x_N\) be the elements of the population.
 
 \end{itemize}
 
+\subsection{The 5 Number Summary}
+
+In the \emph{descriptive statistics} we call the \emph{5 number summary} of a data set as the 
+list of number consisting on the: minimum, lower quantile, median, upper quantile and the maximum.
+
+This numbers can be plotted in a box-plot
+
 \subsection{Sample Statistics}
 
 Let \(X_1, X_2, \dots, X_n\) be a random sample of size \(n\).
@@ -283,14 +290,27 @@ negative slope and equal to zero means that they are independent, and the slope 
 
 \subsection{Correlation Coefficient}
 
-It adjusts the covariance to see relationships 
+The \emph{correlation coefficient} describes the degree of which two features are linearly correlated, and it is given by: 
 
 \[
-    r = \frac{\cov(X,Y)}{\sigma(X) \sigma(Y)}, \quad -1 < r < 1
+    r = \frac{\cov(X,Y)}{\sigma(X) \sigma(Y)}, \quad -1 < r < 1.
 \]
 
 The closer the result the closer the relationship between the values. Zero means 
 independence.
+
+Classification of the values:
+
+\[
+    r 
+    \begin{cases}
+    1 & \text{ the line has a positive slope} \\   
+    -1 & \text{ the line has a negative slope} \\   
+    0 & \text{ the line is constant}
+    \end{cases}
+\]
+
+The individual interpretation of this values and the slope of the line is dependent on the context.
 
 \subsection{Empirical Distribution Function}
 
