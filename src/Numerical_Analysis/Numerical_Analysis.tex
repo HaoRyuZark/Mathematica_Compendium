@@ -1777,22 +1777,288 @@ of orthogonal transformations to \(A\) to make it diagonal.
 
 The eigenvalues of \(A\) are then given by the diagonal elements of the resulting matrix.
 
+The derivation will come from applying orthonormal matrices repeatedly to to our original matrix. 
+
+\[
+    A^{(0)} = A, \quad A^{(k)} = Q_k^T A^{(k - 1)} Q_k
+\]
+
+Using our Givens-Rotations 
+
+\[
+    Q_k = 
+    \begin{bmatrix}
+        1 &        &    &         &        &        &         &   \\
+          & \ddots &    &         &        &        &         &   \\
+          &        & c  &         &        &   s    &         &   \\
+          &        &    &   1     &        &        &         &   \\
+          &        &    &         & \ddots &        &         &   \\
+          &        & -s &         &        &   c    &         &   \\
+          &        &    &         &        &   1    &         &   \\
+          &        &    &         &        &        & \ddots  &   \\
+          &        &    &         &        &        &         & 1 \\
+    \end{bmatrix}
+\]
+
+
+where 
+
+
+\[
+   c = \cos(\alpha), \quad s = \cos(\alpha), \alpha = 
+   \begin{cases}
+    \frac{\pi}{4}  & a_{i_0, i_0} = a_{j_0, j_0} \\ 
+    \frac{1}{2}\arctan\left(\frac{2a_{i_0, j_0}}{a_{j_0, j_0} - a_{i_0, i_0}}\right)
+   \end{cases} 
+\]
+
+Note the following coordinates when reading the matrix from top to bottom, left to right:
+
+\begin{align*}
+    c & \quad \text{at} \quad i_0, i_0 \\ 
+    s & \quad \text{at} \quad i_0, j_0 \\
+    c & \quad \text{at} \quad j_0, j_0 \\
+    -s & \quad \text{at} \quad j_0, i_0
+\end{align*}
+
+And we use the iteration 
+
+\[
+    Q^{(0)} = I, \quad Q^{(k)} = Q^{(k - 1)}Q_k
+\]
+
+\subsubsection*{Stop Criterion}
+
+We define the square sum of the diagonal elements of the matrices \(A^{(k)}\) as 
+
+\[
+    N(A^{(k)}) = \sum_{i \ne j} \left(a_{i,j}^{(k)}\right)^2.
+\]
+
+It holds that 
+
+\[
+    N^(A^{(k + 1)}) \le \alpha N(A^{(k)}), \quad \alpha \in [0, 1)
+\]
+
+converges \emph{strictly monotonously decreasing} towards zero. Thus, this is our convergence criteria 
+given an upper bound.
 
 \subsection{The QR Method}
 
-\subsection{The Hessenberg Transformation}
+We take a matrix \(A \in \R^{n \times n}\) with \(n\) start vectors whose dimension is also \(n\).
 
-\subsection{Parlett's Theorem}
+Choose \(X^{(0)} = [x_1^{(0)},\dots, x_n^{(0)}]\) where the vectors form an orthonormal basis
 
-\subsection{The Shift Technique}
+For \(k = 0, 1, \dots\) repeat the following steps:
 
-\subsection{Deflation}
+\begin{align*}
+    Y^{(k + 1)} &= AX^{(k)} \\ 
+    \tilde{Q^{(k + 1)}} R^{(k + 1)} &= Y^{(k + 1)} \\ 
+    X^{(k + 1)} &= \tilde{Q^{(k + 1)}} \\
+    T^{(k + 1)} &= X^{(k)^T} Y^{(k + 1)} = X^{(k)^T} A X^{(k)}
+\end{align*}
 
-\section{Zero's Problems}
+Then for 
+
+\begin{align*} 
+    T^{(k)} &= X^{(k - 1)^T} A X^{(k - 1)} \\ 
+    &= X^{(k - 1)^T} Y^{(k)} \\ 
+    &= X^{(k - 1)^T} \tilde{Q^{(k)}} R^{(k)}\\ 
+    &= (X^{(k - 1)^T} X^{(k)}) R^{(k)} \\ 
+    &= Q^{(k)} R^{(k)}
+\end{align*}
+
+We can also use \(Q^{(k)} = X^{(k - 1)^T} X^{(k)}\). And because the vector of \(X^{(k)}\) are orthonormal we also have that 
+
+\begin{align*} 
+    T^{(k + 1)} &= X^{(k)^T} A X^{(k)}\\
+    &=  X^{(k)^T} A X^{(k - 1)} X^{(k - 1)^T} X^{(k)}\\
+    &=  X^{(k)^T} Y^{(K)} X^{(k - 1)^T} X^{(k)}\\
+    &=  X^{(k)^T} \tilde{Q^{(k)}} R^{(k)} X^{(k - 1)^T} X^{(k)}\\
+    &=  X^{(k)^T} X^{(k)} R^{(k)} X^{(k - 1)^T} X^{(k)}\\
+    &=  R^{(k)} (X^{(k - 1)^T} X^{(k)})\\
+    &=  R^{(k)} Q^{(k)} 
+\end{align*}
+
+This means that our iteration can be simplified to 
+
+\[
+    A^{(k)} = Q^{(k)}R^{(k)}, \quad A^{(k + 1)} =  R^{(k)} Q^{(k)} 
+\]
+
+Because \(A\) is in the real Schur-form \(A = Q T Q^T\), under certain circumstances we get: 
+
+\[
+    A^{(k)} \rightarrow^{k \to \infty} T, \quad \hat{Q}^{(k)} \rightarrow^{k \to \infty} T
+\]
+
+with \(\hat{Q}^{(k)} = Q^{(0)} \cdot \dots \cdot Q^{(k - 1)}\). 
+
+\section{Zeros Problems}
+
+When dealing with different kinds of situations and models, most problems can be interpreted as looking for the 
+zeros of a non-linear polynomial. For this there are plenty of theory and methods.
 
 \subsection{The Bisection Algorithm}
 
+Given a continuous function \(f: \R \to \R\), with \(a_0, b_0 \in \R\) such that 
+
+\[
+    f(a_0) < 0, f(b_0) > 0 \quad \text{or} \quad f(a_0) > 0, f(b_0) < 0
+\]
+
+this is \(f(a_0) f(b_0) < 0\), then there must be a zero in between (Middle Value Theorem).
+
+We define our iteration as
+
+\[
+    x_k = \frac{a_k + b_k}{2}
+\]
+
+and apply the following rules:
+
+If \(f(x_k) f(a_k) < 0\) then 
+
+\[
+    a_{k + 1} = a_{k}, \quad b_{k + 1} = x_k
+\]
+
+Else
+
+\[
+    a_{k + 1} = x_k, \quad b_{k + 1} = b_k
+\]
+
+then we repeat the process. The termination criteria is the number of iterations set for the computation.
+
 \subsection{The Regula-Falsi Algorithm}
 
+This a variation of the \emph{bisection algorithm} which improves the convergence velocity of the 
+algorithm. 
+
+We start as before: 
+
+Given a continuous function \(f: \R \to \R\), with \(a_0, b_0 \in \R\) such that 
+
+\[
+    f(a_0) < 0, f(b_0) > 0 \quad \text{or} \quad f(a_0) > 0, f(b_0) < 0
+\]
+
+this is \(f(a_0) f(b_0) < 0\) implies there must be a zero in between 
+
+We define our iteration as
+
+\[
+    x_k = \frac{a_k + b_k}{2}
+\]
+
+Now we use the information of \((a_k, f(a_k))\) and \((b_k, f(b_k))\) to define a line
+
+\[
+    s(x) = f(a_k) + \frac{f(b_k) - f(a_k)}{b_k - a_k} (x - a_k)
+\]
+
+We set it to \(s(x) = 0 = ...\) which gives us
+
+\[
+    s(x_k) = 0 \iff x_k = - \frac{b_k - a_k}{f(b_k) - f(a_k)}f(a_k) = \frac{a_kf(b_k) - b_kf(a_k)}{b_k - a_k}
+\]
+
+We used the point at which or secant crosses the x-axis as our new estimation giving us the new iteration rules:
+
+\[
+    x_k = \frac{a_kf(b_k) - b_kf(a_k)}{b_k - a_k}
+\]
+
+If \(f(x_k)f(a_k) < 0\) then 
+
+\[
+    a_{k + 1} a_k, \quad b_{k + 1} = x_k
+\]
+
+Else
+\[
+    a_{k + 1} = x_k, \quad b_{k + 1} = b_k
+\]
+
+
 \subsection{The Secant Algorithm}
+
+This is again a sight modification of the previous algorithm given \(x_{ - 1}, x_{0}\). 
+
+\[
+    x_{k + 1} = x_k - \frac{f(x_k)}{\frac{f(x_k) - f(x_{k - 1})}{x_k - x_{k - 1}}}
+\]
+
+This time we want to find a root and for that we define different secants which will approximate us 
+to that specific point.
+
+\subsection{The Newton Algorithm}
+
+Takin the Taylor Series of our function \(f\) and only considering the first linear term we get 
+
+\[
+    f(y) = f(x_k) + (y - x_k)f'(x_k), \quad y =  x_k - \frac{f(x_k)}{f'(x_k)}
+\]
+
+The \emph{Newton algorithm} defines the following iteration:
+
+\[
+    x_{k + 1} =  x_k - \frac{f(x_k)}{f'(x_k)}
+\]
+
+If we would stop at the quadratic term we would get:
+
+\[
+    x_{k + 1} =  x_k - \frac{f'(x_k) \pm \sqrt{(f'(x_k))^2 - 2f(x_k)f''(x_k)}}{f''(x_k)}.
+\]
+
+The geometric interpretation is that we are approximating the zero by the tangent at the point 
+\((x_k, f(x_k))\).
+
+\subsection{Local Convergence}
+
+Given \(x_k \in X \subseteq \R^n\), we define \emph{local convergence} for the iteration \(x_{k + 1} = \Phi(x_k)\) as 
+
+\[
+    \lim_{k \to \infty} x_k = x \ \forall x_0 \in X.
+\]
+
+\subsection{Contraction}
+
+\(\Phi\) is considered a contraction according to \(\metric{\cdot}\) on \(X \subseteq \R^n\) if 
+
+\[
+    \Phi: X \to X
+\]
+
+and there is an \(\alpha < 1\) independent from \(x,y\) such that 
+
+\[
+    \metric{\Phi(x) - \Phi(y)} \le \alpha \metric{x - y} \ \forall x,y \in X
+\]
+
+\subsection{The Fix Point Theorem of Banach}
+
+Given a closed set \(X \subseteq \R^n\) with the contraction \(\Phi : X \to X\) and 
+
+\[
+    \metric{\Phi(x) - \Phi(y)} \le \alpha \metric{x - y} \ \forall x,y \in X
+\]
+
+such that \(\alpha < 1\) is independent. Then \(\Phi\) has exactly one fix-point \(x = \Phi(x)\) in \(X\). Our
+\emph{Picard iteration} converges for all \(x_0 \in X\) towards \(x\). Also the following approximations hold:
+
+\[
+    \metric{x - x_k} \le \frac{\alpha^k}{1 - \alpha} \metric{x_1 - x_0} \quad \text{a-priori}
+\]
+
+\[
+    \metric{x - x_k} \le \frac{\alpha}{1 - \alpha} \metric{x_k - x_{k - 1}} \quad \text{a-posteriori}
+\]
+
+\subsection{Linear Convergence}
+
+\subsection{Convergence With Order \texorpdfstring{m}{}}
 
