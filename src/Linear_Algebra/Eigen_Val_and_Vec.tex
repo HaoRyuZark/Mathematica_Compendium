@@ -1158,9 +1158,70 @@ Given \(A \in \C^{n \times n}\) and
     K = \bigcup_{i=1}^n K_i, \quad K_i = \{ z \in \C : |z - a_{i,i}| \leq R_i\}, \quad R_i = \sum_{j \ne i} |a_{i,j}|
 \]
 
-Then, all eigenvalues of \(A\) are contained in \(K\), \(\lambda_i \in K \forall i\).
+Then, all eigenvalues of \(A\) are contained in \(K\), \(\lambda_i \in K \ \forall i\).
 
-In other words, all eigenvalues are contained in a circle with the spectral radius as the center and the sum of the absolute values of the non-diagonal entries of the corresponding row as the radius.
+\textbf{Example:}
+
+\subsection{Approximation Of The Differences Of Eigenvalues}
+
+Given a symmetric matrix \(A \in \R^{n \times n}\) with distinct eigenvalues and 
+\(c \in \R\) and \(x \in \R^{n}\setminus \{\vec{0}\}\), then
+
+\[
+    \min_{i = 1, \dots, n} |\lambda_i - c| \le \frac{\metric{Ax - cx}}{x} = \frac{\metric{d}}{\metric{x}}
+\]
+
+\textbf{Proof:}
+
+Because of the distinct eigenvalues of \(A\) we know that there exists an eigenbasis such that we can write \(x\) as  
+
+\[
+    \sum_{i = 1 }^{n} \alpha_i v_i
+\]
+
+We can write  
+
+\[
+    Ax = \sum_{i = 1}^{n} \alpha_i A v_i
+\]
+
+
+Because of the eigenbasis we get 
+
+\[
+    Ax = \sum_{i = 1}^{n} \alpha_i \lambda_i v_i
+\]
+
+Resulting into 
+
+\[
+    Ax - cx = \sum_{i = 1}^{n} \alpha_i \lambda_i v_i - \sum_{i = 1}^{n} \alpha_i c v_i
+\]
+
+Which results into 
+
+\[
+    \sum_{i = 1}^{n} \alpha_i v_i (\lambda_i  - c) = d
+\]
+
+Using the inner product
+
+\[
+    \metric{d}_2^2 = \sum_{i = 1}^{n} \alpha_i^2 (\lambda_i  - c)^2 
+\]
+
+Turning our focus to the minimal of the distance \(\min_{i = 1, \dots, n} |\lambda_i - c|\), let us 
+define \(m\) as the number associated with the minimum.
+
+This gives us the following:
+
+\begin{align*}
+    \sum_{i = 1}^{n} \alpha_i^2 (\lambda_i  - c)^2 &\ge m^2 \sum_{i = 1}^{n} \alpha_i^2 \\
+    \frac{\metric{d}^2}{\metric{x}^2} \ge m^2 \\ 
+    \frac{\metric{d}}{\metric{x}} \ge \min_{i = 1, \dots, n} |\lambda_i - c|
+\end{align*}
+
+\QED
 
 \subsection{Eigenvalue Of Block Matrices}
 

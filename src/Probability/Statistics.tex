@@ -288,12 +288,12 @@ is defined as
 If the result is greater than zero they are 'moving' in the same direction and the slope is positive, less 'opposite' with 
 negative slope and equal to zero means that they are independent, and the slope is zero.
 
-\subsection{Correlation Coefficient}
+\subsection{Pearson Correlation Coefficient}
 
-The \emph{correlation coefficient} describes the degree of which two features are linearly correlated, and it is given by: 
+The \emph{pearson correlation coefficient} describes the degree of which two features are linearly correlated, and it is given by: 
 
 \[
-    r = \frac{\cov(X,Y)}{\sigma(X) \sigma(Y)}, \quad -1 < r < 1.
+    \rho_p = \frac{\cov(X,Y)}{\sigma(X) \sigma(Y)}, \quad -1 < r < 1.
 \]
 
 The closer the result the closer the relationship between the values. Zero means 
@@ -302,7 +302,7 @@ independence.
 Classification of the values:
 
 \[
-    r 
+    \rho_p
     \begin{cases}
     1 & \text{ the line has a positive slope} \\   
     -1 & \text{ the line has a negative slope} \\   
@@ -311,6 +311,54 @@ Classification of the values:
 \]
 
 The individual interpretation of this values and the slope of the line is dependent on the context.
+
+\subsubsection{Invariance Under Linear Transformation}
+
+Given random variables \(X,Y\), we can transform them linearly 
+
+\[
+    \tilde{X} = a_x X - b_x, \quad \tilde{Y} = a_y Y + b_y
+\]
+
+And get the following result when applying the pearson correlation coefficient
+
+\[
+    \rho_p (\tilde{X}, \tilde{Y}) = |\rho_p (X, Y)|
+\]
+
+\subsection{Spearman Correlation Coefficient}
+
+Given an order statistic \(x_{(1)} \le x_{(2)} \le \dots \le x_{(n)}\) from the sample \(x_1, \dots, x_n\), we define the \emph{rank}  as:
+
+\[
+    \rank(x_i) = k, \quad x_i = x_{(k)}.
+\]
+
+We now define the \emph{Spearman correlation coefficient} as 
+
+\[
+    \rho_s = \frac{\sum_{i = 1}^{n} \left(\rank(x_i) - \frac{n + 1}{2}\right) \left(\rank(y_i) - \frac{n + 1}{2}\right)}{\sqrt{\sum_{i = 1}^{n} \left(\rank(x_i) - \frac{n + 1}{2}\right)^2 \sum_{i = 1}^n \left(\rank(y_i) - \frac{n + 1}{2}\right)^2}}
+\]
+
+This coefficient is used to measure non-linear, monotone correlation.
+
+\subsubsection{Invariance Strictly Monotone Transformations}
+
+Given random variables \(X,Y\), we can transform them using strictly monotone functions 
+
+\[
+    \tilde{X} = g(X), \quad \tilde{Y} = h(Y).
+\]
+
+The following holds for the Spearman correlation coefficient
+
+\[
+    \rho_s (\tilde{X}, \tilde{Y}) = 
+    \begin{cases}
+        \rho_s (X,Y), & \text{ if both \(g\) and \(h\) are either decreasing or increasing} \\ 
+        -\rho_s (X,Y), & \text{ else} \\ 
+    \end{cases}
+\]
 
 \subsection{Empirical Distribution Function}
 

@@ -291,8 +291,11 @@ we can solve our problems with if possible small divergences.
 Given \(f: X \to Y\). The smallest constants \(c_a, c_r\) such that: 
 
 \[
-    \|f(x') - f(x) \|_Y \le c_a \|x' - x\|_X, \quad  
-    \frac{\|f(x') - f(x) \|_Y}{\|f(x)\|} \le c_r \frac{\|x' - x\|_X}{\|x\|_X}
+    \|f(x') - f(x) \|_Y \le c_a \|x' - x\|_X \iff c_a = \lim_{\Delta x \to 0} \frac{\metric{\Delta y}}{\metric{\Delta x}}, \quad c_a = \metric{J_f(x)}
+\]
+
+\[
+    \frac{\|f(x') - f(x) \|_Y}{\|f(x)\|} \le c_r \frac{\|x' - x\|_X}{\|x\|_X} \iff c_r = \frac{\metric{x}\metric{f'(x)}}{\metric{f(x)}}, \quad c_r = \frac{\metric{x}}{\metric{f(x)}} \metric{J_f (x)}
 \]
 
 with \(\|x' - x\|_X \le \delta\); are called \emph{absolute condition} and \emph{relative condition} of \(f\).
@@ -314,6 +317,16 @@ Lipschitz-constant \(c_a\). Hence,
 \]
 
 and for \(x' \to x\), we get \(|f'(x)| \le c_a\).
+
+\subsubsection*{Interpretation}
+
+\begin{itemize}
+    \item \(c \approx 1\), well-conditioned.
+
+    \item \(c >> 1\), ill-conditioned.
+
+    \item \(c = \infty\), ill-posed.
+\end{itemize}
 
 \subsubsection{Approximations}
 
@@ -2060,5 +2073,36 @@ such that \(\alpha < 1\) is independent. Then \(\Phi\) has exactly one fix-point
 
 \subsection{Linear Convergence}
 
+For the iteration \(\Phi(x_k) = x_{k + 1}\), we define \emph{linear convergence} as 
+
+\[
+    \metric{e_{k + 1}} \le \metric{e_K} \ \forall k, \ 0 \le c < 1.
+\]
+
+The iteration is linearly convergent if such constant \(c\) exists.
+
 \subsection{Convergence With Order \texorpdfstring{m}{}}
 
+\emph{Convergence With Order \(m\)} is given for an iteration \(\Phi(x_k) = x_{k + 1}\) if, \(\Phi(x)\) is 
+linearly convergent and \(0 \le c\) is independent from \(k\) and 
+
+\[
+    \lim_{k \to \infty} \metric{e_K} = 0 \quad \text{and} \quad \metric{e_{k + 1}} \le c \metric{e_K}^m \ \forall k
+\]
+
+\subsection{Convergene Of The Differentiable Iteration}
+
+If given an \(m \ge 2\), a fix-point \(x\) of \(\Phi: \R \to \R\) such that \(\Phi\) is \(m\)-times differentiable on \(x\) with the 
+property 
+
+\[
+    \Phi'(x) = \Phi''(x)' = \dots = \Phi^{(m - 1)}(x) = 0,
+\]
+
+then there exists a closed interval \(X = [x - \delta, x + \delta], \delta > 0\) such that the iteration 
+
+\[
+    x_{k + 1} = \Phi(x_k)
+\]
+
+for all \(x_0 \in X\) with at least order \(m\) converges.
