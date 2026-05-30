@@ -1,5 +1,6 @@
 \newpage
-\chapter{Orthogonality}
+\chapter{Orthogonality and Inner Products}
+
 \subsection{Orthogonality and Projection}
 
 Let \( a, b \in V \). The vectors \(a\) and \(b\) are orthogonal to each other if
@@ -116,6 +117,34 @@ Given that \(f\) is continuous we can then use the following
 \[
     f\left(\lim_{k \to \infty} r_K x, y\right) = \lim_{k \to \infty}f(r_K x, y) = \lim_{k \to \infty}r_k f(x, y) = \alpha f(x, y)
 \]
+
+\QED
+
+\subsection{Euclidean Inner Product as Sum of Metrics}
+
+Given our Euclidean inner product for any two vector in \(\R^n\), the following holds:
+
+\[
+    \inner{x_i}{x_j} = \frac{1}{2} (\metric{x_i}^2 + \metric{x_j}^2 - \metric{x_i - x_j}^2)
+\]
+
+\textbf{Proof:}
+
+\begin{align*} 
+    \metric{x_i}^2 + \metric{x_j}^2 - \metric{x_i - x_j}^2 &= \inner{x_i}{x_i}+ \inner{x_j}{x_j} - \inner{x_i - x_j}{x_i - x_j} \\ 
+    &= \sum (x_i^{(k)})^2 + \sum (x_i^{(k)})^2  - \sum (x_i^{(k)} - x_j^{(k)})^2 \\
+    &= \sum (x_i^{(k)})^2 + \sum (x_i^{(k)})^2  - \left[\sum (x_i^{(k)})^2 - 2 \sum x_i^{(k)} x_j^{(k)} + \sum (x_j^{(k)})^2\right] \\ 
+    &= \sum (x_i^{(k)})^2 + \sum (x_i^{(k)})^2  -\sum (x_i^{(k)})^2 + 2 \sum x_i^{(k)} x_j^{(k)} - \sum (x_j^{(k)})^2 \\ 
+    &= 2 \sum x_i^{(k)} x_j^{(k)}
+\end{align*}
+
+Now by substituting into the original equality
+
+\begin{align*} 
+    \inner{x_i}{x_j} &= \frac{1}{2} (\metric{x_i}^2 + \metric{x_j}^2 - \metric{x_i - x_j}^2) \\ 
+     &= \frac{1}{2} \left(2 \sum x_i^{(k)} x_j^{(k)}\right) \\ 
+     &= \sum x_i^{(k)} x_j^{(k)} =  \inner{x_i}{x_j}
+\end{align*}
 
 \QED
 

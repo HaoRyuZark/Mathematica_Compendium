@@ -1158,9 +1158,49 @@ Given \(A \in \C^{n \times n}\) and
     K = \bigcup_{i=1}^n K_i, \quad K_i = \{ z \in \C : |z - a_{i,i}| \leq R_i\}, \quad R_i = \sum_{j \ne i} |a_{i,j}|
 \]
 
-Then, all eigenvalues of \(A\) are contained in \(K\), \(\lambda_i \in K \ \forall i\).
+Then, all eigenvalues of \(A\) are contained in \(K\), \(\lambda_i \in K \ \forall i\). The diagonal element is the middle point 
+of the circle and the sum the radius. If all eigenvalues are real, then we get intervals.
 
 \textbf{Example:}
+
+Given the matrix 
+
+\[
+    A = 
+    \begin{bmatrix}
+       4 & -2 & 3 \\
+       3 & 2 & -2 \\ 
+       2 & -1 & 3 
+    \end{bmatrix}
+\]
+
+We get the following circles:
+
+\begin{itemize}
+
+    \item \(K_1 = \{ z \in \C : |z - 4| \leq 5\} = K(4,5)\).
+
+    \item \(K_2 = \{ z \in \C : |z - 2| \leq 5\} = K(2,5)\).
+
+    \item \(K_3 = \{ z \in \C : |z - 3| \leq 3\} = K(3,3)\).
+
+\end{itemize}
+
+Which means that all eigenvalues of \(A\) are contained in the union of these circles, \(K = K_1 \cup K_2 \cup K_3\).
+
+If we also take the approximate the eigenvalues of \(A^T\) then we get the following circles:
+
+\begin{itemize}
+
+    \item \(K_1'(4,5)\).
+
+    \item \(K_2'(2,3)\).
+
+    \item \(K_3'(3,5)\).
+
+\end{itemize}
+
+With this information we can conclude that the eigenvalues has to be in the circle \(K(2,3)\), because it is the smallest circle (interval).
 
 \subsection{Approximation Of The Differences Of Eigenvalues}
 

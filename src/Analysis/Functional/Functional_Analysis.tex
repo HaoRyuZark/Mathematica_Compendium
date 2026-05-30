@@ -1,0 +1,218 @@
+\newpage
+\chapter{Functional Analysis}
+
+\section{Contractions and Banach}
+
+\subsection{Local Convergence}
+
+Given \(x_k \in X \subseteq \R^n\), we define \emph{local convergence} for the iteration \(x_{k + 1} = \Phi(x_k)\) as 
+
+\[
+    \lim_{k \to \infty} x_k = x \ \forall x_0 \in X.
+\]
+
+\subsection{Contraction}
+
+\(\Phi\) is considered a contraction according to \(\metric{\cdot}\) on \(X \subseteq \R^n\) if 
+
+\[
+    \Phi: X \to X
+\]
+
+and there is an \(\alpha < 1\) independent from \(x,y\) such that 
+
+\[
+    \metric{\Phi(x) - \Phi(y)} \le \alpha \metric{x - y} \ \forall x,y \in X
+\]
+
+To check if a function is a contraction, on a certain set or interval, we need to check the following properties:
+
+\begin{itemize}
+
+    \item Check that \(f:X \to X\), i.e. that the function at its local extremes and endpoints remains in the interval. This 
+    accomplished by the derivative test or if the function is monotone, by checking the function at the endpoints of the interval.
+
+    \item Estimating \(\alpha\) using the definition of the contraction and using approximations \(\ge\). Alternatively, we can use the \emph{Mean Value Theorem} with 
+    \(\max_{\xi \in X} \metric{f'(x)} \le \alpha\) via a derivative test using \(\xi\) as our variable.
+
+\end{itemize}
+
+\textbf{Example I:}
+
+Check if \(f(x) = \sqrt{x}\) is a contraction on \([1,\infty)\) with the euclidean metric. 
+
+Because of \(f(x)\) being monotone, we just need to check the function at the endpoints of the interval.
+
+\[
+    f(1) = 1 \quad \text{and} \quad f(\infty) = \infty
+\]
+
+Thus, our first property is satisfied. Now we check the second property:
+
+\begin{align*}
+    \metric{\sqrt{x} - \sqrt{y}} &= \frac{\metric{x - y}}{\metric{\sqrt{x} + \sqrt{y}}} \\ 
+    &\le \frac{\metric{x - y}}{\metric{1 + 1}} = \frac{1}{2} \metric{x - y}
+\end{align*}
+
+Hence \(\alpha = \frac{1}{2}\).
+
+\textbf{Example II:}
+
+\(\Phi(x) = x^3 -3x^2 + 3x\) on \(X = [\frac{1}{2}, \frac{3}{2}]\).
+
+We take the first derivatives: 
+
+\[
+    \Phi'(x) = 3x^2 - 6x + 3 \quad \text{and} \quad \Phi''(x) = 6x - 6
+\]
+
+Then we perform our tests:
+
+\(\Phi'(x) = 0\):
+
+\[
+    \Phi'(x) = 0 \iff 3x^2 - 6x + 3 = 0 \iff x = 1 > 0
+\]
+
+\(\Phi''(x) \ne 0\):
+
+\[
+    \Phi''(1) = 6 - 6 = 0
+\]
+
+We do not have any local extremes, hence we check the function at the endpoints of the interval:
+
+\[
+    \Phi\left(\frac{1}{2}\right) = \frac{11}{8} \in X
+\]
+
+\[
+    \Phi\left(\frac{3}{2}\right) = \frac{11}{8} \in X
+\]
+
+Hence \(\Phi(X) \subseteq X\). Now we check the second property:
+
+\[
+    \alpha \le \max_{x \in X} \metric{\Phi'(x)} 
+\]
+
+\subsection{The Fix Point Theorem of Banach}
+
+Given a closed set \(X \subseteq \R^n\) with the contraction \(\Phi : X \to X\) and 
+
+\[
+    \metric{\Phi(x) - \Phi(y)} \le \alpha \metric{x - y} \ \forall x,y \in X
+\]
+
+such that \(\alpha < 1\) is independent. Then \(\Phi\) has exactly one fix-point \(x = \Phi(x)\) in \(X\). Our
+\emph{Picard iteration} converges for all \(x_0 \in X\) towards \(x\). Also the following approximations hold:
+
+\[
+    \metric{x - x_k} \le \frac{\alpha^k}{1 - \alpha} \metric{x_1 - x_0} \quad \text{a-priori}
+\]
+
+\[
+    \metric{x - x_k} \le \frac{\alpha}{1 - \alpha} \metric{x_k - x_{k - 1}} \quad \text{a-posteriori}
+\]
+
+\textbf{Proof:}
+
+Let \(X\) be a complete space and \(\Phi\) be a contraction: 
+
+\[
+    \metric{\Phi(x) - \Phi(y)} < \alpha \metric{x - y}
+\]
+
+We will show that \(x_k\) is a Cauchy sequence:
+
+\[
+    \metric{x_{k + 1} - x_k} = \metric{\Phi(x_k) - \Phi(x_{k - 1})} \le \alpha \metric{x_k - x_{k - 1}}
+\]
+
+Because of the contraction property and our recursive definition, we can find the following:
+
+\begin{align*}
+    \metric{f(x_2) - f(x_1)} &< \alpha\metric{x_2 - x_1} \\ 
+    \metric{x_3 - x_2} &< \alpha\metric{x_2 - x_1} \\ 
+    \metric{x_4 - x_3} &< \alpha \metric{x_3 - x_2} 
+\end{align*}
+
+Using the previous inequality we get
+
+\[
+    \metric{x_3 - x_2} < \alpha\metric{x_2 - x_1} \iff \alpha \metric{x_3 - x_2} < \alpha^2\metric{x_2 - x_1} 
+\]
+
+Now by applying it multiple times we get 
+
+\begin{align*} 
+    \metric{x_4 - x_3} &< \alpha \metric{x_3 - x_2} < \alpha^2 \metric{x_2 - x_1}\\ 
+    &\dots \\ 
+    \metric{f(x_{k + 1}) - f(x_{k})} &< \alpha^k \metric{x_2 - x_1} \\ 
+\end{align*}
+
+We use the following approximations for \(n > m\):
+
+\begin{align*}
+   \metric{x_n - x_m} = \metric{x_n + x_{n - 1} - x_{n - 1} + \dots + x_{m - 1} - x_{m - 1} - x_m} &\le \metric{x_n - x_{n - 1}} + \dots + \metric{x_{m + 1} - x_m} \\
+    &\le \alpha^{n - 1} \metric{x_2 - x_1} + \dots + \alpha^m \metric{x_2 - x_1} \\
+    &= (\alpha^{n - 1} + \dots + \alpha^m) \metric{x_2 - x_1} \\
+    &= \alpha^m \sum_{i = 0}^{n - m - 1} \alpha^i \metric{x_2 - x_1} \\
+    &= \alpha^m \frac{1 - \alpha^{n - m}}{1 - \alpha} \metric{x_2 - x_1} \\ 
+    &< \frac{\alpha^m}{1 - \alpha} \metric{x_2 - x_1}
+\end{align*}
+
+Hence, our sequence is Cauchy and because \(X\) is complete, we know that \(\lim_{k \to \infty} x_k = p\) for some \(p \in X\).
+
+We take the limit
+
+\[
+    \lim_{k \to \infty} \metric{f(x_{k + 1}) - f(x_{k})} < \alpha^k \metric{x_2 - x_1} = 0
+\]
+
+Because \(X\) is complete we know that \(\lim_{k \to \infty} f(x_k) = p\), hence \(f(p) = p\)
+
+\QED
+
+\subsection{Linear Convergence}
+
+For the iteration \(\Phi(x_k) = x_{k + 1}\), we define \emph{linear convergence} as 
+
+\[
+    \metric{e_{k + 1}} \le c \metric{e_k} \ \forall k, \ 0 \le c < 1.
+\]
+
+The iteration is linearly convergent if such constant \(c\) exists.
+
+\subsection{Convergence With Order \texorpdfstring{m}{}}
+
+\emph{Convergence With Order \(m \ge 1\)} is given for an iteration \(\Phi(x_k) = x_{k + 1}\) if, \(\Phi(x)\) is 
+linearly convergent and \(0 \le c\) is independent from \(k\) and 
+
+\[
+    \lim_{k \to \infty} \metric{e_K} = 0 \quad \text{and} \quad \metric{e_{k + 1}} \le c \metric{e_K}^m \ \forall k
+\]
+
+\subsection{Convergence Of The Differentiable Iteration}
+
+If given an \(m \ge 2\), a fix-point \(x\) of \(\Phi: \R \to \R\) such that \(\Phi\) is \(m\)-times differentiable on \(x\) with the 
+property 
+
+\[
+    \Phi'(x) = \Phi''(x) = \dots = \Phi^{(m - 1)}(x) = 0,
+\]
+
+then there exists a closed interval \(X = [x - \delta, x + \delta], \delta > 0\) such that the iteration 
+
+\[
+    x_{k + 1} = \Phi(x_k)
+\]
+
+for all \(x_0 \in X\) with at least order \(m\) converges.
+
+This means that if we want to check the convergence of an iteration we can check the derivatives of the function at the fix-point and if they are zero up to a certain order, then 
+we can conclude that the iteration converges with at least that order.
+
+
+
+

@@ -1,0 +1,220 @@
+\newpage 
+\section{Roots of Polynomials}
+
+When dealing with different kinds of situations and models, most problems can be interpreted as looking for the 
+roots of a non-linear polynomial. For this there are plenty of theory and methods.
+
+
+\subsection{The Bisection Algorithm}
+
+Given a continuous function \(f: \R \to \R\), with \(a_0, b_0 \in \R\) such that 
+
+\[
+    f(a_0) < 0, f(b_0) > 0 \quad \text{or} \quad f(a_0) > 0, f(b_0) < 0
+\]
+
+this is \(f(a_0) f(b_0) < 0\), then there must be a root in between (Middle Value Theorem).
+
+We define our iteration as
+
+\[
+    x_k = \frac{a_k + b_k}{2}
+\]
+
+and apply the following rules:
+
+If \(f(x_k) f(a_k) < 0\) then 
+
+\[
+    a_{k + 1} = a_{k}, \quad b_{k + 1} = x_k
+\]
+
+Else
+
+\[
+    a_{k + 1} = x_k, \quad b_{k + 1} = b_k
+\]
+
+then we repeat the process. The termination criteria is the number of iterations set for the computation.
+
+\subsection{The Regula-Falsi Algorithm}
+
+This a variation of the \emph{bisection algorithm} which improves the convergence velocity of the 
+algorithm. 
+
+We start as before: 
+
+Given a continuous function \(f: \R \to \R\), with \(a_0, b_0 \in \R\) such that 
+
+\[
+    f(a_0) < 0, f(b_0) > 0 \quad \text{or} \quad f(a_0) > 0, f(b_0) < 0
+\]
+
+this is \(f(a_0) f(b_0) < 0\) implies there must be a zero in between 
+
+We define our iteration as
+
+\[
+    x_k = \frac{a_k + b_k}{2}
+\]
+
+Now we use the information of \((a_k, f(a_k))\) and \((b_k, f(b_k))\) to define a line
+
+\[
+    s(x) = f(a_k) + \frac{f(b_k) - f(a_k)}{b_k - a_k} (x - a_k)
+\]
+
+We set it to \(s(x) = 0 = ...\) which gives us
+
+\[
+    s(x_k) = 0 \iff x_k = - \frac{b_k - a_k}{f(b_k) - f(a_k)}f(a_k) = \frac{a_kf(b_k) - b_kf(a_k)}{b_k - a_k}
+\]
+
+We used the point at which or secant crosses the x-axis as our new estimation giving us the new iteration rules:
+
+\[
+    x_k = \frac{a_kf(b_k) - b_kf(a_k)}{b_k - a_k}
+\]
+
+If \(f(x_k)f(a_k) < 0\) then 
+
+\[
+    a_{k + 1} a_k, \quad b_{k + 1} = x_k
+\]
+
+Else
+\[
+    a_{k + 1} = x_k, \quad b_{k + 1} = b_k
+\]
+
+
+\subsection{The Secant Algorithm}
+
+This is again a sight modification of the previous algorithm given \(x_{ - 1}, x_{0}\). 
+
+\[
+    x_{k + 1} = x_k - \frac{f(x_k)}{\frac{f(x_k) - f(x_{k - 1})}{x_k - x_{k - 1}}}
+\]
+
+This time we want to find a root and for that we define different secants which will approximate us 
+to that specific point.
+
+\section{The Newton Algorithm}
+
+Takin the Taylor Series of our function \(f\) and only considering the first linear term we get 
+
+\[
+    f(y) = f(x_k) + (y - x_k)f'(x_k), \quad y =  x_k - \frac{f(x_k)}{f'(x_k)}
+\]
+
+The \emph{Newton algorithm} defines the following iteration:
+
+\[
+    x_{k + 1} =  x_k - \frac{f(x_k)}{f'(x_k)}
+\]
+
+If we would stop at the quadratic term we would get:
+
+\[
+    x_{k + 1} =  x_k - \frac{f'(x_k) \pm \sqrt{(f'(x_k))^2 - 2f(x_k)f''(x_k)}}{f''(x_k)}.
+\]
+
+The geometric interpretation is that we are approximating the zero by the tangent at the point 
+\((x_k, f(x_k))\).
+
+\subsection{The Newton Algorithm Under Banach}
+
+Given the function \(f(x)\) we define our Newton iteration as 
+
+\[
+    \Phi(x) = x - \frac{f(x)}{f'(x)}
+\]
+
+with 
+
+\[
+    \Phi'(x) = \frac{f(x)f''(x)}{(f'(x))^2} 
+\]
+
+\[
+    \Phi''(x) = \frac{((f'(x))^3 f''(x) + f(x) f'(x))^2f'''(x) - 2f(x) f'(x)(f''(x))^2}{(f'(x))^4}
+\]
+
+We can show that our new function is a contraction by showing: 
+
+\[
+    \metric{\Phi'(x)} \le \alpha < 1
+\]
+
+For this, we must find an upper bound for \(\metric{f(x)}, \metric{f''(x)}\) or a lower bound for \(\metric{f'(x)}^2\)
+
+\textbf{Example:}
+
+Show that the Newton algorithm is a contraction for \(f(x) = x + \ln(x) - 2\) on \(X = [1, 2]\)
+
+\[
+    f'(x) = 1 + \frac{1}{x}, \quad f''(x) = -\frac{1}{x^2}
+\]
+
+Returns 
+
+\[
+    \Phi'(x) = \frac{f(x)f''(x)}{(f'(x))^2} = \frac{-\frac{1}{x^2}(x + \ln(x) - 2)}{\left(1 + \frac{1}{x}\right)^2} = \frac{-(x + \ln(x) - 2)}{\left(x + 1\right)^2}
+\]
+
+Now with \(|\cdot|\)
+
+\[
+    |\Phi'(x)| = \frac{|(x + \ln(x) - 2)|}{\left(x + 1\right)^2}
+\]
+
+We use the derivatives of \(f(x)\) to analyze the way we are going to find our bounds.
+
+\(f'(x)\) is monotonously increasing, therefore
+
+\[
+    f'(x) = 1 + \frac{1}{x} > 0, \quad \text{for} \quad x \in [1, 2] \implies f(x) \in [f(1), f(2)] 
+\]
+
+For our denominator we know that it becomes minimal when \(x\) is minimal, therefore
+
+\[
+    |\Phi'(x)| = \frac{|f(x)|}{(x + 1)^2} \le \frac{1}{4} = \alpha
+\]
+
+\subsection{Convergence Of The Newton ALgorithm}
+
+If \(f: \R \to \R\) is two times continuously differentiable with \(f(x)= 0, f'(x) \ne 0\) i.e. \(x\)  is a root of \(f\). 
+If \(x_0 \in [x - \varepsilon, x + \varepsilon]\) where \(\varepsilon\) is infinitesimally small, then the Newton algorithm converges 
+\emph{quadratically}.
+
+
+\subsection{Taylor Expansion For Zero Roots of the Newton ALgorithm}
+
+If we have the case that \(x\) is zero root of \(f(x), f'(x), \dots\) or even leads to un-definitions then we can write \(f\) as 
+a Taylor polynomial 
+
+\[
+    f(y) = (y - x)^q g(y)
+\]
+
+where \(q - 1\) is the grade of last derivate such that \(f'(x) = 0, f''(x) = 0, \dots, f^{(q - 1)} = 0, f^{(q)}\ne 0\)
+
+This gives us 
+
+\[
+    f'(x) = q(y - x)^{q - 1} g(y) + (y - x)^q g'(x)
+\]
+
+Then 
+
+\[
+    \frac{f(y)}{f'(x)} = \frac{(y - x)^q g(y)}{q(y - x)^{q - 1} g(y) + (y - x)^q g'(x)} = \frac{(y - x)g(x)}{qg(x) + (y - x)g'(x)}
+\]
+
+Resulting into 
+
+\[
+    \lim_{y \to x} \frac{f(y)}{f'(y)} = 0.
+\]
+

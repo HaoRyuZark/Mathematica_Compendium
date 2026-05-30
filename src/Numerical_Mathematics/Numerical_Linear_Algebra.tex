@@ -1,0 +1,1175 @@
+\newpage
+
+\section{Numerical Linear Algebra}
+
+\subsection{QR-Decomposition For Numerical Mathematics}
+
+\subsubsection{Givens Algorithm}
+
+This algorithm uses rotations for the elimination of the column elements.
+
+Given a column vector \(u = (u_1, \dots, u_n)^T \in \R^n\) where \(w = \sqrt{u_1^2 + u_i^2}, i > 1\). 
+
+Set \(w = 0,\ Q_{i,1} = I\) for \(w \ne 0\)
+
+\[ 
+    Q_{i,1} = 
+    \begin{bmatrix}
+        c &        &         & s &        \\
+          & 1      &         &   &        \\
+          &        & \ddots  &   &        \\
+          & -s     &         & 1 &        \\
+          &        &         &   & \ddots \\
+    \end{bmatrix}
+    ,
+    c = \pm \frac{u_1}{w}, s = \pm \frac{u_i}{w}
+\]
+
+Then \(Q_{i,1}\) is orthonormal and 
+
+\[
+    Q_{i,1}u = 
+    \begin{bmatrix}
+        \pm w \\ 
+        u_2  \\ 
+        \vdots \\ 
+        u_{i - 1} \\ 
+        \vdots \\ 
+        0  \\ 
+        u_{i + 1} \\ 
+        \vdots \\ 
+        u_n
+    \end{bmatrix}
+\]
+
+i.e \(u_i\) will be eliminated and nothing changes besides \(u_1, u_i\).
+
+Proceeding, is we use the positive sign we get \(s = [a_{1,1}, \dots, a_{n,1}]^T\)
+of \(A\).
+
+\[
+    s_{1}^{(2)} = Q_{2,1} s_1 = 
+    \begin{bmatrix}
+        \sqrt{a_{1,1}^2 + a_{2,1}^2} \\
+        0 \\
+        a_{3,1} \\
+        \vdots \\
+        a_{n,1}
+    \end{bmatrix}
+\]
+
+Analogously, we can eliminate the other elements of the column
+
+\[
+    s_{1}^{(3)} = Q_{3,1} s_1^{(2)} = 
+    \begin{bmatrix}
+        \sqrt{a_{1,1}^2 + a_{2,1} + a_{3,1}^2} \\
+        0 \\
+        0 \\
+        a_{4,1} \\ 
+        \vdots \\
+        a_{n,1}
+    \end{bmatrix}
+    \dots
+    s_{1}^{(n)} = Q_{n,1} s_1^{(n - 1)} =
+    \begin{bmatrix}
+        \metric{s_1}_2 \\
+        0 \\
+        0 \\
+        0 \\ 
+        \vdots \\
+        0
+    \end{bmatrix}
+\]
+
+In total we have \(Q_1 = Q_{n,1} \cdot \dots \cdot Q_{2,1}\) for the first column; and 
+\(Q_1 s_1 = \metric{s_1} e_1\).
+
+We can continue with the second column and so on, giving us 
+
+\[
+    Q_{n-1}\cdot \dots \cdot Q_1 A = R
+\]
+
+By the orthonormality of the \(Q_i\) we have 
+
+\[
+    A = Q_1^T \cdot \dots \cdot Q_{n-1}^T R = Q R
+\]
+
+Hence, there exits an orthonormal \(Q\) and an upper triangular \(R\) such that \(A = QR\).
+
+\QED
+
+\subsubsection{Algorithm}
+
+We have our system \(Ax = b\) in \(\R^{n \times n}\) and are going to store the \(Q\) and \(R\) in the same matrix. 
+We start with \(Q = I\) and \(R = A\).
+
+\begin{enumerate}
+
+    \item For each element in the current column under the diagonal, we compute:
+
+    \[
+        s = \frac{a_{i,j}}{\sqrt{a_{i,j}^2 + a_{k,j}^2}}, \quad c = \frac{a_{k, j}}{\sqrt{a_{i,j}^2 + a_{k,j}^2}}
+    \]
+
+    with \(i < k\) and \(k\) being ... 
+
+    \item Create the matrix \(Q_{i,j}\) with the following structure:
+    \[
+        Q_{i,j} = 
+        \begin{bmatrix}
+            1 &        &         &        &         & & &\\
+              & \ddots &         &        &         & & &\\
+              &        & c^{(i,i)}       &        &   s^{(i,j)}     & & &\\
+              &        &         & \ddots &         & & &\\
+              &        & -s^{(i,j)}      &        &   c^{(i,i)}     & & &\\
+              &        &         &        &         & \ddots & &\\
+              &        &         &        &         &  & & 1
+        \end{bmatrix} 
+    \]
+
+    the position of \(c\) and \(s\) is at the \(i\)-th and \(k\)-th row and column. This represents a rotation on the plane 
+    spanned by the \(i\)-th and \(k\)-th unit vector.
+
+    \item Multiply \(Q_{i,j}\) with \(A\) and store at the position of the generated zero the value \(s\) and at the position of \(c\) the value \(c\).
+
+    \item Continue with the next element in the column until all elements are eliminated. 
+    Note that we applying the multiplication for the new \(A\), we handle the places where we have stored the \(\rho_{i - 1, j - 1}\) as if they were zero, 
+    because they are not used for the next steps.
+    
+    \item Then, continue with the next column in the new sub-matrix and so on until we have an upper triangular matrix.
+
+    \item Now, compute \(y = Q^T b = Q_{n-1} \cdot \dots \cdot Q_1 b\). One matrix a a time. We use the stored coefficient \(\rho_{i,j} = s\) to then compute 
+    \(s = \sqrt{1 - s^2}\) for the multiplication.
+
+    \item Finally, solve \(Rx = Q_{n-1} \cdot \dots \cdot Q_1 Ax= y\) for \(x\) using back substitution.
+
+\end{enumerate}
+
+It is important to note that this algorithm is four times more expensive that the \(LU\)-Decomposition, but it is more stable.
+
+\textbf{Example:}
+
+Find the \(QR\)-Decomposition of \(A\) and solve \(Ax = b\). 
+
+\[
+    A = 
+    \begin{bmatrix}
+        12 & -40 & 46 \\ 
+        -9 & 30 & 153 \\ 
+        20 & 100 & 135
+    \end{bmatrix}
+    , 
+    b = 
+    \begin{bmatrix}
+       -16 \\ 
+       12 \\ 
+       140
+    \end{bmatrix}
+\]
+
+
+We start by eliminating \(a_{1,2}\): 
+
+\[
+    c = \frac{12}{\sqrt{12^2 - (-9)^2}} = \frac{4}{5}, \ 
+    s = \frac{-9}{\sqrt{12^2 - (-9)^2}} = - \frac{3}{5}
+\]
+
+Therefore 
+
+\[
+    Q_{2,1} =
+    \begin{bmatrix}
+        \frac{4}{5} & - \frac{3}{5} & 0 \\ 
+        \frac{3}{5} & \frac{4}{5} & 0 \\ 
+        0 & 0 & 1
+    \end{bmatrix}
+\]
+
+Then
+
+\[
+    Q_{2,1}A =
+    \begin{bmatrix}
+        15 & -50 & -55 \\ 
+        0 & 0 & 150 \\ 
+        20 & 100 & 135
+    \end{bmatrix}
+\]
+
+We store \(\rho_{2,1} = s = - \frac{3}{5}\) at the generated 0 at \(a_{2,1}\).
+
+\[
+    \begin{bmatrix}
+        15 & -50 & -55 \\ 
+        - \frac{3}{5} & 0 & 150 \\ 
+        20 & 100 & 135
+    \end{bmatrix}
+\]
+
+Now, we eliminate the element \(a_{3, 1}\):
+
+\[
+    c = \frac{15}{\sqrt{15^2 + 20^2}} = \frac{3}{5}, \ 
+    s = \frac{20}{\sqrt{15^2 + 20^2}} = \frac{4}{5}
+\]
+
+Now we get 
+
+\[
+    Q_{3,1} = 
+    \begin{bmatrix}
+        \frac{3}{5} & 0 & \frac{4}{5} \\
+        0 & 1 & 0 \\
+        -\frac{4}{5} & 0 & \frac{3}{5}
+    \end{bmatrix}
+\]
+
+Applying the multiplication to our previously computed matrix \(Q_{2,1}A\)
+
+\[
+    Q_{3,1}Q_{2,1}A = 
+    \begin{bmatrix}
+        25 & 50 & 75 \\ 
+        0 & 0 & 150 \\ 
+        0 & 100 & 125
+    \end{bmatrix}
+\]
+
+We store \(\rho_{3,1} = s = \frac{4}{5}\) at \(a_{3,1}\). 
+
+\[
+    \begin{bmatrix}
+        25 & 50 & 75 \\ 
+        -\frac{3}{5} & 0 & 150 \\ 
+        \frac{4}{5} & 100 & 125
+    \end{bmatrix}
+\]
+
+Continuing with \(a_{3, 2}\):
+
+\[
+    c = \frac{0}{\sqrt{0^2 + 100^2}} = 0, \ 
+    s = \frac{100}{\sqrt{0^2 + 100^2}} = 1 
+\]
+
+\[
+    Q_{3,2} = 
+    \begin{bmatrix}
+        1 & 0 & 0 \\
+        0 & 0 & 1 \\
+        0 & -1 & 0
+    \end{bmatrix}
+\]
+
+Multiply 
+
+\[
+    Q_{3,2}Q_{3,1}Q_{2,1}A =
+    \begin{bmatrix}
+        25 & 50 & 75 \\ 
+        0 & 100 & 125 \\ 
+        0 & 0 & -150
+    \end{bmatrix}
+\]
+
+Now, we store \(\rho_{3,1} = s = 1\) at \(a_{3,2}\)
+
+\[
+    \begin{bmatrix}
+        25 & 50 & 75 \\ 
+        -\frac{3}{5} & 100 & 125 \\ 
+        \frac{4}{5} & 1 & -150
+    \end{bmatrix}
+\]
+
+Now we solve \(Qy = b \iff Q^T b = y\) for \(Rx = y\) using 
+
+\[
+    Q = (Q_{3,2}Q_{3,1}Q_{2,1})^T
+    = 
+    \frac{1}{25}
+    \begin{bmatrix}
+        12 & -16 & -15 \\ 
+        -9 & 12 & -20 \\ 
+        20 & 15 & 0
+    \end{bmatrix}
+\]
+
+and 
+
+\[
+    R = Q_{3,2}Q_{3,1}Q_{2,1}A = 25
+    \begin{bmatrix}
+       1 & 2 & 3 \\ 
+       0 & 4 & 5 \\ 
+       0 & 0 & -6 
+    \end{bmatrix}
+\]
+
+For each of the matrices in \(Q^Tb\) we reconstruct the the \(Q_{i,j}\) matrix and perform the 
+multiplication 
+
+Using \(\rho_{2,1} = -\frac{3}{5}, c = \sqrt{1 - s^2} = \frac{4}{5}\):
+
+\[
+    Q_{2,1}b = 
+    \begin{bmatrix}
+        \frac{4}{5} & - \frac{3}{5} & 0 \\ 
+        \frac{3}{5} & \frac{4}{5} & 0 \\ 
+        0 & 0 & 1
+    \end{bmatrix}
+    \begin{bmatrix}
+        -16 \\ 
+        12 \\ 
+        140
+    \end{bmatrix}
+    = 
+    \begin{bmatrix}
+        -20 \\ 
+        0 \\ 
+        140
+    \end{bmatrix}
+\]
+
+Then repeat for the others, and apply the multiply the new \(b\) to the reconstructed matrix and we get 
+
+\[
+    y = 
+    \begin{bmatrix}
+        100 \\ 
+        100 \\ 
+        0
+    \end{bmatrix}
+\]
+
+Finally, for \(Rx = y\) we have 
+
+\[
+    25 
+    \begin{bmatrix}
+       1 & 2 & 3 \\ 
+       0 & 4 & 5 \\ 
+       0 & 0 & -6 
+    \end{bmatrix}
+    x 
+    = 
+    y
+\]
+
+which gives us \(x = [2, 1, 0]^T\).
+
+\subsection{Householder Algorithm}
+
+The \emph{Householder algorithm} similarly to Givens algorithm will given us a decomposition of a matrix \(A\) 
+such that \(A = QR\) with \(Q\) being orthonormal and \(R\) being upper triangular. The difference relies on the method of the transformations 
+which instead of being rotations, they are reflections.
+
+\subsubsection{Householder Transformation}
+
+Given a vector \(v \in \R^n\) we denote 
+
+\[
+    H_v = I - 2 \frac{vv^T}{v^Tv}
+\]
+
+as the \emph{Householder transformation} for \(v\). Equivalently 
+
+\[
+    H_v = I - 2 \frac{vv^T}{\metric{v}_2^2}.
+\]
+
+If \(v\) is normalized, then \(H_v = I - 2 vv^T\), which is a reflection across the hyperplane orthogonal to \(v\).
+
+\textbf{Example:}
+
+Given \(v = [1, 2]^T\) we have
+
+\[
+    H_v = 
+    \begin{bmatrix}
+        1 & 0 \\ 
+        0 & 1
+    \end{bmatrix}
+    - 2
+    \frac{
+        \begin{bmatrix}
+            1 \\ 2
+        \end{bmatrix}
+        \begin{bmatrix}
+            1 & 2
+        \end{bmatrix}
+    }{\begin{bmatrix}
+        1 & 2
+    \end{bmatrix}    
+    \begin{bmatrix}
+        1 \\ 2
+    \end{bmatrix}}
+    =
+    \begin{bmatrix}
+        1 & 0 \\ 
+        0 & 1
+    \end{bmatrix}
+    - 2 \frac{1}{5}
+    \begin{bmatrix}
+        1 & 2 \\ 
+        2 & 4
+    \end{bmatrix}
+    =
+    \frac{1}{5}
+    \begin{bmatrix}
+        -3 & -4 \\ 
+        -4 & 3
+    \end{bmatrix}
+\]
+
+\subsection{Effect of a Householder Transformation}
+
+Given \(x \in \R^n\) when multiplying \(H_k\), which is the \(k\)-th Householder transformation,
+with \(x\) we get
+
+\[
+    H_k x =
+    H_k
+    \begin{bmatrix}
+        x_1 \\ 
+        x_2 \\ 
+        \vdots \\
+        x_{k - 1} \\ 
+        x_k \\ 
+        x_{k + 1} \\ 
+        \vdots \\
+        x_n
+    \end{bmatrix}
+    = 
+    \begin{bmatrix}
+        x_1 \\ 
+        x_2 \\ 
+        \vdots \\
+        x_{k - 1} \\     
+        ? \\ 
+        0 \\ 
+        \vdots \\
+        0
+    \end{bmatrix}
+\]
+
+The vector to be used for the transformation defined as 
+
+\[
+    v = 
+    x \pm \metric{x}_2 e_k
+\]
+
+The sign is not really important, but it is usually chosen to avoid cancellation errors. 
+
+The \(k\)-th Householder transformation is then defined as \(\tilde{x}\) where all elements before the \(k\)-th element are zero, i.e. if we have to eliminate 
+all elements below the first element, then we have \(k = 1\) an \(\tilde{x} = x\), but if we have to eliminate all elements below the second element, then we have \(k = 2\) and \(\tilde{x} = [0, x_2, x_3, \dots, x_n]^T\) and so on.
+Note that the resulting transformation will be still be used with \(x\).
+
+
+\subsubsection*{Algorithm}
+
+Given \(A \in \R^{n \times n}\) we start with \(Q = I\) and \(R = A\).
+Similar to the \(LU\)-Decomposition we will start with the first column and then focus on the sub-matrix and so on.
+
+\begin{enumerate}
+
+    \item Eliminate the elements below the pivot element \(a_{i,i}\) by applying the Householder transformation \(H_i\) to the \(i\)-th column of the current matrix.
+
+    \item Multiply \(H_i\) with the current matrix and store the resulting matrix which will be used for the next step.
+
+    \item Continue with the next column and so on until we have an upper triangular matrix. The result should be \(H_k \cdot H_{k - 1} \cdot \dots \cdot H_1 \cdot A = R\) and \(Q = H_1 \cdot H_2 \cdot \dots \cdot H_k\).
+ 
+\end{enumerate}
+
+Note that the Householder matrices are self-inverse, i.e. \(H_i^{-1} = H_i\) and therefore \(A = Q R\).
+
+\textbf{Example}
+
+Given is  
+
+\[
+    A = 
+    \begin{bmatrix}
+        1 & 2 \\ 
+        3 & 4
+    \end{bmatrix}
+\]
+
+We start with the first column and compute the Householder transformation for the first column. We have
+
+\[
+    v = 
+    \begin{bmatrix}
+        1 \\ 
+        3
+    \end{bmatrix}
+    + \sqrt{10} 
+    \begin{bmatrix}
+        1 \\ 
+        0
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        1 + \sqrt{10} \\ 
+        3
+    \end{bmatrix}
+\]
+
+Then, we compute the Householder transformation
+
+\[
+    H_1 = I - 2 \frac{vv^T}{v^Tv} = 
+    \begin{bmatrix}
+        -\frac{1}{5} & -\frac{3}{5} \\ 
+        -\frac{3}{5} & \frac{1}{5}
+    \end{bmatrix}
+\]
+
+And we apply it to \(A\)
+
+\[
+    H_1 A = 
+    \begin{bmatrix}
+        -\frac{1}{5} & -\frac{3}{5} \\ 
+        -\frac{3}{5} & \frac{1}{5}
+    \end{bmatrix}
+    \begin{bmatrix}
+        1 & 2 \\ 
+        3 & 4
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        -\sqrt{10} & -\frac{4}{5}\sqrt{10} \\ 
+        0 & \frac{2}{5}\sqrt{10}
+    \end{bmatrix}
+    = R
+\]
+
+Now, we have an upper triangular matrix and we can compute \(Q\) as \(H_1\) and \(R\) as \(H_1 A\), and we have \(A = QR\).
+
+\section{Iterative Methods}
+
+An \emph{iterative method} 
+
+\[
+    x^{(k + 1)} = \phi_k(x^{(k)}, x^{(k - 1)}, \dots, x^{(0)})
+\]
+
+is convergent if \(x^{(k)} \to x\) for all  \(x^{(0)} \in \R^n\). It also has the \emph{fixed point property} 
+\(x = \phi_(x) \iff Ax = b\).
+
+The \emph{error} \(e^{(k)}\) and the \emph{residuum} \(r^{(k)}\) are defined as
+
+\[
+    e^{(k)} = x - x^{(k)}, \quad r^{(k)} = b - Ax^{(k)}
+\]
+
+If for the computation of \(x^{(k + 1)}\) only the direct predecessor \(x^{(k)}\) uses, then
+
+\[
+    x^{(k + 1)} = \phi(x^{(k)})
+\]
+
+the process is considered with \emph{one step} \(\phi_k : \R^n \to \R^n\), else is considered with \emph{multi step} 
+\(\phi_k : (\R^n)^{k + 1} \to \R^n\).
+
+If \(\phi_k = \phi\) for all \(k\) then the process is called \emph{stationary}, else it is called \emph{non-stationary}.
+
+\subsection{Single Step Stationary Iteration Method}
+
+A \emph{single step stationary iteration method} is given by 
+
+\[
+    x^{(k + 1)} = \phi(x^{(k)}) = Bx + c,
+\]
+
+where \(B\) is the \emph{iteration matrix} and \(c\) is the \emph{iteration vector}.
+
+\subsection{Error of Single Step Stationary Iteration Method}
+
+If the single step stationary iteration method has the fixed point property, then for 
+\(e^{(k)} = x - x^{(k)}, r^{(k)} = b - Ax^{(k)}\) we have
+
+\[
+    Ae^{(k)} = r^{(k)}
+\]
+
+\textbf{Proof:}
+
+\[
+    Ae^{(k)} = A(x - x^{(k)}) = Ax - Ax^{(k)} = b - Ax^{(k)} = r^{(k)}
+\]
+
+\QED
+
+\subsection{Convergence}
+
+Analyzing our regular linear system \(Ax = b\) with the single step iteration 
+
+\[
+    x^{(k + 1)} = \phi(x^{(k)}) = Bx^{(k)} + c
+\]
+
+with the fixed point property \(x = \phi(x) = Bx + c \iff Ax = b\) we get
+
+For the error \(e^{(k)} = x^{(k)} - x\) we have 
+
+\[
+    e^{(k + 1)} = x^{(k + 1)} - x = Bx^{(k)} + c - (Bx + c) = Be^{(k)}
+\]
+
+Therefore, 
+
+\[
+    e^{(k)} = B^k e^{(0)}
+\]
+
+Then 
+
+\[
+    e^{(k)} \to 0 \quad \text{as} \quad k \to \infty
+\]
+
+for an arbitrary \(e^{(0)}\) if and only if \(B^k \to 0 \quad \text{as} \quad k \to \infty\).
+
+\subsection{The Spectral Radius}
+
+The \emph{spectral radius} of a matrix \(B\) is defined as
+ 
+\[
+    \rho(B) = \max\{|\lambda| \mid \lambda \in \sigma(B)\},
+\]
+
+where \(\sigma(B)\) is the \emph{spectrum} of \(B\), i.e. the set of all eigenvalues of \(B\).
+
+\subsubsection*{Properties of the Spectral Radius}
+
+\begin{itemize}
+
+    \item \(\rho(B) \le \metric{B}_I\) for all induced metrics.
+
+    \item \(\forall \varepsilon > 0\) there exists an induced metric \(\metric{\cdot}_I\) from a vector metric \(\metric{\cdot}_V\) such that:
+    \[
+        \metric{B}_I = \sup_{w \ne 0} \frac{\metric{Bw}_w}{\metric{w}_V}
+    \]
+    with \(\metric{B}_I \le \rho(B) + \varepsilon\).
+
+\end{itemize}
+
+\subsection{Gelfand}
+
+For any matrix metric \(\metric{\cdot}\) the following holds:
+
+\[
+    \rho(B) = \lim_{k \to \infty} \sqrt[k]{\metric{B^k}}.
+\]
+
+Also for an induced matrix metric \(\metric{\cdot}_I\) \(\metric{B}_I^{\frac{1}{k}}\) converges towards \(\rho(B)\).
+\subsection{Splitting Method For Linear Systems}
+
+Given a regular matrix \(A \in \R^{n \times n}\) in a system \(Ax = b\), we can split \(A\) into 
+
+\[
+    A = M - N
+\]
+
+where \(M\) is regular and \(N\) is arbitrary. Then, we can write
+
+\[
+    Mx = Nx + b
+\]
+
+and we can define the iteration 
+
+\[
+    x^{(k + 1)} = M^{-1}Nx^{(k)} + M^{-1}b,
+\]
+
+and we set \(x^{(0)} = \vec{0} \in \R^n\) as the initial guess.
+
+\textbf{Example:}
+
+Given the system 
+
+\[
+    \begin{bmatrix}
+        4 & -1 & 0 & 0 \\ 
+        -1 & 4 & -1 & 0 \\ 
+        0 & -1 & 4 & -1 \\ 
+        0 & 0 & -1 & 3
+    \end{bmatrix}
+    x = 
+    \begin{bmatrix}
+        15 \\ 
+        10 \\ 
+        10 \\ 
+        10
+    \end{bmatrix}
+\]
+
+Then we can split \(A\) into
+
+\[
+    M = 
+    \begin{bmatrix}
+        4 & 0 & 0 & 0 \\ 
+        0 & 4 & 0 & 0 \\ 
+        0 & 0 & 4 & 0 \\ 
+        0 & 0 & 0 & 3
+    \end{bmatrix}
+    , \quad 
+    N = 
+    \begin{bmatrix}
+        0 & -1 & 0 & 0 \\ 
+        -1 & 0 & -1 & 0 \\ 
+        0 & -1 & 0 & -1 \\ 
+        0 & 0 & -1 & 0
+    \end{bmatrix}
+\]
+
+Which results in the iteration
+
+\[
+    x^{(k + 1)} = 
+    \begin{bmatrix}
+        \frac{1}{4} & 0 & 0 & 0 \\ 
+        0 & \frac{1}{4} & 0 & 0 \\ 
+        0 & 0 & \frac{1}{4} & 0 \\
+        0 & 0 & 0 & \frac{1}{3} 
+    \end{bmatrix}
+    \begin{bmatrix}
+        0 & -1 & 0 & 0 \\ 
+        -1 & 0 & -1 & 0 \\ 
+        0 & -1 & 0 & -1 \\ 
+        0 & 0 & -1 & 0
+    \end{bmatrix}
+    \begin{bmatrix}
+       0 \\ 
+       0 \\ 
+        0 \\
+        0 
+    \end{bmatrix}
+    + 
+    \begin{bmatrix}
+       \frac{1}{4} & 0 & 0 & 0 \\ 
+        0 & \frac{1}{4} & 0 & 0 \\ 
+        0 & 0 & \frac{1}{4} & 0 \\
+        0 & 0 & 0 & \frac{1}{3} 
+    \end{bmatrix}
+    \begin{bmatrix}
+        15 \\ 
+        10 \\ 
+        10 \\ 
+        10
+    \end{bmatrix}
+    = 
+    \begin{bmatrix}
+        3.75 \\ 
+        2.5 \\ 
+        2.5 \\ 
+        3.333\ldots
+    \end{bmatrix}
+\]
+
+We can then continue the process using our resulting vector as the new \(x^{(k)}\) and we will get closer to the solution of the system.
+
+\subsubsection*{Triple Splitting}
+
+We can also define the splitting 
+
+\[
+    A = D - L - U
+\]
+
+where \(D\) is the diagonal of \(A\), \(L\) is the lower triangular part of \(A\) and \(U\) is the upper triangular part of \(A\). 
+We then derive from that 
+
+\begin{align*}
+    Ax = b &\iff (D - L - U)x = b \\ 
+           &\iff Dx = (L + U)x + b
+\end{align*}
+
+The iteration is then given by
+
+\[
+    x^{(k + 1)} = D^{-1}(L + U)x^{(k)} + D^{-1}b
+\]
+
+\subsection{The Residuum As Stopping Criterion}
+
+The \emph{residuum} is defined as
+
+\[
+    r^{(k)} = b - Ax^{(k)}
+\]
+
+When \(\metric{r^{(k)}} \le \varepsilon \metric{b}\) for a given \(\varepsilon > 0\) then we can stop the iteration because we are close enough to the solution.
+
+\subsection{Convergence For Semi Positive Definite Matrices}
+
+Given semi positive definite matrices \(A, M\); if \(2M - A\) is also semi positive definite, then 
+
+\[
+    \phi(x) = Bx + d,\ B = I - M^{-1}A, \ d = M^{-1}b
+\]
+
+converges and also \(\metric{B}_A = \metric{B}_M = \rho(B) < 1\).
+
+Also, the splitting \(M + M^T - A\) is also spd. and \(\rho(B) \le \metric{B}_A < 1\).
+
+\subsection{Strict Diagonal-dominant}
+
+\(A\) is strictly diagonal-dominant if 
+
+\[
+    |a_{i,i}| > \sum_{j \ne i} |a_{i,j}|, \ \forall i = 1, \dots, n
+\]
+
+\subsection{The Jacobi Method}
+
+The Jacobi method is a single step stationary iteration method with the splitting 
+\(A = D - (L + U)\) and the iteration:
+
+\[
+    x^{(k + 1)} = D^{-1}(L + U)x^{(k)} + D^{-1}b
+\]
+
+\textbf{Example:}
+
+Given the system 
+
+\[
+    \begin{bmatrix}
+        4 & -1 & 0 & 0 \\ 
+        -1 & 4 & -1 & 0 \\ 
+        0 & -1 & 4 & -1 \\ 
+        0 & 0 & -1 & 3
+    \end{bmatrix}
+    b = 
+    \begin{bmatrix}
+        15 \\ 
+        10 \\ 
+        10 \\ 
+        10
+    \end{bmatrix}
+\]
+
+We can apply the Jacobi method with the splitting \(A = D - (L + U)\) where
+
+\[
+    D = 
+    \begin{bmatrix}
+        4 & 0 & 0 & 0 \\ 
+        0 & 4 & 0 & 0 \\ 
+        0 & 0 & 4 & 0 \\ 
+        0 & 0 & 0 & 3
+    \end{bmatrix}
+    , \quad 
+    L + U = 
+    \begin{bmatrix}
+        0 & -1 & 0 & 0 \\ 
+        -1 & 0 & -1 & 0 \\ 
+        0 & -1 & 0 & -1 \\ 
+        0 & 0 & -1 & 0
+    \end{bmatrix}
+\]
+
+Then, we can compute the iteration
+
+\[
+    x^{(k + 1)} = 
+    \begin{bmatrix}
+        \frac{1}{4} & 0 & 0 & 0 \\ 
+        0 & \frac{1}{4} & 0 & 0 \\ 
+        0 & 0 & \frac{1}{4} & 0 \\
+        0 & 0 & 0 & \frac{1}{3} 
+    \end{bmatrix}
+    \begin{bmatrix}
+        0 & -1 & 0 & 0 \\ 
+        -1 & 0 & -1 & 0 \\ 
+        0 & -1 & 0 & -1 \\ 
+        0 & 0 & -1 & 0
+    \end{bmatrix}
+    \begin{bmatrix}       
+        0 \\ 
+        0 \\ 
+        0 \\
+        0 
+    \end{bmatrix}
+    +
+    \begin{bmatrix}
+         \frac{1}{4} & 0 & 0 & 0 \\ 
+          0 & \frac{1}{4} & 0 & 0 \\ 
+          0 & 0 & \frac{1}{4} & 0 \\    
+          0 & 0 & 0 & \frac{1}{3} 
+    \end{bmatrix}
+    \begin{bmatrix}
+        15 \\ 
+        10 \\ 
+        10 \\ 
+        10
+    \end{bmatrix}
+\]
+
+Giving us
+
+\[
+    x^{(1)} = 
+    \begin{bmatrix}
+        3.75 \\ 
+        2.5 \\ 
+        2.5 \\ 
+        3.333\ldots
+    \end{bmatrix}
+\]
+
+\subsection{Gauss-Seidel Method}
+
+The Gauss-Seidel method is a single step stationary iteration method with the splitting
+\(A = (D - L) - U\) and the iteration
+
+\[
+    x^{(k + 1)} = (D - L)^{-1}Ux^{(k)} + (D - L)^{-1}b
+\]
+
+\subsection{After Iteration}
+
+This process refers to using an iterative method after using a mathematical algorithm for solving a certain problem to 
+mitigate rounding errors. In our case we will present such a process with the \(LU\)-Decomposition.
+
+While performing the \(LU\)-Decomposition we will get \(\tilde{L}\tilde{U} = M\) which are the \(L,U\) matrices, but with rounding errors.
+We use the stationary linear iteration to improve the solution \(\tilde{x}\) for which \(A\tilde{x} = b\).
+
+\begin{enumerate}
+
+    \item Perform the \(LU\)-Decomposition to get the triangular matrices and the approximate solution with errors.
+
+    \item Set \(x_0 = \tilde{x}\) 
+
+    \item Repeat the following steps as long \(\frac{\metric{p_k}}{\metric{x_{k + 1}}} < \varepsilon\): 
+    
+    \begin{itemize}
+        \item \(r_k = b - Ax_k \).
+        \item \(p_k = M^{-1}r_K\) in other words \(\tilde{L}\tilde{U}p_k = r_k\). Also \begin{verbatim}p_k = np.linalg.solve(A, r_k)\end{verbatim}
+        \item \(x_{k + 1} = x_k + p_k\).
+    \end{itemize}
+\end{enumerate}
+
+\subsection{Gradient Descent}
+
+Given our stationary iteration 
+
+\[
+    x^{(k + 1)} = x^{(k)} + M^{-1}r^{(k)}
+\]
+
+We add the parameter \(\alpha^{(k)}\)
+
+\[
+    x^{(k + 1)} = x^{(k)} + \alpha^{(k)}M^{-1}r^{(k)}
+\]
+
+With the goal in each step to find an \(\alpha^{(k)}\) which gives us the "best" \(x^{(k + 1)}\).
+This means 
+
+\begin{align*} 
+    e^{(k + 1)} &= x - x^{(k + 1)} \\ 
+    &= x - x^{(k)} + \alpha^{(k)}M^{-1}r^{(k)} \\ 
+    &= e^{(k)} - \alpha^{(k)}p^{(k)}
+\end{align*}
+
+Geometrically, \(e^{(k + 1)}\) is on a straight line determined by \(e^{(k)}\) in the direction \(p^{(k)}\). This means 
+that \(\metric{e^{(k + 1)}}\) will be minimal when \(p_{(k)}\) is orthogonal to \(e^{(k + 1)}\)
+
+\begin{align*}
+    \inner{e^{(k + 1)}}{p^{(k)}} &= \inner{p^{(k)}}{e^{(k)} - \alpha^{(k)}p^{(k)}} \\ 
+    &= \inner{p^{(k)}}{e^{(k)}} - \alpha^{(k)} \inner{p^{(k)}}{p^{(k)}} \\ 
+    \alpha^{(k)} &= \frac{\inner{p^{(k)}}{e^{(k)}}}{\inner{p^{(k)}}{p^{(k)}}}
+\end{align*}
+
+Hence, we have constructed the following iterative algorithm 
+
+\begin{align*}
+   r^{(k)} &= b - Ax^{(k)}  \\
+   p^{(k)} &= M^{-1}r^{(k)} \\ 
+   \alpha^{(k)} &= \frac{\inner{p^{(k)}}{e^{(k)}}}{\inner{p^{(k)}}{p^{(k)}}} \\ 
+   x^{(k + 1)} &= x^{k} + \alpha^{(k)}p^{(k)}
+\end{align*}
+
+The problem is that technically we do not know the exact solution \(x\), but this can be solved using a 
+suited inner product with metric 
+
+\[
+    \metric{x} = \metric{x}_A = \sqrt{x^T A x}
+\]
+
+Giving us 
+
+\[
+   \alpha^{(k)} =  \frac{\inner{p^{(k)}}{e^{(k)}}_A}{\inner{p^{(k)}}{p^{(k)}}_A}
+   = \frac{\inner{p^{(k)}}{Ae^{(k)}}}{\inner{p^{(k)}}{Ap^{(k)}}}
+   = \frac{\inner{p^{(k)}}{r^{(k)}}}{\inner{p^{(k)}}{Ap^{(k)}}}
+\]
+
+\section{Iterative Methods For Eigenvalue Problems}
+
+\subsection{The Vector Iteration}
+
+Given a normal matrix \(A \in \C^{n \times n}\), which is unitarily diagonalizable, i.e. there exists an orthonormal basis of 
+eigenvectors, \(u_1, \dots, u_n\).
+
+Each vector \(x \in \C^n\) can be written as \(x = \sum_i x_i u_i\) and 
+
+\[
+    Ax = \sum_i x_i \lambda_i u_i, \quad A^k x = \sum_i x_i \lambda_i^k u_i
+\]
+
+If \(|\lambda_1| > |\lambda_2| \ge \dots \ge |\lambda_n|\) then the dominant eigenvalue is \(\lambda_1\). This 
+means that by applying \(A\) to \(x\) multiple times we get closer to the dominant eigenvector \(u_1\) and the dominant eigenvalue \(\lambda_1\).
+
+\subsubsection*{Algorithm}
+
+\begin{enumerate}
+    
+    \item Choose a \(x^{(0)}\) such that \(\metric{x^{(0)}}_2 = 1\) and \(\inner{x^{(0)}}{u_1} \neq 0\).
+
+    \item Repeat the following steps until convergence: 
+    
+    \begin{align*}
+        y^{(k + 1)} &= Ax^{(k)} \\
+        x^{(k + 1)} &= \frac{y^{(k + 1)}}{\metric{y^{(k + 1)}}_2} \\ 
+        \mu^{(k + 1)} &= \inner{x^{(k + 1)}}{Ax^{(k + 1)}} = \frac{\inner{x^{(k + 1)}}{y^{(k + 1)}}}{\metric{x^{(k)}}_2^2}
+    \end{align*}
+
+\end{enumerate}
+
+\subsection{The Jacobi Method}
+
+The \emph{Jacobi method} is an iterative method for computing the eigenvalues of a symmetric matrix \(A\) by applying a sequence 
+of orthogonal transformations to \(A\) to make it diagonal. 
+
+The eigenvalues of \(A\) are then given by the diagonal elements of the resulting matrix.
+
+The derivation will come from applying orthonormal matrices repeatedly to to our original matrix. 
+
+\[
+    A^{(0)} = A, \quad A^{(k)} = Q_k^T A^{(k - 1)} Q_k
+\]
+
+Using our Givens-Rotations 
+
+\[
+    Q_k = 
+    \begin{bmatrix}
+        1 &        &    &         &        &        &         &   \\
+          & \ddots &    &         &        &        &         &   \\
+          &        & c  &         &        &   s    &         &   \\
+          &        &    &   1     &        &        &         &   \\
+          &        &    &         & \ddots &        &         &   \\
+          &        & -s &         &        &   c    &         &   \\
+          &        &    &         &        &   1    &         &   \\
+          &        &    &         &        &        & \ddots  &   \\
+          &        &    &         &        &        &         & 1 \\
+    \end{bmatrix}
+\]
+
+
+where 
+
+
+\[
+   c = \cos(\alpha), \quad s = \cos(\alpha), \alpha = 
+   \begin{cases}
+    \frac{\pi}{4}  & a_{i_0, i_0} = a_{j_0, j_0} \\ 
+    \frac{1}{2}\arctan\left(\frac{2a_{i_0, j_0}}{a_{j_0, j_0} - a_{i_0, i_0}}\right)
+   \end{cases} 
+\]
+
+Note the following coordinates when reading the matrix from top to bottom, left to right:
+
+\begin{align*}
+    c & \quad \text{at} \quad i_0, i_0 \\ 
+    s & \quad \text{at} \quad i_0, j_0 \\
+    c & \quad \text{at} \quad j_0, j_0 \\
+    -s & \quad \text{at} \quad j_0, i_0
+\end{align*}
+
+And we use the iteration 
+
+\[
+    Q^{(0)} = I, \quad Q^{(k)} = Q^{(k - 1)}Q_k
+\]
+
+\subsubsection*{Stop Criterion}
+
+We define the square sum of the diagonal elements of the matrices \(A^{(k)}\) as 
+
+\[
+    N(A^{(k)}) = \sum_{i \ne j} \left(a_{i,j}^{(k)}\right)^2.
+\]
+
+It holds that 
+
+\[
+    N^(A^{(k + 1)}) \le \alpha N(A^{(k)}), \quad \alpha \in [0, 1)
+\]
+
+converges \emph{strictly monotonously decreasing} towards zero. Thus, this is our convergence criteria 
+given an upper bound.
+
+\subsection{The QR Method}
+
+We take a matrix \(A \in \R^{n \times n}\) with \(n\) start vectors whose dimension is also \(n\).
+
+Choose \(X^{(0)} = [x_1^{(0)},\dots, x_n^{(0)}]\) where the vectors form an orthonormal basis
+
+For \(k = 0, 1, \dots\) repeat the following steps:
+
+\begin{align*}
+    Y^{(k + 1)} &= AX^{(k)} \\ 
+    \tilde{Q^{(k + 1)}} R^{(k + 1)} &= Y^{(k + 1)} \\ 
+    X^{(k + 1)} &= \tilde{Q^{(k + 1)}} \\
+    T^{(k + 1)} &= X^{(k)^T} Y^{(k + 1)} = X^{(k)^T} A X^{(k)}
+\end{align*}
+
+Then for 
+
+\begin{align*} 
+    T^{(k)} &= X^{(k - 1)^T} A X^{(k - 1)} \\ 
+    &= X^{(k - 1)^T} Y^{(k)} \\ 
+    &= X^{(k - 1)^T} \tilde{Q^{(k)}} R^{(k)}\\ 
+    &= (X^{(k - 1)^T} X^{(k)}) R^{(k)} \\ 
+    &= Q^{(k)} R^{(k)}
+\end{align*}
+
+We can also use \(Q^{(k)} = X^{(k - 1)^T} X^{(k)}\). And because the vector of \(X^{(k)}\) are orthonormal we also have that 
+
+\begin{align*} 
+    T^{(k + 1)} &= X^{(k)^T} A X^{(k)}\\
+    &=  X^{(k)^T} A X^{(k - 1)} X^{(k - 1)^T} X^{(k)}\\
+    &=  X^{(k)^T} Y^{(K)} X^{(k - 1)^T} X^{(k)}\\
+    &=  X^{(k)^T} \tilde{Q^{(k)}} R^{(k)} X^{(k - 1)^T} X^{(k)}\\
+    &=  X^{(k)^T} X^{(k)} R^{(k)} X^{(k - 1)^T} X^{(k)}\\
+    &=  R^{(k)} (X^{(k - 1)^T} X^{(k)})\\
+    &=  R^{(k)} Q^{(k)} 
+\end{align*}
+
+This means that our iteration can be simplified to 
+
+\[
+    A^{(k)} = Q^{(k)}R^{(k)}, \quad A^{(k + 1)} =  R^{(k)} Q^{(k)} 
+\]
+
+Because \(A\) is in the real Schur-form \(A = Q T Q^T\), under certain circumstances we get: 
+
+\[
+    A^{(k)} \rightarrow^{k \to \infty} T, \quad \hat{Q}^{(k)} \rightarrow^{k \to \infty} T
+\]
+
+with \(\hat{Q}^{(k)} = Q^{(0)} \cdot \dots \cdot Q^{(k - 1)}\). 
+

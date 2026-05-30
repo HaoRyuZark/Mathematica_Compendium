@@ -1,32 +1,36 @@
 \newpage
 \chapter{Orthogonal Linear Maps}
 
+\section{Orthogonality}
+
 In this section we are going to take a look at some special type of linear maps that are called \emph{orthogonal} 
 and at the term \emph{isometry}. It will be useful to remember some concepts about the dot product such as 
-\(\inner{x}{x} = x^T \cdot x = \|x\|^2\).
+\(\inner{x}{x} = x^T \cdot x = \metric{x}^2\).
 
 \subsection{Isometry}
 
-Given two vector spaces \((V, \|\centerdot\|_V)\) and \((W, \|\centerdot\|_W)\). Then a map 
-\(f: V \to W\) is called \emph{isometric} if and only if \(\|x - y\|_V = \|f(x) - f(y)\|_W \).
+Given two vector spaces \((V, \metric{\centerdot}_V)\) and \((W, \metric{\centerdot}_W)\). Then a map 
+\(f: V \to W\) is called \emph{isometric} if and only if \(\metric{x - y}_V = \metric{f(x) - f(y)}_W \).
 
 It also has the following traits:
 
 \begin{enumerate}
-	\item \emph{Length-Preserving}: \(\|x\|_V = \|y\|_W \quad \forall x \in V\).
+	\item \emph{Length-Preserving}: \(\metric{x}_V = \metric{f(x)}_W \quad \forall x \in V\).
 	\item \emph{Angle-Preserving}: \(\angle (x,y) = \angle (f(x),f(y)) \quad \forall x,y \in V\)
 	\item \emph{Linear}: If \(f(x + \lambda y) = f(x) + \lambda f(y)\)
 \end{enumerate}
 
 \subsection{Unit-sphere}
 
-For \((V, \R)\) with metric \(\|\cdot\|\) we denote 
+For \((V, \R)\) with metric \(\metric{\cdot}\) we denote 
 
 \[
-    S = \{x \mid x \in V : \|x\| = 1\}
+    S = \{x \mid x \in V : \metric{x} = 1\}
 \]
 
 as the \emph{unit-sphere}.
+
+\section{Rotation Matrices}
 
 \subsection{The Rotation Matrix}
 
@@ -94,7 +98,11 @@ which gives us
 
 \QED
 
-\subsubsection{Rotation Matrices For \(\R^3\)}
+\subsection{Rotation Matrices For \texorpdfstring{\(\R^3\)}{}}
+
+Note that a rotation is determined by two axis, hence, we get 3 different matrices depending on the two axis we need to rotate.
+
+\emph{R(y,z)}:
 
 \[
     R_x (\phi) =
@@ -105,6 +113,7 @@ which gives us
     \end{bmatrix}
 \]
 
+\emph{R(x,z)}:
 \[
     R_y (\phi) =
     \begin{bmatrix}
@@ -113,6 +122,8 @@ which gives us
         -\sin(\phi) & 0 & \cos(\phi)
     \end{bmatrix}
 \]
+
+\emph{R(x,y)}:
 
 \[
     R_z (\phi) =
@@ -123,7 +134,7 @@ which gives us
     \end{bmatrix}
 \]
 
-\subsection{Orthogonal Matrices}
+\section{Orthogonal Matrices}
 
 A matrix \(A \in \R^{n \times n}\) is \emph{orthogonal} if its columns vectors form an orthonormal 
 basis.
@@ -392,7 +403,16 @@ due to the group property of \( O(n) \).
 \subsection{QR-Decomposition}
 
 A use case of orthogonal matrices is the \emph{QR-Decomposition}. The goal is that given a system 
-\( Ax = b\) with a matrix \(A\in \R^{m \times n}\), \(m \ge n\) and \(rg(A) = n\) we can find 
+\( Ax = b\) with a matrix \(A\in \R^{m \times n}\), 
+
+\[
+    A = 
+    \begin{bmatrix}
+        \vec{a}_{1} & \vec{a}_{2} & \cdots & \vec{a}_{n}
+    \end{bmatrix}
+\]
+
+\(m \ge n\) and \(\rank(A) = n\) we can find 
 two matrices \(Q\) and \(R\) such that \(A = QR \text{ with } R\in \R^{n \times n}\)  
 and \(Q \in \R^{m \times n}\). 
 
@@ -404,7 +424,7 @@ We know that the best approximation by the method of the least squares is given 
     x_s = (A^T A)^{-1} A^T b
 \]
 
-Because of the orthogonality of the columns \(rg(Q) = rg(A)\), therefore, it can be inverted. Hence,
+Because of the orthogonality of the columns \(\rank(Q) = \rank(A)\), therefore, it can be inverted. Hence,
 we get:
 
 \begin{align*}
@@ -424,10 +444,10 @@ inner products our \(A\) matrix and \emph{Q}
 \[
     R =
     \begin{bmatrix}
-        \inner{q_1}{a_1} & \inner{q_1}{a_2} & \cdots &\inner{q_1}{a_n} \\ 
-        0 & \inner{q_2}{a_2} & \cdots & \inner{q_2}{a_n} \\ 
+        \inner{q_1}{\vec{a}_1} & \inner{q_1}{\vec{a}_2} & \cdots &\inner{q_1}{\vec{a}_n} \\ 
+        0 & \inner{q_2}{\vec{a}_2} & \cdots & \inner{q_2}{\vec{a}_n} \\ 
         \vdots & \vdots  & \ddots & \vdots \\
-        0 & 0  & \cdots & \inner{q_n}{a_n} \\ 
+        0 & 0  & \cdots & \inner{q_n}{\vec{a}_n} \\ 
     \end{bmatrix}
 \]
 

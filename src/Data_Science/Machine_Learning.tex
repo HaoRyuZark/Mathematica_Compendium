@@ -4,7 +4,7 @@
 Machine Learning is an area of computer science which focuses on making accurate 
 predictions based on already gathered data and mathematical models.
 
-\subsection{Basic Terminology}
+\section{Core Concepts}
 
 \begin{itemize}
 
@@ -145,7 +145,7 @@ Here a visualization
 
 Note that \(y\) is not used for the visualization, as it is just using in the \(\text{sign}\) function to as for the classification. 
 
-\subsubsection{The Perceptron Learning Algorithm}
+\section{The Perceptron Learning Algorithm}
 
 The \emph{PLA} modifies \(w\) until the data are linearly separated, as long it is possible. 
 It can be the case that in the current space it is not possible. Formally, if there exists a \(w^*\) such that 
@@ -185,7 +185,9 @@ Set \(t = 0\) and \(w^{(0)} = 0\).
 
 \end{enumerate}
 
-\subsubsection{In Sample Errors}
+\section{Errors}
+
+\subsection{In Sample Errors}
 
 The \emph{in-sample-error} is the mean of the amount of samples which were incorrectly labeled. 
 
@@ -204,7 +206,7 @@ where
 
 It is the median of the errors made on the training data. 
 
-\subsubsection{Out of Sample Errors}
+\subsection{Out of Sample Errors}
 
 This refers to all errors which can occur due to the lack of data. Obviously we do not 
 have all possible samples which will exists.
@@ -216,7 +218,7 @@ have all possible samples which will exists.
 These errors have a randomness factor, or in other words an unknown probability distribution.
 They are harder to calculate due to their nature. 
 
-\subsection{Pocket Algorithm}
+\section{Pocket Algorithm}
 
 The \emph{pocket algorithm} is an extension of the perceptron learning algorithm to handle non-linear separable data-sets. This 
 achieved by setting a maximum number iterations while also keeping track of the vector with the lowest in-sample error value. 
@@ -257,7 +259,7 @@ We use the following formula for error.
     E_{\text{in}}(w) = \frac{1}{N} \sum_{i=1}^{N} \mathbb{I}\big( \text{sign}(w^T \tilde{x}_i) \neq y_i \big)
 \]
 
-\subsection{Preparing the Data Set}
+\section{Data Preparation}
 
 The data set \(\mathcal{D}\) we be spit into training and test data to minimize our 
 margin of error. If a model is trained only used the same data again, and again it will become 
@@ -305,62 +307,86 @@ The most common cases we encounter when we want to find our specific categories 
 
 \end{itemize}
 
-\subsection{Linear Regression}
+\section{Linear Regression}
 
-From linear algebra we already know that the way of doing \emph{linear regression} is via 
-the method of the least squares.
+Given our data set \(D\) with \(N\) samples and \(m\) features, we have the assumption that our data is linearly related, and we want to find 
+a fitting line to approximate it \(\hat{y} = wx + b\) where \(w\) is a vector of weights.
+
+\begin{center}
+    \begin{tikzpicture}[scale=0.8]
+        \begin{axis}[
+            width=6cm, height=5cm,
+            xlabel={$x$}, ylabel={$y$},
+            xlabel style={font=\scriptsize},
+            ylabel style={font=\scriptsize},
+            tick label style={font=\scriptsize},
+            xmin=0, xmax=6,
+            ymin=0, ymax=7,
+            axis lines=left,
+            grid=major,
+            grid style={gray!20},
+        ]
+            % Scatter data points
+            \addplot[
+                only marks,
+                mark=*, mark size=1.5pt,
+                color=black
+            ] coordinates {
+                (0.5, 1.0) (1.0, 1.8) (1.5, 1.4)
+                (2.0, 2.5) (2.5, 2.9) (3.0, 2.6)
+                (3.5, 3.8) (4.0, 4.2) (4.5, 3.9)
+                (5.0, 5.1) (5.5, 5.4) (6.0, 6.0)
+            };
+            % Regression line: y = 0.93x + 0.45
+            \addplot[
+                thick, color=black,
+                domain=0:6, samples=2
+            ] {0.93*x + 0.45};
+        \end{axis}
+    \end{tikzpicture}
+\end{center}
+
+One way of doing \emph{linear regression} is via the method of the least squares found in the linear algebra section of this book:
 
 \[
     w = (X^T X)^{-1}X^T y = X^{\dagger}y
 \]
 
-The error-kinds for our model are going to be 
+But this is computationally very expensive and does not gives us \(b\). An alternative way is by minimizing the \emph{mean squared error} function given by 
 
 \[
-    E_{out}(h) = \mathbb{E}[(h(x) - y)^2]
+    \mathrm{MSE} = J(w,b) = \frac{1}{N} \sum_{i = 1}^{N} (y_i - (wx_i + b))^2
 \]
+
+For this we compute the gradient of of \(J(w,b)\)
 
 \[
-    E_{in}(h) = \frac{1}{N} \sum_{n = 1}^{N}(h(x_n) - y_n)^2 
+    J'(w, b) = 
+    \begin{bmatrix}
+        \frac{\partial J}{\partial w} \\     
+        \frac{\partial J}{\partial b} \\     
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        \frac{1}{N} \sum -2x_i (y_i -(wx_i + b)) \\ 
+        \frac{1}{N} \sum -2 (y_i -(wx_i + b))
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        \frac{1}{N} \sum 2x_i (\hat{y}_i - y_i)) \\ 
+        \frac{1}{N} \sum 2 (\hat{y}_i-  y_i)
+    \end{bmatrix}
 \]
 
-Our hypothesis set \(\mathcal{H}\) is composed of hypotheses of the form \(h(x) = \inner{x}{w}, x_0  = 1\).
-Our goal is to find some vector \(w\) such that \(E_{in}\) is minimal \(w_{lin} = {\text{arg min} E_{in}(w)}_{w \in \R^d}\)
+Then by applying gradient descent we can approach a minimum of our function by taking in the direction 
+negative to the gradient multiplied by a \emph{learning rate} \(0 < \eta\), giving us the following update step.
 
-\[
-    E_{in}(w) = \frac{1}{N} \sum_{n = 1}^{N}(\inner{w}{x} - y_n)^2 
-\]
+\begin{align*}
+    w &= w - \eta \frac{\partial J}{\partial w}(w,b) \\     
+    b &= b - \eta \frac{\partial J}{\partial b}(w,b)     
+\end{align*}
 
-and \(w_{lin} := X^{\dagger} y \).
-
-\begin{center}
- \begin{tikzpicture}[line cap=round, mark options={mark size=1.5pt,fill=white}]
-  \begin{axis}
-    [
-      xmin=0,
-      xmax=4,
-      ymin=0,
-      ymax=4,
-      domain=0.25:3.75,
-      axis lines=center,
-      xlabel=$x$,
-      ylabel=$y$,      
-      xtick={2},
-      xticklabels={$x_1$},
-      ytick=\empty
-    ]
-    \addplot [thick, blue]             {(\func(x))};
-    \addplot [dashed, red] coordinates {(2,0) (2,2.44)};
-    \addplot [mark=*, red] coordinates {(2,\y)};
-    \addplot [only marks]  coordinates {(0.5,0.80) (1,1.57)   (1.5,1.34)
-                                        (2,2.44)   (2.5,2.48) (3,2.66)
-                                        (3.5,3.17)};
-    \node       at (2,2.44) [left]  {$y_1$};
-    \node[red]  at (2,\y)   [right] {$\alpha x_1+\beta$};
-    \node[blue] at (2.6,3.1)        {$y=\alpha x+\beta$};
-  \end{axis}
- \end{tikzpicture}   
-\end{center}
+This iterative approach is stopped after a certain number of iterations defined as parameter.
 
 \subsection{Non-Linear Transformations}
 
@@ -375,7 +401,7 @@ Finally, our hypothesis set \(\mathcal{H}_{\phi}\) contains functions of the for
 This can become very complex but for 3d or 2d cases with data visualization a non-linear transformation can be found 
 using the mathematical technique of looking with your own eyes. 
 
-\subsection{Approximation and Generalization}
+\section{Approximation and Generalization}
 
 When trying to approximate the target function \(f\) we encounter the problem that our data may not 
 give us the exact function because of the lack of data. To want to minimize the in-sample error 
@@ -448,7 +474,7 @@ We define the \emph{augmented error} as
 \(\lambda\) is the parameter for how much we should regularize, \(w^T w\) is the punish-term based on the weight of the vector and 
 \(N\) is the number of data points.
 
-\subsection{Regularization}
+\section{Regularization}
 
 \emph{Regularization} is the process of making the algorithm less sensible to data out of the sample our in other words,
 helps the learning algorithm to minimize the output-of-sample error. This is accomplished by different methods like adding error terms, 
@@ -503,14 +529,26 @@ Finally, as a remainder the formula without regularization
     w_{\text{lin}} = (Z^T Z)^{-1} Z^T y
 \]
 
-\subsection{Validation}
+\section{Validation}
 
 \emph{Validation} refers to process of evaluating our algorithms and models based on specific parameters 
 and procedures. 
 
 The hypothesis gained from a model which is going to be validated is marked as \(\overline{g_n}\). 
 
-\subsubsection{Quote from the statistical Learn-theory}
+The types of data which arise from the splitting of the data are 
+
+\begin{itemize}
+
+    \item \emph{Training Data}: Data used for training the model. 
+
+    \item \emph{Validation Data}: Used for testing our model against other models in situations like hyper-parameter tunning.
+
+    \item \emph{Test Data}: Used to test the accuracy of the model at predicting, knowing the labels.
+
+\end{itemize}
+
+\subsubsection*{Quote from the statistical Learn-theory}
 
 The more often you use a data-set for training a model, taking decisions, etc. The hard is to approximate 
 the capacity of the data-set to approximate the out-of-sample error. 
@@ -521,11 +559,11 @@ Data points are randomly shuffled into training and test data.
 
 \subsection{Cross Validation}
 
-\emph{Cross Validation} is a technique to estimate the out-of-sample error. It consists on splitting the data-set into \(V\) different
-sub-sets of equal size called \emph{folds}. Then, we train our model \(V\) times, each time using \(V-1\) disjoint sub-sets for training and the remaining one for testing. The final 
-out-of-sample error is given by the average of all the out-of-sample errors gotten from each iteration.
+\emph{Cross Validation} is a technique to improve a models accuracy by presenting training the model on different splits on the data. 
+It can also help us compare different algorithms on the splits and then choose the model with best general accuracy.
 
-We can apply this technique to different models and select the one with the lowest out-of-sample error.
+The procedure consists on splitting the data-set into \(V\) different sub-sets of equal size called \emph{folds}. Then, we train our model \(V\)-times, each time using \(V-1\) disjoint sub-sets for 
+training and the remaining one for testing. The final out-of-sample error is given by the average of all the out-of-sample errors gotten from each iteration.
 
 The nomenclature:
 
@@ -541,9 +579,12 @@ The nomenclature:
 
 \end{itemize}
 
+One more use case of cross validation is to estimate \emph{tunning parameter}, which are not directly optimized by  the model, but determined by the person 
+performing the analysis.
+
 \subsection{Leave One Out Cross Validation}
 
-This is cross validation but with leaving always one data point out, instead of a fold.
+This is cross validation but with leaving always \textbf{one data point out}, instead of a fold.
 
 The nomenclature:
 
@@ -598,7 +639,7 @@ and will give false approximations.
 If a data-set affects the learning process then its capacity of approximating the out-of-sample error 
 was reduced. 
 
-\subsection{Logistic Regression}
+\section{Logistic Regression}
 
 \emph{Logistic Regression} is a statistical model that in its basic form uses a logistic function to model a binary dependent variable.
 This model returns a probability value which can be mapped to two or more discrete classes.
@@ -625,7 +666,7 @@ greater than 0.5 we classify it as class 1, otherwise as class -1.
 
 where \(h_\theta (x^i)\) is the hypothesis function, \(y^i\) is the true label for the \(i\)-th data point \(x^i\), and \(N\) is the total number of data points.
 
-\subsubsection{Maximum Likelihood}
+\subsection{Maximum Likelihood}
 
 We can not optimize the sigmoid function directly; thus, we use the method of maximum likelihood. 
 
@@ -675,7 +716,7 @@ In vector form
     \nabla_b \log L(w,b) = \frac{1}{N} \sum_{i=1}^{N} (h_\theta(x^i) - y^i)
 \]
 
-\subsubsection{Logistic Regression Algorithm}
+\subsection{Logistic Regression Algorithm}
 
 \begin{enumerate}
 
@@ -717,7 +758,7 @@ In vector form
 
 \end{enumerate}
 
-\subsection{Trees}
+\section{Trees}
 
 \emph{Trees} are used mainly for \emph{regression trees} or classification \emph{decision trees}. They are 
 mostly not an individual learning model but are just an extra layer.
@@ -765,7 +806,7 @@ and
     N_m = |\{x_i \in R_m\}|
 \]
 
-\subsubsection{Recursive Binary Splitting}
+\subsection{Recursive Binary Splitting}
 
 We previously state an optimization problem, which sadly can not be solved efficiently, instead 
 we will approach it with \emph{recursive binary splitting} an algorithm which goes as follows 
@@ -998,17 +1039,19 @@ The steps to create a random forest are as follows:
 
 \end{enumerate}
 
+\section{Nearest Neighbors Models}
+
 \subsection{Quantifying the Differences between Features}
 
-Examples:
+Examples of metrics:
 
 \begin{itemize}
 
-    \item Euclidean Distance \( d(x ,y) = \|x - y \|\)
+    \item Euclidean Distance \( d(x ,y) = \metric{x - y}\)
 
-    \item Cosine Similarity \( \text{sim}(x, y) = \frac{x \cdot y}{\|x\| \|y\|} \) 
+    \item Cosine Similarity \( \mathrm{sim}(x, y) = \frac{x \cdot y}{\metric{x} \metric{y}} \) 
 
-    \item Jaccard Similarity \( \text{sim}(A, B) = \frac{|A \cap B|}{|A \cup B|} \in [0, 1] \)
+    \item Jaccard Similarity \( \mathrm{sim}(A, B) = \frac{|A \cap B|}{|A \cup B|} \in [0, 1] \)
 
 \end{itemize}
 
@@ -1026,35 +1069,54 @@ Feature vectors in the training set are noted with its distance to \(x\). \(x_{[
     d(x, x_{[1]}) \le d(x, x_{[2]}) \le \dots d(x, x_{[N]})
 \]
 
-\textbf{Nearest Neighbor Model}
+The \emph{Nearest Neighbor Model} gives us our final hypothesis is given by :\(g(x) = y_{[1]}(x)\)
 
-The final hypothesis is given by :\(g(x) = y_{[1]}(x)\)
+\subsection{K-Nearest Neighbors Classification}
 
-\subsection{k-Nearest Neighbors}
+The \emph{KNN classification} is a generalization of the \emph{NN model}. 
 
-This is a generalization of the NN model. 
-
-Given an integer \(k \ge 1\) and \(y \in \{-1, 1\}\) the \emph{k-nearest neighbor} model (binary classification) is given by 
+Given an integer \(k \ge 1\) and \(y \in \{-1, 1\}\) the \emph{k-nearest neighbor} model of binary classification is given by 
 
 \[
-    g(x) = \text{sign} \left(\sum_{i = 1}^{k} y_{[i]}(x)\right) 
+    g(x) = \mathrm{sign} \left(\sum_{i = 1}^{k} y_{[i]}(x)\right) 
 \]
 
-Note that for \(k = 1\) we get the previous NN model.
+Note that for \(k = 1\) we get the previous NN model. This is a majority vote model.
 
-\subsubsection{k-Nearest Neighbor Regression}
+\subsection{k-Nearest Neighbor Regression}
 
-The KNN regression is given by:
+The \emph{KNN regression} is determines the label of the feature based on the mean of the 
+label of the neighbors
 
-\begin{itemize}
+\[
+    g(x) = \frac{1}{k} \sum_{i = 1}^{k} y_{[i]}(x)
+\]
 
-    \item The mean of the labels of the \(k\) nearest neighbor 
+This is useful when dealing with non binary label sets.
 
-    \item Final hypothesis \(\frac{1}{k} \sum_{i = 1}^{k} y_{[i]}(x)\)
+\subsection{KNN Algorithm}
 
-\end{itemize}
+Given a distance metric \(d(x, y)\) we classify our training data using the following steps for each data point \(z\):
 
-\subsection{Support Vector Machine}
+\begin{enumerate}
+
+    \item Compute its distance for all other data points \(d(z, v_i)\). 
+
+    \item Sort the distances in ascending order, by also keeping track of the indexes. 
+
+    \item Based on the parameter \(k\) get the distances of the \(k\) closest points. 
+    
+    \item Depending on the regression or classification apply ont the following formulas 
+    
+    \[
+        \text{Regression:}\, g(x) = \mathrm{sign} \left(\sum_{i = 1}^{k} y_{[i]}(x)\right) \quad \text{Classification:}\, g(x) = \frac{1}{k} \sum_{i = 1}^{k} y_{[i]}(x)
+    \]
+   
+    using the indexes of the \(k\) nearest neighbors for the getting the corresponding labels.
+
+\end{enumerate}
+
+\section{Support Vector Machine}
 
 As starting point we take the perceptron we already defined, but this time with \(b\), the bias term 
 as an independent term 
@@ -1423,39 +1485,14 @@ We can apply our kernel function and get
 
 \end{enumerate}
 
-\subsection{Dimension Reduction Principal Component Analysis}
+\section{Dimension Reduction}
 
-It refers to the reduction of the features for the learning process.
+The \emph{curse of dimensionality} is a concept that describes the problems which arise when dealing with hight-dimensional data. A high 
+number of features (dimensions) leads to an increase in the complexity of the model as well as the computational cost. Also, in data science it 
+is important to be able to visualize the data, which is not possible in high dimensions. Therefore, we want to reduce the number of features while 
+preserving as much information as possible.
 
-\emph{PCA (Principal Component Analysis)} finds new axes — called components — for the data, such that the data show the largest possible variance along these axes.
-In other words, PCA looks for directions in which the data vary the most.
-Axes along which the data have little, or almost no variance can usually be ignored, because they contain little useful information.
-
-The goal is to identify the directions (principal components) along which the variation in the data is maximal. Then by projecting 
-our date onto these new axis we reduce the dimensionality of our data while retaining most of its variance. Hence, we can apply other 
-machine learning algorithms more efficiently. 
-
-These new axis are generated via the orthogonal projection of the vectors.
-
-The big picture is that 
-
-\begin{enumerate}
-
-    \item We have \(N\) feature vectors with \(D\) features each.
-
-    \item We want to reduce the number of features from \(D\) to \(M < D\) 
-
-    \item We have a \(D \times D\) covariance matrix \(S\)
-
-    \item We compute the eigenvalues and eigenvectors of \(S\)
-
-    \item We sort the eigenvalues with their corresponding eigenvectors in decreasing order and take the first \(M\) eigenvectors 
-
-    \item These eigenvectors form the new basis for the feature space.
-
-\end{enumerate}
-
-\subsubsection{Average Vector}
+\subsection{Average Vector}
 
 Given \(N\) features vectors with \(D\) features. The \emph{average vector} is given 
 by
@@ -1464,165 +1501,7 @@ by
     \overline{x} = \frac{1}{N} \sum_{n = 1}^{N} x_n
 \]
 
-\subsubsection{PCA Formula I}
-
-Given a matrix \(X\) where each row represents a feature vector. We can perform the 
-principal component analysis via the following steps:
-
-\begin{itemize}
- 
-    \item Compute the average vector  \(\overline{x} = \frac{1}{N} \sum_{n = 1}^{N} x_n\)
-
-    \item Get the \emph{average matrix} by computing \(\overline{X} = \vec{1} \cdot \overline{x}^T\)
-
-    \item Subtract the mean \(B = X - \overline{X}\)
-
-    \item Compute the covariance matrix \(cov = B^T B\)
-
-    \item Compute the eigenvectors and values of \(cov\). We can write them as \(cov V = VD\) where \(V\) is the matrix of the eigenvectors and
-    \(D\) the matrix made of the eigenvalues in the main diagonal.
-
-    \item The principal components are given as the columns of the matrix \(T = BV\). Or if we are programming it from 
-    scratch sort the indices and then take the first \(k\) eigenvectors.
-
-    \item Transform the original \(n-\)dimensional data into \(k\) dimensions. Projections with the dot product can be achieved by using the 
-    eigenvector matrix to transform our vectors. \(XV^T\) is our new, transformed data. 
-
-\end{itemize}
-
-\subsubsection{PCA Formula II}
-
-We look for the direction \(u_1\) such that the variance of the data at that axis becomes maximal.
-With the constraint 
-
-\[
-    u_1^T u_1 = 1 \iff 1 - u_1^T u_1 = 0  
-\]
-
-The projection of the features vectors on \(u_1\) is given by 
-
-\[
-    u_1^T x_n
-\]
-
-The variance of the projection is given by 
-
-\begin{align*} 
-    \mathrm{Var}(u_1^T x_n) &= \frac{1}{N} \sum_{n = 1}^{N} (u_1^T x_n - u_1^T \overline{x})^2  \\ 
-    &= u_1^T S u_1
-\end{align*}
-
-With the covariance matrix 
-
-\[
-    S = \frac{1}{N} \sum_{n = 1}^{N}  (x_n - \overline{x})^2 
-\]
-
-We are going to of course use \emph{Lagrange Multipliers for that}
-
-\[
-    \mathcal{L}(u_1, \lambda_1) = u_1^T S u_1 + \lambda_1[1 - u_1^T u_1 ]
-\]
-
-Take the gradient and set it to 0 
-
-\[
-    \frac{\partial \mathcal{L}}{\partial \lambda_1} = u_1^T u_1 = 1 
-\]
-
-\[
-    \frac{\partial \mathcal{L}}{\partial u_1} =  Su_1 - \lambda_1 u_1 = 0 \iff S u_1 \lambda_1 u_1  \iff u_1^T S u_1 = \lambda_1
-\]
-
-We can do this because \(u_1\) is an eigenvector of \(S\).
-
-The previous process was only for one direction (the principal component). 
-
-Now we need to find more directions \(u_j\) such that they are orthogonal to each other and \(u_1\) such 
-that the variance is maximized.
-
-We do this with induction 
-
-Given \(u_1, \dots, u_M\) eigenvectors of \(S\) with the corresponding eigenvalues 
-\(\lambda_1 \ge \dots \ge \lambda_M\)
-
-We want to find \(u_{M + 1}\) such that 
-
-\begin{itemize}
-
-    \item The Variance in that direction is maximal 
-
-    \item \(u_{M + 1}\) is orthogonal to \(u_1, \dots, u_M\)
-
-    \item \(u_{M + 1}\) is normalized \(u_{M + 1}^T u_{M + 1} = 1\)
-
-\end{itemize}
-
-This is again a Lagrange problem 
-
-\[
-    \mathcal{L}(u_{M + 1}, \lambda_{M + 1}, \eta_i) = u_{M + 1}^T S u_{M + 1} + \lambda_{M + 1} [1 - u_{M + 1}^T u_{M + 1}] + \sum_{i = 1}^{M} \eta_i u_{M + 1}^T u_{M + 1}
-\]
-
-With the following partial derivatives 
-
-\[
-    \frac{\partial \mathcal{L}}{\partial \lambda_{M + 1}} = 1 - u_{M + 1}^T  u_{M + 1} = 0
-\]
-
-\[
-    \frac{\partial \mathcal{L}}{\partial \eta_j } = u_{M + 1}^T  u_{M + 1} = 0
-\]
-
-\[
-    \frac{\partial \mathcal{L}}{\partial u_{M + 1} } = 2Su_{M + 1}  + 2\lambda_{M + 1} u_{M + 1} + \sum_{i = 1}^{M} \eta_i u_{i} = 0
-\]
-
-We know substitute 
-
-\[
-    \frac{\partial \mathcal{L}}{\partial u_{M + 1} } = 2u_j^TSu_{M + 1}  + 2\lambda_{M + 1}u_j^T u_{M + 1} + \sum_{i = 1}^{M} \eta_i u_{j}^T u_{i} = 0
-\]
-
-From that
-
-\begin{align*}
-    2u_j^TSu_{M + 1} + \eta_j &= 0 \text{ apply  the transpose }\\ 
-    2u_{M + 1}^T S^T u_j + \eta_j &= 0 \text{ remember that } S = S^T\\ 
-    2u_{M + 1}^T S u_j + \eta_j &=  2u_{M + 1}^T \lambda_j u_j + \eta_j = 0 
-\end{align*}
-
-To find \(\lambda_{M + 1}\):
-
-\begin{align*}
-    2 S u_{M + 1}^T - 2 \lambda_{M + 1} u_{M + 1} = 0
-\end{align*}
-
-This means that \(u_{M + 1}\) is also an eigenvector of \(S\).
-
-\subsubsection{Effect of the Mean}
-
-The \emph{mean} (or center of mass) of the data influences the PCA coordinates:
-
-\begin{itemize}
-
-    \item If the data have a mean that is not at the origin of the coordinate system, then after applying PCA, the transformed data will typically have offsets in the new coordinate system. 
-    These offsets can make interpretation more difficult.
-
-    \item However, the PCA directions (the principal component axes) do not change if the data’s mean changes.
-
-    \item This is because the covariance matrix — which PCA is based on — is invariant to changes in the mean.
-
-    \item Some software implementations of PCA do not use the covariance matrix directly. 
-    In those cases, the resulting PCA might depend on the original mean of the data. 
-
-    \item As a recommendation, always center each feature (variable) by subtracting its mean before applying PCA. This ensures that the data have a mean 
-    of 0 and that the PCA results are interpretable and consistent. 
-    \[
-        \hat{x_i} = x_i - \overline{x}
-    \]
-
-\end{itemize}
+This vector is used to center the data by subtracting it from each feature vector. This vector has as its components the mean of the corresponding feature across all feature vectors.
 
 \subsubsection{Z Scoring}
 
@@ -1636,49 +1515,226 @@ Given \(\overline{X}\) as the mean and \(\sigma\) as the standard deviation of \
 In practice, data are often organized in matrices where each column represents a feature.
 In this case, standardize each feature by transforming every column separately so that it has mean 0 and variance 1 (i.e., standard deviation 1).
 
-\subsubsection{Recap of PCA}
 
-The basic assumption behind dimensionality reduction with PCA is: the directions with the largest variance 
-contain the most information about the data.
+\subsection{Dimension Reduction Principal Component Analysis PCA}
 
-Dimensionality reduction with PCA means that we discard those PCA components (directions) that represent only a 
-small amount of variance.
+\emph{PCA (Principal Component Analysis)} finds new axes called components for the data, such that the data show the largest possible variance along these axes.
+In other words, PCA looks for directions in which the data vary the most.
 
-PCA gives us new axes defined by direction vectors \(u_1, \dots, u_D\) (the principal components).
+Axes along which the data have little, or almost no variance can usually be ignored, because they contain little useful information. 
 
-Projecting a standardized data point \(x_1\) onto these direction vectors gives the components of the 
-PCA coordinates of that data point.
+When projecting our points onto a new axis we use the projection formula 
+
+\[    
+	a' = \mathrm{Proj}_{b}(a) = \inner{a}{b}b.
+\]
+
+We can use the the term \(\inner{a}{b}\) as the measure of information preserved between the two vectors \(a\) and \(a'\). This is 
+maximal when they are orthogonal and maximal when they are parallel. Hence we want to maximize the sum of the inner products between the original data and the projected data.
 
 \[
-    z_i = 
+    \max \sum_i \inner{x_i}{u}^2 = \max \sum_i (x_i^T u)^2
+\]
+
+Note that we still do not know in which direction \(u\) we want to project our data. For this we can manipulate the previous expression 
+
+\begin{align*}
+    \max \sum_i (x_i^T u)^2 &= \max \sum_i (x_i^T u)(x_i^T u) \\ 
+    &= \max \sum_i u^T x_i x_i^T u \\
+    &= \max u^T \left( \sum_i x_i x_i^T \right) u 
+\end{align*}
+
+Note the covariance matrix inside
+
+\[
+    S = \frac{1}{N} \sum_i (x_i - \overline{x})(x_i - \overline{x})^T 
+\]
+
+If we assume that the data is centered around the mean, then we can write
+
+\[
+    S = \frac{1}{N} \sum_i x_i x_i^T = X^TX
+\]
+
+For
+
+\[
+    X =
     \begin{bmatrix}
-        u_1^T \\ 
-        u_2^T \\ 
-        \vdots
+       - & X_1 & -\\ 
+       - & X_2 & - \\ 
+        & \vdots & \\ 
+      -  & X_n & - 
     \end{bmatrix}
-    x_i
 \]
 
-\subsubsection{Proportion of Variance}
-
-\emph{Variance of \(j\)-th component} 
+In our optimization problem we can replace the covariance matrix and get
 
 \[
-    \mathrm{Var}(Z_j) = \mathrm{Var}(u_j^T x) = u_j^T S u_j = u_j^T \lambda_j u_j = \lambda
+    \max u^T S u
 \]
 
-\emph{Total Variance } 
+With the constraint 
 
 \[
-    \mathrm{Var}_{\text{Total}} = \sum_{j = 1}^{D} \mathrm{Var}(Z_j) = \sum_{j = 1}^{D} \lambda_j
+    u_i^T u_i = 1 \iff 1 - u_i^T u_i = 0  
 \]
 
 
-\emph{Proportion of Variance}
+We also have the constraint that \(u\) is a unit vector, so we can write the optimization problem as
 
 \[
-    \mathrm{PVE}(j) = \frac{ \mathrm{Var}(Z_j)}{ \mathrm{Var}_{\text{Total}}}
+    \max u^T S u \quad \text{subject to } u^T u = 1
 \]
+
+Now using the method of Lagrange multipliers we can write the Lagrangian as
+
+\[
+    \mathcal{L}(u, \lambda) = u^T S u - \lambda (u^T u - 1)
+\]
+
+Taking the gradient and setting it to zero gives us
+
+\[
+    \nabla_u \mathcal{L} = 2Su - 2\lambda u = 0 \implies Su = \lambda u
+\]
+
+Which is an eigenvalue problem. The solution \(u\) is an eigenvector of the covariance matrix \(S\) and \(\lambda\) is the corresponding eigenvalue.
+
+Because we want to maximize \(u^T S u\), we need to choose the eigenvector corresponding to the largest eigenvalue. 
+This eigenvector is called the \emph{first principal component}.
+
+From 
+
+\begin{align*}
+    S u_i &= \lambda_i u_i \\ 
+    u_i^T S u_i = \lambda_i
+\end{align*}
+
+Depending on how many dimensions we want to reduce to, we can choose the eigenvectors corresponding to the largest eigenvalues.
+
+\subsubsection*{Projection}
+
+Each of our principal components represents a direction in our high dimensional space. Given our data set \(X \in \R^{n \times p}\) 
+and our matrix of \(k\) principal components \(W^T \in \R^{k\times p}\); the projection of our data onto the components is given by 
+
+\[
+    Z = XW^T ,\quad Z \in \R^{n \times k}
+\]
+
+This comes from the fact that given our projection:
+
+\[
+    \mathrm{Proj}_{u_i}(x) = u_i^T x u_i \iff u_i^T u_i = 1.
+\]
+
+When we multiply our matrices \(X\) and \(W\)
+
+\[
+    \begin{bmatrix}
+        - & X_1 & -\\ 
+        - & X_2 & - \\ 
+        & \vdots & \\ 
+        -  & X_n & -
+    \end{bmatrix}
+    \begin{bmatrix}
+        - & u_1 & -\\ 
+        - & u_2 & - \\ 
+        & \vdots & \\ 
+        -  & u_k & -
+    \end{bmatrix}^T
+    = 
+    \begin{bmatrix}
+        \inner{X_1}{u_1} & \inner{X_1}{u_2} & \dots & \inner{X_1}{u_k} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        \inner{X_n}{u_1} & \inner{X_n}{u_2} & \dots & \inner{X_n}{u_k}
+    \end{bmatrix}
+\]
+
+Which essentially describes the our vector as a liner combination:
+
+\[
+    Z_1 = \inner{X_1}{u_1} u_1 +  \inner{X_1}{u_2} u_2 + \dots + \inner{X_1}{u_k} u_k = \sum_{i = 1}^{k} \inner{X_1}{u_i} u_i 
+\]
+
+Note that we are using the row vectors of \(X\) and the transpose of the matrix of principal components \(W^T\) to get the projection, because of 
+the way most software libraries implement matrices as arrays of row vectors.
+
+\subsubsection*{Variance Derivation}
+
+Alternatively to our previous derivation of the PCA, we can accomplish the same result by:
+
+First taking our projection
+
+\[
+    \mathrm{Proj}_{u_i}(x_j) = u_i^T x_j u_i
+\]
+
+Then taking the mean vector projected \(u_{i}^T \overline{x} u_i\) and then using the variance formula for 
+the variance of the projections with our unit vector \(u_i\):
+
+\begin{align*} 
+    \frac{1}{N} \sum_{i = 1}^{N} (u_i^T x_j -  u_i^T \overline{x})^2 &= \frac{1}{N} \sum_{i = 1}^{N} [u_i^T (x_j - \overline{x})]^2 \\ 
+    &= \frac{1}{N} \sum_{i = 1}^{N} u_i^T (x_j - \overline{x}) u_i^T(x_j - \overline{x}) \\ 
+    &= \frac{1}{N} \sum_{i = 1}^{N} u_i^T (x_j - \overline{x}) (u_i^T(x_j - \overline{x}))^T \\ 
+    &= \frac{1}{N} \sum_{i = 1}^{N} u_i^T (x_j - \overline{x}) (x_j - \overline{x})^Tu_i \\ 
+    &=  u_i^T S u_i 
+\end{align*}
+
+The rest of the derivation is the same as by the previous.
+
+\subsection{Explained Variance}
+
+If we divide each eigenvalue by the sum of all eigenvalues we get the \emph{explained variance EV} of each principal component.
+
+\[
+    \mathrm{PVE} = \frac{\lambda_k}{\sum_{j = 1}^{D} \lambda_j}
+\]
+
+This tells us how much of the variance in the data is explained by each principal component. We can use this to decide how many principal components to 
+keep based on a desired level of explained variance.
+
+\subsection{Covariance Optimization}
+
+For the computation of our principal components, we have been using the expression \(S = X^Tx\). Although, this 
+is mathematically correct, for certain data sets with more features than samples this can become a really big matrix. To improve 
+this problem we make use of the one of the following properties of our eigenvalue problem.
+
+\begin{align*}
+    S u _i &= \lambda_i u_i \\
+    X^T X u_i &= \lambda_i u_i \\ 
+    X X^T X v_i &= X \lambda_i X u_i \\ 
+    (X X^T)(X u_i) &=  \lambda_i (X u_i) \\ 
+    (X X^T)v_i &=  \lambda_i v_i
+\end{align*}
+
+This means that our eigenvalue and eigenvectors are the same if we instead of the \emph{feature covariance matrix} we use the \emph{sample covariance matrix} \(XX^T\).
+
+\subsubsection*{Big Picture For the Algorithm}
+
+We want to reduce the number of features from \(D\) to \(M < D\) or just inspect our data for the features which contribute the most 
+variance.
+
+
+The algorithm goes as following: 
+
+\begin{enumerate}
+
+    \item We have \(N\) feature vectors with \(D\) features each.  
+
+    \item Compute the average vector  \(\overline{x} = \frac{1}{N} \sum_{n = 1}^{N} x_n\)
+    
+    \item Subtract the mean \(B = X - \overline{X}\)
+   
+    \item We have a \(D \times D\) covariance matrix \(S = B^T B\) or \(BB^T\) depending on the number of samples and features.
+
+    \item We compute the eigenvalues and eigenvectors of \(S\)
+
+    \item We sort the eigenvalues with their corresponding eigenvectors in decreasing order and take the first \(M\) eigenvectors 
+
+    \item These eigenvectors form the new basis for the feature space. With which we can project our feature vectors.
+
+\end{enumerate}
 
 \subsection{Kernel PCA}
 
@@ -1800,9 +1856,9 @@ Simplified
 
 where \(1_N\) is the \(N \times N\) matrix with all entries equal to \(\frac{1}{N}\). 
 
-\subsection{Kernel PCA Algorithm}
+\subsubsection{Kernel PCA Algorithm}
 
-Now we can summarize the KPCA algorithm
+Now we can summarize the K-PCA algorithm
 
 \begin{enumerate}
 
@@ -1814,12 +1870,74 @@ Now we can summarize the KPCA algorithm
 
     \item Normalize the eigenvectors \(\vec{\alpha}_j \to \frac{1}{\sqrt{\hat{\lambda}_j}} \frac{\vec{\alpha}_j}{\|\vec{\alpha}_j\|}\)
 
-    \item Project the data points onto the KPCA axes using
+    \item Project the data points onto the K-PCA axes using
     \[
         \Phi(x)^T \hat{u_j} = \sum_{l} \hat{\alpha_{jl}} K(x, x_l)
     \]
 
 \end{enumerate}
+
+\subsection{Multidimensional Scaling MDS}
+
+\emph{Multidimensional Scaling (MDS)} is a family of procedures for the visualization an dimension reduction of features.
+
+Given the pairwise distances of \(N\) vectors in matrix form 
+
+\[
+    D = (d_{i,j})_{i,j}^n = \delta_{i,j}
+\]
+
+In this classical approach \(d_{i,j}\) represent the distances in the low-dimensional configuration, \(\delta_{i,j}\) the observed distances or dissimilarities and 
+\(\hat{d}_{i,j}= f(\delta_{i,j})\) the disparities from our data \(X\), which we do not know and want to find \(X\).
+
+We take our matrix \(D\) and square its entries giving us our \emph{Gram matrix}:
+
+\[
+    \tilde{D} = (d_{i,j}^2)_{i,j}^n
+\]
+
+Then, we construct our matrix \(B\) for which the following holds:
+
+\[
+    B = X X^T, \quad b_{i, j} = \inner{x_i}{x_J}
+\]
+
+Using the fact tha twe can write our inner products as 
+
+\[
+    \inner{x_i}{x_j} = \frac{1}{2} (\inner{x_i}{x_i} + \inner{x_j}{x_j} - d_{i, j}^2)
+\]
+
+we writ \(B\) as
+
+\[
+    B = - \frac{1}{2} H \tilde{D} H, \quad H = I - \frac{1}{N} \vec{1} \vec{1}^T
+\]
+
+and \(H\) is our \emph{double centering matrix} which subtracts both the row and column mean.
+
+Finally reconstruct \(X\) from using te eigendecomposition with \(V\) as the matrix of eigenvectors and \(\Delta\) the eigenvalue matrix:
+
+\[
+    B = V \Lambda V^t
+\]
+
+We get 
+
+\[
+    X = V \sqrt{B} = 
+    \begin{bmatrix}
+        \sqrt{\lambda_1} v_1 & \dots & \sqrt{\lambda_k} v_1
+    \end{bmatrix}
+\]
+
+Depending on the number of dimensions we want to keep, we can use a certain number of sorted eigenvalues with their corresponding 
+eigenvectors to control the dimension reduction,
+
+The idea is similar to PCA, but instead of using correlation between samples, we use the distance/metric to group of samples. Choosing the right 
+metric for the method is part of the art. As an important note, the previously discussed method only works with the euclidean distance; for a generalization with any metric 
+there is an alternative algorithm.
+
 
 \subsection{Linear Discriminant Analysis}
 
@@ -1925,7 +2043,7 @@ eigenvalue \(J(u_1)\).
 
 \end{enumerate}
 
-\subsection{Naive Bayes}
+\section{Naive Bayes}
 
 The \emph{naive Bayes} is a probabilistic classifier based on Bayes' Theorem with strong (naive)
 independence assumptions between the features.
@@ -1989,7 +2107,7 @@ We want to select the class with the highest posterior probability
 
 \end{enumerate}
 
-\subsection{KMeans}
+\section{KMeans}
 
 \emph{KMeans} is an unsupervised learning iterative process that clusters the data set into \(k\) different clusters.
 Each sample is assigned to the cluster with the nearest mean, and then the means, \emph{centroids}, and clusters are 

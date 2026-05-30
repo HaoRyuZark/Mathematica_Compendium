@@ -1,28 +1,39 @@
 \newpage
 \chapter{Information Theory}
 
-Information theory is a branch of applied mathematics and electrical engineering involving the quantification of information. 
+\emph{Information theory} is a branch of applied mathematics and electrical engineering involving the quantification of information. 
 
+\section{Core Concepts}
+
+An important note, depending on the the type of random variable: discrete or continuous, the formulas use the logarithm base 2 or the natural logarithm.
 \subsection{Surprise}
 
 The \emph{surprise} of an event \(X = x\) is defined as 
 
 \[
-    \mathrm{Surprise}(x) = S(x) = \ln \left(\frac{1}{P(X = x)}\right)
+    S(x) = \log \left(\frac{1}{P(X = x)}\right) = - \log(P(X = x))
 \]
 
 \subsection{Entropy}
 
-\emph{Entropy} is defined as the expected surprise of a random variable \(X\) 
+\emph{Entropy} is defined as the expected surprise of an event of a random variable \(X\) 
 
 \[
-    \mathrm{Entropy}(X) = H(X) = -\sum_{x \in X} P(X = x) S(x) = -\sum_{x \in X} P(X = x) \ln(P(X = x))
+     H(X) = -\sum_{x \in X} P(X = x) S(x) = -\sum_{x \in X} P(X = x) \log(P(X = x))
 \]
 
 Or in a simpler way
 
 \[
-    \mathrm{Entropy}(X) = \sum p(x) \ln\left(\frac{1}{p(x)}\right)
+    H(X) = \sum p(x) \log\left(\frac{1}{p(x)}\right)
+\]
+
+\subsubsection{Conditional Entropy}
+
+\emph{Conditional Entropy} is the expected value of the entropy of a random variable \(X\) given another random variable \(Y\). It is defined as
+
+\[
+    H(X | Y) = -\sum_{y \in Y} P(Y = y) \sum_{x \in X} P(X = x | Y = y) \log(P(X = x | Y = y))
 \]
 
 \subsection{Mutual Information}
@@ -30,11 +41,18 @@ Or in a simpler way
 \emph{Mutual Information} measures how much information one random variable \(X\) contains about another random variable \(Y\). It is defined as
 
 \[
-    I(X; Y) = \sum_{x \in X} \sum_{y \in Y} P(X = x, Y = y) \ln \left[\frac{P(X = x, Y = y)}{P(X = x) P(Y = y)} \right]
+    I(X; Y) = \sum_{x \in X} \sum_{y \in Y} P(X = x, Y = y) \log \left[\frac{P(X = x, Y = y)}{P(X = x) P(Y = y)} \right]
 \]
 
 If one of the random variables is continuous then we can make bins for different range of values and then proceed 
 to work with the bins as the discrete classes.
+
+\[
+    I(X; Y) = H(X) - H(X | Y)
+\]
+
+An intuition for this is, given a certain entropy (uncertainty) of \(X\) after you observe \(Y\) you have a new entropy \(H(X | Y)\) and the difference between the two is the mutual information.
+Imagine that after observing \(Y\) the amount of entropy of \(X\) is reduced by half, then \(Y\) contains a lot of information about \(X\).
 
 \subsection{Cross Entropy}
 
@@ -42,10 +60,10 @@ to work with the bins as the discrete classes.
 events.
 
 \[
-    H(P, Q) = - \sum_{x \in X} P(X = x) \ln(Q(X = x))    
+    H(P, Q) = - \sum_{x \in X} P(X = x) \log(Q(X = x))    
 \]
 
-where \(P\) is the true distribution and \(Q\) is the estimated distribution.   
+where \(P\) is the true distribution and \(Q\) is the estimated distribution (model).   
 
 When there is no discrepancy between both distributions, the cross entropy is equal to the entropy of \(P\).
 
@@ -71,11 +89,19 @@ It also has the following properties:
 expected probability distribution \(P\).
 
 \[
-    D_{KL}(P \| Q) = \sum_{x \in X} P(X = x) \ln \left(\frac{P(X = x)}{Q(X = x)}\right)
+    D_{KL}(P \| Q) = \sum_{x \in X} P(X = x) \log \left(\frac{P(X = x)}{Q(X = x)}\right)
 \]
 
 It measures surprise from using \(Q\) to approximate \(P\). The reverse of the cross entropy, where we use 
 \(P\) to approximate \(Q\).
+
+We can also write it as 
+
+\[
+    D_{KL}(P \| Q) = H(P, Q) - H(P)
+\]
+
+
 
 \subsection{Information Gain}
 

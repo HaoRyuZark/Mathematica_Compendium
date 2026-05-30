@@ -61,6 +61,20 @@ The vector \( X = (X_1, \ldots, X_n) \) is called a \emph{random vector}.
 
 This is just the probability of \(n\) events happening simultaneously.
 
+\subsection{Joint Probability of An Event}
+
+For any random variable 
+
+\[
+    \prob(X_1 = x_1, \ldots, X_n = x_n) = \prob(X_1 = x_1) \prob(X_2 = x_2 \mid X_1 = x_1) \cdots \prob(X_n = x_n \mid X_1 = x_1, \ldots, X_{n - 1} = x_{n - 1})
+\]
+
+If they are independent then
+
+\[
+    \prob(X_1 = x_1, \ldots, X_n = x_n) = \prob(X_1 = x_1) \prob(X_2 = x_2) \cdots \prob(X_n = x_n)
+\]
+
 \subsection{Joint Probability Function}
 
 Let \( X_1, \ldots, X_n \) be discrete random variables.
