@@ -836,21 +836,25 @@ and the \emph{covariance}
 
 \end{itemize}
 
-\subsection{Monte Carlo Sampling}
+\section{Likelihood}
 
-When we can not estimate the error of our estimators analytically, we can use \emph{Monte Carlo Sampling}
-by assuming that our estimator \(\hat{\theta}\) is true. Then we create simulated data from our estimated 
-parameter, and we repeat the process \(k\) times to examine how our estimator behaves across the different simulations.
+The \emph{Likelihood} answers the following question: "Given the data observed, which parameter values make that data most plausible?" 
 
-This not really done on paper, but with computers. 
+\[
+    \prob_{\theta}(x_1, x_2, \dots, x_n \mid \theta)
+\]
 
-\subsection{Likelihood}
+In contrast, probability refers to chances of some event occurring given that we trust the parameters of our model. 
 
-The \emph{Likelihood} represents how likely a certain parameter \(\theta\) is given in some \textbf{independent} data. We can change the target 
-parameter or parameters and see how the likelihood changes. If the likelihood increases the parameter is more probable given the data.
+Assuming that our data is independent then we get the following function: 
 
-For example, if we  have data which we assume to be normally distributed, we can calculate the likelihood of different \(\mu\) and \(\sigma\) values
-given the data. The higher the likelihood the more probable that parameter is given in the data.
+\[
+    L(\theta) = \prob_{\theta}(x_1, x_2, \dots, x_n \mid \theta) = \prob(x_1 \mid \theta) \prob(x_2 | \theta) \cdot \dots \cdot \prob(x_n \mid \theta)
+\]
+
+So the question becomes: "What is the probability of seeing all of the observed data under the parameter \(\theta\)?"
+
+Maximizing this function is interpreted as: maximizing the probability of observing the whole data given a variable parameter \(\theta\).
 
 \textbf{Example:}
 
@@ -875,8 +879,8 @@ The function \(L : \Theta \to [0,1]\), defined by
 \[
     L(\theta) = 
     \begin{cases}
-    \prob_{\theta} (X_1 = x_1) \cdot \dots \cdot \prob_{\theta} (X_n = x_n) &\text{ for disc. random vars.} \\ 
-    f_{\theta} (x_1) \cdot \cdots \cdot f_{\theta} (x_n) &\text{ for cont. random vars.}
+    \prod_{i = 1}^{n} \prob_{\theta} (X_i = x_i)  & \quad \text{for disc. random vars.} \\ 
+    \prod_{i = 1}^{n} f_{\theta} (x_i) & \quad \text{for cont. random vars.}
     \end{cases}
 \]
 
@@ -894,14 +898,14 @@ observing the data in the ideal probability distribution.
 \subsection*{Log-Likelihood-Estimator}
 
 The likelihood function can be pretty challenging to optimize, therefore, 
-the less complicated \emph{Log-Likelihood-function} is often used for maximation
+the less complicated \emph{Log-Likelihood-function} is often used for maximization
 problem. 
 
 \[
     l(\theta) = 
     \begin{cases}
-        \sum_{i = 1}^{n} \log(\prob_{\theta} (X_i = x_i)) &\text{ for disc. random vars.} \\
-        \sum_{i = 1}^{n} \log( f_\theta(x_i)) &\text{ for cont. random vars.}
+        \sum_{i = 1}^{n} \log(\prob_{\theta} (X_i = x_i)) & \quad \text{for disc. random vars.} \\
+        \sum_{i = 1}^{n} \log( f_\theta(x_i)) & \quad \text{for cont. random vars.}
     \end{cases}
 \]
 
@@ -927,13 +931,13 @@ We can calculate the log-likelihood function with \(\theta = \lambda\) as
 Now we can derive with respect to \(\lambda\) and set to zero to find the maximum. 
 
 \[
-    \frac{d l(\lambda)}{d \lambda} = \sum_{i = 1}^{n} \frac{x_i}{\lambda} - 1 = 0
+    \frac{\partial l(\lambda)}{\partial \lambda} = \sum_{i = 1}^{n} \frac{x_i}{\lambda} - 1 = 0
 \]
 
 The second derivative is
 
 \[
-    \frac{d^2 l(\lambda)}{d \lambda^2} = \sum_{i = 1}^{n} -\frac{x_i}{\lambda^2} < 0
+    \frac{d\partial^2 l(\lambda)}{\partial \lambda^2} = \sum_{i = 1}^{n} -\frac{x_i}{\lambda^2} < 0
 \]
 
 Always less than zero, thus we have a maximum.
@@ -975,7 +979,7 @@ where \(\hat{\theta} = \argmax_\theta l(\theta)\). We get the following properti
 
 \end{itemize}
 
-\subsubsection{Bayesian Maximum Aposteriori Estimation}
+\section{Bayesian Maximum A-posteriori Estimation}
 
 Recall the MLE but, we model the probability for the observations of the samples as \(\prob(x_i \mid \theta)\) and treat 
 them as real conditional probabilities instead as a notational trick for probability of \(x\) with the parameter \(\theta\) then we get 
@@ -990,9 +994,9 @@ If we optimize \(\theta\) we get
     MAP = \max \log(\prob(x \mid \theta) \prob(\theta))
 \]
 
-the \emph{maximum aposteriori estimation}.
+the \emph{maximum a-posteriori estimation}.
 
-\subsection{Confidence Interval}
+\section{Confidence Intervals}
 
 A \emph{confidence interval} \(p\) for \(\mu\) is a random interval centered at \(\overline{X_n}\) 
 that contains the true mean \(\mu\) with probability \(p\). 
@@ -1120,7 +1124,7 @@ assigned to a statistical distribution.
 For example, if we have \(n\) samples, and we know the mean, then we have \(n - 1\) degrees of freedom because
 the last value is determined by the mean and the other \(n - 1\) values.
 
-\subsection{Hypothesis Testing}
+\section{Hypothesis Testing}
 
 Given \(X: \Omega \to \mathcal{X}\) be random variable with statistical model
 \(P = \{\prob_\theta : \theta \in \Theta\}\). A subset \(\Theta_i\) of \(\Theta\) with \(H_1 \in \Theta_i\) is 

@@ -623,18 +623,18 @@ The denominator represents the sum of the column corresponding to actual positiv
 The numerator is the sum of all cells which are not in row or column of positive cases, while the denominator is the sum of the row corresponding to actual negative cases plus 
 our previous numerator.
 
-\subsection{Learning Principles}
+\section{Learning Principles}
 
-\subsubsection*{Ockham}
+\subsection*{Ockham}
 
 The simplest model which approximates the data is also the more plausible. 
 
-\subsubsection*{Corrupted Samples}
+\subsection*{Corrupted Samples}
 
 If the sample are corrupted, biased or contains errors then the model will also not be neutral 
 and will give false approximations.
 
-\subsubsection*{Data Snooping}
+\subsection*{Data Snooping}
 
 If a data-set affects the learning process then its capacity of approximating the out-of-sample error 
 was reduced. 
@@ -659,51 +659,69 @@ called the \emph{sigmoid function} with the property
     \theta(-s) = 1 - \theta(s)
 \]
 
-Note that \(h(x_i) = \theta(w^T x_i + b) = \frac{1}{1 + e^{- (w^T x_i + b)}}\)
-
-Based on the output of the logistic function we classify our data in the respective classes. For example, if the output is
-greater than 0.5 we classify it as class 1, otherwise as class -1.
-
-where \(h_\theta (x^i)\) is the hypothesis function, \(y^i\) is the true label for the \(i\)-th data point \(x^i\), and \(N\) is the total number of data points.
-
-\subsection{Maximum Likelihood}
-
-We can not optimize the sigmoid function directly; thus, we use the method of maximum likelihood. 
+Note that our original problem with \(\hat{y} = w^Tx + b\) is transformed into 
 
 \[
-    L = (\theta) = \prod_{n = 1}^N h_\theta(x^i)
+    h_\theta (x_i) = \frac{1}{1 + e^{- (w^T x_i + b)}}.
 \]
+
+Based on the output of the logistic function we classify our data in the respective classes based on a \emph{threshold}. For example, if the output is
+greater than 0.5 we classify it as class 1, otherwise as class -1.
+
+For the loss function instead of using the mean squared error we use the \emph{cross entropy} function which is derived using the \emph{maximum likelihood} 
+estimation:
+
+\subsubsection*{Maximum Likelihood}
+
+Let 
+
+\[
+    L(\theta) = \prod_{n = 1}^N p(x_i)^{y_i}(1 - p(x_i))^{1 - y_i}
+\]
+
+where \(p(x_i)\) is the probability of \(x_i\) being assigned the label \(y = 1\) and \(1 - p(x_i)\) the same for \(y = 0\).
 
 We take that expression and modify it into 
 
 \[
-    L = (\theta) = \prod_{n = 1}^N (h_\theta(x^i))^{y^i} (1 - h_\theta(x^i))^{1 - y^i}
+    L(\theta) = \prod_{n = 1}^N (h_\theta(x_i))^{y_i} (1 - h_\theta(x_i))^{1 - y_i}
 \]
 
 Taking the logarithm of the likelihood function gives us the log-likelihood:
 
 \[
-    \log L(w,b) = - \frac{1}{N} \sum_{i=1}^{N} [y^i \log(h_\theta (x^i)) + (1 - y^i) \log(1 - h_\theta (x^i))]
+    \log L(w,b) = - \frac{1}{N} \sum_{i=1}^{N} [y_i \log(h_\theta (x_i)) + (1 - y_i) \log(1 - h_\theta (x_i))]
 \]
 
-And this is the function we want to maximize. Note, that this is the \emph{cross entropy loss function}
+And this is the function we want to maximize. Note, that this is the \emph{cross entropy loss function}.
 
 \subsubsection*{Gradient of the Cross Entropy Loss Function}
 
 Using the cross entropy we can define our error for logistic regression. By taking the gradient
 
 \[
-   \log L(w,b) = - \frac{1}{N} \sum_{i = 1}^{n} [y^i \log(h_\theta (x^i) + (1 - y^i) \log(1 - h_\theta (x^i))]
+   \log L(w,b) = - \frac{1}{N} \sum_{i = 1}^{n} [y_i \log(h_\theta (x_i) + (1 - y_i) \log(1 - h_\theta (x_i))]
 \]
 
 We get 
 
-\[
-    \frac{\partial \log L(w,b)}{\partial w} = \frac{1}{N} \sum_{i=1}^{N} (h_\theta(x^i) - y^i) x^i
-\]
 
 \[
-    \frac{\partial \log L(w,b)}{\partial b} = \frac{1}{N} \sum_{i=1}^{N} (h_\theta(x^i) - y^i)  
+    \nabla \log L(\theta) = 
+    \begin{bmatrix}
+    \frac{\partial \log L(w,b)}{\partial w} \\ 
+    \frac{\partial \log L(w,b)}{\partial b}
+    \end{bmatrix}
+    = 
+    \begin{bmatrix}
+    \frac{1}{N} \sum_{i=1}^{N} 2x_i\left(\frac{1}{1 + e^{- (w^T x_i + b)}}- y_i\right) \\ 
+    \frac{1}{N} \sum_{i=1}^{N} 2\left(\frac{1}{1 + e^{- (w^T x_i + b)}}- y_i\right) 
+    \end{bmatrix}
+    = 
+    \begin{bmatrix}
+        \frac{1}{N} \sum_{i=1}^{N} 2x_i(h_\theta(x_i) - y_i)\\ 
+        \frac{1}{N} \sum_{i=1}^{N} 2(h_\theta(x_i) - y_i) 
+    \end{bmatrix}
 \]
 
 In vector form
@@ -756,6 +774,14 @@ In vector form
 
     \item After all iterations, output the learned parameters \(w\) and \(b\).
 
+    \item We predict our data by 
+    
+    \[
+        y_{\text{pred}} = h_\theta(X)
+    \]
+
+    followed by assigning each prediction a label based on single threshold or a list of ranges.
+
 \end{enumerate}
 
 \section{Trees}
@@ -764,7 +790,7 @@ In vector form
 mostly not an individual learning model but are just an extra layer.
 
 Formal definition: Given a feature vector \(x \in X\) in a \(d\)-dimensional feature space with 
-\(R_1, R_2, \dots, R_M\) being disjoint regions \emph{hyperquadratns} in the feature space. 
+\(R_1, R_2, \dots, R_M\) being disjoint regions \emph{hyper-quadrants} in the feature space. 
 
 The hypothesis \(h(x)\) of a tree is given by the formula 
 
@@ -1916,7 +1942,7 @@ we writ \(B\) as
 
 and \(H\) is our \emph{double centering matrix} which subtracts both the row and column mean.
 
-Finally reconstruct \(X\) from using te eigendecomposition with \(V\) as the matrix of eigenvectors and \(\Delta\) the eigenvalue matrix:
+Finally reconstruct \(X\) from using te eigendecomposition with \(V\) as the matrix of eigenvectors and \(\Lambda\) the eigenvalue matrix:
 
 \[
     B = V \Lambda V^t
@@ -1938,6 +1964,22 @@ The idea is similar to PCA, but instead of using correlation between samples, we
 metric for the method is part of the art. As an important note, the previously discussed method only works with the euclidean distance; for a generalization with any metric 
 there is an alternative algorithm.
 
+\subsection{Explained Distance Matrix}
+
+
+
+\subsubsection{Euclidean Constraint}
+
+The reason that our distance matrix has to be build using the Euclidean metric is due to the loss of positive definiteness. If \(B = XX^T\) then 
+
+\[
+    a^T B a = a^T XX^T a = (Xa)^T(Xa) \ge 0, \ \forall a
+\]
+
+Which guarantees positive eigenvalues. Negative eigenvalues lead to non real matrices when reconstructing our data.
+
+This is mostly not a problem in the praxis, due to the negative eigenvalues and they associated eigenvectors are discarded during the algorithm, but 
+this can limits the possibilities of projecting our data; meaning more lose of information.
 
 \subsection{Linear Discriminant Analysis}
 
