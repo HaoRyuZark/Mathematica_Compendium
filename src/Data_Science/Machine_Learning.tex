@@ -73,7 +73,44 @@ Our goal is to find a function \(g: \mathcal{X} \to \mathcal{Y}\) which approxim
 
 \end{itemize}
 
-\subsection{The Perceptron} 
+\section{Feature Scaling}
+
+\emph{Feature scaling} is a technique used to standardize the range of independent variables or features of data.
+In machine learning, it is crucial because many algorithms are sensitive to the scale of the input data.
+
+Common methods for feature scaling include:
+
+\begin{itemize}
+    
+    \item \emph{Min-Max Scaling (Normalization)}: This technique scales the data to a fixed range, usually 0 to 1. The formula is:
+    
+    \[
+        X' = \frac{X - X_{min}}{X_{max} - X_{min}}
+    \]
+
+    By adding \((b - a)\) to the formula we can scale it to any range \([a, b]\):
+
+    \[
+        X' = a + \frac{(X - X_{min})(b - a)}{X_{max} - X_{min}}
+    \]
+
+    \item \emph{Standardization (Z-score Normalization)}: This method transforms the data to have a mean of 0 and a standard deviation of 1. The formula is:
+    
+    \[
+        Z = \frac{X - \mu}{\sigma}
+    \]
+
+    where \(\mu\) is the mean and \(\sigma\) is the standard deviation of the feature.
+
+    \item \emph{Robust Scaling}: This method uses the median and the interquartile range (IQR) for scaling, making it robust to outliers. The formula is:
+    
+    \[
+        X' = \frac{X - \text{median}}{\text{IQR}}
+    \]
+
+\end{itemize}
+
+\section{The Perceptron} 
 
 \emph{The perceptron} is our first model in machine learning. It consists on having a separate vector \(w \in \R^d\) which consist of weights which are going to be 
 associated with the components of \(x \in \mathbb{R}^d\). We also define \(y \in \{-1,1\}\),  and some value \(b\) to work as our border between the categories of y. 
@@ -231,7 +268,7 @@ achieved by setting a maximum number iterations while also keeping track of the 
     
     \item For each iteration:
     
-        \begin{enumerate}
+     \begin{enumerate}
         
             \item If a point \( (x_i, y_i) \) is misclassified, update:
         
@@ -2149,13 +2186,23 @@ We want to select the class with the highest posterior probability
 
 \end{enumerate}
 
-\section{KMeans}
+\section{K-Means}
 
-\emph{KMeans} is an unsupervised learning iterative process that clusters the data set into \(k\) different clusters.
+\emph{K-Means} is an unsupervised learning iterative process that clusters the data set into \(k\) different clusters.
 Each sample is assigned to the cluster with the nearest mean, and then the means, \emph{centroids}, and clusters are 
 updated until there is no more change or the maximum number of iterations is reached.
 
-\subsubsection{Intra-Cluster Variance}
+\subsection{Centroid}
+
+The \emph{centroid} of a cluster \(C_i\) is defined as:
+
+\[
+    \mu_i = \frac{1}{|C_i|} \sum_{x_j \in C_i} x_j.
+\]
+
+It is the mean of the values inside the cluster.
+
+\subsection{Intra-Cluster Variance}
 
 Given \(C_1, \dots, C_n\) clusters with centroids \(\mu_1, \dots, \mu_n\). The \emph{intra-cluster variance} is given by
 
@@ -2163,43 +2210,38 @@ Given \(C_1, \dots, C_n\) clusters with centroids \(\mu_1, \dots, \mu_n\). The \
     J = \frac{1}{|C_i|} \sum_{i = 1}^{k} \sum_{x_j \in C_i} \| x_j - \mu_i \|^2
 \]
 
-The goal of the KMeans algorithm is to minimize \(J\).
-
-\subsubsection{Centroid}
-
-The \emph{centroid} of a cluster \(C_i\) is given by
+The goal of the K-Means algorithm is to minimize \(J\), 
 
 \[
-    \mu_i = \frac{1}{|C_i|} \sum_{x_j \in C_i} x_j
+    \argmin_{C_1, \dots, C_n} \frac{1}{|C_i|} \sum_{i = 1}^{k} \sum_{x_j \in C_i} \| x_j - \mu_i \|^2
 \]
 
-\subsubsection*{Algorithm}
+but due to it being a rather complex optimization problem, K-Means is 
+computed in an iterative manner.
+
+\subsection{K-Means Algorithm}
 
 \begin{enumerate}
 
-    \item Initialize cluster centers randomly 
+    \item Initialize centroids randomly by choosing a certain number of indexes from out data.
+
+    \item Initialize empty arrays for the number of clusters to which a centroid is going to be assigned.
 
     \item Repeat until converged or max iterations are reached: 
 
-        \subitem Update cluster labels: Assign points to the nearest centroid 
+        \subitem Update the clusters by assigning each sample to a cluster based on the closest centroid.
 
-        \subitem Update centroids: Set center to the mean of each cluster
+        \subitem Update centroids by computing the new mean. If a cluster is empty, then a random value from the sample is used as such.
+
+        \subitem Check convergence by checking if the old centroids are the same as the new ones.
+
+    \item We can return a label array with a label based on the cluster they ended.
 
 \end{enumerate}
 
-The distance measure can be chosen by the developer.
+The metric used can deliver different results.
 
-\subsubsection*{Important Note on KMeans}
-
-\begin{itemize}
-
-    \item KMeans can converge to local minima depending on the initial centroids. 
-    
-    \item The results can vary between different runs with different initialization.
-
-\end{itemize}
-
-\subsubsection{Elbow Heuristic}
+\subsection{Elbow Heuristic}
 
 The \emph{elbow heuristic} consists of plotting the explained variance as a function of the number of clusters and looking for an "elbow" point 
 where the rate of decrease sharply changes.
@@ -2214,39 +2256,30 @@ where the rate of decrease sharply changes.
 
 \end{itemize}
 
-\subsection{Scaling}
+\section{Hierarchical Clustering}
 
-Feature scaling is a technique used to standardize the range of independent variables or features of data.
-In machine learning, it is crucial because many algorithms are sensitive to the scale of the input data.
-
-Common methods for feature scaling include:
+In contrast to the partitioning clustering like KMeans, \emph{hierarchical clustering} creates different divisions in each iteration 
+of the clustering process based on similarity. This can happen in two ways: 
 
 \begin{itemize}
-    
-    \item \emph{Min-Max Scaling (Normalization)}: This technique scales the data to a fixed range, usually 0 to 1. The formula is:
-    
-    \[
-        X' = \frac{X - X_{min}}{X_{max} - X_{min}}
-    \]
 
-    By adding \((b - a)\) to the formula we can scale it to any range \([a, b]\):
+    \item \emph{Top-Down}: We start with our set \(D\) and start splitting into subsets using a similarity metric, until we have sets with only one data point.
 
-    \[
-        X' = a + \frac{(X - X_{min})(b - a)}{X_{max} - X_{min}}
-    \]
-
-    \item \emph{Standardization (Z-score Normalization)}: This method transforms the data to have a mean of 0 and a standard deviation of 1. The formula is:
-    
-    \[
-        Z = \frac{X - \mu}{\sigma}
-    \]
-
-    where \(\mu\) is the mean and \(\sigma\) is the standard deviation of the feature.
-
-    \item \emph{Robust Scaling}: This method uses the median and the interquartile range (IQR) for scaling, making it robust to outliers. The formula is:
-    
-    \[
-        X' = \frac{X - \text{median}}{\text{IQR}}
-    \]
+    \item \emph{Bottom-Up}: This is the inverse process to the top-down approach, starting with singletons and then creating sets which at the root level, are then merged into \(D\).
 
 \end{itemize}
+
+\subsection{Similarity Measurement}
+
+Given two sets \(X, Y\) we can measure their similarity in the following ways:
+
+\begin{itemize}
+
+    \item \emph{Single Linkage}: \(D(X,Y)= \min_{x \in X, y \in Y} \metric{x - y}\)
+    
+    \item \emph{Complete Linkage}: \(D(X,Y)= \max_{x \in X, y \in Y} \metric{x - y}\)
+    
+    \item \emph{Average Linkage}: \(D(X,Y)= \frac{1}{|X||Y|} \sum_{x \in X}  \sum_{y \in Y} \metric{x - y}\)
+
+\end{itemize}
+

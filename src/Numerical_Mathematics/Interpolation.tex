@@ -386,3 +386,339 @@ The resulting interpolating polynomial is
 \[
     p(x) = 3 + (-1)(x - 0) + 1(x - 0)(x - 1) = x^2 - x + 3
 \]
+
+\section{Polynomial Spline Interpolation}
+
+For \(x_0 < x_1 < \dots < x_n\) we denote \(\Omega_n = \{x_0, \dots, x_n\}\) the \emph{subdivision of the interval} \([x_0, x_n]\). A function 
+\(s_k\) such that 
+
+\[
+    s_k \mid_{[x_i, x_{i + 1}]} \text{ is a polynomial of degree } c \le k,
+\]
+
+\[
+    s_k \text{ is } C^{k - 1} \text{ for } [x_0, x_n],
+\]
+
+where \(C^{k - 1}\) means differentiable to degree at most \(k - 1\); is denoted as \emph{polynomial spline} of order \(k\) with respect to \(\Omega_n\).
+
+\emph{Polynomial splines} are a way of interpolating a polynomial to fit a continuous function in certain interval, 
+and then combining those piecewise function into one continuous functions. This can be used when an interpolation method delivers 
+errors certain regions of the domain. To address the discontinuities we use constrains using the derivatives of our polynomials.
+
+\subsection{Cubic Splines}
+
+A \emph{cubic polynomial spline} of degree 3 has the form 
+
+\[
+    s_3 \mid_{[x_i, x_{i + 1}]}(x_i) =  a_i + b_i (x  - x_i) + c_i (x  - x_i)^2 +d_i (x  - x_i)^3.
+\]
+
+Note that \(s_3\) is two times differentiable. 
+
+We get our main conditions from 
+
+\begin{align*}
+    s_3(x_1) &= y_i \\ 
+    &\vdots \\ 
+    s_3(x_i) &= y_i
+\end{align*}
+
+and our smoothness conditions from 
+
+\begin{align*}
+    C^0: s_3(x_j)_- &= s_3(x_j)_+ \\ 
+    C^1: s_3'(x_j)_- &= s_3'(x_j)_+ \\ 
+    C^2: s_3''(x_i)_- &= s_3''(x_j)_+ 
+\end{align*}
+
+They just mean that our function will be continuous on the points where two splines meet.
+
+Other types of conditions are for example: 
+
+the \emph{natural spline}
+
+\[
+    s_3''(x_0) = s_3 '' (x_n) = 0,
+\]
+
+the \emph{periodic spline}
+
+\[
+    s_3'(x_0) = s_3'(x_n) \land s_3''(x_0) = s_3''(x_n),
+\]
+
+the \emph{hermitian spline}
+
+\[
+    s_3'(x_0) = u s_3' (x_n) = v,
+\]
+
+given both \(u,v\).
+
+\subsubsection{Direct Computation}
+
+Given our the derivatives of \(s_3\)
+
+\begin{align*}
+    s_3(x) &= a_i + b_ix + + c_i x^2 + d_i x^3 \\ 
+    s_3'(x) &= b_i + 2c_i x + 3d_i x^2 \\ 
+    s_3''(x) &= 2c_i + 6d_i x ,
+\end{align*}
+
+the interpolation and continuity properties are fulfilled if 
+
+\begin{align*} 
+    a_i + b_ix_i + + c_i x_{i}^2 + d_i x_{i}^3 &= y_i \\  
+    a_i + b_ix_{i + 1} + + c_i x_{i+1}^2 + d_i x_{i+1}^3 &= y_{i + 1},
+\end{align*}
+
+also the continuity of the first derivative delivers the following property 
+
+\[
+    b_{i - 1} + 2c_{i - 1}x_i + 3d_{i _ 1}x_i^2 = b_i + 2c_i x_i + 3d_i x_i^2 
+\]
+
+and the second derivative the following 
+
+\[
+    2c_{i - 1} + 6_{i - 1}x_i = 2c_i + 6d_i x_i
+\]
+
+for \(i = 0, \dots, n - 1\). This provides us with 
+
+\begin{align*}
+    2_c0 + 6d_0 x_0 &= 0 \\ 
+    2c_{n - 1} + 6_{n - 1}x_i &= 0
+\end{align*}
+
+This will deliver a system of equations of \(4n \times 4n\).
+
+\textbf{Example:}
+
+For four variables we would get the following cubic spines \(S_i\) with the main conditions:
+
+\begin{align*}
+    S_1(x_1) &= y_1 \\   
+    S_1(x_2) &= y_2 \\ 
+    S_2(x_2) &= y_2 \\  
+    S_2(x_3) &= y_3 \\  
+    S_3(x_3) &= y_3 \\  
+    S_3(x_4) &= y_4 \\  
+    S_4(x_4) &= y_4 
+\end{align*}
+
+the first derivative conditions for the intersection points
+
+\begin{align*}
+    S_1'(x_2) &= S_2'(x_2) \\ 
+    S_2'(x_3) &= S_3'(x_3)
+\end{align*}
+
+and lastly the second derivative conditions
+
+\begin{align*}
+    S_1''(x_2) = S_2''(x_2) \\ 
+    S_2''(x_3) = S_2''(x_3)
+\end{align*}
+
+\subsubsection{Computation Over Moments}
+
+We define a \emph{moment} as 
+
+\[
+    \beta_i = s_3''(x_i), \quad i = 0, \dots, n.
+\]
+
+We also define  \(\alpha_i := s_3'(x_i)\). 
+
+Given that our first and second derivatives are both defined, we can define our second derivate of the form 
+
+\[
+    s_3''(x) = \beta_i + \frac{x - x_i}{x_{i + 1} - x_i}(\beta_{i + 1} - \beta_i) = \frac{\beta_{i + 1} - \beta_{i}}{h_i}(x - x_i)
+\]
+
+with \(h_i = x_{i + 1} - x_i\).
+
+If we integrate over the region \([x_i, x]\)
+
+\[
+    s_3'(x) = \int_{x_i}^{x} \frac{\beta_{i + 1} - \beta_{i}}{h_i}(x - x_i) = \beta_i (x - x_i) + \frac{b_{i + 1} - \beta_i}{2h_i} (x - x_i)^2 
+\]
+
+Giving the following line
+
+\[
+    s_3'(x) = \alpha_i + \beta_i (x - x_i) + \frac{b_{i + 1} - \beta_i}{2h_i} (x - x_i)^2 
+\]
+
+Then by repeating the integration over the same integral delivers 
+
+\[
+    s_3(x) = y_i + \alpha_i (x - x_i) + \frac{\beta_i}{2} (x - x_i)^3 + \frac{\beta_{i + 1} - \beta_i}{6h_i}(x - x_i)^3
+\]
+
+By substituting \(x = x_{i + 1}\) in \(s_3'(x)\) we get: 
+
+\begin{align*}
+    \alpha_{i + 1} &= s_3'(x_{i + 1}) \\ 
+    \alpha_{i + 1} &= \alpha_i + \beta_i (x_{i + 1} - x_i) + \frac{b_{i + 1} - \beta_i}{2h_i} (x_{i + 1} - x_i)^2 \\
+    \alpha_{i + 1} - \alpha_i &=  \frac{b_i + \beta_{i + 1}}{2}
+\end{align*}
+
+Continuing, by substituting \(x = x_{i + 1}\) into \(s_3(x_i)\) we get 
+
+\begin{align*}
+    s_3(x_{i + 1}) = y_{i +1} &= y_i + \alpha_i (x_{i + 1} - x_i) + \frac{\beta_i}{2} (x_{i + 1} - x_i)^3 + \frac{\beta_{i + 1} - \beta_i}{6h_i}(x_{i + 1} - x_i)^3\\
+    &= u_i + \alpha_i h_i + \frac{\beta_i}{2} h_i^2 + \frac{\beta_{i + 1} - \beta_{i}}{6} h_i^3 \\
+    \frac{y_{i + 1} - y_i}{h_i} &= \alpha_i + \frac{\beta_i}{3} h_i + \frac{\beta_{i + 1}}{6} h_i
+\end{align*}
+
+By evaluating on ton the inner points of an interval \([x_i, x_{i + 1}],\) \([x_{i - 1}, x_i]\) we get 
+
+\begin{align*}
+    \frac{y_{i + 1} - y_i}{h_i} &= \alpha_i + \frac{\beta_i}{3} h_i + \frac{\beta_{i + 1}}{6} h_i \\ 
+    \frac{y_{i} - y_{i - 1}}{h_{i - 1}} &= \alpha_{i - 1} + \frac{\beta_{i - 1}}{3} h_{i - 1} + \frac{\beta_{i}}{6} h_{i - 1}
+\end{align*}
+
+Now by subtracting the two equations we get
+
+\begin{align*}
+     \frac{y_{i + 1} - y_i}{h_i} - \frac{y_{i} - y_{i - 1}}{h_{i - 1}} &= \alpha_i - \alpha_{i - 1} + \frac{\beta_i}{3} h_i + \frac{\beta_{i + 1}}{6} h_i - \frac{\beta_{i - 1}}{3} h_{i - 1} - \frac{\beta_{i}}{6} h_{i - 1} \\ 
+     &= \frac{\beta_i + \beta_{i + 1}}{2} h_{i - 1} + \frac{\beta_i}{3}h_i + \frac{\beta_{i + 1}}{6}h_i - \frac{\beta_{i  -1}}{3}h_{i - 1} - \frac{\beta_i}{6}h_{i - 1} \\
+     &= \frac{h_{i - 1}}{6}\beta_{i -1} + \frac{h_{i - 1} + h_i}{3}\beta_i + \frac{h_i}{6} \beta_{i + 1}
+\end{align*}
+
+more specifically we get the following system of equation 
+
+\[
+    h_{i - 1}\beta_{i -1} + 2(h_{i - 1} + h_i)\beta_i + h_i \beta_{i + 1} = 6\left(\frac{y_{i + 1} - y_i}{h_i} - \frac{y_{i} - y_{i - 1}}{h_{i - 1}}\right)
+\]
+
+for \(i = 1, \dots, n - 1\). This is a tridiagonal system of equations which can be solved in \(O(n)\) time.
+
+\[
+    \begin{bmatrix}
+        2(h_0 + h_1) & h_1 & 0 & \dots & 0 \\ 
+        h_1 & 2(h_1 + h_2) & h_2 & \dots & 0 \\ 
+        0 & h_2 & 2(h_2 + h_3) & \dots & 0 \\ 
+        \vdots & \vdots & \vdots &  & \vdots \\ 
+        0 & 0 & 0 & \dots & 2(h_{n - 2} + h_{n - 1})
+    \end{bmatrix}
+    \begin{bmatrix}
+        \beta_1 \\ 
+        \beta_2 \\ 
+        \beta_3 \\ 
+        \vdots \\ 
+        \beta_{n - 1} 
+    \end{bmatrix}
+    = 
+    \begin{bmatrix}
+        \gamma_1 \\
+        \gamma_2 \\
+        \gamma_3 \\
+        \vdots \\
+        \gamma_{n - 1}
+    \end{bmatrix}
+\]
+
+where
+
+\[
+    \gamma_i = 6\left(\frac{y_{i + 1} - y_i}{h_i} - \frac{y_{i} - y_{i - 1}}{h_{i - 1}}\right), \quad h_i = x_{i + 1} - x_i
+\]
+
+Every thing but the \(\alpha_i\) is know, but they can be computed by
+
+\[
+    \alpha_i = \frac{y_{i + 1} - y_i}{h_i} - \frac{\beta_i}{3} h_i - \frac{\beta_{i + 1}}{6} h_i
+\]
+
+Hence, we get the following algorithm for computing the cubic spline interpolation. 
+
+\subsubsection*{Algorithm}
+
+Given the points \((x_0, y_0), \dots, (x_n, y_n)\), we can compute the cubic spline interpolation by following steps:
+
+\begin{enumerate}
+
+    \item Compute \(h_i\) and \(\gamma_i\) for \(i = 1, \dots, n - 1\).
+
+    \item Solve the tridiagonal system of equations \(A\beta = \gamma\).
+
+    \item Compute all \(\alpha_i\)
+
+    \item Substitute the values of \(\alpha_i\) and \(\beta_i\) into the formula for \(s_3(x)\) to get the cubic spline interpolation.
+
+\end{enumerate}
+
+\textbf{Example:}
+
+We are given the following table of values 
+
+\begin{center}
+\begin{tabular}{c|c|c|c|c|c}
+    \(i\)   & 0 & 1 & 2 & 3 & 4\\ \hline
+    \(x_i\) & -3 & -1 & 0 & 1 & 3 \\ 
+    \(y_i\) & \(\frac{3}{5}\) & 1 & \(\frac{3}{2}\) & 1 & \(\frac{3}{5}\)
+\end{tabular}
+\end{center}
+
+for the function \(\frac{1}{2} + \frac{1}{x^2 + 1}\), compute the cubic interpolation.
+
+We use our formula for \(h_i = x_{i + 1} - x_{i}\) to compute our differences 
+
+\begin{center}
+\begin{tabular}{c|c|c|c|c|c}
+    \(i\)   & 0 & 1 & 2 & 3 & 4\\ \hline
+    \(h_i\) & 2 & 1 & 1 & 2 & -
+\end{tabular}
+\end{center}
+
+We substitute into our system 
+
+\[
+    \begin{bmatrix}
+        2(2 + 1) & 1 & 0 \\ 
+        1 & 2(1 + 1) & 1 \\ 
+        0 & 1 & 2(1 + 2)
+    \end{bmatrix}
+    \vec{\beta}
+    = 
+    \begin{bmatrix}
+        6\left(\frac{\frac{3}{2} - 1}{1} - \frac{1 - \frac{3}{5}}{2}\right) \\ 
+        6\left(\frac{1 - \frac{3}{2}}{1} - \frac{\frac{3}{2} - 1}{2}\right) \\ 
+        6\left(\frac{\frac{3}{2} - 1}{2} - \frac{1 - \frac{3}{2}}{1}\right) 
+    \end{bmatrix}
+\]
+
+using the condition \(\beta_0 = \beta_n = 0\) we get 
+
+\begin{center}
+\begin{tabular}{c|c|c|c|c|c}
+    \(i\)     & 0 & 1 & 2 & 3 & 4\\ \hline
+    \(\beta_i\) & 0 & \(\frac{3}{5}\) & \(-\frac{9}{5}\) & \(\frac{3}{5}\) & 0 \\ 
+    \(\alpha_i\) & 0 & \(\frac{3}{5}\) & 0 & \(-\frac{3}{5}\) & - 
+\end{tabular}
+\end{center}
+
+Hence, our splines using the formula 
+
+\[
+    s_3(x) = y_i + \alpha_i (x - x_i) + \frac{\beta_i}{2} (x - x_i)^3 + \frac{\beta_{i + 1} - \beta_i}{6h_i}(x - x_i)^3
+\]
+
+are: 
+
+\[
+    s_3(x) = 
+    \begin{cases}
+        \frac{x^3}{20} + \frac{9x^2}{20} + \frac{27x}{20} + \frac{39}{20} & x < -1 \\ 
+        -\frac{2x^3}{5} - \frac{9x^2}{10} + \frac{3}{2} & x < 0\\ 
+        \frac{2x^3}{5} - \frac{9x^2}{10} + \frac{3}{2} & x < 1\\
+        -\frac{x^3}{20} + \frac{9x^2}{20} - \frac{27x}{20} + \frac{39}{20} & \text{ else} \\ 
+    \end{cases}
+\]
+
+
+\section{Interpolation Curves}
