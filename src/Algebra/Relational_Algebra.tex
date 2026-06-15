@@ -1,7 +1,7 @@
 \newpage 
 \chapter{Relational Algebra}
 
-\subsection{Relations}
+\section{Relations In Set Theory}
 
 In mathematics, a \emph{relation} is a set formed from the Cartesian product of two sets. It contains ordered pairs \((a,b)\).
 
@@ -18,11 +18,11 @@ special product is \( |S \times T| = |S| \cdot |T| \).
 
 In relational algebra, relations represent tables and their rows are the tuples.
 
-\subsection{Relational Algebra}
+\section{Relational Algebra}
 
 Relational Algebra is a \emph{formal, procedural query language} for the relational model. It provides a set of operators that take relations (tables) as input and produce relations as output.
 
-\subsubsection{Axioms of Relational Algebra}
+\subsection{Axioms of Relational Algebra}
 
 Relational Algebra is based on \emph{set theory} and satisfies the following axioms:
 
@@ -42,7 +42,7 @@ Relational Algebra is based on \emph{set theory} and satisfies the following axi
   
 If \(\sigma_{id > 1}(A)\) returns a relation, it can be used as input to another operator such as projection.
 
-\subsubsection{Relations}
+\section{Relations In Relational Algebra}
 
 In database theory, a \emph{relation} is a finite set of tuples over a fixed set of attributes.
 
@@ -60,7 +60,7 @@ Relation \(A(id, value)\) is a set of tuples:
     A = \{(1, X), (2, Y)\}
 \]
 
-\subsubsection{Identifier and Schema}
+\subsection{Identifier and Schema}
 
 We define:
 
@@ -68,16 +68,18 @@ We define:
     \mathrm{ident}(R) = \{a_i\}_i \quad \text{and} \quad \mathrm{schema} (R) = \{[a_1:T_1, \dots, a_n:T_n]\}.
 \]
 
-\(\mathrm{ident}\) returns the names of the attributes of the relation, while 
-\(\mathrm{schema}\) returns the attributes and their corresponding types.
+\(\mathrm{ident}\) returns the names of the attributes of the relation, while \(\mathrm{schema}\) returns the attributes and their corresponding types.
 
 \subsection{Domain of an Attribute}
 
 The \emph{domain} of an attribute \(a\) in a relation \(R\) is the set of all possible values that \(a\) can take in \(R\).
 
-\subsubsection{Cartesian Product for Relations}
+\section{Relational Algebra Operations}
+
+\subsection{Cartesian Product for Relations}
 
 The \emph{Cartesian product} combines every tuple of one relation with every tuple of another.
+This is also called the \emph{cross join} is some implementations.
 
 \[
     S \times T = \bigcup_{(s_1, \dots, s_n) \in S} \left[ \bigcup_{(t_1, \dots, t_n) \in T} \{(s_1, \dots, s_n, t_1, \dots, t_k)\} 
@@ -86,15 +88,17 @@ The \emph{Cartesian product} combines every tuple of one relation with every tup
 
 With size \(|S \times T|  = |S| \times |T|\).
 
+\textbf{Example:}
+
 \begin{verbatim}
     SELECT * FROM T, S;
     -- or equivalently:
     SELECT * FROM T CROSS JOIN S;
 \end{verbatim}
 
-\subsubsection{Union \texorpdfstring{\((\cup)\)}{}}
+\subsection{Union \texorpdfstring{\((\cup)\)}{}}
 
-Combines tuples from two relations with the \emph{same schema}.
+Combines tuples from two relations with the \emph{same schema} (same columns).
 
 \[
     A \cup B
@@ -110,19 +114,23 @@ For the union of relations they have to be \emph{union compatible} which means:
 
 \end{itemize}
 
+\textbf{Example:}
+
 \begin{verbatim}
     SELECT * FROM T
     UNION
     SELECT * FROM S;
 \end{verbatim}
 
-\subsubsection{Set Difference \texorpdfstring{\((\setminus)\)}{}}
+\subsection{Set Difference \texorpdfstring{\((\setminus)\)}{}}
 
 Returns tuples in one relation but not in another.
 
 \[
     A \setminus B
 \]
+
+\textbf{Example:}
 
 \begin{verbatim}
     SELECT * FROM T
@@ -134,7 +142,7 @@ Returns tuples in one relation but not in another.
     SELECT * FROM S;
 \end{verbatim}
 
-\subsubsection{Intersection \texorpdfstring{\(\cap\)}{}}
+\subsection{Intersection \texorpdfstring{\(\cap\)}{}}
 
 Returns tuples common to both relations.
 
@@ -142,13 +150,15 @@ Returns tuples common to both relations.
     A \cap B = A \setminus (A \setminus B)
 \]
 
+\textbf{Example:}
+
 \begin{verbatim}
     SELECT * FROM T
     INTERSECT
     SELECT * FROM S;
 \end{verbatim}
 
-\subsubsection{Selection \texorpdfstring{\(\sigma\)}{}}
+\subsection{Selection \texorpdfstring{\(\sigma\)}{}}
 
 Filters tuples based on a predicate.
 
@@ -156,11 +166,13 @@ Filters tuples based on a predicate.
     \sigma_{\theta}(S) = \{s \in S \mid s \text{ satisfies } \Theta\}
 \]
 
+\textbf{Example:}
+
 \begin{verbatim}
     SELECT * FROM T WHERE a > 10;
 \end{verbatim}
 
-\subsubsection{Projection \texorpdfstring{\(\pi\)}{}}
+\subsection{Projection \texorpdfstring{\(\pi\)}{}}
 
 Selects specific attributes.
 
@@ -172,11 +184,13 @@ This gives us the same tuples of the original relational but only with the colum
 
 It can also be noted as \(\pi\).
 
+\textbf{Example:}
+
 \begin{verbatim}
     SELECT a, b FROM T;
 \end{verbatim}
 
-\subsubsection{Symmetric Difference \texorpdfstring{\(\triangle\)}{}}
+\subsection{Symmetric Difference \texorpdfstring{\(\triangle\)}{}}
 
 Tuples in either relation but not in both.
 
@@ -184,13 +198,15 @@ Tuples in either relation but not in both.
     A \triangle B = (A \setminus B) \cup (B \setminus A)
 \]
 
+\textbf{Example:}
+
 \begin{verbatim}
     (SELECT * FROM T EXCEPT SELECT * FROM S)
     UNION
     (SELECT * FROM S EXCEPT SELECT * FROM T);
 \end{verbatim}
 
-\subsubsection{Rename \texorpdfstring{\(\rho\)}{}}
+\subsection{Rename \texorpdfstring{\(\rho\)}{}}
 
 Renames relations or attributes.
 
@@ -198,46 +214,37 @@ Renames relations or attributes.
     \rho_{A'(key, data)}(A)
 \]
 
+\textbf{Example:}
+
 \begin{verbatim}
     SELECT a AS x, b AS y, c AS z FROM T;
     -- or rename the table:
     SELECT * FROM T AS T_new;
 \end{verbatim}
 
-\subsubsection{\texorpdfstring{\(\mathrm{with}\)}{with}}
+\subsection{\texorpdfstring{\(\mathrm{with}\)}{with}}
 
 \(\mathrm{with}\) allows us to store products of specific operation with a special name which can be used later in other operations.
 
-\subsubsection{Join \texorpdfstring{\(\bowtie\)}{}}
+\subsection{Join \texorpdfstring{\(\bowtie\)}{}}
 
-A \emph{theta join} is the Cartesian product plus a selection.
-
-\[
-    S \bowtie_{\theta } T = \sigma_\theta (S \times T)
-\]
-
-\subsubsection*{Inner Join \(\bowtie\)}
-
-It is a \emph{theta join} combines tuples that satisfy a condition.
+It is a \emph{theta/inner join} is the Cartesian product plus a selection based on a condition \(\theta\).
 
 \[
     S \bowtie_{\theta } T = \sigma_\theta (S \times T)
 \]
 
-\[
-    S \bowtie_{\theta} T = \sigma_{\theta}(S \times T)
-\]
+\textbf{Example:}
 
 \begin{verbatim}
     SELECT * FROM T INNER JOIN S ON T.a = S.d;
     -- or with theta condition:
     SELECT * FROM T INNER JOIN S ON T.a < S.d;
-\end{verbatim}
+\end{verbatim}  
 
-\subsubsection*{Equi-Join}
+\subsection{Equi-Join}
 
-An \emph{equi-join} is a join where the join condition consists only of equality 
-comparisons between attributes of the two relations.
+An \emph{equi-join} is a join where the join condition consists only of equality comparisons between attributes of the two relations.
 
 \[
     R \bowtie_{R.a_1 = S.b_1 \land \dots \land R.a_k = S.b_k} S.
@@ -249,14 +256,15 @@ The name and domain of the attributes must be the same.
     R \bowtie_{R.a_1 = S.b_1 \land \dots \land R.a_k = S.b_k} S = \sigma_{R.a_1 = S.b_1 \land \dots \land R.a_k = S.b_k}(R \times S)
 \]
 
+\textbf{Example:}
+
 \begin{verbatim}
     SELECT * FROM T JOIN S ON T.a = S.d AND T.b = S.e;
 \end{verbatim}
 
-\subsubsection*{Natural Join}
+\subsection{Natural Join}
 
-It is a special case of the equi-join which can only be performed only if there 
-is a common attribute.
+It is a special case of the equi-join which can only be performed only if there is a common attribute.
 
 \[
     R \bowtie S
@@ -268,12 +276,14 @@ Let \(C = \mathrm{ident}(R) \cap \mathrm{ident}(S)\) be the common attributes.
     R \bowtie S = \pi_{\mathrm{ident}(R) \cup \mathrm{ident}(S)}\left(\sigma_{\bigwedge_{c \in C} R.c = S.c}(R \times S)\right)
 \]
 
+\textbf{Example:}
+
 \begin{verbatim}
     SELECT * FROM T NATURAL JOIN S;
     -- assumes T and S have common column names
 \end{verbatim}
 
-\subsubsection*{Semi-Join}
+\subsection{Semi-Join}
 
 It is a case were we only care about the attribute names but not its values.
 
@@ -293,6 +303,8 @@ Or alternatively:
 
 where \(C = \mathrm{ident}(R) \cap \mathrm{ident}(S)\).
 
+\textbf{Example:}
+
 \begin{verbatim}
     SELECT T.* FROM T WHERE EXISTS 
     (SELECT 1 FROM S WHERE T.a = S.d);
@@ -300,7 +312,7 @@ where \(C = \mathrm{ident}(R) \cap \mathrm{ident}(S)\).
     SELECT * FROM T WHERE a IN (SELECT d FROM S);
 \end{verbatim}
 
-\subsubsection*{Anti Semi-Join}
+\subsection{Anti Semi-Join}
 
 In this case, it works very similar to the semi join, but we take the attributes which do not participate in the natural join.
 
@@ -312,22 +324,25 @@ In this case, it works very similar to the semi join, but we take the attributes
     R \triangleright S = R \setminus (R \ltimes S) = R \setminus \pi_{\mathrm{ident}(R)}(R \bowtie S)
 \]
 
+\textbf{Example:}
+
 \begin{verbatim}
-    SELECT T.* FROM T WHERE NOT EXISTS 
-    (SELECT 1 FROM S WHERE T.a = S.d);
+    SELECT T.* FROM T WHERE NOT EXISTS (SELECT 1 FROM S WHERE T.a = S.d);
     -- or using NOT IN:
     SELECT * FROM T WHERE a NOT IN (SELECT d FROM S);
 \end{verbatim}
 
-\subsubsection*{Outer Join}
+\subsection{Outer Join}
 
-Preserves non-matching tuples.
+The \emph{outer join} preserves non-matching tuples.
 
-\emph{Left Outer Join}: It returns all tuples from the left relation and matching tuples from the right relation. 
+\begin{itemize}
+    \item \emph{Left Outer Join}: It returns all tuples from the left relation with not matches on the right. 
+    \item \emph{Right Outer Join}: It returns all tuples from the right relation with not matches on the left.
+    \item \emph{Full Outer Join}: It returns all tuples from both relations which are not in the inner join.
+\end{itemize}
 
-\emph{Right Outer Join}: It returns all tuples from the right relation and matching tuples from the left relation.
-
-\emph{Full Outer Join}: It returns all tuples from both relations, filling in NULLs for non-matching tuples.
+\textbf{Example:}
 
 \begin{verbatim}
     -- Left Outer Join:
@@ -340,7 +355,7 @@ Preserves non-matching tuples.
     SELECT * FROM T FULL OUTER JOIN S ON T.a = S.d;
 \end{verbatim}
 
-\subsubsection{Division \texorpdfstring{\(\div\)}{}}
+\subsection{Division \texorpdfstring{\(\div\)}{}}
 
 Used to express \emph{"for all"} queries. It can only be performed when 
 the relation on the right is a proper subset of the left relation.
@@ -381,9 +396,11 @@ If \(A(id, value)\) contains all values in \(B(value)\), division returns the co
     );
 \end{verbatim}
 
-\subsubsection{Assignment \texorpdfstring{\((=)\)}{}}
+\subsection{Assignment \texorpdfstring{\((=)\)}{}}
 
-This is just using to store the result of a relational algebra operation.
+This is just using a placeholder to store the result of a relational algebra operation.
+
+\textbf{Example:}
 
 \begin{verbatim}
     -- Create a view or temporary table
@@ -392,7 +409,7 @@ This is just using to store the result of a relational algebra operation.
     CREATE TEMPORARY TABLE Result AS SELECT * FROM T WHERE a > 5;
 \end{verbatim}
 
-\subsection{Types of Keys}
+\section{Types of Keys}
 
 A \emph{key} is an attribute or combination of attributes (composite key) which uniquely identifies an entity.
 
@@ -412,7 +429,7 @@ A \emph{key} is an attribute or combination of attributes (composite key) which 
 
 \end{itemize}
 
-\subsection{Relation Schema}
+\section{Relation Schema}
 
 The \((\mathcal{R}, \tau)\) represents a \emph{relation schema}. We can constrain our relations to obey certain rules. Thus, limiting our space. 
 Here, \(\mathcal{R}\) is the set of all relations of \(n\) elements and \(\tau\) is the set of \(n\)-tuple (attributes).
@@ -424,12 +441,12 @@ the tuples inside the relation.
 
 Also, this is just the definition of the name of the relations and the types of its attributes. 
 
-\subsection{Constraint}
+\section{Constraint}
 
 We denote that \(d[x]\) is a function from \(x \to R^+\), where \(R^+\) is the relation \(R\) without the attribute \(x\).
 This is called the \emph{constraint}.
 
-\subsection{Functional Dependencies}
+\section{Functional Dependencies}
 
 A \emph{functional relation} is dependence between one or more attributes commonly noted \(A \to B\).
 
@@ -445,7 +462,7 @@ In simple terms the notation \( X \to Y\) means "we know \(Y\) if we know \(X\)"
 A complete dependence is when \(A \to B\) is when we can not further reduce the tuple \(A\) 
 so that we still get \(B\).
 
-\subsection{Armstrong Axioms}
+\section{Armstrong Axioms}
 
 For a relation \(R = \{a_1, \dots, a_n\}\) with the schema \(\alpha, \beta, \gamma \subseteq \mathrm{ident}(R)\).
 
@@ -486,7 +503,7 @@ the starting point.
 
 \end{itemize}
 
-\subsection{Canonical Cover}
+\section{Canonical Cover}
 
 We consider two sets of functional dependencies if and only if their 
 attribute closures \(FD^+\) are identical.
@@ -578,7 +595,8 @@ Using \(\{A \to DEF, A \to BC, D \to EF\}\) we proceed with the first dependency
     FC^c = \{A \to BCD, D \to EF\}
 \]
 
-\textbf{Important Notes}
+
+Important notes:
 
 \begin{itemize}
     

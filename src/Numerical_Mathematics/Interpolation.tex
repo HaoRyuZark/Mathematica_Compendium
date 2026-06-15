@@ -1,6 +1,5 @@
 \newpage 
-
-\section{Polynomial Interpolation}
+\chapter{Polynomial Interpolation}
 
 \emph{Polynomial interpolation} is a family of procedures to find a polynomial given 
 a certain numbers of data points \((x_0, y_0), \dots, (x_n, y_n)\) such that 
@@ -15,7 +14,7 @@ This results into finding a polynomial with at most degree\(n\), with \(n + 1\) 
     f(x) = c_0 + c_1 x + c_2 x^2 + \dots + c_{n}x^n
 \]
 
-\subsection{Set of Polynomials of Degree \texorpdfstring{\(n\)}{n}}
+\section{Set of Polynomials of Degree \texorpdfstring{\(n\)}{n}}
 
 We define the set of polynomials with at degree \(n\) as \(P_n\).
 
@@ -43,7 +42,7 @@ If we perform the following operation
 
 We have a polynomial \(p(x) - q(x) \in P_n\) but it has zeros at \(n + 1\) places, hence \(p(x) - q(x) = 0 \implies p(x) = q(x)\).
 
-\subsection{Vandermonde Systems}
+\section{Vandermonde Systems}
 
 For our interpolation \(p(x)\) we define the following system 
 
@@ -73,7 +72,7 @@ For our interpolation \(p(x)\) we define the following system
 
 Now our problem of finding the constants in the vector \(c\) has been transformed into finding the inverse of \(V\).
 
-\subsubsection{Invertibility Of The Vandermonde Matrix}
+\subsection{Invertibility Of The Vandermonde Matrix}
 
 There exits an \(V^{-1}\) to the corresponding \(V\).
 
@@ -150,7 +149,7 @@ Giving us an inductive procedure and the following results
     \det(V) = \prod_{0 \le i < j \le n} (x_j - x_i) \neq 0 \iff x_i \ne x_j \ \forall i \ne j.
 \]
 
-\subsection{Lagrange Polynomials}
+\section{Lagrange Polynomials}
 
 \emph{Lagrange polynomial} are used to interpolate polynomial by using the following property
 
@@ -209,7 +208,7 @@ Resulting in the following interpolating polynomial
 \]
 
 
-\subsection{Newton Polynomials}
+\section{Newton Polynomials}
 
 The interpolation polynomial in the \emph{Newtonian form} is a defined as 
 
@@ -239,7 +238,7 @@ with
 
 We can keep the step we did without a recurrence relation for the next higher degree polynomials and get all of our differences.
 
-\subsubsection{Recurrence Relation Table}
+\subsection{Recurrence Relation Table}
 
 When working out an exercise, it is useful to write down the divided differences in a table as follows:
 
@@ -325,7 +324,7 @@ Although the table looks complicated, when using the actual values for \(x_i\) a
 going up the diagonally down and up, starting. For example for 
 
 \[
-    f[x_0, x_1] = \frac{y_1 \text{ (start) } - y_0 \text{ (up)}}{x_1 \text{ (diagonally down) } - x_0 \text{ (up) }}
+    f[x_0, x_1] = \frac{y_1 \text{ (start) } - y_0 \text{ (up)}}{x_1 \text{ (diagonally down) } - x_0 \text{ (diagonally up) }}
 \]
 
 It is important to note that the first column of the table is just the \(y_i\) values, for the next columns we use the previous column to compute nominator and the denominator is 
@@ -636,7 +635,7 @@ Every thing but the \(\alpha_i\) is know, but they can be computed by
 
 Hence, we get the following algorithm for computing the cubic spline interpolation. 
 
-\subsubsection*{Algorithm}
+\subsection{Algorithm For Cubic Spline Interpolation}
 
 Given the points \((x_0, y_0), \dots, (x_n, y_n)\), we can compute the cubic spline interpolation by following steps:
 
@@ -722,3 +721,30 @@ are:
 
 
 \section{Interpolation Curves}
+
+We define a continuous function 
+
+\[
+    \gamma: [a, b] \subseteq \R  \to \R^m, \quad t \to \gamma(t)
+\]
+
+as \emph{curve} with a parameter \(t \in [a, b]\).
+
+Now given \((t_i, z_i), t_i \in [a, b], z_i \in \R^m\) we want to find \(f:[a, b] \to \R^m\) such that 
+\(f(t_i) = z_i\ \forall i\). We will use \emph{polynomial curves}
+
+\[
+    f(t) = 
+    \begin{bmatrix}
+        p_1(t) \\ 
+        \vdots \\ 
+        p_m(t)
+    \end{bmatrix}
+\]
+
+where \(p_j(t)\) is a polynomial of degree \(n\).
+
+One of the methods for computing such polynomials are Newtonian Divided Differences but instead of using individual 
+\(y_i\) we use the vectors with the corresponding values from \(x_i\) for the differences.
+
+

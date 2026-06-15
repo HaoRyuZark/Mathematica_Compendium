@@ -1051,3 +1051,37 @@ A matrix is \emph{Over Triangular} if all elements under or above the main diago
     eig(A)  & = \{a_{1,1}, a_{2,2}, \dots, a_{n,n}\}
 \end{align*}
 
+\section{Symmetric Matrix}
+
+A matrix \(A \in \R^{n \times n}\) is symmetric if 
+
+\[
+    A^T = A.
+\]
+
+\subsection{Properties of Symmetric Matrices}
+
+\begin{itemize}
+
+    \item Given \(A \in \R^{n \times m}\), \(AA^T \) and \(A^T A\) are symmetric matrices.
+
+    \item For all symmetric matrices \(x^T Ax > 0\).
+
+    \item All eigenvalues are reals.
+   
+    \item The eigenvectors are orthogonal.
+
+\end{itemize}
+
+\textbf{Proof 1:}
+
+Let \(A \in R^{n \times m}\), by the definition of matrix multiplication \(AA^T \in \R^{n \times n}\) and \(A^T A \in \R^{m \times m}\), hence 
+a transpose can be taken.
+
+Then
+
+\[
+    (AA^T)^T = A^{T^T} A^T = A A^T, \quad (A^TA)^T = A^T A
+\]
+
+\QED

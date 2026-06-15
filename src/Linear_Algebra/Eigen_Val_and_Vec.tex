@@ -479,8 +479,8 @@ that because \(x\) is a real vector then the conjugate does not change anything.
     \bar{x}^T A x &= \bar{x}^T \lambda x \\
     \bar{x}^T A x &= \lambda \bar{x}^T x \\
     \bar{x}^T A x &= \lambda \langle \bar{x} x \rangle\\
-    \bar{x}^T A x &= \lambda \|x\|^2\\
-    \frac{\bar{x}^T A x}{\|x\|^2} &= \lambda
+    \bar{x}^T A x &= \lambda \metric{x}^2\\
+    \frac{\bar{x}^T A x}{\metric{x}^2} &= \lambda
 \end{align*}
 
 With this we know that the denominator is a real number thus, if we prove that the numerator is also real 
@@ -685,14 +685,14 @@ This implies that
 
 \end{enumerate}
 
-\subsection{Singular Value Decomposition (SVD)}
+\section{Singular Value Decomposition (SVD)}
 
 The \emph{Singular Value Decomposition (SVD)} is a fundamental matrix factorization technique in linear 
 algebra. It expresses any real matrix \( A \in \R^{n \times n} \) as a product of three specific 
 matrices:
 
 \[
-    A = U S V^T
+    A = U \Sigma V^T
 \]
 
 where:
@@ -700,13 +700,14 @@ where:
 \begin{itemize}
 
     \item \( U \in \R^{n \times n} \) is an orthogonal matrix whose columns are called the 
-          \emph{left singular vectors} of \( A \). A rotation.
+          \emph{left singular vectors} of \( A \). A rotation to align with the eigenvectors.
 
     \item \( V \in \R^{n \times n} \) is an orthogonal matrix whose columns are the 
-          \emph{right singular vectors} of \( A \). A stretching with dimension reduction.
+          \emph{right singular vectors} of \( A \). A stretching with dimension reduction/expansion.
 
-    \item \( S \in \R^{n \times n} \) is a diagonal matrix with non-negative entries 
-          \( \sigma_i \geq 0 \) on the diagonal, called the \emph{singular values} of \( A \). Another rotation.
+    \item \( \Sigma \in \R^{n \times n} \) is a diagonal matrix with non-negative entries 
+          \( \sigma_i \geq 0 \) on the diagonal, called the \emph{singular values} of \( A \). Another rotation to align with the original 
+          basis vectors.
 
 \end{itemize}
 
@@ -715,7 +716,7 @@ where:
 Let \( A \in \R^{n \times n} \) be a real square matrix with SVD given by:
 
 \[
-    A = U S V^T
+    A = U \Sigma V^T
 \]
 
 We show that:
@@ -735,20 +736,20 @@ We show that:
 For \( AA^T \), we compute:
 
 \[
-    AA^T = (U S V^T)(V S^T U^T) = U S V^T V S^T U^T = U S S^T U^T = U S^2 U^T
+    AA^T = (U \Sigma V^T)(V \Sigma^T U^T) = U \Sigma V^T V \Sigma^T U^T = U \Sigma \Sigma^T U^T = U \Sigma^2 U^T
 \]
 
-Since \( SS^T \) is diagonal with entries \( \sigma_i^2 \), this is an eigenvalue decomposition of 
+Since \( \Sigma\Sigma^T \) is diagonal with entries \( \sigma_i^2 \), this is an eigenvalue decomposition of 
 \( AA^T \). Thus, the columns of \( U \) are eigenvectors of \( AA^T \), and the corresponding eigenvalues 
 are \( \sigma_i^2 \).
 
 For \( A^T A \), we have:
 
 \[
-    A^T A = (V S^T U^T)(U S V^T) = V S^T U^T U S V^T = V S^T S V^T = V S^2 V^T
+    A^T A = (V \Sigma^T U^T)(U \Sigma V^T) = V \Sigma^T U^T U \Sigma V^T = V \Sigma^T \Sigma V^T = V \Sigma^2 V^T
 \]
 
-Again, \( S^T S \) is diagonal with entries \( \sigma_i^2 \), so the matrix \( A^T A \) is diagonalized 
+Again, \( \Sigma^T \Sigma \) is diagonal with entries \( \sigma_i^2 \), so the matrix \( A^T A \) is diagonalized 
 by \( V \), and the columns of \( V \) are eigenvectors of \( A^T A \), with eigenvalues \( \sigma_i^2 \).
 
 \QED
