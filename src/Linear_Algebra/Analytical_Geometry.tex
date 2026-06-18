@@ -39,23 +39,7 @@ For a scalar \(\lambda\) and vector \(\vec{a}\):
 	\caption{Vector addition: \(\vec{a} + \vec{b}\)}
 \end{figure}
 
-\subsection{Equation of a Line}
-
-A line is defined by a point \(\vec{P}\) and a direction vector \(\vec{v}\):
-
-\[
-	\vec{r}(t) = \vec{P} + t\vec{v}, \quad t \in \R
-\]
-
-\subsection{Equation of a Plane}
-
-A plane is defined by a point \(\vec{P}\) and a normal vector \(\vec{n}\):
-
-\[
-	P: \vec{x} = \vec{s} + \lambda_1 \vec{v_1} + \lambda_2 \vec{v_2}
-\]
-
-\subsection{Dot Product}
+\subsection{The Dot Product}
 
 The inner product of vectors \(\vec{a}\) and \(\vec{b}\) is a function \(\inner{x}{y} :=V \times V \rightarrow \mathbb{K}\)
 with the following properties:
@@ -238,7 +222,7 @@ Thus, the projection of \(\vec{v}\) onto the unit vector \(\vec{u}\) is given by
 
 \QED
 
-`'\subsection{Dot Product as Projection}
+\subsection{Dot Product As Projection}
 
 The \emph{dot product} of two vectors can be interpreted as projecting one vector onto the other and then multiplying the length of the projecting vector to the magnitude of the other. For real vectors.
 
@@ -299,8 +283,33 @@ These are the most common metric, although we will be using primarily the euclid
 	      \]
 \end{itemize}
 
+\section{Equation of a Line}
 
-\subsection{Angle Relations}
+A line is defined by a point \(\vec{P}\) and a direction vector \(\vec{v}\):
+
+\[
+	\vec{r}(t) = \vec{P} + t\vec{v}, \quad t \in \R
+\]
+
+\section{Equation of a Plane In 2D}
+
+A plane is defined by a point \(\vec{P}\) and a normal vector \(\vec{n}\):
+
+\[
+	P: \vec{x} = \vec{s} + \lambda_1 \vec{v_1} + \lambda_2 \vec{v_2}
+\]
+
+\section{Normal Vectors And Hyperplanes}
+
+A \emph{hyperplane} in \(n\) dimensions is given by the equation 
+
+\[
+	\inner{w}{x} = 0.
+\]
+
+Therefore, it is determined by all the vectors which are \emph{normal} to the plane.
+
+\section{Angle Relations}
 
 The angle \(\theta\) between two vectors is:
 
@@ -368,7 +377,7 @@ To find the relation:
 
 \end{enumerate}
 
-\subsection{Normalization of a vector}
+\section{Normalization Of A Vector}
 
 To normalize a vector \(\vec{a}\), we divide it by its length:
 
@@ -376,7 +385,7 @@ To normalize a vector \(\vec{a}\), we divide it by its length:
 	\hat{\vec{a}} = \frac{\vec{a}}{\|\vec{a}\|} = \frac{\begin{bmatrix} a_x \\ a_y \\ a_z \end{bmatrix}}{\sqrt{a_x^2 + a_y^2 + a_z^2}} = \begin{bmatrix} \frac{a_x}{\|\vec{a}\|} \\ \frac{a_y}{\|\vec{a}\|} \\ \frac{a_z}{\|\vec{a}\|} \end{bmatrix}
 \]
 
-\subsection{The Cross Product}
+\section{The Cross Product}
 
 The cross product of two vectors \(\vec{a}\) and \(\vec{b}\) in \(\R^3\) is defined as:
 

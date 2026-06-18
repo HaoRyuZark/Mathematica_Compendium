@@ -1,10 +1,10 @@
 \newpage
 \chapter{Integration}
 
-Integration is the reverse process of differentiation and is used to calculate areas, volumes, 
+\emph{Integration} is the reverse process of differentiation and is used to calculate areas, volumes, 
 accumulated change, and more.
 
-\subsection{Definition (Riemann Integral)}
+\section{Riemann Integral}
 
 Let \(f: [a, b] \to \R\) be a bounded function. We define the \emph{definite integral} as:
 
@@ -33,17 +33,12 @@ with:
 
 If \(\sup \underline{S} = \inf \overline{S}\), then \(f\) is Riemann integrable.
 
-\subsection{Concrete and Non-Concrete Integrals}
+\section{Concrete and Non-Concrete Integrals}
 
-\begin{itemize}
+\emph{Concrete} integrals can be explicitly evaluated as anti-derivatives with an explicit function. 
+\emph{Non-concrete} integrals Cannot be integrated in elementary terms (e.g., \(\int e^{-x^2} dx\)).
 
-    \item \emph{Concrete:} Can be explicitly evaluated with anti-derivatives.
-
-    \item \emph{Non-concrete:} Cannot be integrated in elementary terms (e.g., \(\int e^{-x^2} dx\)).
-
-\end{itemize}
-
-\subsection{Rules of Integration}
+\section{Basic Rules Of Integration}
 
 \begin{itemize}
 
@@ -65,7 +60,7 @@ If \(\sup \underline{S} = \inf \overline{S}\), then \(f\) is Riemann integrable.
 
 \end{itemize}
 
-\subsection{Substitution Rule (U-Substitution)}
+\section{Integration By Substitution}
 
 If \(u = g(x)\) and \(f = F'\), then:
 
@@ -79,17 +74,19 @@ If \(u = g(x)\) and \(f = F'\), then:
     \int \frac{1}{{(x - 1)}^4}\,dx, \quad u = x - 1 \Rightarrow \int \frac{1}{u^4} du = -\frac{1}{3u^3} + C = -\frac{1}{3{(x - 1)}^3} + C
 \]
 
-\subsection{Integration by Parts}
+\section{Integration By Parts}
+
+\emph{Integration by parts} is the inverse process of the product and quotient rules of differentiation and is given by 
 
 \[
-    \int u\,dv = uv - \int v\,du
+    \int u\ dv = uv - \int v \ du
 \]
 
-\emph{ILATE:} Use this order to choose \(u\):
+To compute we use the abbreviation \emph{ILATE} to find this order to choose \(u\):
 
 \begin{enumerate}
 
-    \item Inverse Trig
+    \item Inverse Trigonometric
 
     \item Logarithmic
 
@@ -101,7 +98,22 @@ If \(u = g(x)\) and \(f = F'\), then:
 
 \end{enumerate}
 
-\emph{Cyclic Integrals:} Some integrals cycle back to the original (e.g., \(e^x \sin(x)\)).
+Sometimes we encounter \emph{cyclic integrals} which cycle back to the original when applying our 
+formula e.g., \(e^x \sin(x)\).
+
+
+\textbf{Proof:}
+
+\begin{align*}
+    (f(x)g(x))' &= f(x)g'(x) + f'(x)g(x) \\ 
+    \int (f(x)g(x))' dx &= \int f(x)g'(x)dx + \int f'(x)g(x) dx\\ 
+    f(x)g(x)  &= \int f(x)g'(x)dx + \int f'(x)g(x) dx\\ 
+    -  \int f(x)g'(x)dx &= - f(x)g(x)  + \int f'(x)g(x) dx\\ 
+    \int f(x)g'(x)dx &=  f(x)g(x)  - \int f'(x)g(x) dx \\ 
+    \int u dv &=  uv - \int v du
+\end{align*}
+
+\QED
 
 \textbf{Example:}
 
@@ -128,7 +140,7 @@ Let:
     \int e^x \sin(x)dx &= \frac{e^x \sin (x) +\cos(x)e^x + C}{2}
 \end{align*}
 
-\subsection{Integration by Partial Fractions}
+\section{Integration by Partial Fractions}
 
 Applies to rational functions. Four cases:
 
@@ -171,9 +183,28 @@ Applies to rational functions. Four cases:
     = \frac{1}{2} \ln\left|\frac{x - 1}{x + 1}\right| + C
 \]
 
-\subsection{Trigonometric Substitution}
+\section{Algebraic Manipulation}
 
-Trigonometric substitution is useful for evaluating integrals involving square roots of quadratic 
+When dealing with certain integrals it seems that its not possible to common methods, for these cases the 
+solution tend to be closely tight to \emph{algebraic manipulation} of the kind adding a clever zero or multiplying by an
+elegant one.
+
+\textbf{Example:}
+
+Find the integral of \(f(x) = \frac{30 + x^2}{1 + x^2}\).
+
+\begin{align*}
+    \int \frac{30 + x^2}{1 + x^2} dx &= \int \frac{30}{1 + x^2} dx + \frac{x^2}{1 + x^2} dx \\ 
+                                     &= 30\int \frac{1}{1 + x^2} dx + \int \frac{x^2}{1 + x^2} dx \\
+                                     &= 30 \arctan(x) + \int \frac{x^2 - 1 + 1}{1 + x^2} dx \\
+                                     &= 30 \arctan(x) + \int \frac{x^2 + 1}{1 + x^2} dx + \int \frac{-1}{1 + x^2} dx \\ 
+                                     &= 30 \arctan(x) + \int 1 dx - \arctan(x) + C \\ 
+                                     &= 29 \arctan(x) + x + C
+\end{align*}
+
+\section{Trigonometric Substitution}
+
+\emph{Trigonometric substitution} is useful for evaluating integrals involving square roots of quadratic 
 expressions.
 
 \begin{itemize}
@@ -221,6 +252,7 @@ Use: \( x = 2\tan \theta \Rightarrow dx = 2\sec^2 \theta\, d\theta \)
 \]
 
 Substitute:
+
 \[
     \int \frac{x^3}{\sqrt{x^2 + 4}}\,dx = \int \frac{{(2\tan \theta)}^3}{2\sec \theta} \cdot 2\sec^2 \theta\, d\theta
     = \int \frac{8\tan^3 \theta}{\sec \theta} \cdot 2\sec^2 \theta\, d\theta
@@ -304,13 +336,13 @@ Now we return to x via our triangle:
     \frac{8}{3}{\left(\frac{\sqrt{x^2 + 4}}{2}\right)}^3 + 8 \frac{\sqrt{x^2 + 4}}{2} + c
 \]
 
-\subsection{Average Value of a Function}
+\section{Average Value of a Function}
 
 \[
     \bar{f} = \frac{1}{b - a} \int_a^b f(x)\,dx
 \]
 
-\subsection{Mean Value Theorem for Integrals}
+\section{Mean Value Theorem for Integrals}
 
 If \(f\) is continuous on \([a, b]\), then:
 
@@ -318,7 +350,7 @@ If \(f\) is continuous on \([a, b]\), then:
     \exists c \in [a, b] \text{ such that } \int_a^b f(x)\,dx = f(c)(b - a)
 \]
 
-\subsection{Length, Area, Volume Formulas}
+\section{Length, Area, Volume Formulas}
 
 \emph{Arc length:}
 
@@ -344,7 +376,7 @@ If \(f\) is continuous on \([a, b]\), then:
     V = 2\pi \int_a^b x f(x) \sqrt{1 + {f'(x)}^2}\,dx
 \]
 
-\subsection{Differentiation of Integrals with Variable Bounds}
+\section{Differentiation of Integrals with Variable Bounds}
 
 If:
 
@@ -358,7 +390,7 @@ Then:
     F'(x) = f(b(x)) \cdot b'(x) - f(a(x)) \cdot a'(x)
 \]
 
-\subsection{Parameter-Dependent Integrals}
+\section{Parameter-Dependent Integrals}
 
 Let \(F(p) = \int_a^b f(x, p)\,dx\). If \(f\) is continuous and differentiable in \(p\), then:
 
@@ -366,13 +398,13 @@ Let \(F(p) = \int_a^b f(x, p)\,dx\). If \(f\) is continuous and differentiable i
     \frac{d}{dp} \int_a^b f(x, p)\,dx = \int_a^b \frac{\partial f}{\partial p}(x, p)\,dx
 \]
 
-\subsection{Leibniz Rule for Differentiating Under the Integral Sign}
+\section{Leibniz Rule for Differentiating Under the Integral Sign}
 
 \[
     \frac{\partial F}{\partial x} \int_{a(x)}^{b(x)} f(x, t)\,dx = f(x, b(x)) \cdot b'(x) - f(x, a(x)) \cdot a'(x) + \int_{a(x)}^{b(x)} \frac{\partial f}{\partial t}(x, t)\,dt
 \]
 
-\subsection{Improper Integrals with infinite Bounds}
+\section{Improper Integrals with infinite Bounds}
 
 \[
     \int_a^\infty f(x)\,dx = \lim_{R \to \infty} \int_a^R f(x)\,dx
@@ -384,7 +416,7 @@ The value when the bounds look like \(\int_{-\infty}^\infty f(x)\,dx \) is calle
     \int_{-\infty}^\infty f(x)\,dx = \lim_{R \to \infty} \int_{-R}^{c} f(x)\,dx + \int_{c}^{R} f(x)\,dx
 \]
 
-\subsection{Improper Integrals with Discontinuity}
+\section{Improper Integrals with Discontinuity}
 
 These integrals have some kind of asymptote between the bounds we want to evaluate.  
 More concrete: 
@@ -417,7 +449,7 @@ Discontinuity at \(c = 0\)
     &= 1 - \lim_{\varepsilon \to 0} \sqrt{\varepsilon} = 1
 \end{align*}
 
-\subsection{Convergence Criteria for Improper Integrals}
+\section{Convergence Criteria for Improper Integrals}
 
 \begin{itemize}
 
@@ -427,7 +459,7 @@ Discontinuity at \(c = 0\)
 
 \end{itemize}
 
-\subsection{Integral Test for Series}
+\section{Integral Test for Series}
 
 Let \(f(n) = a_n\) where \(f\) is continuous, decreasing, and positive for \(n \ge N\):
 
@@ -439,7 +471,7 @@ Let \(f(n) = a_n\) where \(f\) is continuous, decreasing, and positive for \(n \
 
 \(\sum \frac{1}{n^p}\) converges \(\iff p > 1\)
 
-\subsection{Integrals with Absolute Value}
+\section{Integrals with Absolute Value}
 
 When given an integral with an absolute value in it, we have to take a look at the function to see how it behaves when \(x\) is negative and then 
 split the integral into two or more integrals where the border contain the critical point.

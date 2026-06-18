@@ -489,6 +489,32 @@ We define the \emph{augmented error} as
 \(\lambda\) is the parameter for how much we should regularize, \(w^T w\) is the punish-term based on the weight of the vector and 
 \(N\) is the number of data points.
 
+\section{Classification And Regression}
+
+\emph{Classification} predicts categories based on discrete labels i.e classes or groups, while \emph{regression} predicts 
+on continuous values i.e. identifying trends and patterns.
+
+Common classification functions with example models: 
+
+\begin{itemize}
+   
+    \item Binary cross entropy in logistic regression, ironically.
+
+    \item Categorical cross entropy. 
+
+    \item Hinge loss for support vector machines.
+
+\end{itemize}
+
+Common regression functions with example models: 
+
+\begin{itemize}
+   
+    \item Mean square error in logistic regression. 
+
+    \item Information gain in  decision tree regressors.
+
+\end{itemize}
 
 \section{The Perceptron} 
 
@@ -754,10 +780,10 @@ The logistic function is defined as
     \theta(s) = \frac{e^s}{1 + e^s} = \frac{1}{1 + e^{-s}}
 \]
 
-called the \emph{sigmoid function} with the property 
+called the \emph{sigmoid function}, whose domain is \((0, 1)\) and with the properties
 
 \[
-    \theta(-s) = 1 - \theta(s)
+    \theta(-s) = 1 - \theta(s), \quad \frac{\partial \theta}{\partial s} = \frac{1}{1 + e^s} \frac{e^{-s}}{1 + e^{-s}}
 \]
 
 Note that our original problem with \(\hat{y} = w^Tx + b\) is transformed into 
@@ -766,15 +792,12 @@ Note that our original problem with \(\hat{y} = w^Tx + b\) is transformed into
     h_\theta (x_i) = \frac{1}{1 + e^{- (w^T x_i + b)}}.
 \]
 
-Based on the output of the logistic function we classify our data in the respective classes based on a \emph{threshold}. For example, if the output is
-greater than 0.5 we classify it as class 1, otherwise as class -1.
+Now our function returns the \textbf{probability} of a data point being assigned a corresponding label.
 
-For the loss function instead of using the mean squared error we use the \emph{cross entropy} function which is derived using the \emph{maximum likelihood} 
-estimation:
+Instead of minimizing the mean squared error, which could be a valid strategy we use the likelihood function which uses 
+\(p_i(x_i)^{y_i}(1 - p_i(x_i))^{1 - y_i}\) for penalizing errors more equally.
 
-\subsubsection*{Maximum Likelihood}
-
-Let 
+Let our loss function be 
 
 \[
     L(\theta) = \prod_{n = 1}^N p(x_i)^{y_i}(1 - p(x_i))^{1 - y_i}
@@ -782,7 +805,7 @@ Let
 
 where \(p(x_i)\) is the probability of \(x_i\) being assigned the label \(y = 1\) and \(1 - p(x_i)\) the same for \(y = 0\).
 
-We take that expression and modify it into 
+We take that expression and modify it using \(h_{\theta}(x_i)\) 
 
 \[
     L(\theta) = \prod_{n = 1}^N (h_\theta(x_i))^{y_i} (1 - h_\theta(x_i))^{1 - y_i}
@@ -796,7 +819,7 @@ Taking the logarithm of the likelihood function gives us the log-likelihood:
 
 And this is the function we want to maximize. Note, that this is the \emph{cross entropy loss function}.
 
-\subsubsection*{Gradient of the Cross Entropy Loss Function}
+\subsection{Gradient of the Cross Entropy Loss Function}
 
 Using the cross entropy we can define our error for logistic regression. By taking the gradient
 
@@ -887,10 +910,10 @@ In vector form
 
 \section{Decision Trees}
 
-\emph{Trees} are used mainly for \emph{regression trees} or classification \emph{decision trees}. They are 
-mostly not an individual learning model but are just an extra layer.
+\emph{Decision trees} are used mainly for \emph{regression trees} or classification \emph{decision trees} which 
+are used to partition the data into subsets on a purity measurement.
 
-Formal definition: Given a feature vector \(x \in X\) in a \(d\)-dimensional feature space with 
+Formally, given a feature vector \(x \in X\) in a \(d\)-dimensional feature space with 
 \(R_1, R_2, \dots, R_M\) being disjoint regions \emph{hyper-quadrants} in the feature space. 
 
 The hypothesis \(h(x)\) of a tree is given by the formula 
@@ -899,39 +922,7 @@ The hypothesis \(h(x)\) of a tree is given by the formula
     h(x) = \sum_{m = 2}^{M} c_m \ind_m (x)
 \]
 
-With \(c_m\) being the coefficient given as 
-
-\begin{itemize}
-    \item \emph{Regression:} \(c_m\) is the mean of all labels in \(R_m\). 
-
-    \item \emph{Classification:} \(c_m\) is the multiplicity label of all data points in the training set \(R_m\).
-\end{itemize}
-
-The regions can be defined by \emph{binary splitting}.
-
-\subsection{Regressions Trees}
-
-A \emph{regression tree} divides the feature space into disjoint sub-spaces in such a way that it brings
-the value of all labels \(y_i\) for \(x_i \in R_m\) as close as possible \(\overline{y_{R_m}} = c_m\). 
-
-The following is again an optimization problem: Find the partition in \(M\) hyperquadrants, such that the sum 
-of the square distance is minimal. 
-
-\[
-    \text{Minimize}_{M, R_1, \dots, R_M} \sum_{m = 1}^{M} \sum_{x_i \in R_m} (y_i - \overline{y_{R_m}})^2
-\]
-
-with 
-
-\[
-    \overline{y_{R_m}} = \frac{1}{N_m} \sum_{x_i \in R_m} y_i
-\]
-
-and 
-
-\[
-    N_m = |\{x_i \in R_m\}|
-\]
+Common purity measurements include: the empirical variance and the Gini impurity.
 
 \subsection{Recursive Binary Splitting}
 
@@ -970,6 +961,14 @@ The termination criteria are for example
     \item The tree size is limited.
 \end{itemize}
 
+\subsection{Regressions Trees}
+
+A \emph{regression tree} divides the feature space into disjoint sub-spaces in such a way that it brings
+the value of all labels \(y_i\) for \(x_i \mathcal{D}\) get as as close as possible to the true label \(\overline{y_i} \approx = y_i\). 
+
+The process behind this goal is called \emph{recursive binary splitting} and can be performed in different manners, based on 
+how the "purity" of a node is measured. This is of course an optimization in which we want to maximize the purity of our node given a split.
+
 \subsection{Classification Trees}
 
 We can take everything from the regression tree except the cost function. For 
@@ -1005,110 +1004,6 @@ Information gain is a measure commonly used in decision tree algorithms such as 
 and CART to determine which feature should be used to split the dataset 
 at each step. It quantifies how much uncertainty about the class labels is reduced after 
 splitting the data based on a particular feature.
-
-\subsubsection{Variance}
-
-For regression problems, we can use variance as a measure of impurity. The variance of a set of values is defined as:
-
-\[
-    \text{Var}(X) = \frac{1}{N} \sum_{i=1}^{N} (x_i - \overline{x})^2
-\]
-
-where \(\overline{x}\) is the mean of the values in set \(X\).
-
-\subsubsection{Covariance}
-
-The covariance between two random variables \(X\) and \(Y\) is defined as:
-
-\[
-    \cov(X, Y) = E[(X - E[X])(Y - E[Y])] = E[XY] - E[X]E[Y]
-\]
-
-Or the 
-
-\[
-    \cov = \frac{1}{N} \sum_{i=1}^{N} \prod_{j = 1}^{n} \vec{x_j}
-\]
-
-where \(\vec{x_j} = (x_{j1}, x_{j2}, \dots, x_{jn})^T\) is a feature vector.
-
-\subsubsection{Correlation}
-
-The correlation coefficient between two random variables \(X\) and \(Y\) is defined as:
-
-\[
-    \rho_{X,Y} = \frac{\cov(X, Y)}{\sigma_X \sigma_Y}
-\]
-
-where \(\sigma_X\) and \(\sigma_Y\) are the standard deviations of \(X\) and \(Y\), respectively.
-
-\subsubsection{Covariance Matrix}
-
-The covariance matrix for a set of \(n\) random variables \(X_1, X_2, \dots, X_n\) is defined as:
-
-\[
-    \Sigma = 
-    \begin{bmatrix}
-        \cov(X_1, X_1) & \cov(X_1, X_2) & \dots & \cov(X_1, X_n) \\
-        \cov(X_2, X_1) & \cov(X_2, X_2) & \dots & \cov(X_2, X_n) \\
-        \vdots & \vdots & \ddots & \vdots \\
-        \cov(X_n, X_1) & \cov(X_n, X_2) & \dots & \cov(X_n, X_n)
-    \end{bmatrix}
-\]
-
-
-\subsubsection{Information content}
-
-For the occurrence of some event \(k\) with probability \(p_k\) we define 
-
-\[
-    I_k := - \log_2 p_k
-\]
-
-For the intuition, the rarer an event occurs the more information it provides. 
-
-\subsubsection{Entropy}
-
-\emph{Entropy} is the mean information content of an event in a probability experiment with 
-a random variable \(X\) 
-
-\[
-    H(X) := E[I] - \sum_{k=1}^C p_k \log_2 p_k
-\]
-
-where \(p_i\) is the proportion of samples belonging to class \(i\), and \(k\) is the total number of classes. High entropy indicates a mixture of classes, while 
-low entropy indicates more homogeneous data.
-
-For a multivariate case wit two random variables we can calculate the conditional entropy 
-
-\[
-    H(X \mid Y = y_i) := E[I] - \sum_{i} p(x_i \mid y_i) \log_2 p(x_i \mid y_i)
-\]
-
-The \emph{conditional entropy} is defined as 
-
-\[
-    H(X \mid Y) = - \sum_{i}^C p(y_i) H(X \mid Y = y_i)
-\]
-
-
-\subsubsection{Definition of Information Gain}
-
-The reduction of the information content of an event \(X\) by knowing \(Y\) is defined as:
-
-\[
-    IG(X, Y) = H(X) - H(X \mid Y)
-\]
-
-\subsubsection{Intuition}
-
-A feature produces high information gain if the resulting subsets are relatively pure, meaning they have low entropy. Conversely, features that do not help distinguish 
-between classes result in low information gain.
-
-\subsubsection{Purpose}
-
-Information gain guides decision tree algorithms by selecting features that maximally reduce uncertainty at each split. This helps create more efficient, 
-interpretable, and accurate decision trees.
 
 \subsection{CART Algorithm}
 
@@ -1243,40 +1138,27 @@ Given a distance metric \(d(x, y)\) we classify our training data using the foll
 
 \end{enumerate}
 
-\section{Support Vector Machine}
+\section{Support Vector Machines}
 
-As starting point we take the perceptron we already defined, but this time with \(b\), the bias term 
-as an independent term 
-
-\[
-    y_k = \text{sign}(w^T x + b), y_k \in \{-1, 1\}
-\]
-
-A \emph{support vector machine} is a perceptron whose decision boundary or \emph{margin} has the maximum margin 
-to all data-points.
-
-If some data points lie on the margin then 
-
-\begin{align*}
-    (I)  w^T x_i + b &= 0 \\ 
-    (II) w^T x_j + b &= 0
-\end{align*}
-
-By performing \(2II - I \) we get the vector lying on the hyperplane
+\emph{Support vector machines} are a family of algorithm which use the perceptron as a basis for classifying points into classes using a hyperplane 
 
 \[
-    w^T (x_j - x_i) = 0
+    w_0 + w_1 x_1 + \dots + w_p x_p = 0
 \]
 
-We also know that \(w^T\) is normal to the hyperplane.
+But this time we also define a region defined by the normal vectors of the hyperplane and define it as our \emph{margin}, which we will try to optimize 
+to be as large as possible.
 
-The name \emph{support vector classifier} comes from the fact that the observations on the edge and within the soft margin 
-are called \emph{support vectors}. 
+As starting point we take the perceptron we already defined with \(b = w_0\) being the bias term
+
+\[
+    y_k = \mathrm{sign}(w^T x + b) = \mathrm{sign}(\tilde{w}^T\tilde{x}), \,  y_k \in \{-1, 1\}
+\]
 
 \subsubsection{Rescaling of the Signal}
 
 The term inside our \emph{sign} function, the signal, can be rescaled without changing the 
-result of the classification. Due to the property of the sign function \(\text{sign}(\alpha s) = \text{sign}(s)\) 
+result of the classification. Due to the property of the sign function \(\mathrm{sign}(\alpha s) = \mathrm{sign}(s)\) 
 for any \(\alpha > 0\). 
 
 \[
