@@ -844,7 +844,7 @@ The \emph{Likelihood} answers the following question: "Given the data observed, 
     \prob_{\theta}(x_1, x_2, \dots, x_n \mid \theta)
 \]
 
-In contrast, probability refers to chances of some event occurring given that we trust the parameters of our model. 
+If we chose just some random parameters, we may get a probability distribution, but our observations could be so rare that we could misinterpret our data.
 
 Assuming that our data is independent then we get the following function: 
 
@@ -852,8 +852,7 @@ Assuming that our data is independent then we get the following function:
     L(\theta) = \prob_{\theta}(x_1, x_2, \dots, x_n \mid \theta) = \prob(x_1 \mid \theta) \prob(x_2 | \theta) \cdot \dots \cdot \prob(x_n \mid \theta)
 \]
 
-So the question becomes: "What is the probability of seeing all of the observed data under the parameter \(\theta\)?"
-
+Note, that we choose to make a product out of this measurement we want to do, because for higher probabilities our product becomes bigger.
 Maximizing this function is interpreted as: maximizing the probability of observing the whole data given a variable parameter \(\theta\).
 
 \textbf{Example:}
@@ -889,11 +888,12 @@ is called the \emph{likelihood function}.
 The parameter \(\hat{\theta}\) that maximizes \(L(\theta)\) is called the
 \emph{maximum-likelihood estimate}.
 
+\[
+    \hat{\theta} =  \argmax_{\theta} L(\theta)
+\]
+
 The mapping \(\hat{\theta}(x_{1}, \ldots, x_{n})\) is called the
 \emph{maximum-likelihood estimator}.
-
-The idea is that given some data we want to find the parameter \(\theta\) that allows us to achieve the highest probability of 
-observing the data in the ideal probability distribution.
 
 \subsection*{Log-Likelihood-Estimator}
 

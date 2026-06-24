@@ -6,6 +6,20 @@ solution \(x \in \R^n\). They can also be associated with some constraints.
 
 Optimization relates closely to derivatives and iterative numerical methods for finding the solution \(x\).
 
+\section{Global And Local Minima}
+
+Are \(f \in \R^n \to \R,\ \tilde{x} \in \R^n\), then \(\tilde{x}\) is a \emph{global minima} if
+
+\[
+    f(\tilde{x}) \le f(x), \quad \forall x \in \R^n
+\]
+
+\(\tilde{x}\) is a \emph{local minimum} if \(\exists \ \varepsilon > 0\) such that 
+
+\[
+    f(\tilde{x}) \le f(x) \quad \forall x \in \R^n \quad \metric{x - \tilde{x}} < \varepsilon
+\]
+
 \section{Extrema and Critical Points Test Of Single Variable Calculus}
 
 A function \(f\) has a critical point at \(x = c\) if:
@@ -31,41 +45,64 @@ To determine the nature of the critical point:
 
 \end{itemize}
 
-\section{Relative Extrema In \texorpdfstring{\(R^n\)}{}}
+\section{Relative Extrema In \texorpdfstring{\(\R^n\)}{}}
 
-To determine local extrema for \( f : \R^n \to \R \), follow this procedure:
+To determine local extrema for \( f : \R^n \to \R \) without constraints, follow this procedure:
 
-\textbf{Step 1:} Find critical points by solving:
+\begin{enumerate}
 
-\[
-    \nabla f(\vec{x}) = 0
-\]
+    \item Find critical points by solving:
+        \[
+            \nabla f(x) = 
+            \begin{bmatrix}
+                \frac{\partial f}{\partial x_1} \\ 
+                \vdots \\ 
+                \frac{\partial f}{\partial x_n} \\ 
+            \end{bmatrix} 
+            = 0
+        \]
 
-\textbf{Step 2:} Compute the Hessian matrix:
+        For each of the equations. This process is called \emph{finding the candidates} which we denote as \(\tilde{x}\).
 
-\[
-    H_f(\vec{x}) = \left( \frac{\partial^2 f}{\partial x_i \partial x_j} \right)
-\]
+    \item Compute the Hessian matrix:
 
-\textbf{Step 3:} Analyze the Hessian at critical points:
+    \[
+            H_f(x) = 
+            \begin{bmatrix}
+                \frac{\partial^2 f(x)}{\partial x_1 \partial x_1} & \dots & \frac{\partial^2 f(x)}{\partial x_1 \partial x_n} \\ 
+                \vdots & \ddots & \vdots \\ 
+                \frac{\partial^2 f(x)}{\partial x_n \partial x_1} & \dots & \frac{\partial^2 f(x)}{\partial x_n \partial x_n}
+            \end{bmatrix}
+    \]
 
-\begin{itemize}
+    \item  Analyze the Hessian at critical points:
 
-    \item If \( H \) is positive definite \(f_{xx}(x_0, y_0) > 0, \det(H) > 0 \implies\) local minimum
+        For the \(\R^2\) case we use:
 
-    \item If \( H \) is negative definite \(f_{xx}(x_0, y_0) < 0, \det(H) > 0 \implies\) local maximum
+        \subitem If \( H_f(x)\) is \emph{positive definite} \(f_{xx}(x_0, y_0) > 0,\, \det(H) > 0\), then \(x_0, y_0\) is a local minimum
 
-    \item If \( H \) has mixed signs (indefinite) \(\det(H) < 0 \implies  \) saddle point
+        \subitem If \( H_f(x)\) is \emph{negative definite} \(f_{xx}(x_0, y_0) < 0,\, \det(H) > 0 \), then is a local maximum
 
-    \item If \(\det(H) = 0 \implies \) Next derivative decides
+        \subitem If \( H_f(x) \) has mixed signs, \emph{indefinite}, \(\det(H) < 0\), then it is  a saddle point
 
-\end{itemize}
+        \subitem If \(\det(H) = 0\), then the next derivative decides
 
-The determinant is needed as part of the test because, while the second derive tells us about the concavity, the 
-determinant help us determine if all the concavities given by the axis second derivatives with respect to 
-\(x_1, x_2, \dots, x_n\) and the mix partials are up, down or neither. If the signs are mixed then it is a saddle.  
+        For the general case \(\R^n\) we use the eigenvalues 
 
-\textbf{Example: \( f(x, y) = x^2 + y^2 \)}
+        \subitem \emph{Positive definite} if \(\lambda_i > 0,\, \forall \lambda_i\), which implies a local minimum.
+
+        \subitem \emph{negative definite} if \(\lambda_i < 0,\, \forall \lambda_i\), which implies a local maximum.
+
+        \subitem \emph{Indefinite} for mixed signs, which implies a saddle point.
+
+\end{enumerate}
+
+In real life cases, the Hessian is not widely used due to the high computational cost. Other methods are used to approximate the 
+extreme points. But, if the Hessian shows a definite-behavior via eigenvectors, we can guarantee that our problem is a convex-optimization problem.
+
+\textbf{Example: }
+
+Find the minima and maxima of \( f(x, y) = x^2 + y^2 \)
 
 \[
     \nabla f = \begin{bmatrix} 2x \\ 2y \end{bmatrix} \Rightarrow \text{Critical point at } (0, 0)
@@ -76,82 +113,11 @@ determinant help us determine if all the concavities given by the axis second de
     \Rightarrow (0, 0) \text{ is a local minimum}
 \]
 
-\section{Finding Candidate Points for Zeros While Seeking Relative Extrema}
-
-To find local minima or maxima of a function \( f : \R^n \to \R \), we first identify 
-\emph{critical points}, which are the candidates for relative extrema. 
-These are the points where the gradient of \(f\) vanishes or does not exist.
-
-\textbf{Step 1: Compute the Gradient}
-
-The gradient of \(f\), denoted \( \nabla f \), collects all the first partial derivatives:
-
-\[
-    \nabla f(x_1, \dots, x_n) =
-    \begin{bmatrix}
-    \frac{\partial f}{\partial x_1} \\
-    \vdots \\
-    \frac{\partial f}{\partial x_n}
-    \end{bmatrix}
-\]
-
-\textbf{Step 2: Solve the System \( \nabla f = 0 \)}
-
-Find all points \( \vec{x}_0 \in \R^n \) such that:
-
-\[
-    \nabla f(\vec{x}_0) = \vec{0}
-\]
-
-This is a nonlinear system of \(n\) equations in \(n\) variables. The solutions \( \vec{x}_0 \) 
-are the \emph{candidate points for extrema}, and also referred to as the 
-\textbf{stationary points} or \emph{critical points} of the function.
-
-You use the following techniques to find the points: 
-
-\begin{itemize}
-
-    \item Factorization
-
-    \item Addition of rows
-
-    \item Substitution
-
-\end{itemize}
-
-There are more but which one to use depends on the kind problem.
-
-\textbf{Step 3: Analyze the Nature of the Critical Points}
-
-Once all critical points \( \vec{x}_0 \) satisfying \( \nabla f(\vec{x}_0) = 0 \) are found, analyze 
-each using the \emph{second derivative test} involving the Hessian matrix \( H_f \):
-
-\[
-    H_f(\vec{x}) = \left( \frac{\partial^2 f}{\partial x_i \partial x_j} \right)
-\]
-
-Evaluate \( H_f \) at each critical point and use the eigenvalues or definiteness to classify:
-
-\begin{itemize}
-
-    \item If \( f_{xx}(x_0, y_0) > 0 \) and \( D > 0 \), then \(f\) has a \emph{local minimum} at 
-          \( (x_0, y_0) \).
-
-    \item If \( f_{xx}(x_0, y_0) < 0 \) and \( D > 0 \), then \(f\) has a \emph{local maximum} at 
-          \( (x_0, y_0) \).
-
-    \item If \( D < 0 \), then \( (x_0, y_0) \) is a \emph{saddle point}.
-
-    \item If \( D = 0 \), the \emph{second derivative test is inconclusive}; higher-order derivatives 
-          must be considered.
-
-\end{itemize}
-
 \subsection{Non-differentiable Points}
 
 If the function \(f\) is not differentiable at some point \( \vec{x}_0 \), but defined there, this 
-point may also be a candidate for extremum and should be examined separately using limit-based analysis 
-or directional behavior.
+point may also be a candidate for extremum and should be examined separately using \emph{limit-based analysis} 
+or directional behavior i.e., taking the limit at at that point when analyzing the derivatives.
 
 \section{Lagrange Multipliers}
 
@@ -197,11 +163,11 @@ Sometimes it is a good way to solve a problem of this topic is to:
     
     \item Build the \emph{Lagrangian}
     
-    \item \(\nabla L = 0\) and maybe compute the determinant to generate another equation to solve
+    \item \(\nabla \mathcal{L} = 0\) and maybe compute the determinant to generate another equation to solve
         
     \item Get rid of \(\lambda\) via factorization, substitution, addition of rows, etc.
     
-    \item Solve the system without \(\lambda\)
+    \item Solve the system without \(\lambda\).
 
 \end{enumerate}
 
@@ -224,7 +190,7 @@ Where:
     \item \( \nabla  g(x_1, \dots, x_n) \) is the \( m \times n \) Jacobian matrix of the constraints.
 
     \item \( \nabla^2 \mathcal{L}(x, \dots, x_n, \lambda_1, \dots, \lambda_n) \) is the \( n \times n \) 
-          Hessian of the Lagrangian with respect to \(x\).
+    Hessian of the Lagrangian with respect to \(x\).
 
 \end{itemize}
 
@@ -253,7 +219,7 @@ The gradient of the constraint is:
 Since \( \nabla g \ne 0 \), the rank condition is fulfilled, and no further critical points 
 need to be analyzed.
 
-\textbf{Step 1: Build the Lagrangian}
+Build the Lagrangian:
 
 \[
     \mathcal{L}(x, y, \lambda) = f(x, y) + \lambda g(x, y)
@@ -267,7 +233,7 @@ of the root function is the minimum of the term under root therefore, we can sim
     \mathcal{L}(x, y, \lambda) = (x - 3)^2 + (y - 4)^2 + \lambda (x^2 + y^2 - 4)
 \]
 
-\textbf{Step 2: Compute the necessary conditions}
+We solve
 
 \begin{align*}
    \textbf{I } &\frac{\partial \mathcal{L}}{\partial x} = 2(x - 3) + 2\lambda x = 0 \\
@@ -323,9 +289,7 @@ Now,  for \(\lambda_2\):
     y = \frac{4}{1 + \frac{3}{2}} = \frac{8}{5}
 \]
 
-\textbf{Step 3: Hessian Test with Constraint}
-
-We construct the Hessian:
+We construct the Hessian with constraints:
 
 \[
     H = \begin{bmatrix}
@@ -434,4 +398,19 @@ with \(u_i > 0\) and \(v_i \ne 0\). We can build as the \emph{dual problem} as
 this problem can be easier to solve than the primal problem and using the Karush-KuhnTucker conditions we get 
 a much simpler problem.
 
-\section{The Karush-KuhnTucker Conditions}
+\section{Gradient Descent}
+
+The \emph{gradient descent} is an iterative method to find the local minimum of a function \(f\) by moving in the direction of the negative gradient. 
+The update rule is given by:
+
+\[
+    x_{k+1} = x_k - \alpha \nabla f(x_k)
+\]
+
+where \(\alpha\) is the learning rate, which controls the step size. The choice of \(\alpha\) is crucial for convergence.
+
+It is important to note that gradient descent can converge to local minima, and the choice of the initial point \(x_0\) can significantly affect the outcome.
+
+
+\section{Newton Algorithm}
+

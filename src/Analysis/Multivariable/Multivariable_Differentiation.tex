@@ -48,15 +48,36 @@ Let \( f : U \subseteq \R^n \to \R \) be differentiable at \( \vec{X}_0 = (x_1^{
     \end{bmatrix}
 \]
 
-The angle of the maximal slope is \(\phi = \frac{\pi}{2}\). This comes from the fact that 
-the directional derivative which is defined as \(\langle \nabla f, \vec{v}\rangle = \|\nabla f\| 
-\|\vec{v}\| \cos(\phi)\) is orthogonal to the gradient. And for smallest slope \(\phi = \frac{3 \pi}{4}\). 
-Also, the \emph{gradient} forms a vector field. 
+The angle of the maximal slope is \(\phi = 0\). This comes from the fact that 
+the directional derivative which is defined as 
+
+\[
+    D_{\vec{v}}f(\vec{x}_0) = \langle \nabla f(\vec{x}_0), \vec{v} \rangle
+\]
+
+which can be written as
+
+\[
+    \langle \nabla f, \vec{v}\rangle = \metric{\nabla f} \metric{\vec{v}} \cos(\phi)
+\]
+
+tells us that our gradient is orthogonal to the tangent vector of the level curve, i.e. \(\phi = \frac{\pi}{2}\) and 
+the largest slope is when \(\phi = 0\) which is the direction of the gradient.
+
+Another way of thinking about this fact is using the definition as a projection of the dot product. 
+
+\[
+    \mathrm{proj}_{\nabla f} (\vec{v}) = \frac{\langle \nabla f, \vec{v}\rangle}{\metric{\nabla f}^2} \nabla f
+\]
+
+Now our directional derivative is the projection of the gradient onto the direction vector \(\vec{v}\) and we want to maximize this projection.
+This happens when \(\vec{v}\) is in the same direction as the gradient, i.e. \(\vec{v} = \nabla f\). Hence the direction of the maximal slope is 
+in the direction of the gradient.
 
 Formally, we have a vector \(d^*\) which points in the direction of the max slope defined by 
 
 \[
-    d^* = \text{arg}_{\|d\| = 1} \text{max} D_{\vec{v}}f(\vec{x})
+    d^* = \text{arg}_{\metric{d} = 1} \text{max} D_{\vec{v}}f(\vec{x})
 \]
 
 where \(\vec{v}\) is a unit vector. 
@@ -64,28 +85,29 @@ where \(\vec{v}\) is a unit vector.
 The directional derivative written as the inner product wit the gradient gives us 
 
 \[
-    d^* = \text{arg}_{\|d\| = 1} \text{max} \langle \nabla f, \vec{v} \rangle 
+    d^* = \text{arg}_{\metric{d} = 1} \text{max} \langle \nabla f, \vec{v} \rangle 
 \]
 
 Then using the definition of the dot product
 
 \[
-    d^* = \text{arg}_{\|d\| = 1} \text{max} \|\nabla f\| \|\vec{v}\| \cos(\phi) 
+    d^* = \text{arg}_{\metric{d} = 1} \text{max} \metric{\nabla f} \metric{\vec{v}} \cos(\phi) 
 \]
 
 Finally, because the magnitude of \(\vec{v}\) is one and to maximize cosine we set \(\phi = \frac{\pi}{2}\) 
 
 \[
-    d^* = \|\nabla f\|
+    d^* = \metric{\nabla f}
 \]
 
 Therefore, the magnitude of the gradient is the maximal slope. 
 
-
 \subsubsection{Origin of the formula}
 
 Suppose along the curve \(r(t) = x_1(t)\hat{v_1} + x_2(t)\hat{v_2} + \cdots + x_n(t)\hat{v_n}\) that 
-\(f(x_1(t), \dots, x_n(t)) = C\)
+\(f(x_1(t), \dots, x_n(t)) = C\).
+
+For a fixed \(t\) we get a constant value \(C\) and differentiating with respect to \(t\) gives us the following:
 
 \[
     \frac{\partial}{\partial t}f(x_1(t), \dots, x_n(t)) = \frac{\partial}{\partial t}C
@@ -95,6 +117,8 @@ Suppose along the curve \(r(t) = x_1(t)\hat{v_1} + x_2(t)\hat{v_2} + \cdots + x_
     \frac{\partial f}{\partial x_1}\frac{dx_1}{dt} + \cdots + \frac{\partial f}{\partial x_n}
     \frac{dx_n}{dt} = 0
 \]
+
+We can write it as a dot product of two vectors:
 
 \[
     \left\langle \left(\frac{\partial f}{\partial x_1}\hat{v_1} + \cdots + \frac{\partial f}{\partial x_n}
@@ -118,13 +142,13 @@ of the curve
 
 \end{itemize}
 
-The \(\frac{\operatorname{grad}f}{\|\operatorname{grad}f\|}\) points in the direction of the 
-steepest increase of \(f\) and \(- \frac{\operatorname{grad}f}{\|\operatorname{grad}f\|}\) in 
+The \(\frac{\operatorname{grad}f}{\metric{\operatorname{grad}f}}\) points in the direction of the 
+steepest increase of \(f\) and \(- \frac{\operatorname{grad}f}{\metric{\operatorname{grad}f}}\) in 
 the lowest increase.
 
-\subsection{The Tangent Plane}
+\section{The Tangent Plane}
 
-The tangent plane to a differentiable surface \( z = f(x, y) \) at the point \( (x_0, y_0) \) is the 
+The \emph{tangent plane} to a differentiable surface \( z = f(x, y) \) at the point \( (x_0, y_0) \) is the 
 plane that best approximates the surface near that point. It is given by the linearization of \(f\):
 
 \[
@@ -177,14 +201,14 @@ Thus, the tangent plane is:
 \subsection{The Directional Derivative}
 
 Let \( f : \R^n \to \R \) be differentiable at \( \vec{x}_0 \), 
-and let \( \vec{v} \in \R^n \) be a direction vector with \( \|\vec{v}\| = 1 \). The 
+and let \( \vec{v} \in \R^n \) be a direction vector with \( \metric{\vec{v}} = 1 \). The 
 \emph{directional derivative} of \(f\) at \( \vec{x}_0 \) in the direction \( \vec{v} \) is defined as:
 
 \[
     D_{\vec{v}}f(\vec{x}_0) := \lim_{h \to 0} \frac{f(\vec{x}_0 + h\vec{v}) - f(\vec{x}_0)}{h}
 \]
 
-\textbf{Formula:}
+If \(f\) is differentiable at \( \vec{x}_0 \), then the directional derivative can be computed using the gradient:
 
 \[
     D_{\vec{v}}f(\vec{x}_0) = \langle \nabla f(\vec{x}_0), \vec{v} \rangle
@@ -193,13 +217,13 @@ and let \( \vec{v} \in \R^n \) be a direction vector with \( \|\vec{v}\| = 1 \).
 \emph{Schwarz Inequality (Cauchy–Schwarz):}
 
 \[
-    |\langle \vec{a}, \vec{b} \rangle| \le \|\vec{a}\| \cdot \|\vec{b}\|
+    |\langle \vec{a}, \vec{b} \rangle| \le \metric{\vec{a}} \cdot \metric{\vec{b}}
 \]
 
 This implies:
 
 \[
-    |D_{\vec{v}}f(\vec{x}_0)| \le \|\nabla f(\vec{x}_0)\|
+    |D_{\vec{v}}f(\vec{x}_0)| \le \metric{\nabla f(\vec{x}_0)}
 \]
 
 \subsubsection{Derivation of the Directional Derivative Formula}
@@ -526,7 +550,45 @@ the mixed partial derivatives satisfy:
 
 That is, the order of partial differentiation does not matter if all second derivatives are continuous.
 
-\subsection{The Jacobian}
+\section{The Hessian}
+
+For a function \(f:\R^n \to \R\),  we define the \emph{Hessian} as the matrix composed of its second derivatives.
+
+\[
+        H_f(x) = 
+        \begin{bmatrix}
+            \frac{\partial^2 f(x)}{\partial x_1 \partial x_1} & \dots & \frac{\partial^2 f(x)}{\partial x_1 \partial x_n} \\ 
+            \vdots & \ddots & \vdots \\ 
+            \frac{\partial^2 f(x)}{\partial x_n \partial x_1} & \dots & \frac{\partial^2 f(x)}{\partial x_n \partial x_n}
+        \end{bmatrix}
+\]
+
+
+When analyzing the Hessian at critical points we get 
+
+\begin{itemize}
+        
+    \item For the \(\R^2\) case we use:
+
+        \subitem If \( H_f(x)\) is \emph{positive definite} \(f_{xx}(x_0, y_0) > 0,\, \det(H) > 0\), then \(x_0, y_0\) is a local minimum
+
+        \subitem If \( H_f(x)\) is \emph{negative definite} \(f_{xx}(x_0, y_0) < 0,\, \det(H) > 0 \), then is a local maximum
+
+        \subitem If \( H_f(x) \) has mixed signs, \emph{indefinite}, \(\det(H) < 0\), then it is  a saddle point
+
+        \subitem If \(\det(H) = 0\), then the next derivative decides
+
+    \item For the general case \(\R^n\) we use the eigenvalues 
+
+        \subitem \emph{Positive definite} if \(\lambda_i > 0,\, \forall \lambda_i\), which implies a local minimum.
+
+        \subitem \emph{negative definite} if \(\lambda_i < 0,\, \forall \lambda_i\), which implies a local maximum.
+
+        \subitem \emph{Indefinite} for mixed signs, which implies a saddle point.
+
+\end{itemize}
+
+\section{The Jacobian}
 
 Let \( \vec{f} : \R^n \to \R^m \), where
 

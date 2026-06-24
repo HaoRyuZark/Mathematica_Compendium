@@ -804,6 +804,7 @@ Let our loss function be
 \]
 
 where \(p(x_i)\) is the probability of \(x_i\) being assigned the label \(y = 1\) and \(1 - p(x_i)\) the same for \(y = 0\).
+We choose this because for each of the samples we a discrete \emph{geometric distribution}.
 
 We take that expression and modify it using \(h_{\theta}(x_i)\) 
 
@@ -821,7 +822,8 @@ And this is the function we want to maximize. Note, that this is the \emph{cross
 
 \subsection{Gradient of the Cross Entropy Loss Function}
 
-Using the cross entropy we can define our error for logistic regression. By taking the gradient
+Using the cross entropy we can define our error for logistic regression. By taking the gradient and applying 
+gradient descent.
 
 \[
    \log L(w,b) = - \frac{1}{N} \sum_{i = 1}^{n} [y_i \log(h_\theta (x_i) + (1 - y_i) \log(1 - h_\theta (x_i))]
