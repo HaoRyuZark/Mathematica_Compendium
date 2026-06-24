@@ -6,7 +6,7 @@ of integrating \(f(x)\) directly.
 
 \section{Newton Cotes}
 
-Given \(- \infty < a < b < \infty \) and \(f \in C[a,b]\) we want to approximate 
+Given \(- \infty < a < b < \infty \) and \(f \in [a,b]\) we want to approximate 
 
 \[
     \int_a^b f(x) dx
@@ -30,7 +30,130 @@ using high degree polynomials.
 
 with \(a = a_0 < b_0 = a_1 < b_1 ... a_{m - 1} < b_{m - 1} = b\).
 
+In general, this is the template for the coming methods.
+
+\section{The Midpoint Rule}
+
+The \emph{midpoint rule} builds rectangles by taking the middle point of the sub-intervals as the 
+height of our rectangles.
+
+\[
+    M_n = \sum_{i = 1}^n f\left(\frac{x_{i - 1} - x_i}{2}\right) h, \quad h - \frac{b - a}{2}
+\]
+
+With the error 
+
+\[
+    E \le \frac{(b - a)^3}{24 n^2} \max_{a \le x \le b}|f''(x)|
+\]
+
+\section{Trapezoidal Sum}
+
+One of the most common approaches for approximating integrals which is very easy to compute is the \emph{trapezoidal sum} which 
+consist on dividing our interval \([a,b]\) into \(n\) trapezoids whose area is given by \(\frac{h}{2}(a + b)\). 
+
+\[
+    T_n = \frac{h}{2} \left(f(a) + \sum_{i = 1}^{n - 1} f(a + ih) + f(b)\right), \quad h = \frac{b - a}{n}
+\]
+
+With the error 
+
+\[
+    E \le \frac{(b - a)^3}{12 n^2} \max_{a \le x \le b}|f''(x)|
+\]
+
+
+Visually it looks like:
+
+\tikzset{declare function={f(\x)=0.25*(\x-2.5)^3-0.75*\x+5);}}
+\newcommand{\myfunction}[2]
+{
+  \begin{scope}[shift={(#1,0)}]
+  \draw[-latex] (-0.5,0) -- (5,0) node[below] {$x$};
+  \draw[-latex] (0,-0.5) -- (0,5) node[left]  {$y$};
+  \draw[thick,cyan] plot[domain=0.5:4.5,samples=41] (\x,{f(\x)});
+  \node at (3.25,3.5) {$y=f(x)$};
+  \foreach\i in {0,1,2,3,...,8}
+  {
+    \pgfmathsetmacro\j{0.5*\i+0.5}
+    \coordinate (x\i) at (\j,0);
+    \coordinate (y\i) at (\j,{f(\j)});
+  }
+  \foreach\i in {0,1,2}
+    \node[below]        at (x\i) {$x_\i$};
+  \node[below]          at (x7) {$x_{n-1}$};
+  \node[below]          at (x8) {$x_n$};
+  \node[yshift=-0.75cm] at (x0) {\strut$a$};
+  \node[yshift=-0.75cm] at (x8) {\strut$b$};
+  \node[yshift=-1cm]    at (x4) {(#2)};
+  \end{scope}
+}
+\begin{center}
+    \begin{tikzpicture}[line join=round,line cap=round,scale=1.25]
+    \myfunction{12}{C}
+    \foreach\i in {0,1,2,3,7,8}
+    {
+    \pgfmathtruncatemacro\j{\i+1}
+    \ifnum\i<8
+        \draw[gray] (x\i) -- (y\i) -- (y\j) -- (x\j);
+    \fi
+    \fill (y\i) circle (1pt);
+    }
+    \end{tikzpicture} 
+\end{center}
+
 \textbf{Example:}
+
+\section{Simpsons Rule}
+
+The \emph{Simpsons rule} is an improvement of the trapezoidal rule which uses parabolas using two 
+intervals in order to  improves the approximation of the sum.
+
+\[
+    S_n = \frac{b - a}{3n} \left(f(a) +  \sum_{i = 1}^{n - 1} s(i)f(a + ih)  + f(b)\right)
+\]
+
+where
+
+\[
+    s(i) = \begin{cases}
+        4, & \text{ if } i \text{ odd}\\ 
+        2, & \text{ else }
+    \end{cases}
+\]
+
+With error 
+
+\[
+    E \le \frac{(b - a)^5}{180 n^4} \max_{a \le x \le b} |f^{(4)}(x)|
+\]
+
+\section{Accuracy}
+
+We can use the error formulas and solve for \(n\) to find the number of sub-intervals to 
+use with our approximation given an initial precission. 
+
+\textbf{Example:}
+
+Given \(\int_{-2}^{1} (-x^4 - 2x^3 + 12x^2 + 2x -5 dx)\) find the \(n\) for a result user the Simpsons rule with 
+accuracy between 0.1. 
+
+Using our formula 
+
+\[
+    E \le \frac{(b - a)^5}{180 n^4} \max_{a \le x \le b} |f^{(4)}(x)|
+\]
+
+Assuming we already know our maximum we would get: 
+
+\begin{align*}
+    \frac{(1 - (-2))^5}{180 n^4} \max_{a \le x \le b} |f^{(4)}(x)| &\le \frac{1}{10} \\
+    \frac{(1 - (-2))^5}{180 n^4} \max_{a \le x \le b} 24  &\le \frac{1}{10} \\
+     n &\le  4.24
+\end{align*}
+
+Hence we need to use an \(n \ge 4.24\).
+
 
 \section{Lagrange Integration For \texorpdfstring{\([0, 1]\)}{}}
 
@@ -47,7 +170,7 @@ where
     L_k(x) = \prod_{i = 0, i \ne k} \frac{x - x_i}{x_k - x_i}
 \]
 
-is our \emph{lagrange polynomial}.
+is our \emph{Lagrange polynomial}.
 
 Using them gives us the approximation 
 
@@ -56,8 +179,6 @@ Using them gives us the approximation
 \]
 
 with \(\beta_k = \int_0^1 L_k (x) dx\).
-
-\textbf{Example:}
 
 \subsection{Generalization For \texorpdfstring{\([a,b]\)}{}}
 
@@ -81,31 +202,32 @@ For the case when the intervals have the same size then our intervals boundaries
     h = \frac{b - a}{m} = b_i - a_i, \quad a_i = a + ih, \, b_i = a + (i + 1)h
 \]
 
-\textbf{Example:}
+\subsection{Bernoulli Polynomials And The Bernoulli Numbers}
 
-\section{Error Analysis}
-
-\subsection{Newton Cotes}
-
-
-Given \(f \in C^{2 + n} [0, h], \, I_n (f)\), then there is \(\xi \in [0, h]\) such that 
+The \emph{Bernoulli polynomials} \(b_k\) are defined by 
 
 \[
-    E_n(h) = \int_0^h f(x) dx - NC_n(h) = 
-    \begin{cases}
-        \frac{h}{n}^{n + 3} \int_0^n \frac{t \prod_{k = 0}^{n}(t - k)}{(n + 2)!} dt f^{(n + 2)}(\xi), & n \text{ even }\\
-        \frac{h}{n}^{n + 2} \int_0^n \frac{\prod_{k = 0}^{n}(t - k)}{(n + 1)!} dt f^{(n + 1)}(\xi), & n \text{ odd }
-    \end{cases}
+    b_0(x) = 1, \quad b_k'(x) = k, \ \int_0^1 b_k(x)dx = 0, \, k \ge 1.
 \]
 
-\subsection{Degree Of Exactness}
+The \emph{Bernoulli numbers} are given by 
 
-If \(I(f)\) is an integral approximation, which for all polynomials of degree \(\le l\) returns the exact solution, then 
-we define \(l\) as the \emph{degree of exactness}.
+\[
+    B_0 = b_0(0) = b_0(1), \quad B_1 = b_1(0) = -b_1(1), \quad B_k = b_k(0) = b_k(1), \ k \ge 2.
+\]
+
+These numbers are used in the next Theorem.
+
+\section{Euler-Maclaurin Summation}
+
+Ist \(f \in C^{2n}([a, b])\) then the following formula holds: 
+
+\[
+    \sum_{n = a}^{b} f(n) = \int_a^b f(x) dx + \frac{f(a) - f(b)}{2} + \sum_{n = 1}^{\infty} \frac{B_{2n}}{(2n)!} (f^{(2n - 1)}(b) - f^{(2n - 1)}(a))
+\]
 
 
-
-\section{Gaussian Integration}
+This formula is used to approximate integrals without computing a lot of terms.
 
 
 

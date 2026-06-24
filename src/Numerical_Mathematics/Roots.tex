@@ -119,8 +119,12 @@ If we would stop at the quadratic term we would get:
     x_{k + 1} =  x_k - \frac{f'(x_k) \pm \sqrt{(f'(x_k))^2 - 2f(x_k)f''(x_k)}}{f''(x_k)}.
 \]
 
-The geometric interpretation is that we are approximating the zero by the tangent at the point 
-\((x_k, f(x_k))\).
+The geometric interpretation is that we are approximating the zero by the tangent at the point
+\((x_k, f(x_k))\). 
+
+This algorithm comes from the idea that when taking a derivative if its slope is negative, then we need to move in the 
+positive \(x\) direction: \(x_{k + 1} = x_k + \alpha f'(x_k)\) and if the slope is positive, then we move in the negative direction 
+\(x_{k + 1} = x_k - \alpha f'(x_k)\).
 
 \subsection{The Newton Algorithm Under Banach}
 
@@ -182,14 +186,14 @@ For our denominator we know that it becomes minimal when \(x\) is minimal, there
     |\Phi'(x)| = \frac{|f(x)|}{(x + 1)^2} \le \frac{1}{4} = \alpha
 \]
 
-\subsection{Convergence Of The Newton ALgorithm}
+\subsection{Convergence Of The Newton Algorithm}
 
 If \(f: \R \to \R\) is two times continuously differentiable with \(f(x)= 0, f'(x) \ne 0\) i.e. \(x\)  is a root of \(f\). 
 If \(x_0 \in [x - \varepsilon, x + \varepsilon]\) where \(\varepsilon\) is infinitesimally small, then the Newton algorithm converges 
 \emph{quadratically}.
 
 
-\subsection{Taylor Expansion For Zero Roots of the Newton ALgorithm}
+\subsection{Taylor Expansion For Zero Roots of the Newton Algorithm}
 
 If we have the case that \(x\) is zero root of \(f(x), f'(x), \dots\) or even leads to un-definitions then we can write \(f\) as 
 a Taylor polynomial 

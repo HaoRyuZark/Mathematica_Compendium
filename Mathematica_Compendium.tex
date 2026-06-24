@@ -1,44 +1,74 @@
-\documentclass[10pt, a4paper]{book}
-\usepackage{graphicx}
-\usepackage{amsmath, amssymb, amsthm}
-\usepackage{bbm}
-\usepackage{mathrsfs}
-\usepackage{geometry}
-\usepackage{enumitem}
-\usepackage{tikz, tcolorbox}
-\usepackage{hyperref}
-\usepackage{booktabs}
-\usepackage{fullpage}
-\usepackage{pgfplots}
-\usepackage{multicol}
-\usepackage[siunitx]{circuitikz}
-\usepackage{caption}
-\usepackage{float}
-\usepackage{multirow}
-\usepackage{polynom}
-\usepackage{tikz-cd}
-\usepackage[utf8]{inputenc}
-\usepackage{pst-eucl}
-\usepackage{tabu}
-\usepackage{comment}
-\usepackage{subcaption}
-\usepackage{fancyvrb}
-\usepackage{fancyhdr}
-\usepackage{etoolbox}
-\usepackage{fncychap}
-\usepackage{setspace}
-\usepackage{listings}
-\usepackage{tkz-euclide}
-\usepackage{parskip}
-\usepackage{bookmark}
-\usetikzlibrary{calc,intersections,decorations.pathreplacing, patterns, angles, quotes, cd, shapes, arrows, positioning, automata}
-\usepgfplotslibrary{fillbetween}
-\geometry{margin=1in}
-\graphicspath{{./resources/images}}
-\pgfplotsset{compat=newest}
-\setlength\parindent{0pt} 
+\documentclass[10pt, a4paper]{book} % Book class with 10pt font on A4 paper
 
-\input{utilities/macros.tex}
+% --- Core math and symbols ---
+\usepackage{amsmath, amssymb, amsthm} % Advanced math typesetting
+\usepackage{bbm}                      % Blackboard-style math symbols (e.g. \mathbbm{1})
+\usepackage{mathrsfs}                 % Script math fonts (\mathscr)
+
+% --- Graphics and diagrams ---
+\usepackage{graphicx}                               % Image inclusion
+\graphicspath{{./resources/images}}                 % Default image directory
+
+\usepackage{tikz, tcolorbox}                        % TikZ drawings and colored boxes
+\usetikzlibrary{
+  calc, intersections, decorations.pathreplacing,
+  patterns, angles, quotes, cd, shapes,
+  arrows, positioning, automata
+}
+
+\usepackage{pgfplots}                               % Plotting graphs
+\pgfplotsset{compat=newest}                         % PGFPlots compatibility mode
+\usepgfplotslibrary{fillbetween}                    % Fill between curves in plots
+
+\usepackage{tikz-cd}                                % Commutative diagrams
+\usepackage{tkz-euclide}                            % Euclidean geometry constructions
+\usepackage{pst-eucl}                               % PSTricks Euclidean geometry (legacy but kept)
+
+\usepackage[siunitx]{circuitikz}                    % Circuit diagrams with SI units
+
+% --- Layout and formatting ---
+\usepackage{geometry}     % Page layout control
+\geometry{margin=1in}     % 1 inch margins
+
+\usepackage{setspace}     % Line spacing control
+\usepackage{parskip}      % No paragraph indentation + spacing
+
+\setlength\parindent{0pt} % Explicitly disable paragraph indentation
+
+% --- Tables and figures ---
+\usepackage{booktabs}   % Professional tables
+\usepackage{multirow}   % Multi-row table cells
+\usepackage{caption}    % Caption customization
+\usepackage{subcaption} % Subfigures/subtables
+\usepackage{float}      % Float placement control
+
+% --- Lists and structure ---
+\usepackage{enumitem} % Custom lists
+
+% --- Code and verbatim ---
+\usepackage{listings}  % Code listings
+\usepackage{fancyvrb}  % Enhanced verbatim environments
+\usepackage{comment}   % Block comments
+
+% --- Headers and styling ---
+\usepackage{fancyhdr} % Headers and footers
+\usepackage{fncychap} % Fancy chapter styles
+
+% --- Links and navigation ---
+\usepackage{hyperref}  % Hyperlinks (load late in preamble)
+\usepackage{bookmark}  % Better PDF bookmarks
+
+% --- Utilities ---
+\usepackage{etoolbox}  % Programming tools for LaTeX
+\usepackage{polynom}   % Polynomial long division
+
+% --- Multicolumn text ---
+\usepackage{multicol} % Multi-column layouts
+
+% --- External macros ---
+\input{utilities/macros.tex} % Custom user-defined commands
+
+% --- Start of the document
 
 \title{Mathematica Compendium}
 \author{Miguel Antonio Méndez Hernández}

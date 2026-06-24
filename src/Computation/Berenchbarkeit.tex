@@ -90,12 +90,12 @@ Here \(\alpha\) is a stronger condition than \(\phi\). This way our condition \(
 
 In code 
 
-\begin{verbatim*}
-<true> 
-<5=5> 
-x=5;
-<x=5>
-\end{verbatim*}
+\begin{verbatim}
+    <true> 
+    <5=5> 
+    x=5;
+    <x=5>
+\end{verbatim}
 
 \emph{Consequence Rule (Weak post-condition)} 
 
@@ -139,7 +139,7 @@ is true.
 
 \textbf{Example:}
 
-\begin{verbatim*}
+\begin{verbatim}
 <true>
 <y=y>
 res=y
@@ -152,7 +152,7 @@ if (x > y) {
     <res = max(x,y)>   
 }
 <res = max(x,y)>
-\end{verbatim*}
+\end{verbatim}
 
 \emph{Condition Rule II}
 
@@ -165,7 +165,7 @@ we have a correct post-condition.
 
 \textbf{Example:}
 
-\begin{verbatim*}
+\begin{verbatim}
 <true>
 <x=x>
 res=x
@@ -183,7 +183,7 @@ if (x < 0) {
     <res = |x>
 }
 <res = |x|>
-\end{verbatim*}
+\end{verbatim}
 
 \emph{Loop Rule}
 
@@ -201,7 +201,7 @@ holds for the entire loop.
 
 In this case the invariant is \(i! res = n!\)
 
-\begin{verbatim*}
+\begin{verbatim}
     <true>
     i = n;
     res = 1;
@@ -217,7 +217,7 @@ In this case the invariant is \(i! res = n!\)
     }
     <\phi \land \neg i > 1>
     <res = n!>
-\end{verbatim*}
+\end{verbatim}
 
 \subsection{Termination}
 
@@ -232,7 +232,7 @@ In simpler words, we look for an integer expression which continuously decreases
 
 \textbf{Example:}
 
-\begin{verbatim*} 
+\begin{verbatim} 
     <i = m \land i > 1>
     while ( i > q) {
 
@@ -242,6 +242,6 @@ In simpler words, we look for an integer expression which continuously decreases
         i = i - 1;;
     <i < m>
     }
-\end{verbatim*}
+\end{verbatim}
 
 
