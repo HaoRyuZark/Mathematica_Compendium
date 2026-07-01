@@ -48,22 +48,6 @@ The boundary term vanishes because:
     \lim_{t \to \infty} t^x e^{-t} = 0, \quad \lim_{t \to 0} t^x e^{-t} = 0 \quad (\text{for } x > 0)
 \]
 
-\subsection{Use Cases of the Gamma Function}
-
-\begin{itemize}
-
-    \item \textbf{Generalized factorials:} For non-integer values, \( \Gamma(x) \) interpolates the factorial function.
-
-    \item \textbf{Probability and statistics:} Appears in distributions such as the Gamma, Beta, and Chi-squared.
-
-    \item \textbf{Complex analysis:} Integral representations, analytic continuation, and meromorphic structure.
-
-    \item \textbf{Fourier and Laplace transforms:} Arises in solutions of integrals and transforms involving exponential decay.
-
-    \item \textbf{Physics and engineering:} Occurs in problems with power-law and exponential decay relationships.
-
-\end{itemize}
-
 \textbf{Example: Gamma Distribution}
 
 The Gamma distribution with shape \( \alpha > 0 \), rate \( \beta > 0 \) has the density:
@@ -71,3 +55,13 @@ The Gamma distribution with shape \( \alpha > 0 \), rate \( \beta > 0 \) has the
 \[
     f(x) = \frac{\beta^\alpha x^{\alpha - 1} e^{-\beta x}}{\Gamma(\alpha)} \quad \text{for } x > 0
 \]
+
+\section{Extension Of The Factorials}
+
+Another extension of the factorial is given by the function 
+
+\[
+    x! = \prod_{k = 1}^{\infty} \frac{(k + 1)^x k^{1 - x}}{x + k}.
+\]
+
+
