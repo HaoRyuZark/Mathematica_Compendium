@@ -1085,3 +1085,116 @@ Then
 \]
 
 \QED
+
+\section{Derivative Of A Matrix}
+
+Given a matrix \(A \in \C^{n \times n}\) and a vector \(x \in \C^{n}\) we can find the 
+derivatives of 
+
+\[
+    \frac{\partial (Ax)}{\partial x} = A
+\] 
+
+and 
+
+\[
+    \frac{\partial (x^T A x)}{\partial x} = (A + A^T)x
+\]
+
+\textbf{Proof:}
+
+For \(Ax\), we have that 
+
+\[
+    Ax = 
+    \begin{bmatrix}
+        \sum_{i = 1}^{n} a_{1i} x_i \\
+        \sum_{i = 1}^{n} a_{2i} x_i \\
+        \vdots \\
+        \sum_{i = 1}^{n} a_{ni} x_i 
+    \end{bmatrix}
+    = 
+    \begin{bmatrix}
+        f_1(x) \\
+        f_2(x) \\
+        \vdots \\
+        f_n(x)
+    \end{bmatrix}
+    \in \C^{n}
+\]
+
+Hence, the derivative of \(Ax\) with respect to \(x\) is given by the matrix \(A\), since when 
+taking the partial derivatives of each \(f_i(x)\) with respect to each \(x_j\), we obtain the entries of \(A\).
+
+\[
+    \frac{\partial f_i(x)}{\partial x_j} = a_{ij}
+\]
+
+Hence, 
+
+\[
+    A =
+    \begin{bmatrix}
+        a_{1,1} & a_{1,2} & \dots  & a_{1,n} \\
+        a_{2,1} & a_{2,2} & \dots  & a_{2,n} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        a_{n,1} & a_{n,2} & \dots  & a_{n,n} \\
+    \end{bmatrix}
+\]
+
+For \(x^TAx\), we take our vector
+
+\[
+    x^T Ax
+    = 
+    \begin{bmatrix}
+        x_1 & x_2 & \dots & x_n
+    \end{bmatrix}
+    \begin{bmatrix}
+        \sum_{i = 1}^{n} a_{1,i} x_i \\
+        \sum_{i = 1}^{n} a_{2,i} x_i \\
+        \vdots \\
+        \sum_{i = 1}^{n} a_{n,i} x_i 
+    \end{bmatrix}
+    = x_1 \sum_{i = 1}^{n} a_{1,i} x_i + x_2 \sum_{i = 1}^{n} a_{2,i} x_i + \dots + x_n \sum_{i = 1}^{n} a_{n,i} x_i
+\]
+
+This can be rewritten as
+
+\[
+    \sum_{i = 1}^{n} a_{1,i} x_1 x_i + \sum_{i = 1}^{n} a_{2,i} x_2 x_i + \dots + \sum_{i = 1}^{n} a_{n,i} x_n x_i
+\]
+
+which can be expressed as a double summation:
+
+\[
+    f(x) = \sum_{i = 1}^{n} \sum_{j = 1}^{n} a_{i,j} x_i x_j.
+\]
+
+When taking the derivative of \(f(x)\) with respect to \(x_k\), we have 4 cases to consider:
+
+\begin{itemize}
+    \item \(i = k,\, j = k\): is \(x_k x_k a_{k,k}\) and the derivative with respect to \(x_k\) is \(2x_k a_{k,k}\).
+    \item \(i = k,\, j \neq k\): is \(x_k x_j a_{k,j}\) and the derivative with respect to \(x_k\) is \(a_{k,j} x_j\).
+    \item \(i \neq k,\, j = k\): is \(x_i x_k a_{i,k}\) and the derivative with respect to \(x_k\) is \(a_{i,k} x_i\).
+    \item \(i \neq k,\, j \neq k\): is \(x_i x_j a_{i,j}\) and does not depend on \(x_k\), so the derivative is 0.
+\end{itemize}
+
+\[
+    \frac{\partial f(x)}{\partial x_k} = 2x_k a_{k,k} + \sum_{i \neq k}^{n} a_{i,k} x_i + \sum_{j \neq k}^{n} a_{k,j} x_j
+\]
+
+When written in matrix form, this yields
+
+\[
+    (A + A^T)x
+\]
+
+because the diagonal elements are counted twice and the off-diagonal elements are added in the form \( a_{i,j} + a_{j,i} \).
+If \(A\) is symmetric, then \(A = A^T\) and we have
+
+\[
+    2Ax.
+\]
+
+\QED
