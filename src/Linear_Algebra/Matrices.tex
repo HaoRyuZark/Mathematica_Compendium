@@ -1180,8 +1180,10 @@ When taking the derivative of \(f(x)\) with respect to \(x_k\), we have 4 cases 
     \item \(i \neq k,\, j \neq k\): is \(x_i x_j a_{i,j}\) and does not depend on \(x_k\), so the derivative is 0.
 \end{itemize}
 
+This gives us the following form for the componts of our gradient: 
+
 \[
-    \frac{\partial f(x)}{\partial x_k} = 2x_k a_{k,k} + \sum_{i \neq k}^{n} a_{i,k} x_i + \sum_{j \neq k}^{n} a_{k,j} x_j
+    \frac{\partial f(x)}{\partial x_k} = 2x_k a_{k,k} + \sum_{i \neq k}^{n} (a_{i,k} + a_{k, i}) x_i.
 \]
 
 When written in matrix form, this yields
@@ -1198,3 +1200,30 @@ If \(A\) is symmetric, then \(A = A^T\) and we have
 \]
 
 \QED
+
+\textbf{Example:}
+
+For \(n  = 2 \): 
+
+\[
+    x^T A x =   x_1^2 a_{1, 1} + x_1 x_2 a_{1, 2} + x_1 x_2 a_{2,1} + x_2^2 a_{2,2} 
+\]
+
+Differentiate and get: 
+
+\[
+    \nabla x^T A x = 
+    \begin{bmatrix}
+        2x_1 a_{1, 1} + x_2 (a_{1,2} + a_{2,1}) \\ 
+        x_1 (a_{1,2} + a_{2,1}) + 2x_2 a_{2,2}
+    \end{bmatrix}
+    = 
+    \begin{bmatrix}
+        2a_{1, 1}  & (a_{1,2} + a_{2,1}) \\ 
+        (a_{1,2} + a_{2,1}) & 2 a_{2,2}
+    \end{bmatrix}
+    \begin{bmatrix}
+        x_1 \\ 
+        x_2
+    \end{bmatrix}
+\]

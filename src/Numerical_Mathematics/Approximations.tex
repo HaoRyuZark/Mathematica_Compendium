@@ -1,9 +1,9 @@
 \section{Polynomial Linear Regression}
 
-Given datapoints \((x_i, y_i) \in \R^2, \ i = 1, \dots, m\) we define the \emph{mean square error} as
+Given data-points \((x_i, y_i) \in \R^2, \ i = 1, \dots, m\) we define the \emph{mean square error} as
 
 \[
-    \tilde{e} = \sqrt{\sum_{i = 1}^{m} (f(x_i) - y_i)^2} = \sqrt{\sum_{i = 1}^{m} e_i^2} = \metric{e}_2, \quad e = 
+    \tilde{e} = \sqrt{ \sum_{i = 1}^{m} {(f(x_i) - y_i)}^2 } = \sqrt{\sum_{i = 1}^{m} e_i^2} = \metric{e}_2, \quad e = 
     \begin{bmatrix}
         e_1 \\ 
         \vdots \\ 
@@ -14,7 +14,7 @@ Given datapoints \((x_i, y_i) \in \R^2, \ i = 1, \dots, m\) we define the \emph{
 Now instead of using a linear term we define a polynomial of degree \(n- 1\): 
 
 \[
-    f(x) = p_1 + p_2 x + \dots + p_m x^{n - 1}.
+    f(x) = p_1 + p_2 x + \cdots + p_m x^{n - 1}.
 \]
 
 Hence we wan to minimize the expression 
@@ -30,13 +30,12 @@ Hence we wan to minimize the expression
 
 Which delivers the following system 
 
-
 \[
     \metric{
         \begin{bmatrix} 
-            1 & x+1 & \dots & x_1^{n - 1} \\ 
-            \vdots & \vdots & & \vdots \\ 
-            1 & x_m & \dots & x_m^{n -1}
+            1 & x_1 & \cdots & x_1^{n - 1} \\ 
+            \vdots  & \vdots & & \vdots \\ 
+            1 & x_m & \cdots & x_m^{n -1}
         \end{bmatrix}
         \begin{bmatrix}
             p_1 \\ 
@@ -69,13 +68,13 @@ whereas \(A^T A \in \R^{n \times n}\) is regular.
 
 \textbf{Proof:}
 
-We want to first show that \(A^T A \) is regular hence, we do the following: 
+We want to first show that \(A^T A\) is regular hence, we do the following: 
 
 If \(A^T Ax = 0\) then 
 
 
 \[
-        0 = x^T A^T Ax = (Ax)^T Ax = \metric{Ax}_2^2 \implies Ax = 0
+    0 = x^T A^T Ax = {(Ax)}^T Ax = \metric{Ax}_2^2 \implies Ax = 0
 \]
 
 Because \(A\) has maximal rank \(x = 0\), hence \(A^T A\) is regular.
@@ -113,9 +112,8 @@ Therefore, \(\tilde{x}\) is the solution with the minimal distance.
 
 \textbf{Example:}
 
-Given the points \((0, 1), (2, 2), (3, 2)\) find the minimal solution to the minimization problem using \(f(x) = p_1 + p_2 x\) (\(n = 2\))
-
-We get
+Given the points \((0, 1), (2, 2), (3, 2)\) find the minimal solution to the minimization problem using \(f(x) = p_1 + p_2 x, \,(n = 2)\).
+Notice that our basis is \(1, \, x\); hence:
 
 \[
         A = 
