@@ -4,7 +4,7 @@
 
 We want to find \(A = QR\), where \(R\) is an upper-triangular matrix and \(Q\) just a matrix. 
 
-\subsection{Givens Algorithm}
+\subsection{Givens Matrices}
 
 This algorithm uses rotations for the elimination of the elements underneath of the main diagonal. We use 
 matrices of the form:
@@ -14,12 +14,27 @@ matrices of the form:
         \begin{bmatrix}
             1 &        &         &        &         & & &\\
               & \ddots &         &        &         & & &\\
-              &        & c^{(i,i)}       &        &   s^{(i,j)}     & & &\\
+              &        & c       &        &   s    & & &\\
               &        &         & \ddots &         & & &\\
-              &        & -s^{(i,j)}      &        &   c^{(i,i)}     & & &\\
+              &        & -s      &        &   c     & & &\\
               &        &         &        &         & \ddots & &\\
               &        &         &        &         &  & & 1
         \end{bmatrix} 
+\]
+
+where given an element \(a_{k,l}\) to eliminate then 
+
+\begin{align*}
+    q_{k - 1, k - 1} &= c \\ 
+    q_{k - 1, k} &= s, \\
+    q_{k, k - 1} &= -s,\\ 
+    q_{k, k} &= c
+\end{align*}
+
+and 
+
+\[
+    s = \frac{a_{k, l}}{\sqrt{a_{k - 1, l}^2 + a_{k,l}^2}}, \quad c = \frac{a_{k - 1, l}}{\sqrt{a_{k - 1,l}^2 + a_{k,l}^2}}
 \]
 
 Which when chained will give us 
@@ -33,15 +48,6 @@ By the orthonormality of the \(Q_i\) we have
 \[
     A = Q_1^T \cdot \dots \cdot Q_{n-1}^T R = Q R
 \]
-
-The construction of \(Q_{i,j}\) is done in the following first computing
-
-\[
-    s = \frac{a_{i,j}}{\sqrt{a_{i,j}^2 + a_{k,j}^2}}, \quad c = \frac{a_{k, j}}{\sqrt{a_{i,j}^2 + a_{k,j}^2}}
-\]
-
-where \(i\) is the  
-
 
 \subsubsection{Givens Algorithm}
 
@@ -58,21 +64,7 @@ We start with \(Q = I\) and \(R = A\).
 
     where \(k\) is the \textbf{index of the first non-zero entry in the current column above} \(a_{i, j}\).
 
-    \item Create the matrix \(Q_{i,j}\) with the following structure:
-    \[
-        Q_{i,j} = 
-        \begin{bmatrix}
-            1 &        &         &        &         & & &\\
-              & \ddots &         &        &         & & &\\
-              &        & c^{(j, j)}       &        &   s^{(j,i)}     & & &\\
-              &        &         & \ddots &         & & &\\
-              &        & -s^{(i,j)}      &        &   c^{(i,i)}     & & &\\
-              &        &         &        &         & \ddots & &\\
-              &        &         &        &         &  & & 1
-        \end{bmatrix} 
-    \]
-
-    Our \(s\) and \(c\) will go into the respective \(i, j\) positions.
+    \item Create the matrix \(Q_{i,j}\).
 
     \item Multiply \(Q_{i,j}\) with \(A\) and store at the position of the generated zero the value \(s\) and at the position of \(c\) the value \(c\).
 
@@ -115,8 +107,8 @@ Find the \(QR\)-Decomposition of \(A\) and solve \(Ax = b\).
 We start by eliminating \(a_{2,1}\): 
 
 \[
-    c = \frac{12}{\sqrt{12^2 - (-9)^2}} = \frac{4}{5}, \ 
-    s = \frac{-9}{\sqrt{12^2 - (-9)^2}} = - \frac{3}{5}
+    c = \frac{12}{\sqrt{12^2 + (-9)^2}} = \frac{4}{5}, \ 
+    s = \frac{-9}{\sqrt{12^2 + (-9)^2}} = - \frac{3}{5}
 \]
 
 Therefore 
