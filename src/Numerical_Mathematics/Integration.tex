@@ -1,4 +1,4 @@
-\newpage 
+ 
 \chapter{Numerical Integration}
 
 The main idea of the numerical integration is to find a function \(g(x)\) which is easier to integrate, instead 
@@ -54,7 +54,7 @@ One of the most common approaches for approximating integrals which is very easy
 consist on dividing our interval \([a,b]\) into \(n\) trapezoids whose area is given by \(\frac{h}{2}(a + b)\). 
 
 \[
-    T_n = \frac{h}{2} \left(f(a) + \sum_{i = 1}^{n - 1} f(a + ih) + f(b)\right), \quad h = \frac{b - a}{n}
+    T_n = \frac{h}{2} \left(f(a) + 2\sum_{i = 1}^{n - 1} f(a + ih) + f(b)\right), \quad h = \frac{b - a}{n}
 \]
 
 With the error 
@@ -103,7 +103,11 @@ Visually it looks like:
     \end{tikzpicture} 
 \end{center}
 
-\textbf{Example:}
+The simple trapezoidal rule is a special case of the trapezoidal sum with \(n = 1\).
+
+\[
+    T_1 = \frac{b - a}{2} (f(a) + f(b))
+\]
 
 \section{Simpsons Rule}
 
@@ -129,10 +133,16 @@ With error
     E \le \frac{(b - a)^5}{180 n^4} \max_{a \le x \le b} |f^{(4)}(x)|
 \]
 
+The simple Simpsons rule is a special case of the Simpsons rule with \(n = 1\).
+
+\[
+    S_1 = \frac{b - a}{6} (f(a) + 4f\left(\frac{a + b}{2}\right) + f(b))
+\]
+
 \section{Accuracy}
 
 We can use the error formulas and solve for \(n\) to find the number of sub-intervals to 
-use with our approximation given an initial precission. 
+use with our approximation given an initial precision.
 
 \textbf{Example:}
 

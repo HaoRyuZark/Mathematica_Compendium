@@ -1,4 +1,4 @@
-\newpage
+
 \chapter{Linear Systems of Equations}
 
 \section{Linear Systems Standard Form}
@@ -908,15 +908,16 @@ entries in the main diagonal and its corresponding sub-square-matrix.
 
 \begin{enumerate}
 
-    \item \textbf{Division}: For the next \(k+n\) rows divide the elements in the current column by \(a_{k,k}\). Only to apply to the \(k \times k\) matrix.
+    \item Take current diagonal element and proceed to divide all entries in the same column underneath by it. Do not forget, that if we are in a sub-matrix.
 
-    \item \textbf{Column Elimination}: Subtract from the current row \(a_{k + n}\)-times the \(k\) row, also your current first row. Apply only for the inner sub-matrix \((k - 1) \times (k - 1)\)
-
-    \item \textbf{Scoping}: Now proceed with the next diagonal element which is going to give you an inner \((n - 1) \times (n - 1)\) matrix. To repeat 
-    the process. Note that when performing the row addition, this will only affect the inner matrix; hence, our old results remain intact.
+    \item The current row of our matrix is going to be subtracted from all of the rows underneath inside our sub-matrix. The factor we 
+    are going to use for our row at each subtraction is going to be first entry of the current column inside our sub-matrix.
     
-    \item \textbf{Getting \(L\) and \(U\)}: After the previous process, the resulting matrix will be divided into two matrices. \(L\) consisting on 
+    \item We reduce the scope of our matrix and repeat the steps above until we have a 1 by 1 matrix.
+    
+    \item After the previous process, the resulting matrix will be divided into two matrices. \(L\) consisting on 
     the elements underneath the main diagonal with it being all ones and above all zeros; and \(U\) begin the rest upper triangular matrix.
+
 \end{enumerate}
 
 \textbf{Example:}
@@ -955,13 +956,17 @@ First iteration:
         4 & 4 & 0 \\ 
         2 & 7 & 1
     \end{bmatrix}  
-    \rightarrow 
+    \rightarrow_{\text{division by 2}} 
     \begin{bmatrix}
         2 & 1 & 1 \\ 
         2 & 4 & 0 \\ 
         1 & 7 & 1
     \end{bmatrix}
-    \rightarrow 
+\]
+
+Now we subtract \(II - 2I\) and \(III - 1I\):
+
+\[
     \begin{bmatrix}
         2 & 1 & 1 \\ 
         2 & 2 & -2 \\ 
@@ -969,7 +974,7 @@ First iteration:
     \end{bmatrix}
 \]
 
-Second iteration; 
+Second iteration:
 
 \[
     \begin{bmatrix}
@@ -1193,7 +1198,7 @@ we get
 
 Hence, by induction \(L_k\) is always a lower triangular matrix.
 
-\QED 
+\QED
 
 Formally we state that given a regular matrix \(A \in \R^{n \times n}\), there are also permutations \(P_k, k = 1, \dots n - 1\) such that 
 \(P = P_{n-1} \cdot \dots \cdot P_1\) for which 
@@ -1383,7 +1388,10 @@ Finally, \(Ux = y\):
 \subsubsection*{Greatest Pivot Strategy}
 
 As a side note, to mitigate the rounding errors in scientific computing, the swap row strategy is 
-modified to always take the row with biggest element in the current column.
+modified to always take the row with biggest element in the current column, before perfoming the division step. In such a case we swap the entire row 
+and not just the row inside our sub-matrix. 
+
+We also need to keep track of the swaps which is accomplished by storing a vector \(x \in \R^n\)  where \(x_i\) is the position of \(i\)-row.
 
 \subsection{Cholesky Decomposition}
 

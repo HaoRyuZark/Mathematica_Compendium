@@ -1,4 +1,3 @@
-\newpage
 \chapter{Machine Learning And Data Science}
 
 \emph{Machine Learning} is an area of computer science which focuses on making accurate
@@ -172,6 +171,8 @@ Common methods for feature scaling include:
 \emph{Clustering} is a data analysis technique aimed at partitioning the data into mostly disjoint sets 
 such that the elements of each set exhibit a great similarity based on the measurement chosen.
 
+It is important to note that clustering algorithms always find clusters, no matter the data given. Therefore, it is the responsibility of 
+the data scientist to analyze the results and determine if the clusters are meaningful or not.
 \subsection{K-Means Clustering}
 
 \emph{K-Means} is an unsupervised learning iterative process that clusters the data set into \(k\) different clusters.
@@ -436,6 +437,19 @@ which the true values are known. It allows the visualization of the performance 
 For example, in a binary classification problem, the confusion matrix is a \(2\times2\) table that summarizes the counts of true positive \(TP\),
 true negative \(TN\), false positive \(FP\), and false negative \(FN\) predictions made by the model.
 
+\begin{center}
+	\begin{tabular}{|c|c|c|}
+	\hline
+			 & Positive 		& Negative 		 \\ 
+	\hline
+	Positive & \(\mathrm{TP}\) & \(\mathrm{FN}\) \\ 
+	\hline
+	Negative & \(\mathrm{FP}\) & \(\mathrm{TN}\) \\ 
+	\hline
+\end{tabular}
+
+\end{center}
+
 \subsection{Accuracy}
 
 The \emph{accuracy} is then given by:
@@ -444,13 +458,19 @@ The \emph{accuracy} is then given by:
 	\mathrm{Acc} = \frac{TP + TN}{TP + TN + FP + FN}.
 \]
 
+Portion of correctly predicted observations to the total observations.
+Ideally high.
+
 \subsection{Precision}
 
 The \emph{precision} is then given by:
 
 \[
-	\mathrm{Precsision} = \frac{TP}{TP + FP}.
+	\mathrm{Precision} = \frac{TP}{TP + FP}.
 \]
+
+Ratio of the correctly predicted positive observations to the total predicted positive observations.
+Ideally high.
 
 \subsection{Recall}
 
@@ -460,14 +480,26 @@ The \emph{recall} or true positive rate (TPR) is then given by:
 	\mathrm{Recall} = \frac{TP}{TP + FN}.
 \]
 
+Ratio of real positives to the total of positives. Ideally high
+
 \subsection{Specificity}
 
-The \emph{specificity} or false negative rate (FNR) is then given by:
+The \emph{specificity} or true negative rate (TNR) is then given by:
 
 \[
-	\mathrm{Specificity} = \frac{FP}{TN + FP}.
+	\mathrm{Specificity} = \frac{TN}{TN + FP} = \frac{TN}{N}
 \]
 
+Number correclty negative classified observation in relation to the correctly and not correctly classified  negative observations.
+Ideally high.
+
+\subsection{The F1 Metric}
+
+The \emph{F1 metric} is a measure which combines two of the previous metrics into one: 
+
+\[
+	\mathrm{F1} = 2 \frac{\mathrm{Precission} \ \mathrm{Recall}}{\mathrm{Precission} + \mathrm{Recall}}
+\]
 
 \subsection{Receiver Operating Characteristic (ROC) Curves}
 
@@ -477,7 +509,7 @@ a classification problem.
 
 When we read a value like: \((0.8, 0.2)\) we can say that 80 percent were correctly classified and 20 percent were missclassified.
 
-The higher the curve is the better is our classification model. This can be compared using the area under the curve AOC of different 
+The higher the curve is the better is our classification model. This can be compared using the area under the curve ROC of different 
 curves.
 
 
@@ -1818,6 +1850,9 @@ number of features (dimensions) leads to an increase in the complexity of the mo
 is important to be able to visualize the data, which is not possible in high dimensions. Therefore, we want to reduce the number of features while
 preserving as much information as possible.
 
+To reduce dimensionality we have two categories of methods: \emph{linear} and \emph{non-linear}. The linear methods use the assumption that the data lies on a linear subspace of the original feature space which
+means that they use, mostly, the Euclidean distance as a measure of similarity. Non-linear methods take into consideration the topology of the data and use non-linear transformations to reduce the dimensionality.
+
 \subsection{Average Vector}
 
 Given \(N\) features vectors with \(D\) features. The \emph{average vector} is given
@@ -1852,25 +1887,25 @@ Axes along which the data have little, or almost no variance can usually be igno
 When projecting our points onto a new axis we use the projection formula
 
 \[
-	a' = \mathrm{Proj}_{b}(a) = \inner{a}{b}b.
+	x' = \mathrm{Proj}_{u}(x) = \frac{\inner{x}{u}}{\inner{u}{u}} u = \inner{x}{u} u \quad \text{with } \metric{u} = 1
 \]
 
-We can use the the term \(\inner{a}{b}\) as the measure of information preserved between the two vectors \(a\) and \(a'\). This is
-maximal when they are orthogonal and maximal when they are parallel.
+We can use the the term \(\inner{x}{u}\) as the measure of \textbf{information preserved between the two vectors \(x\) and \(x'\)}. This is
+maximal when they are \textbf{parallel} and minimal when they are \textbf{orthogonal}.
 
 Hence, we want to maximize the sum of the inner products between the original data and the projected data onto the directions \(u\) which
 while minimizing the the loss of information.
 
 \[
-	\max \sum_i \inner{x_i}{u}^2 = \max \sum_i (x_i^T u)^2
+	\max_{\metric{u} = 1} \sum_i \inner{x_i}{u}^2 = \max_{\metric{u} = 1} \sum_i (x_i^T u)^2
 \]
 
 Note that we still do not know in which direction \(u\) we want to project our data. For this we can manipulate the previous expression
 
 \begin{align*}
-	\max \sum_i (x_i^T u)^2 & = \max \sum_i (x_i^T u)(x_i^T u)             \\
-	                        & = \max \sum_i u^T x_i x_i^T u                \\
-	                        & = \max u^T \left( \sum_i x_i x_i^T \right) u
+	\max_{\metric{u} = 1} \sum_i (x_i^T u)^2 & = \max_{\metric{u} = 1} \sum_i (x_i^T u)(x_i^T u)             \\
+	                        & = \max_{\metric{u} = 1} \sum_i u^T x_i x_i^T u                \\
+	                        & = \max_{\metric{u} = 1} u^T \left( \sum_i x_i x_i^T \right) u
 \end{align*}
 
 Note the covariance matrix inside
@@ -1900,7 +1935,7 @@ For
 In our optimization problem we can replace the covariance matrix and get
 
 \[
-	\max (u^T S u)
+	\max_{\metric{u} = 1} (u^T S u)
 \]
 
 With the constraint
@@ -1913,7 +1948,7 @@ With the constraint
 We also have the constraint that \(u\) is a unit vector, so we can write the optimization problem as
 
 \[
-	\max (u^T S u) \quad \text{subject to } u^T u = 1
+	\max_{\metric{u} = 1} (u^T S u) 
 \]
 
 Now using the method of Lagrange multipliers we can write the Lagrangian as
@@ -1937,12 +1972,15 @@ From
 
 \begin{align*}
 	S u_i & = \lambda_i u_i \\
-	u_i^T S u_i = \lambda_i
+	u_i^T S u_i &= \lambda_i
 \end{align*}
+
+For our next component we would want to be in the orthogonal complement of the first component, so that it is uncorrelated with the first component. 
+This means that we want to choose the eigenvector corresponding to the second largest eigenvalue, and so on.
 
 Depending on how many dimensions we want to reduce to, we can choose the eigenvectors corresponding to the largest eigenvalues.
 
-\subsubsection*{Projection}
+\subsubsection{Projection Of The Data After The Analysis}
 
 Each of our principal components represents a direction in our high dimensional space. Given our data set \(X \in \R^{n \times p}\)
 and our matrix of \(k\) principal components \(W^T \in \R^{k\times p}\); the projection of our data onto the components is given by
@@ -1954,7 +1992,7 @@ and our matrix of \(k\) principal components \(W^T \in \R^{k\times p}\); the pro
 This comes from the fact that given our projection:
 
 \[
-	\mathrm{Proj}_{u_i}(x) = u_i^T x u_i \iff u_i^T u_i = 1.
+	\mathrm{Proj}_{u_i}(x) = (u_i^T x) u_i \iff u_i^T u_i = 1.
 \]
 
 When we multiply our matrices \(X\) and \(W\)
@@ -1989,14 +2027,14 @@ Which essentially describes the our vector as a liner combination:
 Note that we are using the row vectors of \(X\) and the transpose of the matrix of principal components \(W^T\) to get the projection, because of
 the way most software libraries implement matrices as arrays of row vectors.
 
-\subsubsection*{Variance Derivation}
+\subsubsection{Variance Derivation}
 
 Alternatively to our previous derivation of the PCA, we can accomplish the same result by:
 
 First taking our projection
 
 \[
-	\mathrm{Proj}_{u_i}(x_j) = u_i^T x_j u_i
+	\mathrm{Proj}_{u_i}(x_j) = (u_i^T x_j) u_i
 \]
 
 Then taking the mean vector projected \(u_{i}^T \overline{x} u_i\) and then using the variance formula for
@@ -2010,7 +2048,7 @@ the variance of the projections with our unit vector \(u_i\):
 	                                                                 & =  u_i^T S u_i
 \end{align*}
 
-The rest of the derivation is the same as by the previous.
+We use the variance formula because it measeures the spread of the data along the direction of the principal component. The larger the variance, the more information is preserved in that direction.
 
 \subsection{Explained Variance}
 
@@ -2208,6 +2246,7 @@ Now we can summarize the K-PCA algorithm
 \subsection{Multidimensional Scaling MDS}
 
 \emph{Multidimensional Scaling (MDS)} is a family of procedures for the visualization an dimension reduction of features.
+The non-Euclidean MDS variants do not have a closed form solution, they are iterative methods; hence, we will present the classical MDS with the Euclidean distance.
 
 Given the pairwise distances of \(N\) vectors in matrix form
 
@@ -2227,7 +2266,7 @@ We take our matrix \(D\) and square its entries giving us our \emph{Gram matrix}
 Then, we construct our matrix \(B\) for which the following holds:
 
 \[
-	B = X X^T, \quad b_{i, j} = \inner{x_i}{x_J}
+	B = X X^T, \quad b_{i, j} = \inner{x_i}{x_j}
 \]
 
 Using the fact tha twe can write our inner products as
@@ -2266,6 +2305,13 @@ The idea is similar to PCA, but instead of using correlation between samples, we
 metric for the method is part of the art. As an important note, the previously discussed method only works with the euclidean distance; for a generalization with any metric
 there is an alternative algorithm.
 
+\subsubsection{Proportion Of Distance Matrix Explained (PDME)}
+
+The \emph{PDME} is given by: 
+
+\[
+	\mathrm{PDME} = \frac{\lambda_j}{\sum_{i = 1}^{N} | \lambda_i |}
+\]
 
 \subsubsection{Euclidean Constraint}
 

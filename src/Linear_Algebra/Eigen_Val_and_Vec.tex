@@ -1,4 +1,4 @@
-\newpage
+
 \chapter{Eigenvectors and Eigenvalues}
 
 \emph{Eigenvector:}
@@ -688,7 +688,7 @@ This implies that
 \section{Singular Value Decomposition (SVD)}
 
 The \emph{Singular Value Decomposition (SVD)} is a fundamental matrix factorization technique in linear 
-algebra. It expresses any real matrix \( A \in \R^{n \times n} \) as a product of three specific 
+algebra. It expresses any real matrix \( A \in \R^{m \times n} \) as a product of three specific 
 matrices:
 
 \[
@@ -699,21 +699,19 @@ where:
 
 \begin{itemize}
 
-    \item \( U \in \R^{n \times n} \) is an orthogonal matrix whose columns are called the 
+    \item \( U \in \R^{m \times m} \) is an orthogonal matrix whose columns are called the 
           \emph{left singular vectors} of \( A \). A rotation to align with the eigenvectors.
 
     \item \( V \in \R^{n \times n} \) is an orthogonal matrix whose columns are the 
           \emph{right singular vectors} of \( A \). A stretching with dimension reduction/expansion.
 
-    \item \( \Sigma \in \R^{n \times n} \) is a diagonal matrix with non-negative entries 
+    \item \( \Sigma \in \R^{m \times n} \) is a diagonal matrix with non-negative entries 
           \( \sigma_i \geq 0 \) on the diagonal, called the \emph{singular values} of \( A \). Another rotation to align with the original 
           basis vectors.
 
 \end{itemize}
 
-\textbf{Example:}
-
-Let \( A \in \R^{n \times n} \) be a real square matrix with SVD given by:
+Let \( A \in \R^{m \times n} \) be a real square matrix with SVD given by:
 
 \[
     A = U \Sigma V^T
@@ -753,6 +751,14 @@ Again, \( \Sigma^T \Sigma \) is diagonal with entries \( \sigma_i^2 \), so the m
 by \( V \), and the columns of \( V \) are eigenvectors of \( A^T A \), with eigenvalues \( \sigma_i^2 \).
 
 \QED
+
+\textbf{Example:}
+
+Let
+
+\[
+    A = 
+\]
 
 \subsection{Similar Matrices}
 

@@ -1,37 +1,21 @@
-\newpage
+
 \chapter{The Change Of Basis}
 
-Given a vector \(\vec{x} = \lambda_1 \vec{v}_1 + \cdots + \lambda_n \vec{v}_n\)
-with \(\vec{v}_1, \dots, \vec{v}_n \in B_v\) being the basis vectors.
+\section{Translation Formula}
 
-Now imagine having another basis, coordinates, \(\vec{w}_1, \dots, \vec{w}_n \in B_w\).
-It is important to understand that the basis vectors \(\vec{w}_1, \dots, \vec{w}_n\) are written in terms of \textbf{our basis}, because 
-for the perspective of the user of the basis, the basis vectors are not different from the canonical basis. 
+Imagine you have a vector \( \vec{\lambda} \) in a vector space \( V \) with basis \( B_v \) and you also have a another basis \( B_w \) for the same vector space. 
+The basis \( B_w \) is written in terms of the basis \( B_v \) as usual. The question is, given a vector written in the basis \( B_v \), how is this vector expressed in the basis \( B_w \)? 
+Note that simply taking \(B_w \vec{v}\) will not give you the correct answer, as it will give another vector.
 
-The translation between the two basis is given in the following way: 
+The key to get the correct answer is to frame the question as: which vector \(\vec{\mu}\) when applied the transformation \(B_w\) will give us the vector \(\vec{v}\)? To answer this
+question, we need to take the inverse of \(B_w\) and apply it to \(\vec{\lambda}\). This will give us the vector \(\vec{\mu}\) which is the representation of \(\vec{v}\) in the basis \(B_w\) since 
+when we apply \(B_w\) to \(\vec{\mu}\) we will get back the vector \(\vec{\lambda}\).
 
-\[
-    B_w \vec{\mu}_w = \vec{\lambda}_v, \quad \vec{\mu}_w = B_w^{-1} \vec{\lambda}_v
-\]
-
-This works because from the perspective of the user of the basis, the basis vectors are not different from the canonical basis, therefore we can write the basis vectors 
-in terms of the our basis and the apply a transformation to get the coordinates in the our basis.
-
-If we then want to get the vector in the basis \(B_w\) we need to apply the inverse of \(B_w\) to the vector in the basis \(B_v\).
-
-
-\subsection{Pseudo-equality Of Translations}
-
-Note we can write the following pseudo-equality for our translations
+Using the information above, we can write the following formula for translating between basis:
 
 \[
-    B_v \vec{\lambda}_v = B_w\vec{\mu}_w    
+    B_v \vec{\lambda}_v = B_w\vec{\mu}_w.   
 \]
-
-This generalizes the notion of the change of basis, by not limiting ourselves to only the canonical basis.
-
-Note, that we are cheating a bit here with the equal notation. Now by taking the corresponding 
-inverse we can write the change of basis as desired.
 
 \subsection{Coordinate mapping}
 

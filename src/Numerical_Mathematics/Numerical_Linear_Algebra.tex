@@ -1,4 +1,4 @@
-\newpage
+
 
 \section{QR-Decomposition For Numerical Mathematics}
 
@@ -761,7 +761,7 @@ Also, the splitting \(M + M^T - A\) is also spd. and \(\rho(B) \le \metric{B}_A 
     |a_{i,i}| > \sum_{j \ne i} |a_{i,j}|, \ \forall i = 1, \dots, n
 \]
 
-\subsection{The Jacobi Method}
+\subsection{The Jacobi Method For Linear Systems}
 
 The Jacobi method is a single step stationary iteration method with the splitting 
 \(A = D - (L + U)\) and the iteration:
@@ -769,6 +769,14 @@ The Jacobi method is a single step stationary iteration method with the splittin
 \[
     x^{(k + 1)} = D^{-1}(L + U)x^{(k)} + D^{-1}b
 \]
+
+Where the \emph{iteration-matrix} \(B\) is given by: 
+
+\[
+    B = D^{-1}(L + U).
+\]
+
+The Jacobi method converges if \(A\) is strictly diagonal-dominant or if \(\rho(B) < 1\).
 
 \textbf{Example:}
 
@@ -867,6 +875,15 @@ The Gauss-Seidel method is a single step stationary iteration method with the sp
 \[
     x^{(k + 1)} = (D - L)^{-1}Ux^{(k)} + (D - L)^{-1}b
 \]
+
+Where the \emph{iteration-matrix} \(B\) is given by: 
+
+\[
+    B = (D - L)^{-1}U.
+\]
+
+The Gauss-Seidel method converges if \(\rho(B) < 1\).
+
 
 \subsection{After Iteration}
 
@@ -979,7 +996,7 @@ means that by applying \(A\) to \(x\) multiple times we get closer to the domina
 
 \end{enumerate}
 
-\subsection{The Jacobi Method}
+\subsection{The Jacobi Method For Eigenvalues}
 
 The \emph{Jacobi method} is an iterative method for computing the eigenvalues of a symmetric matrix \(A\) by applying a sequence 
 of orthogonal transformations to \(A\) to make it diagonal. 
@@ -999,10 +1016,10 @@ Using our Givens-Rotations
     \begin{bmatrix}
         1 &        &    &         &        &        &         &   \\
           & \ddots &    &         &        &        &         &   \\
-          &        & c  &         &        &   s    &         &   \\
+          &        & q_{k - 1, k - 1} = c  &         &        &   q_{k - 1, k} = s    &         &   \\
           &        &    &   1     &        &        &         &   \\
           &        &    &         & \ddots &        &         &   \\
-          &        & -s &         &        &   c    &         &   \\
+          &        & q_{k, k - 1} = -s &         &        &   q_{k, k} = c    &         &   \\
           &        &    &         &        &   1    &         &   \\
           &        &    &         &        &        & \ddots  &   \\
           &        &    &         &        &        &         & 1 \\
@@ -1020,15 +1037,6 @@ where
     \frac{1}{2}\arctan\left(\frac{2a_{i_0, j_0}}{a_{j_0, j_0} - a_{i_0, i_0}}\right)
    \end{cases} 
 \]
-
-Note the following coordinates when reading the matrix from top to bottom, left to right:
-
-\begin{align*}
-    c & \quad \text{at} \quad i_0, i_0 \\ 
-    s & \quad \text{at} \quad i_0, j_0 \\
-    c & \quad \text{at} \quad j_0, j_0 \\
-    -s & \quad \text{at} \quad j_0, i_0
-\end{align*}
 
 And we use the iteration 
 

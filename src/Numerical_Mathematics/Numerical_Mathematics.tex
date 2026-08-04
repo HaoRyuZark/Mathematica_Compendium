@@ -1,4 +1,4 @@
-\newpage 
+ 
 \chapter{Numerical Mathematics}
 
 \emph{Numerical mathematics is the study of algorithms for the problems of continuous mathematics} (Lloyd Trefethen, 1992).
@@ -103,22 +103,6 @@ Given a well-posed problem with \(x\) and
 
 where \(X\) and \(Y\) are vector spaces with metrics \(\|\cdot\|_X\) and \(\|\cdot\|_Y\). We denote 
 the following scenarios: 
-
-\begin{center}
-\begin{tikzpicture}[node distance=2cm, auto]
-    \node (A) {$x$}; 
-    \node (B) [below of=A] {$x$};
-    \node (C) [below of=B] {$\tilde{x}$};
-    \node (D) [right of=A] {$y$ Original problem};
-    \node (E) [right of=B] {$\hat{y}$ Substitute problem};
-    \node (F) [right of=C] {$\tilde{y}$ Floating Point Implementation of the substitute problem}; 
-    \draw [->] (A) to node {$f$} (D);
-    \draw [->] (B) to node {$\hat{f}$} (E);
-    \draw [->] (C) to node {$\tilde{f}$} (F);
-    \draw [->] (A) -- (B);
-    \draw [->] (B) -- (C);
-\end{tikzpicture}
-\end{center}
 
 \begin{itemize}
    

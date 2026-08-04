@@ -1,4 +1,4 @@
-\newpage
+
 \chapter{Information Theory}
 
 \emph{Information theory} is a branch of applied mathematics and electrical engineering involving the quantification of information. 
@@ -6,6 +6,7 @@
 \section{Core Concepts}
 
 An important note, depending on the the type of random variable: discrete or continuous, the formulas use the logarithm base 2 or the natural logarithm.
+
 \subsection{Surprise}
 
 The \emph{surprise} of an event \(X = x\) is defined as 
@@ -14,9 +15,14 @@ The \emph{surprise} of an event \(X = x\) is defined as
     S(x) = \log \left(\frac{1}{P(X = x)}\right) = - \log(P(X = x))
 \]
 
+The intuition behind this definition is the inverse relationship between a high probability and the amount of information it delivers. An event with a high probability is not 
+"surprising" while a unprobable event is.
+
+The logarithm is used to get rid of discontinuities and simplify work.
+
 \subsection{Entropy}
 
-\emph{Entropy} is defined as the expected surprise of an event of a random variable \(X\) 
+\emph{Entropy} is defined as the \textbf{expected surprise} of an event of a random variable \(X\) 
 
 \[
      H(X) = -\sum_{x \in X} P(X = x) S(x) = -\sum_{x \in X} P(X = x) \log(P(X = x))
@@ -30,11 +36,14 @@ Or in a simpler way
 
 \subsubsection{Conditional Entropy}
 
-\emph{Conditional Entropy} is the expected value of the entropy of a random variable \(X\) given another random variable \(Y\). It is defined as
+\emph{Conditional Entropy} is the expected surprise of an event of random variable \(X\) given the realization of another event of a random variable \(Y\). 
+It is defined as
 
 \[
     H(X | Y) = -\sum_{y \in Y} P(Y = y) \sum_{x \in X} P(X = x | Y = y) \log(P(X = x | Y = y))
 \]
+
+For the intuition: Given an event \(y\) how is our avarage surprise under such conditions?
 
 \subsection{Mutual Information}
 
@@ -51,7 +60,8 @@ to work with the bins as the discrete classes.
     I(X; Y) = H(X) - H(X | Y)
 \]
 
-An intuition for this is, given a certain entropy (uncertainty) of \(X\) after you observe \(Y\) you have a new entropy \(H(X | Y)\) and the difference between the two is the mutual information.
+For the intuition, given a certain entropy (uncertainty) of \(X\) after you observe \(Y\) you have a new entropy \(H(X | Y)\) and the difference between the two is the mutual information.
+
 Imagine that after observing \(Y\) the amount of entropy of \(X\) is reduced by half, then \(Y\) contains a lot of information about \(X\).
 
 \subsection{Cross Entropy}
