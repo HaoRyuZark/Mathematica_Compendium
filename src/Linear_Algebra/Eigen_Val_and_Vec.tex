@@ -752,13 +752,23 @@ by \( V \), and the columns of \( V \) are eigenvectors of \( A^T A \), with eig
 
 \QED
 
-\textbf{Example:}
 
-Let
+\subsubsection*{Finding Th SVD Of A Matrix}
 
-\[
-    A = 
-\]
+To find the SVD of a matrix \(A \in \C^{m \times n}\) we follow the following steps:
+
+\begin{enumerate}
+   
+    \item Compute \(A^T A\) and \(AA^T\) and their respective eigenvalues and eigenvectors.
+
+    \item Form \(V \in \C^{n \times n}\) with the eigenvectors of \(A^T A\) as columns.
+    
+    \item Form \(U \in \C^{m \times m}\) with the eigenvectors of \(AA^T\) as columns.
+
+    \item Form \(\Sigma \in \C^{m \times n}\) with the square root of the eigenvalues of \(AA^T\) as columns.
+
+\end{enumerate}
+    
 
 \subsection{Similar Matrices}
 

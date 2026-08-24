@@ -797,7 +797,9 @@ but also make out approximation as general as possible.
 
 \emph{Approximation:} Small in-sample-error
 
-\emph{Generalization:} \(E_{\text{out}} \approx E_{\text{in}}\)
+\emph{Generalization:} \(E_{\text{out}} \approx E_{\text{in}}\). Note t
+
+% Graph of Learnkurven here
 
 \subsection{Bias and Variance}
 
@@ -1504,6 +1506,36 @@ As starting point we take the perceptron we already defined with \(b = w_0\) bei
 	y_k = \mathrm{sign}(w^T x + b) = \mathrm{sign}(\tilde{w}^T\tilde{x}), \,  y_k \in \{-1, 1\}
 \]
 
+For our classes we have that 
+
+The size of the margin is given by the normal vector \(w\) in the following way: Imagine, that we want to take a step 
+into the direction of \(w\) from a point \(x\) on our decision boundary (\(w^T x - b  = 0\)), such that we reach the portion of the other class.
+
+\begin{align*}	
+	w^T(x + k \frac{w}{\metric{w}}) - b &= 1 \\
+	w^Tx + w^T k \frac{w}{\metric{w}} - b &= 1 \quad \text{note that}\, (w^Tx - b = 0) \\ 
+	k \frac{w^T w}{\metric{w}} &= 1 \\ 
+	k  &= \frac{1}{\metric{w}} 
+\end{align*}
+
+Therefore, the length taking into consideration both directions is \(\frac{2}{\metric{w}}\).
+
+Hence, for the maximization of the margin we need to minimize \(\metric{w}\) with the constraings that 
+
+\begin{align*}
+	y_i = 1 \implies w^T x + b &\ge 1 \iff x \in C_1 \\ 
+	y_i = -1 \implies x + b &\le -1 \iff x \in C_2 
+\end{align*}
+
+In general
+
+\[
+	y_i (w^T x_i - b) \ge 1.
+\]
+
+This comes from the fact that \(1 (1) \ge 1\), \(-1 (-1) \ge 1\) given our rules. Thus, we combine both into 
+one expression.
+
 \subsubsection{Rescaling of the Signal}
 
 The term inside our \emph{sign} function, the signal, can be rescaled without changing the
@@ -1890,23 +1922,21 @@ When projecting our points onto a new axis we use the projection formula
 	x' = \mathrm{Proj}_{u}(x) = \frac{\inner{x}{u}}{\inner{u}{u}} u = \inner{x}{u} u \quad \text{with } \metric{u} = 1
 \]
 
-We can use the the term \(\inner{x}{u}\) as the measure of \textbf{information preserved between the two vectors \(x\) and \(x'\)}. This is
+We can use the term \(\inner{x}{u}\) as the measure of \textbf{information preserved between the two vectors \(x\) and \(x'\)}. This is
 maximal when they are \textbf{parallel} and minimal when they are \textbf{orthogonal}.
 
-Hence, we want to maximize the sum of the inner products between the original data and the projected data onto the directions \(u\) which
-while minimizing the the loss of information.
-
-\[
-	\max_{\metric{u} = 1} \sum_i \inner{x_i}{u}^2 = \max_{\metric{u} = 1} \sum_i (x_i^T u)^2
-\]
-
-Note that we still do not know in which direction \(u\) we want to project our data. For this we can manipulate the previous expression
+For that, we use the variance of the projections with our unit vector \(u\):
 
 \begin{align*}
-	\max_{\metric{u} = 1} \sum_i (x_i^T u)^2 & = \max_{\metric{u} = 1} \sum_i (x_i^T u)(x_i^T u)             \\
-	                        & = \max_{\metric{u} = 1} \sum_i u^T x_i x_i^T u                \\
-	                        & = \max_{\metric{u} = 1} u^T \left( \sum_i x_i x_i^T \right) u
+	\frac{1}{N} \sum_{i = 1}^{N} (u^T x_j -  u^T \overline{x})^2 & = \frac{1}{N} \sum_{i = 1}^{N} [u^T (x_j - \overline{x})]^2                           \\
+	                                                                 & = \frac{1}{N} \sum_{i = 1}^{N} u^T (x_j - \overline{x}) u^T(x_j - \overline{x})     \\
+	                                                                 & = \frac{1}{N} \sum_{i = 1}^{N} u^T (x_j - \overline{x}) (u^T(x_j - \overline{x}))^T \\
+	                                                                 & = \frac{1}{N} \sum_{i = 1}^{N} u^T (x_j - \overline{x}) (x_j - \overline{x})^Tu_i     \\
+	                                                                 & =  u^T S u
 \end{align*}
+
+Hence, we want to maximize the sum of the inner products between the original data and the projected data onto the directions \(u\) which
+while minimizing the loss of information.
 
 Note the covariance matrix inside
 
@@ -1944,7 +1974,6 @@ With the constraint
 	u_i^T u_i = 1 \iff 1 - u_i^T u_i = 0
 \]
 
-
 We also have the constraint that \(u\) is a unit vector, so we can write the optimization problem as
 
 \[
@@ -1975,8 +2004,7 @@ From
 	u_i^T S u_i &= \lambda_i
 \end{align*}
 
-For our next component we would want to be in the orthogonal complement of the first component, so that it is uncorrelated with the first component. 
-This means that we want to choose the eigenvector corresponding to the second largest eigenvalue, and so on.
+Note that this is maximal when \(\lambda_i\) is maximal.
 
 Depending on how many dimensions we want to reduce to, we can choose the eigenvectors corresponding to the largest eigenvalues.
 
@@ -2026,29 +2054,6 @@ Which essentially describes the our vector as a liner combination:
 
 Note that we are using the row vectors of \(X\) and the transpose of the matrix of principal components \(W^T\) to get the projection, because of
 the way most software libraries implement matrices as arrays of row vectors.
-
-\subsubsection{Variance Derivation}
-
-Alternatively to our previous derivation of the PCA, we can accomplish the same result by:
-
-First taking our projection
-
-\[
-	\mathrm{Proj}_{u_i}(x_j) = (u_i^T x_j) u_i
-\]
-
-Then taking the mean vector projected \(u_{i}^T \overline{x} u_i\) and then using the variance formula for
-the variance of the projections with our unit vector \(u_i\):
-
-\begin{align*}
-	\frac{1}{N} \sum_{i = 1}^{N} (u_i^T x_j -  u_i^T \overline{x})^2 & = \frac{1}{N} \sum_{i = 1}^{N} [u_i^T (x_j - \overline{x})]^2                           \\
-	                                                                 & = \frac{1}{N} \sum_{i = 1}^{N} u_i^T (x_j - \overline{x}) u_i^T(x_j - \overline{x})     \\
-	                                                                 & = \frac{1}{N} \sum_{i = 1}^{N} u_i^T (x_j - \overline{x}) (u_i^T(x_j - \overline{x}))^T \\
-	                                                                 & = \frac{1}{N} \sum_{i = 1}^{N} u_i^T (x_j - \overline{x}) (x_j - \overline{x})^Tu_i     \\
-	                                                                 & =  u_i^T S u_i
-\end{align*}
-
-We use the variance formula because it measeures the spread of the data along the direction of the principal component. The larger the variance, the more information is preserved in that direction.
 
 \subsection{Explained Variance}
 
