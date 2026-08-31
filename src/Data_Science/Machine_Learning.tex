@@ -165,260 +165,6 @@ Common methods for feature scaling include:
 
 \end{itemize}
 
-
-\section{Clustering}
-
-\emph{Clustering} is a data analysis technique aimed at partitioning the data into mostly disjoint sets 
-such that the elements of each set exhibit a great similarity based on the measurement chosen.
-
-It is important to note that clustering algorithms always find clusters, no matter the data given. Therefore, it is the responsibility of 
-the data scientist to analyze the results and determine if the clusters are meaningful or not.
-\subsection{K-Means Clustering}
-
-\emph{K-Means} is an unsupervised learning iterative process that clusters the data set into \(k\) different clusters.
-Each sample is assigned to the cluster with the nearest mean, and then the means, \emph{centroids}, and clusters are
-updated until there is no more change or the maximum number of iterations is reached.
-
-\subsubsection*{Centroid}
-
-The \emph{centroid} of a cluster \(C_i\) is defined as:
-
-\[
-	\mu_i = \frac{1}{|C_i|} \sum_{x_j \in C_i} x_j.
-\]
-
-It is the mean of the values inside the cluster.
-
-\subsection{Intra-Cluster Variance}
-
-Given \(C_1, \dots, C_n\) clusters with centroids \(\mu_1, \dots, \mu_n\). The \emph{intra-cluster variance} is given by
-
-\[
-	J = \frac{1}{|C_i|} \sum_{i = 1}^{k} \sum_{x_j \in C_i} \| x_j - \mu_i \|^2
-\]
-
-The goal of the K-Means algorithm is to minimize \(J\),
-
-\[
-	\argmin_{C_1, \dots, C_n} \frac{1}{|C_i|} \sum_{i = 1}^{k} \sum_{x_j \in C_i} \metric{ x_j - \mu_i}2
-\]
-
-but due to it being a rather complex optimization problem, K-Means is
-computed in an iterative manner.
-
-\subsection{K-Means Algorithm}
-
-\begin{enumerate}
-
-	\item Initialize centroids randomly by choosing a certain number of indexes from out data.
-
-	\item Initialize empty arrays for the number of clusters to which a centroid is going to be assigned.
-
-	\item Repeat until converged or max iterations are reached:
-
-	      \subitem Update the clusters by assigning each sample to a cluster based on the closest centroid.
-
-	      \subitem Update centroids by computing the new mean. If a cluster is empty, then a random value from the sample is used as such.
-
-	      \subitem Check convergence by checking if the old centroids are the same as the new ones.
-
-	\item We can return a label array with a label based on the cluster they ended.
-
-\end{enumerate}
-
-\subsection{Elbow Heuristic}
-
-The \emph{elbow heuristic} consists of plotting the explained variance as a function of the number of clusters and looking for an elbow point
-where the rate of decrease sharply changes.
-
-\begin{itemize}
-
-	\item For \(1, \dots, K\) determine the clustering and the intra-cluster variance \(J(k)\)
-
-	\item Visualize \(J(k)\) against \(k\)
-
-	\item Choose \(k\) at the elbow point where the decrease in \(J(k)\) starts to slow down significantly.
-
-\end{itemize}
-
-\section{Hierarchical Clustering}
-
-In contrast to the partitioning clustering like KMeans, \emph{hierarchical clustering} creates different divisions in each iteration
-of the clustering process based on similarity. This can happen in two ways:
-
-\begin{itemize}
-
-	\item \emph{Top-Down}: We start with our set \(D\) and start splitting into subsets using a similarity metric, until we have sets with only one data point.
-
-	\item \emph{Bottom-Up}: This is the inverse process to the top-down approach, starting with singletons and then creating sets which at the root level, are then merged into \(D\).
-
-\end{itemize}
-
-\subsection{Similarity Measurement}
-
-Given two sets \(X, Y\) we can measure their similarity in the following ways:
-
-\begin{itemize}
-
-	\item \emph{Single Linkage}: \(D(X,Y)= \min_{x \in X, y \in Y} \metric{x - y}\)
-
-	\item \emph{Complete Linkage}: \(D(X,Y)= \max_{x \in X, y \in Y} \metric{x - y}\)
-
-	\item \emph{Average Linkage}: \(D(X,Y)= \frac{1}{|X||Y|} \sum_{x \in X}  \sum_{y \in Y} \metric{x - y}\)
-
-\end{itemize}
-
-\section{External Cluster Validation}
-
-Under this category there are several methods, but commonly both \emph{purity} and \emph{mutual information} are used.
-
-\subsection{Purity}
-
-Given \(C_1, \dots C_k\) clusters with \(T_1, T_k\) true clusters and \(n_i = |C_i|\), we define the \emph{purity of a cluster i} as
-
-\[
-	\mathrm{purity}_i = \frac{1}{n_i} \max_{j = 1}^{k} |C_i \cap T_j|
-\]
-
-which gives 1 if the \(C_i\) contains only data points of \(T_j\).
-
-The \emph{total purity} is given by:
-
-\[
-	\mathrm{purity} =  \sum_{i = 1}^{k} \frac{n_i}{n} \mathrm{purity}_i = \frac{1}{n} \sum_{i = 1}^{k} \max_{j = 1}^{k} |C_i \cap T_j|
-\]
-
-where \(n\) is total number of samples.
-
-\subsection{Mutual Information}
-
-\emph{Mutual information} is used to measure the similarity between the computed and true clusters \(C\) and \(T\).
-
-\[
-	I(C, Y) = \sum_{i,j} p_{i, j} \log_2 \left(\frac{p_{i,j}}{p_{C_i} p_{T_j}}\right)
-\]
-
-where
-
-\begin{itemize}
-
-	\item \(p_{i,j} = \frac{|C_i \cap T_j|}{n}\) is the probability of a point in \(C_i\) being in \(T_j\).
-
-	\item \(p_{C_i} = \frac{|C_i|}{n}\) is the probability of a point being in \(C_i\).
-
-	\item \(p_{T_j} = \frac{|T_j|}{n}\) is the probability of a point being in \(T_j\).
-
-\end{itemize}
-
-The bigger the mutual information the similar.
-
-\section{Internal Cluster Validation}
-
-Due to the fact that knowing the true clusters is not possible when performing explorative data analysis, we use
-methods such \emph{silhouette plots} and \emph{prediction strength} to analyze the quality of our clusters.
-
-\subsection{Silhouettes}
-
-The \emph{silhouette-index} is a measurement of how good a point was clustered using \emph{cohesion} for the similarity
-to other points in the same cluster and also \emph{separation} for measuring the differences to other clusters.
-
-Given \(C_1, C_k\) clusters with \(x_i, x_j \in C_m\) and the measurement \(\metric{x_j - x_j}_2\), we define
-\emph{cohesion} as
-
-\[
-	a(x_i) = \frac{1}{|C_j| - 1} \sum_{x \in C_j, x \ne x_i} \metric{x_i, x}_2
-\]
-
-as the mean distance to \(x_i\) to all other points in the cluster.
-
-And \emph{separation} as
-
-\[
-	b(x_i) = \min_{k \ne j} \frac{1}{|C_k|} \sum_{x \in C_j, x \ne x_i} \metric{x_i, x}_2
-\]
-
-as the minimal mean distance between \(x_i\) to all other points in the closest cluster.
-
-Finally, we these two concepts we can define the \emph{silhouette-index} as
-
-\[
-	s(x_i) =
-	\begin{cases}
-		1 - \frac{a(x_i)}{b(x_i)}, & \text{ if } |C_j| > 1 \land a(x_i) < b(x_i) \text{ (good)}      \\
-		0,                         & \text{ if } |C_j| = 1 \land a(x_i) = b(x_i) \text{ (not clear)} \\
-		\frac{b(x_i)}{a(x_i)} - 1, & \text{ if } |C_j| > 1 \land a(x_i) > b(x_i) \text{ (bad)}
-	\end{cases}
-\]
-
-We can also define the \emph{average silhouette width} and \emph{silhouette score} as:
-
-\[
-	\mathrm{average silhouette width}(C_j) = \overline{s_j} = \frac{1}{|C_j|} \sum_{x \in C_j} s(x)
-\]
-
-\[
-	\mathrm{silhouette score}= \overline{s} = \frac{1}{n} \sum_{i = 1}^{n} s(x_i)
-\]
-
-\subsection{Prediction Strength}
-
-The main idea of the \emph{prediction strength} is that the quality of a clustering is good if
-the belonging to an specific cluster can be well predicted.
-
-\subsubsection{The Co-membership Matrix and The Prediction Strength}
-
-Given the clusters \(C_1, \dots, C_k\) of \(\mathcal{D}_{\text{train}}\) and \(A_1, \dots, A_k\) of
-\(\mathcal{D}_{\text{val}}\) with size \(n' = |\mathcal{D}_{\text{val}}|\); we denote our \emph{co-membership matrix} \(M \in \R^{n' \times n'}\)
-
-\[
-	M_{i,j} =
-	\begin{cases}
-		1, & \text{ if } \forall k : x_i, x_j \in C_k \\
-		0, & \text{ else}
-	\end{cases}
-	\quad
-	\forall x_i, x_j \in \mathcal{D}_{\text{val}}.
-\]
-
-This means that if two data-points of our validation set are in the same cluster with respect to our training-centroids.
-
-We define our \emph{prediction strength} as
-
-\[
-	\mathrm{ps}(k) = \min_{l = 1, \dots k} \frac{1}{(|A_l|)( |A_l| - 1) } \sum_{x_i, x_j \in A_l: x_i \ne x_j} M_{i,j}.
-\]
-
-This means that we count the number of matches in our co-membership matrix computed from the train-labels for our current
-cluster \(l\) of the validation labels and divide it by the number of elements in the current cluster times the same amount minus 1.
-
-Note that this algorithm is highly dependent on the chosen clustering strategy, here the K-Means variant was used for the
-clustering metric, but for example if we do agglomerative clustering we would use the mean Euclidean distance as our similarity measurement.
-
-\subsubsection{Prediction Strength Algorithm For K-Means}
-
-\begin{enumerate}
-
-	\item Divide the data into a training and validation set.
-
-	\item Apply the K-Means algorithm to both the training and validation sets, while storing both the labels and centroids.
-
-	\item Compute the co-membership matrix
-	      \[
-		      M_{i,j} =
-		      \begin{cases}
-			      1, & \text{ if } \forall k : x_i, x_j \in C_k \\
-			      0, & \text{ else}
-		      \end{cases}
-		      \quad
-		      \forall x_i, x_j \in \mathcal{D}_{\text{val}}.
-	      \]
-
-	\item Compute the prediction strength
-	      \[
-		      \mathrm{ps}(k) = \min_{l = 1, \dots k} \frac{1}{(|A_l|)(|A_l| - 1)} \sum_{x_i, x_j \in A_l: x_i \ne x_j} M_{i,j}.
-	      \]
-\end{enumerate}
-
 \section{Hyper Parameters}
 
 A \emph{hyper-parameter} is a parameter used by a model/algorithm which can not be approximated directly during the training process.
@@ -554,8 +300,8 @@ This is the classical function for our linear regression
 
 \section{Validation}
 
-\emph{Validation} refers to process of evaluating our algorithms and models based on specific parameters
-and procedures.
+\emph{Validation} refers to the process of evaluating our models to approximate the out-of-sample error, compare them, and find
+\emph{hyperparamters}.
 
 The hypothesis gained from a model which is going to be validated is marked as \(\overline{g_n}\).
 
@@ -563,30 +309,40 @@ The types of data which arise from the splitting of the data are
 
 \begin{itemize}
 
-	\item \emph{Training Data}: Data used for training the model.
+	\item \emph{Training Data} \(\mathcal{D}_T\): Data used for training the model.
 
-	\item \emph{Validation Data}: Used for testing our model against other models in situations like hyper-parameter tunning.
-
-	\item \emph{Test Data}: Used to test the accuracy of the model at predicting, knowing the labels.
+	\item \emph{Validation Data} \(\mathcal{D}_V\): Used for testing our model against other models in situations like hyper-parameter tunning.
+	We normally use a size of \(K\) datapoints where \(K = N/5\).
 
 \end{itemize}
 
-\subsubsection*{Quote from the statistical Learn-theory}
+\subsubsection*{Quote From The Statistical Learn-theory}
 
 The more often you use a data-set for training a model, taking decisions, etc. The hard is to approximate
 the capacity of the data-set to approximate the out-of-sample error.
 
-\subsection{Hold-Out-Validation}
+\subsection{Leave One Out Cross Validation}
 
-Data points are randomly shuffled into training and test data.
+\emph{Leave One Out Cross Validation} work by leaving always \textbf{one data point out}, instead of a fold.
+This is the same as a \(N\)-fold cross validation.
 
-\subsection{Cross Validation}
+The nomenclature:
 
-\emph{Cross Validation} is a technique to improve a models accuracy by presenting training the model on different splits on the data.
-It can also help us compare different algorithms on the splits and then choose the model with best general accuracy.
+\begin{itemize}
+
+	\item \(e_n:= E_{\text{val}} (\overline{g_n}) = e(\overline{g_n}(x_n), y_n)\), represents the point-wise error.
+
+	\item \emph{Cross Validation Error} \(E_{\text{CV}} \frac{1}{N} \sum_{n = 1}^{N} e_n\)
+
+\end{itemize}
+
+\subsection{\texorpdfstring{\(V\)-Cross Validation}{V-Cross Validation}}
+
+\emph{\(V\)-Cross Validation} is a technique to improve a models accuracy by presenting training the model on different splits on the data.
 
 The procedure consists on splitting the data-set into \(V\) different sub-sets of equal size called \emph{folds}. Then, we train our model \(V\)-times, each time using \(V-1\) disjoint sub-sets for
 training and the remaining one for testing. The final out-of-sample error is given by the average of all the out-of-sample errors gotten from each iteration.
+We will have in total \(V\) models.
 
 The nomenclature:
 
@@ -602,23 +358,11 @@ The nomenclature:
 
 \end{itemize}
 
-One more use case of cross validation is to estimate \emph{tunning/hyper-parameter}, which are not directly optimized by  the model, but determined by the person
-performing the analysis.
+Cross validation is mainly used for \emph{model selection}, which is process of comparing different machine learning algorithms, and \emph{hyper-parameter-tunning}, not to directly deliver a model. 
 
-\subsection{Leave One Out Cross Validation}
+\subsection{Hold-Out Validation}
 
-\emph{Leave One Out Cross Validation} work by leaving always \textbf{one data point out}, instead of a fold.
-This is the same as a \(N\)-fold cross validation.
-
-The nomenclature:
-
-\begin{itemize}
-
-	\item \(e_n:= E_{\text{val}} (\overline{g_n}) = e(\overline{g_n}(x_n), y_n)\)
-
-	\item \emph{Cross Validation Error} \(E_{\text{CV}} \frac{1}{N} \sum_{n = 1}^{N} e_n\)
-
-\end{itemize}
+\emph{Hold-Out validation} works by just splitting the data set into traing und validation data. We only get one model.
 
 \subsection{Sensitivity and Specificity}
 
@@ -643,7 +387,8 @@ our previous numerator.
 
 \subsection*{Ockham}
 
-The simplest model which approximates the data is also the more plausible.
+The simplest model which approximates the data is also the more plausible. Hence, we should aim for the simplest model (least parameters possible) which 
+approximates the data good enough.
 
 \subsection*{Corrupted Samples}
 
@@ -653,7 +398,7 @@ and will give false approximations.
 \subsection*{Data Snooping}
 
 If a data-set affects the learning process then its capacity of approximating the out-of-sample error
-was reduced.
+was reduced. Therefore, we should not mix test and training data.
 
 \section{Feature Selection}
 
@@ -679,35 +424,150 @@ Adding variables one at a time, choosing a variable which delivers the best resu
 
 Removing variables one at a time, choosing the variable the one which contributes the least to the error function.
 
-\section{Regularization}
+\section{Errors}
 
-\emph{Regularization} is the process of making the algorithm less sensible to data out of the sample our in other words,
-helps the learning algorithm to minimize the output-of-sample error. This is accomplished by different methods like adding error terms,
-special procedures etc.
+\subsection{In Sample Errors}
 
-In general, with regularization we want to decrease the complexity of our approximations to the target function to minimize overfitting.
-with
-
-We define
+The \emph{in-sample-error} is the mean of the amount of samples which were incorrectly labeled.
 
 \[
-	\beta_i = \sum_{i = 1}^{k} w_i
+	E_{in} (h) = \frac{1}{N} \sum_{i = 1}^{N} W(h(x_i) \neq f(x_i))
 \]
 
-as the sum of coefficient of our parameter vector \(w \in \R^k\).
+where
 
-\subsection{Ridge Regression}
+\[
+	W(Expr) = \begin{cases}
+		1 & Expr = True  \\
+		0 & Expr = False
+	\end{cases}
+\]
 
-This is a regularization technique used  specially in linear models to prevent overfitting by discouraging the model from assigning
-excessively large values to its parameters.
+It is the median of the errors made on the training data.
+
+\subsection{Out of Sample Errors}
+
+This refers to all errors which can occur due to the lack of data. Obviously we do not
+have all possible samples which will exists. But we can estimate this error using the split of the training and validation data by 
+computing the accuracy of the model.
+
+\[
+	E_{out} (h) = P[h(x) \neq f(x)]
+\]
+
+These errors have a randomness factor, or in other words an unknown probability distribution.
+They are harder to calculate due to their nature.
+
+\section{Approximation and Generalization}
+
+When trying to approximate the target function \(f\) we encounter the problem that our data may not
+give us the exact function because of the lack of data. To want to minimize the in-sample error
+but also make out approximation as general as possible.
+
+\emph{Approximation:} Small in-sample-error
+
+\emph{Generalization:} \(E_{\text{out}} \approx E_{\text{in}}\). Note t
+
+\subsection{Bias and Variance}
+
+Fitting the training data well, but making poor predictions, is called the \emph{bias-variance} trade-off.
+
+The \emph{bias} measures how well our model differs from our training data (ground truth) while \emph{variance} tells us how well 
+our model can make feature predictions. A high bias leads to \textbf{underfitting} while a high variance to \textbf{overfitting}.
+
+
+With this in mind we now define
+
+\[
+	E_{\text{out}} = \text{ Bias } + \text{ Variance}
+\]
+
+\textbf{Example:}
+
+Our target is \(\sin(\pi x)\), and our hypothesis-sets are \(\mathcal{H}_0\) the set of all horizontal
+lines \(h(x) = b\) and \(\mathcal{H}_1\) the set of all lines \(h(x) ax + b\). The training-sets are two data-points of the internal
+\([-1,+1]\).
+
+\subsection{Learning Curves}
+
+\emph{Learning curves} plot \(E_{\text{in}}\) and \(E_{\text{out}}\) depending on the number of the
+data-points.
+
+\subsection{Overfitting}
+
+\emph{Overfitting} refers to the situation when a model adapts itself too much to a given data-set. Precisely, it is the process
+in which hypotheses \(h\) continuously reduce the in-sample error, but leading to a bigger output-of-sample error.
+
+We define \emph{overfitting} for a hypothesis \(h\), if for another hypothesis \(h'\) the following is true
+
+\[
+	E_{\text{in}}(h) < E_{\text{in}}(h') \, \text{but} \, E_{\text{out}}(h) > E_{\text{out}}(h')
+\]
+
+In summary, noise in the data (stochastic or deterministic) have a negative effect on the learning process and can lead
+to overfitting. To address this problem we will use \emph{regularization}.
+
+\subsection{Underfitting}
+
+\emph{Underfitting} refers to the case when the model has not been trained with enough data to make
+accurate approximations.
+
+Underfitting can be handled by: using more data for the training, reduce regularization, feature selection, etc.
+
+\subsection{The Augmented Error}
+
+We define the \emph{augmented error} as
+
+\[
+	E_{\text{aug}}(w) = E_{\text{in}}(w) + \frac{\lambda}{N}w^T w
+\]
+
+\(\lambda\) is the parameter for how much we should regularize, \(w^T w\) is the punish-term based on the weight of the vector and
+\(N\) is the number of data points.
+
+\section{Regularization}
+
+\emph{Regularization} is the process of making the algorithm less sensible to out-of-sample data.
+It helps the learning algorithm to minimize the output-of-sample error. This is accomplished by different methods like adding error terms of a 
+\emph{regularization vector} 
+
+\[
+	\beta = [\beta_0, \beta_1, \dots]
+\]
+
+with one or multiple parameters \(\lambda\).
+
+\subsection{LASSO Regression L1}
+
+This is similar to Ridge regression in the sense that we are adding a penalty term times \(\lambda\) at the end of our optimization problem, but
+instead of summing the squares we add the absolute value
+
+\[
+	\mathrm{LASSO}: h(x_i)  + \lambda \sum_{i = 1}^{p} | \beta_i |
+\]
+
+It is important to note that both this and Ridge regularization is \textbf{very sensible} to the scaling of our features.
+
+Note that adding the absolute values is equivalent to defining a multidimensional \textbf{polygon}.
+
+% Picture
+
+\subsection{Ridge Regression L2}
+
+This is a regularization technique used in linear models to prevent overfitting by discouraging the model from assigning
+excessively large values to its parameters. 
+
+To define the region in which we want our parameters to be we use a \textbf{hyper-sphere} as region by setting a sum of squares as a constraint.
 
 \[
 	\mathrm{Ridge}: h(x_i)  + \lambda \sum_{i = 1}^{p} \beta_i^2
 \]
 
+% Piture 
+
 \textbf{Example:}
 
-This example uses linear regression. Therefore,
+We use linear regression for this derivation: 
 
 \begin{align*}
 	E_{\text{in}}(h) & = \frac{1}{N} \sum_{n = 1}^{N}(h(\phi(x_n)) - y_n)^2 \\
@@ -744,124 +604,6 @@ Finally, as a remainder the formula without regularization
 \[
 	w_{\text{lin}} = (Z^T Z)^{-1} Z^T y
 \]
-
-\subsection{LASSO Regression}
-
-This is similar to Ridge regression in the sense that we are adding a penalty term times \(\lambda\) at the end of our optimization problem, but
-instead of summing the square ..., we add the absolute value
-
-\[
-	\mathrm{LASSO}: h(x_i)  + \lambda \sum_{i = 1}^{p} | \beta_i |
-\]
-
-It is important to note that both this and Ridge regularization is very sensible to the scaling of our features.
-
-\section{Errors}
-
-\subsection{In Sample Errors}
-
-The \emph{in-sample-error} is the mean of the amount of samples which were incorrectly labeled.
-
-\[
-	E_{in} (h) = \frac{1}{N} \sum_{i = 1}^{N} W(h(x_i) \neq f(x_i))
-\]
-
-where
-
-\[
-	W(Expr) = \begin{cases}
-		1 & Expr = True  \\
-		0 & Expr = False
-	\end{cases}
-\]
-
-It is the median of the errors made on the training data.
-
-\subsection{Out of Sample Errors}
-
-This refers to all errors which can occur due to the lack of data. Obviously we do not
-have all possible samples which will exists.
-
-\[
-	E_{out} (h) = P[h(x) \neq f(x)]
-\]
-
-These errors have a randomness factor, or in other words an unknown probability distribution.
-They are harder to calculate due to their nature.
-
-\section{Approximation and Generalization}
-
-When trying to approximate the target function \(f\) we encounter the problem that our data may not
-give us the exact function because of the lack of data. To want to minimize the in-sample error
-but also make out approximation as general as possible.
-
-\emph{Approximation:} Small in-sample-error
-
-\emph{Generalization:} \(E_{\text{out}} \approx E_{\text{in}}\). Note t
-
-% Graph of Learnkurven here
-
-\subsection{Bias and Variance}
-
-Fitting the training data well, but making poor predictions, is called the \emph{bias-variance} trade-off.
-
-The \emph{bias} is a measurement of the difference between all the possible data predicted via our final
-hypothesis \(g\) the target function \(f\). In other words, how much our approximations deviates from the actual perfect
-prediction.
-
-The \emph{variance} measures how much a final hypothesis \(g\) gotten from one specific
-data-set differ from one another.
-
-There are two extreme cases: one is when the hypothesis-set has only one function, therefore we have zero
-variance and a big bias; and the other case is when the set is large and different data-sets produce similar functions,
-therefore we get a near zero bias but a high variance.
-
-With this in mind we now define
-
-\[
-	E_{\text{out}} = \text{ Bias } + \text{ Variance}
-\]
-
-\textbf{Example:}
-
-Our target is \(\sin(\pi x)\), and our hypothesis-sets are \(\mathcal{H}_0\) the set of all horizontal
-lines \(h(x) = b\) and \(\mathcal{H}_1\) the set of all lines \(h(x) ax + b\). The training-sets are two data-points of the internal
-\([-1,+1]\).
-
-\subsection{Learning Curves}
-
-\emph{Learning curves} plot \(E_{\text{in}}\) and \(E_{\text{out}}\) depending on the number of the
-data-points.
-
-\subsection{Overfitting}
-
-\emph{Overfitting} refers to the situation when a model adapts itself too much to a given data-set. Precisely, it is the process
-in which hypotheses \(h\) continuously reduce the in-sample error, but leading to a bigger output-of-sample error.
-
-We define \emph{overfitting} for a hypothesis \(h\), if for another hypothesis \(h'\) the following is true
-
-\[
-	E_{\text{in}}(h) < E_{\text{in}}(h') \text{ but } E_{\text{out}}(h) > E_{\text{out}}(h')
-\]
-
-In summary, noise in the data (stochastic or deterministic) have a negative effect on the learning process and can lead
-to overfitting. To address this problem we will use \emph{regularization}.
-
-\subsection{Underfitting}
-
-\emph{Underfitting} refers to the case when the model has not been trained with enough data to make
-accurate approximations.
-
-\subsection{The Augmented Error}
-
-We define the \emph{augmented error} as
-
-\[
-	E_{\text{aug}}(w) = E_{\text{in}}(w) + \frac{\lambda}{N}w^T w
-\]
-
-\(\lambda\) is the parameter for how much we should regularize, \(w^T w\) is the punish-term based on the weight of the vector and
-\(N\) is the number of data points.
 
 \section{The Perceptron}
 
@@ -1115,11 +857,11 @@ using the mathematical technique of looking with your own eyes.
 
 \section{Logistic Regression}
 
-\emph{Logistic Regression} is a statistical model that in its basic form uses a logistic function to model a binary dependent variable.
-This model returns a probability value which can be mapped to two or more discrete classes.
+\emph{Logistic Regression} is a statistical model which maps a continuous variable to a discrete number of classes using the \emph{sigmoid} function 
+and thresholds for the different classes. 
 
 To achieve the desired result we apply a \emph{linear regression} and then apply the \emph{logistic function} to the result to
-squish it between 0 and 1.
+squish it between 0 and 1,  hence, we get probabilities.
 
 The logistic function is defined as
 
@@ -1204,7 +946,7 @@ In vector form
 \]
 
 \[
-	\nabla_b \log L(w,b) = \frac{1}{N} \sum_{i=1}^{N} (h_\theta(x^i) - y^i)
+	\nabla_b \log L(w,b) = \frac{1}{N} \sum_{i=1}^{N} (h_\theta(x_i) - y_i)
 \]
 
 \subsection{Logistic Regression Algorithm}
@@ -1236,11 +978,11 @@ In vector form
 		      \item Update the parameters using gradient descent:
 
 		            \[
-			            w \leftarrow w - \alpha \nabla_w \log L(w,b)
+			            w^{(k + 1)} = w^{(k)} - \alpha \nabla_w \log L(w,b)
 		            \]
 
 		            \[
-			            b \leftarrow b - \alpha \nabla_b \log L(w,b)
+			            b^{(k + 1)} = b^{(k)} - \alpha \nabla_b \log L(w,b)
 		            \]
 
 	      \end{enumerate}
@@ -1259,19 +1001,70 @@ In vector form
 
 \section{Decision Trees}
 
-\emph{Decision trees} are used mainly for \emph{regression trees} or classification \emph{decision trees} which
+\emph{Decision trees} are used mainly for \emph{regression trees} or \emph{classification trees} which
 are used to partition the data into subsets on a purity measurement.
 
-Formally, given a feature vector \(x \in X\) in a \(d\)-dimensional feature space with
-\(R_1, R_2, \dots, R_M\) being disjoint regions \emph{hyper-quadrants} in the feature space.
+\subsection{Classification Trees}
 
-The hypothesis \(h(x)\) of a tree is given by the formula
+We can take everything from the regression tree except the cost function. For
+\emph{classification trees} the cost function is given as the label of the specific classes itself.
+
+\textbf{Nomenclature}
+
+\begin{itemize}
+	\item \(C\) is the number of classes in the classification problem.
+
+	\item \(p(i)\) is the probability of the class relative to the complete set.
+\end{itemize}
+
+\subsubsection*{Gini Impurity}
+
+Represents the mean probability for a data point being misclassified. \(p(i) = p_i\)
+
+This probability that a data point was misclassified is given by
 
 \[
-	h(x) = \sum_{m = 2}^{M} c_m \ind_m (x)
+	\sum_{k \ne i}^{C} p_k = 1 - p_i
 \]
 
-Common purity measurements include: the empirical variance and the Gini impurity.
+The mean is then
+
+\[
+	E_{\text{Gini}}= \sum_{i}^{C}p_i (1 - p_i) = \sum_{i}^{C} p_i - \sum_{i}^{C} p_{i}^2 = 1 - \sum_{1}^{C} p_{i}^{2}
+\]
+
+\subsubsection*{Information Gain in Machine Learning}
+
+\emph{Information gain} is a measure commonly used in decision tree algorithms such as ID3, C4.5, and CART to determine which feature should be used to split the dataset
+at each step. It quantifies how much uncertainty about the class labels is reduced after
+splitting the data based on a particular feature.
+
+\[
+    \mathrm{IG} = \mathrm{H}(P) - \sum w_i \mathrm{H}(C_i) 
+\]
+
+where \(H(X)\) is the entropy and \(w_i = \frac{|C_i|}{|P|} \) the relative cardinality of the child with respect to the parent.
+
+
+\subsection{Regressions Trees}
+
+A \emph{regression tree} divides the feature space into disjoint sub-spaces in such a way that it brings
+the value of all labels \(y_i\) for \(x_i \mathcal{D}\) get as as close as possible to the true label \(\overline{y_i} \approx = y_i\).
+
+The process behind this goal is called \emph{recursive binary splitting} and can be performed in different manners, based on
+how the "purity" of a node is measured. This is of course an optimization in which we want to maximize the purity of our node given a split.
+
+The process is similar to the one used for classification trees, but we use \emph{variance reduction} for our measurements.
+
+\subsubsection*{Variance Reduction}
+
+The \emph{variance reduction} is given by 
+
+\[
+    \mathrm{VR} = \var(P) - \sum w_i \var(C_i) 
+\]
+
+where \(w_i = \frac{|P|}{|C_i|}\).
 
 \subsection{Recursive Binary Splitting}
 
@@ -1310,49 +1103,6 @@ The termination criteria are for example
 	\item The tree size is limited.
 \end{itemize}
 
-\subsection{Regressions Trees}
-
-A \emph{regression tree} divides the feature space into disjoint sub-spaces in such a way that it brings
-the value of all labels \(y_i\) for \(x_i \mathcal{D}\) get as as close as possible to the true label \(\overline{y_i} \approx = y_i\).
-
-The process behind this goal is called \emph{recursive binary splitting} and can be performed in different manners, based on
-how the "purity" of a node is measured. This is of course an optimization in which we want to maximize the purity of our node given a split.
-
-\subsection{Classification Trees}
-
-We can take everything from the regression tree except the cost function. For
-\emph{classification trees} the cost function is given as the label of the specific classes itself.
-
-\textbf{Nomenclature}
-
-\begin{itemize}
-	\item \(C\) is the number of classes in the classification problem.
-
-	\item \(p(i)\) is the probability of the class relative to the complete set.
-\end{itemize}
-
-\subsection{Gini Impurity}
-
-Represents the mean probability for a data point being misclassified. \(p(i) = p_i\)
-
-This probability that a data point was misclassified is given by
-
-\[
-	\sum_{k \ne i}^{C} p_k = 1 - p_i
-\]
-
-The mean is then
-
-\[
-	E_{\text{Gini}}= \sum_{i}^{C}p_i (1 - p_i) = \sum_{i}^{C} p_i - \sum_{i}^{C} p_{i}^2 = 1 - \sum_{1}^{C} p_{i}^{2}
-\]
-
-\subsection{Information Gain in Machine Learning}
-
-Information gain is a measure commonly used in decision tree algorithms such as ID3, C4.5,
-and CART to determine which feature should be used to split the dataset
-at each step. It quantifies how much uncertainty about the class labels is reduced after
-splitting the data based on a particular feature.
 
 \subsection{CART Algorithm}
 
@@ -1458,14 +1208,12 @@ Note that for \(k = 1\) we get the previous NN model. This is a majority vote mo
 
 \subsection{K-Nearest Neighbor Regression}
 
-The \emph{KNN regression} is determines the label of the feature based on the mean of the
-label of the neighbors
+The \emph{KNN regression} is determines the label of the feature based on the \textbf{mean} of the
+label of the neighbors and a series of thresholds.
 
 \[
 	g(x) = \frac{1}{k} \sum_{i = 1}^{k} y_{[i]}(x)
 \]
-
-This is useful when dealing with non binary label sets.
 
 \subsection{KNN Algorithm}
 
@@ -1506,7 +1254,7 @@ As starting point we take the perceptron we already defined with \(b = w_0\) bei
 	y_k = \mathrm{sign}(w^T x + b) = \mathrm{sign}(\tilde{w}^T\tilde{x}), \,  y_k \in \{-1, 1\}
 \]
 
-For our classes we have that 
+For our classes we have that
 
 The size of the margin is given by the normal vector \(w\) in the following way: Imagine, that we want to take a step 
 into the direction of \(w\) from a point \(x\) on our decision boundary (\(w^T x - b  = 0\)), such that we reach the portion of the other class.
@@ -2497,6 +2245,259 @@ We want to select the class with the highest posterior probability
 
 	\item Choose the class with the highest probability
 
+\end{enumerate}
+
+\section{Clustering}
+
+\emph{Clustering} is a data analysis technique aimed at partitioning the data into mostly disjoint sets 
+such that the elements of each set exhibit a great similarity based on the measurement chosen.
+
+It is important to note that clustering algorithms always find clusters, no matter the data given. Therefore, it is the responsibility of 
+the data scientist to analyze the results and determine if the clusters are meaningful or not.
+\subsection{K-Means Clustering}
+
+\emph{K-Means} is an unsupervised learning iterative process that clusters the data set into \(k\) different clusters.
+Each sample is assigned to the cluster with the nearest mean, and then the means, \emph{centroids}, and clusters are
+updated until there is no more change or the maximum number of iterations is reached.
+
+\subsubsection*{Centroid}
+
+The \emph{centroid} of a cluster \(C_i\) is defined as:
+
+\[
+	\mu_i = \frac{1}{|C_i|} \sum_{x_j \in C_i} x_j.
+\]
+
+It is the mean of the values inside the cluster.
+
+\subsection{Intra-Cluster Variance}
+
+Given \(C_1, \dots, C_n\) clusters with centroids \(\mu_1, \dots, \mu_n\). The \emph{intra-cluster variance} is given by
+
+\[
+	J = \frac{1}{|C_i|} \sum_{i = 1}^{k} \sum_{x_j \in C_i} \metric{ x_j - \mu_i}^2
+\]
+
+The goal of the K-Means algorithm is to minimize \(J\),
+
+\[
+	\argmin_{C_1, \dots, C_n} \frac{1}{|C_i|} \sum_{i = 1}^{k} \sum_{x_j \in C_i} \metric{ x_j - \mu_i}2
+\]
+
+but due to it being a rather complex optimization problem, K-Means is
+computed in an iterative manner.
+
+\subsection{K-Means Algorithm}
+
+\begin{enumerate}
+
+	\item Initialize centroids randomly by choosing a certain number of indexes from out data.
+
+	\item Initialize empty arrays for the number of clusters to which a centroid is going to be assigned.
+
+	\item Repeat until converged or max iterations are reached:
+
+	      \subitem Update the clusters by assigning each sample to a cluster based on the closest centroid.
+
+	      \subitem Update centroids by computing the new mean. If a cluster is empty, then a random value from the sample is used as such.
+
+	      \subitem Check convergence by checking if the old centroids are the same as the new ones.
+
+	\item We can return a label array with a label based on the cluster they ended.
+
+\end{enumerate}
+
+\subsection{Elbow Heuristic}
+
+The \emph{elbow heuristic} consists of plotting the explained variance as a function of the number of clusters and looking for an elbow point
+where the rate of decrease sharply changes.
+
+\begin{itemize}
+
+	\item For \(1, \dots, K\) determine the clustering and the intra-cluster variance \(J(k)\)
+
+	\item Visualize \(J(k)\) against \(k\)
+
+	\item Choose \(k\) at the elbow point where the decrease in \(J(k)\) starts to slow down significantly.
+
+\end{itemize}
+
+\section{Hierarchical Clustering}
+
+In contrast to the partitioning clustering like KMeans, \emph{hierarchical clustering} creates different divisions in each iteration
+of the clustering process based on similarity. This can happen in two ways:
+
+\begin{itemize}
+
+	\item \emph{Top-Down}: We start with our set \(D\) and start splitting into subsets using a similarity metric, until we have sets with only one data point.
+
+	\item \emph{Bottom-Up}: This is the inverse process to the top-down approach, starting with singletons and then creating sets which at the root level, are then merged into \(D\).
+
+\end{itemize}
+
+\subsection{Similarity Measurement}
+
+Given two sets \(X, Y\) we can measure their similarity in the following ways:
+
+\begin{itemize}
+
+	\item \emph{Single Linkage}: \(D(X,Y)= \min_{x \in X, y \in Y} \metric{x - y}\)
+
+	\item \emph{Complete Linkage}: \(D(X,Y)= \max_{x \in X, y \in Y} \metric{x - y}\)
+
+	\item \emph{Average Linkage}: \(D(X,Y)= \frac{1}{|X||Y|} \sum_{x \in X}  \sum_{y \in Y} \metric{x - y}\)
+
+\end{itemize}
+
+\section{External Cluster Validation}
+
+Under this category there are several methods, but commonly both \emph{purity} and \emph{mutual information} are used.
+
+\subsection{Purity}
+
+Given \(C_1, \dots C_k\) clusters with \(T_1, T_k\) true clusters and \(n_i = |C_i|\), we define the \emph{purity of a cluster i} as
+
+\[
+	\mathrm{purity}_i = \frac{1}{n_i} \max_{j = 1}^{k} |C_i \cap T_j|
+\]
+
+which gives 1 if the \(C_i\) contains only data points of \(T_j\).
+
+The \emph{total purity} is given by:
+
+\[
+	\mathrm{purity} =  \sum_{i = 1}^{k} \frac{n_i}{n} \mathrm{purity}_i = \frac{1}{n} \sum_{i = 1}^{k} \max_{j = 1}^{k} |C_i \cap T_j|
+\]
+
+where \(n\) is total number of samples.
+
+\subsection{Mutual Information}
+
+\emph{Mutual information} is used to measure the similarity between the computed and true clusters \(C\) and \(T\).
+
+\[
+	I(C, Y) = \sum_{i,j} p_{i, j} \log_2 \left(\frac{p_{i,j}}{p_{C_i} p_{T_j}}\right)
+\]
+
+where
+
+\begin{itemize}
+
+	\item \(p_{i,j} = \frac{|C_i \cap T_j|}{n}\) is the probability of a point in \(C_i\) being in \(T_j\).
+
+	\item \(p_{C_i} = \frac{|C_i|}{n}\) is the probability of a point being in \(C_i\).
+
+	\item \(p_{T_j} = \frac{|T_j|}{n}\) is the probability of a point being in \(T_j\).
+
+\end{itemize}
+
+The bigger the mutual information the similar.
+
+\section{Internal Cluster Validation}
+
+Due to the fact that knowing the true clusters is not possible when performing explorative data analysis, we use
+methods such \emph{silhouette plots} and \emph{prediction strength} to analyze the quality of our clusters.
+
+\subsection{Silhouettes}
+
+The \emph{silhouette-index} is a measurement of how good a point was clustered using \emph{cohesion} for the similarity
+to other points in the same cluster and also \emph{separation} for measuring the differences to other clusters.
+
+Given \(C_1, C_k\) clusters with \(x_i, x_j \in C_m\) and the measurement \(\metric{x_j - x_j}_2\), we define
+\emph{cohesion} as
+
+\[
+	a(x_i) = \frac{1}{|C_j| - 1} \sum_{x \in C_j, x \ne x_i} \metric{x_i, x}_2
+\]
+
+as the mean distance to \(x_i\) to all other points in the cluster.
+
+And \emph{separation} as
+
+\[
+	b(x_i) = \min_{k \ne j} \frac{1}{|C_k|} \sum_{x \in C_j, x \ne x_i} \metric{x_i, x}_2
+\]
+
+as the minimal mean distance between \(x_i\) to all other points in the closest cluster.
+
+Finally, we these two concepts we can define the \emph{silhouette-index} as
+
+\[
+	s(x_i) =
+	\begin{cases}
+		1 - \frac{a(x_i)}{b(x_i)}, & \text{ if } |C_j| > 1 \land a(x_i) < b(x_i) \text{ (good)}      \\
+		0,                         & \text{ if } |C_j| = 1 \land a(x_i) = b(x_i) \text{ (not clear)} \\
+		\frac{b(x_i)}{a(x_i)} - 1, & \text{ if } |C_j| > 1 \land a(x_i) > b(x_i) \text{ (bad)}
+	\end{cases}
+\]
+
+We can also define the \emph{average silhouette width} and \emph{silhouette score} as:
+
+\[
+	\mathrm{average silhouette width}(C_j) = \overline{s_j} = \frac{1}{|C_j|} \sum_{x \in C_j} s(x)
+\]
+
+\[
+	\mathrm{silhouette score}= \overline{s} = \frac{1}{n} \sum_{i = 1}^{n} s(x_i)
+\]
+
+\subsection{Prediction Strength}
+
+The main idea of the \emph{prediction strength} is that the quality of a clustering is good if
+the belonging to an specific cluster can be well predicted.
+
+\subsubsection{The Co-membership Matrix and The Prediction Strength}
+
+Given the clusters \(C_1, \dots, C_k\) of \(\mathcal{D}_{\text{train}}\) and \(A_1, \dots, A_k\) of
+\(\mathcal{D}_{\text{val}}\) with size \(n' = |\mathcal{D}_{\text{val}}|\); we denote our \emph{co-membership matrix} \(M \in \R^{n' \times n'}\)
+
+\[
+	M_{i,j} =
+	\begin{cases}
+		1, & \text{ if } \forall k : x_i, x_j \in C_k \\
+		0, & \text{ else}
+	\end{cases}
+	\quad
+	\forall x_i, x_j \in \mathcal{D}_{\text{val}}.
+\]
+
+This means that if two data-points of our validation set are in the same cluster with respect to our training-centroids.
+
+We define our \emph{prediction strength} as
+
+\[
+	\mathrm{ps}(k) = \min_{l = 1, \dots k} \frac{1}{(|A_l|)( |A_l| - 1) } \sum_{x_i, x_j \in A_l: x_i \ne x_j} M_{i,j}.
+\]
+
+This means that we count the number of matches in our co-membership matrix computed from the train-labels for our current
+cluster \(l\) of the validation labels and divide it by the number of elements in the current cluster times the same amount minus 1.
+
+Note that this algorithm is highly dependent on the chosen clustering strategy, here the K-Means variant was used for the
+clustering metric, but for example if we do agglomerative clustering we would use the mean Euclidean distance as our similarity measurement.
+
+\subsubsection{Prediction Strength Algorithm For K-Means}
+
+\begin{enumerate}
+
+	\item Divide the data into a training and validation set.
+
+	\item Apply the K-Means algorithm to both the training and validation sets, while storing both the labels and centroids.
+
+	\item Compute the co-membership matrix
+	      \[
+		      M_{i,j} =
+		      \begin{cases}
+			      1, & \text{ if } \forall k : x_i, x_j \in C_k \\
+			      0, & \text{ else}
+		      \end{cases}
+		      \quad
+		      \forall x_i, x_j \in \mathcal{D}_{\text{val}}.
+	      \]
+
+	\item Compute the prediction strength
+	      \[
+		      \mathrm{ps}(k) = \min_{l = 1, \dots k} \frac{1}{(|A_l|)(|A_l| - 1)} \sum_{x_i, x_j \in A_l: x_i \ne x_j} M_{i,j}.
+	      \]
 \end{enumerate}
 
 

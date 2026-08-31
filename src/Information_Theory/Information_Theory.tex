@@ -112,7 +112,6 @@ We can also write it as
 \]
 
 
-
 \subsection{Information Gain}
 
 \emph{Information Gain} measures how much information a feature \(A\) gives us about the class label \(Y\). It is defined as
@@ -127,10 +126,10 @@ for which feature \(A\) has value \(v\), and \(|S|\) and \(|S_v|\) are the sizes
 In the context of Trees we can think about information gain as  
 
 \[
-    IG = H(\text{parent}) - \sum_i  w_i H(\text{children}_i)
+    IG = H(\text{parent}) - \sum_i  w_i H(\text{child}_i)
 \]
 
-where \(w_i\) is the proportion of samples in child \(i\) relative to the parent node. 
+where \(w_i = \frac{|\text{parent}|}{|\text{child}_i|}\). 
 
 \textbf{Example:}
 
