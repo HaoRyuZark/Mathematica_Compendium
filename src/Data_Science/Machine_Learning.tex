@@ -1201,7 +1201,7 @@ The \emph{KNN classification} is a generalization of the \emph{NN model}.
 Given an integer \(k \ge 1\) and \(y \in \{-1, 1\}\) the \emph{k-nearest neighbor} model of binary classification is given by
 
 \[
-	g(x) = \mathrm{sign} \left(\sum_{i = 1}^{k} y_{[i]}(x)\right)
+	h(x) = \mathrm{sign} \left(\sum_{i = 1}^{k} y_{[i]}(x)\right)
 \]
 
 Note that for \(k = 1\) we get the previous NN model. This is a majority vote model.
@@ -1212,7 +1212,7 @@ The \emph{KNN regression} is determines the label of the feature based on the \t
 label of the neighbors and a series of thresholds.
 
 \[
-	g(x) = \frac{1}{k} \sum_{i = 1}^{k} y_{[i]}(x)
+	h(x) = \frac{1}{k} \sum_{i = 1}^{k} y_{[i]}(x)
 \]
 
 \subsection{KNN Algorithm}
@@ -1230,217 +1230,17 @@ Given a distance metric \(d(x, y)\) we classify our training data using the foll
 	\item Depending on the regression or classification apply ont the following formulas
 
 	      \[
-		      \text{Regression:}\, g(x) = \mathrm{sign} \left(\sum_{i = 1}^{k} y_{[i]}(x)\right) \quad \text{Classification:}\, g(x) = \frac{1}{k} \sum_{i = 1}^{k} y_{[i]}(x)
+		      \mathrm{Regression:}\, h(x) = \mathrm{sign} \left(\sum_{i = 1}^{k} y_{[i]}(x)\right) \quad \mathrm{Classification:}\, h(x) = \frac{1}{k} \sum_{i = 1}^{k} y_{[i]}(x)
 	      \]
 
 	      using the indexes of the \(k\) nearest neighbors for the getting the corresponding labels.
 
 \end{enumerate}
 
-\section{Support Vector Machines}
-
-\emph{Support vector machines} are a family of algorithm which use the perceptron as a basis for classifying points into classes using a hyperplane
-
-\[
-	w_0 + w_1 x_1 + \dots + w_p x_p = 0
-\]
-
-But this time we also define a region defined by the normal vectors of the hyperplane and define it as our \emph{margin}, which we will try to optimize
-to be as large as possible.
-
-As starting point we take the perceptron we already defined with \(b = w_0\) being the bias term
-
-\[
-	y_k = \mathrm{sign}(w^T x + b) = \mathrm{sign}(\tilde{w}^T\tilde{x}), \,  y_k \in \{-1, 1\}
-\]
-
-For our classes we have that
-
-The size of the margin is given by the normal vector \(w\) in the following way: Imagine, that we want to take a step 
-into the direction of \(w\) from a point \(x\) on our decision boundary (\(w^T x - b  = 0\)), such that we reach the portion of the other class.
-
-\begin{align*}	
-	w^T(x + k \frac{w}{\metric{w}}) - b &= 1 \\
-	w^Tx + w^T k \frac{w}{\metric{w}} - b &= 1 \quad \text{note that}\, (w^Tx - b = 0) \\ 
-	k \frac{w^T w}{\metric{w}} &= 1 \\ 
-	k  &= \frac{1}{\metric{w}} 
-\end{align*}
-
-Therefore, the length taking into consideration both directions is \(\frac{2}{\metric{w}}\).
-
-Hence, for the maximization of the margin we need to minimize \(\metric{w}\) with the constraings that 
-
-\begin{align*}
-	y_i = 1 \implies w^T x + b &\ge 1 \iff x \in C_1 \\ 
-	y_i = -1 \implies x + b &\le -1 \iff x \in C_2 
-\end{align*}
-
-In general
-
-\[
-	y_i (w^T x_i - b) \ge 1.
-\]
-
-This comes from the fact that \(1 (1) \ge 1\), \(-1 (-1) \ge 1\) given our rules. Thus, we combine both into 
-one expression.
-
-\subsubsection{Rescaling of the Signal}
-
-The term inside our \emph{sign} function, the signal, can be rescaled without changing the
-result of the classification. Due to the property of the sign function \(\mathrm{sign}(\alpha s) = \mathrm{sign}(s)\)
-for any \(\alpha > 0\).
-
-\[
-	y_k = \text{sign}(w^T x_k + b) \implies y_k (w^T x_k + b) > 0
-\]
-
-The behavior of the rescaling acts differently on if the data point is in the margin or not.
-
-\[
-	y_k(w^T x_k + b) = 1 \quad \text{ for points in the margin}
-\]
-
-\[
-	y_k(w^T x_k + b) > 1 \quad \text{ for points outside the margin}
-\]
-
-\subsubsection{Width of the Margin}
-
-Given two points \(x_1, x_2\) lying on the margin with different labels. Therefore,
-
-\begin{align*}
-	(I)  w^T x_1 + b & = 1  \\
-	(II) w^T x_2 + b & = -1
-\end{align*}
-
-Then we get
-
-\[
-	w^T (x_1 - x_2) = 2
-\]
-
-The \emph{width} of the margin \(r\) is given by the projection of the vector \(x_1 - x_2\) onto the
-normal vector \(\frac{w}{\|w\|}\)
-
-\[
-	r = \frac{w^T (x_1 - x_2)}{\|w\|} = \frac{2}{\|w\|}
-\]
-
-Therefore, to maximize the width of the margin we have to minimize \(\frac{1}{2}\|w\|\).
-
-\subsection{Hard Margin SVM}
-
-A \emph{hard margin SVM:} is a perceptron with maximal margin and no misclassifications.
-
-Like previously stated, to maximize the width \(r = \frac{2}{\|w\|}\) of the margin we have to minimize \(\frac{1}{2}\|w\|\).
-
-Formally, we want to solve the following optimization problem
-
-\emph{Minimize:} \(\frac{1}{2}\|w\|^2\) under \(N\) \emph{constraints}
-
-\emph{Maximize:} \(y_n (w^T x_n + b) \ge 1, (n = 1, \dots, N)\)
-
-We will skip the derivation of the final solution, which is done via \emph{Karush-Kuhn-Tucker conditions}. Now,
-we have a \emph{dual optimization problem}
-
-\[
-	\max \left(- \frac{1}{2} \sum_{n = 1}^{N}\sum_{m = 1}^{N} y_n y_m \alpha_n \alpha_m x_n^T x_m + \sum_{n = 1}^{N} \alpha_n \right)
-\]
-
-under the condition
-
-\[
-	\sum_{n = 1}^{N} \alpha_n y_n = 0
-\]
-
-In the primary problem we had
-
-\[
-	y_n = \text{sign}(w^T x_n + b)
-\]
-
-Now in the dual problem we have
-
-\[
-	y_i = \text{sign} \left(\sum_{n = 1}^{N} \alpha_n y_n x_n^T x_i + b \right)
-\]
-
-with \(\alpha\) being our solution vector with dimension \(N\).
-
-Some components of \(\alpha\) will be zero, and the others positive, due to it being \emph{sparse}. Therefore
-
-\[
-	y_i = \text{sign} \left(\sum_{k \in \mathcal{s}} \alpha_k y_k x_k^T x_i + b \right)
-\]
-
-with \(\mathcal{S} = \{j \mid \alpha_j \ne 0, j = 1, \dots, N\}\).
-
-Finally, the data points \(x_k\) with \(\alpha_k \ne 0\) are called \emph{support vectors}
-and the \(a_k \ne 0 \) the \emph{support values}.
-
-\subsection{Soft Margin Support Vector Machine}
-
-The idea of \emph{soft margin SVM} is to allow misclassifications but penalize them in the optimization problem.
-To get the best soft margin we can use cross validation.
-
-Formally, we want to solve the following optimization problem:
-
-\emph{Minimize:} \(\frac{1}{2} w^T w + C \sum_n \xi_n\) under \(N\) \emph{constraints}
-
-In other words, maximize \(\frac{1}{2}w^Tw\), the width of the margin, minimize \(\sum_n \xi_n\), the total error.
-
-With the constraint \(y_n (w^T x_n + b) \ge 1 - \xi_n, (n = 1, \dots, N)\)
-
-\[
-	\xi_n = \max (0, 1 - y_n (w^T x_n + b))
-\]
-
-Thus,
-
-\[
-	\frac{1}{2} w^T w + C \sum_n \max (0, 1 - y_n (w^T x_n + b))
-\]
-
-with \(C\) is our regularization parameter.
-
-Our \emph{dual optimization problem} is given by
-
-\[
-	\max \left(- \frac{1}{2} \sum_{n = 1}^{N}\sum_{m = 1}^{N} y_n y_m \alpha_n \alpha_m x_n^T x_m + \sum_{n = 1}^{N} \alpha_n \right)
-\]
-
-under the conditions
-
-\[
-	\sum_{n = 1}^{N} \alpha_n y_n = 0, 0 \le \alpha_n \le C \forall n
-\]
-
-Also,
-
-\[
-	y_i = \text{sign} \left(\sum_{n = 1}^{N} \alpha_n y_n x_n^T x_i + b \right)
-\]
-
-\subsection{Non-Linear Support Vector Machines}
-
-We will allow non-linear feature Transformations \(x \to \Phi(x)\)
-
-\[
-	x_n^Tx_i \to \Phi(x_n)^T \Phi(x_i)
-\]
-
-Now our \(y_i\) becomes
-
-\[
-	y_i = \text{sign} \left(\sum_{n = 1}^{N} \alpha_n y_n \Phi(x_n)^T \Phi(x_i) + b \right)
-\]
-
-Let us also \(K:= \Phi(x_n)^T \Phi(x_i)\)
-
-\subsubsection{Kernel Trick}
+\section{Kernel Trick}
 
 The \emph{kernel trick} allows us to compute the inner product in the transformed feature space without explicitly performing the transformation.
-For that we use so-called \emph{kernel functions, K} to use as inner products in the feature space. We are basically using
+For that we use so-called \emph{kernel functions} \(K\) to use as inner products in the feature space. We are basically using
 mathematical elegance to use high dimensional spaces without paying the computational cost.
 
 The kernel functions must satisfy the following properties \emph{Mercer's Theorem}:
@@ -1459,7 +1259,7 @@ The kernel functions must satisfy the following properties \emph{Mercer's Theore
 
 	\item \emph{Polynomial:} \(k(x,y) = (x^T y + c)\)
 
-	\item \emph{RBF:} \(k(x,y) = \exp( -\gamma \|x -  y \|^2)\)
+	\item \emph{RBF:} \(k(x,y) = \exp( -\gamma \metric{x -  y}^2)\)
 
 	\item \emph{Sigmoid:} \(k(x,y) = \tanh( \gamma x^Ty + c)\)
 
@@ -1500,6 +1300,157 @@ The infinite-dimensional property comes from the fact that the RBF kernel can be
 \[
 	K(x, y) = \sum_{n=0}^{\infty} \frac{1}{n!} \left(-\frac{\|x - y\|^2}{2\sigma^2}\right)^n
 \]
+
+
+\section{Support Vector Machines}
+
+\emph{Support vector machines} are a family of algorithm which use the perceptron as a basis for classifying points into classes using a hyperplane
+
+\[
+	w_0 + w_1 x_1 + \dots + w_p x_p = 0
+\]
+
+But this time we also define a region defined by the normal vectors of the hyperplane and define it as our \emph{margin}, which we will try to optimize
+to be as large as possible.
+
+As starting point we take the perceptron we already defined with \(b = w_0\) being the bias term
+
+\[
+	y_k = \mathrm{sign}(w^T x + b) = \mathrm{sign}(\tilde{w}^T\tilde{x}), \,  y_k \in \{-1, 1\}
+\]
+
+
+The size of the margin is given by the normal vector \(w\) in the following way: Imagine, that we want to take a step 
+into the direction of \(w\) from a point \(x\) on our decision boundary (\(w^T x + b  = 0\)), such that we reach the portion of the other class.
+We also make the assumption that for a point of the first class \(w^T x_{+}  + b = 1\), \(w^T x_{-} + b = -1\).
+
+\begin{align*}	
+	w^T(x + k \frac{w}{\metric{w}}) + b &= 1 \\
+	w^Tx + w^T k \frac{w}{\metric{w}} + b &= 1 \quad \text{note that}\, (w^Tx + b = 0) \\ 
+	k \frac{w^T w}{\metric{w}} &= 1 \\ 
+	k  &= \frac{1}{\metric{w}} 
+\end{align*}
+
+Therefore, the length taking into consideration both directions is \(\frac{2}{\metric{w}}\).
+
+Hence, for the maximization of the margin we need to minimize \(\metric{w}\) with the constraings that 
+
+\begin{align*}
+	y_i = 1 \implies w^T x + b &\ge 1 \iff x \in C_1 \\ 
+	y_i = -1 \implies w^T x + b &\le -1 \iff x \in C_2 
+\end{align*}
+
+In general
+
+\[
+	y_i (w^T x_i + b) \ge 1.
+\]
+
+This comes from the fact that \(1 (1) \ge 1\), \(-1 (-1) \ge 1\) given our rules. Thus, we combine both into 
+one expression.
+
+\subsection{Hard Margin SVM}
+
+A \emph{hard margin SVM} is a perceptron with maximal margin and no misclassifications allowed.
+
+Formally, we want to solve the following optimization problem:
+
+\emph{Minimize:} \(\frac{1}{2}\metric{w}\) under \(N\) \emph{constraints} \(y_i (w^T x_i + b) \ge 1\)
+
+\emph{Maximize:} \(y_n (w^T x_n + b) \ge 1, (n = 1, \dots, N)\)
+
+First, we use the technique of Lagrange multipliers giving us
+
+\[
+	\mathcal{L}(w, \alpha_1, \dots, \alpha_n, b) = \frac{1}{2} \inner{w}{w} - \sum \alpha_i [y_i (\inner{w}{x} + b) - 1]
+\]
+
+Giving us 
+
+\[
+	\frac{\partial \mathcal{L}}{\partial w} = w - \sum \alpha_i y_i x_i = 0 \iff w = \sum \alpha_i y_i x_i
+\]
+
+and 
+
+\[
+	\frac{\partial \mathcal{L}}{\partial b} = \sum \alpha_i y_i = 0 
+\]
+
+
+By putting our new terms in our orignal equation we get that 
+
+\[
+	\mathcal{L}(w, \alpha_1, \dots, \alpha_n, b) = \frac{1}{2} \left(\sum \alpha_i y_i x_i\right) \left(\sum \alpha_i y_i x_i\right) - 
+	\sum \alpha_i \left[y_i \left(\inner{\sum \alpha_i y_i x_i}{x} + b\right) - 1\right]
+\]
+
+Giving us 
+
+\[
+	- \sum \alpha_i - \frac{1}{2} \sum_i \sum_j \alpha_i \alpha_j y_i y_j \inner{x_i}{x_j}
+\]
+
+this is the so called \emph{dual optimization problem}.
+
+\subsection{Soft Margin Support Vector Machine}
+
+The idea of \emph{soft margin SVM} is to allow misclassifications but penalize them in the optimization problem.
+To get the best soft margin we can use cross validation.
+
+Formally, we want to solve the following optimization problem:
+
+\emph{Minimize:} \(\frac{1}{2} w^T w + C \sum_n \xi_n\) under \(N\) \emph{constraints}
+
+In other words, maximize \(\frac{1}{2}w^Tw\), the width of the margin, minimize \(\sum_n \xi_n\), the total error.
+
+With the constraint \(y_n (w^T x_n + b) \ge 1 - \xi_n, (n = 1, \dots, N)\)
+
+\[
+	\xi_n = \max (0, 1 - y_n (w^T x_n + b))
+\]
+
+Thus,
+
+\[
+	\frac{1}{2} w^T w + C \sum_n \max (0, 1 - y_n (w^T x_n + b))
+\]
+
+with \(C\) is our regularization parameter.
+
+Our \emph{dual optimization problem} is given by
+
+\[
+	\max \left(- \frac{1}{2} \sum_{n = 1}^{N}\sum_{m = 1}^{N} y_n y_m \alpha_n \alpha_m x_n^T x_m + \sum_{n = 1}^{N} \alpha_n \right)
+\]
+
+under the conditions
+
+\[
+	\sum_{n = 1}^{N} \alpha_n y_n = 0, 0 \le \alpha_n \le C \, \forall n
+\]
+
+Also,
+
+\[
+	y_i = \text{sign} \left(\sum_{n = 1}^{N} \alpha_n y_n x_n^T x_i + b \right)
+\]
+
+\subsection{Non-Linear Support Vector Machines}
+
+We will allow non-linear feature Transformations \(x \to \Phi(x)\)
+
+\[
+	x_n^Tx_i \to \Phi(x_n)^T \Phi(x_i)
+\]
+
+Now our \(y_i\) becomes
+
+\[
+	y_i = \text{sign} \left(\sum_{n = 1}^{N} \alpha_n y_n \Phi(x_n)^T \Phi(x_i) + b \right)
+\]
+
+Let us also \(K:= \Phi(x_n)^T \Phi(x_i)\)
 
 \subsection{Least Squares Support Vector Machine}
 
