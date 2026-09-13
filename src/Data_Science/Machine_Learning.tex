@@ -2009,7 +2009,7 @@ The idea is similar to PCA, but instead of using correlation between samples, we
 metric for the method is part of the art. As an important note, the previously discussed method only works with the euclidean distance; for a generalization with any metric
 there is an alternative algorithm.
 
-\subsubsection{Proportion Of Distance Matrix Explained (PDME)}
+\subsection{Proportion Of Distance Matrix Explained (PDME)}
 
 The \emph{PDME} is given by: 
 
@@ -2017,9 +2017,9 @@ The \emph{PDME} is given by:
 	\mathrm{PDME} = \frac{\lambda_j}{\sum_{i = 1}^{N} | \lambda_i |}
 \]
 
-\subsubsection{Euclidean Constraint}
+\subsection{Euclidean Constraint}
 
-The reason that our distance matrix has to be build using the Euclidean metric is due to the loss of positive definiteness. If \(B = XX^T\) then
+The reason that our distance matrix has to be build using the Euclidean metric is due to the loss of positive definiteness. If \(B = XX^T\), then
 
 \[
 	a^T B a = a^T XX^T a = (Xa)^T(Xa) \ge 0, \ \forall a
@@ -2030,15 +2030,18 @@ Which guarantees positive eigenvalues. Negative eigenvalues lead to non real mat
 This is mostly not a problem in the praxis, due to the negative eigenvalues and they associated eigenvectors are discarded during the algorithm, but
 this can limits the possibilities of projecting our data; meaning more lose of information.
 
-\subsection{Linear Discriminant Analysis}
+\section{Linear Discriminant Analysis}
 
-The goal of the \emph{linear discriminant analysis} is to find directions \(u_1, u_2, \ldots, u_k\) in the classes such they can be best separated.
+The goal of the \emph{linear discriminant analysis} is to find directions \(u_1, u_2, \ldots, u_k\) such that they can be best separate 
+our classes. It is also a dimension-reduction technique, in which we want to maximize the separability of the classes.
 
 For the direction \(u_1\) with the projection of some data point \(x_i\) onto that direction defined as
 
 \[
-	\hat{x_i} = u_1^T x_i
+	\hat{x_i} = u_1^T x_i.
 \]
+
+\subsection{Mean Vector of A Class}
 
 Let
 
@@ -2051,19 +2054,21 @@ be the \emph{mean vector} of class \(k\).
 The projection onto \(u_1\) is given by
 
 \[
-	\hat{m}^{(k)} = u_1^T m^{(k)}
+	\hat{m}^{(k)} = u_1^T m^{(k)}.
 \]
 
-\subsubsection*{Within-Class Scatter}
+It is important to note that this is a supervised learning method.
 
-For quantifying the separation of the points projected onto \(u_1\) we define the following
+\subsection{Within-Class Scatter}
+
+For quantifying the separation of the points \textbf{projected onto \(u_i\)} we define the following
 the \emph{within-class scatter} as
 
 \begin{align*}
 	s_w^2 & := \sum_{n \in \mathcal{C}_k} (\hat{x}_n - \hat{m}^{(k)})^2                            \\
 	      & = \sum_{n \in \mathcal{C}_k} (u_1^T x_n - u_1^T m^{(k)})^2                             \\
 	      & = u_1^T \left[ \sum_{n \in \mathcal{C}_k} (x_n - m^{(k)})(x_n - m^{(k)})^T \right] u_1 \\
-	      & = u_1^T S_{wk} u_1
+	      & = u_1^T S_{wk} u_1.
 \end{align*}
 
 The \emph{total scatter} for two classes is given by
@@ -2073,21 +2078,21 @@ The \emph{total scatter} for two classes is given by
 	              & = u_1^T S_W u_1
 \end{align*}
 
-For \(n-\)classes we have
+For the \(n-\)classes we have
 
 \[
-	S_W = \sum_{k = 1}^{n} S_{wk} = \sum_{k = 1}^{n} \sum_{n \in \mathcal{C}_k} (x_n - m^{(k)})(x_n - m^{(k)})^T
+	S_W = \sum_{k = 1}^{n} S_{wk} = \sum_{k = 1}^{n} \sum_{n \in \mathcal{C}_k} (x_n - m^{(k)})(x_n - m^{(k)})^T.
 \]
 
-\subsubsection*{Between-Classes Scatter}
+\subsection{Between-Classes Scatter}
 
-The quantification of the separation between the middle points, called the
+The quantification of the separation between \textbf{the middle points}, called the
 \emph{between-classes-scatter} is given by
 
 \begin{align*}
-	(\hat{m}^{(1)} - \hat{m}^{(2)})^2 & = (u_1^T m^{(1)} - u_1^T m^{(2)})^2                  \\
+	(\hat{m}^{(1)} - \hat{m}^{(2)})^2 & \to (u_1^T m^{(1)} - u_1^T m^{(2)})^2                  \\
 	                                  & = u_1^T (m^{(1)} - m^{(2)})(m^{(1)} - m^{(2)})^T u_1 \\
-	                                  & = u_1^T S_b u_1
+	                                  & = u_1^T S_b u_1.
 \end{align*}
 
 \[
@@ -2096,9 +2101,16 @@ The quantification of the separation between the middle points, called the
 
 where \(m^{(1)}\) and \(m^{(2)}\) are the mean vectors of class 1 and class 2.
 
-\subsubsection{Fisher Discriminant}
+The general form is 
 
-The \emph{Fisher Discriminant} is the ratio of the between-class scatter and the within-class scatter.
+\[
+	S_b = \sum_{k = 1}^{n} \sum_{n \in \mathcal{C}_k} (m^{(n)} - m^{(k)})(m^{(n)} - m^{(k)})^T
+\]
+
+\subsection{Fisher Discriminant}
+
+The \emph{Fisher Discriminant} is the ratio of the \textbf{between-class scatter} and the \textbf{within-class scatter}.
+In this case we will do the derivation by considering only two classes.
 
 \[
 	J(u_1) = \frac{u_1^T S_b u_1}{u_1^T S_W u_1} = \frac{(u_1^T (m^{(1)} - m^{(2)})(m^{(1)} - m^{(2)})^T u_1)}{u_1^T S_W u_1}
@@ -2118,12 +2130,15 @@ within-class scatter is minimized. To accomplish this we take the gradient and s
 We arrive at an eigenvalue problem where \(u_1\) is the eigenvector of \(S_W^{-1} S_b\) with the corresponding
 eigenvalue \(J(u_1)\).
 
-\subsubsection{Linear Discriminant Algorithm}
+\subsection{Linear Discriminant Algorithm}
 
 \begin{enumerate}
 
 	\item Compute the within-class scatter matrix \(S_W\) and the between-class scatter matrix \(S_b\).
-
+	\[
+		S_W =  \sum_{k = 1}^{n} \sum_{n \in \mathcal{C}_k} (x_n - m^{(k)})(x_n - m^{(k)})^T \quad S_b = \sum_{k = 1}^{n} \sum_{n \in \mathcal{C}_k} (m^{(n)} - m^{(k)})(m^{(n)} - m^{(k)})^T.
+	\]
+	
 	\item Solve the eigenvalue problem \((S_W^{-1} S_b) u = \lambda u\) to find the eigenvalues \(\lambda\) and eigenvectors \(u\).
 
 	\item Sort the eigenvectors by their corresponding eigenvalues in descending order.
