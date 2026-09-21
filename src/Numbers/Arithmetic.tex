@@ -1,17 +1,16 @@
-
 \chapter{Arithmetic}
 
-\subsection{Even and Odd numbers}
+\section{Even and Odd numbers}
 
 A natural number \(a\) is \emph{even} if \(a = 2k\) with \(k \in \N\).
 
 A natural number \(b\) is \emph{odd} if \(b = 2q - 1\) with \(q \in \N\).
 
-\subsection{Perfect Squares}
+\section{Perfect Squares}
 
 A natural number \(a\) has a \emph{perfect square} if \(\sqrt{a} \in \N\).
 
-\subsection{Division Algorithm}
+\section{Division Algorithm}
 
 Given any two integers \(a\) and \(b\) with \(a > 0\), there exists unique integers \(q\) and \(r\) such that 
 \(b  =qa + r\) with \(0 \ge r < a\).
@@ -26,27 +25,27 @@ minimum \(r\).
 First we prove \( 0 \le r\)
 
 If \(b \ge 0\) then let \(x = 0 \implies b \in S\).
-For \(b < 0\) then let \(x = b\). Thus 
+For \(b < 0\) then let \(x = b\). Thus,
 
 \[
-	b - ba  = b(1 - a) \implies b - ba \in S
+	b - ba  = b(1 - a) \implies b - ba \in S.
 \]
 
-Now to prove that \(r < a\), assume \( r \ge a\), but then 
+Now, to prove that \(r < a\), assume \( r \ge a\), but then 
 
 
 \begin{align*}
 	b  - qa &\ge a \\
 	b  - qa - a &\ge 0\\ 
 	b  - a(q + 1) &\ge 0\\ 
-	b  - a(q + 1) &\ge 0 \implies b - a(q + 1) \in S\\ 
+	b  - a(q + 1) &\ge 0 \implies b - a(q + 1) \in S.
 \end{align*}
 
 And \(b - a(q + 1) < b - aq = r \implies r < a\) therefore, we have a contradiction.
 
-Now we will prove the uniqueness. 
+Now, we will prove the uniqueness. 
 
-Assume \(pq + r = a = pq' + r'\) with \(q \ne q' \) and \(r \ne r'\)
+Assume \(pq + r = a = pq' + r'\) with \(q \ne q' \) and \(r \ne r'\).
 
 \[	
 	r - r' = a(q - q') = 0
@@ -57,7 +56,7 @@ Using the property of inverses of \(\Z \setminus \{0\}\) as a Field we know that
 
 \QED 
 
-\subsection{Prime Numbers}
+\section{Prime Numbers}
 
 A \emph{prime number} \(p \in \N \setminus \{1\}\) fulfills the following condition:
 
@@ -65,52 +64,53 @@ A \emph{prime number} \(p \in \N \setminus \{1\}\) fulfills the following condit
 	\item \(p\) is only divisible by itself and 1.
 \end{enumerate}
 
-\subsection{Pythagorean Triplets}
+\section{Pythagorean Triplets}
 
 \emph{Pythagorean triplets} are 3 natural numbers such that 
 
 \[
-	a^2 + b^2 = c^c
+	a^2 + b^2 = c^c.
 \]
 
-\subsection{Divisibility}
+\section{Divisibility}
 
 A number \(a \in \Z\) is divisible a number \(b \in \Z\) if 
 
 \[
-	a = kb \quad k \in \Z
+	a = kb \quad k \in \Z.
 \]
 
-\subsection{Division}
+\section{Division}
 
 Given \(a,b \in \Z\). There exists unique \(q,r \in \Z\) such that 
 
 \[
-	a = qb + r \quad 0 \le r < |b|
+	a = qb + r \quad 0 \le r < |b|.
 \]
 
-\subsection{Greatest Common Denominator}
+\section{Greatest Common Denominator}
 
 For two integers \(a, b \in \Z\) with \((a,b) \neq (0,0)\), the positive
-integer \(t\) satisfying
+integer \(t\) satisfying:
 
 \begin{itemize}
 
-	\item \(t \mid a\) and \(t \mid b\),
+	\item \(t \mid a\) and \(t \mid b\).
 
-	\item for all \(c \in \Z\) with \(c \mid a\) and \(c \mid b\), it follows that \(c \mid t\),
+	\item For all \(c \in \Z\) with \(c \mid a\) and \(c \mid b\), it follows that \(c \mid t\).
 
 \end{itemize}
 
-is called the \emph{greatest common divisor} (gcd) of \(a\) and \(b\) denoted as \(t = \gcd(a,b)\).
+We call it the \emph{greatest common divisor} (gcd) of \(a\) and \(b\) denoted as \(t = \gcd(a,b)\).
 
 If \(t = 1\), then \(a\) and \(b\) are said to be \emph{coprime} or \emph{relatively prime}.
 
-\subsection{The Euclidean Algorithm}
+\section{The Euclidean Algorithm}
 
 If \(a = bq + r\) then \(\gcd(a, b) = \gcd(b, r)\). 
 
 \textbf{Input:} \(a, b \in \mathbb{Z}\), \(a \neq 0 \neq b\).  
+
 \textbf{Output:} The greatest common divisor \(t\) of \(a\) and \(b\).
 
 \textbf{Algorithm:}
@@ -135,14 +135,14 @@ remainder and updating the remainders. When we reach a remainder of zero, the pr
 Notice, that the algorithm terminates because the sequence given \(r_n\) is monotone decreasing due to \(0 \le r < b\) and 
 the well ordering principle of the natural numbers.
 
-For the correctness: given is \(a = bq + r\) to show that \(\gcd(a, b) = \gcd(b, r)\). This is like saying 
+For the correctness: given is \(a = bq + r\) to show that \(\gcd(a, b) = \gcd(b, r)\). This is like saying:
 
 \begin{align*}
 	\gcd(a,b) & = gcd(b, r) \\ 
 	\gcd(b,r) & = \gcd(r, r_1)\\
 	\gcd(r, r_1) & = \gcd(r_1, r_2) \\
 	& \vdots \\
-	\gcd(r_{n-1}, r_{n}) & = \gcd(r_n, 0) = r_n 
+	\gcd(r_{n-1}, r_{n}) & = \gcd(r_n, 0) = r_n.
 \end{align*}
 
 Let \(d\) be a common divisor of \(a\), \(b\). Then \(d \mid a\) and \(d \mid b\), so \(d \mid ((a - bq) = r) \implies d \mid r \).
@@ -290,43 +290,10 @@ know that \(c \mid \gcd(a,b)\) and thus, \(|c| =|g = \gcd(a,b| \) but because bo
 
 \QED
 
-\subsection{Euclidean Algorithm as Matrix Multiplication}
-
-\textbf{Input:} \(a, b \in \mathbb{Z}\), \(a \neq 0 \neq b\).  
-
-\textbf{Output:} \(t = \gcd(a,b)\) and \(\alpha, \beta \in \mathbb{Z}\) with 
-\(\alpha a + \beta b = t\).
-
-\textbf{Algorithm:}
-
-\begin{enumerate}
-
-	\item If \(a = 0\), return \(|b|\), \(\alpha = 0\), and 
-    \(\beta = b / |b|\).  
-    If \(b = 0\), return \(|a|\), \(\alpha = a / |a|\), and \(\beta = 0\).
-    
-    \item Compute, for \(r_1 := a\) and \(r_2 := b\), the sequence 
-    \((r_n)\) using Algorithm~5.18, i.e.  
-    \(r_{n-1} = q_{n-1} r_n + r_{n+1}\) with \(q_{n-1} \in \mathbb{Z}\) 
-    and \(r_k = 0\).
-    
-    \item Define 
-    
-	\[
-		A_n := 
-		\begin{bmatrix}
-			0 & 1 \\
-			1 & -q_{n-1}
-		\end{bmatrix}	
-	\]
-
-	for \(1 \le n \le k - 2\). Then the first row of the matrix \(A_{k - 2} \cdots A_1\) returns the pair \(\alpha. \beta\)
-\end{enumerate}
-
-\subsection{Prime Field}
+\section{Prime Field}
 
 Given \(p \in \N, p > 1\) is prime, then \(\Z / p \Z\) is a field with \(p\) elements. It can also 
-be noted \(\field_p\)
+be noted \(\field_p\).
 
 \textbf{Proof:} 
 
@@ -339,7 +306,7 @@ For \(a \notin p \Z\) we know that \(gcd(a,p) = 1\) thus, we do not have zero di
 For \(a, b \in \Z\) and a prime number \(p\)
 
 \[
-	p \mid ab \implies (p \mid a ) \lor (p \mid b)
+	p \mid ab \implies (p \mid a ) \lor (p \mid b).
 \]
 
 \textbf{Proof:} 
@@ -358,18 +325,18 @@ has no nontrivial divisors and is prime.
 
 \QED
 
-\subsection{Fundamental Theorem of Arithmetic}
+\section{Fundamental Theorem of Arithmetic}
 
 Every integer greater than 1 can be written in the form
 
 \[
-	p_1^{n_1}p_2^{n_2} \cdots p_k^{n_k}
+	p_1^{n_1}p_2^{n_2} \cdots p_k^{n_k},
 \]
 
-Where \(n_i \geq 0\) and the \(p_i\) are distinct primes. The factorization is unique, except possibly for 
+where \(n_i \geq 0\) and the \(p_i\) are distinct primes. The factorization is unique, except possibly for 
 the order of the factors.
 
-\textbf{Example.}
+\textbf{Example:}
 
 \[
 	4312 = 2 \cdot 2156 = 2 \cdot 2 \cdot 1078 = 2 \cdot 2 \cdot 2 \cdot 539 = 2 \cdot 2 \cdot 2 \cdot 7 
@@ -381,110 +348,6 @@ That is,
 \[
 	4312 = 2^3 \cdot 7^2 \cdot 11
 \]
-
-Approach to the proof: 
-
-\begin{itemize}
-
-	\item The Fundamental Theorem of Arithmetic says that every integer greater than 1 can be factored 
-		 uniquely into a product of primes.
-	
-	\item Euclid’s lemma says that if a prime divides a product of two numbers, it must divide at least 
-		  one of the numbers.
-	
-	\item The least common multiple \([a, b]\) of nonzero integers \(a\) and \(b\) is the smallest positive 
-	      integer divisible by both \(a\) and \(b\).
-
-\end{itemize}
-
-
-\subsection{Lemmas}
-
-\textbf{Lemma} 
-
-If \(m \mid pq\) and \(\gcd(m, p) = 1\), then \(m \mid q\).
-
-\textbf{Proof:} 
-
-Write \(1 = \gcd(m, p) = am + bp\) for some \(a, b \in \Z\). Then
-
-\[
-	q = amq + bpq
-\]
-
-Since \(m \mid amq\) and \(m \mid bpq\) (because \(m \mid pq\)), we conclude \(m \mid q\).
-
-\QED
-
-\textbf{Lemma} 
-
-If \(p\) is prime and \(p \mid a_1a_2 \cdots a_n\), then \(p \mid a_i\) for some \(i\).
-
-\textbf{Proof (Case \(n=2\)):} 
-
-Suppose \(p \mid a_1a_2\), and \(p \nmid a_1\).
-Then \(\gcd(p, a_1) = 1\), and by the previous lemma, \(p \mid a_2\).
-
-For general \(n > 2\): Assume the result is true for \(n-1\). Suppose \(p \mid a_1a_2 \cdots a_n\).
-Group as \((a_1a_2 \cdots a_{n-1})a_n\).
-
-By the \(n=2\) case, either \(p \mid a_n\) or \(p \mid a_1a_2 \cdots a_{n-1}\), and by induction, 
-\(p \mid a_i\) for some \(i\).
-
-\QED
-
-\subsection{Proof of the Fundamental Theorem of Arithmetic}
-
-\textbf{Existence:}
-
-Use induction on \(n > 1\)Let \(X = (X_{1}, \ldots, X_{n})^{T} : \Omega \to X\) be a random variable with
-statistical model \(P = \{ P^{n}_{\theta} : \theta \in \Theta \}\).
-Furthermore, let \(x_{1}, \ldots, x_{n}\) be a sample and let \(\alpha \in [0,1]\).
-
-A mapping \(I\) that assigns to each sample
-\(x = (x_{1}, \ldots, x_{n})^{T} \in X\) a subset \(I(x) \subset \Theta\)
-is called a \((1 - \alpha)\)-confidence region for \(\theta\) if
-
-\[
-    \prob_{\theta}\bigl( \theta \in I(X_{1}, \ldots, X_{n}) \bigr)
-    \ge 1 - \alpha
-\]
-
-for all \(\theta \in \Theta\).
-
-If \(\Theta \subset \R\) and \(I(x)\) is an interval for all \(x \in X\),
-then \(I\) is called a \((1 - \alpha)\)-confidence interval.
-
-Base case: \(n = 2\) is prime.
-
-Inductive step: If \(n\) is prime, done. Otherwise, \(n = ab\), with \(1 < a, b < n\).
-By induction, both \(a\) and \(b\) factor into primes, so \(n\) does too.
-
-\textbf{Uniqueness:}
-
-Suppose:
-
-\[
-	p_1^{m_1} \cdots p_j^{m_j} = q_1^{n_1} \cdots q_k^{n_k}
-\]
-
-With all \(p_i\) and \(q_i\) distinct primes.
-
-Since \(p_1\) divides the LHS, it divides the RHS. So \(p_1 \mid q_i^{n_i}\) for some \(i\), hence 
-\(p_1 = q_i\). Re-order so \(p_1 = q_1\). Then:
-
-If \(m_1 > n_1\), divide both sides by \(q_1^{n_1}\):
-
-\[
-	p_1^{m_1-n_1} \cdots p_j^{m_j} = q_2^{n_2} \cdots q_k^{n_k}
-\]
-
-But then \(p_1\) divides LHS but not RHS, contradiction. So \(m_1 = n_1\). Cancel and repeat.
-
-Eventually, all \(p_i\) match with some \(q_i\), and the exponents are equal. So the factorizations
-are the same up to order.
-
-\QED
 
 \subsection{Least Common Multiple}
 
@@ -505,24 +368,24 @@ divisible by both.
 
 \textbf{Proof:}
 
-Let:
+Let
 
 \[
-	a = p_1 \cdots p_lq_1 \cdots q_m, \quad b = q_1 \cdots q_mr_1 \cdots r_n
+	a = p_1 \cdots p_lq_1 \cdots q_m, \quad b = q_1 \cdots q_mr_1 \cdots r_n,
 \]
 
-Then:
+then
 
 \begin{align*}
 	\gcd(a, b) & = q_1 \cdots q_m                                 \\
 	[a, b]     & = p_1 \cdots p_lq_1 \cdots q_mr_1 \cdots r_n     \\
-	ab         & = p_1 \cdots p_lq_1^2 \cdots q_m^2r_1 \cdots r_n
+	ab         & = p_1 \cdots p_lq_1^2 \cdots q_m^2r_1 \cdots r_n.
 \end{align*}
 
-So:
+So
 
 \[
-	[a, b] \cdot \gcd(a, b) = ab
+	[a, b] \cdot \gcd(a, b) = ab.
 \]
 
 \textbf{Example:}
@@ -531,32 +394,11 @@ So:
 	\gcd(36, 90) = 18, \quad [36, 90] = 180, \quad 36 \cdot 90 = 32400 = 18 \cdot 180
 \]
 
-
-\subsection{Second Proof of the Fundamental Theorem of Arithmetic}
-
-Given \(n \in \N\) has \(1\) as a prime factor. Suppose that every natural number 
-smaller than \(n\) can be factorized into primes. 
-
-If \(n\) is a prime number then it is itself its prime factorization. Else. there 
-are \(b, c \in \Z\) with \(n = bc\) \(1 < b, c<n\). By our induction's supposition, 
-\(b\) and \(c\) have also a prime factorization.
-
-\[
-	b = p_1 \cdot p_2 \cdots p_r \text{ and } c = q_1 \cdot q_2 \cdots q_s
-\]
-
-with \(p_i, p_j\) \(1 \le \le r\) and \(1 \le j \le s\) prime numbers. The product is 
-the prime factorization of the \(n\).
-
-The uniqueness is given by \emph{the implication of prime numbers}.
-
-\QED
-
-\subsection{Goldbach's Conjecture}
+\section{Goldbach's Conjecture}
 
 Every even integer greater than 4 can be written as the sum two primes.
 
-\subsection{Prime Factorization}
+\section{Prime Factorization}
 
 To find the \emph{prime factorization} of a number \(a\) the algorithm goes as follows 
 
@@ -572,7 +414,7 @@ To find the \emph{prime factorization} of a number \(a\) the algorithm goes as f
 
 \end{itemize}
 
-\subsection{GCD via Prime factorization}
+\section{GCD via Prime factorization}
 
 The \(\gcd\) of two or more number can also be found with the following algorithm.
 

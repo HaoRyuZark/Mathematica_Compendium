@@ -1,8 +1,9 @@
-
 \chapter{Factorization}
 
 \emph{Factorization} is the process of writing a mathematical expression as a product of its factors. 
-This is a fundamental technique in algebra, used to simplify expressions, solve equations, and analyze functions.
+This a fundamental technique which can help in all kinds of situations.
+
+\section{Common Factorization Techiques}
 
 \subsection{Common Factor}
 
@@ -56,7 +57,7 @@ As in the previous case, we are going to use a similar procedure, but we start b
 3x^2 -5x - 2 &= \frac{3(3x^2 -5x - 2)}{3} \\
              &= \frac{{(3x)}^2 -5(3x) - 6}{3}\\ 
              &= \frac{(3x- 6)(3x+1)}{3} \\
-             &= (x- 2)(3x +1)
+             &= (x- 2)(3x +1).
 \end{align*}
 
 \subsection{Perfect Square Trinomial}
@@ -64,29 +65,17 @@ As in the previous case, we are going to use a similar procedure, but we start b
 These follow the identities:
 
 \[
-    (a + b)^2 = a^2 + 2ab + b^2
+    (a + b)^2 = a^2 + 2ab + b^2,
 \]
 
 \[
-    (a - b)^2 = a^2 - 2ab + b^2
+    (a - b)^2 = a^2 - 2ab + b^2.
 \]
 
 \textbf{Example:}
 
 \[
     x^2 + 6x + 9 = {(x + 3)}^2
-\]
-
-\subsection{Substitution}
-
-Substitute a more complex expression with a single variable, factor, then back-substitute.
-
-\textbf{Example:}
-
-Given \(x^4 + 2x^2 + 1\). Let \(y = x^2\), then
-
-\[
-    y^2 + 2y + 1 = (y + 1)^2  = (x^2 + 1)^2
 \]
 
 \subsection{Rationalization of Radicals}
@@ -104,8 +93,21 @@ Rationalizing removes radicals from the denominator.
 \[
     \frac{1}{\sqrt{3} + 1} = \frac{\sqrt{3} - 1}{(\sqrt{3} + 1)(\sqrt{3} - 1)} = \frac{\sqrt{3} - 1}{2}
 \]
+\section{Substitution}
 
-\subsection{Horner’s Method}
+Substitute a more complex expression with a single variable, factor, then back-substitute.
+
+\textbf{Example:}
+
+Given \(x^4 + 2x^2 + 1\). Let \(y = x^2\), then
+
+\[
+    y^2 + 2y + 1 = (y + 1)^2  = (x^2 + 1)^2.
+\]
+
+This one is extremly important in the analysis.
+
+\section{Horner’s Method}
 
 This method is used to divide a polynomial by a binomial of the form \((x - r)\).
 
@@ -151,10 +153,9 @@ Now, by repeating the process with \(r = 2\):
 
 The final result is \((x - 3)(x - 2)(x - 1)\).
 
-\subsection{Long Division of Polynomials}
+\section{Long Division of Polynomials}
 
-Another way of factorization is the so-called \emph{long division for polynomials}. This works exactly as the 
-division algorithm for real numbers, but we use powers of \(x\) and the scalars of \(\field\) for the 
+The \emph{long division for polynomials} works exactly as the division algorithm for real numbers, but we use powers of \(x\) and the scalars of \(\field\) for the 
 multiplication step.
 
 \textbf{Example:}

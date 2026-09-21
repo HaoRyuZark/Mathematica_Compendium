@@ -1,32 +1,28 @@
-
 \chapter{Combinatorics}
 
-\subsection{Three Principles of Combinatorics}
+\section{Three Principles of Combinatorics}
 
 These principles are \emph{Addition}, \emph{Multiplication} and \emph{Inclusion-Exclusion}.
 
-\subsection{The Basic Counting Principle}
+\section{The Basic Counting Principle}
 
-For \(n\) outcomes of event \(A\) and \(m\) of \(B\) there are 
-\(n \cdot m\) outcomes for event \(A\) and \(B\).
+For \(n\) outcomes of event \(A\) and \(m\) of \(B\) there are \(n \cdot m\) outcomes for event \(A\) and \(B\).
 
 In combinatorics we can model a lot of problems as having \(n\) elements from which we can take one at the time 
 a certain number of times, and then we take into consideration if we allow repetition or the order matters or not.
 
-\subsection{Permutation}
+\section{Permutation Without Repetition}
 
-Number of ways of ordering \(n\) distinct elements. In other words the number of tuples of n distinct elements.
+The \emph{permutation} counts the number of ways of ordering \(n\) distinct elements. In other words the number of tuples of n distinct elements.
 Of course the order matters.
 
 \[
     n!
 \]
 
-\textbf{Example:}
+\subsection{Permutation With Repetition}
 
-\subsection{Permutation with repetition}
-
-Number of ways of ordering \(n\) non-distinct elements. Here \(m_1, \dots, m_n\)
+NThe \emph{permutation with repetition} counts theumber of ways of ordering \(n\) non-distinct elements. Here \(m_1, \dots, m_n\)
 is the number a specific item is repeated in the original set. By dividing by the respective amount of the 
 repeated non-distinct element, we eliminate the permutations, where the identical element swap their place.
 
@@ -54,9 +50,9 @@ In this case the order matters but only for the different elements.
 
 \textbf{Example:}
 
-\subsection{Combination with repetition}
+\section{Combination with Repetition}
 
-We can think of it as having \(n\) types of objects, and we want 
+We can think of the \emph{combination} as having \(n\) types of objects, and we want 
 to take with repetition until we fill our \(k\) slots.
 
 \[
@@ -72,32 +68,26 @@ that we have \(n + k - 1\) positions if we count the actual slots and the separa
     *|* * *|* *, \quad n = 6, \quad k = 2, \quad \text{positions in between } = 7
 \]
 
-\textbf{Example:}
+\section{Variation}
 
-\subsection{Variation}
-
-Ways of put \(n\) objects in \(k\) slots with repetition. Here the order does not matter.
+The \emph{variation} counts the ways of putting \(n\) objects in \(k\) slots with repetition. Here the order does not matter.
 
 \[
     n^k
 \]
 
-\textbf{Example:}
+\section{Variation Without Repetition}
 
-\subsection{Variation without repetition}
-
-Ways of put \(n\) objects in \(k\) slots without repetition. Number of tuples with \(k\) 
+This kind of \emph{variation}  counts the ways of putting \(n\) objects in \(k\) slots without repetition. Number of tuples with \(k\) 
 elements which can be selected from \(n\) elements, without repetition. The order matters.
 
 \[
     \frac{n!}{(n - k)!}
 \]
 
-\textbf{Example:}
+\section{Combination Without Repetition}
 
-\subsection{Combination without repetition}
-
-Ways of choose \(k\) objects of \(n\) elements. Or put \(k\) elements from \(n\) into \(k\) slots where the order does not matter.
+The \emph{combination} can be unsertood as choose \(k\) objects of \(n\) elements. Or put \(k\) elements from \(n\) into \(k\) slots where the order does not matter.
 
 \[
     \binom{n}{k} = \frac{n!}{k!(n-k)!}
@@ -105,11 +95,9 @@ Ways of choose \(k\) objects of \(n\) elements. Or put \(k\) elements from \(n\)
 
 Note that like in the variation we use \(\frac{n!}{(n - k)!}\) to limit our slots to \(k\). Then for the \(k\) objects 
 we choose we can arrange them in \(k!\) ways but because the order does not matter we divide by \(k!\) to get rid of the  
-repeated combinations
+repeated combinations.
 
-\textbf{Example:}
-
-\subsection{Multinomial Coefficients}
+\section{Multinomial Coefficients}
 
 When using the binomial coefficient repeatedly one after the other we can abbreviate 
 this consecutive uses as 
@@ -120,7 +108,7 @@ this consecutive uses as
 
 This is like from \(n\) choose \(k_1\) then from \(n - k_1\) choose \(k_2\) and so on.
 
-\subsubsection{Multinomial Theorem}
+\subsection{Multinomial Theorem}
 
 Given \(x_1, \dots, x_p \in \R\) and \(\N\) then 
 
@@ -128,9 +116,9 @@ Given \(x_1, \dots, x_p \in \R\) and \(\N\) then
     (x_1 + \cdots, x_n)^n = \sum_{k_1 + \cdots + k_{p = n}}  \binom{n}{k_1, \dots, k_p} x_{1}^{k_1} \cdots x_{p}^{k_p}
 \]
 
-\subsection{Example Problems}
+\section{Example Problems}
 
-\subsubsection*{Defected Machines}
+\subsection*{Defected Machines}
 
 A new delivery with 10 machines from which 2 are not working properly have to be tested. For that purpose a 
 man in charge selects 5 of the machines randomly, and then he proceeds to make a decision based on the number of faulty machines found 
@@ -145,18 +133,18 @@ Total cases: \(\binom{10}{5}\)
 
 \(\binom{8}{5}\) represents no faulty machine in the choice, \(\binom{2}{1}\binom{8}{4}\) represents only one machine does not work. 
 
-\subsection{Disarray}
+\section{Disarray}
 
-Number of permutation in which no object ends in the same initial spot. Also, know as the 
+A \emph{disarray} is the number of permutation in which no object ends in the same initial spot. Also, know as the 
 \emph{sub-factorial}.
 
 \[
     !n = n! \sum_{k = 0}^{n} \left(\frac{{(-1)}^k}{k!}\right)
 \]
 
-\subsection{Bell Numbers}
+\section{Bell Numbers}
 
-Number of ways of grouping \(n\) objects in an arbitrary number of slots.
+The \emph{Bell numbers} count the number of ways of grouping \(n\) objects in an arbitrary number of slots.
 
 \[
     B(N) = \sum_{k = 0}^{N-1}\binom{N}{K}B(K),
@@ -164,52 +152,52 @@ Number of ways of grouping \(n\) objects in an arbitrary number of slots.
 
 with \(B(1) = 1\) and \(B(2) = 2\).
 
-\subsection{Ramanujan Numbers}
+\section{Ramanujan Numbers}
 
-The same as the Bell Numbers but, all objects are equal. As an example the number of ways
+The \emph{Ramanujan numbers} are same as the Bell Numbers but, all objects are equal. As an example the number of ways
 to decompose a number.
 
 \[
     R(N) \approx \frac{1}{4N\sqrt{3}} e^{2\pi \sqrt{\frac{N}{6}}}
 \]
 
-\subsection{Stirling Numbers I}
+\section{Stirling Numbers I}
 
-Ways of permuting \(N\) items with \(K\) exchanges.
+The ways of permuting \(N\) items with \(K\) exchanges are given by the \emph{Stirling Numbers I}.
 
 \[
     \genfrac{[}{]}{0pt}{}{N + 1}{K} = N \genfrac{[}{]}{0pt}{}{N}{K} + \genfrac{[}{]}{0pt}{}{N}{K - 1}
 \]
 
-\subsection{Stirling Numbers II}
+\section{Stirling Numbers II}
 
-Ways of grouping \(n\) items in \(k\) slots.
+The ways of grouping \(n\) items in \(k\) slots are given by the \emph{Stirling Numbers II}.
 
 \[
     \genfrac{\{}{\}}{0pt}{}{N}{K} = \frac{1}{K!} \sum_{j=0}^{K} (-1)^{K - j} \binom{K}{j} j^N
 \]
 
-\subsection{Lah Numbers}
+\section{Lah Numbers}
 
-Ways of building \(K\) lists with a set \(N\) elements.
+The \emph{Lah numbers} represen the ways of building \(K\) lists with a set \(N\) elements.
 
 \[
     \genfrac{\lfloor}{\rfloor}{0pt}{}{N}{K} = \binom{N - 1}{K - 1} \frac{N!}{K!} = \sum_{j=0}^{K} 
     \genfrac{[}{]}{0pt}{}{N}{K} \genfrac{\{}{\}}{0pt}{}{N}{K}
 \]
 
-\subsection{Euler's Numbers}
+\section{Euler's Numbers}
 
-Number of permutations of a set of \(N\) elements of different size in which
+The \emph{Euler's numbers} are the number of permutations of a set of \(N\) elements of different size in which
 \(K\) elements are bigger than their previous element.
 
 \[
-    \genfrac{\langle}{\rangle}{0pt}{}{N}{K} = \sum_{j = 0}^{K} (-1)^j \binom{N + 1}{j} (K + 1 - j)^N
+    \genfrac{\langle}{\rangle}{0pt}{}{N}{K} = \sum_{j = 0}^{K} (-1)^j \binom{N + 1}{j} (K + 1 - j)^N.
 \]
 
-\subsection{Catalan Numbers}
+\section{Catalan Numbers}
 
-These have different applications like the number of ways of the triangulations of
+The \emph{Catalan numbers} have different applications like the number of ways of the triangulations of
 a polygon or the number of trees with \(N\) leafs.
 
 \[

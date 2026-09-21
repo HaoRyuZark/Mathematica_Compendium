@@ -1,9 +1,8 @@
-
 \chapter{Multivariable Distributions}
 
 \emph{Multivariable} or \emph{joint distributions} are a way of combining two or more random variables.
 
-\subsection{Measurability of Random Variables and Random Vectors}
+\section{Measurability Of Random Variables And Random Vectors}
 
 Let \( X_1, X_2, \ldots, X_n \) be random variables on \((\Omega, \mathcal{A}, P)\).
 Then each \( X_i : \Omega \to \R \) is measurable.
@@ -47,7 +46,7 @@ Hence, the probability
 
 is well-defined for all \( A \subseteq \R^n \).
 
-\subsection{Joint Distribution and Random Vectors}
+\section{Joint Distribution And Random Vectors}
 
 Let \( X_1, \ldots, X_n \) be random variables on a probability space \((\Omega, \mathcal{A}, P)\).
 Then \( P_X \) (respectively \( P_{X_1, \ldots, X_n} \)) is defined as
@@ -61,7 +60,7 @@ The vector \( X = (X_1, \ldots, X_n) \) is called a \emph{random vector}.
 
 This is just the probability of \(n\) events happening simultaneously.
 
-\subsection{Joint Probability of An Event}
+\section{Joint Probability Of An Event}
 
 For any random variable 
 
@@ -75,7 +74,7 @@ If they are independent then
     \prob(X_1 = x_1, \ldots, X_n = x_n) = \prob(X_1 = x_1) \prob(X_2 = x_2) \cdots \prob(X_n = x_n)
 \]
 
-\subsection{Joint Probability Function}
+\section{Joint Probability Function}
 
 Let \( X_1, \ldots, X_n \) be discrete random variables.
 The function \( p_X \), defined as
@@ -84,8 +83,7 @@ The function \( p_X \), defined as
     \prob_X(x) = \prob(X_1 = x_1, X_2 = x_2, \ldots, X_n = x_n)
 \]
 
-for \( x \in X(\Omega) \subseteq \R^n \),
-is the \emph{joint probability function} of \( X_1, \ldots, X_n \),
+for \( x \in X(\Omega) \subseteq \R^n \), is the \emph{joint probability function} of \( X_1, \ldots, X_n \),
 or equivalently, of the random vector \( X \).
 
 As before, the distribution \( P_X \) is uniquely determined by the probability function \( p_X \):
@@ -115,6 +113,7 @@ The joint probability function is
 \]
 
 for \( i, j \in \{1, 2, \ldots, 6\} \).
+
 Their combined probability function is
 
 \[
@@ -125,7 +124,7 @@ Their combined probability function is
     \end{cases}
 \]
 
-\subsection{Marginal Distributions of Discrete Random Variables}
+\section{Marginal Distributions Of Discrete Random Variables}
 
 Let \( X, Y \) be two discrete random variables.
 The \emph{marginal probability functions} of \( X \) and \( Y \) are given by
@@ -134,17 +133,14 @@ The \emph{marginal probability functions} of \( X \) and \( Y \) are given by
     p_X(x) = \sum_{y} p_{X,Y}(x, y) \quad \text{and} \quad p_Y(y) = \sum_{x} p_{X,Y}(x, y).
 \]
 
-
 This means that we fix one variable and sum over all possible values of the other variable. For the 2d case, 
 if we want a marginal distribution of \(X\) we sum over all rows for a fixed column.
 
-Generalized, let \( X_1, \ldots, X_n \) be random variables and
-\( 1 \leq i_1 < \cdots < i_k \leq n \).
+Generalized, let \( X_1, \ldots, X_n \) be random variables and \( 1 \leq i_1 < \cdots < i_k \leq n \).
 
 The joint distribution of \( X_{i_1}, \ldots, X_{i_k} \) is a \emph{\(k\)-dimensional marginal distribution} of \( X_1, \ldots, X_n \).
 
-For discrete random variables, the joint probability function of
-\( X_{i_1}, \ldots, X_{i_k} \) is called the \emph{marginal probability function}.
+For discrete random variables, the joint probability function of \( X_{i_1}, \ldots, X_{i_k} \) is called the \emph{marginal probability function}.
 
 \textbf{Example:}
 
@@ -166,7 +162,7 @@ The joint distribution of \( X_1 \) and \( Y \) is given by:
 
 In the last column and row we get the marginal distributions of \(X_1\) and \(Y\) respectively.
 
-\subsubsection{Marginal Probability Function for Multiple Discrete Variables}
+\subsection{Marginal Probability Function for Multiple Discrete Variables}
 
 Let \( X_1, \ldots, X_n \) be discrete random variables with joint probability function
 \( p(x_1, \ldots, x_n) \), and let \( 1 \le i_1 < \cdots < i_k \le n \).
@@ -179,10 +175,11 @@ For the \emph{marginal probability function} of \( X_{i_1}, \ldots, X_{i_k} \), 
 
 This is just notation for summing over all variables that are not of interest.
 
-\subsection{Multivariate Expected Value for Discrete Random Variables}
+\section{Multivariate Expected Value for Discrete Random Variables}
 
 Let \( X_1, \ldots, X_n \) be discrete random variables with joint probability function \( p \),
 and let \( u : \R^n \to \R \).
+
 Then, if the expectation exists, the following holds:
 
 \[
@@ -212,7 +209,7 @@ Let \(u(X,Y) = xy\) then our expected value is given by:
     \approx 7.42
 \]
 
-\subsubsection*{Expected Value as a Special Case of the Transformation Formula}
+\section{Expected Value as a Special Case of the Transformation Formula}
 
 Let \( X, Y \) be discrete random variables with joint probability function \( p \).
 With \( u(x, y) = x \), the transformation formula gives:
@@ -221,7 +218,7 @@ With \( u(x, y) = x \), the transformation formula gives:
     \expc[X] = \sum_{(x, y) \in (X, Y)(\Omega)} x \, p(x, y)
 \]
 
-\subsection{Joint Probability Density Function}
+\section{Joint Probability Density Function}
 
 An integrable function \( f : \R^n \to [0, \infty) \) is called the \emph{joint (probability) density} of the random variables
 \( X_1, \ldots, X_n \) if, for all rectangles
@@ -284,23 +281,21 @@ Density of \(Y\)
     \end{cases}
 \]
 
-\subsection{Multivariate Expected Value for Continuous Random Variables}
+\section{Multivariate Expected Value For Continuous Random Variables}
 
 Let \( X_1, \ldots, X_n \) be random variables with joint density \( f(x_1, \ldots, x_n) \),
 or equivalently, with joint distribution \( P_{X_1, \ldots, X_n} \).
 
-Let \( u : \R^n \to \R \) be a measurable function.
-Then, if the expectation exists, the following holds:
+Let \( u : \R^n \to \R \) be a measurable function. Then, if the expectation exists, the following holds:
 
 \[
     \expc[u(X_1, \ldots, X_n)]
     = \int_{\R^n} u(x_1, \ldots, x_n) f(x_1, \ldots, x_n) \, dx_1 \cdots dx_n
 \]
 
-\subsection{Uniform Distribution on a Measurable Set}
+\section{Uniform Distribution On A Measurable Set}
 
-Let \( I \subseteq \R^n \) be a measurable set.
-Random variables \( (X_1, \ldots, X_n) \in \R^n \) with joint density
+Let \( I \subseteq \R^n \) be a measurable set. Random variables \( (X_1, \ldots, X_n) \in \R^n \) with joint density
 
 \[
     f(x_1, \ldots, x_n) = \frac{1}{|I|} \, \ind_I(x_1, \ldots, x_n)
@@ -309,7 +304,7 @@ Random variables \( (X_1, \ldots, X_n) \in \R^n \) with joint density
 are called \emph{uniformly distributed}, where \( |I| \) denotes the volume (Lebesgue measure) of the set \( I \).
 The distribution \( P_{X_1, \ldots, X_n} \) is called the \emph{uniform distribution}.
 
-\subsection{Probability over Measurable Sets}
+\section{Probability Over Measurable Sets}
 
 Let \( X_1, \ldots, X_n \) be random variables with joint density \( f(x_1, \ldots, x_n) \).
 For every measurable set \( R \subseteq \R^n \), the following holds:
@@ -319,10 +314,9 @@ For every measurable set \( R \subseteq \R^n \), the following holds:
     = \int_R f(x_1, \ldots, x_n) \, dx_1 \cdots dx_n
 \]
 
-\subsection{Joint Distribution Function for multiple Variables}
+\section{Joint Distribution Function For Multiple Variables}
 
-Let \( X_1, \ldots, X_n \) be random variables.
-The function \( F : \R^n \to \R \), defined by
+Let \( X_1, \ldots, X_n \) be random variables. The function \( F : \R^n \to \R \), defined by
 
 \[
     F(x_1, \ldots, x_n) = \prob(X_1 \le x_1, \ldots, X_n \le x_n),
@@ -330,13 +324,13 @@ The function \( F : \R^n \to \R \), defined by
 
 is called the \emph{joint distribution function} of \( X_1, \ldots, X_n \).
 
-\subsection{Marginal Densities}
+\section{Marginal Densities}
 
 Let \( X_1, \ldots, X_n \) be random variables with joint density \( f(x_1, \ldots, x_n) \).
 The density of \( X_1 \) is given by
 
 \[
-    f_{X_1}(x_1) = \int \dots \int  f(x_1, \ldots, x_n) \, dx_2 \cdots dx_n
+    f_{X_1}(x_1) = \int \dots \int  f(x_1, \ldots, x_n) \, dx_2 \cdots dx_n.
 \]
 
 For random variables \( X, Y \) with joint density \( f(x, y) \), the following holds:
@@ -351,18 +345,17 @@ For random variables \( X, Y \) with joint density \( f(x, y) \), the following 
 
 The idea for higher dimensions is to eliminate all variables we are not interested in.
 
-\subsection{Expectation with Respect to a Joint Density}
+\section{Expectation With Respect To A Joint Density}
 
 Let \( X_1, \ldots, X_n \) be random variables with joint density \( f(x_1, \ldots, x_n) \),
-and let \( u : \R^n \to \R \) be a measurable function.
-Then the following holds:
+and let \( u : \R^n \to \R \) be a measurable function. Then the following holds:
 
 \[
     \expc[u(X_1, \ldots, X_n)]
     = \int u(x_1, \ldots, x_n) f(x_1, \ldots, x_n) \, dx_1 \cdots dx_n
 \]
 
-\subsection{Stochastic Independence of Random Variables}
+\section{Stochastic Independence Of Random Variables}
 
 The random variables \( X_1, \ldots, X_n \) are \emph{stochastically independent} if,
 for all intervals \( I_1, \ldots, I_n \subseteq \R \), the following holds:
@@ -372,11 +365,10 @@ for all intervals \( I_1, \ldots, I_n \subseteq \R \), the following holds:
     = \prod_{k=1}^{n} \prob(X_k \in I_k)
 \]
 
-\subsection{Independence of Densities}
+\section{Independence Of Densities}
 
 Let \( X, Y \) be discrete random variables with joint probability function \( p_{X,Y}(x, y) \)
-and marginal probability functions \( p_X(x) \) and \( p_Y(y) \).
-Then \( X \) and \( Y \) are \emph{independent if and only if}
+and marginal probability functions \( p_X(x) \) and \( p_Y(y) \). Then \( X \) and \( Y \) are \emph{independent if and only if}
 
 \[
     p_{X,Y}(x, y) = p_X(x) p_Y(y)
@@ -422,7 +414,7 @@ We test \(f_{X,Y}(x,y) \stackrel{?}{=} f_X(x) \cdot f_Y(y)\)
     f_X(x) \cdot f_Y(y) = 3x^2 \cdot 2y = 6x^2y = f_{X,Y}(x,y)
 \]
 
-\subsection{Variance for Independent Random Variables}
+\section{Variance for Independent Random Variables}
 
 Given the independent random variables \(X_1, \dots, X_n\) then
 
@@ -447,13 +439,13 @@ This implies that
     &= \sum_{i=1}^n \var(X_i)
 \end{align*}
 
-\subsection{Conditional Distribution of Discrete Random Variables}
+\section{Conditional Distribution Of Discrete Random Variables}
 
 Let \( X, Y \) be discrete random variables and \( x \in \R \) such that \( \prob(X = x) > 0 \).
 The mapping
 
 \[
-    A \mapsto \prob(Y \in A \mid X = x),
+    A \mapsto \prob(Y \in A \mid X = x)
 \]
 
 for measurable \( A \subseteq \R \), defines a probability distribution on \( \R \)
@@ -485,7 +477,7 @@ Otherwise, if \(p_{Y \mid X}(y \mid x) = \prob(Y = y \mid X = x)\) is not depend
 
 Then \(p_{X, Y}(x,y) =  p_X(x) p_{Y \mid X}(y \mid x)= p_X(x)p_Y(y)\)
 
-\subsection{Conditional Density for Continuous Random Variables}
+\section{Conditional Density For Continuous Random Variables}
 
 Let \(X, Y\) be continuous random variables with joint density \(f(x,y)\).
 The conditional density \(f_{Y\mid X}(y\mid x)\) of \(Y\) given \(X = x\) is defined by
@@ -506,10 +498,9 @@ Thus, for any measurable set \(A \subseteq \R\),
     \prob(Y \in A \mid X = x) = \int_A f_{Y\mid X}(y\mid x)\, dy.
 \]
 
-\subsection{Covariance and Correlation of Random Variables}
+\section{Covariance And Correlation Of Random Variables}
 
-Let \(X, Y\) be random variables with existing variances.
-The \emph{covariance}, joint dependence, is defined by
+Let \(X, Y\) be random variables with existing variances. The \emph{covariance}, joint dependence, is defined by
 
 \[
     \cov(X, Y) = E[(X - \expc[X])(Y - \expc[Y])] = \sum_{i = 1}^{n} \sum_{j = 1}^{m} (x_i - \expc[X])(y_j - \expc[Y]) \, \prob(X = x_i, Y = y_j)
@@ -525,7 +516,7 @@ If the variances are positive, the \emph{correlation coefficient} \(\rho_{X,Y}\)
 If \(\rho_{X,Y} = 0\), the random variables \(X\) and \(Y\) are called \emph{uncorrelated}.
 
 
-\subsubsection*{Properties of Covariance}
+\subsection{Properties of Covariance}
 
 \begin{itemize}
 
@@ -541,7 +532,19 @@ If \(\rho_{X,Y} = 0\), the random variables \(X\) and \(Y\) are called \emph{unc
 
 \end{itemize}
 
-\subsubsection{Variance of the Sum of Random Variance}
+\subsection{Correlation Between Minus And Plus One}
+
+Let \(X, Y\) be random variables with existing variances. Then the following holds:
+
+\[
+    \rho_{X,Y} = 1 \iff Y = aX + b \text{ with } a > 0
+\]
+
+\[
+    \rho_{X,Y} = -1 \iff Y = aX + b \text{ with } a < 0
+\]
+
+\section{Variance Of The Sum Of Random Variance}
 
 Given the random variables \(X_1, \dots, X_n\) then
 
@@ -557,7 +560,7 @@ If the random variables are independent then
 
 Special case: \(n = 2\): \(\var(X + Y) = \var(X) + \var(Y) + 2 \cov(X, Y)\)
 
-\subsubsection{Cauchy-Schwarz Inequality for Random Variables}
+\section{Cauchy-Schwarz Inequality for Random Variables}
 
 Let \(X, Y\) be random variables with \(\expc[X^2]\) and \(\expc[Y^2]\) finite.
 Then the following holds:
@@ -572,25 +575,13 @@ Following
     |\cov(X, Y)| \le \sqrt{\var(X) \var(Y)}
 \]
 
-\subsubsection{Correlation between minus and plus one}
-
-Let \(X, Y\) be random variables with existing variances.
-Then the following holds:
-
-\[
-    \rho_{X,Y} = 1 \iff Y = aX + b \text{ with } a > 0
-\]
-
-\[
-    \rho_{X,Y} = -1 \iff Y = aX + b \text{ with } a < 0
-\]
-
-\subsection{Multivariable Normal Distribution}
+\section{Multivariable Normal Distribution}
 
 Given \(X_1, \dots, X_n\) independent \(\mathcal{N}(0,1)\) the density function of their joint distribution is given by
 
 \[
-    f(x_1, \dots ,x_n) = \prod_{i = 1}^{n} \frac{1}{\sqrt{2\pi}} e^{\left(-\frac{1}{2}x_{i}^{2}\right)} = \frac{1}{(2\pi)^{n/2}} e^{\left(-\frac{1}{2} X^T \cdot X\right)} \sim \mathcal{N}(\vec{0}, I_n)
+    f(x_1, \dots ,x_n) = \prod_{i = 1}^{n} \frac{1}{\sqrt{2\pi}} e^{\left(-\frac{1}{2}x_{i}^{2}\right)} = \frac{1}{(2\pi)^{n/2}} e^{\left(-\frac{1}{2} X^T \cdot X\right)} 
+    \sim \mathcal{N}(\vec{0}, I_n).
 \]
 
 Thus, for \(\mu \ne \vec{0} \in \R^n\) and \(\Sigma \in \R^{n \times n}\) positive definite,
@@ -612,10 +603,12 @@ With \(d\) being the dimension of the space and \(|\Sigma|\) being the determina
 
 where \(\mu_i = \expc[X_i]\) and \((X - \mu)^T \Sigma^{-1}(X - \mu)\) is a generalization of \(\frac{(x - \mu)^2}{\sigma^2}\).
 
-\subsubsection{Computing Expected Values and Variances of Linear Combinations}
+\section{Computing Expected Values and Variances of Linear Combinations}
 
-\paragraph{Expected Value of Linear Combinations}
-For random variables \(X_1, \dots, X_n\) (not necessarily independent) with \(\expc[X_i] = \mu_i\) and constants \(a_1, \dots, a_n, b \in \R\), the expected value of a linear combination is always:
+\subsection{Expected Value of Linear Combinations}
+
+For random variables \(X_1, \dots, X_n\) (not necessarily independent) with \(\expc[X_i] = \mu_i\) and constants \(a_1, \dots, a_n, b \in \R\), the expected value of 
+a linear combination is always:
 
 \[
     \expc\left[b + \sum_{i=1}^{n} a_i X_i\right] = b + \sum_{i=1}^{n} a_i \mu_i
@@ -623,7 +616,7 @@ For random variables \(X_1, \dots, X_n\) (not necessarily independent) with \(\e
 
 This holds regardless of independence or correlation structure.
 
-\paragraph{Variance of Linear Combinations}
+\subsection{Variance of Linear Combinations}
 
 The variance formula depends on whether the variables are independent:
 
@@ -733,7 +726,7 @@ and
     \end{pmatrix}.
 \]
 
-\subsubsection*{Detailed Example: Spare Parts Delivery}
+\subsubsection{Detailed Example: Spare Parts Delivery}
 
 Consider a delivery containing:
 
@@ -801,20 +794,25 @@ Suppose instead that \(Y_1\) and \(Y_2\) are correlated with \(\cov(Y_1, Y_2) = 
 
 This increases the standard deviation to \(\sqrt{22} \approx 4.690\) kg, making extreme values more likely.
 
-\subsubsection{Independence of Random Variables under the Joint Normal Distribution}
+\section{Independence Of Random Variables Under The Joint Normal Distribution}
+
 Given \(X_1, \dots, X_n\) random variables with a joint normal distribution. If \(\cov(X_i, X_j) = 0\) for all \(i \ne j\), then they are mutually independent. 
 
-\textbf{Important:} This equivalence between zero correlation and independence is special to the multivariate normal distribution and does not hold in general.
+Important, this equivalence between zero correlation and independence is special to the multivariate normal distribution and does not hold in general.
 
-\subsubsection{Linear Combinations of the Joint Normal Distribution}
-Given \(X_1, \dots, X_n\) random variables with a joint normal distribution \(\mathcal{N}(\mu, \Sigma)\). For any sequence of coefficients \(a_1, \dots, a_n \in \R\), the linear combination \(\sum_{i = 1}^{n} a_i X_i\) is also normally distributed.
+\section{Linear Combinations Of The Joint Normal Distribution}
+
+Given \(X_1, \dots, X_n\) random variables with a joint normal distribution \(\mathcal{N}(\mu, \Sigma)\). For any sequence of coefficients \(a_1, \dots, a_n \in \R\), 
+the linear combination \(\sum_{i = 1}^{n} a_i X_i\) is also normally distributed.
 
 Specifically, if \(X \sim \mathcal{N}(\mu, \Sigma)\) and \(a \in \R^n\), then:
+
 \[
-    a^T X \sim \mathcal{N}(a^T \mu, a^T \Sigma a)
+    a^T X \sim \mathcal{N}(a^T \mu, a^T \Sigma a).
 \]
 
 If the random variables are independent with \(X_i \sim \mathcal{N}(\mu_i, \sigma_{i}^{2})\), then:
+
 \[
-    b + \sum_{i = 1}^{n} a_i X_i \sim \mathcal{N}\left(b + \sum_{i=1}^{n} a_i \mu_i, \sum_{i = 1}^{n} a_{i}^{2} \sigma_{i}^2\right)
+    b + \sum_{i = 1}^{n} a_i X_i \sim \mathcal{N}\left(b + \sum_{i=1}^{n} a_i \mu_i, \sum_{i = 1}^{n} a_{i}^{2} \sigma_{i}^2\right).
 \]

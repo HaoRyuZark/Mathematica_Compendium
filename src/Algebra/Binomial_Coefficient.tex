@@ -1,7 +1,9 @@
-
 \chapter{The Binomial Coefficient}
 
 In this short section, we will cover the definition and properties of the \emph{binomial coefficient}.
+This object can represent the number of combination in which we can take \(k\) from \(n\) distinct items.
+
+It is defined as: 
 
 \[
     \binom{n}{k} := \frac{n!}{k!(n-k)!},
@@ -15,7 +17,7 @@ or as a product:
 
 with \(n\) and \(k\) as natural numbers (for the moment).
 
-\subsubsection*{Properties}
+\section{Properties}
 
 \begin{itemize}
     
@@ -27,9 +29,9 @@ with \(n\) and \(k\) as natural numbers (for the moment).
     \item \( \binom{n}{k} + \binom{n}{k + 1} = \binom{n + 1}{k + 1} \)
     \item \( \binom{n}{k} = {(-1)}^k \binom{k - n - 1}{k} \)
 
-\end{itemize}
+\end{itemize}run dnf list installed
 
-\subsection{The Binomial Theorem}
+\section{The Binomial Theorem}
 
 \[
     (a + b)^n =\sum_{k = 0}^{n} \binom{n}{k}a^{n - k}b^k
@@ -105,9 +107,9 @@ Therefore,
 
 \QED
 
-\subsection{Pascal's Triangle}
+\section{Pascal's Triangle}
 
-This is a triangle built by the formula \(\binom{n + 1}{k + 1} = \binom{n}{k} + \binom{n}{k + 1}\).
+This is a triangle built by the recursion \(\binom{n + 1}{k + 1} = \binom{n}{k} + \binom{n}{k + 1}\).
 
 \begin{center}
     \begin{tabular}{>{$n=}l<{$\hspace{12pt}}*{13}{c}}

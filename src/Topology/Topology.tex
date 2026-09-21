@@ -1,15 +1,18 @@
-
 \chapter{Topology}
 
-In this section, we introduce essential vocabulary used in topology. Each term is accompanied by a 
+In this chapter, we introduce essential vocabulary used in topology. Each term is accompanied by a 
 brief explanation and its formal mathematical definition.
 
-\subsection{Introduction to topological nomenclature}
+\section{Introduction to topological nomenclature}
 
-\subsubsection{Open Ball \( B_\varepsilon(x) \)} 
+\subsection{Tological Space (Informal)}
 
-For a metric space \( (X, d) \), the \emph{open ball} centered at 
-\( x \in X \) with radius \( \varepsilon > 0 \) is defined as: 
+A \emph{topological space} is a mathematical space whose elements are called points and which obeys certain axioms.
+The formal definition will come later, but for the sake of this chapter, we will introduce it later.
+
+\subsection{Open Ball \texorpdfstring{\( B_\varepsilon(x) \)}{}} 
+
+For a metric space \( (X, d) \), the \emph{open ball} centered at \( x \in X \) with radius \( \varepsilon > 0 \) is defined as: 
 	      
 \[
 	B_\varepsilon(x) := \{ y \in X \mid d(x, y) < \varepsilon \} = (x - \varepsilon, x + \varepsilon)
@@ -17,11 +20,11 @@ For a metric space \( (X, d) \), the \emph{open ball} centered at
 
 It represents the set of all points within distance \( \varepsilon \) from \(x\), excluding the boundary.
 
-\subsubsection{Open Set}
+\subsection{Open Set}
 	     
-A subset \( U \subseteq X \) of a topological space is called 
-\emph{open} if for every point \( x \in U \), there exists an \( \varepsilon > 0 \) 
+A subset \( U \subseteq X \) of a topological space is called \emph{open} if for every point \( x \in U \), there exists an \( \varepsilon > 0 \) 
 such that the open ball \( B_\varepsilon(x) \subseteq U \). 
+
 Intuitively, an open set contains none of its boundary points and every point has some 
 wiggle room around it.
 
@@ -44,11 +47,11 @@ Then from \(|y - x_0| \le \varepsilon\) we get
 
 \QED 
 
-\subsubsection{The Interior of a Set} 
+\subsection{The Interior of a Set} 
 
 The \emph{interior} denoted as \(A^{\circ}\) of a set \(A\) is the set of all inner points of \(A\). 
 
-\subsubsection{Closed Set} 
+\subsection{Closed Set} 
 	      
 A subset \( A \subseteq X \) is called \emph{closed} if its 
 complement \( X \setminus A \) is open. Equivalently, \(A\) contains all its limit points. 
@@ -56,20 +59,20 @@ That is, \(A\) is closed if it includes its boundary.
 
 \textbf{Example:} \([0,1]\)
 
-\subsubsection{Boundary Point}
+\subsection{Boundary Point}
 	      
 A point \( x \in X \) is a \emph{boundary point} of a set \( A \subseteq X \) 
 if every open ball around \(x\) contains both points in \(A\) and in \( X \setminus A \). 
 The set of all boundary points is called the \emph{boundary} of \(A\), denoted \( \partial A \).
 
-\subsubsection{Accumulation Point / Limit Point}
+\subsection{Accumulation Point / Limit Point}
 
 A point \( x \in X \) is an \emph{accumulation point} of a set \( A \subseteq X \)
 if every open ball \( B_\varepsilon(x) \) contains a point of \( A \setminus \{x\} \). 
 In other words, points of \(A\) cluster arbitrarily close to 
 \(x\), even if \( x \notin A \).
 
-\subsubsection{Isolated Point} 
+\subsection{Isolated Point} 
 	      
 A point \( x \in A \) is an \emph{isolated point} if there exists \( \varepsilon > 0 \)
 such that \( B_\varepsilon(x) \cap A = \{x\} \). 
@@ -77,19 +80,19 @@ That is, \(x\) stands alone in \(A\) without other points of \(A\) nearby.
 
 \textbf{Example:}
 
-\(-1\) is an isolated point of \({-1} \cup (0,1)\)
+\(-1\) is an isolated point of \({-1} \cup (0,1)\).
 
-\subsubsection{Boundary}
+\subsection{Boundary}
 
 The set \(A \cup \{\text{ all boundary points }\}\) is called the \emph{boundary} of \(A\). It is denoted 
 as \(\overline{A}\).
 
-\subsubsection{Compact Set} 
+\subsection{Compact Set} 
 
 A set \( K \subseteq X \) is \emph{compact} if every open cover of \( K \) has a finite sub-cover. 
 In \(\R^n\), this is equivalent to \( K \) being closed and bounded (by the Heine–Borel theorem).
 
-\subsubsection{Dense Set} 
+\subsection{Dense Set} 
 	      
 A subset \( D \subseteq X \) is \emph{dense} in \(X\) if every point 
 \( x \in X \) is either in \( D \) or is a limit point of \( D \). 

@@ -1,13 +1,11 @@
-
 \chapter{Computability}
 
-
-\subsection{Church Turing Thesis}
+\section{Church Turing Thesis}
 
 The intuitive computable functions are exactly all functions which can be computed 
 by a \emph{Turing Machine}. In other words every computational model can be expressed as such.
 
-\subsection{Textual Substitution}
+\section{Textual Substitution}
 
 For a given condition of the form \(\{E[x:=R]\}\) we perform the substitution in the following way 
 
@@ -17,7 +15,7 @@ For a given condition of the form \(\{E[x:=R]\}\) we perform the substitution in
 
 If there are multiple replacements of the form \([\dots], \dots, [\dots]\) we perform those from left to right.
 
-\subsection{Leibniz Inference Rule}
+\section{Leibniz Inference Rule}
 
 To clarify the notation we will be using from now looks like fraction but it means that assuming 
 the statement above is true then the following (bellow) is also true. 
@@ -26,13 +24,13 @@ the statement above is true then the following (bellow) is also true.
     \frac{X = Y}{E[z:=X] = E[z:= Y]} 
 \]
 
-\subsection{Correctness of Algorithms}
+\section{Correctness of Algorithms}
 
 The \emph{correctness} of algorithm is determined by the sum of the following properties 
 the \emph{partial correctness}, this means the algorithm at each step does the right thing, and 
 \emph{termination}, which like the name means that the algorithm terminates. 
 
-\subsubsection{Partial Correctness}
+\subsection{Partial Correctness}
 
 If before running \(P\) the condition \(\varphi\) is true, then after the termination \(P\) should 
 \(\psi\) be true; these are the pre- and post-conditions.
@@ -43,7 +41,7 @@ If before running \(P\) the condition \(\varphi\) is true, then after the termin
     <x=0> x:= x+1 <x>0>
 \]
 
-\subsubsection{Hoare Calculus}
+\subsection{Hoare Calculus}
 
 To read the following expression which look like fraction but are not, use the following:
 
@@ -123,10 +121,14 @@ This rule allows us to compress our conditions.
 
 \textbf{Example:}
 
-\(<\text{true}>\) 
+
+\begin{verbatim}
+<true> 
 x = 5;
 res = x * x + 6;
-\(<\text{res } = 31>\)
+<res = 31>
+\end{verbatim}
+
 
 \emph{Condition Rule I}
 
@@ -199,7 +201,7 @@ holds for the entire loop.
 
 \textbf{Example:}
 
-In this case the invariant is \(i! res = n!\)
+In this case the invariant is \(i! res = n!\).
 
 \begin{verbatim}
     <true>
@@ -225,7 +227,7 @@ For each loop \textbf{while} \((B) \{P\}\) we have to find some \textbf{int} exp
 called the \emph{variant} such that 
 
 \[
-    B \implies V \ge 0 \text{ and } <V = m \land B> P <V < m> >
+    B \implies V \ge 0 \text{ and } <V = m \land B> P <V < m> >.
 \]
 
 In simpler words, we look for an integer expression which continuously decreases.

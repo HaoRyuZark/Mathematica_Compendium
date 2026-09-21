@@ -1,4 +1,3 @@
-
 \chapter{Modular Arithmetic}
 
 We define an equivalence relation 
@@ -7,9 +6,9 @@ We define an equivalence relation
     a \cong b \mod n \iff n | (a - b) \land  a,b \in \Z.
 \]
 
-This means that both have the same remainder when divided by \(n\).
+This means that both have the \textbf{same remainder} when divided by \(n\).
 
-\subsection{Residual Classes and Residual Class Rings}
+\section{Residual Classes and Residual Class Rings}
 
 Because we have an equivalence relation, we can classify the partitions of our set \(\Z\) into classes, which we will call \emph{residual classes}.
 
@@ -21,35 +20,35 @@ Because we have an equivalence relation, we can classify the partitions of our s
 
 The set of all residual classes can be written as \(\Z / n \Z\), where \(n\) is the modulus. 
 
-\subsection{Properties}
+\section{Properties}
 
-\subsubsection*{Addition}
+\begin{itemize}
+    
+    \item  
+    \[
+        (a + b) \mod n = (a \mod n + b \mod n) \mod n
+    \]
 
-\[
-    (a + b) \mod n = (a \mod n + b \mod n) \mod n
-\]
+    \item 
+    \[
+        (a * b) \mod n = (a \mod n * b \mod n) \mod n
+    \]
 
-\subsubsection*{Multiplication}
+    \item 
+    \[
+        (a^m) \mod n = ({(a \mod n)}^n) \mod n
+    \]
 
-\[
-    (a * b) \mod n = (a \mod n * b \mod n) \mod n
-\]
+    \item 
+    \[
+        \left(\frac{a}{b}\right) \mod n \ne  \frac{a \mod n}{b \mod n}
+    \]
 
-\subsubsection*{Exponentiation}
+\end{itemize}
 
-\[
-    (a^m) \mod n = ({(a \mod n)}^n) \mod n
-\]
+\section{General Division Rules}
 
-\subsubsection*{Division}
-
-\[
-    \left(\frac{a}{b}\right) \mod n \ne  \frac{a \mod n}{b \mod n}
-\]
-
-\subsection{General Division Rules}
-
-\subsubsection*{Sum Rules}
+\subsection*{Sum Rules}
 
 If the number \(a\) can be expressed as a sum and \(b\) is a common divisor of all the terms, 
 then \(b\) is also a divisor of \(a\).
@@ -58,7 +57,7 @@ then \(b\) is also a divisor of \(a\).
 
 \( 742 = 700 + 42 \). Then 7, as a common divisor of 700 and 42, is a divisor of 742.
 
-\subsubsection*{Product Rule}
+\subsection*{Product Rule}
 
 If the number \(a\) can be written as a product of two factors and \(b\) is a divisor of one of these factors, then \(b\) is also a divisor of \(a\).
 
@@ -75,7 +74,7 @@ If the number \(a\) has \(b\) as a divisor, then \( \frac{a}{b} \) is also a div
 
 3 is a divisor of 315. Then \( 105 = \frac{315}{3} \) is also a divisor of 315.
 
-\subsubsection*{Divisor Rule}
+\subsection*{Divisor Rule}
 
 If the number \(a\) has \(b\) as a divisor, then every divisor of \(b\) is also a divisor of 
 \(a\).
@@ -84,7 +83,7 @@ If the number \(a\) has \(b\) as a divisor, then every divisor of \(b\) is also 
 
 45 is a divisor of 450. Then 3, 5, 9, and 15 (divisors of 45) are also divisors of 450.
 
-\subsubsection*{Difference Rule}
+\subsection*{Difference Rule}
 
 If the number \(a\) can be expressed as a difference and \(b\) is a common divisor of the minuend 
 and subtrahend, then \(b\) is also a divisor of \(a\).
@@ -93,7 +92,7 @@ and subtrahend, then \(b\) is also a divisor of \(a\).
 
 \( 686 = 700 - 14 \). Then 7, as a common divisor of 700 and 14, is a divisor of 686.
 
-\subsubsection*{Relative Prime Rule}
+\subsection*{Relative Prime Rule}
 
 If the number \(a\) has two relatively prime numbers \(b\) and \( c \) as divisors, then their 
 product \( b \cdot c \) is also a divisor of \(a\).
@@ -103,7 +102,7 @@ product \( b \cdot c \) is also a divisor of \(a\).
 1540 has the relatively prime numbers 7 and 11 as divisors. Then \( 77 = 7 \cdot 11 \) is also a divisor 
 of 1540.
 
-\subsection{Using Modular Arithmetic to Find the n-th Digit of a Large Number}
+\section{Using Modular Arithmetic to Find the n-th Digit of a Large Number}
 
 What is the last digit of the number \(13^{2023}\)?
 
@@ -115,12 +114,12 @@ We can continue this process, and we will notice a pattern. After some iteration
     (13^{2020} 13) \mod 10 = 7.
 \]
 
-\subsection{Gaussian Brackets}
+\section{Gaussian Brackets}
 
 in specific ways:
 The Gaussian brackets refer to two closely related functions used to round real numbers to integers in specific ways:
 
-\subsubsection*{Floor Function}
+\subsection{Floor Function}
 
 The floor function, denoted by \(\lfloor x \rfloor\), gives the greatest integer less than or equal 
 to a real number \(x\).
@@ -129,7 +128,7 @@ to a real number \(x\).
 
 \(\lfloor 3.7 \rfloor = 3\), \(\lfloor -1.2 \rfloor = -2\)
 
-\subsubsection*{Ceiling Function} 
+\subsection{Ceiling Function} 
     
 The ceiling function, denoted by \(\lceil x \rceil\), gives the smallest integer greater than or 
 equal to a real number \(x\).
@@ -141,7 +140,7 @@ equal to a real number \(x\).
 and rounding operations, where precise integer bounds of real numbers are required.
 These functions are particularly useful in number theory, computer science, and rounding operations, where precise integer bounds of real numbers are required.
 
-\subsection{Residual Class Ring modulo \texorpdfstring{\(n\)}{}}
+\section{Residual Class Ring modulo \texorpdfstring{\(n\)}{}}
 
 Given \(n \in \N\), we define the relation \(\sim_n\) for \(\Z\).
 

@@ -1,11 +1,12 @@
- 
 \chapter{Relational Algebra}
+
+\emph{Relational algebra} is a \emph{formal, procedural query language} for the relational model. It provides a set of operators that take relations (tables) as input and produce relations as output.
 
 \section{Relations In Set Theory}
 
 In mathematics, a \emph{relation} is a set formed from the Cartesian product of two sets. It contains ordered pairs \((a,b)\).
 
-\subsection{The Cartesian Product for Relation Algebra}
+\section{The Cartesian Product for Relation Algebra}
 
 The Cartesian Product for our entities is defined as:
 
@@ -18,11 +19,7 @@ special product is \( |S \times T| = |S| \cdot |T| \).
 
 In relational algebra, relations represent tables and their rows are the tuples.
 
-\section{Relational Algebra}
-
-Relational Algebra is a \emph{formal, procedural query language} for the relational model. It provides a set of operators that take relations (tables) as input and produce relations as output.
-
-\subsection{Axioms of Relational Algebra}
+\section{Axioms of Relational Algebra}
 
 Relational Algebra is based on \emph{set theory} and satisfies the following axioms:
 
@@ -60,7 +57,7 @@ Relation \(A(id, value)\) is a set of tuples:
     A = \{(1, X), (2, Y)\}
 \]
 
-\subsection{Identifier and Schema}
+\section{Identifier and Schema}
 
 We define:
 
@@ -70,7 +67,7 @@ We define:
 
 \(\mathrm{ident}\) returns the names of the attributes of the relation, while \(\mathrm{schema}\) returns the attributes and their corresponding types.
 
-\subsection{Domain of an Attribute}
+\section{Domain of an Attribute}
 
 The \emph{domain} of an attribute \(a\) in a relation \(R\) is the set of all possible values that \(a\) can take in \(R\).
 
@@ -117,9 +114,7 @@ For the union of relations they have to be \emph{union compatible} which means:
 \textbf{Example:}
 
 \begin{verbatim}
-    SELECT * FROM T
-    UNION
-    SELECT * FROM S;
+    SELECT * FROM T UNION SELECT * FROM S;
 \end{verbatim}
 
 \subsection{Set Difference \texorpdfstring{\((\setminus)\)}{}}
@@ -133,13 +128,9 @@ Returns tuples in one relation but not in another.
 \textbf{Example:}
 
 \begin{verbatim}
-    SELECT * FROM T
-    EXCEPT
-    SELECT * FROM S;
+    SELECT * FROM T EXCEPT SELECT * FROM S;
     -- or in some SQL dialects:
-    SELECT * FROM T
-    MINUS
-    SELECT * FROM S;
+    SELECT * FROM T MINUS SELECT * FROM S;
 \end{verbatim}
 
 \subsection{Intersection \texorpdfstring{\(\cap\)}{}}
@@ -153,9 +144,7 @@ Returns tuples common to both relations.
 \textbf{Example:}
 
 \begin{verbatim}
-    SELECT * FROM T
-    INTERSECT
-    SELECT * FROM S;
+    SELECT * FROM T INTERSECT SELECT * FROM S;
 \end{verbatim}
 
 \subsection{Selection \texorpdfstring{\(\sigma\)}{}}
@@ -201,9 +190,7 @@ Tuples in either relation but not in both.
 \textbf{Example:}
 
 \begin{verbatim}
-    (SELECT * FROM T EXCEPT SELECT * FROM S)
-    UNION
-    (SELECT * FROM S EXCEPT SELECT * FROM T);
+    (SELECT * FROM T EXCEPT SELECT * FROM S) UNION (SELECT * FROM S EXCEPT SELECT * FROM T);
 \end{verbatim}
 
 \subsection{Rename \texorpdfstring{\(\rho\)}{}}
@@ -279,8 +266,8 @@ Let \(C = \mathrm{ident}(R) \cap \mathrm{ident}(S)\) be the common attributes.
 \textbf{Example:}
 
 \begin{verbatim}
-    SELECT * FROM T NATURAL JOIN S;
     -- assumes T and S have common column names
+    SELECT * FROM T NATURAL JOIN S;
 \end{verbatim}
 
 \subsection{Semi-Join}
@@ -306,8 +293,7 @@ where \(C = \mathrm{ident}(R) \cap \mathrm{ident}(S)\).
 \textbf{Example:}
 
 \begin{verbatim}
-    SELECT T.* FROM T WHERE EXISTS 
-    (SELECT 1 FROM S WHERE T.a = S.d);
+    SELECT T.* FROM T WHERE EXISTS (SELECT 1 FROM S WHERE T.a = S.d);
     -- or using IN:
     SELECT * FROM T WHERE a IN (SELECT d FROM S);
 \end{verbatim}
@@ -380,7 +366,7 @@ Then:
 
 where \(X = \mathrm{ident}(R) \setminus \mathrm{ident}(S)\).
 
-\textbf{Example Concept}  
+\textbf{Example Concept:}  
 
 If \(A(id, value)\) contains all values in \(B(value)\), division returns the corresponding ID's.
 
@@ -486,7 +472,7 @@ The Armstrong axioms are given:
 
 These are not strictly axioms, but they are called that way.
 
-\subsection{Attribute Closure}
+\section{Attribute Closure}
 
 The \emph{attribute closure} \(AC(FD, x)\)is the set of all attributes reachable via functional dependency including 
 the starting point.
@@ -527,14 +513,14 @@ For a schema \(R\) with a set of functional dependencies \(FD\) we denote \(FC^c
 
 The following steps are always performed for the whole set of functional dependencies one after the other.
 
-\subsubsection*{Left-Reduction}
+\subsection{Left-Reduction}
 
 For all \(\alpha \to \beta \in FD\) check if there is a redundant \(a \in \alpha\). \(\beta \subseteq AC(FD, \alpha \setminus a)\).
 If that is the case then replace \(\alpha \to \beta\) with \(\alpha \setminus a \to \beta\).
 
 After that 
 
-\subsubsection*{Right-Reduction}
+\subsection{Right-Reduction}
 
 For all \(\alpha \to \beta \in FD\) check if there is a redundant \(b \in \beta\). 
 \(\beta \subseteq AC(FD \setminus \{\alpha \to \beta \} \cup \{\alpha \to \beta \setminus b, \alpha\})\).
@@ -542,13 +528,13 @@ If that is the case then replace \(\alpha \to \beta\) with \(\alpha \to \beta \s
 
 Then 
 
-\subsubsection*{Elimination}
+\subsection{Elimination}
 
 Remove \(\alpha \to \emptyset\).
 
 And finally
 
-\subsubsection*{Union}
+\subsection{Union}
 
 If \(\alpha \to \beta_1\) and \(\alpha \to \beta_2\) then combine them into \(\alpha \to \beta_1, \beta_2\).
 
@@ -594,7 +580,6 @@ Using \(\{A \to DEF, A \to BC, D \to EF\}\) we proceed with the first dependency
 \[
     FC^c = \{A \to BCD, D \to EF\}
 \]
-
 
 Important notes:
 
@@ -648,11 +633,11 @@ Given a relation which needs to be split into more relations:
 
 \end{itemize}
 
-\subsection{Normal Forms}
+\section{Normal Forms}
 
 A \emph{normalized} table are protected from data inconsistencies and make the tables more readable.
 
-\subsubsection*{I Normal Form}
+\subsection{I Normal Form}
 
 \begin{itemize}
     
@@ -668,7 +653,7 @@ A \emph{normalized} table are protected from data inconsistencies and make the t
 
 This normal is mostly given in relational algebra problems.
 
-\subsubsection*{II Normal Form:} 
+\subsection{II Normal Form:} 
 
 Each non-key attribute must depend on the entire primary key.
 
@@ -684,7 +669,7 @@ The relation is in the second normal form if it is already in the first normal f
 
 Candidates \(AD, BD\), not prime attribute \(C\). Thus, it obeys the 2NF.
 
-\subsubsection*{III Normal Form} 
+\subsection{III Normal Form} 
 
 A schema \(R\) is in the 3NF if for all \( \alpha \to \beta \in FD\) at least one of the following statements 
 is true: 
@@ -702,7 +687,7 @@ is true:
 The relation is in the third normal form if it is already in the second normal form and each \emph{non-key} attribute 
 is not dependent on other \emph{non-key} attribute.
  
-\subsubsection*{Boyce-Codd III Normal Form} 
+\subsection{Boyce-Codd III Normal Form} 
 
 A schema \(R\) is in the BCNF if for all \( \alpha \to \beta \in FD\) at least one of the following statements 
 is true: 
@@ -721,15 +706,15 @@ Every attribute in a table should depend on the key, the whole key, and nothing 
 
 \(R = \{A,B,C,D\}, \quad FD = \{A \to BC, C \to D\}\), not in 3NF due to \(D\) being dependent on \(C\).
 
-\subsubsection*{IV Normal Form} 
+\subsection{IV Normal Form} 
 
 Multivalued dependencies in a table must be multivalued dependencies on the key.
 
-\subsubsection*{V Normal Form} 
+\subsection{V Normal Form} 
 
 Our table in the forth normal form cannot be describable as the logical result of joining some other tables.
 
-\subsection{Synthesis Algorithm}
+\section{Synthesis Algorithm}
 
 The \emph{synthesis algorithm} transforms a relation schema into a set of schemas that are in Third Normal Form (3NF), 
 while ensuring \emph{lossless join} and \emph{dependency preservation}. The algorithm proceeds as follows:
@@ -777,14 +762,14 @@ with
     F = \{ ADE \to BE,\; B \to ACD,\; D \to AC,\; ACE \to BD,\; C \to B \}.
 \]
 
-\emph{Step 1: Right-hand side decomposition}
+\textbf{Step 1: Right-hand side decomposition}
 
 \begin{align*}
     & ADE \to B,\quad ADE \to E,\quad B \to A,\quad B \to C,\quad B \to D, \\
     & D \to A,\quad D \to C,\quad ACE \to B,\quad ACE \to D,\quad C \to B
 \end{align*}
 
-\emph{Step 2: Left reduction}
+\textbf{Step 2: Left reduction}
 
 \begin{itemize}
 
@@ -806,7 +791,7 @@ Current set:
     \{ D \to B,\; B \to A,\; B \to C,\; B \to D,\; D \to A,\; D \to C,\; C \to B,\; C \to D \}
 \]
 
-\emph{Step 3: Remove redundant dependencies}
+\textbf{Step 3: Remove redundant dependencies}
 
 \begin{itemize}
 
@@ -824,7 +809,7 @@ Thus, the canonical cover is:
     F_c = \{ B \to A,\; B \to D,\; D \to C,\; C \to B \}
 \]
 
-\emph{Step 4: Construct relation schemas}
+\textbf{Step 4: Construct relation schemas}
 
 \begin{align*}
     R_1 &= \{B, A\}, \\
@@ -833,11 +818,11 @@ Thus, the canonical cover is:
     R_4 &= \{C, B\}
 \end{align*}
 
-\emph{Step 5: Remove redundant schemas}
+\textbf{Step 5: Remove redundant schemas}
 
 None of these schemas is contained in another, so all are kept.
 
-\emph{Step 6: Test for candidate keys}
+\textbf{Step 6: Test for candidate keys}
 
 For the original relation \(R = \{A, B, C, D, E\}\), attribute \(E\) does not appear on any right-hand side and must be part of 
 every key.
@@ -860,7 +845,7 @@ Since no schema contains \(\{B, E\}\), we add:
     \{ \{B,A\},\; \{B,D\},\; \{D,C\},\; \{C,B\},\; \{B,E\} \}
 \]
 
-\subsection{Decomposition Algorithm}
+\section{Decomposition Algorithm}
 
 The \emph{decomposition algorithm} transforms a relation schema into Boyce-Codd Normal Form (BCNF) by repeatedly decomposing 
 relations that violate the BCNF condition. A relation schema \(R\) is in BCNF if for every non-trivial functional dependency 

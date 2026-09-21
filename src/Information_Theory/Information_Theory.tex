@@ -1,4 +1,3 @@
-
 \chapter{Information Theory}
 
 \emph{Information theory} is a branch of applied mathematics and electrical engineering involving the quantification of information. 
@@ -12,7 +11,7 @@ An important note, depending on the the type of random variable: discrete or con
 The \emph{surprise} of an event \(X = x\) is defined as 
 
 \[
-    S(x) = \log \left(\frac{1}{P(X = x)}\right) = - \log(P(X = x))
+    S(x) = \log \left(\frac{1}{P(X = x)}\right) = - \log(P(X = x)).
 \]
 
 The intuition behind this definition is the inverse relationship between a high probability and the amount of information it delivers. An event with a high probability is not 
@@ -25,46 +24,46 @@ The logarithm is used to get rid of discontinuities and simplify work.
 \emph{Entropy} is defined as the \textbf{expected surprise} of an event of a random variable \(X\) 
 
 \[
-     H(X) = -\sum_{x \in X} P(X = x) S(x) = -\sum_{x \in X} P(X = x) \log(P(X = x))
+     H(X) = -\sum_{x \in X} P(X = x) S(x) = -\sum_{x \in X} P(X = x) \log(P(X = x)).
 \]
 
 Or in a simpler way
 
 \[
-    H(X) = \sum p(x) \log\left(\frac{1}{p(x)}\right)
+    H(X) = \sum p(x) \log\left(\frac{1}{p(x)}\right).
 \]
 
-\subsubsection{Conditional Entropy}
+\subsection{Conditional Entropy}
 
 \emph{Conditional Entropy} is the expected surprise of an event of random variable \(X\) given the realization of another event of a random variable \(Y\). 
 It is defined as
 
 \[
-    H(X | Y) = -\sum_{y \in Y} P(Y = y) \sum_{x \in X} P(X = x | Y = y) \log(P(X = x | Y = y))
+    H(X | Y) = -\sum_{y \in Y} P(Y = y) \sum_{x \in X} P(X = x | Y = y) \log(P(X = x | Y = y)).
 \]
 
 For the intuition: Given an event \(y\) how is our avarage surprise under such conditions?
 
-\subsection{Mutual Information}
+\section{Mutual Information}
 
 \emph{Mutual Information} measures how much information one random variable \(X\) contains about another random variable \(Y\). It is defined as
 
 \[
-    I(X; Y) = \sum_{x \in X} \sum_{y \in Y} P(X = x, Y = y) \log \left[\frac{P(X = x, Y = y)}{P(X = x) P(Y = y)} \right]
+    I(X; Y) = \sum_{x \in X} \sum_{y \in Y} P(X = x, Y = y) \log \left[\frac{P(X = x, Y = y)}{P(X = x) P(Y = y)} \right].
 \]
 
 If one of the random variables is continuous then we can make bins for different range of values and then proceed 
 to work with the bins as the discrete classes.
 
 \[
-    I(X; Y) = H(X) - H(X | Y)
+    I(X; Y) = H(X) - H(X | Y).
 \]
 
 For the intuition, given a certain entropy (uncertainty) of \(X\) after you observe \(Y\) you have a new entropy \(H(X | Y)\) and the difference between the two is the mutual information.
 
 Imagine that after observing \(Y\) the amount of entropy of \(X\) is reduced by half, then \(Y\) contains a lot of information about \(X\).
 
-\subsection{Cross Entropy}
+\section{Cross Entropy}
 
 \emph{Cross Entropy} is a measure of the difference between two probability distributions for a given random variable or set of 
 events.
@@ -93,7 +92,7 @@ It also has the following properties:
 
 \end{itemize}
 
-\subsection{KL-Divergence}
+\section{KL-Divergence}
 
 \emph{Kullback-Leibler Divergence} is a measure of how one probability distribution \(Q\) diverges from a second 
 expected probability distribution \(P\).
@@ -108,11 +107,11 @@ It measures surprise from using \(Q\) to approximate \(P\). The reverse of the c
 We can also write it as 
 
 \[
-    D_{KL}(P \| Q) = H(P, Q) - H(P)
+    D_{KL}(P \| Q) = H(P, Q) - H(P).
 \]
 
 
-\subsection{Information Gain}
+\section{Information Gain}
 
 \emph{Information Gain} measures how much information a feature \(A\) gives us about the class label \(Y\). It is defined as
 
@@ -141,8 +140,7 @@ Suppose we have a dataset \(S\) with 10 samples, where 6 belong to class A and 4
 
 Now, let's say we split the dataset based on a feature \(A\) that can take two values: \(v_1\) and \(v_2\). After the split, we have:
 
-- Subset \(S_{v_1}\) with 4 samples (3 from class A and 1 from class B)
-- Subset \(S_{v_2}\) with 6 samples (3 from class A and 3 from class B)
+Subset \(S_{v_1}\) with 4 samples (3 from class A and 1 from class B) and subset \(S_{v_2}\) with 6 samples (3 from class A and 3 from class B)
 
 The entropy for each subset is calculated as:
 
@@ -166,7 +164,7 @@ Therefore, the information gain from splitting on feature \(A\) is:
     IG(S, A) = H(S) - \sum_{v \in \text{values}(A)} \frac{|S_v|}{|S|} H(S_v) \approx 0.970 - 0.924 = 0.046
 \]  
 
-\subsection{Gini Impurity}
+\section{Gini Impurity}
 
 \emph{Gini Impurity} is a measure of how often a randomly chosen element from the set would be incorrectly labeled if it was randomly 
 labeled according to the distribution of labels in the subset. It is calculated as

@@ -1,18 +1,16 @@
+\chapter{Propositional Logic}
 
-\chapter{Logic}
-
-\section{Propositional Logic}
-
-Propositional logic is also called Boolean logic as 
-it works on 0 and 1. In propositional logic, we use symbolic variables to represent the 
-logic, and we can use any symbol for a representing a proposition, such 
+\emph{Propositional logic}, also called Boolean logic is one the foundational branches of mathematics, and thus, the 
+first chapter of this book. In propositional logic, we use symbolic variables to represent the logic, and we can use any symbol for a representing a proposition, such 
 \(p,q,r,s,t,\) etc. Propositions can be either \emph{true} (\(1\), T) or \emph{false} (\(0\), F) but it cannot be both.
 
-\subsection{Predicates}
+\textbf{Remark}: In programming languages like C, any other number greater than 0 is treaated as T, w
 
-It is statement which contains variables linked by some property stated in the language of formal logic whose value can be true or false.
+\section{Predicates}
 
-\subsection{Predicate Substitution}
+A \emph{predicate} is statement which contains variables linked by some property stated in the language of formal logic whose value can be true or false.
+
+\section{Predicate Substitution}
 
 Given a predicate \(P\) on the variable \(v\) we can substitute every free instance of \(v\) with the term \(v\) to extend 
 our predicate to another variable space.
@@ -21,17 +19,17 @@ our predicate to another variable space.
 	[t/v] P
 \]
 
+
 Types of substitution:
 
 \begin{itemize}
 	
-	\item Full replacement: \([y/x]\forall z((z = x) \land (y \in x))\), converted to \(\forall z((z = y) \land (y \in y))\),
+	\item \emph{Full replacement}: \([y/x]\forall z((z = x) \land (y \in x))\), converted to \(\forall z((z = y) \land (y \in y))\).
 
-	\item Partial replacement: \([y/ x]x = y \land \forall x (x \in y)\), the \(x\) of \(\forall x(x \in y)\) is not a free variable, hence it can not be
-	replaced completely, just \(y = y \land \forall x (x \in y)\)
+	\item \emph{Partial replacement}: \([y/ x]x = y \land \forall x (x \in y)\), the \(x\) of \(\forall x(x \in y)\) is not a free variable, hence it can not be
+	replaced completely, just \(y = y \land \forall x (x \in y)\).
 
 \end{itemize}
-
 
 \textbf{Example:}
 
@@ -42,8 +40,6 @@ Let \(P:= x = a\) be a predicate in \(x\) and \(a\). We apply:
 \[
 	[a /x](x = a) \text{ to } a = a \text{, then by extension of our predicate } \forall a (a = a).
 \]
-
-\QED
 
 Prove \(\forall a \forall b (a = b \implies b = a )\):
 
@@ -62,7 +58,8 @@ us \(a = x\), \(a = b\) and finally \(a = c\).
 
 \QED
 
-\subsection{Logic Operators and Truth Tables}
+\section{Logic Operators and Truth Tables}
+
 \smallskip
 \begin{multicols}{2}
 
@@ -72,8 +69,8 @@ us \(a = x\), \(a = b\) and finally \(a = c\).
 		\toprule
 		\(p\) & \(\neg q\) \\
 		\midrule
-		0   & 1        \\
-		1   & 0        \\
+		T   & F        \\
+		F   & T        \\
 		\bottomrule
 	\end{tabular}
 
@@ -85,10 +82,10 @@ us \(a = x\), \(a = b\) and finally \(a = c\).
 		\toprule
 		\(p\) & \(q\) & \(p \land q\) \\
 		\midrule
-		0   & 0   & 0           \\
-		0   & 1   & 0           \\
-		1   & 0   & 0           \\
-		1   & 1   & 1           \\
+		T   & T   & T           \\
+		T   & F   & F           \\
+		F   & T   & F           \\
+		F   & F   & F           \\
 		\bottomrule
 	\end{tabular}
 
@@ -100,10 +97,10 @@ us \(a = x\), \(a = b\) and finally \(a = c\).
 		\toprule
 		\(p\) & \(q\) & \(p \lor q\) \\
 		\midrule
-		0   & 0   & 0          \\
-		0   & 1   & 1          \\
-		1   & 0   & 1          \\
-		1   & 1   & 1          \\
+		T   & T   & T          \\
+		T   & F   & T          \\
+		F   & T   & T          \\
+		F   & F   & F          \\
 		\bottomrule
 	\end{tabular}
 
@@ -115,10 +112,10 @@ us \(a = x\), \(a = b\) and finally \(a = c\).
 		\toprule
 		\(p\) & \(q\) & \(p \implies q\) \\
 		\midrule
-		0   & 0   & 1        \\
-		0   & 1   & 1        \\
-		1   & 0   & 0        \\
-		1   & 1   & 1        \\
+		T   & T   & T        \\
+		T   & F   & F        \\
+		F   & T   & T        \\
+		F   & F   & T        \\
 		\bottomrule
 	\end{tabular}
 
@@ -130,10 +127,10 @@ us \(a = x\), \(a = b\) and finally \(a = c\).
 		\toprule
 		\(p\) & \(q\) & \(p \iff q\) \\
 		\midrule
-		0   & 0   & 1         \\
-		0   & 1   & 0         \\
-		1   & 0   & 0         \\
-		1   & 1   & 1         \\
+		T   & T   & T         \\
+		T   & F   & F         \\
+		F   & T   & F         \\
+		F   & F   & T         \\
 		\bottomrule
 	\end{tabular}
 
@@ -145,10 +142,10 @@ us \(a = x\), \(a = b\) and finally \(a = c\).
 		\toprule
 		\(p\) & \(q\) & \(p \oplus q\) \\
 		\midrule
-		0   & 0   & 0            \\
-		0   & 1   & 1            \\
-		1   & 0   & 1            \\
-		1   & 1   & 0            \\
+		T   & T   & F            \\
+		T   & F   & T            \\
+		F   & T   & T            \\
+		F   & F   & F            \\
 		\bottomrule
 	\end{tabular}
 
@@ -160,10 +157,10 @@ us \(a = x\), \(a = b\) and finally \(a = c\).
 		\toprule
 		\(p\) & \(q\) & \(p \downarrow q\) \\
 		\midrule
-		0   & 0   & 1                \\
-		0   & 1   & 0                \\
-		1   & 0   & 0                \\
-		1   & 1   & 0                \\
+		T   & T   & F                \\
+		T   & F   & F                \\
+		F   & T   & F                \\
+		F   & F   & T                \\
 		\bottomrule
 	\end{tabular}
 
@@ -175,22 +172,22 @@ us \(a = x\), \(a = b\) and finally \(a = c\).
 		\toprule
 		\(p\) & \(q\) & \(p \uparrow q\) \\
 		\midrule
-		0   & 0   & 1              \\
-		0   & 1   & 1              \\
-		1   & 0   & 1              \\
-		1   & 1   & 0              \\
+		T   & T   & F              \\
+		T   & F   & T              \\
+		F   & T   & T              \\
+		F   & F   & T              \\
 		\bottomrule
 	\end{tabular}
 
 \end{multicols}
 \medskip
 
-\subsubsection{Implications}
+\subsection{Implications}
 
 As a side not for the \emph{implication} we can think about it as \emph{if, then}. For the cases 
 false, true; and false false; we call them \emph{vacously} true. From a false premise can come everything out.
 
-\subsection{Tautology and Contradiction}
+\section{Tautology and Contradiction}
 
 \emph{Tautology}: A logical formula that is always true.
 
@@ -212,101 +209,101 @@ Common tautologies
 
 \emph{Contradiction}: A formula that is always false.
 
-\subsection{Logical Equivalences}
+\section{Logical Equivalences}
 
-\subsubsection*{Commutative Laws}
+\emph{Commutative Laws}
 
 \[
 	p \land q \iff q \land p \qquad p \lor q \iff q \lor p
 \]
 
-\subsubsection*{Associative Laws}
+\emph{Associative Laws}
 
 \[
 	(p \land q) \land r \iff p \land (q \land r) \qquad (p \lor q) \lor r \iff p \lor (q \lor r)
 \]
 
-\subsubsection*{Distributive Laws}
+\emph{Distributive Laws}
 
 \[
 	p \land (q \lor r) \iff (p \land q) \lor (p \land r) \qquad
 	p \lor (q \land r) \iff (p \lor q) \land (p \lor r)
 \]
 
-\subsubsection*{Identity Laws}
+\emph{Identity Laws}
 
 \[
 	p \land \text{T} \iff p \qquad p \lor \text{F} \iff p
 \]
 
-\subsubsection*{Negation Laws}
+\emph{Negation Laws}
 
 \[
 	p \lor \sim p \iff \text{T} \qquad p \land \sim p \iff \text{F}
 \]
 
-\subsubsection*{Double Negation Law}
+\emph{Double Negation Law}
 
 \[
 	\sim(\sim p) \iff p
 \]
 
-\subsubsection*{Idempotent Laws}
+\emph{Idempotent Laws}
 
 \[
 	p \land p \iff p \qquad p \lor p \iff p
 \]
 
-\subsubsection*{Universal Bound Laws}
+\emph{Universal Bound Laws}
 
 \[
 	p \lor \text{T} \iff \text{T} \qquad p \land \text{F} \iff \text{F}
 \]
 
-\subsubsection*{De Morgan’s Laws}
+\emph{De Morgan’s Laws}
 
 \[
 	\sim (p \land q) \iff (\sim p) \lor (\sim q) \qquad
 	\sim (p \lor q) \iff (\sim p) \land (\sim q)
 \]
 
-\subsubsection*{Absorption Laws}
+\emph{Absorption Laws}
 
 \[
 	p \lor (p \land q) \iff p \qquad p \land (p \lor q) \iff p
 \]
 
-\subsubsection*{Conditional Laws}
+\emph{Conditional Laws}
 
 \[
 	(p \implies q) \iff (\sim p \lor q) \qquad \sim(p \implies q) \iff (p \land \sim q)
 \]
 
-\subsubsection*{Complement Law}
+\emph{Complement Law}
 
 \[
 	p \lor \neg p \iff \text{T} \qquad p \land \neg p \iff \text{F}
 \]
 
-\subsubsection*{Biconditional Law}
+\emph{Biconditional Law}
 
 \[
 	p \iff q \iff (p \implies q) \land (q \implies p)
 \]
 
-\subsubsection*{Transitivity Law}
+\emph{Transitivity Law}
 
 \[
 	(p \implies q) \land (q \implies r) \implies (p \Rightarrow r)
 \]
 
-\subsubsection*{Indirect Proof (Contrapositive)}
+\emph{Indirect Proof (Contrapositive)}
 
 \[
 	(p \implies q) \iff (\neg q \implies \neg p)
 \]
 
-\subsubsection*{Disjunctive Syllogism (Disjunctive Exclusion)}
+\emph{Disjunctive Syllogism (Disjunctive Exclusion)}
 
 \[
 	p \nabla q \equiv (p \lor q) \land \neg p \implies q
@@ -316,7 +313,7 @@ Common tautologies
 	p \nabla q \equiv(p \land q) \lor \neg  (p \land q)
 \]
 
-\subsection{Truth Tables}
+\section{Truth Tables}
 
 \emph{Truth tables} are a fundamental tool in logic that systematically show the truth value
 (true or false) of a compound statement for every possible combination of the truth values of 
@@ -341,12 +338,10 @@ under which a complex statement is true or false.
 	\end{tabular}
 \end{center}
 
-\subsubsection{Filling a truth table}
+\subsection{Filling A Truth Table}
 To fill a truth table for a logical expression with truth values (True or False), you follow a 
 specific order for the input variables. This order ensures that all possible combinations of truth values 
 for the variables are covered.
-
-\subsubsection{General Procedure:}
 
 \begin{enumerate}
 
@@ -370,7 +365,7 @@ for the variables are covered.
 
 \end{enumerate}
 
-\textbf{Example: } 
+\textbf{Example:} 
 
 For 3 variables, there are \(2^3 = 8\) possible combinations of truth values. The truth values are filled 
 in the following order:
@@ -434,14 +429,14 @@ conjunctions of literals, where each conjunction is connected by disjunctions.
 
 To find the DNF in a truth table take the rows of the final result where there are
 true statements and bind the propositions that generated it with an AND inside parenthesis.
-Repeat it with each of true rows and connect all parenthesis with OR's
+Repeat it with each of true rows and connect all parenthesis with OR's.
 
-\textbf{Example of DNF:}
+\textbf{Example:}
 
 Consider the logical expression:
 
 \[
-	(p \land q) \lor (\neg p \land r) \lor (q \land \neg r)
+	(p \land q) \lor (\neg p \land r) \lor (q \land \neg r).
 \]
 
 This is in DNF because it is a disjunction (OR) of conjunctions (ANDs) of literals.
@@ -456,7 +451,7 @@ To find the CNF proceed just as the DNF but with the false rows and instead
 of ANDs inside the parenthesis use OR and connect the terms with OR\@. 
 Also add a negation before each parenthesis.
 
-\textbf{Example of CNF:}
+\textbf{Example:}
 
 Consider the logical expression:
 
@@ -466,20 +461,20 @@ Consider the logical expression:
 
 This is in CNF because it is a conjunction (AND) of disjunctions (ORs) of literals.
 
-\subsection{Basis}
+\section{Basis}
 
 A \emph{Basis} in the field of logic is set of operations with which you can 
 represent all possible logic operations.
 
 \textbf{Example:} The set \(\{ \lnot, \land\}\)
 
-\subsection{Karnaugh Maps}
+\section{Karnaugh Maps}
 
 \emph{Karnaugh Maps (K-Maps)} are a graphical method used to simplify Boolean expressions. 
 The main goal of a K-map is to group adjacent cells that contain 1's in order to simplify the expression. 
 A K-map helps identify common terms, allowing the Boolean expression to be reduced to its simplest form.
 
-\subsubsection{Karnaugh Map for Two Variables}
+\subsection{Karnaugh Map For Two Variables}
 
 Consider the Boolean expression \( (A \lor (B \land \neg A \land \neg B)) \).
 
@@ -517,7 +512,7 @@ Here, we group the ones together to simplify the Boolean expression. The simplif
 	A \lor B
 \]
 
-\subsubsection{Karnaugh Map for Three Variables}
+\subsection{Karnaugh Map For Three Variables}
 
 Now, let's consider the expression \( \neg C \). This expression only 
 depends on one variable, but for illustration, we will use a 
@@ -560,10 +555,10 @@ The corresponding K-map for three variables \(A\), \(B\), and \(C\) is:
 We see that the ones are grouped in a column, leading to the simplified Boolean expression:
 
 \[
-	\neg C
+	\neg C.
 \]
 
-\subsubsection{Solving a Karnaugh Map}
+\subsection{Solving A Karnaugh Map}
 
 To solve a Karnaugh Map and simplify a Boolean expression, follow these steps:
 
@@ -574,11 +569,11 @@ To solve a Karnaugh Map and simplify a Boolean expression, follow these steps:
 	      
 		\begin{itemize}
 		 
-			\item 2 variables: \(2 \times 2\)
+			\item 2 variables: \(2 \times 2\).
 		 	
-			\item 3 variables: \(2 \times 4\)
+			\item 3 variables: \(2 \times 4\).
 		 
-			\item 4 variables: \(4 \times 4\)
+			\item 4 variables: \(4 \times 4\).
 		 
 			\item etc.
 	  
@@ -621,13 +616,13 @@ To solve a Karnaugh Map and simplify a Boolean expression, follow these steps:
 
 	\end{enumerate}
 
-\subsection{Mathematical Quantifiers}
+\section{Mathematical Quantifiers}
 
-\subsubsection{Universal Quantifier \texorpdfstring{\(\forall\)}{}}  
+\subsection{Universal Quantifier \texorpdfstring{\(\forall\)}{}}  
 
 Means \textbf{``for all''} or \textbf{``for every''}.
 
-{Negation:} \(\neg (\forall x)\,P(x) \equiv (\exists x)\, \neg P(x)\) ``Not all'' is the same as 
+\emph{Negation:} \(\neg (\forall x)\,P(x) \equiv (\exists x)\, \neg P(x)\) ``Not all'' is the same as 
 ``There exists one that does not''.
 
 \textbf{Example:} 
@@ -639,7 +634,7 @@ Means \textbf{``for all''} or \textbf{``for every''}.
 \(\exists x \in \R,\ x^2 < 0\) There exists a real number whose square is less than zero — this is 
 false.
 
-\subsubsection{Existential Quantifier \texorpdfstring{\(\exists\)}{}}  
+\subsection{Existential Quantifier \texorpdfstring{\(\exists\)}{}}  
 	
 Means \textbf{``there exists at least one''}.
  		
@@ -654,7 +649,7 @@ the same as ``For all, not''.
 
 \(\forall x \in \N,\ x \leq 10\) All natural numbers are less than or equal to 10 — this is false.
 
-\subsubsection{Unique Existential Quantifier \texorpdfstring{\(\exists ! \)}{}} 
+\subsection{Unique Existential Quantifier \texorpdfstring{\(\exists ! \)}{}} 
 	
 Means \textbf{``there exists exactly one''}.
 		
@@ -671,6 +666,5 @@ P(x_2)\) Either no such \(x\) exists, or more than one does.
 \(\exists x_1 \neq x_2 \in \R,\ x_1^2 = 4 \land x_2^2 = 4\) There are multiple solutions to 
 \( x^2 = 4 \).
 
-\subsection{Complex Statements}
 
 

@@ -1,18 +1,24 @@
-
 \chapter{Solving Polynomial Equations}
 
 In this section, we discuss the solution formulas for polynomial equations of degrees 2 and 3: the PQ 
-formula, the ABC formula, and the Cubic formula. We also derive each of them step by step.
+formula, the ABC formula, and the Cubic formula. We also derive each of them step by step. There 
+will be no mention of the formula for polynomials of degree 4 since it is not really used in worksheets.
 
-\subsection{The PQ Formula}
+\section{The PQ Formula}
 
-The PQ formula solves quadratic equations of the form:
+The PQ formula 
+
+\[
+    x_{1, 2} = -\frac{p}{2} \pm \sqrt{{\left(\frac{p}{2}\right)}^2 - q}
+\]
+
+solves quadratic equations of the form:
 
 \[
     x^2 + px + q = 0.
 \]
 
-\subsubsection{Derivation}
+\textbf{Proof:}
 
 To derive the PQ formula, we complete the square
 
@@ -25,13 +31,7 @@ To derive the PQ formula, we complete the square
     x &= -\frac{p}{2} \pm \sqrt{{\left(\frac{p}{2}\right)}^2 - q}.
 \end{align*}
 
-\subsubsection{PQ formula:}
-
-\[
-    x = -\frac{p}{2} \pm \sqrt{{\left(\frac{p}{2}\right)}^2 - q}
-\]
-
-\subsection{The Quadratic Formula}
+\section{The Quadratic Formula}
 
 The general quadratic equation is:
 
@@ -39,7 +39,13 @@ The general quadratic equation is:
     ax^2 + bx + c = 0 \quad\text{with } a \ne 0
 \]
 
-\subsubsection{Derivation of the PQ-Formula}
+which can solved by: 
+
+\[
+    x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
+\]
+
+\textbf{Proof:}
 
 We normalize the equation by dividing through by \(a\) and complete the square:
 
@@ -53,13 +59,7 @@ We normalize the equation by dividing through by \(a\) and complete the square:
     x &= \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
 \end{align*}
 
-\subsubsection{ABC formula:}
-
-\[
-    x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
-\]
-
-\subsection{The Cubic Formula}
+\section{The Cubic Formula}
 
 To solve a general cubic equation:
 
@@ -67,7 +67,17 @@ To solve a general cubic equation:
     ax^3 + bx^2 + cx + d = 0,
 \]
 
-we first reduce it to a depressed cubic using a substitution.
+we use the following formula known as the \emph{Cardano’s formula for depressed cubics}.
+
+\[
+    x = \sqrt[3]{-\frac{q}{2} + \sqrt{{\left(\frac{q}{2}\right)}^2 + {\left(\frac{p}{3}\right)}^3}} + 
+    \sqrt[3]{-\frac{q}{2} - \sqrt{{\left(\frac{q}{2}\right)}^2 + {\left(\frac{p}{3}\right)}^3}}
+\]
+
+
+\textbf{Proof:}
+
+We first need to transform our cubic polynomial it its depressed cubic using a substitution.
 
 \textbf{Step 1: Depress the cubic}
 
@@ -133,7 +143,7 @@ solve for \(A\) and \(B\), then take cube roots to get \(u\) and \(v\). The fina
     x = u + v
 \]
 
-\subsubsection{Cardano’s Formula (for depressed cubic)}
+Finally, 
 
 \[
     x = \sqrt[3]{-\frac{q}{2} + \sqrt{{\left(\frac{q}{2}\right)}^2 + {\left(\frac{p}{3}\right)}^3}} + 
@@ -142,4 +152,6 @@ solve for \(A\) and \(B\), then take cube roots to get \(u\) and \(v\). The fina
 
 This formula gives one real root. The other roots (if real) can be found using trigonometric or complex 
 methods depending on the discriminant.
+
+
 

@@ -1,15 +1,9 @@
+\chapter{State Machines}
 
-\section{State Machines}
+A \emph{state machine} is a computational model used to design algorithms, systems, or software by breaking them down into a finite number of \emph{states}, 
+\emph{transitions}, \emph{inputs}, and \emph{outputs}.  
 
-A \emph{state machine} (or \emph{finite state machine}, FSM) is a computational model used to 
-design algorithms, systems, or software by breaking them down into a finite number of \emph{states}, 
-\emph{transitions}, \emph{inputs}, and \emph{outputs}. It behaves according to a current state and can 
-transition to other states based on input conditions.
-
-State machines are widely used in fields like software engineering, digital electronics, linguistics, 
-and artificial intelligence to model dynamic systems.
-
-\subsection{Deterministic Finite Automaton (DFA)}  
+\section{Deterministic Finite Automaton (DFA)}  
 
 \emph{DFAs} are defined by a quintuple \((Q, \Sigma, \delta, q_0, F)\) which consists of \(Q\) states, 
 an input alphabet \(\Sigma\), a transition function \(\delta: Q \times \Sigma \to Q\), a start state \(q_0 \in Q\) and a set of 
@@ -56,14 +50,15 @@ Here our language is
     L = \{ w \in \{a,b\}^* \mid \text{the sequence of transitions on } w \text{ leads to state } q_3 \}
 \]
 
-\subsection{Non-Deterministic Finite Automaton (NFA)}  
+\section{Non-Deterministic Finite Automaton (NFA)}  
 
-An NFA is a state machine defined by a 5-tuple \((Q, \Sigma, \delta, q_0, F)\), where: 
+An \emph{NFA} is a state machine defined by a 5-tuple \((Q, \Sigma, \delta, q_0, F)\), where: 
 \(Q\) is a finite set of states, \(\Sigma\) is the input alphabet, 
 \(\delta: Q \times \Sigma \to \mathcal{P}(Q)\) is the transition function (mapping to a set of states),
 \(q_0 \in Q\) is the start state and \(F \subset Q\) is the set of accepting states.
 
 Unlike a DFA, an NFA allows:
+
 \begin{itemize}
     
     \item Multiple possible next states for a given input.
@@ -110,9 +105,9 @@ Here our language is still:
     L = \{ w \in \{a,b\}^* \mid \text{some computation path leads to } q_3 \}
 \]
 
-\subsection{Epsilon-NFA \texorpdfstring{(\(\varepsilon\)-NFA)}{}}  
+\section{Epsilon-NFA \texorpdfstring{(\(\varepsilon\)-NFA)}{}}  
 
-An \(\varepsilon\)-NFA is a nondeterministic finite automaton that allows transitions on the empty string 
+An \(\varepsilon\)-\emph{NFA} is a non-deterministic finite automaton that allows transitions on the empty string 
 \(\varepsilon\), meaning the automaton can change states without consuming input.
 
 It is defined as a 5-tuple \((Q, \Sigma, \delta, q_0, F)\), with the transition function:
@@ -125,7 +120,7 @@ This means the automaton have the following properties:
 
 \begin{itemize}
     
-    \item It can transition normally on \(a \in \Sigma\) or move to other states "for free" via 
+    \item It can transition normally on \(a \in \Sigma\) or move to other states ``for free'' via 
     \(\varepsilon\)-transitions.
     
     \item \emph{Epsilon-Closure:} It is the set of all states reachable via \(\varepsilon\) of a particular 
@@ -177,7 +172,7 @@ via the path:
 \]
 
 
-\subsection{How to Construct a State Machine}
+\section{How to Construct a State Machine}
 
 To construct a state machine it is necessary that an alphabet and a language is given. Then 
 the process revolves around identifying which words are a part of the language and how they can be  
@@ -213,7 +208,7 @@ a(bc)^m a^n \text{ and }\}\). Construct a DFA.
 \end{tikzpicture}
 \end{center}
 
-\subsection{Regular Expressions}
+\section{Regular Expressions}
 
 Regular expressions (regex) are a practical application of finite automaton (DFA/NFA). They define 
 search patterns for strings and are processed internally using state machines.
@@ -343,10 +338,9 @@ regular expressions:
 \end{tikzpicture}
 \end{center}
 
+\section{State Machine Conversions and Minimization}
 
-\subsection{State Machine Conversions and Minimization}
-
-\subsubsection{Non-Deterministic Finite Automaton (NFA) to Deterministic Finite Automaton (DFA)}
+\subsection{Non-Deterministic Finite Automaton (NFA) to Deterministic Finite Automaton (DFA)}
 
 The process for the conversion is the so called \emph{Power-Set-Construction-Method} or 
 \emph{Subset-Construction-Method}. 
@@ -432,7 +426,7 @@ Convert the NFA to a DFA
 \end{tikzpicture}
 \end{center}
 
-\subsubsection{Epsilon-NFA to DFA}
+\subsection{Epsilon-NFA to DFA}
 
 The process is very similar to the previous one. The catch is that we have to keep in mind that 
 our initial state is not only \(q_0\) but also all other from \(q_0\) reachable states via epsilon.
@@ -635,7 +629,7 @@ Here every state is a final state of the every state contains the final state in
 \end{tikzpicture}
 \end{center}
 
-\subsubsection{NFA to Regex}
+\subsection{NFA to Regex}
 
 Converting a regular expression into a NFA is not really difficult, but the other direction is not 
 so trivial. The most common approach to tackle this type of conversion is via a system of equations.
@@ -718,7 +712,7 @@ You are given some NFA with \(n\) states and \(m\) transitions. Set your system 
 \end{enumerate}
 
 
-\subsubsection{Arden's Lemma}
+\section{Arden's Lemma}
 
 Given \(X,Y\) as formal language with \(\varepsilon \notin Y\). It applies that:
 
@@ -860,12 +854,12 @@ This is the answer but we can simplify. Here \(((a+ b) + b(a+b))\) is a word of 
         &= (a+b)^* (a(b + ba)^* + b + baa(b + ba)^*)
 \end{align*}
 
-\subsection{Minimizing State Machines}
+\section{Minimizing State Machines}
 
 Minimization aims to create an equivalent DFA with the \emph{fewest number of states}. One widely used 
 method is the \emph{table-filling algorithm}.
 
-\subsubsection{Table Method for DFA Minimization}
+\subsection{Table Method For DFA Minimization}
 
 Steps:
 

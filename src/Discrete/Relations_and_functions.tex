@@ -1,9 +1,8 @@
-
 \chapter{Relations, Maps and Functions}
 
-\subsection{Relations}
+\section{Relations}
 
-Given two classes \(A\) and \(B\) a \emph{relation} \(R\) is subset of its Cartesian product \(R \subseteq A \times B\). 
+Given two classes \(A\) and \(B\) a \emph{relation} \(R\) is subset of its \emph{Cartesian product} \(R \subseteq A \times B\). 
 
 \textbf{Example:} 
 
@@ -23,11 +22,11 @@ Common types of relations include:
 
 \begin{itemize}
 
-	\item Functions (special relations where each input has exactly one output)
+	\item \emph{Functions}: (special relations where each input has exactly one output).
 
-	\item Equivalence relations (reflexive, symmetric, and transitive)
+	\item \emph{Equivalence relations}: (reflexive, symmetric, and transitive).
 
-	\item Partial orders (reflexive, antisymmetric, and transitive)
+	\item \emph{Partial orders}: (reflexive, antisymmetric, and transitive).
 
 \end{itemize}
 
@@ -53,30 +52,35 @@ Let \(A\) be a set and \(X\) be a relation on \(A\).
 
 \end{itemize}
 
-\subsection{Diagonal Graph}
+\section{Diagonal Graph}
 
-Given a relation, the graph \(I_A\) is defined as: \(\{(x, x) \mid x \in A\}\) and 
-denoted as the \emph{diagonal graph} of \(A\).
+Given a relation, the \emph{graph} \(I_A\) is defined as 
 
-\subsubsection*{Lemmi for Proofs}
+\[
+	\{(x, x) \mid x \in A\}
+\] 
+
+and is denoted as the \emph{diagonal graph} of \(A\).
+
+\subsection{Lemmi for Proofs}
 
 Let the graph \(G\) be a relation, on \(A\).
 
 \begin{itemize}
 	
-	\item \(G\) is symmetric if and only if \(G = G^{-1}\)
+	\item \(G\) is symmetric if and only if \(G = G^{-1}\).
 
-	\item \(G\) is antisymmetric if and only if \(G \cap G^{-1} \subseteq I_A\)
+	\item \(G\) is antisymmetric if and only if \(G \cap G^{-1} \subseteq I_A\).
 
 	\item \(G\) is transitive if and only if \(G \circ G \subseteq G\).
 
 \end{itemize}
 
-\subsection{Order Relation}
+\section{Order Relation}
 
 A relation is called an \emph{order relation} \(R \subseteq A \times A\) if it is reflexive, antisymmetric and transitive.
 
-\subsubsection*{Inverse Order Relation}
+\subsection{Inverse Order Relation}
 
 Given an order relation \(G\) on \(A\), then \(G^{-1}\) is also an order relation on \(A\).
 
@@ -84,13 +88,13 @@ Given an order relation \(G\) on \(A\), then \(G^{-1}\) is also an order relatio
 
 A relation is called a \emph{strict order relation} \(R \subseteq A \times A\) if it is irreflexive, antisymmetric and transitive.
 
-\subsubsection*{Inverse Strict Order Relation}
+\subsection{Inverse Strict Order Relation}
 
 Given a strict order relation \(G\) on \(A\), then \(G^{-1}\) is also a strict order relation on \(A\).
 
-\subsection{Equivalence relation}
+\section{Equivalence relation}
 
-An \emph{equivalence relation} is a relation \(R \subseteq A \times A\) that is symmetric, transitive and reflexive.
+An \emph{equivalence relation} is a relation \(R \subseteq A \times A\) that is \textbf{symmetric}, \textbf{transitive} and \textbf{reflexive}.
 
 \textbf{Example:}
 
@@ -98,7 +102,7 @@ An \emph{equivalence relation} is a relation \(R \subseteq A \times A\) that is 
 	R:= \{ (a,b) \in \N \times \N: a = b\}
 \]
 
-\subsubsection*{Properties of Equivalence Relations}
+\subsection{Properties of Equivalence Relations}
 
 Given the equivalence relations \(G\) and \(H\), the following properties apply:
 
@@ -109,15 +113,11 @@ Given the equivalence relations \(G\) and \(H\), the following properties apply:
 
 \end{itemize}
 
-The proofs are left as an exercise for the reader. (Hint: use the first property to prove the second).
-
-\subsubsection*{Inverse Equivalence Relation}
+\subsection{Inverse Equivalence Relation}
 
 Given an equivalence relation \(G\) on \(A\), then \(G^{-1}\) is also an equivalence relation on \(A\).
 
-\textbf{Proof:}
-
-\subsection{Equivalence Class}
+\section{Equivalence Class}
 
 Let \(\sim\) be an equivalence relation on a set \(A\) and \(a \in A\), the 
 \emph{equivalence class} of \(a\), denoted by 
@@ -154,7 +154,7 @@ Now, for \( [a]_E \cap [b]_E = \emptyset\) we can say \(a E b \implies a \in [a]
 
 \QED 
 
-\subsection{Quotient Space}
+\section{Quotient Space}
 
 Let \(\sim\) be an equivalence relation on a set \(A\). The \emph{quotient space} of \(A\) by 
 \(\sim\), denoted by \(A / \sim\) (or sometimes \(A / R\)), is the set of all distinct equivalence classes of 
@@ -167,11 +167,12 @@ elements in \(A\). Formally, it is defined as:
 The quotient space \(A/\sim\) is a partition of the original set \(A\) into disjoint equivalence classes. 
 Each element of the quotient space is an equivalence class \([x]\), which itself is a subset of \(A\).
 
-\subsubsection*{The Union of the Quotient Space}
+\subsection{The Union of the Quotient Space}
 
 Given \(A/R\), then \(\bigcup A/R = A\).
 
 \textbf{Proof:}
+
 Suppose \(a_0 \in A \land a_0 \notin [a]_R, \forall [a]_R \in A/R\). If \(R\) is an equivalence relation then 
 \( a_0 \in A\) with \(R\) implies that \((a_0, a_0) \in R\). Therefore, the only way for \(a_0\) to not belong to any equivalence class is if \(R\)
 were not an equivalence relation, which contradicts our initial condition; hence, we know that the union of the equivalence classes 
@@ -179,7 +180,7 @@ given an equivalence relation must be equal to the original set.
 
 \QED
 
-\subsection{Map Definition}
+\section{Maps}
 
 A \emph{map} for two sets \(A\) and \(B\) is defined as a subset of \(A \times B\). And it is denoted by 
 
@@ -209,7 +210,7 @@ Given \(T \subseteq M\) we define the \emph{characteristic map} as
 This map tell us if an element is in the subset. Also, each map \(\alpha : M \to \{0, 1\}\) defines a 
 unique subset \(T\) of \(M\), \(T := M \mid \alpha(m) = 1\).
 
-\subsection{Functions} 
+\section{Functions} 
 
 A subset \( f \subseteq X \times Y \) is called a \emph{function} if:
 
@@ -225,7 +226,7 @@ and
 
 That is, for each \( x \in X \), there exists at most one \( y \in Y \) such that \((x, y) \in f\).
 
-\subsection{The Graph}
+\section{The Graph}
 
 We can also consider the graph as a set of ordered pairs \(x, y\) where \(y = f(x)\).
 
@@ -233,7 +234,7 @@ We can also consider the graph as a set of ordered pairs \(x, y\) where \(y = f(
 	\mathrm{graph}(f):= \{(x, f(x)) \mid x \in X, f(x) \in Y\} = G
 \]
 
-\subsubsection*{The Inverse Graph}
+\subsection{The Inverse Graph}
 
 Let \(G\) be a graph. We define 
 
@@ -243,7 +244,7 @@ Let \(G\) be a graph. We define
 
 as \emph{inverse graph} of \(G\).
 
-\subsubsection*{The Composite Graph}
+\subsection{The Composite Graph}
 
 Let \(G\) and \(H\) be graphs. We define 
 
@@ -255,11 +256,11 @@ as the \emph{composite graph} of \(G\) and \(H\).
 
 \begin{itemize}
 
-    \item \(G \circ (H \circ J) = (G \circ H) \circ J\)
+    \item \(G \circ (H \circ J) = (G \circ H) \circ J\).
 
-    \item \((G^{-1})^{-1} = G\)
+    \item \((G^{-1})^{-1} = G\).
 
-    \item \((G \circ H)^{-1} = H^{-1} \circ G^{-1}\)
+    \item \((G \circ H)^{-1} = H^{-1} \circ G^{-1}\).
 
 \end{itemize}
 
@@ -314,12 +315,12 @@ Proceeding
 
 \QED
 
-\subsubsection*{Functional Graph}
+\subsection{Functional Graph}
 
 A functional graph is a graph that satisfies the second constraint of functions. Therefore, it is corresponds to a function. Hence, 
 all of our graphs properties are applicable to functions.
 
-\subsection{Domain}
+\section{Domain}
 
 The \emph{domain} of a relation \emph{R} from set \(A\) to set \(B\) is the set of all elements in 
 \(A\) that are related to at least one element in \(B\). Formally, if \(R \subseteq A \times B\) 
@@ -332,13 +333,13 @@ is a relation, then the domain of \emph{R} is defined as:
 In other words, the domain consists of all the input values that appear in the ordered pairs of the 
 relation. For example, if \(R = \{(1,4), (2,5), (3,4), (2,6)\}\), then \(\text{Dom}(R) = \{1, 2, 3\}\).
 
-\subsection{The identity}
+\section{The identity}
 
 \[
 	\text{id}(f):= idx:= \{(x, x)\mid x \in X\}
 \]
 
-\subsection{Image/Range}
+\section{Image Or Range}
 
 The \emph{image} or \emph{range} of a relation \emph{R} from set \(A\) to set \(B\) is the set 
 of all elements in \(B\) that are related to at least one element in \(A\). Formally, if 
@@ -357,7 +358,7 @@ or
 In other words, the image consists of all the output values that appear in the ordered pairs of the 
 relation. For example, if \(R = \{(1,4), (2,5), (3,4), (2,6)\}\), then \(\img(R) = \{4, 5, 6\}\).
 
-\subsubsection*{Proof that the Domain And Range are Sets}
+\subsection{Proof that the Domain And Range are Sets}
 
 Given a graph \(G\) which is a set. Prove that the domain and range are also sets.
 
@@ -382,7 +383,7 @@ Hence, by the definition of the domain and the range of the graph we can directl
 
 \QED
 
-\subsection{Composition of Maps}
+\section{Composition of Maps}
 
 The composition of two functions is the operation of applying one function to the result of another 
 function. If we have functions \(f: A \to B\) and \(g: B \rightarrow C\), then the composition of \(g\) 
@@ -418,7 +419,7 @@ by \(g(x) = x+3\). Then:
 Note that \(g \circ f \neq f \circ g\) in general, which shows that function composition is not 
 commutative.
 
-\subsubsection*{Domain and Range Under Composition Corollary}
+\subsection{Domain and Range Under Composition Corollary}
 
 Let \(G\) and \(H\) be graphs, then \(\img(H) \subseteq \dom(G) \implies \dom(G \circ H) = \dom(H)\)
 
@@ -437,9 +438,9 @@ the domain is of our composite graph is \(\dom(H)\).
 \QED
 
 
-\subsection{Types of Functions}
+\section{Types of Functions}
 
-\subsubsection{Injective Functions}
+\subsection{Injective Functions}
 
 An injective function (also called a one-to-one function) is a 
 function that maps distinct elements from the domain to distinct elements in the co-domain.
@@ -456,7 +457,7 @@ Equivalently, using the contrapositive:
 	f(a_1) = f(a_2) \to a_1 = a_2
 \]
 
-\subsubsection{Injection}
+\subsection{Injection}
 
 Given  \(T \subseteq M\) a subset of \(M\). The \emph{injection} from \(T\) to \(M\) defined as 
 
@@ -464,11 +465,11 @@ Given  \(T \subseteq M\) a subset of \(M\). The \emph{injection} from \(T\) to \
 	\iota_{T}: T \to M : t \mapsto t
 \]
 
-is injective.
+is a  \emph{injective function}.
 
-\subsubsection{Surjective Functions}
+\subsection{Surjective Functions}
 
-A surjective function (also called an onto function) is a function whose image equals its co-domain, 
+A \emph{surjective function} (also called an onto function) is a function whose image equals its co-domain, 
 meaning that every element in the co-domain has at least one pre-image in the domain.
 
 Formally, a function \(f: A \to B\) is surjective if:
@@ -477,10 +478,9 @@ Formally, a function \(f: A \to B\) is surjective if:
 	\forall b \in B, \exists a \in A \text{ such that } f(a) = b
 \]
 
-\subsubsection{Bijection Functions}
+\subsection{Bijection Functions}
 
-A bijective function (also called a one-to-one correspondence) is a 
-function that is both injective and surjective. In other words, every 
+A \emph{bijective function} (also called a one-to-one correspondence) is a function that is both injective and surjective. In other words, every 
 element in the co-domain is mapped to by exactly one element in the domain.
 
 Formally, a function \(f: A \to B\) is bijective if it is both:
@@ -497,11 +497,11 @@ Bijective functions establish a perfect pairing between elements of the domain a
 element in the domain corresponds to exactly one element in the co-domain, and vice versa. A bijection 
 allows us to define an inverse function \(f^{-1}: B \to A\).
 
-\subsection{Propositions on Images and Pre-images under Set Operations}
+\section{Propositions On Images And Pre-images Under Set Operations}
 
 Let \( f : X \to Y \) be a function.
 
-\subsubsection{Union and Cut Sets}
+\subsection{Union and Cut Sets}
 
 \begin{itemize}
 
@@ -551,7 +551,7 @@ Hence, both sets contain the same elements and are therefore, equal:
 
 \QED
 
-\subsubsection{Union and Cut of the whole Domain and Range}
+\subsection{Union And Cut Of The Whole Domain And Range}
 
 Let \( f : X \to Y \) be a function.
 
@@ -617,7 +617,7 @@ And
 	f(A) \cap f(B) = 3
 \]
 
-\subsection{Bijection of the Power Set and \texorpdfstring{\(2^A\)}{}}
+\section{Bijection of the Power Set and \texorpdfstring{\(2^A\)}{}}
 
 We denote \(2^A\) as the set of all functions from \(A\) to a set of two elements.
 The statement goes as following: there is a bijection between the power set \(\mathcal{P}(A)\) and 
@@ -642,7 +642,7 @@ For the surjectivity, if \(f \in 2^A\), and we let \(B = f^{-1}(0)\), then \(f =
 
 \QED
 
-\subsection{Restriction Function}
+\section{Restriction Function}
 
 Let \(G\) be a graph and \(B \subseteq \dom(G)\) then we denote the \emph{restriction} of \(G\) as:
 
@@ -656,7 +656,7 @@ The range of this restricted map can be denoted as;
 	G(B) = \{y \mid x \in \dom(B) \land )(x, y) \in G\}
 \]
 
-\subsection{Even Function}
+\section{Even Function}
 
 A real function \(f\) is \emph{even} if
 
@@ -668,7 +668,7 @@ A real function \(f\) is \emph{even} if
 
 \end{itemize}
 
-\subsection{Odd Function}
+\section{Odd Function}
 
 A real function \(f\) is \emph{odd} if
 
@@ -680,7 +680,7 @@ A real function \(f\) is \emph{odd} if
 
 \end{itemize}
 
-\subsection{Pre-image}
+\section{Pre-image}
 
 Given \(f: M \to N\). For \(n \in N\) we define 
 
@@ -695,7 +695,7 @@ as the \emph{pre-image} of \(n\). The complete \emph{pre-image} for
 	f^{-1}(T) := \bigcup_{t \in T}f^{-1}(\{t\}) = \{m \in M \mid f(m) \in T\}
 \]
 
-\subsection{Inverse of a Function}
+\section{Inverse of a Function}
 
 The \emph{inverse} of a function \(f: A \to B\) is a function \(f^{-1}: B \to A\) that 
 reverses the operation of \(f\). That is, if \(f\) maps an element \(a \in A\) to an 
@@ -719,7 +719,7 @@ In other words, composing a function with its inverse yields the identity functi
 	f^{-1} \circ f = id_A \quad \text{and} \quad f \circ f^{-1} = id_B
 \]
 
-Where \(id_A\) and \(id_B\) are the identity functions on sets \(A\) and \(B\), respectively.
+where \(id_A\) and \(id_B\) are the identity functions on sets \(A\) and \(B\), respectively.
 
 \textbf{Proof:}
 
@@ -751,7 +751,7 @@ Gives us a contradiction, if they would have the same properties but were differ
 
 \QED
 
-\subsubsection{Steps to Find the Inverse of a Function}
+\subsection{Steps to Find the Inverse of a Function}
 
 To find the inverse of a function \(f (x)\), follow these steps:
 
@@ -821,7 +821,7 @@ And let's verify \(f(f^{-1}(x)) = x\):
 Since both compositions yield the identity function, \(f^{-1} (x) = \frac{x - 3}{2}\) is indeed the 
 inverse of \(f (x) = 2x + 3\).
 
-\subsubsection{Properties of the Inverse Function}
+\subsection{Properties of the Inverse Function}
 
 Let \(f:X\to Y\) be a function.
 
@@ -856,7 +856,7 @@ Let \(f:X\to Y\) be a function.
 
 \end{itemize}
 
-\subsubsection{Left/Right Inverse}
+\subsection{Lef And Right Inverses}
 
 Given \(f : M \to N\), then  
 
@@ -895,9 +895,9 @@ Therefore, such an \(n\) can not exist because of our conditions.
 \(\leftarrow\): Because \(g\) is surjective, we know that all \(m \in M\) are mapped and because of 
 the composition and its identity property it is clear that \(f\) is injective because \(m = \text{Id}_M (m) \in M\)else the identity property would not hold.
 
-\subsection{Transformations of a Function}
+\section{Transformations of a Function}
 
-Transformations modify the appearance of a function's graph without altering its basic shape.
+\emph{Transformations} modify the appearance of a function's graph without altering its basic shape.
 Here, we examine how different algebraic changes to a function \( f(x) \) affect its graph:
 
 \emph{Vertical Translation:} \( f(x) + a \)
@@ -965,7 +965,7 @@ Here, we examine how different algebraic changes to a function \( f(x) \) affect
 
 \end{itemize}
 
-\subsection{Counting Functions}
+\section{Counting Functions Fom \texorpdfstring{\(A \to B\)}{A to B}}
 
 Given \(f: A \to B\) with \(|A| = n\) and \(|B| = m\), we can count the number of different types of functions from 
 \(A\) to \(B\):
@@ -992,7 +992,7 @@ Given \(f: A \to B\) with \(|A| = n\) and \(|B| = m\), we can count the number o
 
 \end{itemize}
 
-\subsection{Counting Relations}
+\section{Counting Relations}
 
 Given two sets \(A\) and \(B\) with \(|A| = n\) and \(|B| = m\), we can count the number of different types of relations from \(A\) to \(B\):
 

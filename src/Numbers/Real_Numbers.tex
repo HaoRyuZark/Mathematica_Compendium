@@ -1,26 +1,27 @@
-
 \chapter{Real Numbers}
+
+\section{Axiom Definition}
 
 A way of defining the \emph{real numbers} is via the \emph{Cauchy sequences}. Another way is via 
 the axioms of a field with the order axioms and the \emph{completeness axiom}.
 
+The following aximos apply for any \(a, b, c \in \R\):
+
 \begin{itemize}
 
-    \item \emph{Associativity:} \((a \ast b) \ast c = a \ast (b \ast c)\) for all \(a,b,c \in S\)
+    \item \emph{Associativity:} \((a \odot b) \odot c = a \odot (b \odot c)\) for all \(a,b,c \in S\).
     
-    \item \emph{Commutativity:} \(a \ast b = b \ast a\) for all \(a,b \in S\)
+    \item \emph{Commutativity:} \(a \odot b = b \odot a\) for all \(a,b \in S\).
     
-    \item \emph{Identity Element:} There exists \(e \in S\) such that \(a \ast e = e \ast a = a\) for all \(a \in S\)
+    \item \emph{Identity Element:} There exists \(e \in S\) such that \(a \odot e = e \odot a = a\) for all \(a \in S\).
     
-    \item \emph{Inverse Element:} For every \(a \in S\), there exists \(a^{-1} \in S\) such that \(a \ast a^{-1} = a^{-1} \ast a = e\)
+    \item \emph{Inverse Element:} For every \(a \in S\), there exists \(a^{-1} \in S\) such that \(a \odot a^{-1} = a^{-1} \odot a = e\).
     
-    \item \emph{Distributivity:} \(a \circ (b \bullet c) = (a \circ b) \bullet (a \circ c)\) and/or \((b \bullet c) \circ a = (b \circ a) \bullet (c \circ a)\)
+    \item \emph{Distributivity:} \(a \odot (b \oplus c) = (a \odot b) \oplus (a \odot c)\) and/or \((b \odot c) \oplus a = (b \odot a) \oplus (c \odot a)\).
 
 \end{itemize}
 
-These rules apply for the addition and multiplication for real numbers.
-
-We also refresh the order axioms.
+We also refresh the order axioms:
 
 \begin{enumerate}[label=\Roman*.]
     
@@ -38,9 +39,7 @@ We also refresh the order axioms.
 
 \end{enumerate}
 
-\subsection{Properties derivated from the Axioms}
-
-Some proofs of these properties can be found in the section about the algebraic structures.
+\subsection{Properties Derivated From The Axioms}
 
 \begin{itemize}
 
@@ -62,7 +61,9 @@ Some proofs of these properties can be found in the section about the algebraic 
 
 \end{itemize}
 
-\subsection{Existence of Solutions}
+Some proofs of these properties can be found in the section about the algebraic structures.
+
+\section{Existence of Solutions}
 
 Given \(a,b \in \R\), then 
 
@@ -82,7 +83,7 @@ For the first proposition, let \(x = -a + b\)
 
 \begin{align*}
 	a + x &= a -a + b \\
-		 &= b
+		&= b
 \end{align*}
 
 For the second, let \(x = a^{-1}b\)
@@ -94,13 +95,13 @@ For the second, let \(x = a^{-1}b\)
 
 \QED
 
-\subsection{The Completeness Axiom}
+\section{The Completeness Axiom}
 
 All non-empty upper-bounded subsets of the real numbers have a \emph{supremum} \(s \in \R\).
 
-\subsection{Minima in the Real Numbers}
+\section{Minima in the Real Numbers}
 
-As a consequence of the last axiom each non-empty lower-bounded subset of real numbers has a minimum. 
+As a consequence of the \emph{completeness axiom} each non-empty lower-bounded subset of real numbers has a minimum. 
 
 \textbf{Proof:}
 
@@ -137,7 +138,7 @@ This is a contradiction because we have an upper bound, which is not an upper bo
 
 \QED
 
-\subsection{Approximation of the Supremum}
+\section{Approximation of the Supremum}
 
 Given a non-empty, upper-bounded set \(A \subseteq \R\) and  \(s = \text{sup}A\). Then there is for each \(y < s\) 
 an \(x \in A\), such that 
@@ -156,7 +157,7 @@ the assumption that \(s\) is the supremum of \(A\).
 
 \QED
 
-\subsection{Supremum of the Naturals}
+\section{Supremum of the Naturals}
 
 \(\N\) is not upper-bounded.
 
@@ -171,28 +172,28 @@ By the definition of the supremum \(a - 1 \in \N\) is not an upper-bound of \(\N
 Then, the following also applies
 
 \[
-	a < k + 1
+	a < k + 1.
 \]
 
 This is a contradiction to the assumption that \(a\) our supremum, thus our assumption has been 
 proven false.
 
-\subsection{Remainder of Archimedes and Eudoxus}
+\section{The Properties Of Archimedes and Eudoxus}
 
-\emph{Archimedes}
+\emph{Archimedes}:
 
 For all pair of positive real numbers \(x,y\) exists some \(n \in \N\) such that: 
 
 \[
-	nx > y
+	nx > y.
 \]
 
-\emph{Eudoxus}
+\emph{Eudoxus}:
 
 For all positive real numbers there exists an \(n \in \N\), such that 
 
 \[
-	\frac{1}{n} < x
+	\frac{1}{n} < x.
 \]
 
 \textbf{Proof Eudoxus:}
@@ -202,19 +203,19 @@ Equivalently \(\frac{1}{n} < x\).
 
 \QED 
 
-\subsection{Density of the Rationals in  the Reals}
+\section{Density of the Rationals in  the Reals}
 
 For each pair \(a, b \in \R\) there exists some \(q \in \Q\) such that 
 
 \[
-	a < q < b
+	a < q < b.
 \]
 
 \textbf{Proof:}
 
 Let \(q = \frac{m}{n}, m \in \Z, n \in \N\) to prove \(a < \frac{m}{n} < b\) equivalently \(an < m < bn\).
 
-For \(b - a > 0\) we know \(\frac{1}{n} < b - a\) or \(a < b - \frac{1}{n}\), by the Archimedian property. 
+For \(b - a > 0\), we know \(\frac{1}{n} < b - a\) or \(a < b - \frac{1}{n}\), by the Archimedian property. 
 
 Next take the smallest \(m \in \Z\) such that \(m - 1 \le na < m\) or \(a < \frac{m}{n}\). This gives us the first half of 
 our theorem.
@@ -232,7 +233,7 @@ This tells us that \(m < nb \implies \frac{m}{n} < b\).
 
 \QED
 
-\subsection{Existence of Square Roots}
+\section{Existence of Square Roots}
 
 For each \(x \in [0, \infty], !\exists  r \in [0, \infty) \text{ s. d. } r^2  =x\). Also,
 \(\sqrt{x}:= r\) and we call \(x \mapsto \sqrt{x}\) the \emph{root function}.
@@ -251,25 +252,25 @@ For the second case, assume \(a > y\), by applying the same reasoning with \(a -
 Assume \(a > y\), then \(a - y > 0 \implies \frac{1}{n} < a - y, \implies a - \frac{1}{n} < y\)
 
 But then \(a  - \frac{1}{n}\) is an upper bound and this contradicts our assumption.
-Thus, by elimination \(a^2 = y\)
+Thus, by elimination \(a^2 = y\).
 
 \QED
 
-\subsection{Irrational Numbers}
+\section{Irrational Numbers}
 
 \[
 	\R \setminus \Q \text{ or } \Q^C := \{x \in \R \mid x \notin \Q\}
 \]
 
-\subsection{Absolute Value for Real Numbers}
+\section{Absolute Value for Real Numbers}
+
+The \emph{absolute} is defined as 
 
 \[
-	|x| := \sqrt{x*x}
+	|x| := \sqrt{x \cdot x}.
 \]
 
-\subsection{Norms Remainder}
-
-Properties of a norm 
+\subsection{Distance}
 
 \begin{itemize}
 	
@@ -283,15 +284,13 @@ Properties of a norm
 
 \end{itemize}
 
-\subsection{Distance}
-
 We define the \emph{distance} between two real numbers as 
 
 \[
 	d(x,y) = | x - y |
 \]
 
-With the following properties
+with the following properties:
 
 \begin{itemize}
 
@@ -305,10 +304,10 @@ With the following properties
 
 \end{itemize}
 
-\subsection{Nested Interval Property}
+\section{Nested Interval Property}
 
 For each \(n \in \N\), assume we are given a closed interval  \(I_n = [a, b] = \{x \in \R \mid a_n \le x \le b_n\}\). 
-Also assume each \(I_n\) contains \(I_{n + 1}\). Then the nested sequence of closed intervals \(I_1 \supseteq I_2 \supseteq I_3 \supseteq \ldots\)
+Also assume each \(I_n\) contains \(I_{n + 1}\). Then the nested sequence of closed intervals \(I_1 \supseteq I_2 \supseteq I_3 \supseteq \ldots\).
 has a non-empty intersection. 
 
 \textbf{Proof:}
@@ -317,7 +316,7 @@ By definition every \(I_n\) is non-empty, thus the sequences \((a_n)_{n \in \N}\
 Also, every set \(A = \{a_n: n \in \N\}\) is bounded above by the corresponding \(b_n\), and this is guaranteed by 
 the axiom of completeness.
 
-Let \(x = \sup A\). Then consider \(I_n = [a_n, b_n]\) 
+Let \(x = \sup A\). Then consider \(I_n = [a_n, b_n]\).
 
 \[
 	a_n \le x \le b_n, \forall n \in \N \implies x \in I_n
@@ -327,18 +326,18 @@ Thus, \(x \in \bigcap_{n = 1}^{\infty} I_n\) and the intersection is non-empty.
 
 \QED
 
-\subsection{Definition as Cauchy Sequences}
+\section{Definition as Cauchy Sequences}
  
-Let \( K \) be an ordered field. On the set
+Let \( \field \) be an ordered field. On the set
 		
 \[
-	\operatorname{ch}(K) := \{ x : \N \to K \mid x \text{ is a Cauchy sequence} \}
+	\operatorname{ch}(\field) := \{ x : \N \to \field \mid x \text{ is a Cauchy sequence} \}
 \]
 		
 and on the set
 	
 \[
-	c(K) := \{ x : \N \to K \mid x \text{ is a convergent sequence} \}
+	c(\field) := \{ x : \N \to \field \mid x \text{ is a convergent sequence} \}
 \]
 
 we can define an addition and a multiplication as follows:
@@ -374,7 +373,7 @@ Cauchy sequences (convergent sequences). Then we have:
 	&= xy + xz.
 \end{align*}
 
-We now aim to construct the ordered field \( \R \) of the real numbers;
+We now aim to construct the ordered field \( \R \) of the Real numbers;
 it will have the following properties:
 
 \begin{itemize}
@@ -439,7 +438,7 @@ Equipped with the addition
 and the multiplication
 
 \[
-	\cdot : \R \times \R \to \R, \quad [x], [y] \mapsto [x] \cdot [y] := [xy]
+	\cdot : \R \times \R \to \R, \quad [x], [y] \mapsto [x] \cdot [y] := [xy].
 \]
 
 \( \R \) is a field. The zero element is \( [0_{\N}] \), and the unit element is 

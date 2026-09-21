@@ -1,9 +1,8 @@
-
 \chapter{The Natural Numbers}
 
-\subsection{Definition as Sets}
+\section{Definition as Sets}
 
-We define the members of \(\N\) as:
+We define for the members of \(\N\) the following properties:
 
 \begin{itemize}
 	\item \(0 := \emptyset\)
@@ -41,12 +40,12 @@ An inductive set exists.
 \(\forall I, \emptyset \in I\), hence \(0 \in \N\), for \(n \in \N\), let \(I\) be inductive then 
 
 \[
-	S(n) \in I \therefore S(n) \in \N
+	S(n) \in I \therefore S(n) \in \N.
 \]
 
-\subsection{The Standard Order}
+\section{The Standard Order}
 
-We define \(<\) for the natural numbers as: 
+We define \(<\) for the \(\N\) as: 
 
 \[
 	\forall m, n \in \N, m < n \iff m \in n.
@@ -74,7 +73,7 @@ For the second part of the lemma \(k < S(n) \iff k < n \lor k = n\):
 
 \QED
 
-\subsection{The Peano Axioms}
+\section{The Peano Axioms}
 
 We will define the set of natural numbers, \( \N \), via the following 9 axioms. 
 These axioms are known as the \emph{Peano Axioms}. The first 4 axioms define equality on 
@@ -124,7 +123,7 @@ As shorthand, we denote:
 	S(1) = 2, \quad S(S(1)) = 3, \quad S(S(S(1))) = 4, \quad \text{and so on.}
 \]
 
-\subsection{Propositions and Proofs}
+\section{Propositions and Proofs}
 
 \subsubsection{Proposition 1: \texorpdfstring{\(n \ne m \implies S(n) \ne S(m)\)}{n!= m implies S (n)!=S (m)}}
 
@@ -133,7 +132,7 @@ As shorthand, we denote:
 We will prove this by contradiction. Assume \( n \ne m \) and \( S(n) = S(m) \). 
 By Axiom 8, we have \( n = m \), which is a contradiction. Therefore, \( S(n) \ne S(m) \).
 
-\subsubsection{Proposition 2: \texorpdfstring{\text{For any} \(n \in \N,\ n \ne S(n)\)}{ For any n in N, n!= S (n)}}
+\subsection{Proposition 2: \texorpdfstring{\text{For any} \(n \in \N,\ n \ne S(n)\)}{ For any n in N, n!= S (n)}}
 
 \textbf{Proof:} 
 
@@ -142,7 +141,7 @@ By Axiom 8, we have \( n = m \), which is a contradiction. Therefore, \( S(n) \n
 By \(1 \ne S(n)\ \) for any \(n \in \N\), this implies that 1 is part of the set \(M\). 
 This implies that \(S(n) \ne S(S(n)) \implies S(n) \in M\ \) By Axiom 9 \(M = \N\)
 
-\subsubsection{Proposition 3: \texorpdfstring{\(n \ne 1\ \exists m \in \N \mid n = S(m)\)}{n!= 1, exists m in N | n = S (m)}}
+\subsection{Proposition 3: \texorpdfstring{\(n \ne 1\ \exists m \in \N \mid n = S(m)\)}{n!= 1, exists m in N | n = S (m)}}
 
 \textbf{Proof:}
 
@@ -153,30 +152,30 @@ This implies that \(S(n) \ne S(S(n)) \implies S(n) \in M\ \) By Axiom 9 \(M = \N
 We know that 1 ins in the set \(M\). And by proposition 1 we know that
 
 \[
-	S(n) = S(S(m)) \implies S(n) \in M
+	S(n) = S(S(m)) \implies S(n) \in M,
 \]
 
-And by Axiom 9 we know that \(M = \N\)
+and by Axiom 9 we know that \(M = \N\).
 
-\subsection{Definition of Addition in \texorpdfstring{\(\N\)}{}}
+\section{Definition of Addition in \texorpdfstring{\(\N\)}{}}
 
 For any pair n, m \(\in \N\) there is a unique way to define
 
 \[
-	\text{Add}(n , m) = n + m
+	\mathrm{Add}(n , m) = n + m.
 \]
 
 \begin{enumerate}
 	
-	\item \textbf{Base Case:} \(n + 1 = S(n)\)
+	\item \textbf{Base Case:} \(n + 1 = S(n)\).
 
-	\item \textbf{Inductive Step:} \(n + S(m) = S(n + m) \iff S(n + m)\)
+	\item \textbf{Inductive Step:} \(n + S(m) = S(n + m) \iff S(n + m)\).
 
 \end{enumerate}
 
 \textbf{Uniqueness:} 
 
-Suppose: \textit{A} \& \textit{B} satisfy our conditions. Fix n and then let \(M = \{ m \in \N | 
+Suppose, \(A \, B\) satisfy our conditions. Fix \(n\) and then let \(M = \{ m \in \N | 
 A(n,m) = B(n, m)\}\). Then
 
 \[
@@ -191,7 +190,7 @@ A(n,m) = B(n, m)\}\). Then
 	\implies A(n , S(m)) = B(n, S(m))
 \]
 
-by Axiom 9 we know that \(M = \N\) and A = B
+by Axiom 9 we know that \(M = \N\) and  \(A = B\).
 
 \textbf{Construction:} For \(n = 1\) Define \(A(n, m) = S(m)\)
 

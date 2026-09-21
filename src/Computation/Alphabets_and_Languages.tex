@@ -1,38 +1,41 @@
+\chapter{State Machines and Languages}
 
-\section{State Machines and Languages}
-
-\subsection{Languages and Alphabets}
+\section{Languages and Alphabets}
 
 A \emph{language} \(L\) is a subset of words of an \emph{alphabet} \(\Sigma\) which is a finite 
 non-empty set of symbols which always includes the \(\varepsilon\)-word, the empty word.
 
-\subsubsection{Concatenation}
+\subsection{Concatenation}
 
-An operation which can be done with members of an alphabet is the so called \emph{concatenation} which is like 
+\emph{Concatenation} is an operation which can be done with members of an alphabet is the so called \emph{concatenation} which is like 
 basic addition. Therefore, it is associative and when added \(\varepsilon\), the zero of alphabets it odes not affect the words 
 or its length.
 
-\subsection{Inductive Definitions}
+\[
+    ``a'' + ``b'' = ab
+\]
+
+\section{Inductive Definitions}
 
 In the field of languages and alphabets an inductive function \(f: \Sigma^* \to X\) will be defined 
 in the following way.
 
 \begin{enumerate}
 
-    \item \emph{The base case}: \(f(\varepsilon)\)
+    \item \emph{The base case}: \(f(\varepsilon)\).
     
     \item \emph{The induction step}: where the actual behavior of the function is defined. Helper 
           functions can also be defined using the same structure.
 
 \end{enumerate}
 
-It also has the following properties 
+It also has the following properties:
 
 \begin{itemize}
     
     \item \(|\varepsilon| = 0\)
     
-    \item For \(w = v + a\) then \(|w| = |v| + 1\) for \(a \ne \varepsilon\)
+    \item For \(w = v + a\) then \(|w| = |v| + 1\) for \(a \ne \varepsilon\).
 
 \end{itemize}
 
@@ -50,7 +53,7 @@ Define a function which count the occurrences of \(ue\) in a word with letters o
     \end{cases}
 \end{align*}
 
-The auxiliary function \( \text{help}: \Sigma^* \to \mathbb{N} \) is defined as:
+The auxiliary function \( \text{help}: \Sigma^* \to \mathbb{N} \) is defined as
 
 \[
     \text{help}(w \cdot x) =
@@ -62,9 +65,9 @@ The auxiliary function \( \text{help}: \Sigma^* \to \mathbb{N} \) is defined as:
 
 That is, \( \text{help}(w) = f(w) + 1 \) if the last letter of \( w \) is \( u \), and \( f(w) \) otherwise.
 
-\subsubsection{Head and Tail}
+\section{Head and Tail}
 
-Head returns the first symbol of a word and is defined by 
+\emph{Head} returns the first symbol of a word and is defined by 
 
 \begin{align*}
     \operatorname{head}(\varepsilon) = \varepsilon \\ 
@@ -72,7 +75,7 @@ Head returns the first symbol of a word and is defined by
     \operatorname{head}(v + a) = \operatorname{head}(v) 
 \end{align*}
 
-Tail removes the first symbol of a word and is defined by 
+\emph{Tail} removes the first symbol of a word and is defined by 
 
 \begin{align*}
     \operatorname{tail}(\varepsilon) = \varepsilon \\ 
@@ -80,8 +83,7 @@ Tail removes the first symbol of a word and is defined by
     \operatorname{tail}(v + a) = \operatorname{tail}(v) + a  
 \end{align*}
 
-
-\subsection{Fixes}
+\section{Fixes}
 
 Let \(\Sigma\) be an alphabet and let \(v, w \in \Sigma^{*}\) be words.  
 
@@ -100,11 +102,11 @@ Let \(\Sigma\) be an alphabet and let \(v, w \in \Sigma^{*}\) be words.
 
 \(\varepsilon\) is prefix suffix and substring, of all words. 
 
-\subsection{The Canonical Order}
+\section{The Canonical Order}
 
 Let \(\Sigma = \{a_{1}, \dots, a_{n}\}\) be an alphabet with \(n \geq 1\), and let 
 \(< \subseteq \Sigma \times \Sigma\) be an order on \(\Sigma\) with
-\(a_{1} < a_{2} < \dots < a_{n}\).  
+\(a_{1} < a_{2} < \cdots < a_{n}\).  
 
 We define the \emph{canonical order} on \(\Sigma^{*}\) as follows:  
 
@@ -120,22 +122,22 @@ We define the \emph{canonical order} on \(\Sigma^{*}\) as follows:
 
 for arbitrary \(w, u, u', v, v' \in \Sigma^{*}\).  
 
-\subsection{Languages}
+\section{Languages}
 
 Let \(\Sigma\) be an alphabet. A \emph{language} \(L\) over \(\Sigma\) is a subset of \(\Sigma^{*}\) (\(L \subseteq \Sigma^{*}\)).  
 
 \[
-    \mathcal{P}(\Sigma^{*}) = \{ L \mid L \subseteq \Sigma^{*} \},
+    \mathcal{P}(\Sigma^{*}) = \{ L \mid L \subseteq \Sigma^{*} \}.
 \]
 
-the power set of \(\Sigma^{*}\), is the set of all languages over \(\Sigma\).  
+The power set of \(\Sigma^{*}\) is the set of all languages over \(\Sigma\).  
 
 Furthermore, \(L_{\emptyset} = \emptyset\) and \(L_{\varepsilon} = \{\varepsilon\}\).  
 
 Another parts of a language is the \emph{syntax} which defines the words in the language, and the  \emph{semantic} which determines 
 the meaning of words. 
 
-\subsection{Pumping Lemma}
+\section{Pumping Lemma}
 
 For a language \(L\) which can be recognized by a state machine, there is a natural number \(n\) such 
 that for each word in \(L\) with length greater than or equal to \(n\), the word \(w\) can be decomposed 
@@ -156,7 +158,7 @@ into three subwords \(x, y, z\).
 Let \(L = \{ a^n b^n \mid n \geq 0 \}\). This language is \textbf{not} regular, and the Pumping 
 Lemma can be used to prove this by contradiction.
 
-\subsection{Algorithm}
+\subsection{Pumping Lemma Algorithm}
 
 Given two alphabet \(\Sigma_1, \Sigma_2\) and \(\mathcal{D} \subseteq \Sigma_{1}^{*}\). An \emph{algorithm} is a total function 
 
@@ -170,7 +172,7 @@ Two algorithms are equivalent if and only if
     \forall x \in \mathcal{D} : A(x) = B(x)
 \]
 
-\subsection{The Decision Problem}
+\section{The Decision Problem}
 
 The \emph{decision problem} \(\inner{\Sigma}{L}\) for a given alphabet \(\Sigma\) and a language \(L \subseteq \Sigma^{*}\) is to decide, for each \(w \in \Sigma^{*}\), whether  
 
@@ -194,12 +196,12 @@ An algorithm \(A \colon \Sigma^{*} \to \{0, 1\}\) \emph{solves} the decision pro
 
 We also say: \(A\) \emph{recognizes} \(L\).  
 
-\subsection{Recursive Languages}
+\section{Recursive Languages}
 
 Let \(\Sigma\) be an alphabet and let \(L \subseteq \Sigma^{*}\) be a language.  
 \(L\) is called \emph{recursive} if and only if there exists an algorithm \(A\) that solves the decision problem \(\inner{\Sigma}{L}\).  
 
-\subsection{Enumeration Problem}
+\section{Enumeration Problem}
 
 Let \(\Sigma\) be an alphabet, \(L \subseteq \Sigma^{*}\) a language, and \(n \in \mathbb{N}\).  
 The \emph{enumeration problem} \(\inner{\Sigma}{L, n}\) for \(L\) consists of listing the canonical first \(n\) words of \(L\).  
@@ -207,7 +209,7 @@ The \emph{enumeration problem} \(\inner{\Sigma}{L, n}\) for \(L\) consists of li
 An algorithm \(A \colon N \to \mathcal{P}(L)\) is an \emph{enumeration algorithm} for \(L\) if, for every input \(n \in N\), \(A\) outputs 
 the canonical first \(n\) words \(w_{0}, w_{1}, \dots, w_{n-1}\) of the language \(L\).  
 
-\subsection{Grammars}
+\section{Grammars}
 
 Let 
 
@@ -235,7 +237,7 @@ where:
 
 \end{itemize}
 
-Thus, a grammar \( G \) defines a \emph{formal language} \( L(G) \) as:
+Thus, a \emph{grammar} \( G \) defines a \emph{formal language} \( L(G) \) as
 
 \[
     L(G) = \{\, w \in \Sigma^* \mid S \Rightarrow^* w \,\}

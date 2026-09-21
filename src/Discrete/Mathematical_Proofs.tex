@@ -1,16 +1,15 @@
-
 \chapter{Mathematical Proofs}
 
-In this section I will provide with some examples of different types of proofs.
+In this section I will provide with both definitions and examples of different types of proofs for the reader to 
+gain an overview of how to use the different proving methods.
 
-\subsection{Proof by Direct Argument}
+\section{Proof By Direct Argument}
 
 Assume \(A\) to prove to prove \(B\).
 
 \[
 	A \implies B
 \]
-
 
 \textbf{Example I:}
 
@@ -30,7 +29,35 @@ Therefore, we conclude that if \(n\) is even, then \( n^2 \) is even.
 
 \QED
 
-\subsection{Proof by Contradiction}
+\section{Proof by Contrapositive}
+
+\[
+	A \implies B \iff \neg B \implies \neg A
+\]
+
+\textbf{Example:}
+
+If \(n\) is an integer such that \( n^2 \) is odd, then \(n\) is odd.
+
+We will prove this theorem by contrapositive. The contrapositive of the statement is: If \(n\) is an 
+integer such that \(n\) is even, then \( n^2 \) is even.
+
+Assume \(n\) is even. Then we can write \( n = 2k \) for some integer \(k\).
+
+Now, we compute \( n^2 \):
+	
+\[
+	n^2 = {(2k)}^2 = 4k^2 = 2(2k^2)
+\]
+
+This shows that \( n^2 \) is even.
+
+Since the contrapositive statement is true, the original statement If \( n^2 \) is odd, then \(n\) is 
+odd is also true.
+
+\QED
+
+\section{Proof By Contradiction}
 
 Assume the negation of \(A\) to derive a false statement.
 
@@ -98,7 +125,7 @@ so \(q^2\) is even and hence \(q\) is even. Therefore, both \(p\) and \(q\) are 
 
 \QED
 
-\subsection{Proof by Induction}
+\section{Proof By Induction}
 
 For all \( n \in \N \), the sum of the first \(n\) positive integers is given by:
 
@@ -142,9 +169,9 @@ By the principle of mathematical induction, the statement holds for all \( n \in
 
 \QED
 
-\subsection{Strong Induction}
+\section{Strong Induction}
 
-Strong induction is a form of mathematical induction where instead of assuming \(A(n)\) is true in our 
+\emph{Strong induction} is a form of mathematical induction where instead of assuming \(A(n)\) is true in our 
 inductive hypothesis, we assume \(A(j)\) is true for \(1 \le j \le n\). 
 
 The inductive step: Show \([A(1) \land A(2) \dots A(n)] \implies A(n + 1)\). 
@@ -166,13 +193,18 @@ primes.
 Consider the cases \(k + 1\) is prime or composite. 
 
 The first case is true.
+
 For the case \(n + 1\) is not prime then \(n + 1 = ab\) with \(2 \le a,b \le n < n + 1\) and both 
 for \(a\) and \(b\) we know that they can be written as the product of primes thus 
 \(n + 1\) can be written as the product of primes. 
 
 \QED
 
-\subsection{Proof by Exhaustion}
+\section{Proof By Exhaustion}
+
+In \emph{exhaustion} we test all possible cases and their respective branches.
+
+\textbf{Example:}
 
 The only integer solutions to the equation \( x^2 + y^2 = 1 \) are \( (0, 1), (1, 0), (0, -1), (-1, 0) \).
 
@@ -207,54 +239,12 @@ Thus, the only integer solutions to the equation are:
 
 \QED
 
-\subsection{Proof by Cases}
+\section{Proof By Counter-example}
 
-For any integer \(n\), \( n^2 \) is even if and only if \(n\) is even.
+In a \emph{counter-example} is it enough to find one case for a statement to not be true, to prove an 
+statement false, and in some cases that the opposite is true.
 
-We will prove this theorem by cases.
-
-\textbf{Case 1:} Assume \(n\) is even. Then we can write \( n = 2k \) for some integer \(k\).
-
-Now, we compute \( n^2 \):
-
-\[
-	n^2 = {(2k)}^2 = 4k^2 = 2(2k^2)
-\]
-
-This shows that \( n^2 \) is even.
-
-\textbf{Case 2:} Assume \(n\) is odd. Then we can write \( n = 2k + 1 \) for some integer \(k\).
-
-Now, we compute \( n^2 \):
-
-\[
-	n^2 = {(2k + 1)}^2 = 4k^2 + 4k + 1 = 2(2k^2 + 2k) + 1
-\]
-
-This shows that \( n^2 \) is odd.
-
-Since both cases have been considered, we conclude that \( n^2 \) is even if and only if \(n\) is even.
-
-\QED
-
-\subsection{Proof by Construction}
-
-There exists an irrational number \(x\) such that \( x^2 \) is rational.
-
-We will construct an irrational number \(x\) such that \( x^2 \) is rational.
-
-Let \( x = \sqrt{2} \). We know that \( \sqrt{2} \) is irrational. Now, we compute \( x^2 \):
-	
-\[
-	x^2 = (\sqrt{2})^2 = 2
-\]
-	
-Since 2 is a rational number, we have constructed an irrational number \( x = \sqrt{2} \) such 
-that \( x^2 = 2 \) is rational. Therefore, the theorem is proved.
-
-\QED
-
-\subsection{Proof by Counterexample}
+\textbf{Example:}
 
 The statement all prime numbers are odd is false.
 
@@ -266,90 +256,3 @@ even, which contradicts the statement that all prime numbers are odd.
 Therefore, the statement All prime numbers are odd is false.
 
 \QED
-
-\subsection{Proof by Contrapositive}
-
-\[
-	A \implies B \iff \neg B \implies \neg A
-\]
-
-If \(n\) is an integer such that \( n^2 \) is odd, then \(n\) is odd.
-
-We will prove this theorem by contrapositive. The contrapositive of the statement is: If \(n\) is an 
-integer such that \(n\) is even, then \( n^2 \) is even.
-
-Assume \(n\) is even. Then we can write \( n = 2k \) for some integer \(k\).
-
-Now, we compute \( n^2 \):
-	
-\[
-	n^2 = {(2k)}^2 = 4k^2 = 2(2k^2)
-\]
-
-This shows that \( n^2 \) is even.
-
-Since the contrapositive statement is true, the original statement If \( n^2 \) is odd, then \(n\) is 
-odd is also true.
-
-\QED
-
-\subsection{Proof by Reduction to Absurdity}
-
-The square root of 2 is irrational.
-
-We will prove this theorem by reduction to absurdity. Assume that \( \sqrt{2} \) is rational. Then we can 
-write:
-
-\[
-	\sqrt{2} = \frac{p}{q}
-\]
-
-Where \(p\) and \(q\) are integers with no common factors (i.e., the fraction is in the simplest 
-form).
-
-Squaring both sides gives:
-
-\[
-	2 = \frac{p^2}{q^2}
-\]
-	
-Rearranging gives:
-
-\[
-	p^2 = 2q^2
-\]
-	
-This implies that \( p^2 \) is even, and therefore, \(p\) must be even (since the square of an 
-odd number is odd). Let \( p = 2k \) for some integer \(k\). Substituting this back into the 
-equation gives:
-
-\begin{align*}
-{(2k)}^2 &= 2q^2\\	
-4k^2 &= 2q^2\\
-2k^2 &= q^2
-\end{align*}
-
-This implies that \( q^2 \) is even, and therefore, \(q\) must also be even.
-Since both \(p\) and \(q\) are even, they have a common factor of 2, which contradicts our 
-assumption that \(p\) and \(q\) have no common factors. Therefore, our assumption that 
-\( \sqrt{2} \) is rational must be false, and thus, \( \sqrt{2} \) is irrational.
-
-\QED
-
-\subsection{Proof by Analogy}
-
-The set of rational numbers is dense in the set of real numbers.
-
-We will prove this theorem by analogy.
-
-Consider the set of rational numbers \( \Q \) and the set of real numbers \( \R \). 
-The density of \( \Q \) in \( \R \) means that between any two real numbers, there exists a 
-rational number. For example, between the real numbers 1 and 2, we can find the rational 
-number \( \frac{3}{2} = 1.5 \). Similarly, between any two real numbers \(a\) and \(b\) (where 
-\( a < b \)), we can find a rational number \( r = \frac{a + b}{2} \).
-
-This shows that the set of rational numbers is dense in the set of real numbers.
-Therefore, the theorem is proved by analogy.
-
-\QED
-

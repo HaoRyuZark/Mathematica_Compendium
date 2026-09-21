@@ -1,26 +1,18 @@
-=
 \chapter{Set Theory}
 
-\emph{Set theory} is a foundational branch of mathematics that studies \emph{sets}, which are simply 
-collections of objects. At its core, it deals with the fundamental concepts of membership 
-(whether an object belongs to a set), equality (when two sets are the same), and relationships 
-between sets (like subsets, intersections, and unions).
-
-It might seem simple, but set theory provides the basic language and tools to define 
-and reason about almost all mathematical objects, from numbers and functions to 
-more complex structures. It helps us understand the concept of infinity, organize mathematical 
-ideas logically, and resolve paradoxes that arise from dealing with collections.
-
-In essence, set theory provides the building blocks upon which much of modern mathematics is constructed.
+\emph{Set theory} is the foundation of mathemttcis along side \emph{logic}. The actual variant is founded on axioms unlike 
+its first appereance as \textbf{naive set theory}, which lead to contractions due to it allowing set which are 
+``an element of it self, if and only if, it is not an element of itself'', the so-known \emph{Russells's paradox}, but more 
+on that later.
 
 Note, that I will start with sets as such instead of going through classes and then exporting some of their 
 properties to sets. Classes will only be handled shortly with the axioms and some proofs but some of their properties will be 
 directed presented as set properties. 
 
-\subsection{Basics}
+\section{Set Definition And Symbology}
 
-To be concise, a set is a collection of mathematical objects that can also be other sets.
-Here is a list of common symbols for set theory.
+To be concise, a \emph{set} is a collection of other sets; yes the definition is recursive. Once, the foundation 
+is set, we can abstract thouse nested sets, as mathematical objects.
 
 \begin{itemize}
 
@@ -45,7 +37,7 @@ Here is a list of common symbols for set theory.
 
 \end{itemize}
 
-\subsubsection{Visuals}
+\subsection{Venn Diagrams}
 
 \begin{figure}[H]
 	\centering
@@ -155,7 +147,7 @@ Here is a list of common symbols for set theory.
 \end{figure}
 \smallskip
 
-\subsection*{Short History Lesson}
+\section{Short History Lesson}
 
 When set theory was invented back then by Cantor, he had no formal axioms but a set of basic 'common sense' rules he assumed when 
 creating his theory. This choice lead to a famous paradox known as \emph{Russell's Paradox}. The paradox states that: "Given a set S which is 
@@ -163,7 +155,7 @@ the set containing all sets which do not contain themselves. The S does not cont
 In short \(S = \{x: x \notin x\}\), this is a so-called \emph{logical} paradox. This is of course a huge contradiction in the hearth of naive set theory. The choice to take a more 
 formal and axiomatic approach was to eliminate such fundamental faults.
 
-As a short teasing we will declare the \emph{Axiom of Selection:} \(\{x \in A: S(x)\}\) this means that we can construct a set of elements 
+As a short teasing, we will declare the \emph{Axiom of Selection:} \(\{x \in A: S(x)\}\) this means that we can construct a set of elements 
 of an existing set as long as they satisfy a condition. Now the paradox of \(x: x \notin x\) can not be state directly in our new system. We can emulate it by 
 declaring 
 
@@ -187,14 +179,15 @@ Note that this set would need to be finite because it there is only a limited am
 for example say: 'the natural number which can not be described in less than 20 words' this number. This is again an example of an element in 
 a set if and only if it is not in the set. To formalize our conditions we 
 
-\subsection{Sets and Classes}
+\section{Classes}
 
-One important distinction is the system of Neumann is notion difference between a \emph{set} and \emph{class}.
-Classes can not be contained inside sets, while sets can. Formally:
+One important distinction in the system of Neumann is the notion of the difference between a \emph{set} and \emph{class}.
+
+\emph{Classes} can not be contained inside \emph{sets}, while sets can. Formally:
 
 If \(X \in Y\) for some class \(Y\) then \(X\) is a set. If \(X \notin Y\) for any class \(Y\) then \(X\) is a class.
 
-\subsection{Axioms of Set Theory}
+\section{Axioms of Set Theory}
 
 \begin{enumerate}[label = \Roman*.]
 	
@@ -237,7 +230,7 @@ If \(X \in Y\) for some class \(Y\) then \(X\) is a set. If \(X \notin Y\) for a
 
 \end{enumerate}
 
-\subsubsection*{Proofs Using the Axioms}
+\subsection{Proofs Using the Axioms}
 
 \begin{itemize}
 
@@ -280,7 +273,7 @@ If \(X \in Y\) for some class \(Y\) then \(X\) is a set. If \(X \notin Y\) for a
 
 \end{itemize}
 
-\subsection{Subclasses/Subsets}
+\section{Subclasses/Subsets}
 
 A subset/subclass \(A\) of the set/class \(B\) is a set which obeys the following property:
 
@@ -288,7 +281,7 @@ A subset/subclass \(A\) of the set/class \(B\) is a set which obeys the followin
 	A \subseteq B \iff \forall x \in A, x \in A \implies x \in B
 \]
 
-\subsection{The Universal Class}
+\section{The Universal Class}
 
 By the axiom of construction we define \(\mathcal{U}\) with \(P(x)\) is \(x = x\) as the \emph{universal class} of all elements.
 
@@ -300,7 +293,7 @@ It also as the following property
 
 which gives us the following: \(A \cup \mathcal{U} = \mathcal{U}\) and \(A \cap \mathcal{U} = A\) for any class or set \(A\).
 
-\subsection{The Empty Class}
+\section{The Empty Class}
 
 The \emph{empty class} is class with no elements. 
 
@@ -318,14 +311,14 @@ Now we need to prove that it is unique, and this is given by the axiom of extens
 
 \QED
 
-\subsection{The Empty Set}
+\section{The Empty Set}
 
-The set that contains no elements \(\emptyset\). It is the unique set with 
+The \emph{empty set} is the set that contains no elements, denoted as \(\emptyset\). It is the unique set with 
 zero elements. It inherits the properties of its class counterpart.
 
 It also has the property that \(\emptyset \subseteq A\) for any class or set \(A\).
 
-\subsection{Set Complement Proof}
+\section{Set Complement Proof}
 
 Given \(A, B \subseteq M\) then \(A \subseteq B \implies B^c \subseteq A^c\)
 
@@ -334,7 +327,7 @@ Hence, \(x \notin A\) therefore, for every \(x \in B^c\) we conclude \(B^c \subs
 
 \QED
 
-\subsection{Proof The Power Set of a Set is not an Element of the Set}
+\section{Proof The Power Set of a Set is not an Element of the Set}
 
 Let \(X\) be a set and \(Y = \{x \in X \mid x \notin x\}\). 
 
@@ -350,15 +343,15 @@ Because our assumption was proven false, then \(\mathcal{P}(X)\) is not a subset
 
 \QED 
 
-\subsection{Proof of the Union of Subsets}
+\section{Proof of the Union of Subsets}
 
 Let \(A\) and \(B\) be sets then: 
 
 \begin{itemize}
 
-    \item \(A \subseteq B\) if and only if \(A \cup B = B\)
+    \item \(A \subseteq B\) if and only if \(A \cup B = B\).
 	
-	\item \(A \subseteq B\) if and only if \(A \cap B = A\)
+	\item \(A \subseteq B\) if and only if \(A \cap B = A\).
 
 \end{itemize}
 
@@ -379,7 +372,7 @@ the definition of the subset. Then this tells us that \(\forall x \in A \cap B: 
 
 \QED
 
-\subsubsection*{Cut of Set and Complement}
+\section{Cut of Set and Complement}
 
 \(A \cap B^c = \emptyset \iff A \subseteq B\)
 
@@ -400,7 +393,7 @@ the definition of the subset. Then this tells us that \(\forall x \in A \cap B: 
 
 \QED 
 
-\subsection{The Singleton and Doubleton}
+\section{The Singleton and Doubleton}
 
 We define the \emph{singleton} as 
 
@@ -456,7 +449,7 @@ the equality we can discard the cases where the equality does not hold.
 
 \QED
 
-\subsection{Ordered Pair}
+\section{Ordered Pair}
 
 Let \(A\) and \(B\) be two non-empty sets and \(m \in A, n \in B\). We define 
 
@@ -472,7 +465,7 @@ and
 
 as ordered pairs which are elements of \(A \times B\) and \(B \times A\) respectively.
 
-\subsection{The Cartesian Product}
+\section{The Cartesian Product}
 
 The Cartesian product of two sets \(A\) and \(B\), written \(A \times B\), is the set of 
 all ordered pairs in which the first element belongs to \(A\) and the second belongs to \(B\):
@@ -546,7 +539,7 @@ Thus, both inclusions hold and the equality follows.
 
 \QED 
 
-\subsubsection*{Proof that the Cartesian Product is a Set}
+\subsection{Proof That The Cartesian Product Is A Set}
 
 We need to prove that \(A \times B \subseteq \mathcal{P}(A \cup B)\). By the definition of the ordered pair we know that 
 for \(x \in A \cup B \implies \{x\} \subseteq A \cup B\) the same for \(x,y \in A \cup B\) which implies 
@@ -559,7 +552,7 @@ subset of \(\mathcal{P}(\mathcal{P}(A \cup B))\) for free \(x\) and \(y\). Hence
 
 \QED
 
-\subsubsection*{Proof the empty set of the Cartesian Product}
+\subsection{The Empty Set Of The Cartesian Product}
 
 \(A \times B = \emptyset \iff A = \emptyset \lor B = \emptyset\). We will prove the negation of the 
 statement which logically equivalent.
@@ -586,7 +579,7 @@ statement which logically equivalent.
 
 \QED 
 
-\subsection{Laws of Set Algebra}
+\section{Laws of Set Algebra}
 
 Let \(X\) be the universal set and \(A, B, C \subseteq X\).
 
@@ -629,7 +622,7 @@ Let \(X\) be the universal set and \(A, B, C \subseteq X\).
 
 \end{itemize}
 
-\subsubsection*{Proof of the Distributive Law}
+\subsection{Proof Of The Distributive Law}
 
 \begin{align*}
 	&\text{Let } x \in A \cap (B \cup C). \\
@@ -710,7 +703,7 @@ To show:
 \QED
 
 
-\subsection{Indexed Sets}
+\section{Indexed Sets}
 
 Let \(X\) be a set, and \( A_i \subseteq X \) for all \( i \in J \), where \(I\) is the 
 \emph{index set}.
@@ -729,7 +722,7 @@ We also can define the graph of the sets with their respective indexes:
 	G_{A_i} = A_i \times I = \{(i, A_i) \mid i \in I \land  A_i \in \{A_i\}_{i \in I}\}
 \]
 
-\subsection{Generalized Union, Intersection and Cartesian Product for Indexed Sets}
+\section{Generalized Union, Intersection and Cartesian Product For Indexed Sets}
 
 For a class of classes or sets of sets with an index set \(I\) we define the generalized \emph{union}, \emph{intersection} and \emph{Cartesian product} as:
 
@@ -745,7 +738,7 @@ For a class of classes or sets of sets with an index set \(I\) we define the gen
 	X_{i=1}^{n} A_i = \{(a_1, \dots, a_n) \mid a_i \in A_i \}
 \]
 
-\subsection{Pairwise Disjoint}
+\section{Pairwise Disjoint}
 
 If \(I\) is any set, then \( {(A_i)}_{i \in I} \) are \emph{pairwise disjoint} if and only if:
 
@@ -753,7 +746,7 @@ If \(I\) is any set, then \( {(A_i)}_{i \in I} \) are \emph{pairwise disjoint} i
 	\forall i_1, i_2 \in I, \ i_1 \neq i_2 \implies A_{i_1} \cap A_{i_2} = \emptyset
 \]
 
-\subsection{Disjoint Decomposition}
+\section{Disjoint Decomposition}
 
 If \(I\) is any set, then \( {(A_i)}_{i \in I} \) forms a \emph{disjoint decomposition} of \(X\) if 
 and only if:
@@ -762,7 +755,7 @@ and only if:
 	{(A_i)}_{i \in J} \text{ are pairwise disjoint and } \bigcup_{i \in J} A_i = X
 \]
 
-\subsection{Cardinality Laws}
+\section{Cardinality Laws}
 
 Let \( A_i, B_j \subseteq X \) for \( i \in I \) and \( j \in J \). Then the following holds:
 
@@ -796,7 +789,7 @@ Here, \( I = \{ 1, 2, 3, \dots, n \} \) and \( J = \{ 1, 2, 3, \dots, m \} \). T
 \end{align*}
 
 
-\subsection{Cardinality}
+\section{Cardinality}
 
 The cardinality of a set is the number of elements in that set.
 
@@ -855,12 +848,12 @@ Let \( |A \cap B| = k \), then:
 	{(-1)}^{|I| - 1} \left\vert \bigcap_{i \in I} M_i \right\vert
 \]
 
-\subsection{Definition of Countable and Non-countable}
+\section{Definition of Countable and Non-countable}
 
 A set \(A\) is \emph{infinite countable} or just \emph{countable} if there exist a bijection from \(\N\) to 
 \(A\). If \(A\) has infinite elements and there is no such bijection, we call it \emph{non-countable}
 
-\subsection{Countable Union}
+\section{Countable Union}
 
 Given \(A_n, n \in \N\) countable sets, then 
 
@@ -870,7 +863,7 @@ Given \(A_n, n \in \N\) countable sets, then
 
 is also countable.
 
-\subsection{Countability of Subsets}
+\section{Countability Of Subsets}
 
 Given \(A \subseteq B\), where \(B\) is countable. Then \(A\) is also countable. The other case is 
 that if \(A\) is non-countable then \(B\) must be non-countable as well.
@@ -906,7 +899,7 @@ Therefore, the set of rational numbers \( \Q \) is countable.
 
 \QED 
 
-\subsection{Cantor's Diagonal Argument: The Real Numbers are Uncountable}
+\section{Cantor's Diagonal Argument: The Real Numbers are Uncountable}
 
 We show that the set of real numbers in the interval \( (0,1) \subseteq \R \) is uncountable.
 
@@ -948,9 +941,9 @@ Therefore, the interval \( (0,1) \), and thus the set of real numbers \( \R \), 
 
 \QED 
 
-\subsection{The Power Set}
+\section{The Power Set}
 
-The Power Set of a set is the set of all subsets of a given set 
+The \emph{power set} of a set is the set of all subsets of a given set 
 
 \[
 	\mathcal{P}(x):= \{ M: M \subseteq X\}
@@ -958,7 +951,7 @@ The Power Set of a set is the set of all subsets of a given set
 
 Its cardinality is \(2^n\) with \(n\) being the number of elements in the original set \(X\).
 
-\subsection{Set Systems}
+\section{Set Systems}
 
 Let \(A\) be a non-empty set. A subset \(\mathscr{F}\) of the power set of \(A\) is called a 
 \emph{set system} or \emph{family of sets} of \(A\). 
@@ -979,7 +972,7 @@ and
 
 as the \emph{intersection} and \emph{union} of the sets.
 
-\subsubsection{The Intersection of the Empty Set is the Universal Class}
+\subsection{The Intersection Of The Empty Set Is The Universal Class}
 
 \textbf{Proof:}
 
@@ -1046,7 +1039,9 @@ that it has to be a set.
 
 \QED
 
-\subsubsection{Inclusion Function}
+\section{Foundamental Set Functions}
+
+\subsection{Inclusion Function}
 
 Let \(A \subseteq B\) the function 
 
@@ -1056,7 +1051,7 @@ Let \(A \subseteq B\) the function
 
 as the \emph{inclusion function} of \(B\) in \(A\).
 
-\subsubsection{Partition Function}
+\subsection{Partition Function}
 
 If \(P\) is a partition of \(M\) then each element of \(M\) to exactly one \(X \in P\)
 
@@ -1066,7 +1061,7 @@ If \(P\) is a partition of \(M\) then each element of \(M\) to exactly one \(X \
 
 is a map, called \emph{natural map} of \(P\).
 
-\subsubsection{Characteristic Function}
+\subsection{Characteristic Function}
 
 Given two sets \(A\) and \(B\), we define the \emph{characteristic function} of \(B\) as:
 
@@ -1077,18 +1072,9 @@ Given two sets \(A\) and \(B\), we define the \emph{characteristic function} of 
 	\end{cases}
 \]
 
-\subsection{Equivalence Classes}
+\section{Partitions}
 
-Given a partition \(P\) of a set \(M\), the elements of \(P\) are called \emph{classes}. 
-If \(X\) is a class, then its members are called \emph{representatives} of the class.
-
-A subset of \(M\) with an element of each of the classes of \(M\) is called the \emph{representative set} or \emph{traversal}. 
-
-The function \(v: P \to M\) with \(v(X) \in X\) for all \(X \in P\) is called \emph{representative function}.
-
-\subsection{Partitions}
-
-Let \(A\) be a set. A partition of \(A\) is a subset non-empty sets of \(\mathcal{P}(A)\) with the following properties:
+Let \(A\) be a set. A \emph{partition} of \(A\) is a subset non-empty sets of \(\mathcal{P}(A)\) with the following properties:
 
 \[
 	\forall i, j \in I A_i \cap A_j = \emptyset \quad \text{for} \quad i \neq j
@@ -1112,23 +1098,16 @@ combining all of them with the union will give us the entire set of integers bec
 
 \QED
 
-\subsubsection*{The Quotient Space satisfies the Partition Properties}
+\subsection{Equivalence Classes}
 
-Given \(A/R\), it satisfies the properties of a partition.
+Given a partition \(P\) of a set \(M\), the elements of \(P\) are called \emph{classes}. 
+If \(X\) is a class, then its members are called \emph{representatives} of the class.
 
-\textbf{Proof:}
+A subset of \(M\) with an element of each of the classes of \(M\) is called the \emph{representative set} or \emph{traversal}. 
 
-For \(X, Y \in A/R\), we know by the one of the properties of equivalence classes that \([a]_R \cap [b]_R \neq \emptyset \iff [a]_R = [b]_R\).
-Therefore, the first condition is satisfied. 
+The function \(v: P \to M\) with \(v(X) \in X\) for all \(X \in P\) is called \emph{representative function}.
 
-To prove: \(\bigcup_{[a]_R \in A/R} [a]_R = A\).
-
-\(x \in \bigcup A/R \implies x \in [a]_R \in A/R\), this implies that \(x \in A\) because \(\nexists a \in A, a \notin (x, y) \in R\). This was also already proven in the section 
-subsection dedicated to the quotient space.
-
-\QED
-
-\subsubsection*{Equivalence Relation from a Partition}
+\subsection{Equivalence Relation From A Partition}
 
 Given the partition \(S\) of the set \(A\), then 
 
@@ -1149,7 +1128,7 @@ is an equivalence relation.
 
 \QED
 
-\subsection{Relation from the Relation of the Quotient Space and Partition from the Quotient Space}
+\subsection{Relation From The Relation Of The Quotient Space And Partition From The Quotient Space}
 
 Given \(R\) on \(A\), \(R_{A/R} = R\) with 
 
@@ -1182,7 +1161,23 @@ For the other direction if \(a, b \in Y \implies a E_S b \implies b \in [a]_{R_S
 
 \QED
 
-\subsubsection*{Properties of Partitions}
+\subsection{The Quotient Space Satisfies The Partition Properties}
+
+Given \(A/R\), it satisfies the properties of a partition.
+
+\textbf{Proof:}
+
+For \(X, Y \in A/R\), we know by the one of the properties of equivalence classes that \([a]_R \cap [b]_R \neq \emptyset \iff [a]_R = [b]_R\).
+Therefore, the first condition is satisfied. 
+
+To prove: \(\bigcup_{[a]_R \in A/R} [a]_R = A\).
+
+\(x \in \bigcup A/R \implies x \in [a]_R \in A/R\), this implies that \(x \in A\) because \(\nexists a \in A, a \notin (x, y) \in R\). This was also already proven in the section 
+subsection dedicated to the quotient space.
+
+\QED
+
+\subsection{Properties of Partitions }
 
 \begin{itemize}
 
@@ -1228,7 +1223,8 @@ in different equivalence classes \(A_i \cap A_j = \emptyset \implies \forall x \
 
 \QED
 
-\subsection{Equivalence Relations and Partitions}
+
+\subsection{Equivalence Relations And Partitions}
 
 Let \( M \) be a set.
 
@@ -1266,9 +1262,9 @@ Let \( M \) be a set.
 
 \end{enumerate}
 
-\subsection{Equivalence Relations under Functions}
+\section{Equivalence Relations Under Functions}
 
-\subsubsection*{Pre-image}
+\subsection{Pre-image}
 
 Let \(f: A \to B\) and \(G\)be an equivalence relation in \(B\). The \emph{pre-image} of \(G\) in 
 \(A\) is defined as  
@@ -1279,7 +1275,7 @@ Let \(f: A \to B\) and \(G\)be an equivalence relation in \(B\). The \emph{pre-i
 
 and it is also an equivalence relation.
 
-\subsubsection*{Restriction}
+\subsection{Restriction}
 
 Similarly, we can also define the \emph{restriction} for when \(B \subseteq A\)
 
@@ -1292,7 +1288,7 @@ Similarly, we can also define the \emph{restriction} for when \(B \subseteq A\)
 Let \(G\) and \(H\) be equivalence relations in \(A\). We call \(G\) a \emph{refinement} of \(H\) if 
 \(G \subseteq H\); we also say that \(G\) is \emph{finer} than \(H\), and that \(H\) is \emph{coarser} than \(G\).
 
-\subsection{Quotient Space for Refinements}
+\subsection{Quotient Space For Refinements}
 
 Let \(G\) and \(H\) be equivalence relations on a set \(A\) and let \(G\) be a refinement of \(H\). 
 The \emph{quotient} of \(H\) by \(G\) usually denoted as \(H/G\), is a relation in \(A/G\) defined as follows: 
@@ -1303,7 +1299,7 @@ The \emph{quotient} of \(H\) by \(G\) usually denoted as \(H/G\), is a relation 
 
 In simpler words, it is a set of the pairs consisting of the equivalence classes of a pair \((x, y) \in H\).
 
-\subsubsection*{The Quotient is an Equivalence Relation}
+\subsection{The Quotient is an Equivalence Relation}
 
 The Quotient is an Equivalence Relation.
 
@@ -1321,7 +1317,7 @@ guarantees us that their equivalence class counterpart are also part of an equiv
 
 \QED
 
-\subsubsection*{Equivalence Classes under Refinements}
+\subsection{Equivalence Classes under Refinements}
 
 Let \(G\) and \(H\) be equivalence relations in \(A\), suppose \(G \subseteq H\). Then 
 \(z \in [x]_{H} \implies [z]_G \subseteq [x]_H\).
@@ -1341,7 +1337,7 @@ Thus, \([z]_G \subseteq [x]_H\).
 
 This can also be extended for all elements \(x \in A\), as \([x]_G \subseteq [x]_H\).
 
-\subsection{Equivalence Relations and Surjective Mappings}
+\section{Equivalence Relations and Surjective Mappings}
 
 \begin{itemize}
 
@@ -1364,7 +1360,7 @@ This can also be extended for all elements \(x \in A\), as \([x]_G \subseteq [x]
 
 \end{itemize}
 
-\subsection{Homomorphism Theorem for Sets}
+\section{Homomorphism Theorem for Sets}
 
 Given \(f: M \to N\) with \( M / \!\sim_f = \{f^{-1}(\{n\}) \mid m \in f(M)\}\)  
 
@@ -1400,15 +1396,7 @@ The homomorphism theorem for Sets can be visualized through the following commut
 This is saying us to first form collections of elements and then use our second function to associate that connections to their 
 respective images. 
 
-\subsection{Representatives}
-
-Given a set \(X \subseteq A\), we consider it a set of \emph{representatives} for a partition \(S\) if 
-
-\[
-	\forall Y \in S X \cap Y = \{a\}, a \in A
-\]
-
-\subsection{Family of Subsets Operations}
+\section{Family of Subsets Operations}
 
 Let \(\mathscr{F}\) be a system of sets (a family of subsets) on the set \(X\). We define:
 
@@ -1422,7 +1410,7 @@ Let \(\mathscr{F}\) be a system of sets (a family of subsets) on the set \(X\). 
 \]
 
 
-\subsection{Product of Classes}
+\section{Product of Classes}
 
 Given a family of classes \(\{A_i\}_{i \in I}\) we define the \emph{product of classes} as 
 
@@ -1432,7 +1420,7 @@ Given a family of classes \(\{A_i\}_{i \in I}\) we define the \emph{product of c
 
 Is the set of all functions from \(I\) to \(\bigcup A_i\).
 
-\subsubsection*{Properties}
+\subsection{Properties Products Of Classes}
 
 \begin{itemize}
 
@@ -1442,13 +1430,13 @@ Is the set of all functions from \(I\) to \(\bigcup A_i\).
 
 \end{itemize}
 
-\subsection{Pigeon Principle}
+\section{Pigeon Principle}
 
 For \(g: A \to B\) and \(|A| = n + 1\), \(|B| = n\) then there exists \(b \in B\) such that \(|g^{-1}(\{ b \})| \ge 2\). 
 
 In other words if you have \(n\) boxes and \(n + 1\) objects, then at least one of those boxes will have more than 2 elements.
 
-\subsection{The Cantor Set}
+\section{The Cantor Set}
 
 In the following, we want to study the Cantor set \(\mathcal{C}\subseteq\R\).
 
@@ -1493,6 +1481,7 @@ the process multiple times.
 \end{itemize}
 
 \textbf{Proof I:}
+
 We give a proof by contradiction.
 
 Assume the Cantor set is countable. Then there exists a surjective function
@@ -1586,7 +1575,7 @@ Since each \(I_{n} \subset A_{n}\), it follows that
 	x \in \mathcal{C}.
 \]
 
-\subsection*{Contradiction}
+\textbf{Contradiction}
 
 Because \(c\) is surjective by assumption, there exists a \(k \in \N\) such that
 

@@ -1,5 +1,4 @@
-
-\section{Graph Theory}
+\chapter{Graph Theory}
 
  A \emph{Graph} \(G = \inner{V}{E} \) consists of a finite set of vertices \(V\) and a relation 
  \(E \subseteq V \times V\) over the set. Depending on the traits of \(E\) it can be categorized into 
@@ -25,7 +24,7 @@
 
  In computer science the density of a graph is a main criteria when modeling a graph. 
 
- \subsection{Connected Graphs}
+ \section{Connected Graphs}
 
  A graph \(G = (V,E)\) undirected, then it is called \emph{connected} if for all pairs \((v_i, v_j) \subseteq V \times V\) there exists a 
  path from \(v_i\) to \(v_j\). We define \(E_S\) the symmetric relation. 
@@ -36,7 +35,7 @@
 
  If \(G\) is directed then it is connected if and only if its undirected version is connected.
  
- \subsection{Paths}
+ \section{Paths}
 
  Given a graph \(G\), we call a \emph{path} a set of vertices if 
 
@@ -66,7 +65,7 @@
     \phi (p) = \sum_{i = 1}^{k - 1} \phi(w_i, w_{i+1})
  \]
 
- \subsection{The Adjacency Matrix}
+ \section{The Adjacency Matrix}
 
  For a graph \(G\) with vertices \(V = \{v_1, \dots, v_n\}\), we define the \emph{the adjacency matrix} \(A = (a_{ij})\) as a 
  \(n \times n\) matrix with 
@@ -78,7 +77,7 @@
     \end{cases}
  \]
 
-\subsection{The Relax Operation}
+\section{The Relax Operation}
 
 In graph theory when referring to the action of updating the cost of visiting a vertex in a weigthed graph we call this operation 
 \emph{relaxation}. 

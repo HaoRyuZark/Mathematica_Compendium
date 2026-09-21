@@ -1,11 +1,10 @@
-
 \chapter{Recursion}
 
 \emph{Recursion} is a term used to refer to something defined in terms
 of itself. An example is the factorial: \(n! = (n - 1)!\), with \(0! = 1\) being the
 base case where the recursion stops.
 
-\subsection{From Recursive to Closed Form}
+\section{From Recursive to Closed Form}
 
 Often, a sequence defined recursively can be rewritten in an explicit or closed form.
 
@@ -13,7 +12,7 @@ Often, a sequence defined recursively can be rewritten in an explicit or closed 
 
 \emph{Closed form} expresses \( a_n \) directly in terms of \(n\), with no reference to previous terms.
 
-\subsection{Linear Recursion}
+\section{Linear Recursion}
 
 Linear recursion has the form:
 
@@ -29,7 +28,7 @@ Therefore,
     a_n = \lambda^n a_0 + \frac{\lambda^n - 1}{\lambda - 1}c.
 \]
 
-\subsubsection{General Method for Linear Recursion}
+\subsection{General Method for Linear Recursion}
 
 \begin{enumerate}
 
@@ -39,12 +38,13 @@ Therefore,
     \item Identify the type (e.g., linear, homogeneous, constant coefficients).
 
     \item Solve the characteristic equation (if linear).
+
     \item Use initial conditions to determine constants.
 
 \end{enumerate}
 
 
-\subsection{Recursive Inequalities}
+\section{Recursive Inequalities}
 
 \emph{Recursive inequalities} bound a sequence rather than define it exactly.
 
@@ -68,7 +68,7 @@ To analyze
 
 These techniques are common in analysis, approximation, and numerical algorithms.
 
-\subsection{Fibonacci Numbers and Closed Form}
+\section{Closed Form Of The Fibonacci Sequence}
 
 The Fibonacci sequence is defined recursively:
 
@@ -95,4 +95,6 @@ The closed form (Binet’s Formula) is
     \item This formula demonstrates exponential growth of \( F_n \).
 
 \end{itemize}
+
+This formula can be derivated using the steps of the chapter about \textbf{generating functions}.
 
