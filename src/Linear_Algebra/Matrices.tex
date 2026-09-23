@@ -1,15 +1,14 @@
-
 \chapter{Matrices}
 
-In this section, we explore the fundamental concepts of matrices, their operations, and important properties that form the foundation of linear algebra.
+In this chapter, we explore the fundamental concepts of \emph{matrices}, their operations, and important properties that form the foundation of 
+linear algebra.
 
-\subsection{Definition of a Matrix}
+\section{Definition of a Matrix}
 
-A matrix is a rectangular array of numbers, symbols, or expressions arranged in rows and columns. Formally, an 
-\(m \times n\) matrix \(A\) consists of \(mn\) elements \(a_{ij}\) where 
-\(i = 1, 2, \ldots, m\) and \(j = 1, 2, \ldots, n\):
+A \emph{matrix} is a rectangular array of numbers, symbols, or expressions arranged in rows and columns (informally). An 
+\(m \times n\) matrix \(A\) consists of \(mn\) elements \(a_{ij}\) where \(i = 1, 2, \ldots, m\) and \(j = 1, 2, \ldots, n\).
 
-Formally 
+Formally, 
 
 \[
     A: m \times n \to \field : (i,j) \mapsto a_{i,j}  
@@ -41,9 +40,9 @@ The set of all \(m \times n\) matrices with real entries is denoted by \(\R^{m \
 
 \end{itemize}
 
-\subsection{Matrix Addition and Subtraction}
+\section{Matrix Addition and Subtraction}
 
-Matrix addition and subtraction are defined for matrices of the same dimensions.
+\emph{Matrix addition} and \emph{subtraction} are defined for matrices of the same dimensions.
 
 \[
     c_{ij} = a_{ij} \pm b_{ij} \quad \text{for all } i = 1, 2, \ldots, m \text{ and } j = 1, 2, \ldots, n
@@ -51,18 +50,25 @@ Matrix addition and subtraction are defined for matrices of the same dimensions.
 
 Matrix addition/subtraction satisfies the following properties:
 
-\begin{align*}
-    A \pm B       & = B \pm A \quad \text{(Commutativity)}         \\
-    (A \pm B) + C & = A \pm (B \pm C) \quad \text{(Associativity)} \\
-    A \pm O       & = A \quad \text{(Identity element)}            \\
-    A + (-A)      & = O \quad \text{(Inverse element)}
-\end{align*}
+\subsection{Properties Of Matrix Addition And Subtraction}
 
-Where \(O\) is the zero matrix.
+\begin{itemize}
 
-\subsection{Matrix Multiplication}
+    \item \emph{Commutativity}: \(A \pm B = B \pm A\).
 
-Matrix multiplication is defined between matrices where the number of columns in the first
+    \item \emph{Associativity}: \((A \pm B) \pm C = A \pm (B \pm C)\).
+
+    \item \emph{Identity element}: \(A \pm O = A\).
+   
+    \item \emph{Inverse element}: \(A \pm (-A) = O\).
+
+\end{itemize}
+
+Here \(O\) is the zero matrix.
+
+\section{Matrix Multiplication}
+
+\emph{Matrix multiplication} is defined between matrices where the number of columns in the first
 matrix equals the number of rows in the second matrix.
 
 For \(A \in \C^{m \times p}\) and \(B \in \C^{p \times n}\), their product \(C = AB \in \C^{m \times n}\) is defined as:
@@ -71,14 +77,14 @@ For \(A \in \C^{m \times p}\) and \(B \in \C^{p \times n}\), their product \(C =
     c_{ij} = \sum_{k=1}^{p} a_{ik}b_{kj} = a_{i1}b_{1j} + a_{i2}b_{2j} + \cdots + a_{ip}b_{pj}
 \]
 
-Matrix multiplication is defined this way to think as each operation as dot product of two vectors.
+Matrix multiplication is defined this way so that we can think of each operation as the dot product of two vectors.
 
-An example of this is thinking about the dot product as the total price of a purchase in store.
-The total price is the sum of the amounts which are given by the number of items per price. Now to extend this idea
-for matrices we think about the number of items as a vector of size \(i\) and the prices of each item as
-another vector \(p_1\) with dot product \(\inner{i}{p_1}\). If we want to by other items with different prices, but in the
-same amounts given by the vector \(i\) we get a matrix \(A = (p_1, \dots, p_n)\). Now it makes sense that, if
-we take three different arrays of products we get a vector of three components which represent each of the
+An example of this is thinking about the dot product as the total price of a purchase in a store.
+The total price is the sum of the amounts, which are given by the number of items per price. Now, to extend this idea
+to matrices, we think about the number of items as a vector of size \(i\) and the prices of each item as
+another vector \(p_1\) with dot product \(\inner{i}{p_1}\). If we want to buy other items with different prices, but in the
+same amounts given by the vector \(i\), we get a matrix \(A = (p_1, \dots, p_n)\). Now it makes sense that, if
+we take three different arrays of products, we get a vector of three components, which represent each of the
 total amounts to pay.
 
 Thus, each operation in matrix multiplication is taking the dot product of the \emph{transpose}
@@ -94,7 +100,7 @@ of the current row with the column vector of the other matrix.
     \end{bmatrix}
 \]
 
-As for the case with multiple columns
+As for the case with multiple columns:
 
 \[
     A \times B =
@@ -104,17 +110,6 @@ As for the case with multiple columns
         \inner{a_{n}^T}{b_{j}} & \dots  & \inner{a_{n}^T}{b_{n}}
     \end{bmatrix}
 \]
-
-Matrix multiplication satisfies the following properties:
-
-\begin{align*}
-    A(BC)  & = (AB)C \quad \text{(Associativity)}                         \\
-    A(B+C) & = AB + AC \quad \text{(Left distributivity)}                 \\
-    (A+B)C & = AC + BC \quad \text{(Right distributivity)}                \\
-    AI_n   & = A \quad \text{and} \quad I_m A = A \quad \text{(Identity)}
-\end{align*}
-
-Note that matrix multiplication is generally not commutative, i.e., \(AB \neq BA\) in most cases.
 
 \textbf{Example:}
 
@@ -179,9 +174,29 @@ Therefore, the product \(C = AB\) is:
 
 Let's verify that matrix multiplication is not generally commutative by attempting to compute \(BA\):
 
-Since \(B\) is a \(3 \times 2\) matrix and \(A\) is a \(2 \times 3\) matrix, the product \(BA\) would be a \(3 \times 3\) matrix. However, this calculation cannot be performed since the number of columns in \(B\) (which is 2) does not equal the number of rows in \(A\) (which is 2). Thus, \(BA\) is undefined, demonstrating that matrix multiplication is not always commutative.
+Since \(B\) is a \(3 \times 2\) matrix and \(A\) is a \(2 \times 3\) matrix, the product \(BA\) would be a \(3 \times 3\) matrix. However, 
+this calculation cannot be performed since the number of columns in \(B\) (which is 2) does not equal the number of rows in \(A\) (which is 2). T
+hus, \(BA\) is undefined, demonstrating that matrix multiplication is not always commutative.
 
-\subsection{Outer Product for Matrix Multiplication}
+\subsection{Properties Of Matrix Multiplication}
+
+Matrix multiplication satisfies the following properties:
+
+\begin{itemize}
+
+    \item \emph{Associativity}: \(A(BC) = (AB)C\).
+
+    \item \emph{Left distributivity}: \(A(B+C) = AB + AC\).
+
+    \item \emph{Right distributivity}: \((A+B)C = AC + BC\).
+
+    \item \emph{Identity}: \(AI_n = A \quad \text{and} \quad I_m A = A\).
+
+\end{itemize}
+
+Note that matrix multiplication is generally not commutative, i.e., \(AB \neq BA\) in most cases.
+
+\section{Outer Product For Matrix Multiplication}
 
 The \emph{outer product} of two vectors \(a \in \field^m\) and \(b \in \field^n\) is defined as the matrix
 
@@ -195,7 +210,7 @@ The \emph{outer product} of two vectors \(a \in \field^m\) and \(b \in \field^n\
     \end{bmatrix} \in \field^{m \times n}.
 \]
 
-For the case where \(A \in \field^{n \times m}\) and \(A \in \field^{m \times n} \)
+For the case where \(A \in \field^{n \times m}\) and \(B \in \field^{m \times n}\):
 
 \[
     A \times B = \sum_{k = 1}^{n} a _{k} \otimes b_{k} = \sum_{k = 1}^{n} a_{k} b_{k}^{T}
@@ -203,36 +218,45 @@ For the case where \(A \in \field^{n \times m}\) and \(A \in \field^{m \times n}
 
 where \(a_k\) is the \(k\)-th column of \(A\) and \(b_k\) is the \(k\)-th row of \(B\).
 
-\subsection{The Transpose of a Matrix}
+\section{The Transpose Of A Matrix}
 
-The transpose of a matrix \(A \in \R^{m \times n}\), denoted \(A^T \in \R^{n \times m}\), is obtained by interchanging rows and columns:
+The \emph{transpose} of a matrix \(A \in \R^{m \times n}\), denoted \(A^T \in \R^{n \times m}\), is obtained by interchanging rows and columns:
 
 \[
     {(A^T)}_{ij} = a_{ji} \quad \text{for all } i = 1, 2, \ldots, n \text{ and } j = 1, 2, \ldots, m
 \]
 
-\subsubsection{Properties of the Transpose}
+\subsection{Properties of the Transpose}
 
-\begin{align*}
-    {(A^T)}^T      & = A                                                         \\
-    {(A + B)}^T    & = A^T + B^T                                                 \\
-    {(AB)}^T       & = B^T A^T                                                   \\
-    {(\alpha A)}^T & = \alpha A^T \quad \text{for any scalar } \alpha            \\
-    {(A)^{-1}}^T   & = (A^T)^{-1}                                                \\
-    \rank(A)       & = \rank(A^T)                                                \\
-    \det(A)        & = \det(A^T)                                                 \\
-    eig(A)         & = eig(A^T) \text{ where } eig() \text{ are the eigenvalues}
-\end{align*}
+\begin{itemize}
+
+    \item  \emph{Transpose of a transpose}: \({(A^T)}^T = A\).
+
+    \item  \emph{Transpose of a sum}: \({(A + B)}^T = A^T + B^T\).
+
+    \item  \emph{Transpose of a product}: \({(AB)}^T = B^T A^T\).
+
+    \item  \emph{Transpose of a scalar multiple}: \({(\alpha A)}^T = \alpha A^T \quad \text{for any scalar } \alpha\).
+
+    \item  \emph{Transpose of an inverse}: \({(A^{-1})}^T = (A^T)^{-1}\) (assuming \(A\) is invertible).
+
+    \item  \emph{Rank of the transpose}: \(\rank(A) = \rank(A^T)\).
+
+    \item  \emph{Determinant of the transpose}: \(\det(A) = \det(A^T)\).
+
+    \item  \emph{Eigenvalues of the transpose}: \(\mathrm{eig}(A) = \mathrm{eig}(A^T)\), where \(\mathrm{eig}()\) are the eigenvalues.
+
+\end{itemize}
 
 The transpose can also help us interpret the dot product of two vectors being 0 as a matrix multiplication.
-Here are given \(A = (a_1, \dots, a_n)\) with \(Ax\) as some vector and \(b\) some other vector and
-\(a_k\) is some row of \(A\).
+Here we are given \(A = (a_1, \dots, a_n)\) with \(Ax\) as some vector, \(b\) some other vector, and
+\(a_k\) some row of \(A\).
 
 \[
     \inner{a_k}{b - Ax} = 0 \quad \forall k \iff A^{T} (b - Ax) = \vec{0}
 \]
 
-\subsubsection{Proof that the inverse of the transpose is the transpose of the inverse}
+\subsubsection{Proof That The Inverse Of The Transpose Is The Transpose Of The Inverse}
 
 To prove: \((A^{-1})^T = (A^T)^{-1}\)
 
@@ -244,27 +268,29 @@ To prove: \((A^{-1})^T = (A^T)^{-1}\)
 
 \QED
 
-\subsection{The Equivalence of Matrices}
+\section{The Equivalence Of Matrices}
 
-Two matrices \(A\) and \(B\) are said to be equivalent if one can be transformed into the other through a finite sequence of elementary row operations. We write \(A \sim B\) to denote this equivalence.
+Two matrices \(A\) and \(B\) are said to be \emph{equivalent} if one can be transformed into the other through a finite sequence of elementary 
+row operations. We write \(A \sim B\) to denote this equivalence.
 
 The elementary row operations are:
 
 \begin{itemize}
 
-    \item Interchanging two rows: \(R_i \leftrightarrow R_j\)
+    \item Interchanging two rows: \(R_i \leftrightarrow R_j\).
 
-    \item Multiplying a row by a non-zero scalar: \(R_i \mapsto \alpha R_i\) where \(\alpha \neq 0\)
+    \item Multiplying a row by a non-zero scalar: \(R_i \mapsto \alpha R_i\) where \(\alpha \neq 0\).
 
-    \item Adding a multiple of one row to another: \(R_i \mapsto R_i + \alpha R_j\) where \(i \neq j\)
+    \item Adding a multiple of one row to another: \(R_i \mapsto R_i + \alpha R_j\) where \(i \neq j\).
 
 \end{itemize}
 
-Matrix equivalence is an equivalence relation, satisfying reflexivity, symmetry, and transitivity. Equivalent matrices represent the same linear system in different bases.
+Matrix equivalence is an equivalence relation, satisfying reflexivity, symmetry, and transitivity. Equivalent matrices represent the same linear 
+system in different bases.
 
-\subsubsection{Row Echelon Form (REF)}
+\subsection{Row Echelon Form (REF)}
 
-A matrix is in row echelon form if:
+A matrix is in \emph{row echelon form} if:
 
 \begin{itemize}
 
@@ -276,9 +302,9 @@ A matrix is in row echelon form if:
 
 \end{itemize}
 
-\subsubsection{Reduced Row Echelon Form (RREF)}
+\subsection{Reduced Row Echelon Form (RREF)}
 
-A matrix is in reduced row echelon form if:
+A matrix is in \emph{reduced row echelon form} if:
 
 \begin{itemize}
 
@@ -447,32 +473,39 @@ This corresponds to the system:
 Therefore, the solution to the original system is \(x = 1\), \(y = 4\), and \(z = -2\).
 
 
-\subsection{The Inverse of a Matrix}
+\section{The Inverse of a Matrix}
 
-For a square matrix \(A \in \R^{n \times n}\), the inverse matrix \(A^{-1}\) (if it exists) satisfies:
+For a square matrix \(A \in \R^{n \times n}\), the \emph{inverse} matrix \(A^{-1}\) (if it exists) satisfies:
 
 \[
-    A A^{-1} = A^{-1} A = I_n
+    A A^{-1} = A^{-1} A = I_n.
 \]
 
-\subsubsection{Properties of the Inverse}
+\subsection{Properties of the Inverse}
 
-\begin{align*}
-    {(A^{-1})}^{-1} & = A                  \\
-    {(AB)}^{-1}     & = B^{-1}A^{-1}       \\
-    {(A^T)}^{-1}    & = {(A^{-1})}^T       \\
-    \det(A^{-1})    & = \frac{1}{\det(A)}  \\
-    (cA)^{-1}       & = \frac{1}{c} A^{-1} \\
-    \det(A^{-1})    & = \det(A)^{-1}       \\
-    \rank(A^{-1})   & = \rank(A)           \\
-    eig(A^{-1})     & = eig(A)^{-1}
-\end{align*}
 
-\subsubsection{Finding the Inverse}
+\begin{itemize}
+
+    \item \emph{Inverse of the inverse}: \({(A^{-1})}^{-1} = A\). 
+
+    \item \emph{Inverse of the transpose}: \({(A^T)}^{-1} = {(A^{-1})}^T\).
+
+    \item \emph{Inverse of a product}: \({(AB)}^{-1} = B^{-1}A^{-1}\).
+
+    \item \emph{Determinant of the inverse}: \(\det(A^{-1}) = \frac{1}{\det(A)}\).
+
+    \item \emph{Scalars under the inverse}: \((cA)^{-1} = \frac{1}{c} A^{-1}\).
+
+    \item \emph{Rank of the inverse}: \(\rank(A^{-1}) = \rank(A) \). 
+
+    \item \emph{Eigenvalues of the inverse}: \(\mathrm{eig}(A^{-1}) = \mathrm{eig}(A)^{-1}\).
+\end{itemize}
+
+\subsection{Finding The Inverse}
 
 There are several methods to find the inverse of a matrix:
 
-\emph{Gauss-Jordan Method}
+\subsubsection{Gauss-Jordan Method}
 
 Form the augmented matrix \([A|I_n]\) and apply Gauss-Jordan elimination to transform it into \([I_n|A^{-1}]\):
 
@@ -486,7 +519,7 @@ Form the augmented matrix \([A|I_n]\) and apply Gauss-Jordan elimination to tran
 
 \end{enumerate}
 
-\emph{Adjoint Method}
+\subsubsection{Adjoint Method}
 
 For an \(n \times n\) matrix \(A\):
 
@@ -645,9 +678,23 @@ To verify, we can check that \(AA^{-1} = I_3\):
 
 This confirms that we have correctly found the inverse of matrix \(A\).
 
-\subsection{The Rank of a Matrix}
+\section{How To Isolate Matrices In Equations}
 
-The rank of a matrix \(A\), denoted \(\rank(A)\) or \(\text{rg}(A)\), is the dimension of the column space (or equivalently, the row space) of \(A\).
+Like in other types of equations, we can isolate a matrix by performing the proper operations.
+
+\begin{itemize}
+
+    \item \(A \pm B = C \implies A = C \mp B\)
+
+    \item \(AB = C \implies ABB^{-1} = CB^{-1}  \implies A = CB^{-1}\)
+
+    \item \(AB = C \implies A^{-1}AB = A^{-1}C  \implies B = A^{-1}C\)
+
+\end{itemize}
+
+\section{The Rank of a Matrix}
+
+The \emph{rank} of a matrix \(A\), denoted \(\rank(A)\) or \(\text{rg}(A)\), is the dimension of the column space (or equivalently, the row space) of \(A\).
 
 Equivalent definitions of rank include:
 
@@ -663,21 +710,7 @@ Equivalent definitions of rank include:
 
 \end{itemize}
 
-\subsection{How to isolate Matrices}
-
-Like in other types of equations we can isolate a matrix by doing the proper operations.
-
-\begin{itemize}
-
-    \item \(A \pm B = C \implies A = C \mp B\)
-
-    \item \(AB = C \implies ABB^{-1} = CB^{-1}  \implies A = CB^{-1}\)
-
-    \item \(AB = C \implies A^{-1}AB = A^{-1}C  \implies B = A^{-1}C\)
-
-\end{itemize}
-
-\subsubsection{Finding the Rank}
+\subsection{Finding the Rank}
 
 To find the rank of a matrix:
 
@@ -689,77 +722,80 @@ To find the rank of a matrix:
 
 \end{enumerate}
 
-\subsubsection{Properties of Rank}
+\subsection{Properties of Rank}
 
-\begin{align*}
-     & \rank(A) \leq \min(m,n) \text{ for } A \in \R^{m \times n} \\
-     & \rank(A^T) = \rank(A)                                          \\
-     & \rank(AB) \leq \min(\rank(A), \rank(B))                        \\
-     & \rank(A+B) \leq \rank(A) + \rank(B)
-\end{align*}
+\begin{itemize}
+
+    \item \emph{Upper bound of the rank}: \(\rank(A) \leq \min(m,n) \text{ for } A \in \R^{m \times n}\).
+
+    \item \emph{Rank of the transpose}: \(\rank(A^T) = \rank(A)\).
+
+    \item \emph{Rank of a product}: \(\rank(AB) \leq \min(\rank(A), \rank(B))\).
+
+    \item \emph{Rank of a sum}: \(\rank(A+B) \leq \rank(A) + \rank(B)\).
+
+\end{itemize}
 
 For a square matrix \(A \in \R^{n \times n}\), the following are equivalent:
 
 \begin{itemize}
 
-    \item \(A\) is invertible
+    \item \(A\) is invertible.
 
-    \item \(\rank(A) = n\)
+    \item \(\rank(A) = n\).
 
-    \item \(\det(A) \neq 0\)
+    \item \(\det(A) \neq 0\).
 
-    \item The columns of \(A\) are linearly independent
+    \item The columns of \(A\) are linearly independent.
 
-    \item The rows of \(A\) are linearly independent
+    \item The rows of \(A\) are linearly independent.
 
-    \item \(Ax = 0\) has only the trivial solution \(x = 0\)
+    \item \(Ax = 0\) has only the trivial solution \(x = 0\).
 
 \end{itemize}
 
-\subsection{Column Space}
+\section{Column Space}
 
 The column space of \(A\), denoted \(\text{Col}(A)\), is the span of the columns of \(A\):
 
 \[
-    \text{Col}(A) = \{\vec{y} \in \R^m : \vec{y} = A\vec{x} \text{ for some } \vec{x} \in \R^n\}
+    \mathrm{Col}(A) = \{\vec{y} \in \R^m : \vec{y} = A\vec{x} \text{ for some } \vec{x} \in \R^n\}.
 \]
 
 This is also called the range or image of the linear transformation represented by \(A\). The dimension of the column space equals the rank of \(A\).
 
-\subsection{Row Space}
+\section{Row Space}
 
-The \emph{row space} of \(A\), denoted \(\text{Row}(A)\), is the span of the rows of \(A\):
-It is also perpendicular to the \emph{Null space}.
+The \emph{row space} of \(A\), denoted \(\text{Row}(A)\), is the span of the rows of \(A\). It is also perpendicular to the \emph{null space}.
 
 \[
-    \text{Row}(A) = \text{Col}(A^T)
+    \mathrm{Row}(A) = \text{Col}(A^T)
 \]
 
 The dimension of the \emph{row space} also equals the rank of \(A\).
 
 \subsection{Null Space}
 
-The null space (or kernel) of \(A\), denoted \(\text{Null}(A)\) or \(\text{Ker}(A)\),
-is the set of all vectors that \(A\) maps to zero:
+The \emph{null space} (or \emph{kernel}) of \(A\), denoted \(\mathrm{Null}(A)\) or \(\ker(A)\) is the set of all vectors that \(A\) maps to zero:
 
 \[
-    \text{Null}(A) = \{\vec{x} \in \R^n : A\vec{x} = \vec{0}\}
+    \mathrm{Null}(A) = \{\vec{x} \in \R^n : A\vec{x} = \vec{0}\}
 \]
 
-The dimension of the null space is called the nullity of \(A\), denoted \(\text{nullity}(A)\).
+The dimension of the null space is called the nullity of \(A\), denoted \(\mathrm{nullity}(A)\).
 
-\subsubsection{Left Null Space}
+\subsection{Left Null Space}
 
-The left null space of \(A\) is the null space of \(A^T\):
+The \emph{left null space} of \(A\) is the null space of \(A^T\):
 
 \[
-    \text{Null}(A^T) = \{\vec{y} \in \R^m : A^T\vec{y} = \vec{0}\} = \{\vec{y} \in \R^m : \vec{y}^T A = \vec{0}^T\}
+    \mathrm{Null}(A^T) = \{\vec{y} \in \R^m : A^T\vec{y} = \vec{0}\} = \{\vec{y} \in \R^m : \vec{y}^T A = \vec{0}^T\}
 \]
 
 The Rank-Nullity Theorem connects these spaces:
 
 \[
-    \rank(A) + \text{nullity}(A) = n
+    \rank(A) + \mathrm{nullity}(A) = n
 \]
 
 To find a basis for these spaces:
@@ -775,24 +811,23 @@ To find a basis for these spaces:
 
 \end{itemize}
 
-\subsection{Linear Maps as matrices}
+\section{Linear Maps As Matrices}
 
-Linear maps between vector spaces \(V\) and can be represented by matrices. In the following way
+\emph{Linear maps} between vector spaces \(V\) and \(W\) can be represented by matrices, in the following way:
 
 \[
     A\vec{x} =  \sum_{i = 1}^{n} x_i \vec{a}_i
 \]
 
-where \(\vec{a}_i\) are images of the basis vector of \(V\) as columns of \(A\) and \(\vec{x} = (x_1, \dots, x_n)^T\).
-
+where \(\vec{a}_i\) are images of the basis vectors of \(V\) as columns of \(A\) and \(\vec{x} = (x_1, \dots, x_n)^T\).
 
 \subsection{Matrix Representation of Linear Maps on Basis vectors}
 
-Let \(V\) and \(W\) be two \(\field\)-vector spaces, \(\beta = \{v_1, \dots, v_n\}\) a basis of \(V\) and \( \gamma = \{w_1, \dots, w_m\}\) a basis of \(W\), and
-let \(f : V \to W\) be linear. Then there exists a unique matrix \(A = (a_{ij}) \in \field^{m \times n}\) with
+Let \(V\) and \(W\) be two \(\field\)-vector spaces, \(\beta = \{v_1, \dots, v_n\}\) a basis of \(V\) and \( \gamma = \{w_1, \dots, w_m\}\) a basis of 
+\(W\), and let \(f : V \to W\) be linear. Then there exists a unique matrix \(A = (a_{ij}) \in \field^{m \times n}\) with
 
 \[
-    f(v_j) = \sum_{i=1}^{m} a_{ij}w_i \quad \forall j = 1, \dots, n
+    f(v_j) = \sum_{i=1}^{m} a_{ij}w_i \quad \forall j = 1, \dots, n.
 \]
 
 \textbf{Example:}
@@ -850,20 +885,20 @@ We check that:
 
 This confirms the matrix representation is correct.
 
-\subsection{Matrices with respect to a basis}
+\section{Matrices With Respect To A Basis}
 
-Expressing a linear map in terms of a different basis means that given two vector-spaces \(V\) and \(W\)
-with the basis \(\beta = \{v_1, \dots, v_n\}\) and \(\gamma = \{w_1, \dots, w_n\}\) respectively.
-Then the map \(f: V \to W\) with a matrix representation \(A\) whose columns are
+Expressing a linear map in terms of a different basis means that, given two vector spaces \(V\) and \(W\)
+with the bases \(\beta = \{v_1, \dots, v_n\}\) and \(\gamma = \{w_1, \dots, w_n\}\) respectively,
+the map \(f: V \to W\) with a matrix representation \(A\) whose columns are
 vectors in the basis \(\beta\) can be expressed in terms of the basis \(\gamma\) using the following steps:
 
 \begin{enumerate}
 
-    \item Determine the images of the basis vectors of \(V\) under \(f\) which will give us the matrix \(A_\beta\). If not already given.
+    \item Determine the images of the basis vectors of \(V\) under \(f\), which will give us the matrix \(A_\beta\), if not already given.
 
-    \item For every basis vector \(w_i\) of \(W\) apply \(A_\beta w_i\). This is going to give you a vector \(k_i\)
+    \item For every basis vector \(w_i\) of \(W\), apply \(A_\beta w_i\). This is going to give you a vector \(k_i\).
 
-    \item Express each \(k_i\) as a linear combination of the basis vectors of \(W\). Which means finding coefficients \(\lambda_k\) such that
+    \item Express each \(k_i\) as a linear combination of the basis vectors of \(W\), which means finding coefficients \(\lambda_k\) such that
           \(\sum_{k = i}^{n} \lambda_k w_k = k_j\). This can be found using Gaussian elimination.
 
     \item Form the matrix \(A_{\gamma}\) using each collection of coefficients \(\lambda_k\) as columns, where each column corresponds to the image of a
@@ -871,7 +906,7 @@ vectors in the basis \(\beta\) can be expressed in terms of the basis \(\gamma\)
 
 \end{enumerate}
 
-Another much faster, method to express a linear map in terms of another basis is to use the change of basis formula.
+Another, much faster method to express a linear map in terms of another basis is to use the change of basis formula.
 If \(\varphi_\gamma\) is the change of basis matrix from \(\gamma\) to the canonical basis formed by the basis vector of \(W\),
 and \(\varphi_{\gamma}^{-1}\) is the change of basis matrix from the canonical basis to \(\gamma\), then:
 
@@ -879,11 +914,11 @@ and \(\varphi_{\gamma}^{-1}\) is the change of basis matrix from the canonical b
     A_{\gamma} = \varphi_\gamma^{-1} A_\beta \varphi_\gamma
 \]
 
-The intuition behind is that in the previous method we are solving the system of equations of \(A_{\gamma}\vec{x}_i = A_\beta w_i\) for
-each basis vector \(w_i\) in \(\gamma\). Which is equivalent of \(\vec{x}_i = \varphi_{\gamma}^{-1} A_\beta w_i\) when using
+The intuition behind it is that in the previous method we are solving the system of equations \(A_{\gamma}\vec{x}_i = A_\beta w_i\) for
+each basis vector \(w_i\) in \(\gamma\), which is equivalent to \(\vec{x}_i = \varphi_{\gamma}^{-1} A_\beta w_i\) when using
 Gaussian elimination. If you then put all \(\vec{x}_i\) in order in a matrix then you get \(A_{\gamma}\).
 
-\subsection{Example of a complete exercise}
+\section{Example Of A Complete Exercise}
 
 \begin{enumerate}
 
@@ -985,7 +1020,8 @@ general \(x\) and showing equality: Here, with \(x = {(x_1, x_2, x_3)}^T\)
     \end{bmatrix} .
 \]
 
-This obviously corresponds to \(f(x)\), so that by Theorem 4.36, the map \(f\) is linear. To determine the kernel, one has to solve the system of linear equations
+This obviously corresponds to \(f(x)\), so that by Theorem 4.36, the map \(f\) is linear. To determine the kernel, one has to solve the 
+system of linear equations
 
 \[
     \begin{array}{cccc}
@@ -995,10 +1031,8 @@ This obviously corresponds to \(f(x)\), so that by Theorem 4.36, the map \(f\) i
     \end{array}
 \]
 
-Which corresponds to the equation \(Ax = f(x) = 0\). Gaussian
-elimination yields \(x_3 = \lambda'\);
-\(x_2 = \frac{2}{3} \cdot \lambda'\); \(x_1 = -\frac{1}{3} \cdot \lambda'\),
-thus, with \(\lambda = \frac{1}{3} \lambda'\):
+Which corresponds to the equation \(Ax = f(x) = 0\). Gaussian elimination yields \(x_3 = \lambda'\);
+\(x_2 = \frac{2}{3} \cdot \lambda'\); \(x_1 = -\frac{1}{3} \cdot \lambda'\), thus, with \(\lambda = \frac{1}{3} \lambda'\):
 
 \[
     \ker(f) =
@@ -1016,9 +1050,8 @@ thus, with \(\lambda = \frac{1}{3} \lambda'\):
 It follows that \(\dim(\ker(f)) = 1\) and because of \(\dim(V) = 3\) from the dimension
 formula \(\dim(\img(f)) = 2\).
 
-\(\img(f)\) corresponds to the linear span of the columns of the matrix. One chooses consequently
-\(\dim(\img(f))\) column vectors, e.g., the first ones, and tests if they are linearly independent.
-In the concrete case, this is obvious, because the second column is
+\(\img(f)\) corresponds to the linear span of the columns of the matrix. One chooses consequently \(\dim(\img(f))\) column vectors, e.g., the 
+first ones, and tests if they are linearly independent. In the concrete case, this is obvious, because the second column is
 not a multiple of the first. It follows therefore,
 
 \[
@@ -1039,17 +1072,20 @@ not a multiple of the first. It follows therefore,
     \right\}
 \]
 
-\subsection{Diagonal and Triangular Matrices}
+\section{Diagonal And Triangular Matrices}
 
-A matrix is called \emph{Diagonal} if the only non-zero elements are the elements on the main diagonal.
-A matrix is \emph{Over Triangular} if all elements under or above the main diagonal are all zeroes.
+A matrix is called \emph{Diagonal} if the only non-zero elements are the elements on the main diagonal. A matrix is \emph{triangular} if all 
+elements under or above the main diagonal are zero.
 
-\subsubsection{Properties of Diagonal and Triangular Matrices}
+\subsection{Properties of Diagonal and Triangular Matrices}
 
-\begin{align*}
-    \det(A) & = \prod_{i = 1}^{n} a_{ii}             \\
-    eig(A)  & = \{a_{1,1}, a_{2,2}, \dots, a_{n,n}\}
-\end{align*}
+\begin{itemize}
+
+    \item \emph{Determinant}: \(\det(A) = \prod_{i = 1}^{n} a_{ii}\).
+
+    \item \emph{Eigenvalues}: \(\mathrm{eig}(A) = \{a_{1,1}, a_{2,2}, \dots, a_{n,n}\}\).
+
+\end{itemize}
 
 \section{Symmetric Matrix}
 
@@ -1067,7 +1103,7 @@ A matrix \(A \in \R^{n \times n}\) is symmetric if
 
     \item For all symmetric matrices \(x^T Ax > 0\).
 
-    \item All eigenvalues are reals.
+    \item All eigenvalues are real.
    
     \item The eigenvectors are orthogonal.
 
@@ -1075,7 +1111,7 @@ A matrix \(A \in \R^{n \times n}\) is symmetric if
 
 \textbf{Proof 1:}
 
-Let \(A \in R^{n \times m}\), by the definition of matrix multiplication \(AA^T \in \R^{n \times n}\) and \(A^T A \in \R^{m \times m}\), hence 
+Let \(A \in \R^{n \times m}\), by the definition of matrix multiplication \(AA^T \in \R^{n \times n}\) and \(A^T A \in \R^{m \times m}\), hence 
 a transpose can be taken.
 
 Then
@@ -1174,13 +1210,18 @@ which can be expressed as a double summation:
 When taking the derivative of \(f(x)\) with respect to \(x_k\), we have 4 cases to consider:
 
 \begin{itemize}
+
     \item \(i = k,\, j = k\): is \(x_k x_k a_{k,k}\) and the derivative with respect to \(x_k\) is \(2x_k a_{k,k}\).
+
     \item \(i = k,\, j \neq k\): is \(x_k x_j a_{k,j}\) and the derivative with respect to \(x_k\) is \(a_{k,j} x_j\).
+
     \item \(i \neq k,\, j = k\): is \(x_i x_k a_{i,k}\) and the derivative with respect to \(x_k\) is \(a_{i,k} x_i\).
+
     \item \(i \neq k,\, j \neq k\): is \(x_i x_j a_{i,j}\) and does not depend on \(x_k\), so the derivative is 0.
+
 \end{itemize}
 
-This gives us the following form for the componts of our gradient: 
+This gives us the following form for the components of our gradient: 
 
 \[
     \frac{\partial f(x)}{\partial x_k} = 2x_k a_{k,k} + \sum_{i \neq k}^{n} (a_{i,k} + a_{k, i}) x_i.

@@ -1,6 +1,6 @@
 \chapter{Arithmetic}
 
-\section{Even and Odd numbers}
+\section{Even and Odd Numbers}
 
 A natural number \(a\) is \emph{even} if \(a = 2k\) with \(k \in \N\).
 
@@ -8,24 +8,24 @@ A natural number \(b\) is \emph{odd} if \(b = 2q - 1\) with \(q \in \N\).
 
 \section{Perfect Squares}
 
-A natural number \(a\) has a \emph{perfect square} if \(\sqrt{a} \in \N\).
+A natural number \(a\) is a \emph{perfect square} if \(\sqrt{a} \in \N\).
 
 \section{Division Algorithm}
 
-Given any two integers \(a\) and \(b\) with \(a > 0\), there exists unique integers \(q\) and \(r\) such that 
+Given any two integers \(a\) and \(b\) with \(a > 0\), there exist unique integers \(q\) and \(r\) such that 
 \(b  =qa + r\) with \(0 \ge r < a\).
 
 \textbf{Proof:}
 
-Let \(S = \{b - xa \mid b - xa \ge 0, x \in \Z\}\)
+Let \(S = \{b - xa \mid b - xa \ge 0, x \in \Z\}\).
 
-By the well ordering principle of the natural numbers we know that our set has 
-minimum \(r\). 
+By the well-ordering principle of the natural numbers, we know that our set has 
+a minimum \(r\). 
 
-First we prove \( 0 \le r\)
+First, we prove \( 0 \le r\).
 
-If \(b \ge 0\) then let \(x = 0 \implies b \in S\).
-For \(b < 0\) then let \(x = b\). Thus,
+If \(b \ge 0\), then let \(x = 0 \implies b \in S\).
+For \(b < 0\), let \(x = b\). Thus,
 
 \[
 	b - ba  = b(1 - a) \implies b - ba \in S.
@@ -41,7 +41,7 @@ Now, to prove that \(r < a\), assume \( r \ge a\), but then
 	b  - a(q + 1) &\ge 0 \implies b - a(q + 1) \in S.
 \end{align*}
 
-And \(b - a(q + 1) < b - aq = r \implies r < a\) therefore, we have a contradiction.
+And \(b - a(q + 1) < b - aq = r \implies r < a\). Therefore, we have a contradiction.
 
 Now, we will prove the uniqueness. 
 
@@ -51,7 +51,7 @@ Assume \(pq + r = a = pq' + r'\) with \(q \ne q' \) and \(r \ne r'\).
 	r - r' = a(q - q') = 0
 \]
 
-Using the property of inverses of \(\Z \setminus \{0\}\) as a Field we know that 
+Using the property of inverses of \(\Z \setminus \{0\}\) as a field, we know that 
 \(r = r'\) and \(q - q'\).
 
 \QED 
@@ -74,7 +74,7 @@ A \emph{prime number} \(p \in \N \setminus \{1\}\) fulfills the following condit
 
 \section{Divisibility}
 
-A number \(a \in \Z\) is divisible a number \(b \in \Z\) if 
+A number \(a \in \Z\) is divisible by a number \(b \in \Z\) if 
 
 \[
 	a = kb \quad k \in \Z.
@@ -82,13 +82,13 @@ A number \(a \in \Z\) is divisible a number \(b \in \Z\) if
 
 \section{Division}
 
-Given \(a,b \in \Z\). There exists unique \(q,r \in \Z\) such that 
+Given \(a,b \in \Z\). There exist unique \(q,r \in \Z\) such that 
 
 \[
 	a = qb + r \quad 0 \le r < |b|.
 \]
 
-\section{Greatest Common Denominator}
+\section{Greatest Common Divisor}
 
 For two integers \(a, b \in \Z\) with \((a,b) \neq (0,0)\), the positive
 integer \(t\) satisfying:
@@ -101,7 +101,7 @@ integer \(t\) satisfying:
 
 \end{itemize}
 
-We call it the \emph{greatest common divisor} (gcd) of \(a\) and \(b\) denoted as \(t = \gcd(a,b)\).
+We call it the \emph{greatest common divisor} (gcd) of \(a\) and \(b\), denoted as \(t = \gcd(a,b)\).
 
 If \(t = 1\), then \(a\) and \(b\) are said to be \emph{coprime} or \emph{relatively prime}.
 
@@ -127,13 +127,13 @@ If \(a = bq + r\) then \(\gcd(a, b) = \gcd(b, r)\).
 
 \end{enumerate}
 
-In simpler terms, as long the remainder is not zero, we keep dividing the previous remainder by the current
+In simpler terms, as long as the remainder is not zero, we keep dividing the previous remainder by the current
 remainder and updating the remainders. When we reach a remainder of zero, the previous remainder is the gcd. 
 
 \textbf{Proof:}
 
-Notice, that the algorithm terminates because the sequence given \(r_n\) is monotone decreasing due to \(0 \le r < b\) and 
-the well ordering principle of the natural numbers.
+Notice that the algorithm terminates because the sequence given \(r_n\) is monotone decreasing due to \(0 \le r < b\) and 
+the well-ordering principle of the natural numbers.
 
 For the correctness: given is \(a = bq + r\) to show that \(\gcd(a, b) = \gcd(b, r)\). This is like saying:
 
@@ -249,7 +249,7 @@ Given
 	M := \{a\alpha + b \beta \mid a\alpha + b \beta > 0 \land \alpha \in \Z \land \beta \in \Z\}
 \]
 
-\(M\) is not empty because of \(\alpha, \beta \in M\), and it has a minimum by the well ordering principle 
+\(M\) is not empty because \(\alpha, \beta \in M\), and it has a minimum by the well-ordering principle 
 of the natural numbers which we will call \(c\).
 
 Then, let \(k \in M\). Then there exist \(q \in \N_0\) and \(r \in \N_0\) with \(r < c\) such 
@@ -276,7 +276,7 @@ Now let us
 \end{align*}
 
 \(r \ge 0\) and  \(r < c\), but if \(r \ne 0\) then \(r \in M\) would be the minimum which is a contradiction to the assumption 
-that \(c\) is the minimum, also \(r = 0\), \(k = qc\). Thus, \emph{every element of M is multiplicity of c}. Therefore, 
+that \(c\) is the minimum, also \(r = 0\), \(k = qc\). Thus, \emph{every element of M is a multiple of c}. Therefore, 
 \(a,b\) are also divisible by \(c\).
 
 Now we need to show that \(c\) is in fact the greatest common divisor. \(c = r_2 a + s_2 b\) 
@@ -286,7 +286,7 @@ Now we need to show that \(c\) is in fact the greatest common divisor. \(c = r_2
 \]
 
 Because \(c \mid a \land c \mid b\) we know that \(c \mid a \alpha_0 + b \beta_0 \). We also 
-know that \(c \mid \gcd(a,b)\) and thus, \(|c| =|g = \gcd(a,b| \) but because both are positive \(c = g\).
+know that \(c \mid \gcd(a,b)\) and thus, \(|c| =|g = \gcd(a,b| \), but because both are positive \(c = g\).
 
 \QED
 
@@ -299,7 +299,7 @@ be noted \(\field_p\).
 
 We need to show that for \(a + p \Z \ne p \Z\) there exists some \(b + p \Z\) such that \((a + p\Z))(b + p\Z) = 1 + p\Z\).
 
-For \(a \notin p \Z\) we know that \(gcd(a,p) = 1\) thus, we do not have zero divisors.
+For \(a \notin p \Z\) we know that \(gcd(a,p) = 1\), thus we do not have zero divisors.
 
 \subsection{Implication of Prime Numbers}
 
@@ -311,17 +311,12 @@ For \(a, b \in \Z\) and a prime number \(p\)
 
 \textbf{Proof:} 
 
-``\(\Rightarrow\)'' Let \(p\) be a prime and \(a,b \in \Z\)
-with \(p \mid ab\). Assume \(p \nmid a\). Then there exist \(\alpha,\beta \in \Z\)
-with \(\alpha p + \beta a = 1\). Since \(p \mid ab\), it follows that
-\(p \mid \alpha p b + \beta ab = (\alpha p + \beta a)b = b\).
+``\(\Rightarrow\)'': Let \(p\) be a prime and \(a,b \in \Z\) with \(p \mid ab\). Assume \(p \nmid a\). Then there exist \(\alpha,\beta \in \Z\)
+with \(\alpha p + \beta a = 1\). Since \(p \mid ab\), it follows that \(p \mid \alpha p b + \beta ab = (\alpha p + \beta a)b = b\).
 
-``\(\Leftarrow\)'' Let \(c \in \N\) be a divisor of \(p\). Then there exists
-\(d \in \N\) with \(p = cd\). In particular \(1 \le c \le p\) and
-\(1 \le d \le p\) and \(p \mid cd\). By our assumption it follows that
-\(p \mid c\) or \(p \mid d\), i.e. \(p \le c\) or \(p \le d\). Together with
-\(c \le p\) and \(d \le p\) this forces \(c = 1\) or \(c = p\). Hence, \(p\)
-has no nontrivial divisors and is prime.
+``\(\Leftarrow\)'': Let \(c \in \N\) be a divisor of \(p\). Then there exists \(d \in \N\) with \(p = cd\). In particular \(1 \le c \le p\) and
+\(1 \le d \le p\) and \(p \mid cd\). By our assumption it follows that \(p \mid c\) or \(p \mid d\), i.e. \(p \le c\) or \(p \le d\). Together with
+\(c \le p\) and \(d \le p\) this forces \(c = 1\) or \(c = p\). Hence, \(p\) has no nontrivial divisors and is prime.
 
 \QED
 
@@ -396,11 +391,11 @@ So
 
 \section{Goldbach's Conjecture}
 
-Every even integer greater than 4 can be written as the sum two primes.
+Every even integer greater than 4 can be written as the sum of two primes.
 
 \section{Prime Factorization}
 
-To find the \emph{prime factorization} of a number \(a\) the algorithm goes as follows 
+To find the \emph{prime factorization} of a number \(a\), the algorithm goes as follows: 
 
 \begin{itemize}
 
@@ -409,20 +404,20 @@ To find the \emph{prime factorization} of a number \(a\) the algorithm goes as f
 	\item  Try dividing \(a\) by \(n\). If \(n \mid a\) note the number and set \(a = a \div n\) to repeat this step. If \(n\) 
 	did not divide \(a\) set \(n\) to the next prime number and repeat this step. 
 
-	\item When 1 was reached using the previous step then the algorithm terminates and the noted numbers is our prime factorization 
+	\item When 1 was reached using the previous step then the algorithm terminates and the noted numbers are our prime factorization 
 	of \(a\).
 
 \end{itemize}
 
 \section{GCD via Prime factorization}
 
-The \(\gcd\) of two or more number can also be found with the following algorithm.
+The \(\gcd\) of two or more numbers can also be found with the following algorithm.
 
 \begin{itemize}
 	
 	\item Find the prime factorization of all target numbers.
 
-	\item Note the number which appear in both prime factorization always taking the one with least exponent.
+	\item Note the numbers which appear in both prime factorizations, always taking the one with the least exponent.
 	
 	\item Multiply the noted prime factors together. 
 	

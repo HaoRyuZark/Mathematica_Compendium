@@ -5,7 +5,7 @@
 A way of defining the \emph{real numbers} is via the \emph{Cauchy sequences}. Another way is via 
 the axioms of a field with the order axioms and the \emph{completeness axiom}.
 
-The following aximos apply for any \(a, b, c \in \R\):
+The following axioms apply for any \(a, b, c \in \R\):
 
 \begin{itemize}
 
@@ -39,7 +39,7 @@ We also refresh the order axioms:
 
 \end{enumerate}
 
-\subsection{Properties Derivated From The Axioms}
+\subsection{Properties Derived From The Axioms}
 
 \begin{itemize}
 
@@ -101,14 +101,14 @@ All non-empty upper-bounded subsets of the real numbers have a \emph{supremum} \
 
 \section{Minima in the Real Numbers}
 
-As a consequence of the \emph{completeness axiom} each non-empty lower-bounded subset of real numbers has a minimum. 
+As a consequence of the \emph{completeness axiom}, each non-empty lower-bounded subset of real numbers has a minimum. 
 
 \textbf{Proof:}
 
 The main idea is that the supremum times minus 1 of a set is the minimum of another set. 
 
-We define \(- A := \{-a \mid a \in A\}\) then \(-A \ne \emptyset\) and is upper-bounded. 
-By definition \(s\) is less or greater than all the element of the set \(A\).
+We define \(- A := \{-a \mid a \in A\}\), then \(-A \ne \emptyset\) and is upper-bounded. 
+By definition \(s\) is less or greater than all the elements of the set \(A\).
 
 \begin{align*}
 	s &\le a, \forall a \in A	\\ 
@@ -140,7 +140,7 @@ This is a contradiction because we have an upper bound, which is not an upper bo
 
 \section{Approximation of the Supremum}
 
-Given a non-empty, upper-bounded set \(A \subseteq \R\) and  \(s = \text{sup}A\). Then there is for each \(y < s\) 
+Given a non-empty, upper-bounded set \(A \subseteq \R\) and \(s = \text{sup}A\). Then there is for each \(y < s\) 
 an \(x \in A\), such that 
 
 \[
@@ -151,8 +151,8 @@ An analogous theorem can be written for the minimum as well.
 
 \textbf{Proof:}
 
-If \(x \in A\) then the proof is completed. For the case \(s \notin A\), if there existed some 
-\(y^* \in \R\) where \(y^* < s\) and \(y^* \ge x\) for all \(x \in A\) then we sill have a contradiction to 
+If \(x \in A\), then the proof is completed. For the case \(s \notin A\), if there existed some 
+\(y^* \in \R\) where \(y^* < s\) and \(y^* \ge x\) for all \(x \in A\), then we still have a contradiction to 
 the assumption that \(s\) is the supremum of \(A\).
 
 \QED
@@ -163,10 +163,10 @@ the assumption that \(s\) is the supremum of \(A\).
 
 \textbf{Proof:}
 
-Assume \(a = \text{sup}\N\). Since \(\N \subset \R\) is not empty it has an upper-bound by 
+Assume \(a = \text{sup}\N\). Since \(\N \subset \R\) is not empty, it has an upper-bound by 
 the completeness axiom. 
 
-By the definition of the supremum \(a - 1 \in \N\) is not an upper-bound of \(\N\), therefore 
+By the definition of the supremum, \(a - 1 \in \N\) is not an upper-bound of \(\N\), therefore 
 \(a - 1 < k, k \in \N\). 
 
 Then, the following also applies
@@ -175,14 +175,14 @@ Then, the following also applies
 	a < k + 1.
 \]
 
-This is a contradiction to the assumption that \(a\) our supremum, thus our assumption has been 
+This is a contradiction to the assumption that \(a\) is our supremum, thus our assumption has been 
 proven false.
 
 \section{The Properties Of Archimedes and Eudoxus}
 
 \emph{Archimedes}:
 
-For all pair of positive real numbers \(x,y\) exists some \(n \in \N\) such that: 
+For all pairs of positive real numbers \(x,y\), there exists some \(n \in \N\) such that: 
 
 \[
 	nx > y.
@@ -190,7 +190,7 @@ For all pair of positive real numbers \(x,y\) exists some \(n \in \N\) such that
 
 \emph{Eudoxus}:
 
-For all positive real numbers there exists an \(n \in \N\), such that 
+For all positive real numbers \(x\), there exists an \(n \in \N\) such that 
 
 \[
 	\frac{1}{n} < x.
@@ -198,12 +198,12 @@ For all positive real numbers there exists an \(n \in \N\), such that
 
 \textbf{Proof Eudoxus:}
 
-\(x \in \R_{> 0} \implies \frac{1}{x} \in \R_{> 0}\). By the Archimedian property, \(\exists n \in \Z_{0 >}, \frac{1}{x} < n\). 
+\(x \in \R_{> 0} \implies \frac{1}{x} \in \R_{> 0}\). By the Archimedean property, \(\exists n \in \Z_{0 >}, \frac{1}{x} < n\). 
 Equivalently \(\frac{1}{n} < x\). 
 
 \QED 
 
-\section{Density of the Rationals in  the Reals}
+\section{Density of the Rationals in the Reals}
 
 For each pair \(a, b \in \R\) there exists some \(q \in \Q\) such that 
 
@@ -215,7 +215,7 @@ For each pair \(a, b \in \R\) there exists some \(q \in \Q\) such that
 
 Let \(q = \frac{m}{n}, m \in \Z, n \in \N\) to prove \(a < \frac{m}{n} < b\) equivalently \(an < m < bn\).
 
-For \(b - a > 0\), we know \(\frac{1}{n} < b - a\) or \(a < b - \frac{1}{n}\), by the Archimedian property. 
+For \(b - a > 0\), we know \(\frac{1}{n} < b - a\) or \(a < b - \frac{1}{n}\), by the Archimedean property. 
 
 Next take the smallest \(m \in \Z\) such that \(m - 1 \le na < m\) or \(a < \frac{m}{n}\). This gives us the first half of 
 our theorem.
@@ -225,7 +225,7 @@ Finally, for the second half
 \begin{align*}
 	m - 1 &\le na \\ 
 		&= na + 1 \\ 
-		&< n(b - \frac{1}{n}) + 1 \text{ using our result from the Archimedian property }\\ 
+		&< n(b - \frac{1}{n}) + 1 \text{ using our result from the Archimedean property }\\ 
 		&= nb
 \end{align*}
 
@@ -245,9 +245,9 @@ Let \(T = \{x \in [0, \infty) \mid x < y\}\) and let us define \(a = y^2\) as th
 To prove that the equality holds we will prove that the other order cases can not be true. 
 
 Assume \(a < y\), because \(a - y < 0\), we know that \(\frac{1}{n} < a - y\) and \( a + \frac{1}{n} < y\). Thus, \(a + \frac{1}{n} \in T\), but 
-because \(a\) is the supremum this contradiction because our supremum is not the smallest upper-bound. 
+because \(a\) is the supremum, this is a contradiction because our supremum is not the smallest upper-bound. 
 
-For the second case, assume \(a > y\), by applying the same reasoning with \(a - \frac{1}{n}\), we will arrive at a similar contradiction 
+For the second case, assume \(a > y\), by applying the same reasoning with \(a - \frac{1}{n}\), we will arrive at a similar contradiction. 
 
 Assume \(a > y\), then \(a - y > 0 \implies \frac{1}{n} < a - y, \implies a - \frac{1}{n} < y\)
 
@@ -307,7 +307,7 @@ with the following properties:
 \section{Nested Interval Property}
 
 For each \(n \in \N\), assume we are given a closed interval  \(I_n = [a, b] = \{x \in \R \mid a_n \le x \le b_n\}\). 
-Also assume each \(I_n\) contains \(I_{n + 1}\). Then the nested sequence of closed intervals \(I_1 \supseteq I_2 \supseteq I_3 \supseteq \ldots\).
+Also assume each \(I_n\) contains \(I_{n + 1}\). Then the nested sequence of closed intervals \(I_1 \supseteq I_2 \supseteq I_3 \supseteq \ldots\)
 has a non-empty intersection. 
 
 \textbf{Proof:}
@@ -373,7 +373,7 @@ Cauchy sequences (convergent sequences). Then we have:
 	&= xy + xz.
 \end{align*}
 
-We now aim to construct the ordered field \( \R \) of the Real numbers;
+We now aim to construct the ordered field \( \R \) of the real numbers;
 it will have the following properties:
 
 \begin{itemize}

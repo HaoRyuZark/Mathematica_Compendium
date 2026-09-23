@@ -1,9 +1,8 @@
-
 \chapter{Convergence Criteria}
 
-In this section, we present various tools used to determine whether an infinite series or sequence converges. These criteria are essential for analyzing the behavior of sequences and series in analysis.
+In this chapter, we present various tools used to determine whether an infinite series or sequence converges.
 
-\subsection{Quotient (Ratio) Test}
+\section{Quotient (Ratio) Test}
 
 Let \(\sum a_n\) be a series with positive terms, and suppose the limit
 
@@ -45,7 +44,7 @@ So,
 
 Hence, the series converges by comparison with a geometric series.
 
-\subsection{Zero Sequence Criterion}
+\section{Zero Sequence Criterion}
 
 If a series \(\sum a_n\) converges, then:
 
@@ -55,15 +54,15 @@ If a series \(\sum a_n\) converges, then:
 
 The converse is not true — the harmonic series is a classic counterexample.
 
-\subsection{Majorant (Comparison Test)} 
+\section{Majorant (Comparison Test)}
 
 If \(0 \le a_n \le b_n\) for all \(n\) and \(\sum b_n\) converges, then \(\sum a_n\) converges.
 
-\subsection{Minorant} 
+\section{Minorant}
 
 If \(0 \le b_n \le a_n\) and \(\sum b_n\) diverges, then \(\sum a_n\) diverges.
 
-\subsection{Root Test}
+\section{Root Test}
 
 Let \(\sum a_n\) be a series with non-negative terms, and suppose:
 
@@ -91,7 +90,7 @@ Let \(r\) be such that \(L < r < 1\). Then for large \(n\):
 
 Since \(\sum r^n\) converges, by comparison \(\sum |a_n|\) converges absolutely.
 
-\subsection{Leibniz Criterion (Alternating Series Test)}
+\section{Leibniz Criterion (Alternating Series Test)}
 
 Let \(\sum {(-1)}^n a_n\) be a series with:
 
@@ -111,13 +110,13 @@ Then the series converges.
     \sum_{n=1}^\infty \frac{{(-1)}^{n+1}}{n}
 \]
 
-\subsection{Compactness Criterion}
+\section{Compactness Criterion}
 
 A sequence \((x_n)\) in \(\R^n\) has a convergent subsequence if and only if it is bounded. 
-This is a consequence of the \textbf{Bolzano-Weierstraß theorem}, which is a form of sequential 
-compactness in \(\R^n\).
+This is a consequence of the \emph{Bolzano-Weierstraß theorem}, which is a form of sequential 
+\emph{compactness} in \(\R^n\).
 
-\subsection{Cauchy Criterion I}
+\section{Cauchy Criterion I}
 
 A sequence \((a_n)\) converges if and only if it is a \emph{Cauchy sequence}:
 
@@ -127,7 +126,7 @@ A sequence \((a_n)\) converges if and only if it is a \emph{Cauchy sequence}:
 
 This is an internal (non-limit based) criterion for convergence, valid in complete metric spaces.
 
-\subsection{Cauchy Criterion II}
+\section{Cauchy Criterion II}
 
 A series \(a_n = \sum_{i = 0}^{k}x_i\) converges \(\iff \forall d \in \R d > 0 
 \exists N \in \N \forall n,m > N: \left| \sum_{i = 0}^{n}x_i + \sum_{i=0}^{m}\right|\)
@@ -136,7 +135,7 @@ A series \(a_n = \sum_{i = 0}^{k}x_i\) converges \(\iff \forall d \in \R d > 0
     = \left|\sum_{i = 0}^{n}x_i\right| < d
 \]
 
-\subsection{The Cauchy Product}
+\section{The Cauchy Product}
 
 Let \(\sum a_n\), \(\sum b_n\) be convergent series. The \emph{Cauchy product} is:
 
@@ -150,10 +149,10 @@ If \(\sum a_n\) and \(\sum b_n\) converge absolutely, then their Cauchy product 
     \sum c_n = \left( \sum a_n \right) \left( \sum b_n \right)
 \]
 
-\subsubsection{Cauchy Product Example}
+\subsection{Cauchy Product Example}
 
 Prove that \(e^x  e^y = e^{x + y}\)\\
-Note that \(e^x = \sum_{n = 0}^{\infty} \frac{x^n}{n!}\) and \(e^y = \sum_{n = 0}^{\infty} \frac{y^n}{n!}\)
+Note that \(e^x = \sum_{n = 0}^{\infty} \frac{x^n}{n!}\) and \(e^y = \sum_{n = 0}^{\infty} \frac{y^n}{n!}\).
 
 Therefore,
 
@@ -161,7 +160,7 @@ Therefore,
     e^x e^y = \sum_{n = 0}^{\infty} \frac{x^n}{n!} \sum_{n = 0}^{\infty} \frac{y^n}{n!}
 \]
 
-And because of the absolute convergence
+And, because of the absolute convergence,
 
 \[
     e^x e^y = \sum_{n = 0}^{\infty}\sum_{k = 0}^{n} \frac{x^k}{n!} \frac{y^{n - k}}{(n-k)!}
@@ -174,7 +173,7 @@ Finally,
 \]
 \QED
 
-\subsection{Geometric Series}
+\section{Geometric Series}
 
 \[
     \sum_{n=0}^\infty ar^n = \frac{a}{1 - r} \quad \text{for } |r| < 1
@@ -182,7 +181,7 @@ Finally,
 
 If \(|r| \ge 1\), the series diverges.
 
-\subsection{Harmonic Series}
+\section{Harmonic Series}
 
 \[
     \sum_{n=1}^{\infty} \frac{1}{n}
@@ -195,7 +194,8 @@ This series diverges, even though its terms approach zero.
 Group terms:
 
 \[
-    \left(\frac{1}{2}\right) + \left(\frac{1}{3} + \frac{1}{4}\right) + \left(\frac{1}{5} + \cdots + \frac{1}{8}\right) + \cdots > \sum_{k=1}^\infty \frac{1}{2}
+    \left(\frac{1}{2}\right) + \left(\frac{1}{3} + \frac{1}{4}\right) + \left(\frac{1}{5} + \cdots + \frac{1}{8}\right) + \cdots > 
+    \sum_{k=1}^\infty \frac{1}{2}
 \]
 
-The lower bound is a divergent series, hence the harmonic series diverges.
+The lower bound is a divergent series, hence the \emph{harmonic series} diverges.

@@ -1,8 +1,8 @@
 \chapter{Machine Learning And Data Science}
 
 \emph{Machine Learning} is an area of computer science which focuses on making accurate
-predictions based on gathered data and mathematical models. It uses heavily \emph{data science} which is another
-area of computer science with the goal of analyzing data, identify patterns and perform statistical analysis.
+predictions based on gathered data and mathematical models. It heavily uses \emph{data science}, which is another
+area of computer science with the goal of analyzing data, identifying patterns and performing statistical analysis.
 
 \section{Core Vocabulary}
 
@@ -12,12 +12,12 @@ Our main terminologies and notation are:
 
 	\item Historical Data which refers to the data on which we are going to base our model.
 
-	\item Feature/Predictor vector \(X\): This some vector whose components represent the different numeric values of the characteristics
+	\item Feature/Predictor vector \(X\): This is a vector whose components represent the different numeric values of the characteristics
 	of some object.
 
-	\item Function \(f\): is called \emph{target function} \(f: \mathcal{X} \to \mathcal{Y}\) which makes a perfect approximation
+	\item Function \(f\): This is called the \emph{target function} \(f: \mathcal{X} \to \mathcal{Y}\), which makes a perfect approximation.
 
-	\item Label \(y\): Is some image of one \(x \in \mathcal{X}\).
+	\item Label \(y\): This is the image of some \(x \in \mathcal{X}\).
 
 	\item Data Sample \(D\): this is a set of pairs \((x_i, y_i)\)....
 
@@ -27,8 +27,8 @@ Our goal is to find a function \(g: \mathcal{X} \to \mathcal{Y}\) which approxim
 
 \subsection{Classification And Regression}
 
-\emph{Classification} predicts categories based on discrete labels i.e. classes or groups, while \emph{regression} predicts
-on continuous values i.e. identifying trends and patterns.
+\emph{Classification} predicts categories based on discrete labels, i.e., classes or groups, while \emph{regression} predicts
+continuous values, i.e., identifying trends and patterns.
 
 Common classification functions with example models:
 
@@ -48,7 +48,7 @@ Common regression functions with example models:
 
 	\item Mean square error in logistic regression.
 
-	\item Information gain in  decision tree regressors.
+	\item Information gain in decision tree regressors.
 
 \end{itemize}
 
@@ -107,37 +107,37 @@ Common regression functions with example models:
 The data set \(\mathcal{D}\) will be split into \emph{training} and \emph{test} data to minimize our
 margin of error. 
 
-If a model is trained only used the same data again, and again it will become
-less reliable with new data which differs from its training set. Making out of sample errors
+If a model is trained using only the same data again and again, it will become
+less reliable with new data which differs from its training set, making out-of-sample errors
 difficult to spot.
 
-Another way of improving the quality of the data set is to add a certain degree of noise to our sample data. Thus,
-converting \(y\) into a probability-variable dependent on \(x\). Therefore, \(f \to P(y \mid x)\).
+Another way of improving the quality of the data set is to add a certain degree of noise to our sample data, thus
+converting \(y\) into a probability variable dependent on \(x\). Therefore, \(f \to P(y \mid x)\).
 
 \subsection{Data Preparation Techniques}
 
 \begin{itemize}
 	\item \emph{Train-Test-Split}: Splitting the data set into the data used for training and validation.
 
-	\item \emph{Econding Non-numerical Values}: Categorical data and other non-numerical features need to be encoded or discard, depending on the context.
+	\item \emph{Encoding Non-numerical Values}: Categorical data and other non-numerical features need to be encoded or discarded, depending on the context.
 
-	\item \emph{Dropping/Replcing NaN-Values}: Either we discard columns or rows which contain incomplete data or we fill the gaps using some placeholder values, which 
-	should have an neutral efect during the training process, like 0.  
+	\item \emph{Dropping/Replacing NaN-Values}: Either we discard columns or rows which contain incomplete data or we fill the gaps using some placeholder values, which 
+	should have a neutral effect during the training process, like 0.  
 
 \end{itemize}
 
-\subsection{Exporative Data Analysis}
+\subsection{Explorative Data Analysis}
 
-\emph{Explorative data analysis} is the process of analyzing, visualizing and exploring the data using: software, statistical methods, intuition, etc. with
-the goal of establishing hypothesis about the data for further analysis. This step is to be done extensively before any real 
+\emph{Explorative data analysis} is the process of analyzing, visualizing and exploring the data using software, statistical methods, intuition, etc., with
+the goal of establishing hypotheses about the data for further analysis. This step is to be done extensively before any real 
 training of the data.
 
 \subsection{Feature Engineering}
 
 \emph{Feature engineering} is the process of selecting the right features/predictors using domain-knowledge. This
-is procedure is also accompanied with the selection of the right mathematical model for the desired goal.
+procedure is also accompanied by the selection of the right mathematical model for the desired goal.
 
-The main difference from the explorative data analysis is that the goal is to create data-drive models, i.e. mathematical models
+The main difference from the explorative data analysis is that the goal is to create data-driven models, i.e., mathematical models
 from our data to make predictions instead of just exploring and analyzing the data.
 
 \subsection{Feature Scaling}
@@ -158,7 +158,7 @@ Common methods for feature scaling include:
 	      By adding \((b - a)\) to the formula we can scale it to any range \([a, b]\):
 
 	      \[
-		      X' = a + \frac{(X - X_{min})(b - a)}{X_{max} - X_{min}}
+		      X' = a + \frac{(X - X_{min})(b - a)}{X_{max} - X_{min}}.
 	      \]
 
 	\item \emph{Standardization (Z-score Normalization)}: This method transforms the data to have a mean of 0 and a standard deviation of 1. The formula is:
@@ -179,12 +179,12 @@ Common methods for feature scaling include:
 
 \section{Hyper Parameters}
 
-A \emph{hyper-parameter} is a parameter used by a model/algorithm which can not be approximated directly during the training process.
-For example the \(k\) by K-Means is given at the start.
+A \emph{hyper-parameter} is a parameter used by a model/algorithm which cannot be approximated directly during the training process.
+For example, the \(k\) in K-Means is given at the start.
 
-\subsection{Hyper-parameter Tunning}
+\subsection{Hyper-parameter Tuning}
 
-\emph{Hyper-parameter tunning} is the process of improving the hyper-parameters via validations methods. In such methods not only is the model
+\emph{Hyper-parameter tuning} is the process of improving the hyper-parameters via validation methods. In such methods not only is the model
 tested against other models with the same hyper-parameters, but also against the same model with different hyper-parameters. We do this via 
 cross-validation among other techniques.
 
@@ -239,7 +239,7 @@ The \emph{recall} or true positive rate (TPR) is then given by
 	\mathrm{Recall} = \frac{TP}{TP + FN}.
 \]
 
-Ratio of real positives to the total of positives. Ideally high
+Ratio of real positives to the total of positives. Ideally high.
 
 \subsection{Specificity}
 
@@ -249,7 +249,7 @@ The \emph{specificity} or true negative rate (TNR) is then given by
 	\mathrm{Specificity} = \frac{TN}{TN + FP} = \frac{TN}{N}.
 \]
 
-Number correclty negative classified observation in relation to the correctly and not correctly classified  negative observations.
+Number of correctly classified negative observations in relation to the correctly and incorrectly classified negative observations.
 Ideally high.
 
 \subsection{The F1 Metric}
@@ -257,28 +257,28 @@ Ideally high.
 The \emph{F1 metric} is a measure which combines two of the previous metrics into one: 
 
 \[
-	\mathrm{F1} = 2 \frac{\mathrm{Precission} \ \mathrm{Recall}}{\mathrm{Precission} + \mathrm{Recall}}
+	\mathrm{F1} = 2 \frac{\mathrm{Precision} \ \mathrm{Recall}}{\mathrm{Precision} + \mathrm{Recall}}.
 \]
 
 \subsection{Receiver Operating Characteristic (ROC) Curves}
 
 A \emph{ROC curve} is a graphical representation of a set of points \((y_i, x_i)\) with 
-\(y_i = \mathrm{Recall}_\theta, \, x_i = \mathrm{Specificity}_\theta\), where \(\theta\) is threshold for 
+\(y_i = \mathrm{Recall}_\theta, \, x_i = \mathrm{Specificity}_\theta\), where \(\theta\) is the threshold for 
 a classification problem.
 
-When we read a value like: \((0.8, 0.2)\) we can say that 80 percent were correctly classified and 20 percent were missclassified.
+When we read a value like \((0.8, 0.2)\), we can say that 80 percent were correctly classified and 20 percent were misclassified.
 
-The higher the curve is the better is our classification model. This can be compared using the area under the curve ROC of different 
+The higher the curve, the better our classification model. This can be compared using the area under the ROC curve of different 
 curves.
 
 \section{Accuracy Metrics For Regression}
 
 \subsection{R-squared}
 
-\emph{R-squared} provides a measurement of how much variation in the response does the model explain.
+\emph{R-squared} provides a measurement of how much variation in the response the model explains.
 
 \[
-	R^2 = \frac{\var(\text{fitted})}{\var(\text{response})}, \quad 0 \le R^2 \le 1
+	R^2 = \frac{\var(\text{fitted})}{\var(\text{response})}, \quad 0 \le R^2 \le 1.
 \]
 
 with
@@ -287,20 +287,20 @@ with
 	\var(\text{response}) = \var(\text{fitted}) + \var(\text{residuals}).
 \]
 
-This metric is not available for all models. Linear regressions among other support this metric.
+This metric is not available for all models. Linear regressions, among others, support this metric.
 
-A problem of this metric is that it increases when more predictors are added which means that even not relevant coefficients are
-taking into consideration.
+A problem of this metric is that it increases when more predictors are added, which means that even irrelevant coefficients are
+taken into consideration.
 
 \subsection{Adjusted R-squared}
 
-This is a penalized version \(R^2\) to avoid taking irrelevant predictors.
+This is a penalized version of \(R^2\) to avoid taking irrelevant predictors.
 
 \[
 	\text{adjusted }R^2 = 1 - (1 - R^2) \frac{N - 1}{N - p},
 \]
 
-with \(N\) as the sample size and \(p\) as the number of coefficients in out linear model.
+with \(N\) as the sample size and \(p\) as the number of coefficients in our linear model.
 
 \subsection{Mean Squared Error}
 
@@ -313,7 +313,7 @@ This is the classical function for our linear regression given by
 \section{Validation}
 
 \emph{Validation} refers to the process of evaluating our models to approximate the out-of-sample error, compare them, and find
-\emph{hyperparamters}.
+\emph{hyperparameters}.
 
 The hypothesis gained from a model which is going to be validated is marked as \(\overline{g_n}\).
 
@@ -323,27 +323,27 @@ The types of data which arise from the splitting of the data are:
 
 	\item \emph{Training Data} \(\mathcal{D}_T\): Data used for training the model.
 
-	\item \emph{Validation Data} \(\mathcal{D}_V\): Used for testing our model against other models in situations like hyper-parameter tunning.
+	\item \emph{Validation Data} \(\mathcal{D}_V\): Used for testing our model against other models in situations like hyper-parameter tuning.
 	We normally use a size of \(K\) datapoints where \(K = N/5\).
 
 \end{itemize}
 
 \subsubsection*{Quote From The Statistical Learn-theory}
 
-The more often you use a data-set for training a model, taking decisions, etc. The hard is to approximate
+The more often you use a data-set for training a model, taking decisions, etc., the harder it is to approximate
 the capacity of the data-set to approximate the out-of-sample error.
 
 \subsection{Leave One Out Cross Validation}
 
-\emph{Leave One Out Cross Validation} work by leaving always \textbf{one data point out}, instead of a fold.
-This is the same as a \(N\)-fold cross validation.
+\emph{Leave One Out Cross Validation} works by always leaving \textbf{one data point out}, instead of a fold.
+This is the same as an \(N\)-fold cross validation.
 
 The nomenclature:
 
 \begin{itemize}
 
-	\item \(e_n:= E_{\text{val}} (\overline{g_n}) = e(\overline{g_n}(x_n), y_n)\), represents the point-wise error;
-	which is the number of missclassified samples.
+	\item \(e_n:= E_{\text{val}} (\overline{g_n}) = e(\overline{g_n}(x_n), y_n)\), represents the point-wise error,
+	which is the number of misclassified samples.
 
 	\item \emph{Cross Validation Error} \(E_{\text{CV}} = \frac{1}{N} \sum_{n = 1}^{N} e_n\)
 
@@ -351,10 +351,10 @@ The nomenclature:
 
 \subsection{\texorpdfstring{\(V\)-Cross Validation}{V-Cross Validation}}
 
-\emph{\(V\)-Cross Validation} is a technique to improve a models accuracy by presenting training the model on different splits on the data.
+\emph{\(V\)-Cross Validation} is a technique to improve a model's accuracy by training the model on different splits of the data.
 
-The procedure consists on splitting the data-set into \(V\) different sub-sets of equal size called \emph{folds}. Then, we train our model \(V\)-times, each time using \(V-1\) disjoint sub-sets for
-training and the remaining one for testing. The final out-of-sample error is given by the average of all the out-of-sample errors gotten from each iteration.
+The procedure consists of splitting the data-set into \(V\) different sub-sets of equal size called \emph{folds}. Then, we train our model \(V\)-times, each time using \(V-1\) disjoint sub-sets for
+training and the remaining one for testing. The final out-of-sample error is given by the average of all the out-of-sample errors obtained from each iteration.
 We will have in total \(V\) models.
 
 The nomenclature:
@@ -365,24 +365,24 @@ The nomenclature:
 
 	\item \emph{Number of data points in the validation set} \(N_{\text{val}} = \frac{1}{V} N\)
 
-	\item \(e_n:= E_{\text{val}} (\overline{g_n}) = e(\overline{g_n}(x_n), y_n)\), which, again, is the number of missclassified samples.
+	\item \(e_n:= E_{\text{val}} (\overline{g_n}) = e(\overline{g_n}(x_n), y_n)\), which, again, is the number of misclassified samples.
 
 	\item \emph{Cross Validation Error} \(E_{\text{V-fold CV}} = \frac{1}{V} \sum_{n = 1}^{V} E_v\)
 
 \end{itemize}
 
-Cross validation is mainly used for \emph{model selection}, which is process of comparing different machine learning algorithms, and \emph{hyper-parameter-tunning}, not to directly deliver a model. 
+Cross validation is mainly used for \emph{model selection}, which is the process of comparing different machine learning algorithms, and \emph{hyper-parameter-tuning}, not to directly deliver a model. 
 
 \subsection{Hold-Out Validation}
 
-\emph{Hold-Out validation} works by just splitting the data set into traing und validation data. We only get one model.
+\emph{Hold-Out validation} works by just splitting the data set into training and validation data. We only get one model.
 
 \subsection{Sensitivity and Specificity}
 
 \emph{Sensitivity} measures the proportion of actual positives in the data that are correctly identified as such (true positive rate). It is calculated as:
 
 \[
-	\text{Sensitivity} = \frac{TP}{TP + FN}
+	\text{Sensitivity} = \frac{TP}{TP + FN}.
 \]
 
 The denominator represents the sum of the column corresponding to actual positive cases, while the numerator represents the true positive cases.
@@ -390,7 +390,7 @@ The denominator represents the sum of the column corresponding to actual positiv
 \emph{Specificity} measures the proportion of actual negatives in the data that are correctly identified as such (true negative rate). It is calculated as:
 
 \[
-	\text{Specificity} = \frac{TN}{TN + FP}
+	\text{Specificity} = \frac{TN}{TN + FP}.
 \]
 
 The numerator is the sum of all cells which are not in row or column of positive cases, while the denominator is the sum of the row corresponding to actual negative cases plus
@@ -400,31 +400,31 @@ our previous numerator.
 
 \subsection*{Ockham}
 
-The simplest model which approximates the data is also the more plausible. Hence, we should aim for the simplest model (least parameters possible) which 
-approximates the data good enough.
+The simplest model which approximates the data is also the most plausible. Hence, we should aim for the simplest model (least parameters possible) which 
+approximates the data well enough.
 
 \subsection*{Corrupted Samples}
 
-If the sample are corrupted, biased or contains errors then the model will also not be neutral
+If the samples are corrupted, biased or contain errors, then the model will also not be neutral
 and will give false approximations.
 
 \subsection*{Data Snooping}
 
-If a data-set affects the learning process then its capacity of approximating the out-of-sample error
+If a data-set affects the learning process, then its capacity to approximate the out-of-sample error
 was reduced. Therefore, we should not mix test and training data.
 
 \section{Feature Selection}
 
-This is the process of choosing the "right" features to use in a model. This can be done manually using statistical
+This is the process of choosing the ``right'' features to use in a model. This can be done manually using statistical
 testing, examining correlation, and domain knowledge or automatically via algorithms.
 
-The automatic variant do deliver accurate models on the paper, but they may not reflect the reality of the function we are trying to
-approximate or they do not take certain relationships in the data. For these reasons, regularization methods are mostly preferred, but feature
+The automatic variants do deliver accurate models on paper, but they may not reflect the reality of the function we are trying to
+approximate, or they do not take into account certain relationships in the data. For these reasons, regularization methods are mostly preferred, but feature
 selection is still useful if done correctly.
 
 \subsection{Best Subset Selection}
 
-\emph{Best subset selection} consist on testing all \(2^p\) possibilities of combining \(p\) features and then perform cross validation
+\emph{Best subset selection} consists of testing all \(2^p\) possibilities of combining \(p\) features and then perform cross validation
 with all possibilities to get the best features.
 
 This is obviously very expensive.
@@ -435,7 +435,7 @@ Adding variables one at a time, choosing a variable which delivers the best resu
 
 \subsection{Backward Stepwise Selection}
 
-Removing variables one at a time, choosing the variable the one which contributes the least to the error function.
+Removing variables one at a time, choosing the one which contributes the least to the error function.
 
 \section{Errors}
 
@@ -460,8 +460,8 @@ It is the median of the errors made on the training data.
 
 \subsection{Out of Sample Errors}
 
-This refers to all errors which can occur due to the lack of data. Obviously we do not
-have all possible samples which will exists. But we can estimate this error using the split of the training and validation data by 
+This refers to all errors which can occur due to the lack of data. Obviously, we do not
+have all possible samples which will exist. But we can estimate this error using the split of the training and validation data by 
 computing the accuracy of the model.
 
 \[
@@ -474,19 +474,19 @@ They are harder to calculate due to their nature.
 \section{Approximation and Generalization}
 
 When trying to approximate the target function \(f\) we encounter the problem that our data may not
-give us the exact function because of the lack of data. To want to minimize the in-sample error
-but also make out approximation as general as possible.
+give us the exact function because of the lack of data. We want to minimize the in-sample error
+but also make our approximation as general as possible.
 
 \emph{Approximation:} Small in-sample-error
 
-\emph{Generalization:} \(E_{\text{out}} \approx E_{\text{in}}\). Note t
+\emph{Generalization:} \(E_{\text{out}} \approx E_{\text{in}}\).
 
 \subsection{Bias and Variance}
 
 Fitting the training data well, but making poor predictions, is called the \emph{bias-variance} trade-off.
 
-The \emph{bias} measures how well our model differs from our training data (ground truth) while \emph{variance} tells us how well 
-our model can make feature predictions. A high bias leads to \textbf{underfitting} while a high variance to \textbf{overfitting}.
+The \emph{bias} measures how much our model differs from our training data (ground truth), while \emph{variance} tells us how well 
+our model can make future predictions. A high bias leads to \textbf{underfitting} while a high variance to \textbf{overfitting}.
 
 
 With this in mind we now define
@@ -498,7 +498,7 @@ With this in mind we now define
 \textbf{Example:}
 
 Our target is \(\sin(\pi x)\), and our hypothesis-sets are \(\mathcal{H}_0\) the set of all horizontal
-lines \(h(x) = b\) and \(\mathcal{H}_1\) the set of all lines \(h(x) ax + b\). The training-sets are two data-points of the internal
+lines \(h(x) = b\) and \(\mathcal{H}_1\) the set of all lines \(h(x) = ax + b\). The training-sets are two data-points of the interval
 \([-1,+1]\).
 
 \subsection{Learning Curves}
@@ -509,7 +509,7 @@ data-points.
 \subsection{Overfitting}
 
 \emph{Overfitting} refers to the situation when a model adapts itself too much to a given data-set. Precisely, it is the process
-in which hypotheses \(h\) continuously reduce the in-sample error, but leading to a bigger output-of-sample error.
+in which hypotheses \(h\) continuously reduce the in-sample error, but leading to a bigger out-of-sample error.
 
 We define \emph{overfitting} for a hypothesis \(h\), if for another hypothesis \(h'\) the following is true
 
@@ -517,7 +517,7 @@ We define \emph{overfitting} for a hypothesis \(h\), if for another hypothesis \
 	E_{\text{in}}(h) < E_{\text{in}}(h') \, \text{but} \, E_{\text{out}}(h) > E_{\text{out}}(h')
 \]
 
-In summary, noise in the data (stochastic or deterministic) have a negative effect on the learning process and can lead
+In summary, noise in the data (stochastic or deterministic) has a negative effect on the learning process and can lead
 to overfitting. To address this problem we will use \emph{regularization}.
 
 \subsection{Underfitting}
@@ -525,7 +525,7 @@ to overfitting. To address this problem we will use \emph{regularization}.
 \emph{Underfitting} refers to the case when the model has not been trained with enough data to make
 accurate approximations.
 
-Underfitting can be handled by: using more data for the training, reduce regularization, feature selection, etc.
+Underfitting can be handled by: using more data for the training, reducing regularization, feature selection, etc.
 
 \subsection{The Augmented Error}
 
@@ -535,13 +535,13 @@ We define the \emph{augmented error} as
 	E_{\text{aug}}(w) = E_{\text{in}}(w) + \frac{\lambda}{N}w^T w,
 \]
 
-where \(\lambda\) is the parameter for how much we should regularize, \(w^T w\) is the punish-term based on the weight of the vector and
+where \(\lambda\) is the parameter for how much we should regularize, \(w^T w\) is the penalty term based on the weight of the vector and
 \(N\) is the number of data points.
 
 \section{Regularization}
 
-\emph{Regularization} is the process of making the algorithm less sensible to out-of-sample data.
-It helps the learning algorithm to minimize the output-of-sample error. This is accomplished by different methods like adding error terms of a 
+\emph{Regularization} is the process of making the algorithm less sensitive to out-of-sample data.
+It helps the learning algorithm to minimize the out-of-sample error. This is accomplished by different methods like adding error terms of a 
 \emph{regularization vector} 
 
 \[
@@ -559,7 +559,7 @@ instead of summing the squares we add the absolute value
 	\mathrm{LASSO}: h(x_i)  + \lambda \sum_{i = 1}^{p} | \beta_i |.
 \]
 
-It is important to note that both this and Ridge regularization is \textbf{very sensible} to the scaling of our features.
+It is important to note that both this and Ridge regularization are \textbf{very sensitive} to the scaling of our features.
 
 Note that adding the absolute values is equivalent to defining a multidimensional \textbf{polygon}.
 
@@ -620,7 +620,7 @@ Finally, as a remainder the formula without regularization
 
 \section{The Perceptron}
 
-\emph{The perceptron} is our first model in machine learning. It consists on having a separate vector \(w \in \R^d\) which consist of weights which are going to be
+\emph{The perceptron} is our first model in machine learning. It consists of having a separate vector \(w \in \R^d\) which consists of weights which are going to be
 associated with the components of \(x \in \mathbb{R}^d\). We also define \(y \in \{-1,1\}\),  and some value \(b\) to work as our border between the categories of y.
 We classify our prediction based on the result
 
@@ -818,7 +818,8 @@ One way of doing \emph{linear regression} is via the method of the least squares
 	w = (X^T X)^{-1}X^T y = X^{\dagger}y.
 \]
 
-Yet, this is computationally very expensive and does not gives us \(b\). An alternative way is by minimizing the \emph{mean squared error} function given by
+Yet, this is computationally very expensive and does not gives us \(b\). An alternative way is by minimizing the \emph{mean squared error} 
+function given by
 
 \[
 	\mathrm{MSE} = J(w,b) = \frac{1}{N} \sum_{i = 1}^{N} (y_i - (w^Tx_i + b))^2
@@ -859,8 +860,8 @@ the variance of the residuals does not change.
 
 \section{Non-Linear Transformations}
 
-The two algorithms covered until know have the condition that both of them are linear, but
-what if our date can not be linearly separated. We can modify the input variable \(x_i\)
+The two algorithms covered until now have the condition that both of them are linear, but
+what if our data cannot be linearly separated? We can modify the input variable \(x_i\)
 in a non-linear way to be able to separate the data linearly in another space and then apply our algorithms.
 
 For this purpose, we define the new space \(\mathcal{Z}\) whose elements are \(z_n = \phi(x_n)\), where
@@ -895,7 +896,7 @@ Note that our original problem with \(\hat{y} = w^Tx + b\) is transformed into
 
 Now our function returns the \textbf{probability} of a data point being assigned a corresponding label.
 
-Instead of minimizing the mean squared error, which could be a valid strategy we use the likelihood function which uses
+Instead of minimizing the mean squared error, which could be a valid strategy, we use the likelihood function which uses
 \(p_i(x_i)^{y_i}(1 - p_i(x_i))^{1 - y_i}\) for penalizing errors more equally.
 
 Let our loss function be
@@ -905,7 +906,7 @@ Let our loss function be
 \]
 
 where \(p(x_i)\) is the probability of \(x_i\) being assigned the label \(y = 1\) and \(1 - p(x_i)\) the same for \(y = 0\).
-We choose this because for each of the samples we a discrete \emph{geometric distribution}.
+We choose this because for each of the samples we have a discrete \emph{geometric distribution}.
 
 We take that expression and modify it using \(h_{\theta}(x_i)\):
 
@@ -919,7 +920,7 @@ Taking the logarithm of the likelihood function gives us the log-likelihood:
 	\log L(w,b) = - \frac{1}{N} \sum_{i=1}^{N} [y_i \log(h_\theta (x_i)) + (1 - y_i) \log(1 - h_\theta (x_i))].
 \]
 
-And this is the function we want to maximize. Note, that this is the \emph{cross entropy loss function}.
+And this is the function we want to maximize. Note that this is the \emph{cross entropy loss function}.
 
 \subsection{Gradient of the Cross Entropy Loss Function}
 
@@ -1014,7 +1015,7 @@ In vector form
 \section{Decision Trees}
 
 \emph{Decision trees} are used mainly for \emph{regression trees} or \emph{classification trees} which
-are used to partition the data into subsets on a purity measurement.
+are used to partition the data into subsets based on a purity measurement.
 
 \subsection{Classification Trees}
 
@@ -1036,13 +1037,13 @@ Represents the mean probability for a data point being misclassified. \(p(i) = p
 This probability that a data point was misclassified is given by
 
 \[
-	\sum_{k \ne i}^{C} p_k = 1 - p_i
+	\sum_{k \ne i}^{C} p_k = 1 - p_i.
 \]
 
 The mean is then
 
 \[
-	E_{\text{Gini}}= \sum_{i}^{C}p_i (1 - p_i) = \sum_{i}^{C} p_i - \sum_{i}^{C} p_{i}^2 = 1 - \sum_{1}^{C} p_{i}^{2}
+	E_{\text{Gini}}= \sum_{i}^{C}p_i (1 - p_i) = \sum_{i}^{C} p_i - \sum_{i}^{C} p_{i}^2 = 1 - \sum_{1}^{C} p_{i}^{2}.
 \]
 
 \subsubsection{Information Gain}
@@ -1052,18 +1053,18 @@ at each step. It quantifies how much uncertainty about the class labels is reduc
 splitting the data based on a particular feature.
 
 \[
-    \mathrm{IG} = \mathrm{H}(P) - \sum w_i \mathrm{H}(C_i) 
+    \mathrm{IG} = \mathrm{H}(P) - \sum w_i \mathrm{H}(C_i).
 \]
 
 where \(H(X)\) is the entropy and \(w_i = \frac{|C_i|}{|P|} \) the relative cardinality of the child with respect to the parent.
 
-\subsection{Regressions Trees}
+\subsection{Regression Trees}
 
 A \emph{regression tree} divides the feature space into disjoint sub-spaces in such a way that it brings
-the value of all labels \(y_i\) for \(x_i \mathcal{D}\) get as as close as possible to the true label \(\overline{y_i} \approx y_i\).
+the value of all labels \(y_i\) for \(x_i \in \mathcal{D}\) as close as possible to the true label \(\overline{y_i} \approx y_i\).
 
 The process behind this goal is called \emph{recursive binary splitting} and can be performed in different manners, based on
-how the "purity" of a node is measured. This is of course an optimization in which we want to maximize the purity of our node given a split.
+how the ``purity'' of a node is measured. This is of course an optimization in which we want to maximize the purity of our node given a split.
 
 The process is similar to the one used for classification trees, but we use \emph{variance reduction} for our measurements.
 
@@ -1079,8 +1080,8 @@ where \(w_i = \frac{|P|}{|C_i|}\).
 
 \subsection{Recursive Binary Splitting}
 
-We previously state an optimization problem, which sadly can not be solved efficiently, instead
-we will approach it with \emph{recursive binary splitting} an algorithm which goes as follows:
+We previously stated an optimization problem, which sadly cannot be solved efficiently; instead,
+we will approach it with \emph{recursive binary splitting}, an algorithm which goes as follows:
 
 \begin{enumerate}
 
@@ -1093,7 +1094,7 @@ we will approach it with \emph{recursive binary splitting} an algorithm which go
 		      R_1(j,s) = \{x \mid (x)_j < s, x \in R_0\},
 	      \]
 	      \[
-		      R_2(j,s) = \{x \mid (x)_j \ge s, x \in R_0\}
+		      R_2(j,s) = \{x \mid (x)_j \ge s, x \in R_0\}.
 	      \]
 
 	      Find \((j, s)\) which minimizes the following
@@ -1152,7 +1153,7 @@ with
 
 \section{Nearest Neighbors Models}
 
-\emph{Nearest neighbors models NNM} used te labels of the neighbors in the proximity to perform classification or regression.
+\emph{Nearest neighbors models NNM} use the labels of the neighbors in the proximity to perform classification or regression.
 
 \subsection{Quantifying the Differences between Features}
 
@@ -1175,14 +1176,14 @@ We choose a \emph{distance metric} \(d(x, x')\) to quantify the difference betwe
 
 To predict the label of \(x\) we find the \(k\) nearest neighbors of \(x\) in the data-set \(\mathcal{D}\) based on the distance metric \(d\).
 
-Feature vectors in the training set are noted with its distance to \(x\). \(x_{[1]}\) symbolizes the nearest neighbor of
-\(x\), \(x_{[2]}\) the second nearest and so on
+Feature vectors in the training set are noted with their distance to \(x\). \(x_{[1]}\) symbolizes the nearest neighbor of
+\(x\), \(x_{[2]}\) the second nearest and so on.
 
 \[
 	d(x, x_{[1]}) \le d(x, x_{[2]}) \le \dots d(x, x_{[N]}).
 \]
 
-The \emph{Nearest Neighbor Model} gives us our final hypothesis is given by \(g(x) = y_{[1]}(x)\).
+The \emph{Nearest Neighbor Model} gives us our final hypothesis \(g(x) = y_{[1]}(x)\).
 
 \subsection{K-Nearest Neighbors Classification}
 
@@ -1198,7 +1199,7 @@ Note, that for \(k = 1\) we get the previous NN model. This is a majority vote m
 
 \subsection{K-Nearest Neighbor Regression}
 
-The \emph{KNN regression} is determines the label of the feature based on the \textbf{mean} of the
+The \emph{KNN regression} determines the label of the feature based on the \textbf{mean} of the
 label of the neighbors and a series of thresholds.
 
 \[
@@ -1211,19 +1212,19 @@ Given a distance metric \(d(x, y)\) we classify our training data using the foll
 
 \begin{enumerate}
 
-	\item Compute its distance for all other data points \(d(z, v_i)\).
+	\item Compute its distance to all other data points \(d(z, v_i)\).
 
 	\item Sort the distances in ascending order, by also keeping track of the indexes.
 
 	\item Based on the parameter \(k\) get the distances of the \(k\) closest points.
 
-	\item Depending on the regression or classification apply ont the following formulas
+	\item Depending on regression or classification, apply one of the following formulas
 
 	      \[
 		      \mathrm{Regression:}\, h(x) = \mathrm{sign} \left(\sum_{i = 1}^{k} y_{[i]}(x)\right) \quad \mathrm{Classification:}\, h(x) = \frac{1}{k} \sum_{i = 1}^{k} y_{[i]}(x)
 	      \]
 
-	      using the indexes of the \(k\) nearest neighbors for the getting the corresponding labels.
+	      using the indexes of the \(k\) nearest neighbors for getting the corresponding labels.
 
 \end{enumerate}
 
@@ -1293,7 +1294,7 @@ The infinite-dimensional property comes from the fact that the RBF kernel can be
 
 \section{Support Vector Machines}
 
-\emph{Support vector machines} are a family of algorithm which use the perceptron as a basis for classifying points into classes using a hyperplane
+\emph{Support vector machines} are a family of algorithms which use the perceptron as a basis for classifying points into classes using a hyperplane
 
 \[
 	w_0 + w_1 x_1 + \dots + w_p x_p = 0.
@@ -1322,7 +1323,7 @@ We also make the assumption that for a point of the first class \(w^T x_{+}  + b
 
 Therefore, the length taking into consideration both directions is \(\frac{2}{\metric{w}}\).
 
-Hence, for the maximization of the margin we need to minimize \(\metric{w}\) with the constraings that 
+Hence, for the maximization of the margin we need to minimize \(\metric{w}\) with the constraints that 
 
 \begin{align*}
 	y_i = 1 \implies w^T x + b &\ge 1 \iff x \in C_1 \\ 
@@ -1367,7 +1368,7 @@ and
 \]
 
 
-By putting our new terms in our orignal equation we get that 
+By putting our new terms in our original equation we get that 
 
 \[
 	\mathcal{L}(w, \alpha_1, \dots, \alpha_n, b) = \frac{1}{2} \left(\sum \alpha_i y_i x_i\right) \left(\sum \alpha_i y_i x_i\right) - 
@@ -1380,7 +1381,7 @@ Giving us
 	- \sum \alpha_i - \frac{1}{2} \sum_i \sum_j \alpha_i \alpha_j y_i y_j \inner{x_i}{x_j}.
 \]
 
-This is the so called \emph{dual optimization problem}.
+This is the so-called \emph{dual optimization problem}.
 
 \subsection{Soft Margin Support Vector Machine}
 
@@ -1405,13 +1406,7 @@ Thus,
 	\frac{1}{2} w^T w + C \sum_n \max (0, 1 - y_n (w^T x_n + b))
 \]
 
-with \(C\) is our regularization parameter.
-
-Our \emph{dual optimization problem} is given by
-
-\[
-	\max \left(- \frac{1}{2} \sum_{n = 1}^{N}\sum_{m = 1}^{N} y_n y_m \alpha_n \alpha_m x_n^T x_m + \sum_{n = 1}^{N} \alpha_n \right);
-\]
+where \(C\) is our regularization parameter.
 
 under the conditions
 
@@ -1439,13 +1434,13 @@ Now our \(y_i\) becomes
 	y_i = \text{sign} \left(\sum_{n = 1}^{N} \alpha_n y_n \Phi(x_n)^T \Phi(x_i) + b \right).
 \]
 
-Let us also \(K:= \Phi(x_n)^T \Phi(x_i)\).
+Let us also define \(K:= \Phi(x_n)^T \Phi(x_i)\).
 
 \subsection{Least Squares Support Vector Machine}
 
-This is a simplified version of the soft margin SVN.
+This is a simplified version of the soft margin SVM.
 
-Formally, we wnt to minimize \(\frac{1}{2} w^T w + \frac{\gamma}{2} \sum_n^N e_n^2\) under \(N\) constraints.
+Formally, we want to minimize \(\frac{1}{2} w^T w + \frac{\gamma}{2} \sum_n^N e_n^2\) under \(N\) constraints.
 
 \[
 	y_n(w^t x_n + b) = 1 - e_n
@@ -1558,7 +1553,7 @@ We can apply our kernel function and get
 
 \section{Average Vector}
 
-Given \(N\) features vectors with \(D\) features. The \emph{average vector} is given
+Given \(N\) feature vectors with \(D\) features, the \emph{average vector} is given
 by
 
 \[
@@ -1570,7 +1565,7 @@ feature across all feature vectors.
 
 \section{Z Scoring}
 
-Given \(\overline{X}\) as the mean and \(\sigma\) as the standard deviation of \(X\). The standardize feature
+Given \(\overline{X}\) as the mean and \(\sigma\) as the standard deviation of \(X\). The standardized feature
 \(Z\) (z-score) is given by
 
 \[
@@ -1582,7 +1577,7 @@ In this case, standardize each feature by transforming every column separately s
 
 \section{Dimension Reduction}
 
-The \emph{curse of dimensionality} is a concept that describes the problems which arise when dealing with hight-dimensional data. A high
+The \emph{curse of dimensionality} is a concept that describes the problems which arise when dealing with high-dimensional data. A high
 number of features (dimensions) leads to an increase in the complexity of the model as well as the computational cost. Also, in data science it
 is important to be able to visualize the data, which is not possible in high dimensions. Therefore, we want to reduce the number of features while
 preserving as much information as possible.
@@ -1618,8 +1613,7 @@ For that, we use the variance of the projections with our unit vector \(u\):
 	                                                                 & =  u^T S u.
 \end{align*}
 
-Hence, we want to maximize the sum of the inner products between the original data and the projected data onto the directions \(u\) which
-while minimizing the loss of information.
+Hence, we want to maximize the sum of the inner products between the original data and the projected data onto the directions \(u\), while minimizing the loss of information.
 
 Note the covariance matrix inside
 
@@ -1729,7 +1723,7 @@ When we multiply our matrices \(X\) and \(W\) we get
 	\end{bmatrix}
 \]
 
-which essentially describes the our vector as a liner combination:
+which essentially describes our vector as a linear combination:
 
 \[
 	Z_1 = \inner{X_1}{u_1} u_1 +  \inner{X_1}{u_2} u_2 + \dots + \inner{X_1}{u_k} u_k = \sum_{i = 1}^{k} \inner{X_1}{u_i} u_i.
@@ -1743,7 +1737,7 @@ the way most software libraries implement matrices as arrays of row vectors.
 If we divide each eigenvalue by the sum of all eigenvalues we get the \emph{explained variance EV} of each principal component.
 
 \[
-	\mathrm{PVE} = \frac{\lambda_k}{\sum_{j = 1}^{D} \lambda_j}
+	\mathrm{PVE} = \frac{\lambda_k}{\sum_{j = 1}^{D} \lambda_j}.
 \]
 
 This tells us how much of the variance in the data is explained by each principal component. We can use this to decide how many principal components to
@@ -1753,7 +1747,7 @@ keep based on a desired level of explained variance.
 
 For the computation of our principal components, we have been using the expression \(S = X^Tx\). Although, this
 is mathematically correct, for certain data sets with more features than samples this can become a really big matrix. To improve
-this problem we make use of the one of the following properties of our eigenvalue problem.
+this problem we make use of one of the following properties of our eigenvalue problem.
 
 \begin{align*}
 	S u _i         & = \lambda_i u_i      \\
@@ -1763,7 +1757,7 @@ this problem we make use of the one of the following properties of our eigenvalu
 	(X X^T)v_i     & =  \lambda_i v_i
 \end{align*}
 
-This means that our eigenvalue and eigenvectors are the same if we instead of the \emph{feature covariance matrix} we use the \emph{sample covariance matrix} \(XX^T\).
+This means that our eigenvalues and eigenvectors are the same if, instead of the \emph{feature covariance matrix}, we use the \emph{sample covariance matrix} \(XX^T\).
 
 \subsection{PCA Algorithm}
 
@@ -1786,7 +1780,7 @@ The algorithm goes as following:
 
 	\item We sort the eigenvalues with their corresponding eigenvectors in decreasing order and take the first \(M\) eigenvectors.
 
-	\item These eigenvectors form the new basis for the feature space. With which we can project our feature vectors.
+	\item These eigenvectors form the new basis for the feature space, with which we can project our feature vectors.
 
 \end{enumerate}
 
@@ -1886,12 +1880,12 @@ with
 
 \subsection{Centering of the Features}
 
-We assumed that the features where centered in the transformed feature space. Now we want to normalize them.
+We assumed that the features were centered in the transformed feature space. Now we want to normalize them.
 
 Given
 
 \[
-	\hat{\Phi}(x_i) = \Phi(x_i) - \frac{1}{N} \sum_{l} Phi(x_l),
+	\hat{\Phi}(x_i) = \Phi(x_i) - \frac{1}{N} \sum_{l} \Phi(x_l),
 \]
 
 and the kernel function
@@ -1920,7 +1914,8 @@ Now we can summarize the K-PCA algorithm
 
 	\item Center the kernel matrix to obtain \(\hat{K}\) using \(\hat{K} = K - 1_N K - K 1_N + 1_N K 1_N\)
 
-	\item Solve the eigenvalue problem \(\hat{K} \vec{\alpha}_j = \hat{\lambda}_j \vec{\alpha}_j\) to find the eigenvalues \(\hat{\lambda}_j\) and eigenvectors \(\vec{\alpha}_j\).
+	\item Solve the eigenvalue problem \(\hat{K} \vec{\alpha}_j = \hat{\lambda}_j \vec{\alpha}_j\) to find the eigenvalues \(\hat{\lambda}_j\) 
+	and eigenvectors \(\vec{\alpha}_j\).
 
 	\item Normalize the eigenvectors \(\vec{\alpha}_j \to \frac{1}{\sqrt{\hat{\lambda}_j}} \frac{\vec{\alpha}_j}{\|\vec{\alpha}_j\|}\)
 
@@ -1933,8 +1928,9 @@ Now we can summarize the K-PCA algorithm
 
 \section{Multidimensional Scaling MDS}
 
-\emph{Multidimensional Scaling (MDS)} is a family of procedures for the visualization an dimension reduction of features.
-The non-Euclidean MDS variants do not have a closed form solution, they are iterative methods; hence, we will present the classical MDS with the Euclidean distance.
+\emph{Multidimensional Scaling (MDS)} is a family of procedures for the visualization and dimension reduction of features.
+The non-Euclidean MDS variants do not have a closed form solution, they are iterative methods; hence, we will present the classical 
+MDS with the Euclidean distance.
 
 Given the pairwise distances of \(N\) vectors in matrix form
 
@@ -1942,7 +1938,7 @@ Given the pairwise distances of \(N\) vectors in matrix form
 	D = (d_{i,j})_{i,j}^n = \delta_{i,j}.
 \]
 
-In this classical approach \(d_{i,j}\) represent the distances in the low-dimensional configuration, \(\delta_{i,j}\) the observed distances or dissimilarities and
+In this classical approach \(d_{i,j}\) represents the distances in the low-dimensional configuration, \(\delta_{i,j}\) the observed distances or dissimilarities and
 \(\hat{d}_{i,j}= f(\delta_{i,j})\) the disparities from our data \(X\), which we do not know and want to find \(X\).
 
 We take our matrix \(D\) and square its entries giving us our \emph{Gram matrix}:
@@ -1957,7 +1953,7 @@ Then, we construct our matrix \(B\) for which the following holds:
 	B = X X^T, \quad b_{i, j} = \inner{x_i}{x_j}.
 \]
 
-Using the fact tha twe can write our inner products as
+Using the fact that we can write our inner products as
 
 \[
 	\inner{x_i}{x_j} = \frac{1}{2} (\inner{x_i}{x_i} + \inner{x_j}{x_j} - d_{i, j}^2).
@@ -1971,7 +1967,7 @@ we write \(B\) as
 
 and \(H\) is our \emph{double centering matrix} which subtracts both the row and column mean.
 
-Finally reconstruct \(X\) from using te eigendecomposition with \(V\) as the matrix of eigenvectors and \(\Lambda\) the eigenvalue matrix:
+Finally, reconstruct \(X\) using the eigendecomposition with \(V\) as the matrix of eigenvectors and \(\Lambda\) the eigenvalue matrix:
 
 \[
 	B = V \Lambda V^t.
@@ -1989,8 +1985,8 @@ We get
 Depending on the number of dimensions we want to keep, we can use a certain number of sorted eigenvalues with their corresponding
 eigenvectors to control the dimension reduction.
 
-The idea is similar to PCA, but instead of using correlation between samples, we use the distance/metric to group of samples. Choosing the right
-metric for the method is part of the art. As an important note, the previously discussed method only works with the euclidean distance; for a generalization with any metric
+The idea is similar to PCA, but instead of using correlation between samples, we use the distance/metric to group samples. Choosing the right
+metric for the method is part of the art. As an important note, the previously discussed method only works with the Euclidean distance; for a generalization with any metric
 there is an alternative algorithm.
 
 \subsection{Proportion Of Distance Matrix Explained (PDME)}
@@ -1998,7 +1994,7 @@ there is an alternative algorithm.
 The \emph{PDME} is given by: 
 
 \[
-	\mathrm{PDME} = \frac{\lambda_j}{\sum_{i = 1}^{N} | \lambda_i |}
+	\mathrm{PDME} = \frac{\lambda_j}{\sum_{i = 1}^{N} | \lambda_i |}.
 \]
 
 \subsection{Euclidean Constraint}
@@ -2009,14 +2005,14 @@ The reason that our distance matrix has to be build using the Euclidean metric i
 	a^T B a = a^T XX^T a = (Xa)^T(Xa) \ge 0, \ \forall a
 \]
 
-which guarantees positive eigenvalues. Negative eigenvalues lead to non real matrices when reconstructing our data.
+which guarantees positive eigenvalues. Negative eigenvalues lead to non-real matrices when reconstructing our data.
 
-This is mostly not a problem in the praxis, due to the negative eigenvalues and they associated eigenvectors are discarded during the algorithm, but
-this can limits the possibilities of projecting our data; meaning more lose of information.
+This is mostly not a problem in practice, since the negative eigenvalues and their associated eigenvectors are discarded during the algorithm, but
+this can limit the possibilities of projecting our data, meaning more loss of information.
 
 \section{Linear Discriminant Analysis}
 
-The goal of the \emph{linear discriminant analysis} is to find directions \(u_1, u_2, \ldots, u_k\) such that they can be best separate 
+The goal of the \emph{linear discriminant analysis} is to find directions \(u_1, u_2, \ldots, u_k\) such that they best separate 
 our classes. It is also a dimension-reduction technique, in which we want to maximize the separability of the classes.
 
 For the direction \(u_1\) with the projection of some data point \(x_i\) onto that direction defined as
@@ -2045,7 +2041,7 @@ It is important to note that this is a supervised learning method.
 
 \subsection{Within-Class Scatter}
 
-For quantifying the separation of the points \textbf{projected onto \(u_i\)} we define the following
+For quantifying the separation of the points \textbf{projected onto \(u_i\)} we define
 the \emph{within-class scatter} as
 
 \begin{align*}
@@ -2170,7 +2166,7 @@ We will use the following nomenclature:
 
 	\item \(\prob(y)\) is the proper probability, which in this case is the frequency of each class.
 
-	\item  \(\prob(x_i \mid y)\) is the class conditional probability which is model with a normal distribution.
+	\item  \(\prob(x_i \mid y)\) is the class conditional probability which is modeled with a normal distribution.
 
 	      \[
 		      \prob(x_i \mid y) = \frac{1}{\sqrt{2\pi \sigma_y^2}} \exp\left(- \frac{(x_i - \mu_y)^2}{2 \sigma_y^2}\right).
@@ -2190,7 +2186,7 @@ We will use the following nomenclature:
 		      y = \argmax_y \sum_{i = i }^{n} \ln(\prob(x_i \mid y)) + \ln(\prob(y))
 	      \]
 
-	      and the normal distribution formula
+	      and the normal distribution formula.
 
 	\item Choose the class with the highest probability.
 
@@ -2221,7 +2217,7 @@ It is the mean of the values inside the cluster.
 
 \subsection{Intra-Cluster Variance}
 
-Given \(C_1, \dots, C_n\) clusters with centroids \(\mu_1, \dots, \mu_n\). The \emph{intra-cluster variance} is given by
+Given \(C_1, \dots, C_n\) clusters with centroids \(\mu_1, \dots, \mu_n\), the \emph{intra-cluster variance} is given by
 
 \[
 	J = \frac{1}{|C_i|} \sum_{i = 1}^{k} \sum_{x_j \in C_i} \metric{ x_j - \mu_i}^2.
@@ -2239,7 +2235,7 @@ but due to it being a rather complex optimization problem, K-Means is computed i
 
 \begin{enumerate}
 
-	\item Initialize centroids randomly by choosing a certain number of indexes from out data.
+	\item Initialize centroids randomly by choosing a certain number of indexes from our data.
 
 	\item Initialize empty arrays for the number of clusters to which a centroid is going to be assigned.
 
@@ -2251,7 +2247,7 @@ but due to it being a rather complex optimization problem, K-Means is computed i
 
 	      \subitem Check convergence by checking if the old centroids are the same as the new ones.
 
-	\item We can return a label array with a label based on the cluster they ended.
+	\item We can return a label array with a label based on the cluster they ended in.
 
 \end{enumerate}
 
@@ -2272,14 +2268,14 @@ where the rate of decrease sharply changes.
 
 \section{Hierarchical Clustering}
 
-In contrast to the partitioning clustering like KMeans, \emph{hierarchical clustering} creates different divisions in each iteration
+In contrast to the partitioning clustering like K-Means, \emph{hierarchical clustering} creates different divisions in each iteration
 of the clustering process based on similarity. This can happen in two ways:
 
 \begin{itemize}
 
 	\item \emph{Top-Down}: We start with our set \(D\) and start splitting into subsets using a similarity metric, until we have sets with only one data point.
 
-	\item \emph{Bottom-Up}: This is the inverse process to the top-down approach, starting with singletons and then creating sets which at the root level, are then merged into \(D\).
+	\item \emph{Bottom-Up}: This is the inverse process to the top-down approach, starting with singletons and then creating sets which, at the root level, are then merged into \(D\).
 
 \end{itemize}
 
@@ -2317,7 +2313,7 @@ The \emph{total purity} is given by
 	\mathrm{purity} =  \sum_{i = 1}^{k} \frac{n_i}{n} \mathrm{purity}_i = \frac{1}{n} \sum_{i = 1}^{k} \max_{j = 1}^{k} |C_i \cap T_j|
 \]
 
-where \(n\) is total number of samples.
+where \(n\) is the total number of samples.
 
 \subsection{Mutual Information}
 
@@ -2339,12 +2335,12 @@ where
 
 \end{itemize}
 
-The bigger the mutual information the similar.
+The bigger the mutual information, the more similar.
 
 \section{Internal Cluster Validation}
 
 Due to the fact that knowing the true clusters is not possible when performing explorative data analysis, we use
-methods such \emph{silhouette plots} and \emph{prediction strength} to analyze the quality of our clusters.
+methods such as \emph{silhouette plots} and \emph{prediction strength} to analyze the quality of our clusters.
 
 \subsection{Silhouettes}
 
@@ -2358,7 +2354,7 @@ Given \(C_1, C_k\) clusters with \(x_i, x_j \in C_m\) and the measurement \(\met
 	a(x_i) = \frac{1}{|C_j| - 1} \sum_{x \in C_j, x \ne x_i} \metric{x_i, x}_2,
 \]
 
-the mean distance to \(x_i\) to all other points in the cluster.
+the mean distance from \(x_i\) to all other points in the cluster.
 
 And \emph{separation} as
 
@@ -2366,9 +2362,9 @@ And \emph{separation} as
 	b(x_i) = \min_{k \ne j} \frac{1}{|C_k|} \sum_{x \in C_j, x \ne x_i} \metric{x_i, x}_2,
 \]
 
-the minimal mean distance between \(x_i\) to all other points in the closest cluster.
+the minimal mean distance from \(x_i\) to all other points in the closest cluster.
 
-Finally, we these two concepts we can define the \emph{silhouette-index} as
+Finally, with these two concepts we can define the \emph{silhouette-index} as
 
 \[
 	s(x_i) =
@@ -2392,7 +2388,7 @@ We can also define the \emph{average silhouette width} and \emph{silhouette scor
 \subsection{Prediction Strength}
 
 The main idea of the \emph{prediction strength} is that the quality of a clustering is good if
-the belonging to an specific cluster can be well predicted.
+the belonging to a specific cluster can be well predicted.
 
 \subsubsection{The Co-membership Matrix and The Prediction Strength}
 
@@ -2409,7 +2405,7 @@ Given the clusters \(C_1, \dots, C_k\) of \(\mathcal{D}_{\text{train}}\) and \(A
 	\forall x_i, x_j \in \mathcal{D}_{\text{val}}.
 \]
 
-This means that if two data-points of our validation set are in the same cluster with respect to our training-centroids.
+This means that the entry is 1 if two data-points of our validation set are in the same cluster with respect to our training-centroids.
 
 We define our \emph{prediction strength} as
 
@@ -2421,7 +2417,7 @@ This means that we count the number of matches in our co-membership matrix compu
 cluster \(l\) of the validation labels and divide it by the number of elements in the current cluster times the same amount minus 1.
 
 Note that this algorithm is highly dependent on the chosen clustering strategy, here the K-Means variant was used for the
-clustering metric, but for example if we do agglomerative clustering we would use the mean Euclidean distance as our similarity measurement.
+clustering metric, but for example, if we do agglomerative clustering, we would use the mean Euclidean distance as our similarity measurement.
 
 \subsubsection{Prediction Strength Algorithm For K-Means}
 

@@ -1,4 +1,3 @@
-
 \chapter{Eigenvectors and Eigenvalues}
 
 \emph{Eigenvector:}
@@ -21,9 +20,9 @@ and its corresponding eigenvalue \(\lambda\) is expressed by the following equat
     A\vec{v} = \lambda\vec{v}
 \]
 
-Where \(A = f: V \to V\) is an \emph{endomorphism}, \(\vec{v} \ne \vec{0}\) and  \(\lambda \in \C\).
+where \(A = f: V \to V\) is an \emph{endomorphism}, \(\vec{v} \ne \vec{0}\) and  \(\lambda \in \C\).
 
-The way we find a method to find them is by manipulating the equation above
+The way we find them is by manipulating the equation above:
 
 \begin{align*}    
     A\vec{v} &= \lambda\vec{v}\\
@@ -32,56 +31,56 @@ The way we find a method to find them is by manipulating the equation above
     (A - \lambda I) \vec{v} &= \vec{0}
 \end{align*}
 
-Here note that if \((A - \lambda I)\) were invertible then we could multiply both sides by 
-its inverse and then get \(\vec{v} = 0\). But we do not want that therefore, \((A\vec{v} - \lambda I)\) 
-must be linear transformation whose determinant is \(0\) which means that it can not ve invertible.
+Here, note that if \((A - \lambda I)\) were invertible then we could multiply both sides by 
+its inverse and then get \(\vec{v} = 0\). But we do not want that, therefore \((A\vec{v} - \lambda I)\) 
+must be a linear transformation whose determinant is \(0\), which means that it cannot be invertible.
 
 \begin{align*}    
     (A - \lambda I) \vec{v} &= \vec{0}\\
     \det (A - \lambda I)  &= 0
 \end{align*}
 
-\subsection{Characteristic Polynomial}
+\section{Characteristic Polynomial}
 
-The polynomial which we get from the determinant \(\det (A\vec{v} - \lambda I)  = 0\) is called 
-the characteristic polynomial of \(A\).
+The polynomial which we get from the determinant \(\det (A - \lambda I)  = 0\) is called 
+the \emph{characteristic polynomial of \(A\)}.
 
 \[
     \mathcal{X}_A = \det (A - \lambda I) = 0
 \]
 
-\subsubsection{Eigenspace}
+\section{Eigenspace}
 
-The \emph{Eigenspace} of an eigenvalue are the solution of the homogeneous system \(A - \lambda I\).
+The \emph{Eigenspace} of an eigenvalue is the set of solutions of the homogeneous system \(A - \lambda I\).
 
 \[
     \mathrm{Eig}(f;\lambda) = ker(A - \lambda I)
 \]
 
-\subsection{Theorems of Eigenvalues and Eigenvectors}
+\section{Theorems of Eigenvalues and Eigenvectors}
 
-\subsubsection{Theorem I}
+\subsection{Theorem I}
 
 Given an eigenvalue \(\lambda\) of \(f\) and \(v_1, \dots, v_n\) being the eigenvectors of \(f\) 
-with \(\lambda\) then \(v \in L(v_1, \dots, v_k) \backslash \{0\}\) is an eigenvector of 
+with \(\lambda\), then \(v \in L(v_1, \dots, v_k) \backslash \{0\}\) is an eigenvector of 
 \(f\) with \(\lambda\).
 
-\subsubsection{Theorem II}
+\subsection{Theorem II}
 
-For \(\lambda \in \C\) is \(Eig(f;\lambda):= \{c \in V | f(v) = \lambda v\}\) the \emph{Eigenspace} of 
-\(f\) with \(\lambda\) and, it is a subspace of \(V\).
+For \(\lambda \in \C\), \(Eig(f;\lambda):= \{c \in V | f(v) = \lambda v\}\) is the \emph{Eigenspace} of 
+\(f\) with \(\lambda\), and it is a subspace of \(V\).
 
-\subsubsection{Theorem III}
+\subsection{Theorem III}
 
 For \(\lambda \ne \gamma \quad Eig(f;\lambda) \cap Eig(f;\gamma) = \{0\}\).
 
-\subsection{Linear Independence Of Eigenvectors With Distinct Eigenvalues}
+\section{Linear Independence Of Eigenvectors With Distinct Eigenvalues}
 
 Eigenvectors with different eigenvalues are linearly independent.
 
 \textbf{Proof:}
 
-If \(\alpha v + \beta w = 0\), where \(v\) and \(w\) are eigenvector of \(A \in \C^{n \times n}\); then it must be true that 
+If \(\alpha v + \beta w = 0\), where \(v\) and \(w\) are eigenvectors of \(A \in \C^{n \times n}\), then it must be true that 
 
 \begin{align*}
     \alpha \lambda v + \beta \lambda w &= 0 \\ 
@@ -90,13 +89,13 @@ If \(\alpha v + \beta w = 0\), where \(v\) and \(w\) are eigenvector of \(A \in 
 
 With \(\lambda \ne \mu\) being eigenvalues of \(A\).
 
-Also we have that 
+Also, we have that 
 
 \[
     0 = A(\alpha v + \beta w) = \alpha \lambda v + \beta \mu w
 \]
 
-By subtracting this equation to the previous two equations we get
+By subtracting this equation from the previous two equations, we get
 
 \begin{align*}
     0 &= \alpha (\lambda - \mu)v \\
@@ -108,9 +107,9 @@ they are linearly independent.
 
 \QED
 
-\subsection{The Determinant Via Eigenvalues}
+\section{The Determinant Via Eigenvalues}
 
-Given the following eigenvalues\(\lambda_1, \dots, \lambda_n\), then the 
+Given the following eigenvalues \(\lambda_1, \dots, \lambda_n\), then the 
 determinant of the matrix \(A\) is given by 
 
 \[
@@ -144,9 +143,9 @@ Or by using the definition of the diagonal matrix:
 
 \QED
 
-\subsection{Eigenvalues Under Isometric Maps}
+\section{Eigenvalues Under Isometric Maps}
 
-For all linear isometric map \(f\) with some eigenvalue \(\lambda\) it applies that
+For every linear isometric map \(f\) with some eigenvalue \(\lambda\), it holds that
 
 \[
     \|x\| = \|f(x)\| = \|\lambda x\| = \|\lambda\|\|x\|
@@ -154,52 +153,50 @@ For all linear isometric map \(f\) with some eigenvalue \(\lambda\) it applies t
 
 Also, \(\lambda = 1\).
 
-An example for this are rotation matrices which map to the same space and preserve the length and 
-whose eigenvalue are complex with a modulus of length of one.
+An example of this are rotation matrices, which map to the same space and preserve the length, and 
+whose eigenvalues are complex with a modulus of one.
 
-\subsection{Eigenvalues As Powers}
+\section{Eigenvalues As Powers}
 
-For some eigenvector \(x\) with an eigenvalue \(\lambda\) of \(A\). It applies that
+For some eigenvector \(x\) with an eigenvalue \(\lambda\) of \(A\), it holds that
 
 \[
     A^{k}x = \lambda^{k}x
 \]
 
-\subsection{How to find the Eigenvectors and Eigenvalues}
+\section{How To Find The Eigenvectors And Eigenvalues}
 
-To find the eigenvalues and eigenvectors of a square matrix \(A\), we solve the eigenvalue equation:
+To find the eigenvalues and eigenvectors of a square matrix \(A\) we follow the next steps 
 
-\textbf{1. Form the characteristic equation:}
+\begin{enumerate}
 
-Rewrite the equation \(A\vec{v} = \lambda\vec{v}\) as 
-\((A - \lambda I)\vec{v} = \vec{0}\), where \(\lambda I\) is the identity matrix times \(\lambda\) because 
-this matrix encodes the multiplication by some scalar. 
-    
-To have a non-trivial solution \(0\) for \(\vec{v}\), the matrix \((A - \lambda I)\) must be 
-singular like said before, which means its determinant must be zero because otherwise \(\vec{v}\) 
-would be 0. Thus, we have the characteristic equation:
+    \item \textbf{Form the characteristic equation:} Rewrite the equation \(A\vec{v} = \lambda\vec{v}\) as 
+    \((A - \lambda I)\vec{v} = \vec{0}\), where \(\lambda I\) is the identity matrix times \(\lambda\) because 
+    this matrix encodes the multiplication by some scalar. 
+        
+    To have a non-trivial solution \(0\) for \(\vec{v}\), the matrix \((A - \lambda I)\) must be 
+    singular as stated before, which means its determinant must be zero because otherwise \(\vec{v}\) 
+    would be 0. Thus, we have the characteristic equation:
 
-\[
-    \det(A - \lambda I) = 0
-\]
+    \[
+        \det(A - \lambda I) = 0
+    \]
 
-\textbf{2. Solve for the eigenvalues:}
+    \item \textbf{2. Solve for the eigenvalues:} Solve the characteristic equation for \(\lambda\). The solutions 
+    \(\lambda_1, \lambda_2, \dots, \lambda_n\) are the eigenvalues of the matrix \(A\).
 
-Solve the characteristic equation for \(\lambda\). The solutions 
-\(\lambda_1, \lambda_2, \dots, \lambda_n\) are the eigenvalues of the matrix \(A\).
+    \item \textbf{3. Find the eigenvectors:} For each eigenvalue \(\lambda_i\), substitute it back into the equation 
+    \((A - \lambda_i I)\vec{v} = \vec{0}\) and solve for the vector \(\vec{v}\). The non-zero 
+    solutions for \(\vec{v}\) are the eigenvectors corresponding to the eigenvalue 
+    \(\lambda_i\). Note that we are going to get infinitely many solutions; thus, we have to write 
+    our vector with dependence on the free 
+    parameters.
 
-\textbf{3. Find the eigenvectors:}
-
-For each eigenvalue \(\lambda_i\), substitute it back into the equation 
-\((A - \lambda_i I)\vec{v} = \vec{0}\) and solve for the vector \(\vec{v}\). The non-zero 
-solutions for \(\vec{v}\) are the eigenvectors corresponding to the eigenvalue 
-\(\lambda_i\). Note that we are going to get infinite solutions thus, we have to write 
-our vector with dependence on the free 
-parameters.
+\end{enumerate}
 
 \textbf{Example:}
 
-Find the eigenvalues and vectors of 
+Find the eigenvalues and eigenvectors of 
 
 \[
     A = \begin{bmatrix}
@@ -227,7 +224,7 @@ Let us build the characteristic equation and solve it
 \end{align*}
 
 We have got the eigenvalues \(\lambda_1 = 3\) and \(\lambda_2 = -1\). Now let us continue by 
-substituting our eigenvalues in the original equation.
+substituting our eigenvalues into the original equation.
 
 \begin{align*}
     \begin{bmatrix} 1 - \lambda_2 & 1 \\ 4 & 1 - \lambda-2 \\ \end{bmatrix} &= \vec{0} \\
@@ -244,7 +241,7 @@ Using Gaussian elimination we get:
     \end{bmatrix} 
 \]
 
-Thus, let \(v_2 = -2\) and \(v_1 = \frac{2}{2} = 1\). This give us the first eigenvector and all of it 
+Thus, let \(v_2 = -2\) and \(v_1 = \frac{2}{2} = 1\). This gives us the first eigenvector and all of its 
 scalar versions.
 
 \[
@@ -253,13 +250,13 @@ scalar versions.
 
 The process for the other eigenvalue is exactly the same.
 
-\subsection{Complex Eigenvalues}
+\section{Complex Eigenvalues}
 
-This is a special case of \emph{eigenvalues} which are not as easy to visualize.
+This is a special case of \emph{eigenvalues}. They appear for example in rotation matrices.
 
 \textbf{Example:}
 
-Find the eigenvalues and vectors of
+Find the eigenvalues and eigenvectors of
 
 \[
     A = \begin{bmatrix}
@@ -335,25 +332,25 @@ Therefore, the second eigenvector is
     \end{bmatrix}
 \]
 
-\subsection{Diagonal Matrices}
+\section{Diagonal Matrices}
 
-A \emph{diagonal matrix} is matrix of dimensions \(n \times n\) where only the entries of the main diagonal 
-are not zero. This kind of matrices make a lot of the computations in linear algebra trivial. Therefore, 
-if our matrix is not diagonal we are interested in finding a way of transforming the original matrix 
+A \emph{diagonal matrix} is a matrix of dimensions \(n \times n\) where only the entries of the main diagonal 
+are not zero. This kind of matrix makes a lot of the computations in linear algebra trivial. Therefore, 
+if our matrix is not diagonal, we are interested in finding a way of transforming the original matrix 
 into a diagonal matrix.
 
-A matrix is diagonalisable if and only if the eigenvectors of it are linear independent.
+A matrix is diagonalisable if and only if its eigenvectors are linearly independent.
 
-\subsubsection{Complex Diagonalization}
+\subsection{Complex Diagonalization}
 
-Given a matrix \(A \in \C^{n \times n}\) with \(n\) distinct eigenvalues then is \(A\)
-diagonalisable. But this does not guaranty the diagonalisability for \(\R\).
+Given a matrix \(A \in \C^{n \times n}\) with \(n\) distinct eigenvalues, then \(A\) is
+diagonalisable. But this does not guarantee the diagonalisability for \(\R\).
 
-\subsubsection{Geometric and Algebraic Multiplicity}
+\subsection{Geometric and Algebraic Multiplicity}
 
 Given a matrix \(A \in \C^{n \times n}\) with \(\lambda_i\) as an eigenvalue: 
 
-The multiple occurrences of the zero \(\lambda_i\) in \(\mathcal{X}_A\) is called \emph{algebraic multiplicity} \(\alg(\lambda)_i\). 
+The multiple occurrence of the zero \(\lambda_i\) in \(\mathcal{X}_A\) is called \emph{algebraic multiplicity} \(\alg(\lambda)_i\). 
 
 Continuing, \(\geo(\lambda_i):= \dim(\mathrm{Eig}(A;\lambda_i))\) is the \emph{geometrical multiplicity} of \(\lambda_i\) i.e. the number 
 of linearly independent eigenvectors associated with \(\lambda_i\).
@@ -381,7 +378,7 @@ The corresponding multiplicities are:
 
 With eigenvalue \(\lambda = 1\).
 
-This results into \(\alg(1)= 2\) and the \(\geo(1) = 1\) because of 
+This results in \(\alg(1)= 2\) and the \(\geo(1) = 1\) because of 
 
 \[
     \begin{bmatrix}
@@ -392,7 +389,7 @@ This results into \(\alg(1)= 2\) and the \(\geo(1) = 1\) because of
 
 More precisely \(\dim(\mathrm{Eig}(A;1)) = 1\).
 
-\subsubsection*{Example With Complex Eigenvalues}
+\subsubsection{Example With Complex Eigenvalues}
 
 Given is the rotation matrix
 
@@ -421,7 +418,7 @@ Using the quadratic formula gives us
 
 Therefore, our eigenvalues are complex. Now, is the matrix diagonalisable? The answer is yes. 
 
-Because of  \((\cos(\theta) - \lambda)^2\) gives us \(\alg(\lambda) = 2\).
+Because \((\cos(\theta) - \lambda)^2\) gives us \(\alg(\lambda) = 2\).
 
 \[
     \alg(e^{i\theta}) =  2, \quad \alg(e^{-i\theta}) = 2
@@ -465,14 +462,14 @@ For \(\lambda = e^{-i\theta}\) we also get two linearly independent vectors
     \end{bmatrix}
 \]
 
-\subsubsection{Eigenvalues of Real Symmetric Matrices}
+\section{Eigenvalues Of Real Symmetric Matrices}
 
-Eigenvalues of real symmetric matrices are real and also they respective eigenvectors.
+Eigenvalues of \emph{real symmetric matrices} are \emph{real}, and so are their respective eigenvectors.
 
 \textbf{Proof:}
 
-By definition, we have that \(Ax = \lambda x\). The let us multiply both sides by \( \bar{x}^T\). Note 
-that because \(x\) is a real vector then the conjugate does not change anything.
+By definition, we have that \(Ax = \lambda x\). Then let us multiply both sides by \( \bar{x}^T\). Note 
+that because \(x\) is a real vector, the conjugate does not change anything.
 
 \begin{align*}
     Ax &= \lambda x \\
@@ -496,12 +493,12 @@ we are done. For this we will use the properties of the conjugate.
     &= \bar{x}^T \bar{A}^T x
 \end{align*}
 
-Notice that we ended just were we started. Therefore, the conjugate had no effect on whole term, thus 
+Notice that we ended just where we started. Therefore, the conjugate had no effect on the whole term, thus 
 it is real-valued.
 
 \QED
 
-\subsubsection{Orthogonality of Eigenvectors}
+\section{Orthogonality of Eigenvectors}
 
 Given a symmetric matrix \(A \in \R^{n \times n}\) with \(\lambda \ne \mu \) as two eigenvalues of 
 \(A\) with eigenvectors \(v\) and \(w\). Then \(v\) and \(w\) are \emph{orthogonal} to each other.
@@ -513,52 +510,52 @@ Given a symmetric matrix \(A \in \R^{n \times n}\) with \(\lambda \ne \mu \) as 
 \]
 
 Therefore, \(\lambda \inner{v}{w} = \inner{Av}{w} = \inner{v}{Aw} 
-= \mu \inner{v}{w}\). Because \(\mu \ne \lambda\) and \(\lambda - \mu \inner{v}{w} = 0\)
+= \mu \inner{v}{w}\). Because \(\mu \ne \lambda\) and \(\lambda - \mu \inner{v}{w} = 0\), 
 the vectors must be orthogonal.
 
 \QED
 
-\subsubsection{Eigenvalue Decomposition of Symmetric Matrices}
+\section{Eigenvalue Decomposition of Symmetric Matrices}
 
 Given a symmetric matrix \(A \in \R^{n \times n}\) with eigenvalues 
-\(\lambda_1, \lambda_2, \dots, \lambda_n\). Then because of the orthogonality of its eigenvectors and 
-the fact that they can be normalized write the matrix \emph{Q} as an orthogonal matrix, and therefore
+\(\lambda_1, \lambda_2, \dots, \lambda_n\). Then, because of the orthogonality of its eigenvectors and 
+the fact that they can be normalized, we can write the matrix \emph{Q} as an orthogonal matrix, and therefore
 
 \[
     A = Q D Q^T
 \]
 
-\subsubsection{Matrix Diagonalization}
+\section{Matrix Diagonalization}
 
-Diagonalizing a matrix involves finding a diagonal matrix that is similar to the given matrix. 
+\emph{Diagonalizing} a matrix involves finding a diagonal matrix that is similar to the given matrix. 
 A square matrix \(A\) is diagonalisable if there exists an invertible matrix \(X\) made of eigenvectors of 
 \(A\) such that \(X^{-1}AX = D\), where \(D\) is a diagonal matrix made of eigenvalues.
 
-The order of the eigenvalue and eigenvectors matters if you choose 
-\(\lambda_1, \lambda_2, \dots, \lambda_n\) then the order of the eigenvectors 
+The order of the eigenvalues and eigenvectors matters. If you choose 
+\(\lambda_1, \lambda_2, \dots, \lambda_n\), then the order of the eigenvectors 
 \(v_1, v_2, \dots, v_n\) must also correspond. This process only works if \(A\) 
-has unique eigenvalues or if they are duplicates they have to be linearly independent.
+has unique eigenvalues or, if they are duplicates, they have to be linearly independent.
 
 The process of diagonalisation is as follows:
 
-\textbf{1. Find the eigenvalues and eigenvectors of \(A\).}
-
-\textbf{2. Form the matrix \(X\):}
-
-Create a matrix \(X\) whose columns are the linearly independent eigenvectors of \(A\).
-
-\textbf{3. Form the diagonal matrix \(D\):} 
-
-Create a diagonal matrix \(D\) whose diagonal entries are the eigenvalues of \(A\), corresponding to 
-the order of the eigenvectors in \(P\). That is, if the \(i\)-th column of \(P\) is the eigenvector 
-corresponding to the eigenvalue \(\lambda_i\), then the \(i\)-th diagonal entry of \(D\) is \(\lambda_i\).
-
-\textbf{4. Verify the diagonalisation:}
+\begin{enumerate}
     
-Check that \(X^{-1}AX = D\).
+    \item \textbf{1. Find the eigenvalues and eigenvectors of \(A\):} 
+        \subitem Form the characteristic polynomial. 
+        \subitem Compute the determinant. 
+        \subitem Find the roots of the polynomial.
+   
+    \item \textbf{2. Form the matrix \(X\):} Create a matrix \(X\) whose columns are the linearly independent eigenvectors of \(A\).
 
-A matrix \(A\) is diagonalisable if and only if it has \(n\) linearly independent eigenvectors, where 
-\(n\) is the size of the matrix.
+    \item \textbf{3. Form the diagonal matrix \(D\):} Create a diagonal matrix \(D\) whose diagonal entries are the eigenvalues of \(A\), corresponding to 
+    the order of the eigenvectors in \(P\). That is, if the \(i\)-th column of \(P\) is the eigenvector 
+    corresponding to the eigenvalue \(\lambda_i\), then the \(i\)-th diagonal entry of \(D\) is \(\lambda_i\).
+
+    \item \textbf{4. Verify the diagonalisation:} Check that \(X^{-1}AX = D\).
+    
+\end{enumerate} 
+
+A matrix \(A \in \C^{n \times n}\) is diagonalisable if and only if it has \(n\) \emph{linearly independent eigenvectors}.
 
 \textbf{Example: }
 
@@ -623,7 +620,7 @@ For \(\lambda_1 = 1\):
 Our free variable is \(y\) therefore 
 
 \[
-    \vec{v} = \left\{ y \begin{bmatrix} -1 \\ 1\end{bmatrix} \mid  y \in \R \right\}
+    \vec{v} = \left\{ y \begin{bmatrix} -1 \\ 1\end{bmatrix} \mid  y \in \R \right\}.
 \]
 
 Now choose \(y = 1\) which gives us \(x = -1\). Now we get the vector 
@@ -631,7 +628,7 @@ Now choose \(y = 1\) which gives us \(x = -1\). Now we get the vector
 \[
     \vec{x} = \begin{bmatrix}
         -1 \\ 1
-    \end{bmatrix}
+    \end{bmatrix}.
 \]
 
 For \(\lambda_2 = 2\) the process is similar, so we are going to skip it. We get the vector
@@ -639,7 +636,7 @@ For \(\lambda_2 = 2\) the process is similar, so we are going to skip it. We get
 \[
     \vec{y} = \begin{bmatrix}
         -\frac{4}{5} \\ 1
-    \end{bmatrix}
+    \end{bmatrix}.
 \]
 
 Now we will complete the process by writing \(D, X, \text{ and } X^{-1}\).
@@ -653,24 +650,24 @@ Now we will complete the process by writing \(D, X, \text{ and } X^{-1}\).
         -1  & -\frac{4}{5} \\
         1   &   1 
     \end{bmatrix}
-    X^{1} = \begin{bmatrix}
+    X^{-1} = \begin{bmatrix}
         -1  & \frac{4}{5} \\
         -1   &   -1 
-    \end{bmatrix}
+    \end{bmatrix}.
 \]
 
-\subsubsection{Normal Matrices}
+\section{Normal Matrices}
 
 A matrix \(A \in \C^{n \times n}\) is considered \emph{normal} if and only if 
 
 \[
-    A \overline{A^T} = \overline{A^T} A
+    A \overline{A^T} = \overline{A^T} A.
 \]  
 
 For real matrices, this condition simplifies to \(A A^T = A^T A\). 
 
-Also, then there exist with the euclidean inner product in \(\C^n\) an orthonormal basis 
-of eigenvector and therefore, \(A\) is diagonalisable.
+Also, with the euclidean inner product in \(\C^n\), there exists an orthonormal basis 
+of eigenvectors, and therefore \(A\) is diagonalisable.
 
 This implies that
 
@@ -714,7 +711,7 @@ where:
 Let \( A \in \R^{m \times n} \) be a real square matrix with SVD given by:
 
 \[
-    A = U \Sigma V^T
+    A = U \Sigma V^T.
 \]
 
 We show that:
@@ -752,10 +749,9 @@ by \( V \), and the columns of \( V \) are eigenvectors of \( A^T A \), with eig
 
 \QED
 
+\subsection{Finding The SVD Of A Matrix}
 
-\subsubsection*{Finding Th SVD Of A Matrix}
-
-To find the SVD of a matrix \(A \in \C^{m \times n}\) we follow the following steps:
+To find the SVD of a matrix \(A \in \C^{m \times n}\) we follow these steps:
 
 \begin{enumerate}
    
@@ -769,8 +765,7 @@ To find the SVD of a matrix \(A \in \C^{m \times n}\) we follow the following st
 
 \end{enumerate}
     
-
-\subsection{Similar Matrices}
+\section{Similar Matrices}
 
 Given \(A \in \C^{n \times n}\) and \(X \in \C^{n \times n}\) then if
 
@@ -780,7 +775,7 @@ Given \(A \in \C^{n \times n}\) and \(X \in \C^{n \times n}\) then if
 
 we denote \(XDX^{-1}\) as \emph{similar} to \(A\).
 
-\subsubsection*{Case I}
+\subsection{Case I}
 
 \(A\) is diagonalisable with eigenvalues and eigenvectors.
 
@@ -794,7 +789,7 @@ we denote \(XDX^{-1}\) as \emph{similar} to \(A\).
     \end{bmatrix}
 \]
 
-\subsubsection*{Case II}
+\subsection{Case II}
 
 Any complex eigenvalue must come in complex conjugate pairs if \(A\) is real valued.
 
@@ -813,14 +808,14 @@ Any complex eigenvalue must come in complex conjugate pairs if \(A\) is real val
     = 
     \begin{bmatrix}
         \cos(bt) & \sin(bt) \\
-        -sin(bt) & cos(bt) 
+        -\sin(bt) & \cos(bt) 
     \end{bmatrix}
     e^{at}
 \]
 
-\subsubsection*{Case III}
+\subsection{Case III}
 
-Repeated eigenvalues and not enough vector in the null-space.
+Repeated eigenvalues and not enough vectors in the null-space.
 
 \[ 
     S^{-1}AS = D = 
@@ -832,10 +827,9 @@ Repeated eigenvalues and not enough vector in the null-space.
 
 
 
-\subsubsection{Equality Of Eigenvalues}
+\section{Equality Of Eigenvalues}
 
-Given \(A \in \C^{n \times n}\) and \(X \in \C^{n \times n}\), both regular, then 
-\(XAX^{-1}\) has the same eigenvalues as \(A\).
+Given \(A \in \C^{n \times n}\) and \(X \in \C^{n \times n}\), both regular, then \(XAX^{-1}\) has the same eigenvalues as \(A\).
 
 \textbf{Proof:}
 
@@ -852,7 +846,7 @@ Thus, similar matrices have the same \textbf{eigenvalues with their corresponden
 
 \QED
 
-\subsection{Jordan Normal Form}
+\section{Jordan Normal Form}
 
 Let \(A \in \C^{n \times n}\), it is diagonalisable   if 
 
@@ -888,11 +882,11 @@ Whereas \(J\) is a \emph{block-diagonal matrix}
     \end{bmatrix}
 \]
 
-For each of these blocks the one corresponding eigenvalue is repeated  across the diagonal
+For each of these blocks, the one corresponding eigenvalue is repeated across the diagonal.
 
-If \(A\) has exactly \(n\) linear independent eigenvectors then \(J\) is  just \(D\).
+If \(A\) has exactly \(n\) linearly independent eigenvectors, then \(J\) is just \(D\).
 
-\subsubsection*{Algorithm For Jordan Blocks}
+\subsection{Algorithm For Jordan Blocks}
 
 \begin{itemize}
 
@@ -961,27 +955,26 @@ Delivering the eigenvalue \(\lambda = 2\) with algebraic multiplicity of 2. Howe
 
 Note that the Jordan block has a size equal to the algebraic multiplicity of the eigenvalue, and the superdiagonal entry is 1, indicating that there is a single Jordan block for the eigenvalue \(2\).
 
-\subsection{The Hermitian Transpose}
+\section{The Hermitian Transpose}
 
-For a matrix \(A \in \C^{n \times m}\), the \emph{hermitian transpose} \(A^H\) is the transpose of the conjugate matrix of a 
+For a matrix \(A \in \C^{n \times m}\), the \emph{hermitian transpose} \(A^H\) is the transpose of the conjugate matrix of the 
 matrix \(A\).
 
 \[
     A^H = \bar{A}^T
 \]
 
-\subsection{Unitary Matrices}
+\section{Unitary Matrices}
 
 \emph{Unitary Matrices} are matrices whose columns form orthonormal vectors and
 
 \[
-    U^H = U^{-1}
+    U^H = U^{-1}.
 \]
 
+\section{Unitary Decomposition (Schur's Theorem)}
 
-\subsection{Unitary Decomposition (Schur's Theorem)}
-
-For each matrix \(A \in \C^{n \times n}\), there exist an unitary matrix \(U \in \C^{n \times n}\) such that 
+For each matrix \(A \in \C^{n \times n}\), there exists a unitary matrix \(U \in \C^{n \times n}\) such that 
 
 \[
     A = U T U^H, \quad
@@ -991,14 +984,14 @@ For each matrix \(A \in \C^{n \times n}\), there exist an unitary matrix \(U \in
         0 & \ddots & \ddots &  \vdots \\ 
         \vdots & \ddots & \ddots &  t_{n-1, n} \\ 
         0 & \cdots & 0 & \lambda_{n,n}
-    \end{bmatrix}
+    \end{bmatrix}.
 \]
 
 As a reminder \(U^H = \overline{U^T}\).
 
-\subsubsection{Unitary Diagonalisation}
+\section{Unitary Diagonalisation}
 
-For a matrix \(A \in \C^{n \times n}\), it is considered \emph{unitary diagonalisable} if there exist a matrix 
+For a matrix \(A \in \C^{n \times n}\), it is considered \emph{unitary diagonalisable} if there exists a matrix 
 \(U \in \C^{n \times n}\) such that
 
 \[
@@ -1009,12 +1002,12 @@ For a matrix \(A \in \C^{n \times n}\), it is considered \emph{unitary diagonali
         0 & \ddots & \ddots &  \vdots \\ 
         \vdots & \ddots & \ddots &  0 \\ 
         0 & \cdots & 0 & \lambda_{n,n}
-    \end{bmatrix}
+    \end{bmatrix}.
 \]
 
-\subsection{Normal Matrices}
+\section{Normal Matrices}
 
-A matrix \(A \in \C^{n \times n}\) is considered \emph{normal} if \(AA^H = A^H A\)
+A matrix \(A \in \C^{n \times n}\) is considered \emph{normal} if \(AA^H = A^H A\).
 
 \subsection{Diagonalisability Criteria Based On Normal Matrices}
 
@@ -1033,7 +1026,7 @@ Then there exists a unitary matrix \(U\) such that \(A = U \Lambda U^H\). Theref
 and 
 
 \[
-    A A^H = (U \Lambda U^H)(U \Lambda U^H)^H = U \Lambda U^H U \Lambda^H U^H = U \Lambda \Lambda^H U^H
+    A A^H = (U \Lambda U^H)(U \Lambda U^H)^H = U \Lambda U^H U \Lambda^H U^H = U \Lambda \Lambda^H U^H.
 \]
 
 Hence, \(A A^H = A^H A\), so \(A\) is normal.
@@ -1051,7 +1044,7 @@ Since \(A\) is normal, we have:
 and 
 
 \[
-    A^H A = (U T U^H)^H (U T U^H) = U T^H U^H U T U^H = U T^H T U^H
+    A^H A = (U T U^H)^H (U T U^H) = U T^H U^H U T U^H = U T^H T U^H.
 \]
 
 Since \(A A^H = A^H A\), it follows that \(T T^H = T^H T\). This implies that \(T\) is a normal upper triangular 
@@ -1092,7 +1085,7 @@ and then find a unitary matrix \(U\) such that \(A = U \Lambda U^H\), where \(\L
     \end{bmatrix}
 \]
 
-\subsection{Properties of Unitary Diagonalisable Matrices}
+\section{Properties of Unitary Diagonalisable Matrices}
 
 For matrices \(A \in \C^{n \times n}\) that are unitary diagonalisable \(A = U \Lambda U^H\), the following properties hold:
 
@@ -1131,7 +1124,7 @@ A matrix \(M \in \C^{n \times m}\) with the following property:
 
 is considered \emph{hermitian}.
 
-\subsubsection*{Properties of Hermitian Matrices}
+\subsection{Properties of Hermitian Matrices}
 
 \begin{itemize}
 
@@ -1143,12 +1136,11 @@ is considered \emph{hermitian}.
 
 \end{itemize}
 
-\subsection{Real Eigenvalues Via Hermitian Matrices}
+\section{Real Eigenvalues Via Hermitian Matrices}
 
-Given a normal matrix \(A \in \C^{n \times n}\), the all eigenvalues of \(A\) are real if and only if \(A\) is hermitian.
+Given a normal matrix \(A \in \C^{n \times n}\), all eigenvalues of \(A\) are real if and only if \(A\) is hermitian.
 
 \textbf{Proof:}
-
 
 \(\Rightarrow\): A is normal which means that it is unitary diagonalisable. Therefore, there exists a unitary matrix \(U\) 
 such that \(A = U \Lambda U^H\), where \(\Lambda\) is a diagonal matrix containing the eigenvalues of \(A\). 
@@ -1167,7 +1159,7 @@ Since, \(\Lambda^H = \Lambda\), follows that \(\Lambda\) is a real diagonal matr
 
 \QED
 
-\subsection{Gerschgoring's Theorem}
+\section{Gershgorin's Theorem}
 
 Given \(A \in \C^{n \times n}\) and 
 
@@ -1205,7 +1197,7 @@ We get the following circles:
 
 Which means that all eigenvalues of \(A\) are contained in the union of these circles, \(K = K_1 \cup K_2 \cup K_3\).
 
-If we also take the approximate the eigenvalues of \(A^T\) then we get the following circles:
+If we also approximate the eigenvalues of \(A^T\), then we get the following circles:
 
 \begin{itemize}
 
@@ -1217,9 +1209,9 @@ If we also take the approximate the eigenvalues of \(A^T\) then we get the follo
 
 \end{itemize}
 
-With this information we can conclude that the eigenvalues has to be in the circle \(K(2,3)\), because it is the smallest circle (interval).
+With this information we can conclude that the eigenvalues have to be in the circle \(K(2,3)\), because it is the smallest circle (interval).
 
-\subsection{Approximation Of The Differences Of Eigenvalues}
+\section{Approximation Of The Differences Of Eigenvalues}
 
 Given a symmetric matrix \(A \in \R^{n \times n}\) with distinct eigenvalues and 
 \(c \in \R\) and \(x \in \R^{n}\setminus \{\vec{0}\}\), then
@@ -1230,7 +1222,7 @@ Given a symmetric matrix \(A \in \R^{n \times n}\) with distinct eigenvalues and
 
 \textbf{Proof:}
 
-Because of the distinct eigenvalues of \(A\) we know that there exists an eigenbasis such that we can write \(x\) as  
+Because of the distinct eigenvalues of \(A\), we know that there exists an eigenbasis such that we can write \(x\) as  
 
 \[
     \sum_{i = 1 }^{n} \alpha_i v_i
@@ -1249,13 +1241,13 @@ Because of the eigenbasis we get
     Ax = \sum_{i = 1}^{n} \alpha_i \lambda_i v_i
 \]
 
-Resulting into 
+Resulting in 
 
 \[
     Ax - cx = \sum_{i = 1}^{n} \alpha_i \lambda_i v_i - \sum_{i = 1}^{n} \alpha_i c v_i
 \]
 
-Which results into 
+Which results in 
 
 \[
     \sum_{i = 1}^{n} \alpha_i v_i (\lambda_i  - c) = d
@@ -1280,7 +1272,7 @@ This gives us the following:
 
 \QED
 
-\subsection{Eigenvalue Of Block Matrices}
+\section{Eigenvalue Of Block Matrices}
 
 Given a block matrix
 
@@ -1311,7 +1303,7 @@ This fact comes from the determinant of a block matrix
 
 \QED
 
-\subsection{Roth's Removal Rule}
+\section{Roth's Removal Rule}
 
 The matrices 
 
@@ -1357,7 +1349,7 @@ In such a case, the matrix \(V\) is given by
     \end{bmatrix}
 \]
 
-\subsection{Eigenvalues/vectors of Matrices Representing Complex Numbers}
+\section{Eigenvalues/vectors of Matrices Representing Complex Numbers}
 
 Given a complex number \(z = a + ib\) we can represent it as a matrix
 
@@ -1384,7 +1376,7 @@ Its eigenvalues are \(z\) and \(\bar{z}\) and the corresponding eigenvectors are
     \end{bmatrix}
 \]
 
-\subsection{Real Jordan Form}
+\section{Real Jordan Form}
 
 For every matrix \(A \in \R^{n \times n}\) there exists a regular matrix \(V \in \R^{n \times n}\) such that 
 
@@ -1418,7 +1410,7 @@ For \(\lambda_i \in \R\) is \(\Lambda_i = \lambda_i\) else
 
 where \(\lambda_i = a_i \pm jb_i \in \C\) are the complex conjugate eigenvalues of \(A\).
 
-\subsection{Real Schur Form}
+\section{Real Schur Form}
 
 For every matrix \(A \in \R^{n \times n}\) there exists an orthogonal matrix \(Q \in \R^{n \times n}\) such that
 
@@ -1435,7 +1427,7 @@ For every matrix \(A \in \R^{n \times n}\) there exists an orthogonal matrix \(Q
 
 where \(T_{i,i} \in \R\) or \(T_{i,i} \in \R^{2 \times 2}\).
 
-\subsection{Orthonormal Standard Form}
+\section{Orthonormal Standard Form}
 
 A matrix \(A \in \R^{2 \times 2}\) with complex eigenvalues \(\lambda = a + bi\), \(\bar{\lambda} = a - bi\) is then 
 transformable to the \emph{orthonormal standard form}
@@ -1448,9 +1440,9 @@ transformable to the \emph{orthonormal standard form}
     \end{bmatrix}
 \]
 
-If  \(A\) is normal.
+if \(A\) is normal.
 
-\subsection{Criterion For Orthonormal Diagonalisation}
+\section{Criterion For Orthonormal Diagonalisation}
 
 A matrix \(A \in \R^{n \times n}\) is orthonormal diagonalisable i.e 
 
@@ -1500,9 +1492,9 @@ Its eigenvalues are \(\lambda = 25\), \(\lambda = 50 - 75i\) and \(\lambda = 50 
     \end{bmatrix}
 \]
 
-The eigenvectors will be skipped for the sake of brevity, but they are 3.
+The eigenvectors will be skipped for the sake of brevity, but there are three of them.
 
-We can diagonalize \(A\) as follows stated in the criterion for orthonormal diagonalisation. 
+We can diagonalize \(A\) as stated in the criterion for orthonormal diagonalisation. 
 
 \[
     \Lambda = 
@@ -1526,8 +1518,8 @@ Then \(Q\) is given by the matrix of the corresponding eigenvectors of \(A\) and
     \end{bmatrix}
 \]
 
-\subsection{Normal Property Of Symmetric Matrices}
+\section{Normal Property Of Symmetric Matrices}
 
-All real symmetric matrices are normal, and therefore they are orthonormal diagonalisable.
-And also all of their eigenvalues are real by the properties of hermitian matrices.
+All real symmetric matrices are normal, and therefore they are orthonormal diagonalisable,
+and all of their eigenvalues are real by the properties of hermitian matrices.
 

@@ -1,4 +1,3 @@
-
 \chapter{Integration}
 
 \emph{Integration} is the reverse process of differentiation and is used to calculate areas, volumes, 
@@ -12,7 +11,7 @@ Let \(f: [a, b] \to \R\) be a bounded function. We define the \emph{definite int
     \int_a^b f(x)\,dx = \lim_{\|P\| \to 0} \sum_{i=1}^n f(\xi_i)\Delta x_i
 \]
 
-Where \(P = \{x_0, \dots, x_n\}\) is a partition, \(\xi_i \in [x_{i-1}, x_i]\), and 
+where \(P = \{x_0, \dots, x_n\}\) is a partition, \(\xi_i \in [x_{i-1}, x_i]\), and 
 \(\Delta x_i = x_i - x_{i-1}\).
 
 \subsection{Upper and Lower Sums}
@@ -31,41 +30,41 @@ with:
     M_i = \sup_{x \in [x_{i-1}, x_i]} f(x)
 \]
 
-If \(\sup \underline{S} = \inf \overline{S}\), then \(f\) is Riemann integrable.
+If \(\sup \underline{S} = \inf \overline{S}\), then \(f\) is \emph{Riemann integrable}.
 
 \section{Concrete and Non-Concrete Integrals}
 
 \emph{Concrete} integrals can be explicitly evaluated as anti-derivatives with an explicit function. 
-\emph{Non-concrete} integrals Cannot be integrated in elementary terms (e.g., \(\int e^{-x^2} dx\)).
+\emph{Non-concrete} integrals cannot be integrated in elementary terms (e.g., \(\int e^{-x^2} dx\)).
 
-\section{Basic Rules Of Integration}
+\section{Basic Rules of Integration}
 
 \begin{itemize}
 
-    \item \(\int 0\,dx = C\)
+    \item \(\int 0\,dx = C\).
 
-    \item \(\int c\,dx = cx\)
+    \item \(\int c\,dx = cx\).
 
-    \item \(\int x^n\,dx = \frac{x^{n+1}}{n+1} + C \quad (n \ne -1)\)
+    \item \(\int x^n\,dx = \frac{x^{n+1}}{n+1} + C \quad (n \ne -1)\).
 
-    \item \(\int \frac{1}{x}\,dx = \ln|x| + C\)
+    \item \(\int \frac{1}{x}\,dx = \ln|x| + C\).
 
-    \item \(\int e^x\,dx = e^x + C\)
+    \item \(\int e^x\,dx = e^x + C\).
 
-    \item \(\int \sin x\,dx = -\cos x + C\)
+    \item \(\int \sin x\,dx = -\cos x + C\).
 
-    \item \(\int \cos x\,dx = \sin x + C\)
+    \item \(\int \cos x\,dx = \sin x + C\).
 
-    \item Linearity: \(\int (af + bg)\,dx = a\int f\,dx + b\int g\,dx\)
+    \item Linearity: \(\int (af + bg)\,dx = a\int f\,dx + b\int g\,dx\).
 
 \end{itemize}
 
-\section{Integration By Substitution}
+\section{Integration by Substitution}
 
 If \(u = g(x)\) and \(f = F'\), then:
 
 \[
-    \int f(g(x))g'(x)\,dx = \int f(u)\,du
+    \int f(g(x))g'(x)\,dx = \int f(u)\,du.
 \]
 
 \textbf{Example:}
@@ -74,33 +73,32 @@ If \(u = g(x)\) and \(f = F'\), then:
     \int \frac{1}{{(x - 1)}^4}\,dx, \quad u = x - 1 \Rightarrow \int \frac{1}{u^4} du = -\frac{1}{3u^3} + C = -\frac{1}{3{(x - 1)}^3} + C
 \]
 
-\section{Integration By Parts}
+\section{Integration by Parts}
 
 \emph{Integration by parts} is the inverse process of the product and quotient rules of differentiation and is given by 
 
 \[
-    \int u\ dv = uv - \int v \ du
+    \int u\ dv = uv - \int v \ du.
 \]
 
-To compute we use the abbreviation \emph{ILATE} to find this order to choose \(u\):
+To compute, we use the abbreviation \emph{ILATE} to find the order in which to choose \(u\):
 
 \begin{enumerate}
 
-    \item Inverse Trigonometric
+    \item Inverse Trigonometric.
 
-    \item Logarithmic
+    \item Logarithmic.
 
-    \item Algebraic
+    \item Algebraic.
 
-    \item Trigonometric
+    \item Trigonometric.
 
-    \item Exponential
+    \item Exponential.
 
 \end{enumerate}
 
-Sometimes we encounter \emph{cyclic integrals} which cycle back to the original when applying our 
-formula e.g., \(e^x \sin(x)\).
-
+Sometimes we encounter \emph{cyclic integrals}, which cycle back to the original when applying our 
+formula, e.g., \(e^x \sin(x)\).
 
 \textbf{Proof:}
 
@@ -144,37 +142,47 @@ Let:
 
 Applies to rational functions. Four cases:
 
-\begin{itemize}
+\subsection{Linear factors}
 
-    \item \emph{Linear factors} \\
-    Denominator: \((x - a)(x - b)\) \\
-    Decomposition: 
-    \[
-        \frac{P(x)}{(x - a)(x - b)} = \frac{A}{x - a} + \frac{B}{x - b}
-    \]
+Denominator: \((x - a)(x - b)\).
 
-    \item \emph{Repeated linear factors} \\
-    Denominator: \((x - a)^n\) \\
-    Decomposition: 
-    \[
-        \frac{P(x)}{(x - a)^n} = \frac{A_1}{x - a} + \frac{A_2}{(x - a)^2} + \cdots + \frac{A_n}{(x - a)^n}
-    \]
+Decomposition: 
 
-    \item \emph{Irreducible quadratic factors} \\
-    Denominator: \((x^2 + px + q)\), where \(x^2 + px + q\) cannot be factored over the reals \\
-    Decomposition:
-    \[
-        \frac{P(x)}{x^2 + px + q} = \frac{Ax + B}{x^2 + px + q}
-    \]
+\[
+    \frac{P(x)}{(x - a)(x - b)} = \frac{A}{x - a} + \frac{B}{x - b}
+\]
 
-    \item \emph{Repeated irreducible quadratic factors} \\
-    Denominator: \((x^2 + px + q)^n\) \\
-    Decomposition:
-    \[
-        \frac{P(x)}{(x^2 + px + q)^n} = \frac{A_1x + B_1}{x^2 + px + q} + \frac{A_2x + B_2}{(x^2 + px + q)^2} + \cdots + \frac{A_nx + B_n}{(x^2 + px + q)^n}
-    \]
 
-\end{itemize}
+\subsection{Repeated linear factors}
+    
+Denominator: \((x - a)^n\).
+
+Decomposition: 
+   
+\[
+    \frac{P(x)}{(x - a)^n} = \frac{A_1}{x - a} + \frac{A_2}{(x - a)^2} + \cdots + \frac{A_n}{(x - a)^n}.
+\]
+
+\subsection{Irreducible quadratic factors}
+
+Denominator: \((x^2 + px + q)\), where \(x^2 + px + q\) cannot be factored over the reals
+
+Decomposition:
+
+\[
+    \frac{P(x)}{x^2 + px + q} = \frac{Ax + B}{x^2 + px + q}
+\]
+
+\subsection{Repeated irreducible quadratic factors} 
+
+Denominator: \((x^2 + px + q)^n\).
+
+Decomposition:
+
+\[
+    \frac{P(x)}{(x^2 + px + q)^n} = \frac{A_1x + B_1}{x^2 + px + q} + \frac{A_2x + B_2}{(x^2 + px + q)^2} + \cdots + \frac{A_nx + B_n}{(x^2 + px + q)^n}
+\]
+
 
 \textbf{Example:}
 
@@ -185,8 +193,8 @@ Applies to rational functions. Four cases:
 
 \section{Algebraic Manipulation}
 
-When dealing with certain integrals it seems that its not possible to common methods, for these cases the 
-solution tend to be closely tight to \emph{algebraic manipulation} of the kind adding a clever zero or multiplying by an
+When dealing with certain integrals, it seems that it is not possible to apply common methods; for these cases, the 
+solution tends to be closely tied to \emph{algebraic manipulation}, of the kind of adding a clever zero or multiplying by an
 elegant one.
 
 \textbf{Example:}
@@ -209,11 +217,11 @@ expressions.
 
 \begin{itemize}
 
-    \item \(\sqrt{a^2 - x^2}\): use \(x = a \sin \theta\)
+    \item \(\sqrt{a^2 - x^2}\): use \(x = a \sin(\theta)\).
 
-    \item \(\sqrt{a^2 + x^2}\): use \(x = a \tan \theta\)
+    \item \(\sqrt{a^2 + x^2}\): use \(x = a \tan(\theta)\).
 
-    \item \(\sqrt{x^2 - a^2}\): use \(x = a \sec \theta\)
+    \item \(\sqrt{x^2 - a^2}\): use \(x = a \sec(\theta)\).
 
 \end{itemize}
 
@@ -221,23 +229,23 @@ expressions.
 
 \( \int \frac{1}{\sqrt{4 - x^2}} \,dx \)
 
-We use: \( x = 2\sin \theta \Rightarrow dx = 2\cos \theta\, d\theta \)
+We use: \( x = 2\sin(\theta) \Rightarrow dx = 2\cos(\theta)\, d\theta \).
 
 \[
-    \sqrt{4 - x^2} = \sqrt{4 - 4\sin^2 \theta} = \sqrt{4\cos^2 \theta} = 2\cos \theta
+    \sqrt{4 - x^2} = \sqrt{4 - 4\sin^2 \theta} = \sqrt{4\cos^2(\theta)} = 2\cos(\theta)
 \]
 
 Substitute:
 
 \[
-    \int \frac{1}{\sqrt{4 - x^2}} \,dx = \int \frac{1}{2\cos \theta} \cdot 2\cos \theta \,d\theta = 
+    \int \frac{1}{\sqrt{4 - x^2}} \,dx = \int \frac{1}{2\cos(\theta)} \cdot 2\cos(\theta) \,d\theta = 
     \int d\theta = \theta + C
 \]
 
 Return to \(x\) using:
 
 \[
-    x = 2\sin \theta \Rightarrow \theta = \arcsin\left(\frac{x}{2}\right)
+    x = 2\sin(\theta) \Rightarrow \theta = \arcsin\left(\frac{x}{2}\right)
     \Rightarrow \int \frac{1}{\sqrt{4 - x^2}} \,dx = \arcsin\left(\frac{x}{2}\right) + C
 \]
 
@@ -245,56 +253,56 @@ Return to \(x\) using:
 
 \( \int \frac{x^3}{\sqrt{x^2 + 4}} \,dx \)
 
-Use: \( x = 2\tan \theta \Rightarrow dx = 2\sec^2 \theta\, d\theta \)
+Use: \( x = 2\tan(\theta) \Rightarrow dx = 2\sec^2(\theta)\, d\theta \)
 
 \[
-    \sqrt{x^2 + 4} = \sqrt{4\tan^2 \theta + 4} = \sqrt{4\sec^2 \theta} = 2\sec \theta
+    \sqrt{x^2 + 4} = \sqrt{4\tan^2(\theta) + 4} = \sqrt{4\sec^2(\theta)} = 2\sec(\theta)
 \]
 
 Substitute:
 
 \[
-    \int \frac{x^3}{\sqrt{x^2 + 4}}\,dx = \int \frac{{(2\tan \theta)}^3}{2\sec \theta} \cdot 2\sec^2 \theta\, d\theta
-    = \int \frac{8\tan^3 \theta}{\sec \theta} \cdot 2\sec^2 \theta\, d\theta
+    \int \frac{x^3}{\sqrt{x^2 + 4}}\,dx = \int \frac{{(2\tan(\theta))}^3}{2\sec(\theta)} \cdot 2\sec^2(\theta)\, d\theta
+    = \int \frac{8\tan^3(\theta)}{\sec(\theta)} \cdot 2\sec^2(\theta)\, d\theta
 \]
 
 Simplify:
 
 \[
-    8\int \tan^{2}\theta\sec\theta\tan\theta \,dx = 8\int (\sec^2\theta - 1)\sec\theta\tan\theta \,dx 
+    8\int \tan^{2}(\theta)\sec(\theta)\tan(\theta) \,d\theta = 8\int (\sec^2(\theta) - 1)\sec(\theta)\tan(\theta) \,d\theta 
 \]
 \[
-    8\int (\sec^2\theta\sec\theta - \sec\theta)\tan\theta \,dx 
+    8\int (\sec^2(\theta)\sec(\theta) - \sec(\theta))\tan(\theta) \,d\theta 
 \]
 \[
-    8\left(\int \sec^2\theta\sec\theta\tan\theta \,dx - \int\sec\theta\tan\theta \,dx \right) 
+    8\left(\int \sec^2(\theta)\sec(\theta)\tan(\theta) \,d\theta - \int\sec(\theta)\tan(\theta) \,d\theta \right) 
 \]
 \[
-    8\left(\int \sec^2\theta\sec\theta \,dx - \int\sec\theta\tan\theta \,dx \right) 
+    8\left(\int \sec^2(\theta)\sec(\theta) \,d\theta - \int\sec(\theta)\tan(\theta) \,d\theta \right) 
 \]
 
-For the first one let \(u = \sec^3\theta\) and \(du = 3\sec^2\theta\,d\theta\) 
+For the first one let \(u = \sec^3(\theta)\) and \(du = 3\sec^2(\theta)\,d\theta\) 
 
 \[
-    \int udu = \frac{\sec^3\theta}{3} + c
+    \int udu = \frac{\sec^3(\theta)}{3} + c
 \]
 
 For the second one
 
 \[
-    \int \sec\theta\tan\theta = \sec\theta + c
+    \int \sec(\theta)\tan(\theta) \,d\theta = \sec(\theta) + c
 \]
 
 Together
 
 \[
-    8\left(  \frac{\sec^3\theta}{3} - \sec\theta + c\right)
+    8\left(  \frac{\sec^3(\theta)}{3} - \sec(\theta) + c\right)
 \]
 
-Then solve the integral using trigonometric identities and reduction formulas. Return to \(x\) using:
+Then solve the integral using trigonometric identities and reduction formulas. Return to \(x\) using: \( \theta = \arctan\left(\frac{x}{2}\right) \)
 
 \[
-    \tan\theta = \frac{x}{2}\ \sec\theta = \frac{\sqrt{x^2 + 4}}{2}
+    \tan(\theta) = \frac{x}{2}\ \sec(\theta) = \frac{\sqrt{x^2 + 4}}{2}
 \]
 
 This leaves us with
@@ -326,14 +334,14 @@ Now let \(u = \tan\theta\) and \(du = \sec^2\theta \,d\theta\)
     \frac{8}{3}\tan^3\theta + 8\tan\theta + c
 \]
 
-Now we return to x via our triangle:
+Now we return to \(x\) via our triangle:
 
 \[
-    \tan\theta = \frac{\sqrt{x^2 + 4}}{2}
+    \tan(\theta) = \frac{\sqrt{x^2 + 4}}{2}
 \]
 
 \[
-    \frac{8}{3}{\left(\frac{\sqrt{x^2 + 4}}{2}\right)}^3 + 8 \frac{\sqrt{x^2 + 4}}{2} + c
+    \frac{8}{3}{\left(\frac{\sqrt{x^2 + 4}}{2}\right)}^3 + 8 \left(\frac{\sqrt{x^2 + 4}}{2}\right) + c
 \]
 
 \section{Average Value of a Function}
@@ -378,13 +386,13 @@ If \(f\) is continuous on \([a, b]\), then:
 
 \section{Differentiation of Integrals with Variable Bounds}
 
-If:
+If
 
 \[
-    F(x) = \int_{a(x)}^{b(x)} f(t)\,dt
+    F(x) = \int_{a(x)}^{b(x)} f(t)\,dt,
 \]
 
-Then:
+then
 
 \[
     F'(x) = f(b(x)) \cdot b'(x) - f(a(x)) \cdot a'(x)
@@ -401,7 +409,8 @@ Let \(F(p) = \int_a^b f(x, p)\,dx\). If \(f\) is continuous and differentiable i
 \section{Leibniz Rule for Differentiating Under the Integral Sign}
 
 \[
-    \frac{\partial F}{\partial x} \int_{a(x)}^{b(x)} f(x, t)\,dx = f(x, b(x)) \cdot b'(x) - f(x, a(x)) \cdot a'(x) + \int_{a(x)}^{b(x)} \frac{\partial f}{\partial t}(x, t)\,dt
+    \frac{\partial F}{\partial x} \int_{a(x)}^{b(x)} f(x, t)\,dx = f(x, b(x)) \cdot b'(x) - f(x, a(x)) \cdot a'(x) + \int_{a(x)}^{b(x)} 
+    \frac{\partial f}{\partial t}(x, t)\,dt
 \]
 
 \section{Improper Integrals with infinite Bounds}

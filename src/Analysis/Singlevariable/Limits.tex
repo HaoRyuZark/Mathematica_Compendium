@@ -1,10 +1,9 @@
-
 \chapter{Limits}
 
-Limits are a foundational concept in calculus and analysis. They describe the behavior of 
+\emph{Limits} are a foundational concept in calculus and analysis. They describe the behavior of 
 functions and sequences as the input approaches a particular value or infinity.
 
-\subsection{Definition of the Limit}
+\section{Definition of the Limit}
 
 Let \(f\) be a function defined near a point \(a\). We say:
 
@@ -20,46 +19,50 @@ if for every \(\varepsilon > 0\), there exists a \(\delta > 0\) such that:
 
 This is the precise \emph{\(\varepsilon\)-\(\delta\) definition} of a limit.
 
-\subsection{Alternative Definition}
+\section{Alternative Definition}
 
-Given a neighborhood \(U\) of \(x_0\) then \(\dot{U}:= U \setminus \{x_0\} \) the \emph{pointed neighborhood} 
-of \(x_0\). For \(\delta > 0\) we defined 
+Given a neighborhood \(U\) of \(x_0\), then \(\dot{U}:= U \setminus \{x_0\} \) is the \emph{pointed neighborhood} 
+of \(x_0\). For \(\delta > 0\), we define 
 
 \[
     \dot{U_{\delta}}(x_0) = (x_0 - \delta, x_0 + \delta) \setminus \{x_0\}
 \]
 
-Using this we can then define the limit as: 
+Using this, we can then define the limit as follows.
 
-Given \(f: D \to \R\) with \(x_0 \in D\) being an accumulation point. \(L\) is the limit if 
-for all \(\varepsilon > 0 \) there is a \(\delta > 0\) such that 
+Given \(f: D \to \R\) with \(x_0 \in D\) being an accumulation point, \(L\) is the limit if 
+for all \(\varepsilon > 0 \), there is a \(\delta > 0\) such that 
 
 \[
     x \in D \cap \dot{U_{\delta}}(x_0) \text{ holds } |f(x) - L | < \varepsilon 
 \]
 
-\subsection{Limit Calculation Rules}
+\section{Limit Calculation Rules}
 
-\emph{Sum Rule:} \( \lim_{x \to a} (f(x) + g(x)) = \lim_{x \to a} f(x) + \lim_{x \to a} g(x)\)
+\begin{itemize}
+     
+    \item \emph{Sum Rule:} \( \lim_{x \to a} (f(x) + g(x)) = \lim_{x \to a} f(x) + \lim_{x \to a} g(x)\).
 
-\emph{Difference Rule:} \( \lim_{x \to a} (f(x) - g(x)) = \lim_{x \to a} f(x) - \lim_{x \to a} g(x)\)
+    \item \emph{Difference Rule:} \( \lim_{x \to a} (f(x) - g(x)) = \lim_{x \to a} f(x) - \lim_{x \to a} g(x)\).
 
-\emph{Product Rule:} \( \lim_{x \to a} (f(x)g(x)) = \lim_{x \to a} f(x) \cdot \lim_{x \to a} g(x)\)
+    \item \emph{Product Rule:} \( \lim_{x \to a} (f(x)g(x)) = \lim_{x \to a} f(x) \cdot \lim_{x \to a} g(x)\).
 
-\emph{Quotient Rule:} \(\lim_{x \to a} \frac{f(x)}{g(x)} = \frac{\lim f(x)}{\lim g(x)}\) if \(\lim g(x) \ne 0\)
+    \item \emph{Quotient Rule:} \(\lim_{x \to a} \frac{f(x)}{g(x)} = \frac{\lim f(x)}{\lim g(x)}\) if \(\lim g(x) \ne 0\).
 
-\emph{Power Rule:} \( \lim_{x \to a} {f(x)}^n = {(\lim_{x \to a} f(x))}^n\)
+    \item \emph{Power Rule:} \( \lim_{x \to a} {f(x)}^n = {(\lim_{x \to a} f(x))}^n\).
 
-\emph{Root Rule:} \( \lim_{x \to a} \sqrt[n]{f(x)} = \sqrt[n]{\lim_{x \to a} f(x)}\) (when defined)
+    \item \emph{Root Rule:} \( \lim_{x \to a} \sqrt[n]{f(x)} = \sqrt[n]{\lim_{x \to a} f(x)}\) (when defined).
 
-\emph{Logarithm Rule:} \( \lim_{x \to a} \ln(f(x)) = \ln(\lim_{x \to a} f(x))\) (when defined)
+    \item \emph{Logarithm Rule:} \( \lim_{x \to a} \ln(f(x)) = \ln(\lim_{x \to a} f(x))\) (when defined).
 
-\emph{e limit Rule:}   \(\lim_{x \to 0} (1 + f(x))^{\frac{1}{f(x)}} = e\)
+    \item \emph{e limit Rule:}   \(\lim_{x \to 0} (1 + f(x))^{\frac{1}{f(x)}} = e\).
+
+\end{itemize}
 
 \textbf{Proof of the Sum Rule:}
 
-For any \(\varepsilon > 0, \text{ there exists a } \delta_1 > 0\) such that if \(0 < |x - a| < \delta\) then \(0 < |f(x) - L| < \varepsilon\). 
-The same goes for \(g(x)\) with its respective limit and delta. Now choose \(\delta = \min\{\delta_1, \delta_2\}\) such that
+For any \(\varepsilon > 0, \text{ there exists a } \delta_1 > 0\) such that if \(0 < |x - a| < \delta_1\) then \(0 < |f(x) - L| < \varepsilon/2\). 
+The same goes for \(g(x)\) with its respective limit and delta \(\delta_2\). Now choose \(\delta = \min\{\delta_1, \delta_2\}\) such that
 
 \[
     |f(x) - L| < \frac{\varepsilon}{2}
@@ -69,7 +72,7 @@ The same goes for \(g(x)\) with its respective limit and delta. Now choose \(\de
     |g(x) - K| < \frac{\varepsilon}{2}
 \]
 
-This using now the triangle inequality we get 
+Now, using the triangle inequality, we get 
 
 \[
     |f(x) + g(x) - (L + K)| \le |f(x) - L|  + |g(x) - K| < 2\frac{\varepsilon}{2} = \varepsilon
@@ -79,7 +82,7 @@ This using now the triangle inequality we get
 
 \textbf{Example:}
 
-Find the limit of \(\lim_{x \to 0} \frac{e^x - 1}{x}\) 
+Find the limit of \(\lim_{x \to 0} \frac{e^x - 1}{x}\).
 
 Apply a change of variable 
 
@@ -93,7 +96,7 @@ Use the logarithm
     z + 1 = e^x \iff \ln(z + 1) = x
 \]
 
-The trend for \(x \to 0 \) tells us that \(z \to 0\) because \(\lim_{x \to 0} z = \lim_{x \to 0} e^x - 1 = 0\)
+The trend for \(x \to 0 \) tells us that \(z \to 0\) because \(\lim_{x \to 0} z = \lim_{x \to 0} e^x - 1 = 0\).
 
 Our limit is now 
 
@@ -101,13 +104,13 @@ Our limit is now
     \lim_{z \to 0} \frac{z}{\ln(z + 1)} = \lim_{z \to 0} \frac{1}{\frac{1}{z}\ln(z + 1)} = \lim_{z \to 0} \frac{1}{ \ln\left((z + 1)^{\frac{1}{z}}\right)}
 \]
 
-The limit of a logarithm is the limit of the logarithm, and we also use the quotient rule
+The limit of a logarithm is the limit of the logarithm, and we also use the quotient rule.
 
 \[
     \frac{1}{ \ln\left(\lim_{z \to 0}(z + 1)^{\frac{1}{z}}\right) = \ln(e)} = \frac{1}{\ln e} = 1
 \]
 
-\subsection{Limits at Infinity}
+\section{Limits at Infinity}
 
 \[
     \lim_{n \to \infty} f(n) \iff \forall \varepsilon > 0, \exists N > 0 : \forall n > N: |a_n - L| < \varepsilon 
@@ -123,7 +126,7 @@ Some common limits at infinity are:
 
 \textbf{Example:}
 
-Prove that \(\lim_{n \to \infty} \frac{2n + 1}{3n + 7} = \frac{2}{3}\)
+Prove that \(\lim_{n \to \infty} \frac{2n + 1}{3n + 7} = \frac{2}{3}\).
 
 We start with the definition. Let \(\varepsilon > 0\) be given. We need to find \(N > 0\) such that for all \(n > N\): 
 
@@ -145,34 +148,34 @@ By the Archimedean property, there exists an integer \(N\) such that
     N > \frac{11}{9 \varepsilon}
 \]
 
-Then for all \(n > N\) we have
+Then for all \(n > N\), we have
 
 \[
     \left| \frac{2n + 1}{3n + 7} - \frac{2}{3} \right| < \varepsilon \text{ for all } n > N > \frac{11}{9 \varepsilon}
 \]  
 
-Thus, \(\varepsilon > \frac{11}{9n}\) which satisfies the definition of the limit.
+Thus, \(\varepsilon > \frac{11}{9n}\), which satisfies the definition of the limit.
 
 \QED
 
 
-\subsection{Indeterminate Forms}
+\section{Indeterminate Forms}
 
-Indeterminate forms arise in limits when the expression does not directly imply a limit value:
+\emph{Indeterminate forms} arise in limits when the expression does not directly imply a limit value:
 
 \[
     \frac{0}{0}, \quad \frac{\infty}{\infty}, \quad 0 \cdot \infty, \quad \infty - \infty, \quad 1^\infty, \quad \infty^0, \quad 0^0
 \]
 
-\subsection{Limit of the n-th Root of n}
+\section{Limit of the n-th Root of n}
 
-We will show that \(\lim_{n \to \infty} \sqrt[n]{n} = 1\)
+We will show that \(\lim_{n \to \infty} \sqrt[n]{n} = 1\).
 
 \textbf{Proof:}
 
-Let \(n = (1 + (\sqrt{n} -1))^n\). This is valid substitution. Then 
+Let \(n = (1 + (\sqrt{n} -1))^n\). This is a valid substitution. 
 
-Now let use the binomial theorem \((1 + (\sqrt{n} -1))^n = (1 + b_n)^n\)  
+Now let us use the binomial theorem \((1 + (\sqrt{n} -1))^n = (1 + b_n)^n\).  
 
 \begin{align*}
     (1 + b_n)^n &= \sum_{k = 0}^{n} \binom{n}{k} b_n^k \\ 
@@ -201,16 +204,15 @@ Then
 
 \QED 
 
-\subsection{Limit of a Composite Function}
+\section{Limit of a Composite Function}
 
-If \( \lim_{x \to a} f(x) = L\) and \( \lim_{x \to L} g(x) = g(L)\) 
-(i.e., \(g\) is continuous at \(L\)), then:
+If \( \lim_{x \to a} f(x) = L\) and \( \lim_{x \to L} g(x) = g(L)\) (i.e., \(g\) is continuous at \(L\)), then:
 
 \[
     \lim_{x \to a} g(f(x)) = g\left(\lim_{x \to a} f(x)\right)
 \]
 
-\subsection{Right and Left Limits}
+\section{Right and Left Limits}
 
 For \((a - \delta, a )\) and \((a, a + \delta )\)
 
@@ -220,7 +222,7 @@ For \((a - \delta, a )\) and \((a, a + \delta )\)
 
 The two-sided limit \( \lim_{x \to a} f(x)\) exists if and only if \(L_- = L_+\).
 
-\subsection{L’Hôpital’s Rule}
+\section{L’Hôpital’s Rule}
 
 If \( \lim_{x \to a} f(x) = \lim_{x \to a} g(x) = 0\) or \(\pm\infty\), and \( \lim_{x \to a} \frac{f'(x)}{g'(x)}\) exists, then:
 
@@ -230,7 +232,7 @@ If \( \lim_{x \to a} f(x) = \lim_{x \to a} g(x) = 0\) or \(\pm\infty\), and \( \
 
 This rule is used to resolve indeterminate forms \(\frac{0}{0}\) and \(\frac{\infty}{\infty}\).
 
-\subsection{Limit of a fraction}
+\section{Limit of a Fraction}
 
 For expressions like:
 
@@ -246,15 +248,15 @@ For expressions like:
 
 \end{itemize}
 
-\subsection{Limit due to Sequence}
+\section{Limit due to Sequence}
 
-Given an accumulation point \(x_0\) in the domain of \(f\) then 
+Given an accumulation point \(x_0\) in the domain of \(f\), then 
 
 \[
     \lim_{x \to x_0} f(x) = L
 \]
 
-If and only if for the sequence in the domain of \(f \) the following is true
+If and only if, for a sequence in the domain of \(f\), the following is true
 
 \[
     \lim_{n \to \infty} x_n = x_0
@@ -263,29 +265,28 @@ If and only if for the sequence in the domain of \(f \) the following is true
 \textbf{Proof:}
 
 \(\Rightarrow\) Assume \(\lim_{x \to x_0}f(x) = L\). Let \(a_n\) be a sequence in the domain with \(a_n \to x_0\) and 
-\(a_n \ne x_0\) we must show that \(f(a_n) \to L\)
+\(a_n \ne x_0\), we must show that \(f(a_n) \to L\).
 
 Let \(\varepsilon > 0\). There exists \(\delta > 0\) such that if \(0 < |x - x_0| < \delta\) then 
 \(|f(x) - L| < \varepsilon\). But since \(a_n \to x_0\) then \(\exists N: |a_n - x_0| < \varepsilon, \forall n > N \). Thus, 
 for all \(n > N\), \(|f(a_n) - L| < \varepsilon\) and so \(f(a_n) \to L\). 
 
-\(\Leftarrow\) Assume that for every sequence \(a_n\) in the domain which converges to \(x_0\)
-\(f(a_n) \to L\)
+\(\Leftarrow\) Assume that for every sequence \(a_n\) in the domain which converges to \(x_0\),
+\(f(a_n) \to L\).
 
-Suppose for the sake of contradiction that \(\lim_{x \to x_0}f(x) \ne L\)
+Suppose for the sake of contradiction that \(\lim_{x \to x_0}f(x) \ne L\).
 
 Then, there exists \(\varepsilon > 0\) such that for all \(\delta > 0, \exists x \in \mathcal{D}, 0 < |x - x_0| < \delta\)
-where \(|f(a_n) - L| \ge \varepsilon\). Therefore, by letting \(\delta_n = \frac{1}{n}\), 
-\(\exists a_n \in \mathcal{D}\) satisfiying \(0 < |a_n - x_0| < \frac{1}{n}\) and which 
-\(|f(a_n)- L| \ge \varepsilon\). 
+where \(|f(a_n) - L| \ge \varepsilon\). Therefore, by letting \(\delta_n = \frac{1}{n}\), \(\exists a_n \in \mathcal{D}\) satisfying 
+\(0 < |a_n - x_0| < \frac{1}{n}\) for which \(|f(a_n)- L| \ge \varepsilon\). 
 
 Then by contradiction \(f(a_n)\) does not converge to \(L\). 
 
-Hence, it must be that \(\lim_{x \to x_0}f(x) \ne L\)
+Hence, it must be that \(\lim_{x \to x_0}f(x) \ne L\).
 
 \QED
 
-\subsection{Limit of a Recursive Sequence}
+\section{Limit of a Recursive Sequence}
 
 Let \((a_n)\) be defined recursively:
 
@@ -301,7 +302,7 @@ If \((a_n)\) converges to \(L\) and \(f\) is continuous, then:
 
 This is used to find fixed points of recursive definitions.
 
-\subsection{Important Limits}
+\section{Important Limits}
 
 \begin{itemize}
 
@@ -321,7 +322,7 @@ This is used to find fixed points of recursive definitions.
 
 \end{itemize}
 
-\subsection{Squeeze Theorem (Sandwich Theorem)}
+\section{Squeeze Theorem (Sandwich Theorem)}
 
 If \(g(x) \le f(x) \le h(x)\) near \(a\), and:
 
@@ -332,7 +333,7 @@ If \(g(x) \le f(x) \le h(x)\) near \(a\), and:
 
 \textbf{Proof:}
 
-We know that \(g(x) \le f(x) \le h(x)\) therefore, for \(g(x)\) and \(h(x)\) we 
+We know that \(g(x) \le f(x) \le h(x)\); therefore, for \(g(x)\) and \(h(x)\), we 
 can define the following inequalities. 
 
 \begin{align*}
@@ -347,7 +348,7 @@ Then let us define \(n = \operatorname{max}(N_1, N_2)\). And we can also write
     - \varepsilon &< h(x)_{n} - L < \varepsilon 
 \end{align*}
 
-Now, we write the following because we are assuming they all have the same limit 
+Now, we write the following, because we are assuming they all have the same limit:
 
 \begin{align*}
     - \varepsilon &< g(x)_{n} - L \le f(x)_n - L \le h(x)_{n} - L < \varepsilon \\ 
@@ -364,7 +365,7 @@ from our original inequality. Thus, there has been no contradiction.
     \lim_{x \to 0} x^2 \cos\left( \frac{1}{x} \right) = 0
 \]
 
-\subsection{The Number \texorpdfstring{\(e\)}{e} as a Limit}
+\section{The Number \texorpdfstring{\(e\)}{e} as a Limit}
 
 The number \(e\) is defined as:
 
@@ -420,7 +421,7 @@ More generally:
     \lim_{x \to \infty} \left( e \right)^x = \infty
 \]
 
-\subsection{Limits of \texorpdfstring{\(\arctan\)}{arctan}}
+\section{Limits of \texorpdfstring{\(\arctan\)}{arctan}}
 
 \begin{itemize}
 
@@ -433,13 +434,13 @@ More generally:
 
 \end{itemize}
 
-\subsection{Bolzano-Weierstraß Theorem}
+\section{Bolzano-Weierstraß Theorem}
 
 Every bounded, convergent sequence in \(\C\) has a convergent subsequence.
-More precisely the sequence \(a\) has biggest and smallest accumulation point \(h^*\) and \(h_*\)
+More precisely, the sequence \(a\) has a biggest and smallest accumulation point, \(h^*\) and \(h_*\).
 
 \[
-    \forall \varepsilon > 0 : h_* - \varepsilon < a_n < h^{*} + \varepsilon \text{ for all-most all } 
+    \forall \varepsilon > 0 : h_* - \varepsilon < a_n < h^{*} + \varepsilon \text{ for almost all } 
     b \in \N
 \]
 
@@ -451,7 +452,7 @@ More precisely the sequence \(a\) has biggest and smallest accumulation point \(
     h_* := \lim_{n \to \infty} \inf a_n
 \]
 
-\subsection{Uniqueness of the Limit}
+\section{Uniqueness of the Limit}
 
 Let \( f: D \subset \R \to \R \), and suppose \(a\) is a limit point of \( D \). Then:
 If \( \lim_{x \to a} f(x) = L_1 \) and \( \lim_{x \to a} f(x) = L_2 \), then \( L_1 = L_2 \).
@@ -495,15 +496,15 @@ Using the triangle inequality:
 Thus, 
 
 \[
-    |L_1 - L_2|  <  |L_1 - L2|
+    |L_1 - L_2|  <  |L_1 - L_2|
 \]
 
 
-This contradiction tells us that, our assumption was false. Hence, \( L_1 = L_2 \). The limit is unique.
+This contradiction tells us that our assumption was false. Hence, \( L_1 = L_2 \). The limit is unique.
 
 \QED
 
-\subsection{Every Convergent Sequence is a Cauchy Sequence}
+\section{Every Convergent Sequence is a Cauchy Sequence}
 
 Let \( (a_n) \) be a sequence in \( \R \). We say:
 
@@ -543,12 +544,12 @@ This completes the proof that every convergent sequence is Cauchy.
 
 \QED
 
-\subsection{Limsup and Liminf}
+\section{Limsup and Liminf}
 
 Given a sequence \(\{a_k\}_{k = 1}^{\infty}\) and the infinite sequences \(x_n\) and \(y_n\) defined as 
 
 \[
-    x_n := \sup {a_k \mid k \ge n} \quad y_n := \inf {_k \mid k \ge n}
+    x_n := \sup \{a_k \mid k \ge n\} \quad y_n := \inf \{a_k \mid k \ge n\}
 \]
 
 We define \emph{limes superior} and \emph{limes inferior} as 
@@ -560,6 +561,6 @@ We define \emph{limes superior} and \emph{limes inferior} as
     a_* = \lim_{n \to \infty} \inf a_n := \lim_{n \to \infty} y_n 
 \]
 
-\subsection{Limit by Bounds}
+\section{Limit by Bounds}
 
-If the limit superior and inferior are equal then the limit exists.
+If the limit superior and inferior are equal, then the limit exists.

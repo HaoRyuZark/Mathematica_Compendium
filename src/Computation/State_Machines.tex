@@ -6,8 +6,8 @@ A \emph{state machine} is a computational model used to design algorithms, syste
 \section{Deterministic Finite Automaton (DFA)}  
 
 \emph{DFAs} are defined by a quintuple \((Q, \Sigma, \delta, q_0, F)\) which consists of \(Q\) states, 
-an input alphabet \(\Sigma\), a transition function \(\delta: Q \times \Sigma \to Q\), a start state \(q_0 \in Q\) and a set of 
-terminations states \(F \subset Q\).
+an input alphabet \(\Sigma\), a transition function \(\delta: Q \times \Sigma \to Q\), a start state \(q_0 \in Q\), and a set of 
+termination states \(F \subset Q\).
 
 This kind of automaton has the particularity that each state has \emph{exactly one transition} for 
 each possible input. Therefore, \emph{deterministic}.
@@ -44,7 +44,7 @@ each possible input. Therefore, \emph{deterministic}.
 \end{tikzpicture}
 \end{center}
 
-Here our language is 
+Here, our language is
 
 \[
     L = \{ w \in \{a,b\}^* \mid \text{the sequence of transitions on } w \text{ leads to state } q_3 \}
@@ -55,7 +55,7 @@ Here our language is
 An \emph{NFA} is a state machine defined by a 5-tuple \((Q, \Sigma, \delta, q_0, F)\), where: 
 \(Q\) is a finite set of states, \(\Sigma\) is the input alphabet, 
 \(\delta: Q \times \Sigma \to \mathcal{P}(Q)\) is the transition function (mapping to a set of states),
-\(q_0 \in Q\) is the start state and \(F \subset Q\) is the set of accepting states.
+\(q_0 \in Q\) is the start state, and \(F \subset Q\) is the set of accepting states.
 
 Unlike a DFA, an NFA allows:
 
@@ -116,15 +116,15 @@ It is defined as a 5-tuple \((Q, \Sigma, \delta, q_0, F)\), with the transition 
     \delta: Q \times (\Sigma \cup \{\varepsilon\}) \to \mathcal{P}(Q)
 \]
 
-This means the automaton have the following properties:
+This means the automaton has the following properties:
 
 \begin{itemize}
     
     \item It can transition normally on \(a \in \Sigma\) or move to other states ``for free'' via 
     \(\varepsilon\)-transitions.
     
-    \item \emph{Epsilon-Closure:} It is the set of all states reachable via \(\varepsilon\) of a particular 
-    state plus itself. 
+    \item \emph{Epsilon-Closure:} It is the set of all states reachable via \(\varepsilon\) from a particular 
+    state, plus itself. 
 
 \end{itemize}
 
@@ -174,13 +174,13 @@ via the path:
 
 \section{How to Construct a State Machine}
 
-To construct a state machine it is necessary that an alphabet and a language is given. Then 
-the process revolves around identifying which words are a part of the language and how they can be  
-expressed as a list of states and transition.
+To construct a state machine, it is necessary that an alphabet and a language are given. Then 
+the process revolves around identifying which words are part of the language and how they can be  
+expressed as a list of states and transitions.
 
 \textbf{Example:}
 
-Given is the alphabet \(\Sigma = \{a,b,c\}\) and the language \(L = \{ w \in \Sigma^* \mid w = 
+Given are the alphabet \(\Sigma = \{a,b,c\}\) and the language \(L = \{ w \in \Sigma^* \mid w = 
 a(bc)^m a^n \text{ and }\}\). Construct a DFA. 
 
 \begin{center}
@@ -210,7 +210,7 @@ a(bc)^m a^n \text{ and }\}\). Construct a DFA.
 
 \section{Regular Expressions}
 
-Regular expressions (regex) are a practical application of finite automaton (DFA/NFA). They define 
+Regular expressions (regex) are a practical application of finite automata (DFA/NFA). They define 
 search patterns for strings and are processed internally using state machines.
 
 \textbf{Example:}
@@ -253,7 +253,7 @@ Special symbols:
 
 \end{itemize}
 
-Below are \(\varepsilon\)-NFAs (nondeterministic automaton with \(\varepsilon\)-transitions) for some 
+Below are \(\varepsilon\)-NFAs (nondeterministic automata with \(\varepsilon\)-transitions) for some 
 regular expressions:
 
 \textbf{R + E}
@@ -342,7 +342,7 @@ regular expressions:
 
 \subsection{Non-Deterministic Finite Automaton (NFA) to Deterministic Finite Automaton (DFA)}
 
-The process for the conversion is the so called \emph{Power-Set-Construction-Method} or 
+The process for the conversion is the so-called \emph{Power-Set-Construction-Method} or 
 \emph{Subset-Construction-Method}. 
 
 \textbf{Steps:}
@@ -355,10 +355,10 @@ The process for the conversion is the so called \emph{Power-Set-Construction-Met
 
     \item Start with \(q_0\) and find which states can be reached with the transitions. 
     If from our current state we can reach more than one state with our current transition, write the 
-    possible states as a set, then Proceed to write the set as the next entry to check 
+    possible states as a set, then proceed to write the set as the next entry to check 
     (write in the next row). 
 
-    \item We terminate the algorithm when we after evaluating our states we only get states we have already 
+    \item We terminate the algorithm when, after evaluating our states, we only get states we have already 
     visited.
 
 \end{enumerate}
@@ -429,7 +429,7 @@ Convert the NFA to a DFA
 \subsection{Epsilon-NFA to DFA}
 
 The process is very similar to the previous one. The catch is that we have to keep in mind that 
-our initial state is not only \(q_0\) but also all other from \(q_0\) reachable states via epsilon.
+our initial state is not only \(q_0\) but also all states reachable from \(q_0\) via epsilon.
 
 \textbf{Steps:}
 
@@ -529,17 +529,17 @@ Repeating this process with the rest of state will give us:
 
 \subsection{Epsilon-NFA to NFA}
 
-Here the key is to eliminate the \(varepsilon\) transitions from the automaton. It can be done 
+Here the key is to eliminate the \(\varepsilon\) transitions from the automaton. It can be done 
 with the following steps:
 
 \begin{enumerate}
      
-    \item Write a table empty transition table of the automaton but without the transition epsilon. And then 
-          all epsilon closures of each state in a list
+    \item Write an empty transition table of the automaton but without the epsilon transition, and then 
+          list all epsilon closures of each state
    
-    \item For state and transition. Take \(\varepsilon\)-closure of the state, find where do
-          these states go with the current transition and the take their epsilon closure. The final closure
-          goes into to the corresponding transition column of the current state.
+    \item For each state and transition, take the \(\varepsilon\)-closure of the state, find where
+          these states go with the current transition, and then take their epsilon closure. The final closure
+          goes into the corresponding transition column of the current state.
     
     \item Look for new final states. A final state will be a state that can be reached only using epsilon 
           transitions.
@@ -609,7 +609,7 @@ Transform to a nondeterministic automaton
 \]
 \textbf{Step 3: Identify Final States}
 
-Here every state is a final state of the every state contains the final state in the epsilon closure.
+Here, every state is a final state, because every state contains the final state in its epsilon closure.
 
 \textbf{Step 4: Draw the automaton}
 
@@ -631,14 +631,14 @@ Here every state is a final state of the every state contains the final state in
 
 \subsection{NFA to Regex}
 
-Converting a regular expression into a NFA is not really difficult, but the other direction is not 
+Converting a regular expression into an NFA is not really difficult, but the other direction is not 
 so trivial. The most common approach to tackle this type of conversion is via a system of equations.
 
 You are given some NFA with \(n\) states and \(m\) transitions. Set your system as follows:
 
 \begin{enumerate}
 
-    \item Write an equation \(L_i\) for each state \(q_i\) 
+    \item Write an equation \(L_i\) for each state \(q_i\). 
     Each equation \(L_i\) represents the set of strings (language) accepted when starting from state 
     \(q_i\). These equations will be defined recursively in terms of transitions to other states.
 
@@ -654,9 +654,9 @@ You are given some NFA with \(n\) states and \(m\) transitions. Set your system 
         L_1 = a L_1 \cup b L_2 \cup \varepsilon
     \]
 
-    \item Rewrite the equations using regular expression notation  
-    Replace set notation with regex syntax: \(\cup \to +\),  concatenation is written without operator 
-    (e.g., \(a L_1\)) and replace sets of symbols (e.g., \(\{a, b\}\)) with grouped regex (e.g., \((a + b)\))
+    \item Rewrite the equations using regular expression notation. 
+    Replace set notation with regex syntax: \(\cup \to +\), concatenation is written without an operator 
+    (e.g., \(a L_1\)), and replace sets of symbols (e.g., \(\{a, b\}\)) with grouped regex (e.g., \((a + b)\)).
 
     \textbf{Example:}  
     \[
@@ -683,22 +683,22 @@ You are given some NFA with \(n\) states and \(m\) transitions. Set your system 
     
     \item Write for each state the equation \(L_i\).
     
-    \item Now treat each state as a start state and look for the sets of words this state accepts and lead 
-          to a terminating state then combine them with \(\cup\). If the current state is also a terminating 
-          state then \(\varepsilon\) must also be added. Example: \(L_1 = \{ab\}L_1 \cup b L_2\).
+    \item Now treat each state as a start state and look for the sets of words this state accepts that lead 
+          to a terminating state, then combine them with \(\cup\). If the current state is also a terminating 
+          state, then \(\varepsilon\) must also be added. Example: \(L_1 = \{ab\}L_1 \cup b L_2\).
 
           A trick is to write the table with the transition and for each row (state) you write 
           \(L_{row} = transition_1 L_{state_x} + transition_2 L_{state_y} + \cdots \). Where the transition is 
           a set of letters of the alphabet.
           
-    \item Repeat step 2 for all \(L_i\) and them replace the set of words with regular expressions and the 
-           \(\cup\) with \(+\) Example:\(L_1 = (a+b)L_1 + b L_2\).
+    \item Repeat step 2 for all \(L_i\), and then replace the set of words with regular expressions and the 
+           \(\cup\) with \(+\). Example: \(L_1 = (a+b)L_1 + b L_2\).
     
-    \item Start substituting equations into other equations. Here there are two cases. Either, the  
-          equation \(L_x, \dots\) depends only on other equations different from itself or  \(L_x, \dots\) also depends on 
-          itself which causes infinite recursion. For the first case the problem solves itself by just 
-          doing the substituting until we have only one equation which is going to be our regex, but for the 
-          other case we will use \emph{Arden's Lemma}. 
+    \item Start substituting equations into other equations. Here there are two cases: either the  
+          equation \(L_x, \dots\) depends only on other equations different from itself, or \(L_x, \dots\) also depends on 
+          itself, which causes infinite recursion. For the first case, the problem solves itself by just 
+          doing the substitution until we have only one equation, which is going to be our regex; but for the 
+          other case, we will use \emph{Arden's Lemma}. 
 
 \end{enumerate}
 
@@ -714,13 +714,13 @@ You are given some NFA with \(n\) states and \(m\) transitions. Set your system 
 
 \section{Arden's Lemma}
 
-Given \(X,Y\) as formal language with \(\varepsilon \notin Y\). It applies that:
+Given \(X, Y\) as formal languages with \(\varepsilon \notin Y\), the following holds:
 
 \[
     L = YL \cup X \text{ has exactly one solution: } L = Y^*X
 \]
 
-And the special case \(X = \emptyset\)
+And for the special case \(X = \emptyset\):
 
 \[
 L = YL + \emptyset = Y^* \emptyset = \emptyset
@@ -728,21 +728,21 @@ L = YL + \emptyset = Y^* \emptyset = \emptyset
 
 \textbf{Proof:}
 
-To show \(L = Y^*X\) is a solution and more specific the only solution.
+To show that \(L = Y^*X\) is a solution and, more specifically, the only solution.
 
 \begin{align*}
     L &= YL \cup X\\
     Y^*X &= YY^*X \cup X \text{ This shows that it is indeed a solution}
 \end{align*}
 
-For the second part we can argue that if \(L\) is a solution for the equation then 
+For the second part, we can argue that if \(L\) is a solution for the equation, then 
 
 \[
     Y^*X \subseteq L \implies X \cup YX \cup YYX \cup \dots \subseteq L
 \]
 
-Here we always took longer words which are also part of the language and united them. For the second 
-part we are going to use shorter words.
+Here, we always took longer words, which are also part of the language, and united them. For the second 
+part, we are going to use shorter words.
 
 Assume that
 
@@ -750,11 +750,11 @@ Assume that
     L \subsetneq Y^*X 
 \]
 
-Then there is the shortest word \(w\) as the word in \(L\) which is not in \(Y^*X\). But 
-because \(L = YL \cup X\) \(w\) must be either a word in \(X\) which is not possible because of 
-\(w \notin Y^*X\); or \(YL\). This implies that \(w\) can be decomposed into \(uv\) with 
-\(u \in Y, u \neq \varepsilon, v \in L\). But this is a contradiction then \(w\) would be a word of the 
-form \(Y^*X\) which not true, and this would imply that there is an even shorter word for the shortest word 
+Then there is the shortest word \(w\) in \(L\) which is not in \(Y^*X\). But 
+because \(L = YL \cup X\), \(w\) must be either a word in \(X\), which is not possible because 
+\(w \notin Y^*X\), or in \(YL\). This implies that \(w\) can be decomposed into \(uv\) with 
+\(u \in Y, u \neq \varepsilon, v \in L\). But this is a contradiction, since then \(w\) would be a word of the 
+form \(Y^*X\), which is not true, and this would imply that there is an even shorter word than the shortest word, 
 and so on. Therefore 
 
 \[
@@ -865,9 +865,9 @@ Steps:
 
 \begin{enumerate}
     
-    \item Put all non-accepting states an equivalence class \(\alpha\), and  the accepting states in another 
+    \item Put all non-accepting states in an equivalence class \(\alpha\), and the accepting states in another 
           called \(\Omega\). Write a table with the following columns: state, 
-          transition 1, transitions 2,..., transition n. On the first row put \(alpha\) and in the state column 
+          transition 1, transition 2, ..., transition n. On the first row put \(\alpha\) and in the state column 
           the states of the class. Then do the same with \(\Omega\). You can also optionally make a table 
           of transition for the states.
 
@@ -876,10 +876,10 @@ Steps:
           we evaluate \(a\) with transition 0, and it leads to \(b\) and \(b\) is in the same set as \(a\) then for 
           the row \(a\) with the transition 0 we write the name of that set.
 
-    \item  For each state in the current class which has a tuple of classes different from the rest create 
-           a new class which is going to be included in the next iteration of the table. Then repeat step 2.
+    \item  For each state in the current class which has a tuple of classes different from the rest, create 
+           a new class, which is going to be included in the next iteration of the table. Then repeat step 2.
 
-    \item Terminate the process if no more new class tuple appear.
+    \item Terminate the process if no more new class tuples appear.
 
     \item Build a new DFA with merged equivalent states and updated transitions.
 
@@ -984,7 +984,7 @@ Class      & State                                                 & 0 & 1 \\
 \end{table}
 \end{center}
 
-\textbf{State 4: Draw the automaton}
+\textbf{Step 4: Draw the automaton}
 
 \begin{center}
 \begin{tikzpicture}[->,>=stealth',shorten >=1pt, auto, node distance=2cm, on grid, semithick]

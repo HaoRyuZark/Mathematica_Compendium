@@ -1,18 +1,17 @@
- 
 \chapter{Numerical Integration}
 
-The main idea of the numerical integration is to find a function \(g(x)\) which is easier to integrate, instead 
+The main idea of numerical integration is to find a function \(g(x)\) which is easier to integrate, instead 
 of integrating \(f(x)\) directly.
 
 \section{Newton Cotes}
 
-Given \(- \infty < a < b < \infty \) and \(f \in [a,b]\) we want to approximate 
+Given \(- \infty < a < b < \infty \) and \(f \in [a,b]\), we want to approximate 
 
 \[
     \int_a^b f(x) dx
 \]
 
-with use of equidistant points \(x_k = a(b - a)\frac{k}{n} \in [a, b]\) \(k\) being the number of points.
+with the use of equidistant points \(x_k = a(b - a)\frac{k}{n} \in [a, b]\), \(k\) being the number of points.
 Hence, we use polynomial interpolation which gives us: 
 
 \[
@@ -21,7 +20,7 @@ Hence, we use polynomial interpolation which gives us:
 
 where \(\beta_k\) are the \emph{weights} given by our Newton interpolation algorithm.
 
-It is also a preferred to divide the target interval into sub-intervals and then apply the approximation on those intervals to avoid 
+It is also preferred to divide the target interval into sub-intervals and then apply the approximation on those intervals to avoid 
 using high degree polynomials.
 
 
@@ -39,28 +38,28 @@ The \emph{midpoint rule} builds rectangles by taking the middle point of the sub
 height of our rectangles.
 
 \[
-    M_n = \sum_{i = 1}^n f\left(\frac{x_{i - 1} - x_i}{2}\right) h, \quad h - \frac{b - a}{2}
+    M_n = \sum_{i = 1}^n f\left(\frac{x_{i - 1} - x_i}{2}\right) h, \quad h - \frac{b - a}{2}.
 \]
 
 With the error 
 
 \[
-    E \le \frac{(b - a)^3}{24 n^2} \max_{a \le x \le b}|f''(x)|
+    E \le \frac{(b - a)^3}{24 n^2} \max_{a \le x \le b}|f''(x)|.
 \]
 
 \section{Trapezoidal Sum}
 
 One of the most common approaches for approximating integrals which is very easy to compute is the \emph{trapezoidal sum} which 
-consist on dividing our interval \([a,b]\) into \(n\) trapezoids whose area is given by \(\frac{h}{2}(a + b)\). 
+consists of dividing our interval \([a,b]\) into \(n\) trapezoids whose area is given by \(\frac{h}{2}(a + b)\). 
 
 \[
-    T_n = \frac{h}{2} \left(f(a) + 2\sum_{i = 1}^{n - 1} f(a + ih) + f(b)\right), \quad h = \frac{b - a}{n}
+    T_n = \frac{h}{2} \left(f(a) + 2\sum_{i = 1}^{n - 1} f(a + ih) + f(b)\right), \quad h = \frac{b - a}{n}.
 \]
 
 With the error 
 
 \[
-    E \le \frac{(b - a)^3}{12 n^2} \max_{a \le x \le b}|f''(x)|
+    E \le \frac{(b - a)^3}{12 n^2} \max_{a \le x \le b}|f''(x)|.
 \]
 
 
@@ -106,13 +105,13 @@ Visually it looks like:
 The simple trapezoidal rule is a special case of the trapezoidal sum with \(n = 1\).
 
 \[
-    T_1 = \frac{b - a}{2} (f(a) + f(b))
+    T_1 = \frac{b - a}{2} (f(a) + f(b)).
 \]
 
 \section{Simpsons Rule}
 
 The \emph{Simpsons rule} is an improvement of the trapezoidal rule which uses parabolas using two 
-intervals in order to  improves the approximation of the sum.
+intervals in order to improve the approximation of the sum.
 
 \[
     S_n = \frac{b - a}{3n} \left(f(a) +  \sum_{i = 1}^{n - 1} s(i)f(a + ih)  + f(b)\right)
@@ -124,19 +123,19 @@ where
     s(i) = \begin{cases}
         4, & \text{ if } i \text{ odd}\\ 
         2, & \text{ else }
-    \end{cases}
+    \end{cases}.
 \]
 
 With error 
 
 \[
-    E \le \frac{(b - a)^5}{180 n^4} \max_{a \le x \le b} |f^{(4)}(x)|
+    E \le \frac{(b - a)^5}{180 n^4} \max_{a \le x \le b} |f^{(4)}(x)|.
 \]
 
 The simple Simpsons rule is a special case of the Simpsons rule with \(n = 1\).
 
 \[
-    S_1 = \frac{b - a}{6} (f(a) + 4f\left(\frac{a + b}{2}\right) + f(b))
+    S_1 = \frac{b - a}{6} (f(a) + 4f\left(\frac{a + b}{2}\right) + f(b)).
 \]
 
 \section{Accuracy}
@@ -146,16 +145,16 @@ use with our approximation given an initial precision.
 
 \textbf{Example:}
 
-Given \(\int_{-2}^{1} (-x^4 - 2x^3 + 12x^2 + 2x -5 dx)\) find the \(n\) for a result user the Simpsons rule with 
-accuracy between 0.1. 
+Given \(\int_{-2}^{1} (-x^4 - 2x^3 + 12x^2 + 2x -5 dx)\), find the \(n\) for a result using the Simpsons rule with 
+accuracy of 0.1. 
 
 Using our formula 
 
 \[
-    E \le \frac{(b - a)^5}{180 n^4} \max_{a \le x \le b} |f^{(4)}(x)|
+    E \le \frac{(b - a)^5}{180 n^4} \max_{a \le x \le b} |f^{(4)}(x)|.
 \]
 
-Assuming we already know our maximum we would get: 
+Assuming we already know our maximum, we would get: 
 
 \begin{align*}
     \frac{(1 - (-2))^5}{180 n^4} \max_{a \le x \le b} |f^{(4)}(x)| &\le \frac{1}{10} \\
@@ -163,7 +162,7 @@ Assuming we already know our maximum we would get:
      n &\le  4.24
 \end{align*}
 
-Hence we need to use an \(n \ge 4.24\).
+Hence, we need to use an \(n \ge 4.24\).
 
 
 \section{Lagrange Integration For \texorpdfstring{\([0, 1]\)}{}}
@@ -196,7 +195,7 @@ with \(\beta_k = \int_0^1 L_k (x) dx\).
 We can extend the previous idea to any real, closed interval 
 
 \[
-    \int_a^b f(x) dx = (b - a) \int_0^1 f(a + (b - a)y) dy \approx (b - a) \sum_{k = 0}^n \beta_k f \left(a + (b - a)\frac{k}{n}\right)
+    \int_a^b f(x) dx = (b - a) \int_0^1 f(a + (b - a)y) dy \approx (b - a) \sum_{k = 0}^n \beta_k f \left(a + (b - a)\frac{k}{n}\right).
 \]
 
 \section{Summation For Error Mitigation}
@@ -210,7 +209,7 @@ with \(a = a_0 < b_0 = a_1 < b_1 \dots a_{m - 1} < b_{m - 1} = b\). \(x_{k, i} =
 For the case when the intervals have the same size then our intervals boundaries are given by 
 
 \[
-    h = \frac{b - a}{m} = b_i - a_i, \quad a_i = a + ih, \, b_i = a + (i + 1)h
+    h = \frac{b - a}{m} = b_i - a_i, \quad a_i = a + ih, \, b_i = a + (i + 1)h.
 \]
 
 \subsection{Bernoulli Polynomials And The Bernoulli Numbers}
@@ -227,16 +226,15 @@ The \emph{Bernoulli numbers} are given by
     B_0 = b_0(0) = b_0(1), \quad B_1 = b_1(0) = -b_1(1), \quad B_k = b_k(0) = b_k(1), \ k \ge 2.
 \]
 
-These numbers are used in the next Theorem.
+These numbers are used in the next theorem.
 
 \section{Euler-Maclaurin Summation}
 
-Ist \(f \in C^{2n}([a, b])\) then the following formula holds: 
+If \(f \in C^{2n}([a, b])\), then the following formula holds: 
 
 \[
-    \sum_{n = a}^{b} f(n) = \int_a^b f(x) dx + \frac{f(a) - f(b)}{2} + \sum_{n = 1}^{\infty} \frac{B_{2n}}{(2n)!} (f^{(2n - 1)}(b) - f^{(2n - 1)}(a))
+    \sum_{n = a}^{b} f(n) = \int_a^b f(x) dx + \frac{f(a) - f(b)}{2} + \sum_{n = 1}^{\infty} \frac{B_{2n}}{(2n)!} (f^{(2n - 1)}(b) - f^{(2n - 1)}(a)).
 \]
-
 
 This formula is used to approximate integrals without computing a lot of terms.
 

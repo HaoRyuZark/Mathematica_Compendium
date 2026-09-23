@@ -1,18 +1,18 @@
 \chapter{Propositional Logic}
 
-\emph{Propositional logic}, also called Boolean logic is one the foundational branches of mathematics, and thus, the 
-first chapter of this book. In propositional logic, we use symbolic variables to represent the logic, and we can use any symbol for a representing a proposition, such 
-\(p,q,r,s,t,\) etc. Propositions can be either \emph{true} (\(1\), T) or \emph{false} (\(0\), F) but it cannot be both.
+\emph{Propositional logic}, also called Boolean logic, is one of the foundational branches of mathematics and, thus, the 
+first chapter of this book. In propositional logic, we use symbolic variables to represent the logic, and we can use any symbol to represent a proposition, such as 
+\(p, q, r, s, t,\) etc. Propositions can be either \emph{true} (\(1\), T) or \emph{false} (\(0\), F), but they cannot be both.
 
-\textbf{Remark}: In programming languages like C, any other number greater than 0 is treaated as T, w
+\textbf{Remark}: In programming languages like C, any number greater than 0 is treated as T.
 
 \section{Predicates}
 
-A \emph{predicate} is statement which contains variables linked by some property stated in the language of formal logic whose value can be true or false.
+A \emph{predicate} is a statement which contains variables linked by some property stated in the language of formal logic, and whose value can be true or false.
 
 \section{Predicate Substitution}
 
-Given a predicate \(P\) on the variable \(v\) we can substitute every free instance of \(v\) with the term \(v\) to extend 
+Given a predicate \(P\) on the variable \(v\), we can substitute every free instance of \(v\) with the term \(v\) to extend 
 our predicate to another variable space.
 
 \[
@@ -184,8 +184,8 @@ us \(a = x\), \(a = b\) and finally \(a = c\).
 
 \subsection{Implications}
 
-As a side not for the \emph{implication} we can think about it as \emph{if, then}. For the cases 
-false, true; and false false; we call them \emph{vacously} true. From a false premise can come everything out.
+As a side note, for the \emph{implication} we can think about it as \emph{if, then}. For the cases 
+false, true; and false, false; we call them \emph{vacuously} true. From a false premise, anything can follow.
 
 \section{Tautology and Contradiction}
 
@@ -456,14 +456,14 @@ Also add a negation before each parenthesis.
 Consider the logical expression:
 
 \[
-	\neg (p \lor q) \land \neg (\neg p \lor r) \land \neg (q \lor \neg r)
+	\neg (p \lor q) \land \neg (\neg p \lor r) \land \neg (q \lor \neg r).
 \]
 
 This is in CNF because it is a conjunction (AND) of disjunctions (ORs) of literals.
 
 \section{Basis}
 
-A \emph{Basis} in the field of logic is set of operations with which you can 
+A \emph{Basis} in the field of logic is a set of operations with which you can 
 represent all possible logic operations.
 
 \textbf{Example:} The set \(\{ \lnot, \land\}\)
@@ -509,7 +509,7 @@ The corresponding K-map is:
 Here, we group the ones together to simplify the Boolean expression. The simplified expression is:
 
 \[
-	A \lor B
+	A \lor B.
 \]
 
 \subsection{Karnaugh Map For Three Variables}

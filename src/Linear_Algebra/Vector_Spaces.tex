@@ -1,16 +1,15 @@
-
 \chapter{Vector Spaces}
 
-Given a field \(\field\). A \emph{vector space} is a set \((V, \field, \oplus , \odot)\) with two operations, vector addition and scalar multiplication, 
+Given a field \(\field\), a \emph{vector space} is a set \((V, \field, \oplus , \odot)\) with two operations, vector addition and scalar multiplication, 
 such that:
 
 \begin{enumerate}[label=\Roman*.]
 
-	\item \((a \oplus b)\vec{v} = a\vec{v} \oplus b\vec{v}, \forall a,b \in \field land \vec{v} \in V\)
+	\item \((a \oplus b)\vec{v} = a\vec{v} \oplus b\vec{v}, \forall a,b \in \field \land \vec{v} \in V\)
 	
-	\item \((\vec{v} \oplus \vec{u})a = a\vec{v} \oplus a\vec{u}, \forall a\in \field land \vec{v}, \vec{u} \in V\)
+	\item \((\vec{v} \oplus \vec{u})a = a\vec{v} \oplus a\vec{u}, \forall a\in \field \land \vec{v}, \vec{u} \in V\)
 
-	\item \((ab)\odot \vec{v} = a(b \odot\vec{v}), \forall a,b \in \field land \vec{v} \in V\)
+	\item \((ab)\odot \vec{v} = a(b \odot\vec{v}), \forall a,b \in \field \land \vec{v} \in V\)
 
 	\item \(1 \odot \vec{v} = \vec{v}, \forall \vec{v} \in V\)
 
@@ -19,10 +18,10 @@ such that:
 The scalar multiplication is defined as  
 
 \[
-	\field \times  V \to V: (a,v) \mapsto a \odot v
+	\field \times  V \to V: (a,v) \mapsto a \odot v.
 \]
 
-Also using these axioms, we get 
+Also, using these axioms, we get 
 
 \begin{itemize}
 
@@ -34,10 +33,10 @@ Also using these axioms, we get
 
 \textbf{Proof:} 
 
-For the first property, \(0\vec{v} = (0 + 0)\vec{v} = 0\vec{v} + 0\vec{v}\) then 
+For the first property, \(0\vec{v} = (0 + 0)\vec{v} = 0\vec{v} + 0\vec{v}\), then 
 
 \[
-	0\vec{v} = 0\vec{v} + 0\vec{v} \implies \vec{0} = 0\vec{v} 
+	0\vec{v} = 0\vec{v} + 0\vec{v} \implies \vec{0} = 0\vec{v}.
 \]
 
 For the second property, 
@@ -60,7 +59,7 @@ For the second property,
 	\item The set of all polynomials of degree less than or equal to \(n\) is a vector space over the 
 	      field of real numbers \(\R\).
 
-	\item The set of all continuous functions from \(\R\) to \(\R\) is a vector space 7
+	\item The set of all continuous functions from \(\R\) to \(\R\) is a vector space 
 	      over the field of real numbers \(\R\).
 
 	\item The set of all \(m \times n\) matrices with real entries is a vector space over the field of 
@@ -70,7 +69,7 @@ For the second property,
 
 \end{enumerate}
 
-\subsection{Subspaces}
+\section{Subspaces}
 
 A subset \(W\) of a vector space \(V\) is a \emph{subspace} of \(V\) if:
 
@@ -86,16 +85,16 @@ A subset \(W\) of a vector space \(V\) is a \emph{subspace} of \(V\) if:
 
 If \(W\) is a subspace of \(V\), we write \(W \subseteq V\).
 
-A subspace subset \(W\) of \(V\) is only a subspace if and only if \(W \ne \emptyset \) and for all 
-\(v,w \in W\) and all \(a \in \field\) then \(v + aw \in W\)
+A subset \(W\) of \(V\) is a subspace if and only if \(W \ne \emptyset \) and, for all 
+\(v,w \in W\) and all \(a \in \field\), \(v + aw \in W\).
 
 \textbf{Proof:}
 
 \(\Rightarrow :\) \(\vec{0} \in W\) thus \(W \ne \emptyset\). Also, by the axioms 
 \(v + aw \in W\).
 
-\(\Leftarrow:\) \(W \ne emptyset \implies \exists w \in W\) because \(\field\) is a field then \(-1 \in \field\) and therefore,
-\(w - w = 0 \in W\). For \(v + aw \in W\) we choose \(a = 1\) or \(v = 0\), and we see that the addition and multiplication is also defined
+\(\Leftarrow:\) \(W \ne \emptyset \implies \exists w \in W\) because \(\field\) is a field; then \(-1 \in \field\) and therefore,
+\(w - w = 0 \in W\). For \(v + aw \in W\) we choose \(a = 1\) or \(v = 0\), and we see that the addition and multiplication are also defined
 for our vector space.
 
 \subsection{Properties of the subspaces}
@@ -107,10 +106,10 @@ for our vector space.
 	\item The union of two subspaces is not necessarily a subspace.
 
 	\item The sum of two subspaces \(U\) and \(W\) is defined as:
-	      \[
-		      U + W = \{\vec{u} + \vec{w} : \vec{u} \in U, \vec{w} \in W\}
-	      \]
-	      The sum of two subspaces is a subspace.
+	\[
+		U + W = \{\vec{u} + \vec{w} : \vec{u} \in U, \vec{w} \in W\}
+	\]
+	The sum of two subspaces is a subspace.
 
 \end{itemize}
 
@@ -119,13 +118,14 @@ for our vector space.
 \begin{itemize}
 
 	\item The \emph{direct sum} of two subspaces \(U\) and \(W\) is defined as:
-	      \[
-		      U \oplus W = \{\vec{u} + \vec{w} : \vec{u} \in U, \vec{w} \in W\}
-	      \]
-	      The direct sum of two subspaces is a subspace.
+	\[
+		U \oplus W = \{\vec{u} + \vec{w} : \vec{u} \in U, \vec{w} \in W\}
+	\]
+	
+	The direct sum of two subspaces is a subspace.
 
 	\item The direct sum of two subspaces is the smallest subspace containing both subspaces, such that 
-		  \(U \cap W = \{\vec{0}\}\).
+	\(U \cap W = \{\vec{0}\}\).
 
 	\item The direct sum of two subspaces is denoted by \(U \oplus W\).
 
@@ -133,16 +133,15 @@ for our vector space.
 
 The sum of two subspaces is the smallest subspace containing both subspaces.
 
-\subsubsection{Vector Space Product}
+\section{Vector Space Product}
 
-The \emph{product} \(\langle M \rangle\) of \(M \subseteq V\) is the intersection of 
-all subspaces of \(V\) which contain \(M\)
+The \emph{product} \(\langle M \rangle\) of \(M \subseteq V\) is the intersection of all subspaces of \(V\) which contain \(M\):
 
 \[
-	\langle M \rangle := \bigcap_{{W \subseteq V}_{M \subseteq W}} W 
+	\langle M \rangle := \bigcap_{{W \subseteq V}_{M \subseteq W}} W.
 \]
 
-\subsection{Linear Combinations}
+\section{Linear Combinations}
 
 A \emph{linear combination} of vectors \(\vec{v}_1, \vec{v}_2, \ldots, \vec{v}_n\) in a vector space 
 \(V\) is an expression of the form:
@@ -151,17 +150,24 @@ A \emph{linear combination} of vectors \(\vec{v}_1, \vec{v}_2, \ldots, \vec{v}_n
 	a_1\vec{v}_1 + a_2\vec{v}_2 + \cdots + a_n\vec{v}_n
 \]
 
-Where \(a_1, a_2, \ldots, a_n\) are scalars from the field \(F\).
+where \(a_1, a_2, \ldots, a_n\) are scalars from the field \(F\).
+
+
+\section{The Span}
+
 The set of all linear combinations of a set of vectors \(\{\vec{v}_1, \vec{v}_2, \ldots, \vec{v}_n\}\) 
-is called the \textbf{span} of those vectors, 
-denoted by \(\text{span}(\vec{v}_1, \vec{v}_2, \ldots, \vec{v}_n)\). The span of a set of vectors is a 
+is called the \emph{span} of those vectors, denoted by \(\mathrm{span}(\vec{v}_1, \vec{v}_2, \ldots, \vec{v}_n)\). The span of a set of vectors is a 
 subspace of the vector space \(V\).
 
-The span of a set of vectors is the smallest subspace containing those vectors.
+\begin{itemize}
 
-The set of all linear combinations of a set of vectors \(B = \{\vec{v}_1, \vec{v}_2, \ldots, \vec{v}_n\}\) is given by \(\mathcal{L}(B)\)
+	\item The span of a set of vectors is the smallest subspace containing those vectors.
 
-\subsection{Linear Independence}
+	\item The set of all linear combinations of a set of vectors \(B = \{\vec{v}_1, \vec{v}_2, \ldots, \vec{v}_n\}\) is given by \(\mathcal{L}(B)\). 
+
+\end{itemize}
+
+\section{Linear Independence}
 
 A set of vectors \(\{\vec{v}_1, \vec{v}_2, \dots, \vec{v}_n\}\) in a vector space \(V\) is said to 
 be \emph{linearly independent} if the only solution to the equation:
@@ -176,71 +182,32 @@ or
 	\sum_{i=1}^n \lambda_i \vec{v}_i = 0
 \]
 
-is \(a_1 = a_2 = \cdots = a_n = 0\). If there exists a non-trivial solution to this equation, 
-then the set of vectors is said to be linearly dependent. A set of vectors is linearly 
-independent if and only if the only linear combination of those vectors that equals the zero vector 
+is \(a_1 = a_2 = \cdots = a_n = 0\). If there exists a non-trivial solution to this equation, then the set of vectors is said to be linearly dependent. 
+A set of vectors is linearly independent if and only if the only linear combination of those vectors that equals the zero vector 
 is the trivial combination where all coefficients are zero.
 
-\subsubsection{Properties of the linear independence}
+\subsection{Properties Of The Linear Independence}
 
 \begin{itemize}
 
 	\item A set of vectors \(\{\vec{v}_1, \vec{v}_2, \ldots, \vec{v}_n\}\) is linearly independent 
-	      if and only if the only linear combination of those vectors that equals the zero vector is 
-		  the trivial combination where all coefficients are zero.
+	if and only if the only linear combination of those vectors that equals the zero vector is 
+	the trivial combination where all coefficients are zero.
 
 	\item If a set of vectors \(\{\vec{v}_1, \vec{v}_2, \ldots, \vec{v}_n\}\) is linearly independent, 
-	      then any subset of that set is also linearly independent.
+	then any subset of that set is also linearly independent.
 
 	\item If a set of vectors \(\{\vec{v}_1, \vec{v}_2, \ldots, \vec{v}_n\}\) is linearly dependent, 
-	      then at least one vector in that set can be expressed as a linear combination of the others.
+	then at least one vector in that set can be expressed as a linear combination of the others.
 
 \end{itemize}
 
-\subsection{Basis}
+\section{The Basis}
 
-\begin{itemize}
+A \emph{basis} of a vector space \(V\) is a set of vectors 	\(\{\vec{v}_1, \vec{v}_2, \ldots, \vec{v}_n\}\) that is linearly independent and 
+spans the vector space \(V\).
 
-	\item A \emph{basis} of a vector space \(V\) is a set of vectors 
-	      \(\{\vec{v}_1, \vec{v}_2, \ldots, \vec{v}_n\}\) that is linearly independent and 
-		  spans the vector space \(V\).
-
-	\item The number of vectors in a basis of a vector space is called the \emph{dimension} of the 
-	      vector space.
-
-	\item The dimension of a vector space \(V\) is denoted by \(\dim(V)\).
-
-	\item If \(V\) has a finite basis, then it is said to be \emph{finite-dimensional}.
-
-	\item If \(V\) does not have a finite basis, then it is said to be \emph{infinite-dimensional}.
-
-\end{itemize}
-
-Given \(B = (v_1, \dots, v_n)\). \(B\) is a basis of \(V\) if and only if 
-
-\[
-	\lambda = \lambda_B: \field^n \to V: (a_1, \dots, a_n) \mapsto \sum_{i=1}^n a_i v_i
-\]
-
-is an isomorphism. This means that each vector in \(V\) can be uniquely represented as a linear combination of the basis vectors.
-
-\subsection{Dimension}
-
-The \emph{dimension} of a vector space \(V\) is the number of vectors in a basis of \(V\).
-
-\begin{itemize}
-
-	\item The dimension of a vector space is denoted by \(\dim(V)\).
-
-	\item The dimension of a vector space can be finite or infinite.
-
-	\item If the dimension of a vector space is finite, then it is said to be \emph{finite-dimensional}.
-
-	\item If the dimension of a vector space is infinite, then it is said to be \emph{infinite-dimensional}.
-
-\end{itemize}
-
-\subsection{How to find the basis of a set vector}
+\subsection{How to find the basis of a set of vectors}
 
 To find the basis of a set of vectors, we can use the following steps:
 
@@ -260,7 +227,33 @@ spanned by the original set of vectors.
 
 The basis of a vector space is not unique. Different bases can span the same vector space.
 
-\subsection{Basis Extension Theorem}
+\subsection{Basis Isomorphism}
+
+Given \(B = (v_1, \dots, v_n)\). \(B\) is a basis of \(V\) if and only if 
+
+\[
+	\lambda = \lambda_B: \field^n \to V: (a_1, \dots, a_n) \mapsto \sum_{i=1}^n a_i v_i
+\]
+
+is an isomorphism. This means that each vector in \(V\) can be uniquely represented as a linear combination of the basis vectors.
+
+\section{Dimension}
+
+The \emph{dimension} of a vector space \(V\) is the number of vectors in a basis of \(V\).
+
+\begin{itemize}
+
+	\item The dimension of a vector space is denoted by \(\dim(V)\).
+
+	\item The dimension of a vector space can be finite or infinite.
+
+	\item If the dimension of a vector space is finite, then it is said to be \emph{finite-dimensional}.
+
+	\item If the dimension of a vector space is infinite, then it is said to be \emph{infinite-dimensional}.
+
+\end{itemize}
+
+\section{Basis Extension Theorem}
 
 Let \(V\) be a vector space over a field \(K\), and let 
 
@@ -271,7 +264,7 @@ Let \(V\) be a vector space over a field \(K\), and let
 Suppose that \((v_1, \ldots, v_r)\) is a linearly independent tuple and that
 
 \[
-	\text{span}(v_1, \ldots, v_r, w_1, \ldots, w_s) = V.
+	\mathrm{span}(v_1, \ldots, v_r, w_1, \ldots, w_s) = V.
 \]
 
 Then it is possible to extend \((v_1, \ldots, v_r)\) to a basis of \(V\) by possibly adding suitable 
@@ -279,19 +272,20 @@ vectors from the set \(\{w_1, \ldots, w_s\}\).
 
 \textbf{Proof:}
 
-If \(\text{span}(v_1, \ldots, v_r) = V\), the statement is obvious. So assume
+If \(\mathrm{span}(v_1, \ldots, v_r) = V\), the statement is obvious. So assume
 
 \[
-	\text{span}(v_1, \ldots, v_r) \neq V.
+	\mathrm{span}(v_1, \ldots, v_r) \neq V.
 \]
 
-Then there exists at least one \(w_i\) such that \(w_i \notin \text{span}(v_1, \ldots, v_r)\); 
-otherwise, if all \(w_i \in \text{span}(v_1, \ldots, v_r)\), then
+Then there exists at least one \(w_i\) such that \(w_i \notin \mathrm{span}(v_1, \ldots, v_r)\); 
+otherwise, if all \(w_i \in \mathrm{span}(v_1, \ldots, v_r)\), then
 
 \[
-	\text{span}(v_1, \ldots, v_r, w_1, \ldots, w_s) = \text{span}(v_1, \ldots, v_r) = V,
+	\mathrm{span}(v_1, \ldots, v_r, w_1, \ldots, w_s) = \mathrm{span}(v_1, \ldots, v_r) = V,
 \]
-which contradicts our assumption that \(\text{span}(v_1, \ldots, v_r) \neq V\).
+
+which contradicts our assumption that \(\mathrm{span}(v_1, \ldots, v_r) \neq V\).
 
 The tuple \((w_i, v_1, \ldots, v_r)\) is linearly independent, because of
 
@@ -299,7 +293,7 @@ The tuple \((w_i, v_1, \ldots, v_r)\) is linearly independent, because of
 	\sum_{j=1}^r \lambda_j v_j + \lambda w_i = 0
 \]
 
-It follows that \(\lambda = 0\) (since \(w_i \notin \text{span}(v_1, \ldots, v_r)\)), and then also 
+It follows that \(\lambda = 0\) (since \(w_i \notin \mathrm{span}(v_1, \ldots, v_r)\)), and then also 
 \(\lambda_j = 0\) for all \(j\) because the \(v_j\) are linearly independent.
 
 Possibly, \((w_i, v_1, \ldots, v_r)\) is still not a basis of \(V\). Then we repeat the previous step and 
@@ -307,7 +301,7 @@ keep adding further \(w_i\) until the tuple extends \((v_1, \ldots, v_r)\) to a 
 process terminates after finitely many steps, since
 
 \[
-	\text{span}(v_1, \ldots, v_r, w_1, \ldots, w_s) = V.
+	\mathrm{span}(v_1, \ldots, v_r, w_1, \ldots, w_s) = V.
 \]
 
 \QED
@@ -328,7 +322,7 @@ Given \(\{v_1, \dots, v_n\} \subseteq V\) a generating system of \(V\) and \(X =
 
 \subsection{Exchange Lemma}
 
-Let \((v_1, \ldots, v_n)\) be a base of \(V\) and \((w_1, \ldots, w_m)\) be generating system of \(V\). Then, for every 
+Let \((v_1, \ldots, v_n)\) be a basis of \(V\) and \((w_1, \ldots, w_m)\) be a generating system of \(V\). Then, for every 
 \(v_i\), there exists a \(w_j\) such that if we replace \(v_i\) by \(w_j\) in the tuple 
 \((v_1, \ldots, v_n)\), it still forms a basis of \(V\). We can exchange \(m - n\) vectors in this way.
 
@@ -338,10 +332,10 @@ Let \((v_1, \ldots, v_n)\) and \((w_1, \ldots, w_m)\) be two bases of \(V\). Sup
 from the first basis. The truncated tuple \((v_1, \ldots, v_{i-1}, v_{i+1}, \ldots, v_n)\) satisfies
 
 \[
-	\text{span}(v_1, \ldots, v_{i-1}, v_{i+1}, \ldots, v_n) \neq V,
+	\mathrm{span}(v_1, \ldots, v_{i-1}, v_{i+1}, \ldots, v_n) \neq V,
 \]
 
-because if \(\text{span}(v_1, \ldots, v_{i-1}, v_{i+1}, \ldots, v_n) = V\), then \(v_i\) would lie in the 
+because if \(\mathrm{span}(v_1, \ldots, v_{i-1}, v_{i+1}, \ldots, v_n) = V\), then \(v_i\) would lie in the 
 span of the remaining vectors and could be written as a linear combination of them. This would contradict 
 the assumption that \((v_1, \ldots, v_n)\) is linearly independent and a basis of \(V\).
 
@@ -351,7 +345,7 @@ adding vectors from \((v_1, \ldots, v_{i-1}, v_{i+1}, \ldots, v_n, w_1, \ldots, 
 Therefore, by the Basis Extension Theorem, there exists a \(w_j\) such that
 
 \[
-	w_j \notin \text{span}(v_1, \ldots, v_{i-1}, v_{i+1}, \ldots, v_n),
+	w_j \notin \mathrm{span}(v_1, \ldots, v_{i-1}, v_{i+1}, \ldots, v_n),
 \]
 
 and the tuple \((v_1, \ldots, v_{i-1}, v_{i+1}, \ldots, v_n, w_j)\) is linearly independent.
@@ -386,11 +380,11 @@ If we remove \(v_j\) from \(A\) and add \(w_1\) we get a basis of \(V\). This is
 Assume \(\tilde{\lambda_j} \ne 0\) then we can express \(w_1\) as a linear combination of the other vectors. This is a contradiction because this would mean 
 that we can write \(w_1\) as another linear combination of the vectors in \(A\) which is not possible because \(B\) is a basis of \(V\). 
 
-For we repeat this process \(n - m\) times we get the desired result. 
+If we repeat this process \(n - m\) times, we get the desired result. 
 
 \QED
 
-\subsection{Dimension of a sum of subspaces}
+\section{Dimension As A Sum Of The Dimension Of Subspaces}
 
 Let \(U\) and \(W\) be two subspaces of a vector space \(V\). Then the dimension of the sum of the two 
 subspaces is given by:
@@ -399,10 +393,9 @@ subspaces is given by:
     \dim(U + W) = \dim(U) + \dim(W) - \dim(U \cap W)    
 \]
 
-\subsection{Linear Independence of polynomials}
+\section{Linear Independence Of Polynomials}
 
-Let \(P_n\) be the vector space of polynomials of degree at most \(n\). The set of polynomials 
-\(\{1, x, x^2, \ldots, x^n\}\) is a basis for \(P_n\).
+Let \(P_n\) be the vector space of polynomials of degree at most \(n\). The set of polynomials \(\{1, x, x^2, \ldots, x^n\}\) is a basis for \(P_n\).
 The dimension of \(P_n\) is \(n + 1\).
 
 \begin{itemize}
@@ -431,26 +424,23 @@ we can use the following steps:
 	\item Since the left-hand side is a polynomial of degree at most \(n\), it can only be equal 
 		  to zero if all coefficients are zero.
  
-	\item Therefore, we have \(a_0 = a_1 = \cdots = a_n = 0\), which 
-		  proves that the set of polynomials \(\{1, x, x^2, \ldots, x^n\}\) is linearly independent.
+	\item Therefore, we have \(a_0 = a_1 = \cdots = a_n = 0\), which proves that the set of polynomials \(\{1, x, x^2, \ldots, x^n\}\)
+	is linearly independent.
 
 \end{enumerate}
 
-So you only have to prove that the set of coefficients vector is linearly independent.
+So you only have to prove that the set of coefficient vectors is linearly independent.
 
-\subsection{Interpolation Polynomial}
+\section{Interpolation Polynomial}
 
-Given the \(n+1\) points \((x_k, y_k)\), with \(0 \leq k \leq n\) and all \(x_k\) distinct, 
-there exists exactly one polynomial \(p_n \in P_n\) such that \(y_k = p_n(x_k)\) for all 
-\(0 \leq k \leq n\). This polynomial is called the interpolation polynomial.
+Given the \(n+1\) points \((x_k, y_k)\), with \(0 \leq k \leq n\) and all \(x_k\) distinct, there exists exactly one polynomial \(p_n \in P_n\) such 
+that \(y_k = p_n(x_k)\) for all \(0 \leq k \leq n\). This polynomial is called the interpolation polynomial.
 
 \textbf{Proof:}
 
-The uniqueness follows immediately. We prove the existence by induction on 
-\(n\). For \(n = 0\), choose \(p_0(x) = y_0\). 
+The uniqueness follows immediately. We prove the existence by induction on \(n\). For \(n = 0\), choose \(p_0(x) = y_0\). 
 
-Now assume the statement is true for \(n-1\). Let the polynomial \(p_{n-1}\)
-interpolate the points \((x_0, y_0), \ldots, (x_{n-1}, y_{n-1})\). 
+Now assume the statement is true for \(n-1\). Let the polynomial \(p_{n-1}\)interpolate the points \((x_0, y_0), \ldots, (x_{n-1}, y_{n-1})\). 
 
 Define
 
@@ -465,10 +455,8 @@ where
 	(y_n - p_{n-1}(x_n)).
 \]
 
-We have \(q \in P_n\), and it follows that \(p_n \in P_n\). 
-Furthermore, \(q(x_k) = 0\) for \(k \leq n-1\) because a linear factor in 
-the numerator always vanishes at \(x_k\). Therefore, \(p_n(x_k) = y_k\) for 
-\(k \leq n-1\). Additionally, we have
+We have \(q \in P_n\), and it follows that \(p_n \in P_n\). Furthermore, \(q(x_k) = 0\) for \(k \leq n-1\) because a linear factor in 
+the numerator always vanishes at \(x_k\). Therefore, \(p_n(x_k) = y_k\) for \(k \leq n-1\). Additionally, we have
 
 \[
 	q(x_n) = y_n - p_{n-1}(x_n),
@@ -480,11 +468,9 @@ so that \(p_n(x_n) = y_n\).
 
 \textbf{Example:}
 
-Consider the three points \((-2, 1)\), \((-1, -1)\), and \((1, 1)\). 
-These points uniquely define an interpolating parabola \(p_2\). This parabola can be 
-determined using the definition of \(p_n\). 
-For hand calculations and a few 
-points to interpolate, the following approach is also useful. The general form of the polynomial is 
+Consider the three points \((-2, 1)\), \((-1, -1)\), and \((1, 1)\). These points uniquely define an interpolating parabola \(p_2\). This parabola can be 
+determined using the definition of \(p_n\). For hand calculations and a few points to interpolate, the following approach is also useful. The general form of 
+the polynomial is 
 
 \[
 	p_2(x) = ax^2 + bx + c.

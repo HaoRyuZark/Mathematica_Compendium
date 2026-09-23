@@ -1,12 +1,12 @@
-
+\chapter{Numerical Linear Algebra}
 
 \section{QR-Decomposition For Numerical Mathematics}
 
-We want to find \(A = QR\), where \(R\) is an upper-triangular matrix and \(Q\) just a matrix. 
+We want to find \(A = QR\), where \(R\) is an upper-triangular matrix and \(Q\) is just a matrix. 
 
 \subsection{Givens Matrices}
 
-This algorithm uses rotations for the elimination of the elements underneath of the main diagonal. We use 
+This algorithm uses rotations for the elimination of the elements underneath the main diagonal. We use 
 matrices of the form:
 
 \[
@@ -22,7 +22,7 @@ matrices of the form:
         \end{bmatrix} 
 \]
 
-where given an element \(a_{k,l}\) to eliminate then 
+where, given an element \(a_{k,l}\) to eliminate, we have 
 
 \begin{align*}
     q_{k - 1, k - 1} &= c \\ 
@@ -37,13 +37,13 @@ and
     s = \frac{a_{k, l}}{\sqrt{a_{k - 1, l}^2 + a_{k,l}^2}}, \quad c = \frac{a_{k - 1, l}}{\sqrt{a_{k - 1,l}^2 + a_{k,l}^2}}
 \]
 
-Which when chained will give us 
+When chained, this gives us 
 
 \[
     Q_{n-1}\cdot \dots \cdot Q_1 A = R
 \]
 
-By the orthonormality of the \(Q_i\) we have 
+By the orthonormality of the \(Q_i\), we have 
 
 \[
     A = Q_1^T \cdot \dots \cdot Q_{n-1}^T R = Q R
@@ -69,19 +69,19 @@ We start with \(Q = I\) and \(R = A\).
     \item Multiply \(Q_{i,j}\) with \(A\) and store at the position of the generated zero the value \(s\) and at the position of \(c\) the value \(c\).
 
     \item Continue with the next element in the column until all elements are eliminated. 
-    Note that we applying the multiplication for the new \(A\), we handle the places where we have stored the \(\rho_{i - 1, j - 1}\) as if they were zero, 
+    Note that when applying the multiplication for the new \(A\), we handle the places where we have stored the \(\rho_{i - 1, j - 1}\) as if they were zero, 
     because they are not used for the next steps.
     
     \item Then, continue with the next column in the new sub-matrix and so on until we have an upper triangular matrix.
 
-    \item Now, compute \(y = Q^T b = Q_{n-1} \cdot \dots \cdot Q_1 b\). One matrix a a time. We use the stored coefficient \(\rho_{i,j} = s\) to then compute 
+    \item Now, compute \(y = Q^T b = Q_{n-1} \cdot \dots \cdot Q_1 b\). One matrix at a time. We use the stored coefficient \(\rho_{i,j} = s\) to then compute 
     \(s = \sqrt{1 - s^2}\) for the multiplication.
 
     \item Finally, solve \(Rx = Q_{n-1} \cdot \dots \cdot Q_1 Ax= y\) for \(x\) using back substitution.
 
 \end{enumerate}
 
-It is important to note that this algorithm is four times more expensive that the \(LU\)-Decomposition, but it is more stable.
+It is important to note that this algorithm is four times more expensive than the \(LU\)-Decomposition, but it is more stable.
 
 \textbf{Example:}
 
@@ -209,7 +209,7 @@ Multiply
     \end{bmatrix}
 \]
 
-Now, we store \(\rho_{3,1} = s = 1\) at \(a_{3,2}\)
+Now, we store \(\rho_{3,1} = s = 1\) at \(a_{3,2}\).
 
 \[
     \begin{bmatrix}
@@ -243,8 +243,8 @@ and
     \end{bmatrix}
 \]
 
-For each of the matrices in \(Q^Tb\) we reconstruct the the \(Q_{i,j}\) matrix and perform the 
-multiplication 
+For each of the matrices in \(Q^Tb\), we reconstruct the \(Q_{i,j}\) matrix and perform the 
+multiplication.
 
 Using \(\rho_{2,1} = -\frac{3}{5}, c = \sqrt{1 - s^2} = \frac{4}{5}\):
 
@@ -268,7 +268,7 @@ Using \(\rho_{2,1} = -\frac{3}{5}, c = \sqrt{1 - s^2} = \frac{4}{5}\):
     \end{bmatrix}
 \]
 
-Then repeat for the others, and apply the multiply the new \(b\) to the reconstructed matrix and we get 
+Then repeat for the others, and multiply the new \(b\) by the reconstructed matrix, and we get 
 
 \[
     y = 
@@ -297,9 +297,9 @@ which gives us \(x = [2, 1, 0]^T\).
 
 \subsection{Householder Algorithm}
 
-The \emph{Householder algorithm} similarly to Givens algorithm will given us a decomposition of a matrix \(A\) 
-such that \(A = QR\) with \(Q\) being orthonormal and \(R\) being upper triangular. The difference relies on the method of the transformations 
-which instead of being rotations, they are reflections.
+The \emph{Householder algorithm}, similarly to the Givens algorithm, will give us a decomposition of a matrix \(A\) 
+such that \(A = QR\) with \(Q\) being orthonormal and \(R\) being upper triangular. The difference lies in the method of the transformations, 
+which, instead of being rotations, are reflections.
 
 \subsubsection{Householder Transformation}
 
@@ -390,7 +390,7 @@ with \(x\) we get
     \end{bmatrix}
 \]
 
-The vector to be used for the transformation defined as 
+The vector to be used for the transformation is defined as 
 
 \[
     v = x \pm \metric{x}_2 e_k
@@ -398,9 +398,9 @@ The vector to be used for the transformation defined as
 
 The sign is not really important, but it is usually chosen to avoid cancellation errors. 
 
-The \(k\)-th Householder transformation is then defined as \(\tilde{x}\) where all elements before the \(k\)-th element are zero, i.e. if we have to eliminate 
-all elements below the first element, then we have \(k = 1\) an \(\tilde{x} = x\), but if we have to eliminate all elements below the second element, then we have \(k = 2\) and \(\tilde{x} = [0, x_2, x_3, \dots, x_n]^T\) and so on.
-Note that the resulting transformation will be still be used with \(x\).
+The \(k\)-th Householder transformation is then defined as \(\tilde{x}\), where all elements before the \(k\)-th element are zero, i.e. if we have to eliminate 
+all elements below the first element, then we have \(k = 1\) and \(\tilde{x} = x\), but if we have to eliminate all elements below the second element, then we have \(k = 2\) and \(\tilde{x} = [0, x_2, x_3, \dots, x_n]^T\) and so on.
+Note that the resulting transformation will still be used with \(x\).
 
 \subsubsection*{Householder Algorithm}
 
@@ -483,7 +483,7 @@ And we apply it to \(A\)
 
 Now, we have an upper triangular matrix and we can compute \(Q\) as \(H_1\) and \(R\) as \(H_1 A\), and we have \(A = QR\).
 
-\section{Iterative Methods}
+\section{Iterative Methods For Linear Systems}
 
 An \emph{iterative method} 
 
@@ -492,7 +492,7 @@ An \emph{iterative method}
 \]
 
 is convergent if \(x^{(k)} \to x\) for all  \(x^{(0)} \in \R^n\). It also has the \emph{fixed point property} 
-\(x = \phi_(x) \iff Ax = b\).
+\(x = \phi(x) \iff Ax = b\).
 
 The \emph{error} \(e^{(k)}\) and the \emph{residuum} \(r^{(k)}\) are defined as
 
@@ -500,13 +500,13 @@ The \emph{error} \(e^{(k)}\) and the \emph{residuum} \(r^{(k)}\) are defined as
     e^{(k)} = x - x^{(k)}, \quad r^{(k)} = b - Ax^{(k)}
 \]
 
-If for the computation of \(x^{(k + 1)}\) only the direct predecessor \(x^{(k)}\) uses, then
+If, for the computation of \(x^{(k + 1)}\), only the direct predecessor \(x^{(k)}\) is used, then
 
 \[
     x^{(k + 1)} = \phi(x^{(k)})
 \]
 
-the process is considered with \emph{one step} \(\phi_k : \R^n \to \R^n\), else is considered with \emph{multi step} 
+the process is considered with \emph{one step} \(\phi_k : \R^n \to \R^n\), else it is considered with \emph{multi step} 
 \(\phi_k : (\R^n)^{k + 1} \to \R^n\).
 
 If \(\phi_k = \phi\) for all \(k\) then the process is called \emph{stationary}, else it is called \emph{non-stationary}.
@@ -546,7 +546,7 @@ Analyzing our regular linear system \(Ax = b\) with the single step iteration
     x^{(k + 1)} = \phi(x^{(k)}) = Bx^{(k)} + c
 \]
 
-with the fixed point property \(x = \phi(x) = Bx + c \iff Ax = b\) we get
+with the fixed point property \(x = \phi(x) = Bx + c \iff Ax = b\), we get
 
 For the error \(e^{(k)} = x^{(k)} - x\) we have 
 
@@ -709,7 +709,7 @@ Which results in the iteration
 
 We can then continue the process using our resulting vector as the new \(x^{(k)}\) and we will get closer to the solution of the system.
 
-\subsubsection*{Triple Splitting}
+\subsubsection{Triple Splitting}
 
 We can also define the splitting 
 
@@ -753,7 +753,7 @@ converges and also \(\metric{B}_A = \metric{B}_M = \rho(B) < 1\).
 
 Also, the splitting \(M + M^T - A\) is also spd. and \(\rho(B) \le \metric{B}_A < 1\).
 
-\subsection{Strict Diagonal-dominant}
+\subsection{Strictly Diagonal-Dominant}
 
 \(A\) is strictly diagonal-dominant if 
 
@@ -897,13 +897,13 @@ We use the stationary linear iteration to improve the solution \(\tilde{x}\) for
 
     \item Perform the \(LU\)-Decomposition to get the triangular matrices and the approximate solution with errors.
 
-    \item Set \(x_0 = \tilde{x}\) 
+    \item Set \(x_0 = \tilde{x}\).
 
-    \item Repeat the following steps as long \(\frac{\metric{p_k}}{\metric{x_{k + 1}}} < \varepsilon\): 
+    \item Repeat the following steps as long as \(\frac{\metric{p_k}}{\metric{x_{k + 1}}} < \varepsilon\): 
     
     \begin{itemize}
         \item \(r_k = b - Ax_k \).
-        \item \(p_k = M^{-1}r_K\) in other words \(\tilde{L}\tilde{U}p_k = r_k\). Also \begin{verbatim}p_k = np.linalg.solve(A, r_k)\end{verbatim}
+        \item \(p_k = M^{-1}r_k\), in other words \(\tilde{L}\tilde{U}p_k = r_k\). Also \begin{verbatim}p_k = np.linalg.solve(A, r_k)\end{verbatim}
         \item \(x_{k + 1} = x_k + p_k\).
     \end{itemize}
 \end{enumerate}
@@ -922,7 +922,7 @@ We add the parameter \(\alpha^{(k)}\)
     x^{(k + 1)} = x^{(k)} + \alpha^{(k)}M^{-1}r^{(k)}
 \]
 
-With the goal in each step to find an \(\alpha^{(k)}\) which gives us the "best" \(x^{(k + 1)}\).
+The goal in each step is to find an \(\alpha^{(k)}\) which gives us the ``best'' \(x^{(k + 1)}\).
 This means 
 
 \begin{align*} 
@@ -932,7 +932,7 @@ This means
 \end{align*}
 
 Geometrically, \(e^{(k + 1)}\) is on a straight line determined by \(e^{(k)}\) in the direction \(p^{(k)}\). This means 
-that \(\metric{e^{(k + 1)}}\) will be minimal when \(p_{(k)}\) is orthogonal to \(e^{(k + 1)}\)
+that \(\metric{e^{(k + 1)}}\) will be minimal when \(p_{(k)}\) is orthogonal to \(e^{(k + 1)}\).
 
 \begin{align*}
     \inner{e^{(k + 1)}}{p^{(k)}} &= \inner{p^{(k)}}{e^{(k)} - \alpha^{(k)}p^{(k)}} \\ 
@@ -950,7 +950,7 @@ Hence, we have constructed the following iterative algorithm
 \end{align*}
 
 The problem is that technically we do not know the exact solution \(x\), but this can be solved using a 
-suited inner product with metric 
+suitable inner product with metric 
 
 \[
     \metric{x} = \metric{x}_A = \sqrt{x^T A x}
@@ -978,9 +978,9 @@ Each vector \(x \in \C^n\) can be written as \(x = \sum_i x_i u_i\) and
 \]
 
 If \(|\lambda_1| > |\lambda_2| \ge \dots \ge |\lambda_n|\) then the dominant eigenvalue is \(\lambda_1\). This 
-means that by applying \(A\) to \(x\) multiple times we get closer to the dominant eigenvector \(u_1\) and the dominant eigenvalue \(\lambda_1\).
+means that by applying \(A\) to \(x\) multiple times, we get closer to the dominant eigenvector \(u_1\) and the dominant eigenvalue \(\lambda_1\).
 
-\subsubsection*{Algorithm}
+\subsubsection{Algorithm}
 
 \begin{enumerate}
     
@@ -1003,7 +1003,7 @@ of orthogonal transformations to \(A\) to make it diagonal.
 
 The eigenvalues of \(A\) are then given by the diagonal elements of the resulting matrix.
 
-The derivation will come from applying orthonormal matrices repeatedly to to our original matrix. 
+The derivation will come from applying orthonormal matrices repeatedly to our original matrix. 
 
 \[
     A^{(0)} = A, \quad A^{(k)} = Q_k^T A^{(k - 1)} Q_k
@@ -1044,7 +1044,7 @@ And we use the iteration
     Q^{(0)} = I, \quad Q^{(k)} = Q^{(k - 1)}Q_k
 \]
 
-\subsubsection*{Stop Criterion}
+\subsubsection{Stop Criterion}
 
 We define the square sum of the diagonal elements of the matrices \(A^{(k)}\) as 
 
@@ -1055,17 +1055,17 @@ We define the square sum of the diagonal elements of the matrices \(A^{(k)}\) as
 It holds that 
 
 \[
-    N^(A^{(k + 1)}) \le \alpha N(A^{(k)}), \quad \alpha \in [0, 1)
+    N(A^{(k + 1)}) \le \alpha N(A^{(k)}), \quad \alpha \in [0, 1)
 \]
 
-converges \emph{strictly monotonously decreasing} towards zero. Thus, this is our convergence criteria 
+converges \emph{strictly monotonously decreasing} towards zero. Thus, this is our convergence criterion 
 given an upper bound.
 
-\subsection{The QR Method}
+\section{The QR Method}
 
 We take a matrix \(A \in \R^{n \times n}\) with \(n\) start vectors whose dimension is also \(n\).
 
-Choose \(X^{(0)} = [x_1^{(0)},\dots, x_n^{(0)}]\) where the vectors form an orthonormal basis
+Choose \(X^{(0)} = [x_1^{(0)},\dots, x_n^{(0)}]\), where the vectors form an orthonormal basis.
 
 For \(k = 0, 1, \dots\) repeat the following steps:
 
@@ -1086,7 +1086,7 @@ Then for
     &= Q^{(k)} R^{(k)}
 \end{align*}
 
-We can also use \(Q^{(k)} = X^{(k - 1)^T} X^{(k)}\). And because the vector of \(X^{(k)}\) are orthonormal we also have that 
+We can also use \(Q^{(k)} = X^{(k - 1)^T} X^{(k)}\). And because the vectors of \(X^{(k)}\) are orthonormal, we also have that 
 
 \begin{align*} 
     T^{(k + 1)} &= X^{(k)^T} A X^{(k)}\\

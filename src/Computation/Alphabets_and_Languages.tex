@@ -2,14 +2,14 @@
 
 \section{Languages and Alphabets}
 
-A \emph{language} \(L\) is a subset of words of an \emph{alphabet} \(\Sigma\) which is a finite 
-non-empty set of symbols which always includes the \(\varepsilon\)-word, the empty word.
+A \emph{language} \(L\) is a subset of words of an \emph{alphabet} \(\Sigma\), which is a finite, 
+non-empty set of symbols that always includes the \(\varepsilon\)-word, the empty word.
 
 \subsection{Concatenation}
 
-\emph{Concatenation} is an operation which can be done with members of an alphabet is the so called \emph{concatenation} which is like 
-basic addition. Therefore, it is associative and when added \(\varepsilon\), the zero of alphabets it odes not affect the words 
-or its length.
+\emph{Concatenation} is an operation that can be performed with members of an alphabet, and it is like 
+basic addition. Therefore, it is associative, and when \(\varepsilon\), the zero of alphabets, is added, it does not affect the words 
+or their length.
 
 \[
     ``a'' + ``b'' = ab
@@ -17,7 +17,7 @@ or its length.
 
 \section{Inductive Definitions}
 
-In the field of languages and alphabets an inductive function \(f: \Sigma^* \to X\) will be defined 
+In the field of languages and alphabets, an inductive function \(f: \Sigma^* \to X\) will be defined 
 in the following way.
 
 \begin{enumerate}
@@ -41,7 +41,7 @@ It also has the following properties:
 
 \textbf{Example:}
 
-Define a function which count the occurrences of \(ue\) in a word with letters of the alphabet 
+Define a function that counts the occurrences of \(ue\) in a word with letters of the alphabet 
 \(\Sigma = \{a, \dots, z\}\).
 
 \begin{align*}
@@ -100,7 +100,7 @@ Let \(\Sigma\) be an alphabet and let \(v, w \in \Sigma^{*}\) be words.
 
 \end{itemize}
 
-\(\varepsilon\) is prefix suffix and substring, of all words. 
+\(\varepsilon\) is a prefix, suffix, and substring of all words. 
 
 \section{The Canonical Order}
 
@@ -134,7 +134,7 @@ The power set of \(\Sigma^{*}\) is the set of all languages over \(\Sigma\).
 
 Furthermore, \(L_{\emptyset} = \emptyset\) and \(L_{\varepsilon} = \{\varepsilon\}\).  
 
-Another parts of a language is the \emph{syntax} which defines the words in the language, and the  \emph{semantic} which determines 
+Other parts of a language are the \emph{syntax}, which defines the words in the language, and the \emph{semantics}, which determines 
 the meaning of words. 
 
 \section{Pumping Lemma}
@@ -160,16 +160,16 @@ Lemma can be used to prove this by contradiction.
 
 \subsection{Pumping Lemma Algorithm}
 
-Given two alphabet \(\Sigma_1, \Sigma_2\) and \(\mathcal{D} \subseteq \Sigma_{1}^{*}\). An \emph{algorithm} is a total function 
+Given two alphabets \(\Sigma_1, \Sigma_2\) and \(\mathcal{D} \subseteq \Sigma_{1}^{*}\), an \emph{algorithm} is a total function 
 
 \[
-    A: \mathcal{D} \to \Sigma_{2}^{*}
+    A: \mathcal{D} \to \Sigma_{2}^{*} .
 \]
 
 Two algorithms are equivalent if and only if 
 
 \[
-    \forall x \in \mathcal{D} : A(x) = B(x)
+    \forall x \in \mathcal{D} : A(x) = B(x) .
 \]
 
 \section{The Decision Problem}

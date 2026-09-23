@@ -1,7 +1,7 @@
 \chapter{Graph Theory}
 
  A \emph{Graph} \(G = \inner{V}{E} \) consists of a finite set of vertices \(V\) and a relation 
- \(E \subseteq V \times V\) over the set. Depending on the traits of \(E\) it can be categorized into 
+ \(E \subseteq V \times V\) over the set. Depending on the traits of \(E\), it can be categorized into 
 
  \begin{itemize}
     
@@ -22,18 +22,18 @@
 
  \end{itemize}
 
- In computer science the density of a graph is a main criteria when modeling a graph. 
+ In computer science, the density of a graph is a main criterion when modeling a graph. 
 
  \section{Connected Graphs}
 
- A graph \(G = (V,E)\) undirected, then it is called \emph{connected} if for all pairs \((v_i, v_j) \subseteq V \times V\) there exists a 
- path from \(v_i\) to \(v_j\). We define \(E_S\) the symmetric relation. 
+ Let \(G = (V,E)\) be an undirected graph. Then it is called \emph{connected} if, for all pairs \((v_i, v_j) \subseteq V \times V\), there exists a 
+ path from \(v_i\) to \(v_j\). We define \(E_S\) as the symmetric relation. 
 
  \[
     (v_1, v_2) \in E \iff (v_1, v_2) \in E_S \land (v_2, v_1) \in E_S
  \]
 
- If \(G\) is directed then it is connected if and only if its undirected version is connected.
+ If \(G\) is directed, then it is connected if and only if its undirected version is connected.
  
  \section{Paths}
 
@@ -57,7 +57,7 @@
 
  \end{itemize}
 
- \subsubsection{Path Cost}
+ \subsection{Path Cost}
 
  We define the \emph{path cost} for a weighted graph as 
 
@@ -67,7 +67,7 @@
 
  \section{The Adjacency Matrix}
 
- For a graph \(G\) with vertices \(V = \{v_1, \dots, v_n\}\), we define the \emph{the adjacency matrix} \(A = (a_{ij})\) as a 
+ For a graph \(G\) with vertices \(V = \{v_1, \dots, v_n\}\), we define the \emph{adjacency matrix} \(A = (a_{ij})\) as a 
  \(n \times n\) matrix with 
 
  \[
@@ -79,11 +79,11 @@
 
 \section{The Relax Operation}
 
-In graph theory when referring to the action of updating the cost of visiting a vertex in a weigthed graph we call this operation 
+In graph theory, when referring to the action of updating the cost of visiting a vertex in a weighted graph, we call this operation 
 \emph{relaxation}. 
 
 \[
-    \operatorname{relaz}(u,v, \text{weight}) = 
+    \operatorname{relax}(u,v, \text{weight}) = 
     \begin{cases}
         d[u] + \text{weight}(u,v) &\text{if} d[u] + \text{weight}(u,v) < d[v] \\ 
         d[u] & \text{else}

@@ -3,7 +3,7 @@
 \section{Partially Ordered Classes}
 
 A \emph{partially ordered class} is a pair of objects \(\inner{A}{R}\) where \(A\) is a class and \(R\) is 
-and order relation in \(A\). Remember that an order relation is one which is : reflexive, antisymmetric and transitive.
+an order relation in \(A\). Remember that an order relation is one which is: reflexive, antisymmetric, and transitive.
 
 \section{Lexicographical Ordering}
 
@@ -39,8 +39,8 @@ or
 
 \section{Comparable}
 
-Let \(A\) be a partially ordered class. Tow elements \(x, y \in A\) are considered \emph{comparable} if 
-either \(x \le y\) or \(y \le x\); otherwise, they are said to \emph{incomparable}.
+Let \(A\) be a partially ordered class. Two elements \(x, y \in A\) are considered \emph{comparable} if 
+either \(x \le y\) or \(y \le x\); otherwise, they are said to be \emph{incomparable}.
 
 \section{Fully Ordered Subclass}
 
@@ -50,25 +50,24 @@ commonly, a \emph{chain} of \(A\). If every two elements of \(A\) are comparable
 
 \textbf{Example:} 
 
-Let \(C\) and \(D\) be chains of \(A\) and \(B\) respectively, prove that \(A \times B \text{ lex. sorted } \implies C \times D \text{ is chain of } A \times B\).
+Let \(C\) and \(D\) be chains of \(A\) and \(B\), respectively; prove that \(A \times B \text{ lex. sorted } \implies C \times D \text{ is chain of } A \times B\).
 
 \textbf{Proof:}
 
-By the contraposite, if \(C \times D\) is not a chain of \(A \times B\), then there some element \((c,d)\) can not be compared, because \((c, d)\) can 
-not be compared, but \((c,d) \in A \times B\), then \(A \times B\) can not lexicographicaly sorted.
+By the contrapositive, if \(C \times D\) is not a chain of \(A \times B\), then there is some element \((c,d)\) that cannot be compared, but \((c,d) \in A \times B\), so \(A \times B\) cannot be lexicographically sorted.
 
 \QED
 
 \section{Initial Segments}
 
 Let \(A\) be a partially ordered class and suppose \(a \in A\). The \emph{initial segment of \(A\) determined by \(a\)} is the 
-class \(S_a\), defined as follows
+class \(S_a\), defined as follows:
 
 \[
 	S_a = \{x \in A \mid x < a\}.
 \]
 
-Initial segments are transitive, which means that if we have an initial segment of an initial segment, then the last one  is also 
+Initial segments are transitive, which means that if we have an initial segment of an initial segment, then the last one is also 
 an initial segment of the parent class.
 
 \subsection*{An initial segment of an initial segment of a class is an initial segment of the same class}
@@ -93,11 +92,11 @@ the following properties:
 
 \end{itemize}
 
-The two second conditions simply tell us that, we can compare its elements.
+The last two conditions simply tell us that we can compare its elements.
 
 \textbf{Example:} 
 
-Given the partially ordered classes \(A\) and \(B\), and let \(A \times B\) be ordered antilexicographically. Prove that 
+Given the partially ordered classes \(A\) and \(B\), let \(A \times B\) be ordered antilexicographically. Prove that 
 \((L, U) \text{ is a cut of } B \implies (A \times L, A \times U) \text{ is a cut of } A \times B\).
 
 \textbf{Proof:}
@@ -115,7 +114,7 @@ We show \((L',U')\) is a cut of \(A \times B\) under the antilexicographical ord
 Suppose \(L' \cap U' \neq \emptyset\). Then,
 
 \[
-	\exists (x,y) \in L' \cap U': x \in A \land (y \in L \lor y \in U)
+	\exists (x,y) \in L' \cap U': x \in A \land (y \in L \lor y \in U).
 \]
 
 Hence, \(L \cap U \neq \emptyset\), a contradiction. Therefore, they must be disjoint.
@@ -154,8 +153,8 @@ Therefore \((A \times L, A \times U)\) is a cut of \(A \times B\).
 
 \section{Order Preserving Functions}
 
-Let \(A\) and \(B\) be partially ordered classes; a function \(f: A \to B\) is said to \emph{increasing} or 
-\emph{decreasing}, if it satisfies the following condition: For every two elements \(x, y \in A\), 
+Let \(A\) and \(B\) be partially ordered classes; a function \(f: A \to B\) is said to be \emph{increasing} or 
+\emph{decreasing} if it satisfies the following condition: For every two elements \(x, y \in A\), 
 
 \[
 	x \le y \implies f(x) \le f(y).
@@ -179,16 +178,16 @@ Prove that if \(f : A \to B\) is an injective, increasing function, then it is s
 
 \textbf{Proof:}
 
-Suppose it is not increasingly increasingly. The negation is \(x < y \implies f(x) \ge f(y)\).
+Suppose it is not strictly increasing. The negation is \(x < y \implies f(x) \ge f(y)\).
 
-Now we have that \(x \le y \implies f(x) \ge f(y) \land  x \le y \implies f(x) \le f(y) \iff f(x) = f(y)\) for some \(x, y \in A\), hence we have a contradiction 
+Now we have that \(x \le y \implies f(x) \ge f(y) \land x \le y \implies f(x) \le f(y) \iff f(x) = f(y)\) for some \(x, y \in A\), hence we have a contradiction 
 to the injectivity.
 
 \QED
 
 \section{Order by Inverses}
 
-Let \(A\) and \(B\) be partially ordered classes and let \(f: A \to  B\) be a bijective function. Then \(f\) is 
+Let \(A\) and \(B\) be partially ordered classes and let \(f: A \to B\) be a bijective function. Then \(f\) is 
 an isomorphism if and only if \(f: A \to B\) and \(f^{-1}: B \to A\) are increasing functions. 
 
 \textbf{Proof:}
@@ -197,7 +196,7 @@ an isomorphism if and only if \(f: A \to B\) and \(f^{-1}: B \to A\) are increas
 	f(x) \le f(y) \implies f^{-1}(f(x)) \le f^{-1}(f(y)) \implies x \le y
 \]
 
-By the isomorphic property we get the increasing property for \(f\) and also for \(f^{-1}\) because else for \(f(x) \le f(y): y \le x\) violates our initial condition that \(x \le y\)
+By the isomorphic property we get the increasing property for \(f\) and also for \(f^{-1}\) because else for \(f(x) \le f(y): y \le x\) violates our initial condition that \(x \le y\).
 
 \[
 	x \le y \implies f(x) \le f(y) \implies f^{-1}(f(x)) \le f^{-1}(f(y))
@@ -215,7 +214,7 @@ Let \(A\), \(B\) and \(C\) be partially ordered classes.
 
 	\item \(I_A: A \to A\) with \(I_A(x) = x, \quad x \in A\) is an isomorphism. 
 	\item If \(f: A \to B\) is an isomorphism, then \(f^{-1}: B \to A\) is an isomorphism.
-	\item If \(f: A \to B\) and \(g: B \to C\) is an isomorphism, then \(g \circ f: A \to C\) is an isomorphism.
+	\item If \(f: A \to B\) and \(g: B \to C\) are isomorphisms, then \(g \circ f: A \to C\) is an isomorphism.
 
 \end{itemize}
 
@@ -254,25 +253,25 @@ Therefore, \((f(L), f(U))\) must be disjoint.
 For the covering, we use a similar argument \(f(L) \cup f(U) \neq B\), then \(f\) would not be bijective, hence, another contradiction.
 
 For the downward and upward closure, we know that our function targets the whole set \(B\) and by its isomorphic properties 
-it respects the order. Therefore, this properties are also satisfied. 
+it respects the order. Therefore, these properties are also satisfied. 
 
 \QED
 
 \section{Isomorphic Definition}
 
-Let \(A\), and \(B\) be partially ordered classes. If there exist and order preserving isomorphism between the two 
+Let \(A\) and \(B\) be partially ordered classes. If there exists an order preserving isomorphism between the two 
 classes, we say that \(A\) is \emph{isomorphic} with \(B\).
 
-Note, that the isomorphic property allows us to define an equivalence relation between classes.
+Note that the isomorphic property allows us to define an equivalence relation between classes.
 
 \section{Convex}
 
-Let \(A\) be partially ordered class and \(C \subseteq A\). If for \(a \in C\) and \(b \in C\) the following holds 
+Let \(A\) be a partially ordered class and \(C \subseteq A\). If for \(a \in C\) and \(b \in C\) the following holds 
 \(a \le x \le b, \forall x \in C\), then we consider \(C\) \emph{convex}.
 
 \subsubsection{Convex Properties}
 
-Let \(A\), and \(B\) be partially ordered classes, then
+Let \(A\) and \(B\) be partially ordered classes, then
 
 \begin{itemize}
 
@@ -285,21 +284,21 @@ Let \(A\), and \(B\) be partially ordered classes, then
 
 \textbf{Proof I:}
 
-Given  \(f(a), f(b) \in C\), then using the properties of the increasing functions we get \(f^{-1}(f(a)) \le f^{-1}(f(x)) \le f^{-1}(f(b))\) 
+Given \(f(a), f(b) \in C\), then using the properties of the increasing functions we get \(f^{-1}(f(a)) \le f^{-1}(f(x)) \le f^{-1}(f(b))\) 
 which gives us \(a \le x \le b\) which is the definition of a convex class.
 
 \QED
 
 \textbf{Proof II:}
 
-Given the equivalence relation given by the function \(f\) we have that for every member of an arbitratry equivalence class 
-\(f(a) = f(x) = f(b)\) can be written as \(f(a) \le f(x) \le f(b)\) hence we the defintion of convex classes.
+Given the equivalence relation given by the function \(f\) we have that for every member of an arbitrary equivalence class 
+\(f(a) = f(x) = f(b)\) can be written as \(f(a) \le f(x) \le f(b)\), hence we get the definition of convex classes.
 
 \QED
 
 \section{Maximal Element}
 
-An element \(m \in A\) is considered \emph{maximal element} of \(A\) under the partially order relation \(R\) if \(\forall x \in A\) 
+An element \(m \in A\) is considered a \emph{maximal element} of \(A\) under the partial order relation \(R\) if \(\forall x \in A\) 
 
 \[
 	x \le m
@@ -319,7 +318,7 @@ Or equivalently \(m\) under the relation rule does not relate to anything except
 
 \section{Minimal Element}
 
-An element \(m \in A\) is considered \emph{minimal element} of \(A\) under the partially order relation \(R\) if \(\forall x \in A\) 
+An element \(m \in A\) is considered a \emph{minimal element} of \(A\) under the partial order relation \(R\) if \(\forall x \in A\) 
 
 \[
 	x \ge m
@@ -331,7 +330,7 @@ and if
 	 x \le m \implies x = m.
 \]
 
-Or \(m\) is under the relation rule does not relate to anything except itself: 
+Or \(m\) under the relation rule does not relate to anything except itself: 
 
 \[
 	\forall (x, m) \in R \implies m = x \text{ or equivalently } (m, x) \in R, \forall x \in A.
@@ -360,7 +359,7 @@ Let \(B \subseteq A\). A \emph{lower bound} of \(B\) in \(A\) is an element \(a 
 \(a \le x, \forall x \in B\). Equivalently
 
 \[
-	\forall x \in B, (a, x) \in R
+	\forall x \in B, (a, x) \in R.
 \]
 
 \subsection{Set Of Lower Bounds}
@@ -373,7 +372,7 @@ Let \(B \subset A\), we define the function \(\lambda\) as
 
 \section{Maximum}
 
-An element \(x\) is a partially ordered class \(A\) is a \emph{maximum} if 
+An element \(x\) in a partially ordered class \(A\) is a \emph{maximum} if 
 
 \[
 	(a, x) \in R, \forall a \in A.
@@ -381,7 +380,7 @@ An element \(x\) is a partially ordered class \(A\) is a \emph{maximum} if
 
 \section{Minimum}
 
-An element \(x\) is a partially ordered class \(A\) is a \emph{minimum} if 
+An element \(x\) in a partially ordered class \(A\) is a \emph{minimum} if 
 
 \[
 	(x, a) \in R, \forall a \in A.
@@ -443,7 +442,7 @@ Let \(B\) and \(C\) be subclasses of \(A\). If \(B \subseteq C\), then
 
 \(x \in v(C) \implies x \geq y, \ \forall y \in C\) because \(y \in B \implies b \in C\), then \( x \geq y, \forall y \in B \implies x \in v(B).\)
 
-The opposite is not always true, due to the fact that if \(z \in V(B)\), such that \(z \in C\), but \(z \notin v(C)\), which 
+The opposite is not always true, due to the fact that if \(z \in v(B)\), such that \(z \in C\), but \(z \notin v(C)\), which 
 is possible if \(z\) is not an upper bound of \(C\), then the theorem does not hold.
 
 \QED 
@@ -510,17 +509,17 @@ Let \(B \subseteq A\), then
 
 Let \(s = \sup(\lambda(B)),\ \forall b \in B,\ s \le b\); hence, \(s\) is a lower bound of \(B\). Suppose \(\inf(B) \neq s\), then \(s > \inf(B) \lor s < \inf(B)\).
 
-Case \(s > \inf(B)\): this leads to a contradiction because if \(s \in A\) and  \(s\) is a lower bound of \(B\), but it is greater than its infimum then 
-\(\inf(B)\) can not be the greatest lower bound of \(B\), which does not make sense by the definition.
+Case \(s > \inf(B)\): this leads to a contradiction because if \(s \in A\) and \(s\) is a lower bound of \(B\), but it is greater than its infimum, then 
+\(\inf(B)\) cannot be the greatest lower bound of \(B\), which does not make sense by the definition.
 
-Case \(s < \inf(B)\): \(\inf(B)\) is a lower bound of \(B\); therefore, \(\inf(B) \in \lambda(B)\). If \(s < \inf(B)\) then \(s\) can not be the supremum 
+Case \(s < \inf(B)\): \(\inf(B)\) is a lower bound of \(B\); therefore, \(\inf(B) \in \lambda(B)\). If \(s < \inf(B)\), then \(s\) cannot be the supremum 
 of \(\lambda(B)\) since there exists a greater element in it; hence \(s = \inf(B)\).
 
 \QED
 
 \section{Example Exercises}
 
-1. Prove that given \(B \subseteq A\), \(\sup(B) = b \in A \implies \lambda(v(B)) \cap v(B) = \{b\}\)
+1. Prove that given \(B \subseteq A\), \(\sup(B) = b \in A \implies \lambda(v(B)) \cap v(B) = \{b\}\).
 
 \textbf{Proof:}
 
@@ -530,14 +529,14 @@ By definition \(b \in v(B)\). Also, by the definition of \(\lambda(v(B))\):
 	\{a \in A \mid x \le b, \forall b \in v(B)\};
 \]
 
-we can guarantee that \(b \in \lambda(v(B))\). It is leftover to prove that the intersection only consists of \(b\). 
+we can guarantee that \(b \in \lambda(v(B))\). It remains to prove that the intersection only consists of \(b\). 
 
 Suppose that there also exists another \(x\) in the intersection such that \(x \ne b\), then \(x \in v(B) \land x \in \lambda(v(B))\). 
 
 If \(x \in v(B)\) and \(x \ne b\), then \(x < b\) or \(x > b\) which when handled separately lead to the following conclusion: 
 
 If \(x < b\), then \(b\) is not the least upper bound of \(B\) which is a contradiction to the definition of the supremum. Hence, by the \(\land\) in our original 
-statement, we arrive at the conclusion that such an \(x\) can not exist.
+statement, we arrive at the conclusion that such an \(x\) cannot exist.
 
 \QED
 
@@ -548,11 +547,11 @@ statement, we arrive at the conclusion that such an \(x\) can not exist.
 By definition for \(\sup(B) \ge b, \forall b \in B\), and also \(\sup(B) \in v(B)\), but because it is the least upper bound we can write 
 
 \[
-	v(B) = \{a \in A \mid a \ge \sup(B)\}
+	v(B) = \{a \in A \mid a \ge \sup(B)\}.
 \]
 
-Therefore, if \(\sup(B) = \sup(C) = s\), then \(v(B) = \{a \in A \mid a \ge s\}\), and because they are shared then 
-\(v(C) = \{a \in A \mid a \ge s\}\)
+Therefore, if \(\sup(B) = \sup(C) = s\), then \(v(B) = \{a \in A \mid a \ge s\}\), and because they are shared, then 
+\(v(C) = \{a \in A \mid a \ge s\}\).
 
 \QED 
 
@@ -566,7 +565,7 @@ implies that \(y \le b, \forall b \in B\). Finally, if \(y \le b, b \in B\), the
 
 \section{Bounded}
 
-Let \(A\) be a partially ordered class. If \(A\) has both a lower an upper bound then it is \emph{bounded}.
+Let \(A\) be a partially ordered class. If \(A\) has both a lower and an upper bound, then it is \emph{bounded}.
 
 \section{Conditionally Complete}
 
@@ -600,7 +599,7 @@ For \(a, b \in A\) the following properties apply
 
 	\item \((a \lor b) \lor c = a \lor (b \lor c)\) and \((a \land b) \land c = a \lor (b \land c)\)
 	
-	\item \((a \lor b) \land a =  a\) and \((a \and b) lor a = a\)
+	\item \((a \lor b) \land a = a\) and \((a \land b) \lor a = a\)
 
 \end{enumerate}
 
@@ -608,7 +607,7 @@ For \(a, b \in A\) the following properties apply
 
 To prove: \(a \lor a = a\) and \(a \land a = a\). 
 
-\(a \lor a \ge x, \forall x \in \{a\}\). Using the defintion of the infimum we can also prove 
+\(a \lor a \ge x, \forall x \in \{a\}\). Using the definition of the infimum we can also prove 
 the statement for infimum.
 
 The other statements are easily proved by cases. 
@@ -617,7 +616,7 @@ The other statements are easily proved by cases.
 
 \section{Definition of Less Than}
 
-Let \(A\) be a \emph{lattice}, we define the symbol \(\le\) as:
+Let \(A\) be a \emph{lattice}; we define the symbol \(\le\) as:
 
 \[
 	x \le y \iff x \lor y = y
@@ -632,7 +631,7 @@ Given a lattice \(A\) with \(\le\), prove that it is an order relation.
 \emph{Antisymmetry}: \(a \le b \implies a \lor b = b\) if by supposition \(b \le a\), then \(b \lor a = a\), but our property 
 tells us that \(a \lor b = b \lor a\); therefore, \(a = b\).
 
-\emph{Transitivity}: \((a, b), (b, z) \in R \implies (a, z) \in R\), if \(a \lor b = b\) and  \(b \lor z = z\), then 
+\emph{Transitivity}: \((a, b), (b, z) \in R \implies (a, z) \in R\), if \(a \lor b = b\) and \(b \lor z = z\), then 
 \(a \le b\) and \(a \le z\), hence; \(a \le b \lor z = z \implies (a, z) \in R\).
 
 \QED
@@ -641,7 +640,7 @@ tells us that \(a \lor b = b \lor a\); therefore, \(a = b\).
 
 Given \(a \le b\) and \(c \le d\), prove that \(a \lor c \le b \lor d\).
 
-Proceeding by cases note that: \(a \ge c\) delivers \(a \lor b \lor d\). If \(b \ge c\), then \(a \le b\); 
+Proceeding by cases, note that: \(a \ge c\) delivers \(a \lor b \lor d\). If \(b \ge c\), then \(a \le b\); 
 if \(d \ge b\) then \(a \le d\) by transitivity. Similarly, for the case \(a \lor c = c\), then if \(b \ge d\) gives  us 
 \(c \le b\); else if \(b \le d\) then \(c \le b \le d\).
 
@@ -665,7 +664,7 @@ Let \(A\) be a lattice, and let \(B\) be a subclass of \(A\). If
 	x \in B \text{ and } y \in B \implies x \lor y \in B \text{ and } x \land y \in B,
 \]
 
-the \(B\) is called a \emph{sublattice} of \(A\).
+then \(B\) is called a \emph{sublattice} of \(A\).
 
 \section{Boolean Algebra}
 
@@ -683,11 +682,11 @@ A \emph{Boolean algebra} is defined to be a lattice \(A\) with the following add
 
 \end{enumerate}
 
-In other words \(1\) the biggest and \(0\) the smallest element in \(A\).
+In other words, \(1\) is the biggest and \(0\) the smallest element in \(A\).
 
 \subsection{Distributive Lattices}
 
-A \emph{distributive lattice} is boolean algebra.
+A \emph{distributive lattice} is a Boolean algebra.
 
 \subsection{Fully Ordered Classes}
 
@@ -734,7 +733,7 @@ These properties ensure that arithmetic operations respect the order structure.
 
 	\item \( a < b \land c < 0 \implies ac > bc \)
 
-    \item \(a < 0, b < 0 \implies a + b < 0\) the contrary applies to the multiplication \(ab > 0\)
+    \item \(a < 0, b < 0 \implies a + b < 0\) the contrary applies to the multiplication \(ab > 0\).
 
     \item \(a > 0, b > 0 \implies a + b > 0\)
 	
@@ -748,12 +747,12 @@ Examples of ordered fields:
 
 \begin{itemize}
 
-	\item \( \Q \): Rational numbers with the usual order
+	\item \( \Q \): Rational numbers with the usual order.
 
-	\item \( \R \): Real numbers with the usual order
+	\item \( \R \): Real numbers with the usual order.
 
 	\item \( \C \): Complex numbers are not an ordered field, since \( i^2 = -1 < 0 \) 
-	      would violate positivity of squares
+	      would violate positivity of squares.
 
 \end{itemize}
 

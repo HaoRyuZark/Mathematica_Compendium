@@ -1,26 +1,27 @@
-
 \chapter{Orthogonal Linear Maps}
 
-\section{Orthogonality}
-
-In this section we are going to take a look at some special type of linear maps that are called \emph{orthogonal} 
-and at the term \emph{isometry}. It will be useful to remember some concepts about the dot product such as 
+In this chapter we are going to take a look at a special type of linear map that is called \emph{orthogonal} 
+and at the term \emph{isometry}. It will be useful to remember some concepts about the dot product, such as 
 \(\inner{x}{x} = x^T \cdot x = \metric{x}^2\).
 
-\subsection{Isometry}
+\section{Isometry}
 
-Given two vector spaces \((V, \metric{\centerdot}_V)\) and \((W, \metric{\centerdot}_W)\). Then a map 
+Given two vector spaces \((V, \metric{\cdot}_V)\) and \((W, \metric{\cdot}_W)\), a map 
 \(f: V \to W\) is called \emph{isometric} if and only if \(\metric{x - y}_V = \metric{f(x) - f(y)}_W \).
 
 It also has the following traits:
 
 \begin{enumerate}
-	\item \emph{Length-Preserving}: \(\metric{x}_V = \metric{f(x)}_W \quad \forall x \in V\).
-	\item \emph{Angle-Preserving}: \(\angle (x,y) = \angle (f(x),f(y)) \quad \forall x,y \in V\)
-	\item \emph{Linear}: If \(f(x + \lambda y) = f(x) + \lambda f(y)\)
+
+    \item \emph{Length-Preserving}: \(\metric{x}_V = \metric{f(x)}_W \quad \forall x \in V\).
+
+    \item \emph{Angle-Preserving}: \(\angle (x,y) = \angle (f(x),f(y)) \quad \forall x,y \in V\).
+
+    \item \emph{Linear}: \(f(x + \lambda y) = f(x) + \lambda f(y)\).
+
 \end{enumerate}
 
-\subsection{Unit-sphere}
+\section{Unit-sphere}
 
 For \((V, \R)\) with metric \(\metric{\cdot}\) we denote 
 
@@ -36,19 +37,19 @@ as the \emph{unit-sphere}.
 
 This matrix is a common example of an isometric linear map, because of the way it transforms the space.
 
-For the \(2D\) we have 
+For the \(2D\) case we have 
 
 \[
     \begin{bmatrix}
         \cos(\phi) & -\sin(\phi)\\
         \sin(\phi) & \cos(\phi)
-    \end{bmatrix}
+    \end{bmatrix}.
 \]
 
 The derivation comes from the addition theorems for \(\sin(\phi) \) and \(\cos(\phi)\).
 
-Given two vectors \(\vec{v}\) and \(\vec{g}\) whose angles are \(\alpha\) and \(\theta = \alpha + \beta\). 
-We can rotate the vector \(\vec{v}\) by some \(\beta\) to transform into \(\vec{g}\).
+Given two vectors \(\vec{v}\) and \(\vec{g}\) whose angles are \(\alpha\) and \(\theta = \alpha + \beta\), 
+we can rotate the vector \(\vec{v}\) by some \(\beta\) to transform it into \(\vec{g}\).
 
 \begin{align*}
     x &= r \cos(\alpha)\\
@@ -69,7 +70,7 @@ And therefore
     y' &= r' \cos(\alpha)\sin(\beta) + r'\cos(\beta)\sin(\alpha)
 \end{align*}
 
-Because, a rotation does not change the magnitude we can say that \(r = r'\). Thus 
+Because a rotation does not change the magnitude, we can say that \(r = r'\). Thus 
 
 \begin{align*}
     x' &= r \cos(\alpha)\cos(\beta) - r\sin(\alpha)\sin(\beta)\\
@@ -100,7 +101,7 @@ which gives us
 
 \subsection{Rotation Matrices For \texorpdfstring{\(\R^3\)}{}}
 
-Note that a rotation is determined by two axis, hence, we get 3 different matrices depending on the two axis we need to rotate.
+Note that a rotation is determined by two axes; hence, we get 3 different matrices depending on the two axes we need to rotate.
 
 \emph{R(y,z)}:
 
@@ -136,12 +137,12 @@ Note that a rotation is determined by two axis, hence, we get 3 different matric
 
 \section{Orthogonal Matrices}
 
-A matrix \(A \in \R^{n \times n}\) is \emph{orthogonal} if its columns vectors form an orthonormal 
+A matrix \(A \in \R^{n \times n}\) is \emph{orthogonal} if its column vectors form an orthonormal 
 basis.
 
 The set of all \emph{orthogonal} matrices is \(O(n)\).
 
-\subsubsection{Properties of orthogonal matrices}
+\subsection{Properties of orthogonal matrices}
 
 \begin{enumerate}
    
@@ -151,7 +152,7 @@ The set of all \emph{orthogonal} matrices is \(O(n)\).
    
     \item \(A^T \in O(n)\).
 
-    \item \(\|Q\|_2 = \sup_{x \ne 0} \frac{\|Qx\|}{\|x\|_z} = 1\).
+    \item \(\metric{Q}_2 = \sup_{x \ne 0} \frac{\metric{Qx}_2}{\metric{x}_2} = 1\).
 
 \end{enumerate}
 
@@ -198,11 +199,11 @@ Prove that \(H_n\) is \emph{orthogonal} for all \(\vec{u}\in \R^n \backslash \{0
 
 \QED
 
-\subsection{The Determinants of Orthogonal Matrices}
+\section{The Determinant Of Orthogonal Matrices}
 
-The \emph{determinant} of this kind of matrices can only be either positioning 1 or negative 1.
+The \emph{determinant} of this kind of matrix can only be either positive 1 or negative 1.
 
-\textbf{Proof:}:
+\textbf{Proof:}
 
 We know that \(\det(I) = I \), therefore
 
@@ -216,13 +217,13 @@ We know that \(\det(I) = I \), therefore
 
 \QED
 
-\subsection{The Orthogonal Group}
+\section{The Orthogonal Group}
 
 \(O(n)\) with the operation matrix multiplication forms the \emph{orthogonal group}.
 
-\subsection{Dot Product}
+\section{The Inner Product}
 
-Given \(f: \R^n \to \R^n\) then this two statements are equivalent.
+Given \(f: \R^n \to \R^n\), these two statements are equivalent:
 
 \[
     \inner{f(x)}{f(y)} = \inner{x}{y} \quad \forall x,y \in \R^n
@@ -230,14 +231,12 @@ Given \(f: \R^n \to \R^n\) then this two statements are equivalent.
 
 and 
 
-\(f\) preserves the angles and length.
-
-\(f\) is also called \emph{orthogonal}.
+\(f\) preserves the angles and length. \(f\) is also called \emph{orthogonal}.
 
 \textbf{Proof \(\Rightarrow\):}
  
 \[
-    \|x\|^2 = \inner{x}{x} = \inner{f(x)}{f(x)} = \|f(x)\|^2
+    \|x\|^2 = \inner{x}{x} = \inner{f(x)}{f(x)} = \|f(x)\|^2.
 \]
 
 This implies the length preservation. The isometry gives us:
@@ -263,16 +262,16 @@ Then
 
 \textbf{Proof \(\Leftarrow\):} 
 
-With \(\alpha = \angle(x, y) = \angle(f(x), f(y))\) gilt:
+With \(\alpha = \angle(x, y) = \angle(f(x), f(y))\), it holds:
 
 \[
     \inner{f(x)}{f(y)} = \cos(\alpha) \cdot \|f(x)\| \cdot \|f(y)\| = \cos(\alpha) 
-    \cdot \|x\| \cdot \|y\| = \inner{x}{y}
+    \cdot \|x\| \cdot \|y\| = \inner{x}{y}.
 \]
 
 \QED
 
-\subsection{Orthonormal Matrices}
+\section{Orthonormal Matrices}
 
 A matrix \(Q \in \R^{n \times n}\) is \emph{orthonormal} if for each of its column vectors \(q_j\), they are pairwise orthonormal.
 
@@ -284,7 +283,7 @@ A matrix \(Q \in \R^{n \times n}\) is \emph{orthonormal} if for each of its colu
     \end{cases}
 \]
 
-\subsubsection*{Properties of Orthonormal Matrices}
+\subsection{Properties of Orthonormal Matrices}
 
 If \(Q, \tilde{Q} \in \R{n \times n}\) are orthonormal matrices, the following applies: 
 
@@ -311,23 +310,23 @@ flipped columns. Since by our definition
     \end{cases}
 \]
 
-We get a matrix with 1's at the entries \(QQ^t_{i,j}\) if \(i = j\) and else 0. in other words the identity.
+We get a matrix with 1's at the entries \(QQ^t_{i,j}\) if \(i = j\) and 0 otherwise. In other words, the identity.
 
 \QED
 
 \textbf{Proof 2:}
 
-For all \(x \in \R^n\) holds that 
+For all \(x \in \R^n\) it holds that 
 
 \[
-    \|Qx\|_2^2 = (Qx)^T(Qx) = x^T Q^T Q x = x^T x = \|x\|_2^2
+    \|Qx\|_2^2 = (Qx)^T(Qx) = x^T Q^T Q x = x^T x = \|x\|_2^2.
 \]
 
-Since orthonormal matrices do not preserve the length. Therefore \(\|Q\|_2 = 1\) and 
-analogously, the same for \(Q^{-1}\) hence 
+Hence, orthonormal matrices preserve the length. Therefore \(\|Q\|_2 = 1\), and 
+analogously, the same holds for \(Q^{-1}\), hence 
 
 \[
-    \kappa_2(Q) = \|Q\|_2 \|Q^{-1}\| = 1
+    \kappa_2(Q) = \|Q\|_2 \|Q^{-1}\| = 1.
 \]
 
 \QED
@@ -344,10 +343,10 @@ Therefore the columns are pairwise orthonormal.
 
 \QED
 
-\subsection{Theorem of the Matrix Representation}
+\section{Theorem Of The Matrix Representation}
 
-The mapping \( f : \R^n \to \R^n \) is orthogonal if and only if  
-the associated matrix representation \( Q \) (with respect to the standard basis) is an orthogonal matrix, i.e., \( Q \in O(n) \).
+The mapping \( f : \R^n \to \R^n \) is orthogonal if and only if  the associated matrix representation \( Q \) (with respect to the standard basis) 
+is an orthogonal matrix, i.e., \( Q \in O(n) \).
 
 \textbf{Proof \(\Rightarrow\):} 
 
@@ -381,10 +380,9 @@ Follows by the same calculation as above.
 
 \QED
 
-\subsection{Change of Basis}
+\section{Change of Basis}
 
-Let \(f\) be orthogonal. Then the matrix representation of \(f\)  
-with respect to any orthonormal basis is orthogonal.
+Let \(f\) be orthogonal. Then the matrix representation of \(f\)  with respect to any orthonormal basis is orthogonal.
 
 \textbf{Proof:} 
 
@@ -400,7 +398,7 @@ due to the group property of \( O(n) \).
 
 \QED
 
-\subsection{QR-Decomposition}
+\section{QR-Decomposition}
 
 A use case of orthogonal matrices is the \emph{QR-Decomposition}. The goal is that given a system 
 \( Ax = b\) with a matrix \(A\in \R^{m \times n}\), 

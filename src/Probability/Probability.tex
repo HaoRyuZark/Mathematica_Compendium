@@ -16,32 +16,32 @@ A \emph{probability experiment} is considered ideal if and only if it satisfies 
 
 \subsection{The Birthday Paradox}
 
-This is a small question that says: What is the probability of at least two people having 
-their birthday on the same day in a group of \(x\) persons.
+This is a small question that says: what is the probability of at least two people having 
+their birthday on the same day in a group of \(x\) persons?
 
 \[
     P(x) = 1 - \prod_{n = 0}^{x} \frac{365 - n}{365}
 \]
 
-This formula gives us the probability of total minus all persons having it on different days. Which
+This formula gives us the probability of the total minus all persons having it on different days, which is 
 what we are looking for.
 
 \section{The Sample Space}
 
-The \emph{sample space} is the set of all possible outcomes of an experiment is denoted as \(\Omega\) and its cardinality 
+The \emph{sample space} is the set of all possible outcomes of an experiment. It is denoted as \(\Omega\), and its cardinality 
 is the number of possible outcomes.
 
-For experiments with \(\Omega\) as the result set of one repetition then we define 
+For experiments with \(\Omega\) as the result set of one repetition, we define 
 
 \[
     \Omega = \Omega \times \cdots \times \Omega  
 \]
 
-As the \emph{sample space} of the experiment.
+as the \emph{sample space} of the experiment.
 
-Finally, each subset of \(\Omega\) is called an \emph{outcome}, each subset with 
-only one element in it is called an \emph{elemental outcome} The set of all possible outcomes is 
-\(\mathcal{P}(\Omega)\)
+Finally, each subset of \(\Omega\) is called an \emph{outcome}. Each subset with 
+only one element in it is called an \emph{elemental outcome}. The set of all possible outcomes is 
+\(\mathcal{P}(\Omega)\).
 
 \section{Laplace Distribution and Experiment}
 
@@ -75,14 +75,14 @@ of subsets of \(\Omega\). \(\mathcal{A}\) is a \(\sigma\)\emph{-Algebra} if and 
 
 \subsection{The Power-set is a Sigma Algebra}
 
-This proof is pretty straight forward. 
+This proof is pretty straightforward. 
 
 For the first axiom, we know that \(\Omega \in \mathcal{P}\). 
 
-For the second axiom, if \(A\) is a subset of the power-set then \(\Omega \setminus A\) is also 
-int the power-set.
+For the second axiom, if \(A\) is a subset of the power-set, then \(\Omega \setminus A\) is also 
+in the power-set.
 
-And lastly, for a sequence of sets in the power-set their, union is also in the power-set, because the power-set 
+And lastly, for a sequence of sets in the power-set, their union is also in the power-set, because the power-set 
 contains all subsets of \(\Omega\).
 
 \QED
@@ -115,8 +115,8 @@ Given a number of sets in \(\mathcal{A}\), using the laws of De Morgan we get
 and we know that the complements are part of \(mathcal{A}\) by definition. 
 
 For the last part, \(A \setminus B = A \cap B^c\), because \(B^c \in \mathcal{A}\) we can apply De Morgan 
-\((A^c \cup (B^c)^c)^c = (A^c \cup B)^c\) Now because this is the union of two sets in the sigma algebra, and we know by definition 
-that their union if also in the set.
+\((A^c \cup (B^c)^c)^c = (A^c \cup B)^c\). Now, because this is the union of two sets in the sigma algebra, we know by definition 
+that their union is also in the set.
 
 \QED
 
@@ -139,7 +139,7 @@ Also, the triplet \(\Omega, \mathcal{A}, P\) is called a \emph{probability space
 
 \subsection{Probability space of the Power-set}
 
-We want to prove that the probability space with the power-set of omega and \(P(A) = \frac{|A|}{|\Omega|}\) is in fact a probability space 
+We want to prove that the probability space with the power-set of omega and \(P(A) = \frac{|A|}{|\Omega|}\) is in fact a probability space. 
 
 \begin{itemize}
     
@@ -147,15 +147,15 @@ We want to prove that the probability space with the power-set of omega and \(P(
     
     \item \(P(\Omega) = \frac{|\Omega|}{|\Omega|} = 1\).
 
-    \item If all of our subsets in the power-set are pairwise disjunctive this mean that their intersection is the empty-set. In other wise there 
-          therefore, their independent of each other which means that their probabilities are also independent.
+    \item If all of our subsets in the power-set are pairwise disjunctive, this means that their intersection is the empty-set. In other words, 
+          they are therefore independent of each other, which means that their probabilities are also independent.
 
 \end{itemize}
 
 \subsection{Discrete Probability Spaces}
 
 A probability space \(\Omega, \mathcal{P}(\Omega), P\) is considered \emph{discrete} if 
-\(\Omega\) is finite or infinite countable. In that case \(\Omega = \{\omega_i : i \in I\}\) for \(I = \{1, \dots, n\}\).
+\(\Omega\) is finite or infinite countable. In that case, \(\Omega = \{\omega_i : i \in I\}\) for \(I = \{1, \dots, n\}\).
 
 For \(A \in \mathcal{A}\)
 
@@ -164,9 +164,9 @@ For \(A \in \mathcal{A}\)
     \sum_{i \in I: \omega_i \in A} P(\{\omega_i\}) = \sum_{i \in I: \omega_i \in A} p(\omega_i)
 \]
 
-The function \(P(\{\omega_i\}) = p(\omega_i)\) is called a \emph{probability function}
+The function \(P(\{\omega_i\}) = p(\omega_i)\) is called a \emph{probability function}.
 
-To test if specific function or distribution is actually a probability one we have to check:
+To test if a specific function or distribution is actually a probability one, we have to check:
 
 \begin{itemize}
     
@@ -218,7 +218,7 @@ Given \((\Omega, \mathcal{A}, P)\) and \(A,B \in \mathcal{A}\), the following ap
     	P(B) = P(B \setminus A) - P(A \cap B).
     \]
     
-    \item Using the addition property and by writing the union as \((A \setminus B) \cup (B \setminus A) \cup (A \cap B)\)we get that 
+    \item Using the addition property and by writing the union as \((A \setminus B) \cup (B \setminus A) \cup (A \cap B)\) we get that 
 
     \[
 	    P(A \cup B) = P(B) - P(A \cap B) + P(A) - P(A \cap B) + P(A \cup B)
@@ -228,12 +228,12 @@ Given \((\Omega, \mathcal{A}, P)\) and \(A,B \in \mathcal{A}\), the following ap
  
     \item \(\Omega = A^c \cup A\) and \(1 = P(\Omega)\), thus by the addition \(P(A) + P(A^c) = 1\).
     
-    \item Given that if \(A = B\) then the equality holds the case where \(A\) is a subset of \(B\) comes 
-    from the fact that it is a strict subset of the other than its cardinality is smaller.
+    \item Given that if \(A = B\), then the equality holds. The case where \(A\) is a subset of \(B\) comes 
+    from the fact that if it is a strict subset of the other, then its cardinality is smaller.
     
     \item By the definition that \(P(\Omega) = 1\) and the property \(P(\emptyset) = 0\) 
     we are given an upper and lower bound for our probability distribution. Therefore, every subset of \(\Omega\) will 
-    have a probability less or equal to it. For the lower bound the logic is that it has no other subset with fewer elements than it, but 
+    have a probability less or equal to it. For the lower bound, the logic is that it has no other subset with fewer elements than it, but 
     it is part of sets with more elements.
     
     \item Let us define \(B_n = A_n \setminus \bigcap{i = 1}_{n - 1} A_i\) which are pairwise disjoint. 
@@ -300,8 +300,8 @@ then
 
 \textbf{Example:}
 
-When throwing a diece two times is the probability of throwing during the first throw an even 
-number and when throwing the second dice the sum gives us an even number. 
+When throwing a die two times, we look at the probability of throwing an even number during the first throw 
+and, when throwing the second die, the sum giving us an even number. 
 
 \[
     \Omega = \{1, \dots, 6\}^2 \quad A = \{2,4,6\} \times \{1, \dots, 6\} \quad B = \{2,4,6\} \cup \{1,3,5\}^2
@@ -337,14 +337,14 @@ For all pairs \(A_i, A_j\) where \(i \le j\).
 
 \subsection{Independence in Laplace Distribution}
 
-Give a Laplace distribution \(P = \frac{|A|}{|\Omega|}\) with two independent results 
+Given a Laplace distribution \(P = \frac{|A|}{|\Omega|}\) with two independent results 
 \(A\) and \(B\). 
 
 \[
     \frac{|A \cap B|}{|A|} = \frac{B}{|\Omega|}.
 \]
 
-This means that \(B\) is a probable in \(A\) as in the greater picture.
+This means that \(B\) is as probable in \(A\) as in the greater picture.
 
 \section{Complement Property}
 
@@ -371,7 +371,7 @@ This gives us
     P(A^c \cap B) = P(A) - P(A \cap B).
 \]
 
-Using the Independence of \(A\) and \(B\)
+Using the independence of \(A\) and \(B\)
 
 \[
     P(A^c \cap B) = P(B) - P(A)P(B) = P(B) (1 - P(A))
@@ -386,8 +386,8 @@ Using the Independence of \(A\) and \(B\)
 \section{Independence Of Blocks} 
 
 Given \(A_1, \dots, A_n\) independent events, divided into two blocks \(A_1, \dots, A_{k}\) and \(A_{k + 1}, \dots, A_n\). Let 
-\(B\) and \(C\) be events resulted of the union, intersection or complement of the first two blocks. Then this results are 
-independent
+\(B\) and \(C\) be events resulting from the union, intersection, or complement of the two blocks. Then these results are 
+independent.
 
 \section{The Product Space}
 
@@ -404,7 +404,7 @@ and
     p(\omega_1, \dots, \omega_n) = p(\omega_1) \cdot \dots \cdots p(\omega_n)
 \]
 
-An example is throwing two dices at the same time.
+An example is throwing two dice at the same time.
 
 \subsection{The Product Space Of Discrete Probability Spaces}
 
@@ -420,15 +420,15 @@ Given the product space \((\Omega, \mathcal{P}(\Omega), P)\) of the spaces \((\O
 For \(i = 1, \dots, n\). Then it holds that \(P(A_{i}^{'}) = P_i(A_i)\) and the events \(A_{i}^{'}\) are 
 independent.
 
-\section{Bernoulli-Expceriments}
+\section{Bernoulli-Experiments}
 
 An experiment where \(\Omega = \{0,1\}, P(\{1\}) = p\) and \(P(\{0\}) = 1 - p\) for 
-\(p \in (0, 1)\) is called a \emph{Bernoulli-expceriment}.
+\(p \in (0, 1)\) is called a \emph{Bernoulli-experiment}.
 
 \subsection{Bernoulli Schema}
 
-If we perform a Bernoulli-Expceriment \(n\)-times with a success probability of \(p\). Where 
-\(P(A_i) = p\). We define 
+If we perform a Bernoulli-experiment \(n\) times with a success probability of \(p\), where 
+\(P(A_i) = p\), we define 
 
 \[
     C_k = \bigcup_{I \in \{1, \dots, n\} \land |I| = k} \left(\bigcap_{i \in I} A_i \cap \bigcap_{i \in I} A_{i}^{c}\right).
@@ -452,8 +452,8 @@ of \(B\) under the condition \(A\) is defined as
 
 \textbf{Example:}
 
-In words, what is the probability of \(B\) if we limit ourself only to the case where \(A\) happens. Also what is the ratio between \(A \cap B\) and \(A\).
-From this definition we can also derive these two statements which are also equivalent. 
+In words, what is the probability of \(B\) if we limit ourselves only to the case where \(A\) happens? Also, what is the ratio between \(A \cap B\) and \(A\)?
+From this definition, we can also derive these two statements, which are also equivalent. 
 
 \[
     P(B \mid A) = P(B) \iff A \text{ and } B \text{ are independent}
@@ -475,7 +475,7 @@ Given the events \(A\) and \(B\) where \(P(A) > 0\). If \(A \subset B\) then
 
 \textbf{Proof:}
 
-\(A \subset B \implies A \cap B = A \) therefore 
+\(A \subset B \implies A \cap B = A \), therefore 
 
 \[
     P(B \mid A) = \frac{P(A)}{P(A)} = 1.
@@ -516,9 +516,9 @@ and
 
 \begin{itemize}
 
-    \item Because our sets do not have negative cardinalities and the lowest we can reach is the probability of the empty-set we can not get below 0.
+    \item Because our sets do not have negative cardinalities and the lowest we can reach is the probability of the empty-set, we cannot get below 0.
 
-    \item Similar to another proof we get \(\frac{P(A)}{P(A)}\) 
+    \item Similar to another proof, we get \(\frac{P(A)}{P(A)}\). 
 
     \item By the definition of probability space.
 	
@@ -571,13 +571,13 @@ Which gives us
     P(R) = P (R \mid A)P (A) + P (R \mid B) P(B) + P (R \mid C) P(C).
 \]
 
-Finally we plug in the individual numbers 
+Finally, we plug in the individual numbers 
 
 \[
     P(R) = \frac{1}{3} \left(\frac{2}{5} + \frac{3}{2} + \frac{1}{4} \right) = \frac{6}{15}.
 \]
 
-\section{Multistage Random Expceriments}
+\section{Multistage Random Experiments}
 
 Let \(\Omega_1, \ldots, \Omega_n\) be discrete sample spaces of \(n\) sub-experiments, and let \(\Omega = \Omega_1 \times \cdots \times \Omega_n\).
 Furthermore, let an initial distribution be given by the probability function \(p_1\) with
@@ -643,22 +643,22 @@ the probability that your hypothesis is true given the observed evidence.
 	
     \item \(P(H)\) is called the \emph{prior}. Our initial hypothesis, without seeing the evidence.
 
-    \item \(P (E \mid H)\) is called the \emph{likelihood}. This is the probability that we will see our hypothesis reflected on the 
-    evidence given that our hypothesis is true.
+    \item \(P (E \mid H)\) is called the \emph{likelihood}. This is the probability that we will see our hypothesis reflected in the 
+    evidence, given that our hypothesis is true.
 
-    \item \(P (E \mid \neg H)\) represents the probability that our hypothesis will be reflected on the sample given our hypothesis is false. 
+    \item \(P (E \mid \neg H)\) represents the probability that our hypothesis will be reflected in the sample, given that our hypothesis is false. 
     
 \end{itemize}
 
-With this knowledge, breaking down the formula is very intuitive 
+With this knowledge, breaking down the formula is very intuitive. 
 
 \begin{itemize}
     
-    \item \(P (H \mid E)\) is the \emph{posterior}. It describes the following question: How often is \(H\) true among the cases where \(H\) is true.probability
+    \item \(P (H \mid E)\) is the \emph{posterior}. It describes the following question: how often is \(H\) true among the cases where \(H\) is true?
 
     \item \(P(H)P(E \mid H)\) is the proportion of our hypothesis in the sample being true times the actual proportion of the fitting samples inside our hypothesis. 
 
-    \item \(P(H)P(E \mid H) + P(\neg H)P(E \mid \neg H) \) consist of our expression above plus the proportion of the counter hypothesis times the proportion of the 
+    \item \(P(H)P(E \mid H) + P(\neg H)P(E \mid \neg H) \) consists of our expression above plus the proportion of the counter hypothesis times the proportion of the 
     representatives of our hypothesis which will show up in the evidence in the counter group.
 
 \end{itemize}
@@ -666,7 +666,7 @@ With this knowledge, breaking down the formula is very intuitive
 \textbf{Example:}
 
 A disease affects 1 percent of the population, and you were tested positive with a test which has a 99.9 percent accuracy. What is 
-the probability for you truly being infected? 
+the probability of you truly being infected? 
 
 \[
     P ( I \mid + ) = \frac{P(I)P(+ \mid I)}{P(I)P(+ \mid I) + P( \neg I) P( + | \neg I)}
@@ -777,7 +777,7 @@ by a normal distribution with parameters \(\mu = np\) and \(\sigma = \sqrt{np(1 
 
 \textbf{Example:}
 
-Given \(n = 75\) and \(p = 0.6\) approximate the probability of getting between \(P(X \ge 52)\)
+Given \(n = 75\) and \(p = 0.6\), approximate the probability \(P(X \ge 52)\)
 
 \(\mu = np = 45\), \(\sigma^2 = np(1 - p) = 18\)
 
@@ -811,13 +811,13 @@ number of successes is given by
     \lim_{n \to \infty} P \left( \frac{S_n - np}{\sqrt{np (1 - p)} \le x}\right) = \Phi(X).
 \]
 
-For the case that we have a region with two bounds \(a < S_n < b\) we get
+For the case that we have a region with two bounds \(a < S_n < b\), we get
 
 \[
     P \left( \frac{S_n - np}{\sqrt{np (1 - p)} \le Z_2}\right) - P \left( \frac{S_n - np}{\sqrt{np (1 - p)} \le Z_1}\right).
 \]
 
-If normal approximation is used for a discrete distribution we have to apply the continuity correction.
+If a normal approximation is used for a discrete distribution, we have to apply the continuity correction.
 
 \[
     P (a < S_n < b) \approx \Phi \left( \frac{b + 0.5 - np}{\sqrt{np(1 - p)}}\right) - 
@@ -826,7 +826,7 @@ If normal approximation is used for a discrete distribution we have to apply the
 
 \subsection{Continuity Correction}
 
-An approximation is useful if \(np(1 - p) \ge 9\). This a heuristic method.
+An approximation is useful if \(np(1 - p) \ge 9\). This is a heuristic method.
 
 \textbf{Example:}
 

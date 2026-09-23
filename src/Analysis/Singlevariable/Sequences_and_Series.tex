@@ -1,10 +1,9 @@
-
 \chapter{Sequences and Series}
 
-A sequence is an ordered list of numbers, usually defined by a formula or a recurrence relation. It is 
+A \emph{sequence} is an ordered list of numbers, usually defined by a formula or a recurrence relation. It is 
 one of the fundamental objects of study in mathematical analysis.
 
-\subsection{Arithmetic Sequence}
+\section{Arithmetic Sequence}
 
 An \emph{arithmetic sequence} is a sequence where the difference between consecutive terms is constant.
 
@@ -14,9 +13,9 @@ An \emph{arithmetic sequence} is a sequence where the difference between consecu
 
 \begin{itemize}
 
-    \item \(a_1\) is the first term
+    \item \(a_1\) is the first term.
 
-    \item \(d\) is the common difference \(d = a_{n + 1} - a_{n}\)
+    \item \(d\) is the common difference \(d = a_{n + 1} - a_{n}\).
 
 \end{itemize}
 
@@ -26,7 +25,7 @@ An \emph{arithmetic sequence} is a sequence where the difference between consecu
     a_n = 3 + (n - 1) \cdot 2 = 2n + 1 \quad \text{(Odd numbers)}
 \]
 
-\subsection{Geometric Sequence}
+\section{Geometric Sequence}
 
 A \emph{geometric sequence} is a sequence where each term is obtained by multiplying the previous term 
 by a fixed non-zero constant.
@@ -37,9 +36,9 @@ by a fixed non-zero constant.
 
 \begin{itemize}
 
-    \item \(a_1\) is the first term
+    \item \(a_1\) is the first term.
 
-    \item \(r\) is the common ratio \(r = \frac{a_{n + 1}}{a_n}\)
+    \item \(r\) is the common ratio \(r = \frac{a_{n + 1}}{a_n}\).
 
 \end{itemize}
 
@@ -49,17 +48,17 @@ by a fixed non-zero constant.
     a_n = 2 \cdot 3^{n-1} = 2, 6, 18, 54, \dots
 \]
 
-\subsection{Function Sequence}
+\section{Function Sequence}
 
-A \emph{function sequence} is sequence composed of functions and its noted like:
+A \emph{function sequence} is a sequence composed of functions and is denoted as:
 
 \[
     {(f)}_n \text{with } x^t := \{ f: D\to R | \ f \text{ is a function}\}
 \]
 
-\subsection{Boundness of a Sequence}
+\section{Boundness of a Sequence}
 
-To show the boundness of a sequence we can use the definition of the \emph{supremum} or \emph{infimum} and 
+To show the \emph{boundness} of a sequence, we can use the definition of the \emph{supremum} or \emph{infimum} and 
 approximations. 
 
 One useful definition is that a sequence is bounded below and above if 
@@ -73,12 +72,12 @@ One useful definition is that a sequence is bounded below and above if
 Given is \(a_n = \frac{1}{2n + 3}\) 
 
 \[
-    \left| \frac{1}{2n + 3} \right| \le \frac{1}{2n + 3} < \frac{1}{2n} < \frac{1}{n} le 1
+    \left| \frac{1}{2n + 3} \right| \le \frac{1}{2n + 3} < \frac{1}{2n} < \frac{1}{n} \le 1
 \]
 
-Because, we have found a concrete bound we can state that the sequence is bounded. 
+Because we have found a concrete bound, we can state that the sequence is bounded. 
 
-\subsection{Convergence}
+\section{Convergence}
 
 A sequence \((a_n)\) \emph{converges} to a limit \(L\) if for every \(\varepsilon > 0\), there exists an 
 integer \(n_0\) such that for all \(n \ge n_0\):
@@ -95,10 +94,9 @@ In this case, we write:
 
 This also means that \(\{a_n - a\}_{n = 1}^{\infty}\) is a zero sequence.
 
-\subsubsection{Properties of convergent Sequences}
+\subsection{Properties of Convergent Sequences}
 
-Given the convergent sequences \(\{a_n\}_{n = 1}^{\infty}, \{b_n\}_{n = 1}^{\infty}\) with \(a\) and \(b\) as the respective limits. 
-For a bounded sequence \(\{c_n\}_{n = 1}^{\infty}\) then the following applies:
+Given the convergent sequences \(\{a_n\}_{n = 1}^{\infty}, \{b_n\}_{n = 1}^{\infty}\) with \(a\) and \(b\) as their respective limits, and a bounded sequence \(\{c_n\}_{n = 1}^{\infty}\), the following applies:
 
 \begin{itemize}
 
@@ -116,15 +114,15 @@ For a bounded sequence \(\{c_n\}_{n = 1}^{\infty}\) then the following applies:
 
 \end{itemize}
 
-\subsection{The limit of a Sequence is Unique}
+\section{The Limit of a Sequence Is Unique}
 
-Given a convergent sequence \(a_n\) then its limit is unique. 
+Given a convergent sequence \(a_n\), its limit is unique. 
 
 \textbf{Proof:}
 
-Suppose that \(a_n\) has two different limits \(a\) and \(b\). Let \( \varepsilon = \frac{|a - b|}{2} > 0\)
+Suppose that \(a_n\) has two different limits \(a\) and \(b\). Let \( \varepsilon = \frac{|a - b|}{2} > 0\).
 
-Because we have distinct limit we write 
+Because we have distinct limits, we write 
 
 \[
     \forall \varepsilon > 0 \exists i \in \N: \forall i \ge N_1 |a_i - a| < \frac{|a - b|}{2}
@@ -142,21 +140,21 @@ Let \(M = \max{N_1, N_2}\). Then
     |a - b| = |a - a_n + a_n - b| \le  |a_n - a| + |a_n - b| < 2 \varepsilon = \varepsilon > 0
 \]
 
-Thus, \(|a - b| < |a - b|\) and this is a contradiction. The limit must be unique.
+Thus, \(|a - b| < |a - b|\), which is a contradiction. The limit must be unique.
 
 \QED 
 
-\subsection{Convergence by Power of One Half}
+\section{Convergence by Power of One Half}
 
-If for a sequence \(a_n\) the following holds then it converges 
+If for a sequence \(a_n\) the following holds, then it converges: 
 
 \[
    | a_n  - a_{n + 1} | \le \frac{1}{2^n} 
 \]
 
-\subsection{Boundness of Convergent Sequences}
+\section{Boundness of Convergent Sequences}
 
-Let \(a_n\) be a convergent sequence then \(a_n\) is bounded 
+Let \(a_n\) be a convergent sequence; then \(a_n\) is bounded. 
 
 \textbf{Proof:}
 
@@ -168,8 +166,8 @@ Because \(a_n\) converges, it has a limit \(a\). Now, let \(\varepsilon = 1\), a
     a - 1 , a_n  &< 1 + a \text{ for all } n > n_0 
 \end{align*}
 
-Until, this point we have proof the boundness for all \(n > n_0\). To guarantee that the sequence is also bounded 
-for \( 1 \le n \le n_0 \) we define 
+Up to this point, we have proven the boundness for all \(n > n_0\). To guarantee that the sequence is also bounded 
+for \( 1 \le n \le n_0 \), we define 
 
 \[
     U := \max({x \mid x \in a_n , n \le n_0}, a + 1) 
@@ -181,7 +179,7 @@ and
     L := \min({x \mid x \in a_n, n \le n_0}, a - 1)
 \]
 
-Thus, our sequence is bounded
+Thus, our sequence is bounded:
 
 \[
     L \le a_n \le U
@@ -189,7 +187,7 @@ Thus, our sequence is bounded
 
 \QED 
 
-\subsection{Cauchy Sequence}
+\section{Cauchy Sequence}
 
 A sequence \((a_n)\) is a \emph{Cauchy sequence} if for every \(\varepsilon > 0\), there exists an 
 integer \(n_0\) such that for all \(n, m \ge n_0\):
@@ -213,22 +211,22 @@ Let \(a_i = \frac{1}{i}\) and \(\varepsilon = 0.01\). We want to find \(i_0\) su
     \Rightarrow i_0 = 101
 \]
 
-\subsection{Boundness of Cauchy Sequence}
+\section{Boundness of Cauchy Sequence}
 
 Every Cauchy sequence is \emph{bounded}. 
 
-\subsection{Proof that every Convergent Sequence is a Cauchy Sequence}
+\section{Proof That Every Convergent Sequence Is a Cauchy Sequence}
 
-Given a sequence \(a_n\) then \(a_n\) is convergent if and only if it is a Cauchy sequence. 
+Given a sequence \(a_n\), it is convergent if and only if it is a Cauchy sequence. 
 
-\(\rightarrow :\) \(a_n\) is convergent therefore, the following holds 
+\(\rightarrow :\) \(a_n\) is convergent; therefore, the following holds: 
 
 \[
     \forall \varepsilon > 0 \exists N \in \N: \forall n \ge N |a_n - L| < \varepsilon
 \]
 
 Thus, we can use the triangle inequality for our definition of the Cauchy sequence and the following 
-definition 
+definition: 
 
 \[
     |a_n - a| < \frac{\varepsilon}{2} 
@@ -237,30 +235,30 @@ definition
     |a_m - a| < \frac{\varepsilon}{2} 
 \]
 
-This is allowed we know that \(a_n\) converges. We choose the max of each of the indices for which the inequality holds. Then
+This is allowed because we know that \(a_n\) converges. We choose the max of each of the indices for which the inequality holds. Then
 
 \[
     |a_n - a_m + a - a| \le |a_n - a| + |a_m - a| < 2\frac{\varepsilon}{2} = \varepsilon
 \]
 
-\(\leftarrow :\) \(a_n\) is a Cauchy sequence, thus 
+\(\leftarrow :\) \(a_n\) is a Cauchy sequence, thus: 
 
 \[
     \forall \varepsilon > 0 \exists n,m,N \in \N: |a_n - a_m| < \varepsilon \text{ with } n, m \ge N
 \]
 
-\(a_n\) is bounded because else \( |a_n - a_m| > \varepsilon \) for \(n,m \ge N_0\). Therefore, by Bolzano-Weierstraß Theorem 
-it must converge 
+\(a_n\) is bounded because otherwise \( |a_n - a_m| > \varepsilon \) for \(n,m \ge N_0\). Therefore, by the Bolzano-Weierstraß theorem 
+it must converge. 
 
 \QED 
 
-\subsection{Cauchy Sequences are Convergent}
+\section{Cauchy Sequences Are Convergent}
 
-Given a Cauchy sequence \(a_n\) then it converges 
+Given a Cauchy sequence \(a_n\), it converges. 
 
 \textbf{Proof:}
 
-We know that \(a_n\) is bounded and by the Bolzano Weierstraß Therorem it has convergent subsequence. 
+We know that \(a_n\) is bounded, and by the Bolzano-Weierstraß theorem it has a convergent subsequence. 
 
 \[
     \forall \varepsilon > 0 \exists n,m,N_1 \in \N: |a_n - a_m| < \frac{\varepsilon}{2} \text{with } n, m \ge N_1
@@ -273,7 +271,7 @@ And
 \]
 
 
-Then let \(N = \max{N_1, N_2}\) therefore 
+Then let \(N = \max{N_1, N_2}\); therefore 
 
 \[
     |a_n - a_m| = |a_n + a_{n_{N + 1}} - a_{n_{N + 1}} - a_m| \le |a_n - a_{n_{N + 1}} | + |a_m - a_{n_{N + 1}} | = 2\frac{\varepsilon}{2} = \varepsilon
@@ -283,7 +281,7 @@ Thus, it converges.
 
 \QED 
 
-\subsection{Definition of \texorpdfstring{\(\varepsilon\)}{ε}-Neighborhood}
+\section{Definition of \texorpdfstring{\(\varepsilon\)}{ε}-Neighborhood}
 
 The \emph{\(\varepsilon\)-neighborhood} of a point \(a \in \R\) is the set:
 
@@ -293,7 +291,7 @@ The \emph{\(\varepsilon\)-neighborhood} of a point \(a \in \R\) is the set:
 
 This is the open interval \((a - \varepsilon, a + \varepsilon)\).
 
-\subsection{Supremum, Infimum, Maximum and Minimum}
+\section{Supremum, Infimum, Maximum and Minimum}
 
 The \emph{supremum} \(\text{sup}\) of a set \(A \subseteq \R\) is the 
 least upper bound: the smallest real number \(s\) such that \(a \le s\) for all \(a \in A\).
@@ -311,7 +309,7 @@ The \emph{maximum} is the largest element in the set, if it exists.
 
 The \emph{minimum} is the smallest element in the set, if it exists.
 
-Finally we define \(\text{sup} \emptyset := - \infty\) and \(\text{inf} \emptyset := +\infty\)
+Finally, we define \(\text{sup} \emptyset := - \infty\) and \(\text{inf} \emptyset := +\infty\).
 
 \textbf{Example I:}
 
@@ -319,11 +317,11 @@ For \(A = (0,1)\):
 
 \begin{itemize}
 
-    \item \(\sup A = 1\) (not in \(A\))
+    \item \(\sup A = 1\) (not in \(A\)).
 
-    \item \(\inf A = 0\) (not in \(A\))
+    \item \(\inf A = 0\) (not in \(A\)).
 
-    \item \(\max A\) and \(\min A\) do not exist
+    \item \(\max A\) and \(\min A\) do not exist.
 
 \end{itemize}
 
@@ -348,9 +346,9 @@ the largest number \(t\) such that \(a \ge t\) for all \(a \in A\).
 
 \textbf{Example IV:}
 
-Prove that \(\sup \{\frac{n}{n + 1 \mid n \in \N}\} = 1\).  
+Prove that \(\sup \left\{\frac{n}{n + 1} \mid n \in \N\right\} = 1\).  
 
-To prove we need to show that 1 is an upper bound and then that \(\forall \varepsilon > 0\) \(a - \varepsilon\) is not 
+To prove this, we need to show that 1 is an upper bound, and then that for all \(\varepsilon > 0\), \(a - \varepsilon\) is not 
 an upper bound.
 
 \begin{align*}
@@ -360,7 +358,7 @@ an upper bound.
 
 Thus, 1 is in fact an upper bound. 
 
-For the second part, let \(\varepsilon > 0\), and we want to prove that \(\exists n \in \N : \frac{n}{n + 1} > 1 - \varepsilon\)
+For the second part, let \(\varepsilon > 0\), and we want to prove that \(\exists n \in \N : \frac{n}{n + 1} > 1 - \varepsilon\).
 
 \begin{align*}
     \frac{n}{n + 1} > 1 - \varepsilon \\ 
@@ -371,23 +369,23 @@ For the second part, let \(\varepsilon > 0\), and we want to prove that \(\exist
     n  >  \frac{1}{\varepsilon}  - 1 
 \end{align*}
 
-By the Archimedian principle we now that we can always find a bigger natural number such that \(n > \frac{1}{\varepsilon} - 1\)
+By the Archimedean principle, we know that we can always find a larger natural number such that \(n > \frac{1}{\varepsilon} - 1\)
 
 Now we can reverse the steps in the inequality, and we will get our original inequality.
 
 \QED
 
-\subsubsection{Alternative Characterization of the Supremum}
+\subsection{Alternative Characterization of the Supremum}
 
-Given a non-empty set \(A \subseteq \R\). The \(s \in Reals\) is only a supremum of \(A\) if 
+Given a non-empty set \(A \subseteq \R\). Then \(s \in \R\) is a supremum of \(A\) if and only if 
 
 \[
     (\nexists s \in A, s < x) \land (s' \in \R, s' < s \implies !\exists x \in A, x > s')
 \]
 
-\subsection{Properties of Suprema and Infima}
+\section{Properties of Suprema and Infima}
 
-For non-empty sets \(A, B \subseteq \R^+\)
+For non-empty sets \(A, B \subseteq \R^+\):
 
 \begin{itemize}
 
@@ -407,17 +405,17 @@ For non-empty sets \(A, B \subseteq \R^+\)
 
 \end{itemize}
 
-For the sake of completeness we will prove one of these properties: 
+For the sake of completeness, we will prove one of these properties: 
 
 \textbf{Proof:}
 
-By definition \(\forall ab \in AB\) the following holds: 
+By definition, \(\forall ab \in AB\) the following holds: 
 
 \[
     ab \le \sup A \cdot \sup B \implies \sup AB \le \sup A \cdot \sup B
 \]
 
-Because \(\sup A\) and \(\sup B\) not necessarily belong to \(A\) or \(B\). With this, we already have the 
+Because \(\sup A\) and \(\sup B\) do not necessarily belong to \(A\) or \(B\). With this, we already have 
 half of the proof. Now we need to prove that \(\sup AB \ge \sup A \cdot \sup B\). 
 
 Start with 
@@ -455,7 +453,7 @@ Combining both parts of the proof we have that:
 
 The other proofs can be proven using similar arguments.
 
-\subsection{Limit and Accumulation Point}
+\section{Limit and Accumulation Point}
 
 \begin{itemize}
 
@@ -471,21 +469,21 @@ The other proofs can be proven using similar arguments.
 
 The sequence \(a_n = {(-1)}^n + \frac{1}{n}\) has two accumulation points: \(1\) and \(-1\).
 
-\subsection{The Monotone Convergence Theorem}
+\section{The Monotone Convergence Theorem}
 
 Let \(a_n\) be a monotone sequence. Then \(a_n\) converges if and only if it is bounded. 
 
 \textbf{Proof:} 
 
-\(a_n\) converges; thus there exists a limit and therefore, the sequence is bounded. 
+\(a_n\) converges; thus, there exists a limit, and therefore the sequence is bounded. 
 
-The sequence \(a_n\) is bounded and monotone. Therefore, there exist both infimum and supremum. We will prove the case for the supremum
+The sequence \(a_n\) is bounded and monotone. Therefore, there exist both an infimum and a supremum. We will prove the case for the supremum: 
 
 \[
     a \ge a_i \forall a_i \in a_n \implies a - \varepsilon < a_i
 \]
 
-Suppose \(a\) is the limit then for all \(i > n_0, n_0 \in \N\)
+Suppose \(a\) is the limit; then for all \(i > n_0, n_0 \in \N\)
 
 \begin{align*}
     |a_i - a| &< \varepsilon \\  
@@ -498,9 +496,9 @@ Therefore, the supremum is the limit.
 
 \QED
 
-\subsection{Monotony}
+\section{Monotony}
 
-We define a real valued function \(f\) as \emph{monotone increasing/decreasing}
+We define a real-valued function \(f\) as \emph{monotone increasing/decreasing}:
 
 \[
     x < y \implies f(x) \le f(y)
@@ -511,9 +509,9 @@ We define a real valued function \(f\) as \emph{monotone increasing/decreasing}
 
 We call it \emph{strictly monotone increasing or decreasing} if \(f(x) < f(y)\) or \(f(x) > f(y)\).
 
-\subsection{Monotonicity by Difference and Quotient}
+\section{Monotonicity by Difference and Quotient}
 
-A is considered \emph{monotone} if either for all \(n \in \N\) the following holds 
+A sequence is considered \emph{monotone} if, for all \(n \in \N\), either of the following holds 
 
 \[
     a_{n + 1} \ge a_{n} \text{ or } a_{n + 1} \le a_n
@@ -539,11 +537,9 @@ A is considered \emph{monotone} if either for all \(n \in \N\) the following hol
 
 \end{itemize}
 
-\subsection{Divergence}
+\section{Divergence}
 
-A sequence \emph{diverges} if it does not converge. That is, there is no real number \(L\) such that:
-
-If it diverges towards some infinity then 
+A sequence \emph{diverges} if it does not converge. That is, there is no real number \(L\) to which it converges. If it diverges towards some infinity, then: 
 
 \[
     \forall M \in \R \exists n,N \in \N : |a_n| \ge |M| \forall n \ge N
@@ -561,7 +557,7 @@ If it diverges towards some infinity then
 
 The sequence \(a_n = {(-1)}^n\) diverges since it oscillates between \(1\) and \(-1\).
 
-\subsection{Subsequences and Their Properties}
+\section{Subsequences and Their Properties}
 
 A \emph{subsequence} of a sequence \((a_n)\) is a sequence \((a_{n_k})\) where \((n_k)\) is a strictly 
 increasing sequence of natural numbers.
@@ -580,21 +576,21 @@ increasing sequence of natural numbers.
 
 \end{itemize}
 
-\subsubsection{Existence of the Accumulation Point as Limit}
+\subsection{Existence of the Accumulation Point as Limit}
 
-A sequence \(\{x_n\}_{n = 1}^{\infty}\) has \(x_0\) as accumulation point if and only if there exists a subsequence 
+A sequence \(\{x_n\}_{n = 1}^{\infty}\) has \(x_0\) as an accumulation point if and only if there exists a subsequence 
 which converges towards \(x_0\).
 
 \textbf{Proof:}
 
-Suppose that \(x_0\) is an accumulation point then \((x_0 - 1, x_0 + 1)\) contains a sequence member \(x_{n_0}, n_0 \in \N\).
+Suppose that \(x_0\) is an accumulation point; then \((x_0 - 1, x_0 + 1)\) contains a sequence member \(x_{n_0}, n_0 \in \N\).
 Let  
 
 \[
     n_1 := n_0
 \]
 
-For each \(k \in \N\) exists some \(N(k) \in \N\) such that \(N(k) > N(k - 1)\)
+For each \(k \in \N\), there exists some \(N(k) \in \N\) such that \(N(k) > N(k - 1)\)
 and 
 
 \[
@@ -607,43 +603,43 @@ Now we set
     n_k = N(k)
 \]
 
-For each subsequence \(\{x_{n_k}\}_{k = 1}^{\infty}\) the following holds 
+For each subsequence \(\{x_{n_k}\}_{k = 1}^{\infty}\), the following holds 
 
 \[
     |x_{n_k} - x_0 | \le \frac{1}{k}
 \]
 
-Therefore, the subsequence converges also towards \(x_0\).
+Therefore, the subsequence also converges towards \(x_0\).
 
-Other way of the proof, if the sequence \(\{x_{n_k}\}_{k = 1}^{\infty}\) converges towards \(x_0\) then there exists a \(\delta > 0\) and \(K \in \N\) 
+For the other direction of the proof, if the sequence \(\{x_{n_k}\}_{k = 1}^{\infty}\) converges towards \(x_0\), then there exist a \(\delta > 0\) and \(K \in \N\) 
 such that 
 
 \[
     x_{n_k} \in (x_0 - \delta, x_0 + \delta), \forall k \ge K
 \]
 
-Therefore, each neighborhood has infinite sequence members. 
+Therefore, each neighborhood contains infinitely many sequence members. 
 
 \QED 
 
-\subsubsection{Monotone Subsequence}
+\subsection{Monotone Subsequence}
 
-Every sequence \(a_n\) has monotone subsequence.
+Every sequence \(a_n\) has a monotone subsequence.
 
 \textbf{Proof:}
 
-Let \(a_n\) be a sequence and \(a_m\) be a peak if \(\forall a_i \in a_n, i > m, m, i \in \N\) the following holds \(a_i \le a_m\). 
+Let \(a_n\) be a sequence, and let \(a_m\) be a peak if for all \(a_i \in a_n, i > m, m, i \in \N\) the following holds: \(a_i \le a_m\). 
 
 Now consider the case that \(a_n\) has infinitely many peaks. Let \(a_{n_k}\) be the sequence of the \(k\)-th peak. This gives us that 
-each peak is greater or equal than the other, therefore we have monotone growing subsequence. If we define the peaks with \(a_i \ge a_m\) we also would 
-get monotone sequence, but a decreasing instead.
+each peak is greater than or equal to the previous one; therefore, we have a monotone increasing subsequence. If we define the peaks with \(a_i \ge a_m\), we would also 
+get a monotone sequence, but a decreasing one instead.
 
-For the case that there are only a finite number of peaks, let \(a_n\) be the last peak \(a_i \ge a_m\). If we can always find another \(a_{i + 1}\) such 
-that \(a_{i + 1} \ge a_n\), therefore we can find monotone increasing subsequence. Similarly, the case for the decreasing case can be shown.
+For the case that there are only a finite number of peaks, let \(a_n\) be the last peak \(a_i \ge a_m\). We can always find another \(a_{i + 1}\) such 
+that \(a_{i + 1} \ge a_n\); therefore, we can find a monotone increasing subsequence. Similarly, the decreasing case can be shown.
 
 \QED 
 
-\subsubsection{Convergence due to Subsequences}
+\subsection{Convergence Due to Subsequences}
 
 A sequence \(\{a_n\}_{n = 1}^{\infty}\) converges to \(a\) if and only if each of its subsequences also 
 converges to \(a\).
@@ -667,14 +663,14 @@ with \(n_k \ge k\).
 Let \(n_1 = n_0\) then if \(k > n_1\), \(k > n_0\) and \(n_k \ge k > n_0\). Thus, for all \(k > n_1\), 
 \(|a_{n_k} - a | < \varepsilon\).
 
-For the other way of the proof: assume every subsequence of \(a_n\) converges to \(a\). \(a_n\) is itself a subsequence 
-of thus, it converges to \(a\). 
+For the other direction of the proof, assume every subsequence of \(a_n\) converges to \(a\). Since \(a_n\) is itself a subsequence 
+of \(a_n\), it converges to \(a\). 
 
 \QED
 
-\subsection{\texorpdfstring{Proof that \(-1^n\) is divergent}{}}
+\section{\texorpdfstring{Proof That \(-1^n\) Is Divergent}{}}
 
-Let us assume that a limit exists then 
+Let us assume that a limit exists; then 
 
 \[
     |-1^n - L| < \varepsilon \forall n \ge N 
@@ -682,7 +678,7 @@ Let us assume that a limit exists then
 
 Let us choose \(\varepsilon = \frac{1}{2}\). 
 
-Now our sequence bounces between -1 and 1 thus we can say that 
+Now our sequence bounces between \(-1\) and \(1\), thus we can say that 
 
 \[
     |-1 - L| < \frac{1}{2}
@@ -691,17 +687,17 @@ Now our sequence bounces between -1 and 1 thus we can say that
     |1 - L| < \frac{1}{2}
 \]
 
-Now let us use the triangle inequality a
+Now let us use the triangle inequality:
 
 \[
    2 = |-1 - L + 1 - L| \le |-1 + L| +  |1 - L| < 2\frac{1}{2} = 2
 \]
 
-This is a contradiction. Thus, such a limit can not exist
+This is a contradiction. Thus, such a limit cannot exist.
 
 \QED 
 
-\subsection{Bolzano-Weierstraß Theorem}
+\section{Bolzano-Weierstraß Theorem}
 
 Every bounded sequence in \(\R\) has at least one convergent subsequence.
 
@@ -710,14 +706,14 @@ Equivalently, every bounded sequence of real numbers has at least one accumulati
 \textbf{Proof:}
 
 Let \(a_n\) be a bounded sequence, and let \(a_{n_k}\) be a monotone subsequence given by the monotone subsequence 
-theorem. \(a_{n_k}\) is bounded because or original sequence is bounded.
+theorem. \(a_{n_k}\) is bounded because our original sequence is bounded.
 
-Due to the monotone convergent theorem, we also know that the subsequence converges.
+Due to the monotone convergence theorem, we also know that the subsequence converges.
 Therefore, our theorem is proven.
 
 \QED
 
-\subsection{Series}
+\section{Series}
 
 A \emph{series} is the sum of the terms of a sequence:
 
@@ -731,7 +727,7 @@ We define the partial sums \(S_n = \sum_{k=1}^n a_k\). If the sequence \((S_n)\)
     \sum_{n=1}^{\infty} a_n = S
 \]
 
-\subsection{Power Series}
+\section{Power Series}
 
 A \emph{power series} is a series of the form:
 
@@ -739,15 +735,15 @@ A \emph{power series} is a series of the form:
     \sum_{n=0}^{\infty} a_n {(x - x_0)}^n
 \]
 
-Where \(x_0\) is the center of the expansion. Power series converge within a radius \emph{R}:
+where \(x_0\) is the center of the expansion. Power series converge within a radius \emph{R}:
 
 \[
     R = \frac{1}{\limsup\limits_{n \to \infty} \sqrt[n]{|a_n|}}
 \]
 
-\subsection{Geometric Series}
+\section{Geometric Series}
 
-There two types of \emph{geometric series}.
+There are two types of \emph{geometric series}.
 
 \emph{1. Finite geometric series:}
 
@@ -761,7 +757,7 @@ There two types of \emph{geometric series}.
     \sum_{n = 0}^{\infty} aq^n = \frac{a}{1 - q} \quad \text{for } |q| < 1
 \]
 
-\subsection{Point-wise Convergence}
+\section{Point-wise Convergence}
 
 A sequence of functions \((f_n)\) converges \emph{point-wise} to a function \(f\) on a set \(A\) if:
 
@@ -771,7 +767,7 @@ A sequence of functions \((f_n)\) converges \emph{point-wise} to a function \(f\
 
 Point-wise convergence does not preserve properties like continuity or differentiability.
 
-\subsection{Uniform Convergence}
+\section{Uniform Convergence}
 
 A sequence of functions \((f_n)\) converges \emph{uniformly} to \(f\) on \(A\) if:
 
@@ -782,7 +778,7 @@ A sequence of functions \((f_n)\) converges \emph{uniformly} to \(f\) on \(A\) i
 \emph{Key Property:} Uniform convergence preserves continuity, integration, and differentiation under 
 certain conditions.
 
-\subsection{Cauchy Criterion for Series}
+\section{Cauchy Criterion for Series}
 
 A series \(\sum a_n\) converges if and only if for every \(\varepsilon > 0\) there exists \(n_0\) 
 such that:
@@ -791,7 +787,7 @@ such that:
     \left| \sum_{k = m}^{n} a_k \right| < \varepsilon \quad \forall n > m \ge n_0
 \]
 
-\subsection{Interval Nesting and the Interval Nesting Theorem}
+\section{Interval Nesting and the Interval Nesting Theorem}
 
 Let \((I_n)\) be a sequence of closed intervals:
 
@@ -807,7 +803,7 @@ Then, the intersection contains exactly one point:
 
 This is useful in proving the existence of limits, roots, and fixed points.
 
-\subsection{Weierstraß Approximation Theorem}
+\section{Weierstraß Approximation Theorem}
 
 The \emph{Weierstraß Approximation Theorem} states:
 
@@ -820,7 +816,7 @@ polynomial \(P(x)\), i.e., for every \(\varepsilon > 0\) there exists a polynomi
 
 This theorem is foundational in numerical analysis and approximation theory.
 
-\subsection{Zero Sequence}
+\section{Zero Sequence}
 
 A sequence \((a_n)\) is called a \emph{null sequence} or \emph{zero sequence} if:
 
@@ -832,7 +828,7 @@ Every zero sequence is convergent (to 0), and plays an essential role in converg
 epsilon-delta arguments.
 
 More formally, a sequence \(\{a_n\}_{n = 1}^{\infty}\) of real numbers is called a zero sequence if and only if for all \(\varepsilon > 0\) there exists \(n_0\)
-such that 
+such that: 
 
 \[
     | a_{n_0} | < \varepsilon, \forall n \ge n_0 \in \N
@@ -844,15 +840,15 @@ Note that \(\{|a_n|\}_{n = 1}^{\infty}\) is only a zero sequence if \(\{a_n\}_{n
 
 Is \(a_n = \frac{1}{n}\) a zero sequence?
 
-Choose \(n_0 = \frac{1}{\varepsilon}\) then 
+Choose \(n_0 = \frac{1}{\varepsilon}\); then 
 
 \[
     n \ge \frac{1}{\varepsilon} \implies \frac{1}{n} \le \varepsilon, \forall n \in \N, n \ge n_0
 \]
 
-Thus, it is a zero sequence 
+Thus, it is a zero sequence. 
 
-\subsection{Comparison Criteria for Sequences}
+\section{Comparison Criteria for Sequences}
 
 Given \(\{a_n\}_{n = 1}^{\infty}\) and \(\{b_n\}_{n = 1}^{\infty}\) with 
 
@@ -860,14 +856,14 @@ Given \(\{a_n\}_{n = 1}^{\infty}\) and \(\{b_n\}_{n = 1}^{\infty}\) with
     |b_n| \le |a_n|
 \]
 
-For all \(n \in \N\) with \(n \ge n_0 \in \N\). If  \(a_n \to 0, n \to \infty\) then  
-\(b_n \to 0, n \to \infty\).
+For all \(n \in \N\) with \(n \ge n_0 \in \N\). If  \(a_n \to 0\) as \(n \to \infty\), then  
+\(b_n \to 0\) as \(n \to \infty\).
 
 We also call \(a_n\) a majorant of \(b_n\).
 
-\subsection{Properties of Zero Sequences}
+\section{Properties of Zero Sequences}
 
-Given the zero sequences \(\{a_n\}_{n = 1}^{\infty}, \{b_n\}_{n = 1}^{\infty}\)  and  the bounded sequence \(\{c\}_{n = 1}^{\infty}\) then 
+Given the zero sequences \(\{a_n\}_{n = 1}^{\infty}, \{b_n\}_{n = 1}^{\infty}\)  and  the bounded sequence \(\{c\}_{n = 1}^{\infty}\), then 
 
 \begin{itemize}
 
@@ -881,23 +877,23 @@ Given the zero sequences \(\{a_n\}_{n = 1}^{\infty}, \{b_n\}_{n = 1}^{\infty}\) 
 
 \end{itemize}
 
-\subsection{The Monotony Principle}
+\section{The Monotony Principle}
 
 Every bounded monotonic sequence converges.
 
 \textbf{Proof:}
 
-Define \(a:= \sup\{a_n: n \in \N\}\). We know that our sequence is bounded and in this case it has the 
+Define \(a:= \sup\{a_n: n \in \N\}\). We know that our sequence is bounded, and in this case it has the 
 property that \(a_n \le a\). 
 
-We use the definition of convergence 
+We use the definition of convergence: 
 
 \begin{align*}
    |a_{n_0} - a | &< \varepsilon \\ 
    a_{n_0} &> a - \varepsilon
 \end{align*}
 
-Using the approximation property of the supremum we get 
+Using the approximation property of the supremum, we get 
 
 \[
    a_n \ge a_{n_0} > a - \varepsilon, \forall n \ge n_0
@@ -922,11 +918,11 @@ Thus, our theorem is true.
 
 \end{itemize}
 
-To prove the convergence of a sequence via this principle we follow the next steps
+To prove the convergence of a sequence via this principle, we follow the next steps:
 
 \begin{enumerate}
 
-    \item Prove the Monotonicity by induction
+    \item Prove the monotonicity by induction
 
     \item Calculate the limit
 
@@ -940,7 +936,7 @@ To prove the convergence of a sequence via this principle we follow the next ste
 
 \(a_{n + 1} = \sqrt{2a_n - 3} + 1\)
 
-Let us assume that the series is decreasing or \(a_{n + 1} < a_{n}\)
+Let us assume that the sequence is decreasing, i.e., \(a_{n + 1} < a_{n}\): 
 
 \begin{align*}
     a_{n + 2} &< a_{n + 1} \\
@@ -952,14 +948,14 @@ Let us assume that the series is decreasing or \(a_{n + 1} < a_{n}\)
 
 \QED
 
-Now let us calculated the limit
+Now let us calculate the limit:
 
 \[
     \lim_{n \rightarrow \infty} a_{n + 1} = \lim_{n \rightarrow \infty} \sqrt{2a_n - 3} + 1
 \]
 
-Because of the recursion we know that both \(a_{n + 1}\) and \(a_n\) have the same value, 
-and we call it \(a\).
+Because of the recursion, we know that both \(a_{n + 1}\) and \(a_n\) have the same value, 
+which we call \(a\).
 
 \[
     a = \sqrt{2a -3} +1
@@ -970,19 +966,19 @@ and we call it \(a\).
 
 We only have to prove the limitedness now:
 
-For \(n = 0\) we have \(a_1 = 4 > 2\) then let us assume that the \(a\) is never going bellow 2.
+For \(n = 0\), we have \(a_1 = 4 > 2\); then let us assume that \(a\) never goes below 2.
 
 \[
     a_{n + 1} = \sqrt{2a_n - 3} + 1 \ge \sqrt{2(2) - 3} + 1 = 2
 \]
 
-By setting \(a_n = 2\) we get the limit again
+By setting \(a_n = 2\), we get the limit again.
 
 \QED
 
-\subsection{Operations on Sequences}
+\section{Operations on Sequences}
 
-\subsubsection{Sum of Sequences}
+\subsection{Sum of Sequences}
 
 The sum of two sequences \((a_n)\) and \((b_n)\) is a new sequence \((c_n)\) where each term 
 \(c_n\) is the sum of the corresponding terms of \((a_n)\) and \((b_n)\):
@@ -997,7 +993,7 @@ If \(\lim_{n \to \infty} a_n = A\) and \(\lim_{n \to \infty} b_n = B\), then the
     \lim_{n \to \infty} (a_n + b_n) = A + B.
 \]
 
-\subsubsection{Multiplication of Sequences}
+\subsection{Multiplication of Sequences}
 
 The product of two sequences \((a_n)\) and \((b_n)\) is a new sequence \((d_n)\) where each term \(d_n\) 
 is the product of the corresponding terms of \((a_n)\) and \((b_n)\):
@@ -1012,7 +1008,7 @@ If \(\lim_{n \to \infty} a_n = A\) and \(\lim_{n \to \infty} b_n = B\), then the
     \lim_{n \to \infty} (a_n \cdot b_n) = A \cdot B.
 \]
 
-\subsubsection{Absolute Value of a Sequence}
+\subsection{Absolute Value of a Sequence}
 
 The absolute value of a sequence \((a_n)\) is a new sequence \((e_n)\) where each term \(e_n\) is the absolute value of the corresponding term of \((a_n)\):
 
@@ -1026,9 +1022,10 @@ If \(\lim_{n \to \infty} a_n = A\), then the limit of the absolute value sequenc
     \lim_{n \to \infty} |a_n| = |A|.
 \]
 
-\subsubsection{Conjugate of a Complex Sequence}
+\subsection{Conjugate of a Complex Sequence}
 
-If \((a_n)\) is a sequence of complex numbers, where \(a_n = x_n + i y_n\) with \(x_n, y_n \in \R\), then the conjugate of \((a_n)\) is a new sequence \((\overline{a_n})\) where each term \(\overline{a_n}\) is the complex conjugate of \(a_n\):
+If \((a_n)\) is a sequence of complex numbers, where \(a_n = x_n + i y_n\) with \(x_n, y_n \in \R\), then the conjugate of \((a_n)\) is a new sequence \((\overline{a_n})\) 
+where each term \(\overline{a_n}\) is the complex conjugate of \(a_n\):
 
 \[
     \overline{a_n} = x_n - i y_n, \quad \forall n \in \N.
@@ -1040,7 +1037,7 @@ If \(\lim_{n \to \infty} a_n = A = X + i Y\), then the limit of the conjugate se
     \lim_{n \to \infty} \overline{a_n} = \overline{A} = X - i Y.
 \]
 
-\subsubsection{Complex Limit (Real and Imaginary Parts)}
+\subsection{Complex Limit (Real and Imaginary Parts)}
 
 For a sequence of complex numbers \((a_n)\) where \(a_n = x_n + i y_n\), the limit of the sequence 
 \(\lim_{n \to \infty} a_n = A = X + i Y\) exists if and only if the limits of the real part sequence 
@@ -1053,10 +1050,10 @@ For a sequence of complex numbers \((a_n)\) where \(a_n = x_n + i y_n\), the lim
 This means we can analyze the convergence of a complex sequence by examining the convergence of its real 
 and imaginary parts separately.
 
-\subsubsection{Asymptotic Equality}
+\subsection{Asymptotic Equality}
 
 Two sequences \({(a_n)}_{n \in \N}\) and \({(b_n)}_{n \in \N}\) are said to be 
-asymptotically equal, denoted by \(a_n \sim b_n\), if
+\emph{asymptotically equal}, denoted by \(a_n \sim b_n\), if
 
 \[
     \lim_{n \to \infty} \frac{a_n}{b_n} = 1,
@@ -1064,9 +1061,9 @@ asymptotically equal, denoted by \(a_n \sim b_n\), if
 
 provided that \(b_n \neq 0\) for all sufficiently large \(n\). Asymptotic equality implies that the sequences behave similarly as \(n\) approaches infinity.
 
-\subsection{Boundness of a Function}
+\section{Boundness of a Function}
 
-A real valued function \(f\) is \emph{bounded bellow} if 
+A real-valued function \(f\) is \emph{bounded below} if 
 
 \[
     \forall x \in \mathcal{D}(f) f(x) \ge m
@@ -1078,28 +1075,28 @@ and \emph{bounded above} if
     \forall x \in \mathcal{D}(f) f(x) \le m
 \]
 
-\subsection{Inverse function due to Monotony}
+\section{Inverse Function Due to Monotony}
 
 Given a strictly monotonic function \(f\). Then \(f\) has an inverse.
 
 \textbf{Proof:}
 
-Given \(x_1 < x_2\) or \(x_1 > x_2\) then due to the monotony 
+Given \(x_1 < x_2\) or \(x_1 > x_2\), then due to the monotony 
 
 \[
     f(x_1) < f(x_2) \text{ or } f(x_1) > f(x_2)
 \]
 
-Thus, \(f(x_1) = f(x_2) \iff x_2 = x_1\)
+Thus, \(f(x_1) = f(x_2) \iff x_2 = x_1\).
 
 \QED
 
-\subsection{Domain Restriction}
+\section{Domain Restriction}
 
-Given \(f: A \to B\) and \(C \subsetneq A\) then 
+Given \(f: A \to B\) and \(C \subsetneq A\), then 
 
 \[
     g := f_{\mid C}: C \to B, x \mapsto f(x)
 \]
 
-\(f\) with \emph{restricted} domain. The case with \(A \subsetneq C\) will be the \emph{expansion}.
+This is \(f\) with a \emph{restricted} domain. The case with \(A \subsetneq C\) is the \emph{expansion}.

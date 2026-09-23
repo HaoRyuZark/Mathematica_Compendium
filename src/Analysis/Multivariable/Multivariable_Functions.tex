@@ -1,13 +1,12 @@
-
 \chapter{Multi-variable Functions}
 
-\subsection{Open Sets}
+\section{Open Sets}
 
-Let \( \| \cdot \| \) be a norm on \( \R^n \). The \( \varepsilon \)-neighborhood of a 
+Let \( \metric{\cdot} \) be a norm on \( \R^n \). The \( \varepsilon \)-neighborhood of a 
 point \( \vec{x}_0 \in \R^n \) is defined as:
 
 \[
-    U_\varepsilon(\vec{x}_0) := \left\{ \vec{x} \in \R^n \mid \| \vec{x} - \vec{x}_0 \| 
+    U_\varepsilon(\vec{x}_0) := \left\{ \vec{x} \in \R^n \mid \metric{\vec{x} - \vec{x}_0} 
     < \varepsilon \right\}
 \]
 
@@ -18,7 +17,7 @@ A set \( D \) is called \emph{open} if all its points are interior points.
 Although \( \varepsilon \)-neighborhoods depend on the chosen norm, due to the equivalence of norms 
 in \( \R^n \), openness is norm-independent.
 
-\subsection{Closed Sets}
+\section{Closed Sets}
 
 Let \( D \subseteq \R^n \) and \( \| \cdot \| \) a norm. A point \( \vec{x}_0 \) is called 
 an \emph{accumulation point} (or limit point) of \( D \) if for every \( \varepsilon > 0 \), the 
@@ -27,25 +26,25 @@ neighborhood \( U_\varepsilon(\vec{x}_0) \) contains a point \( \vec{x} \ne \vec
 
 A set \( D \subseteq \R^n \) is called \emph{closed} if it contains all its accumulation points.
 
-\subsection{Boundedness and Order}
+\section{Boundedness and Order}
 
 A set \( D \subseteq \R^n \) is called \emph{bounded} if there exists a real number \( M > 0 \) 
 such that:
 
 \[
-    \|\vec{x}\| < M \quad \text{for all } \vec{x} \in D
+    \metric{\vec{x}} < M \quad \text{for all } \vec{x} \in D
 \]
 
 If no such bound \( M \) exists, the set is called \emph{unbounded}.
 
-\subsection{Sequences}
+\section{Sequences}
 
-Let \( (\vec{x}_n) \subseteq \R^n \) be a sequence of vectors. We say that 
+Let \( (\vec{x}_n) \subseteq \R^n \) be a \emph{sequence} of vectors. We say that 
 \( \vec{x}_n \to \vec{x} \in \R^n \) as \( n \to \infty \) if for every \( \varepsilon > 0 \), 
 there exists \( n_0 \in \N \) such that:
     
 \[
-    \|\vec{x}_n - \vec{x}\| < \varepsilon \quad \text{for all } n > n_0
+    \metric{\vec{x}_n - \vec{x}} < \varepsilon \quad \text{for all } n > n_0
 \]
 
 The sequence \( (\vec{x}_n) \) is called \emph{convergent} if such \( \vec{x} \) exists.
@@ -66,21 +65,21 @@ there exists \( n_0 \in \N \) such that:
     \end{bmatrix}
 \]
 
-\subsection{Different Norms}
+\section{Different Norms}
 
-From linear algebra it is known what a \emph{Norm} is and its properties:
+From linear algebra, it is known what a \emph{Norm} is, along with its properties:
 
 Let \( V \) be a vector space over \( \R \) or \( \C \). A function 
-\( \|\cdot\|: V \to \R \) is called a norm if for all \( x, y \in V \) and all scalars 
+\( \metric{\cdot}: V \to \R \) is called a norm if for all \( x, y \in V \) and all scalars 
 \( \alpha \), the following properties hold:
 
 \begin{enumerate}
     
-    \item \emph{Non-negativity:} \( \|x\| \geq 0 \), and \( \|x\| = 0 \) if and only if \( x = 0 \).
+    \item \emph{Non-negativity:} \( \metric{x} \geq 0 \), and \( \metric{x} = 0 \) if and only if \( x = 0 \).
     
-    \item \emph{Absolute homogeneity:} \( \|\alpha x\| = |\alpha| \cdot \|x\| \).
+    \item \emph{Absolute homogeneity:} \( \metric{\alpha x} = |\alpha| \cdot \metric{x} \).
     
-    \item \emph{Triangle inequality:} \( \|x + y\| \leq \|x\| + \|y\| \).
+    \item \emph{Triangle inequality:} \( \metric{x + y} \leq \metric{x} + \metric{y} \).
 
 \end{enumerate}
 
@@ -91,19 +90,19 @@ Commonly used norms in \( \R^n \) (or \( \C^n \)) include:
     \item \emph{Sum Norm} (also known as the \( \ell_1 \) norm): 
     
     \[
-        \|x\|_1 = \sum_{i=1}^n |x_i|
+        \metric{x}_1 = \sum_{i=1}^n |x_i|
     \]
     
     \item \emph{Max Norm} (also known as the \( \ell_\infty \) norm): 
     
     \[
-        \|x\|_\infty = \max_{1 \leq i \leq n} |x_i|
+        \metric{x}_\infty = \max_{1 \leq i \leq n} |x_i|
     \]
     
     \item \emph{Euclidean Norm} (also known as the \( \ell_2 \) norm): 
     
     \[
-        \|x\|_2 = \left( \sum_{i=1}^n |x_i|^2 \right)^{1/2}
+        \metric{x}_2 = \left( \sum_{i=1}^n |x_i|^2 \right)^{1/2}
     \]
 
 \end{itemize}
@@ -120,7 +119,7 @@ Given is
     \end{bmatrix}
 \]
 
-we want to find \(n_0\) for \(\varepsilon = 0,1\)
+We want to find \(n_0\) for \(\varepsilon = 0,1\).
 
 \[
     \lim_{n \to \infty} \vec{X}_n = 
@@ -131,10 +130,10 @@ we want to find \(n_0\) for \(\varepsilon = 0,1\)
     = \vec{X}_0
 \]
 
-Now use the definition for convergence and \emph{Euclidean Norm}
+Now use the definition of convergence and the \emph{Euclidean Norm}:
 
 \[
-    \|\vec{X}_n - \vec{X}_0\| < \varepsilon
+    \metric{\vec{X}_n - \vec{X}_0} < \varepsilon
 \]
 
 \[
@@ -155,30 +154,30 @@ Now use the definition for convergence and \emph{Euclidean Norm}
 
 Therefore, \(n_0 = 101\).
 
-\subsubsection{Equivalence of Norms}
+\subsection{Equivalence of Norms}
 
-In finite-dimensional vector spaces, all norms are equivalent. That is, if \( \|\cdot\|_a \) and 
-\( \|\cdot\|_b \) are two norms on a finite-dimensional vector space \( V \), then there exist constants 
+In finite-dimensional vector spaces, all norms are equivalent. That is, if \( \metric{\cdot}_a \) and 
+\( \metric{\cdot}_b \) are two norms on a finite-dimensional vector space \( V \), then there exist constants 
 \( c, C > 0 \) such that for all \( x \in V \),
 
 \[
-    c \|x\|_a \leq \|x\|_b \leq C \|x\|_a
+    c \metric{x}_a \leq \metric{x}_b \leq C \metric{x}_a
 \]
 
 This implies that while different norms may measure length differently, they all 
 induce the same topology and convergence behavior in finite-dimensional spaces.
 
-\subsubsection{Equivalence in the Reals}
+\subsection{Equivalence in the Reals}
 
-In the \(\R^n\) all norms are equivalent and 
+In \(\R^n\), all norms are equivalent, and
 
 \begin{align*}
-     \|\vec{x}\|_\infty &\le \|\vec{x}\|_2 \le \sqrt{n}\|\vec{x}\|_\infty \\
-     \|\vec{x}\|_\infty &\le \|\vec{x}\|_1 \le n\|\vec{x}\|_\infty \\
-     \|\vec{x}\|_2 &\le \|\vec{x}\|_1 \le n\|\vec{x}\|_2
+     \metric{\vec{x}}_\infty &\le \metric{\vec{x}}_2 \le \sqrt{n}\metric{\vec{x}}_\infty \\
+     \metric{\vec{x}}_\infty &\le \metric{\vec{x}}_1 \le n\metric{\vec{x}}_\infty \\
+     \metric{\vec{x}}_2 &\le \metric{\vec{x}}_1 \le n\metric{\vec{x}}_2
 \end{align*}
 
-\subsection{Accumulation Point}
+\section{Accumulation Point}
 
 A vector \( \vec{x}_0 \in \R^n \) is called an \emph{accumulation point} of a set 
 \( D \subseteq \R^n \) if for every \( \varepsilon > 0 \), the neighborhood 
@@ -188,7 +187,7 @@ In the context of sequences, an accumulation point of a sequence \( (\vec{x}_n) 
 \( \vec{x} \in \R^n \) for which there exists a subsequence \( (\vec{x}_{n_k}) \) such that 
 \( \vec{x}_{n_k} \to \vec{x} \).
 
-\subsection{Bolzano–Weierstraß Theorem}
+\section{Bolzano–Weierstraß Theorem}
 
 Every infinite, bounded sequence in \( \R^n \) has at least one accumulation point.
 
@@ -202,9 +201,9 @@ Every infinite, bounded sequence in \( \R^n \) has at least one accumulation poi
 
 \end{itemize}
 
-\subsection{Limits}
+\section{Limits}
 
-A function \( f : U \subseteq \R^n \to \R \) has the limit \( g \in \R \) at a 
+A function \( f : U \subseteq \R^n \to \R \) has the \emph{limit} \( g \in \R \) at a 
 point \( \vec{X}_0 \in U \) if:
 
 \[
@@ -233,7 +232,7 @@ The limit towards infinity is then
     \end{bmatrix}
 \]
 
-\subsection{Partial Functions}
+\section{Partial Functions}
 
 For a function \( f: U \subseteq \R^n \to \R \), a \emph{partial function} is a 
 restriction of \(f\) to a variable by fixing all others.
@@ -257,7 +256,7 @@ Fixing values:
 Each \( f_i \) reduces the multi-variable function to a single-variable slice (cross-section), 
 allowing analysis along coordinate axes.
 
-\subsection{Continuity}
+\section{Continuity}
 
 Let \( f : U \subseteq \R^n \to \R \), and \( \vec{X}_0 \in U \). The function 
 \(f\) is said to be \emph{continuous at \( \vec{X}_0 \)} if:
@@ -272,8 +271,8 @@ This means that for any sequence \( (\vec{X}_n) \to \vec{X}_0 \), we have:
     \lim_{n \to \infty} f(\vec{X}_n) = f(\vec{X}_0)
 \]
 
-To check if a multi-variable function is continuous it is enough to prove that it is continuous towards 
-the origin
+To check if a multi-variable function is continuous, it is enough to prove that it is continuous at 
+the origin:
 
 \begin{align*}
     \lim_{\vec{X} \to \vec{X_0}}f(\vec{X}) &= f(\vec{X_0}) \\
@@ -282,28 +281,28 @@ the origin
     &\iff \lim_{\vec{h} \to 0} g(\vec{h}) = 0
 \end{align*}
 
-If we are checking if a function is continuous and get an \emph{indeterminate form} there are three main 
+If we are checking whether a function is continuous and get an \emph{indeterminate form}, there are three main 
 approaches.
 
 \begin{enumerate}
     
-    \item \emph{Factorizing}: Either normal factorization, adding a clever zero or multiplying by a clever 
+    \item \emph{Factorizing}: Either normal factorization, adding a clever zero, or multiplying by a clever 
           one.
     
     \item \emph{Change of Coordinates}: Sometimes changing the coordinate system allows us to simplify the 
           expression.
     
-    \item \emph{Different Paths}: Trying different paths can be pretty straightforward. If wet two 
-          different values for the same point across different paths then the function is not continuous.
+    \item \emph{Different Paths}: Trying different paths can be pretty straightforward. If we get two 
+          different values for the same point across different paths, then the function is not continuous.
 
 \end{enumerate}
 
 \textbf{Example:}
 
-Given is \(\frac{x^3 + 2yx^2 + y^2x + 2y^3}{x + 2y}\) for \((x,y) \ne (0,0)\) and \(0 for (0,0)\).
+Given is \(\frac{x^3 + 2yx^2 + y^2x + 2y^3}{x + 2y}\) for \((x,y) \ne (0,0)\) and \(0\) for \((0,0)\).
 
 \begin{align*}
-    \frac{x^3 + 2yx^2 + y^2x + 2y^3}{x + 2y} &= (\frac{x^2(x + 2y) + y(x + 2y)}{x + 2y}\\
+    \frac{x^3 + 2yx^2 + y^2x + 2y^3}{x + 2y} &= \frac{x^2(x + 2y) + y(x + 2y)}{x + 2y}\\
     &= \frac{(x + 2y)(x^2 + y^2)}{x + 2y}\\
     &= x^2 + y^2
 \end{align*}
@@ -320,21 +319,21 @@ Thus, the function is continuous.
 
 Check for continuity towards the origin of \(f(x,y) =\frac{xy^2}{x^2 + y^4}\).
 
-For the path \(x = y\) and \(y = 0\)
+For the path \(x = y\) and \(y = 0\):
 
 \[
     f(x,0) = \frac{x0}{x^2 + 0} = 0
 \]
 
-For the path \(x = y^2\)
+For the path \(x = y^2\):
 
 \[
     f(y^2, y) = \frac{y^4}{2y^4} = \frac{1}{2}
 \]
 
-Because we got two different values the function is not continuous.
+Because we got two different values, the function is not continuous.
 
-\subsubsection{Continuity in Polar Coordinates for 2D}
+\subsection{Continuity in Polar Coordinates for 2D}
 
 Let \( \vec{X} = (x, y) \) be written in polar coordinates:
 
@@ -370,10 +369,10 @@ Let \(x = r\cos(\theta)\) and \(y = r\sin(\theta)\)
     = \lim_{r \to 0} \frac{\cos(\theta)\sin(\theta)}{1}
 \end{align*}
 
-Because of the dependence on \(\theta\) which can give us for \(\theta = \frac{\pi}{4}\) \(\frac{1}{2}\) 
-this functions is not continuous.
+Because of the dependence on \(\theta\), which for \(\theta = \frac{\pi}{4}\) gives us \(\frac{1}{2}\), 
+this function is not continuous.
 
-\subsubsection{Substitution}
+\section{Substitution}
 
 When dealing with multi-variable functions we can sometimes use \emph{substitution} 
 for converting our function into a single variable function to use \emph{L'Hospital's Rule}.
@@ -382,27 +381,28 @@ for converting our function into a single variable function to use \emph{L'Hospi
 
 Given is \(\frac{e^{x^2 + y^2} - 1}{x^2 + y^2}\).
 
-See, that we have repeated terms we can substitute. \(p^2 = x^2 + y^2\).
+See that we have repeated terms we can substitute: \(p^2 = x^2 + y^2\).
 
 \[
     \frac{e^{p^2} - 1}{p^2}
 \]
 
-Now differentiate
+Now differentiate:
 
 \[
     \frac{2p e^{p^2} }{2p} = e^{p^2}
 \]
 
-Now take the limit
+Now take the limit:
 
 \[
     \lim_{p \to 0} e^{p^2} = 1
 \]
 
-\subsection{Uniform and Lipschitz Continuity}
+\section{Uniform and Lipschitz Continuity}
 
-\subsubsection{Uniform Continuity:}  
+\subsection{Uniform Continuity}
+
 A function \( f : D \subseteq \R^n \to \R \) is called \emph{uniformly continuous} on 
 \( D \) if:
 
@@ -415,7 +415,7 @@ The key feature is that \( \delta \) depends only on \( \varepsilon \), not on t
 \( \vec{X}, \vec{X}_0 \) themselves.  
 If \(f\) is continuous on a compact set (closed and bounded), then \(f\) is uniformly continuous.
 
-\subsubsection{Lipschitz Continuity:}  
+\subsection{Lipschitz Continuity}
 
 A function \( f : D \subseteq \R^n \to \R \) is \emph{Lipschitz continuous} if there 
 exists a constant \( L > 0 \) such that:
@@ -426,7 +426,7 @@ exists a constant \( L > 0 \) such that:
 
 If \( L < 1 \), then \(f\) is called a \emph{contraction}.
 
-\subsection{Epsilon–Delta Criterion}
+\section{Epsilon–Delta Criterion}
 
 Let \( f : D \subseteq \R^n \to \R \), and \( \vec{X}_0 \in D \). The function 
 \(f\) is continuous at \( \vec{X}_0 \) if:
@@ -436,10 +436,10 @@ Let \( f : D \subseteq \R^n \to \R \), and \( \vec{X}_0 \in D \). The function
     < \delta \Rightarrow |f(\vec{X}) - f(\vec{X}_0)| < \varepsilon
 \]
 
-This generalizes the familiar epsilon-delta criterion from single-variable calculus to multi-variable 
+This generalizes the familiar \emph{epsilon-delta criterion} from single-variable calculus to multi-variable 
 settings using norms.
 
-\subsection{Fixpoints}
+\section{Fixpoints}
   
 A point \( \vec{X}_0 \in D \subseteq \R^n \) is called a \emph{fix-point} of a function 
 \( \vec{\varphi} : D \to \R^n \) if:
@@ -450,7 +450,7 @@ A point \( \vec{X}_0 \in D \subseteq \R^n \) is called a \emph{fix-point} of a f
 
 That is, applying the function does not change the point — it maps to itself.
 
-\subsection{Banach Fixed Point Theorem}
+\section{Banach Fixed Point Theorem}
 
 Let \( \vec{\varphi} : D \subseteq \R^n \to \R^n \) be a \emph{contraction mapping}, 
 i.e., there exists a constant \( L < 1 \) such that:
@@ -460,20 +460,23 @@ i.e., there exists a constant \( L < 1 \) such that:
     \text{for all } \vec{X}, \vec{Y} \in D
 \]
 
-Then:
+Then
 
 \begin{itemize}
+
     \item There exists a unique fix-point \( \vec{X}^* \in D \) such that 
-    \( \vec{\varphi}(\vec{X}^*) = \vec{X}^* \)
+    \( \vec{\varphi}(\vec{X}^*) = \vec{X}^* \).
+
     \item Iteratively defined sequences \( \vec{X}_{n+1} = \vec{\varphi}(\vec{X}_n) \) converge to the 
-    fix-point
+    fix-point.
+
 \end{itemize}
 
 This result is fundamental in nonlinear analysis and iterative numerical methods.
 
-\subsection{Vector fields}
+\section{Vector Fields}
 
-A \emph{vector field} is a function \(\vec{f}: \R^n \to \R^n\). Also, just a 
+A \emph{vector field} is a function \(\vec{f}: \R^n \to \R^n\); in other words, simply a 
 function with vectors as inputs and outputs.
 
 \[
@@ -488,5 +491,5 @@ We call a vector field \emph{continuous}/\emph{differentiable} if all functions
 
 are continuous/differentiable.
 
-As a side node, the \emph{gradient} of a multi-variable function is a vector field.
+As a side note, the \emph{gradient} of a multi-variable function is a vector field.
 

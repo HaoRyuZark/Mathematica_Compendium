@@ -1,18 +1,18 @@
 \chapter{Set Theory}
 
-\emph{Set theory} is the foundation of mathemttcis along side \emph{logic}. The actual variant is founded on axioms unlike 
-its first appereance as \textbf{naive set theory}, which lead to contractions due to it allowing set which are 
-``an element of it self, if and only if, it is not an element of itself'', the so-known \emph{Russells's paradox}, but more 
+\emph{Set theory} is the foundation of mathematics alongside \emph{logic}. The actual variant is founded on axioms, unlike 
+its first appearance as \textbf{naive set theory}, which led to contradictions due to it allowing sets which are 
+``an element of itself, if and only if, it is not an element of itself'', the so-called \emph{Russell's paradox}, but more 
 on that later.
 
-Note, that I will start with sets as such instead of going through classes and then exporting some of their 
-properties to sets. Classes will only be handled shortly with the axioms and some proofs but some of their properties will be 
-directed presented as set properties. 
+Note that I will start with sets as such instead of going through classes and then exporting some of their 
+properties to sets. Classes will only be handled shortly with the axioms and some proofs, but some of their properties will be 
+directly presented as set properties. 
 
 \section{Set Definition And Symbology}
 
-To be concise, a \emph{set} is a collection of other sets; yes the definition is recursive. Once, the foundation 
-is set, we can abstract thouse nested sets, as mathematical objects.
+To be concise, a \emph{set} is a collection of other sets; yes, the definition is recursive. Once the foundation 
+is set, we can abstract those nested sets as mathematical objects.
 
 \begin{itemize}
 
@@ -31,7 +31,7 @@ is set, we can abstract thouse nested sets, as mathematical objects.
 	\item \(A \setminus B\): The difference of sets. Elements in \(A\) that are not in \(B\).
 
 	\item \(A^c\) or \(\overline{A}\): The complement of set \(A\). All elements not in \(A\), 
-		  relative to  a universal set.
+		  relative to a universal set.
 
 	\item \(|A|\): The cardinality of set \(A\), which is the number of elements in the set.
 
@@ -151,12 +151,12 @@ is set, we can abstract thouse nested sets, as mathematical objects.
 
 When set theory was invented back then by Cantor, he had no formal axioms but a set of basic 'common sense' rules he assumed when 
 creating his theory. This choice lead to a famous paradox known as \emph{Russell's Paradox}. The paradox states that: "Given a set S which is 
-the set containing all sets which do not contain themselves. The S does not contain itself, but if it does not contain itself it must contain itself". 
-In short \(S = \{x: x \notin x\}\), this is a so-called \emph{logical} paradox. This is of course a huge contradiction in the hearth of naive set theory. The choice to take a more 
+the set containing all sets which do not contain themselves. The S does not contain itself, but if it does not contain itself it must contain itself".  
+In short \(S = \{x: x \notin x\}\), this is a so-called \emph{logical} paradox. This is of course a huge contradiction in the hearth of naive set theory. The choice to take a more e 
 formal and axiomatic approach was to eliminate such fundamental faults.
 
 As a short teasing, we will declare the \emph{Axiom of Selection:} \(\{x \in A: S(x)\}\) this means that we can construct a set of elements 
-of an existing set as long as they satisfy a condition. Now the paradox of \(x: x \notin x\) can not be state directly in our new system. We can emulate it by 
+of an existing set as long as they satisfy a condition. Now the paradox of \(x: x \notin x\) can not be state directly in our new system. We can emulate it by  
 declaring 
 
 \[	
@@ -176,7 +176,7 @@ For example, we could define the following set:
 \]
 
 Note that this set would need to be finite because it there is only a limited amount of combination of words in the English language. But we could 
-for example say: 'the natural number which can not be described in less than 20 words' this number. This is again an example of an element in 
+for example say: 'the natural number which can not be described in less than 20 words' this number. This is again an example of an element in in 
 a set if and only if it is not in the set. To formalize our conditions we 
 
 \section{Classes}
@@ -191,7 +191,7 @@ If \(X \in Y\) for some class \(Y\) then \(X\) is a set. If \(X \notin Y\) for a
 
 \begin{enumerate}[label = \Roman*.]
 	
-	\item \emph{Axiom of Selection}: Given a class \(A\), a class \(S\) can be build in the following manner \(S = \{x \in A \mid P(x)\}\)
+	\item \emph{Axiom of Selection}: Given a class \(A\), a class \(S\) can be build in the following manner \(S = \{x \in A \mid P(x)\}\))
 	 
 	\item \emph{Axiom of Extensionality}: Let \(A\) and \(B\) be classes then \(A = B \iff \forall X : A \in X \implies B \in X \land B \in X \implies A \in X\)
 
@@ -202,7 +202,7 @@ If \(X \in Y\) for some class \(Y\) then \(X\) is a set. If \(X \notin Y\) for a
 	
 	\item \emph{Axiom of Subset}: Every subclass of a set is a set.
 
-	\item \emph{Axiom of Paring}: Is \(a\) and \(b\) are sets, then \(\{a, b\}\) is a set
+	\item \emph{Axiom of Paring}: Is \(a\) and \(b\) are sets, then \(\{a, b\}\) is a sett.
 
 	\item \emph{Axiom of Union}: If \(A\) is a set of sets, then \(\bigcup_{a \in A} a\) is a set. \(\forall a \exists b \forall c(c \in a \implies \forall d (d \in c \implies d \in d))\).
 
@@ -240,9 +240,9 @@ If \(X \in Y\) for some class \(Y\) then \(X\) is a set. If \(X \notin Y\) for a
 	suppose for the sake of contradiction that \(A \neq B\) then \(\exists x \in A: x \notin B\) or the other way around. Note that this statement contradicts our 
 	initial conditions. Thus, the statement is true.
 
-	\item \(A \subseteq B \land B \subseteq C \implies A \subseteq C\): \((\forall x \in A \implies x \in B) \land (\forall x \in B \implies x \in C)\) By a similar manner 
-	let us assume that \(A\) is not a subset of \(C\) this means that for some \(x\) the condition holds that \(x \in A \land x \notin B\) because else it would be in \(C\). 
-	Note that because \(A \subseteq B\) such an \(x\) can not exist due to our initial condition and also \(B \subseteq A\) for that case. Thus \(A \subseteq C\)
+	\item \(A \subseteq B \land B \subseteq C \implies A \subseteq C\): \((\forall x \in A \implies x \in B) \land (\forall x \in B \implies x \in C)\) By a similar manner , 
+	let us assume that \(A\) is not a subset of \(C\) this means that for some \(x\) the condition holds that \(x \in A \land x \notin B\) because else it would be in \(C\).  
+	Note that because \(A \subseteq B\) such an \(x\) can not exist due to our initial condition and also \(B \subseteq A\) for that case. Thus \(A \subseteq C\).
 
 	\item \(\emptyset \subseteq A\): By definition \(x \in \emptyset \implies x \in A\), by contrapositive \(x \notin A \implies x notint \emptyset\). This is true 
 	because of the contrapositive being true.
@@ -255,7 +255,7 @@ If \(X \in Y\) for some class \(Y\) then \(X\) is a set. If \(X \notin Y\) for a
 	\(A \cap C\) were \(A\) and \(C\) are proper classes, gives us that their union is also a proper class due to \(A, C \subseteq A \cup C\)
 
 	\item \(\mathcal{P}(A) \nsubseteq A\): Let \(x \in \mathcal{P}(a)\), then \(\forall x \in \mathcal{P}(A) \implies x \in A\). By definition, \(A \in \mathcal{P}(A)\), but 
-	\(A \notin A\); hence we have contradiction and the power set of a set is not a subset of the original set.
+	\(A \notin A\); hence we have contradiction and the power set of a set is not a subset of the original set.t.
 	 
 \end{itemize}
 
@@ -285,7 +285,7 @@ A subset/subclass \(A\) of the set/class \(B\) is a set which obeys the followin
 
 By the axiom of construction we define \(\mathcal{U}\) with \(P(x)\) is \(x = x\) as the \emph{universal class} of all elements.
 
-It also as the following property
+It also as the following propertyy
 
 \[
 	A \subseteq \mathcal{U},
@@ -295,7 +295,7 @@ which gives us the following: \(A \cup \mathcal{U} = \mathcal{U}\) and \(A \cap 
 
 \section{The Empty Class}
 
-The \emph{empty class} is class with no elements. 
+The \emph{empty class} is class with no elements. . 
 
 \[
 	\emptyset = \{x \mid x \neq x\}
@@ -305,7 +305,7 @@ We can not use existence quantifiers \(\exists\) with this class.
 Every statement with \(\forall x \in \emptyset\) is true, because there are no counterexamples. 
 This leads to interesting equalities like \(\mathcal{U} = \emptyset\).
 
-We can prove that the empty class exist by letting \(\emptyset = \{x \mid x \ne x\}\) this is a perfectly valid statement.
+We can prove that the empty class exist by letting \(\emptyset = \{x \mid x \ne x\}\) this is a perfectly valid statement.t.
 
 Now we need to prove that it is unique, and this is given by the axiom of extensionality.
 
@@ -320,10 +320,10 @@ It also has the property that \(\emptyset \subseteq A\) for any class or set \(A
 
 \section{Set Complement Proof}
 
-Given \(A, B \subseteq M\) then \(A \subseteq B \implies B^c \subseteq A^c\)
+Given \(A, B \subseteq M\) then \(A \subseteq B \implies B^c \subseteq A^c\)).
 
 For some \(x \in B^c\) we know that \(x \notin B\). If \(x \in A\) then \(x \in B\) which is a contradiction. 
-Hence, \(x \notin A\) therefore, for every \(x \in B^c\) we conclude \(B^c \subseteq A^c\).
+Hence, \(x \notin A\) therefore, for every \(x \in B^c\) we conclude \(B^c \subseteq A^c\).).
 
 \QED
 
@@ -357,7 +357,7 @@ Let \(A\) and \(B\) be sets then:
 
 \textbf{Proof:}
 
-For \(A \subseteq B \iff A \cup B = B\) we know that \(x \in A \implies x \in B \) Then
+For \(A \subseteq B \iff A \cup B = B\) we know that \(x \in A \implies x \in B \) Thenn
 
 \begin{align*}
 	A \cup B &\iff x \in A \lor x \in B \quad \text{ as subset then } \\ 	
@@ -367,8 +367,8 @@ For \(A \subseteq B \iff A \cup B = B\) we know that \(x \in A \implies x \in B 
 
 The other direction will be skipped due to it being very similar to the \(\Rightarrow\) direction. 
 
-Similarly, for \(A \subseteq B \iff A \cap B = A\) We know that for some \((y \in B \land y \notin A) \notin A \cap B\) because of 
-the definition of the subset. Then this tells us that \(\forall x \in A \cap B: x \in A\) thus \(A \cap B = A\)
+Similarly, for \(A \subseteq B \iff A \cap B = A\) We know that for some \((y \in B \land y \notin A) \notin A \cap B\) because of  
+the definition of the subset. Then this tells us that \(\forall x \in A \cap B: x \in A\) thus \(A \cap B = A\)).
 
 \QED
 
@@ -432,7 +432,7 @@ direction of the proof.
 
 \QED 
 
-\(\{a, b\} = \{a\} \iff a = b\) can be proven using the definition and the equivalence \(P \lor P = P\)
+\(\{a, b\} = \{a\} \iff a = b\) can be proven using the definition and the equivalence \(P \lor P = P\).
 
 \[
 	\{a, b\} := \{x \mid x = a \lor x = a\} \implies \{x \mid x = a\}
@@ -440,11 +440,11 @@ direction of the proof.
 
 \QED
 
-\(\{a, b\} = \{x, y\} \iff (a = x \land b = y) \lor (a = y \land b = x)\), we need to first the case \(a = b\). In 
-that case our problems simplifies to \(\{a\} = \{x, y\}\) which by the axiom guarantees the equality for \(\{a\} = \{x\} \lor \{a\} = \{y\}\) 
+\(\{a, b\} = \{x, y\} \iff (a = x \land b = y) \lor (a = y \land b = x)\), we need to first consider the case \(a = b\). In 
+that case our problem simplifies to \(\{a\} = \{x, y\}\) which by the axiom guarantees the equality for \(\{a\} = \{x\} \lor \{a\} = \{y\}\) 
 because otherwise we will arrive at a contradiction.
 
-For the case \(a \neq b\) we have the following cases \((x = a \land y = b) \lor (x = b \land y = a)\) which against by the use of the axiom of 
+For the case \(a \neq b\) we have the following cases \((x = a \land y = b) \lor (x = b \land y = a)\), from which, again by the use of the axiom of 
 the equality we can discard the cases where the equality does not hold.
 
 \QED
@@ -543,8 +543,8 @@ Thus, both inclusions hold and the equality follows.
 
 We need to prove that \(A \times B \subseteq \mathcal{P}(A \cup B)\). By the definition of the ordered pair we know that 
 for \(x \in A \cup B \implies \{x\} \subseteq A \cup B\) the same for \(x,y \in A \cup B\) which implies 
-\(\{x, y\} \subseteq A \cup B\). By our axiom of union we know that \(\{\{x\}, \{x, y\}\}\) is a set a and this is a 
-subset of \(\mathcal{P}(\mathcal{P}(A \cup B))\) for free \(x\) and \(y\). Hence 
+\(\{x, y\} \subseteq A \cup B\). By our axiom of union we know that \(\{\{x\}, \{x, y\}\}\) is a set, and this is a 
+subset of \(\mathcal{P}(\mathcal{P}(A \cup B))\) for any \(x\) and \(y\). Hence 
 
 \[
 	(x, y) \subseteq A \times B \subseteq \mathcal{P}(\mathcal{P}(A \cup B))
@@ -555,7 +555,7 @@ subset of \(\mathcal{P}(\mathcal{P}(A \cup B))\) for free \(x\) and \(y\). Hence
 \subsection{The Empty Set Of The Cartesian Product}
 
 \(A \times B = \emptyset \iff A = \emptyset \lor B = \emptyset\). We will prove the negation of the 
-statement which logically equivalent.
+statement, which is logically equivalent.
 
 \[
 	A \times B \ne \emptyset \iff A \neq \emptyset \land B \neq \emptyset
@@ -614,7 +614,7 @@ Let \(X\) be the universal set and \(A, B, C \subseteq X\).
 	
 	\item \(\overline{\overline{A}} = A\)
 
-	\item \((A \setminus B) \cup (B \setminus) A = A \Delta B\)
+	\item \((A \setminus B) \cup (B \setminus A) = A \Delta B\)
 
 	\item \(A \setminus (B \cup C) = (A \setminus B) \cap (A \setminus C) \)
 	
@@ -655,7 +655,7 @@ Thus,
 
 \QED
 
-\subsection{Proof of De Morgans's Law for sets and logic}
+\subsection{Proof of De Morgan's Law for sets and logic}
 
 The complement of \( A \cup B \) is \( \overline{(A \cup B)} \), and the law on disjoint decomposition 
 states:
@@ -702,7 +702,6 @@ To show:
 
 \QED
 
-
 \section{Indexed Sets}
 
 Let \(X\) be a set, and \( A_i \subseteq X \) for all \( i \in J \), where \(I\) is the 
@@ -724,7 +723,8 @@ We also can define the graph of the sets with their respective indexes:
 
 \section{Generalized Union, Intersection and Cartesian Product For Indexed Sets}
 
-For a class of classes or sets of sets with an index set \(I\) we define the generalized \emph{union}, \emph{intersection} and \emph{Cartesian product} as:
+For a class of classes or sets of sets with an index set \(I\) we define the generalized \emph{union}, \emph{intersection} 
+and \emph{Cartesian product} as:
 
 \[
 	\bigcup_{i=1}^{n} A_i := A_1 \cup A_2 \cup \dots \cup A_n = \{ x \mid \exists i \in I, (x \in A_i) \}
@@ -850,8 +850,8 @@ Let \( |A \cap B| = k \), then:
 
 \section{Definition of Countable and Non-countable}
 
-A set \(A\) is \emph{infinite countable} or just \emph{countable} if there exist a bijection from \(\N\) to 
-\(A\). If \(A\) has infinite elements and there is no such bijection, we call it \emph{non-countable}
+A set \(A\) is \emph{infinite countable} or just \emph{countable} if there exists a bijection from \(\N\) to 
+\(A\). If \(A\) has infinitely many elements and there is no such bijection, we call it \emph{non-countable}.
 
 \section{Countable Union}
 
@@ -865,8 +865,8 @@ is also countable.
 
 \section{Countability Of Subsets}
 
-Given \(A \subseteq B\), where \(B\) is countable. Then \(A\) is also countable. The other case is 
-that if \(A\) is non-countable then \(B\) must be non-countable as well.
+Given \(A \subseteq B\), where \(B\) is countable, then \(A\) is also countable. The other case is 
+that if \(A\) is non-countable, then \(B\) must be non-countable as well.
 
 \subsection{Countability of the Rational Numbers}
 
@@ -884,7 +884,8 @@ Thus,
     \Q = \left\{ \frac{p}{q} \; \middle| \; p \in \Z, \; q \in \N \right\}.
 \]
 
-The Cartesian product \( \Z \times \N \) is countable because both \( \Z \) and \( \N \) are countable, and a countable product of countable sets is countable.
+The Cartesian product \( \Z \times \N \) is countable because both \( \Z \) and \( \N \) are countable, and a countable 
+product of countable sets is countable.
 
 Hence, there exists an enumeration \( (p_i, q_i)_{i \in \N} \) of all pairs \( (p, q) \) with \( q \neq 0 \).  
 Defining
@@ -943,7 +944,7 @@ Therefore, the interval \( (0,1) \), and thus the set of real numbers \( \R \), 
 
 \section{The Power Set}
 
-The \emph{power set} of a set is the set of all subsets of a given set 
+The \emph{power set} of a set is the set of all subsets of a given set.
 
 \[
 	\mathcal{P}(x):= \{ M: M \subseteq X\}
@@ -977,7 +978,7 @@ as the \emph{intersection} and \emph{union} of the sets.
 \textbf{Proof:}
 
 The set intersection of the empty-set gives us the set of all elements that are in every set of the empty-set. 
-We have defined our definition 
+Recall our definition 
 
 \[
 	\bigcap \mathscr{F}  := \{x \mid \forall F, F \in \mathscr{F} \implies x \in F\}
@@ -990,7 +991,7 @@ For our case
 	\bigcap \emptyset = \{x \mid \forall F, F \in \emptyset \implies x \in F\}.
 \]
 
-We can see that that due to the implication our left side is always false which leads 
+We can see that due to the implication our left side is always false which leads 
 our right side to be always true which means that the statement is valid for all \(x\). 
 Resulting in 
 
@@ -1032,28 +1033,28 @@ is a big contradiction to the definition of \(\bigcap \mathcal{B}\). Therefore, 
 
 \QED
 
-One application of this property is for example: Given \(\{A_i\}_{i \in I}\) proof that \(\bigcap A_i\) is a set.
+One application of this property is, for example: Given \(\{A_i\}_{i \in I}\), prove that \(\bigcap A_i\) is a set.
 
 We know that \(\bigcap A_i \subseteq A_i\) for some \(i \in I\). Hence, it is a subset which means by the axiom of subsets of classes and sets 
 that it has to be a set.
 
 \QED
 
-\section{Foundamental Set Functions}
+\section{Fundamental Set Functions}
 
 \subsection{Inclusion Function}
 
-Let \(A \subseteq B\) the function 
+Let \(A \subseteq B\). We define the function 
 
 \[
 	E_{B}(x): A \to B, \quad x \mapsto x, \quad \forall x \in B
 \]
 
-as the \emph{inclusion function} of \(B\) in \(A\).
+as the \emph{inclusion function} of \(A\) in \(B\).
 
 \subsection{Partition Function}
 
-If \(P\) is a partition of \(M\) then each element of \(M\) to exactly one \(X \in P\)
+If \(P\) is a partition of \(M\), then each element of \(M\) belongs to exactly one \(X \in P\).
 
 \[
 	f_p : M \to P : m \mapsto X \in P \text{ with }m \in X,
@@ -1074,7 +1075,7 @@ Given two sets \(A\) and \(B\), we define the \emph{characteristic function} of 
 
 \section{Partitions}
 
-Let \(A\) be a set. A \emph{partition} of \(A\) is a subset non-empty sets of \(\mathcal{P}(A)\) with the following properties:
+Let \(A\) be a set. A \emph{partition} of \(A\) is a set of non-empty subsets in \(\mathcal{P}(A)\) with the following properties:
 
 \[
 	\forall i, j \in I A_i \cap A_j = \emptyset \quad \text{for} \quad i \neq j
@@ -1090,11 +1091,11 @@ and
 
 Prove that \(B_n = \{m \in \Z \mid \exists q, m = n + 5q\}\) is a partition of \(\Z\). 
 
-First, we prove that disjoint property which means \(m \in B_x \land m \in B_y \iff x = y\)
+First, we prove the disjoint property, which means \(m \in B_x \land m \in B_y \iff x = y\).
 
-For the union, we need to prove that every \(B_n\) is not empty which is very easy by letting \(m = n + 5\cdot0 \implies m = n\) and then 
-combining all of them with the union will give us the entire set of integers because every of the sets \(B_n\) has at least the number 
-\(n\) in it which can be any integer.
+For the union, we need to prove that every \(B_n\) is not empty, which is very easy by letting \(m = n + 5\cdot0 \implies m = n\); then 
+combining all of them with the union will give us the entire set of integers, because each of the sets \(B_n\) has at least the number 
+\(n\) in it, which can be any integer.
 
 \QED
 
@@ -1123,8 +1124,8 @@ is an equivalence relation.
 
 \emph{Symmetry}: \(a, b \in A \bigcup S \implies a,b \in X \in S \implies (a, b), (b, a) \in R_S\).
 
-\emph{Reflexivity}: \((a, b), (b, c) \in R_S \implies a,b \in X \in S \land b,y \in Y \in S \implies b \in X \cap Y\) by definition 
-\(X \cap Y \neq \emptyset \iff X = Y\), therefor, \(a, c \in X, (a, c) \in R_S\).
+\emph{Transitivity}: \((a, b), (b, c) \in R_S \implies a,b \in X \in S \land b,y \in Y \in S \implies b \in X \cap Y\) by definition 
+\(X \cap Y \neq \emptyset \iff X = Y\); therefore, \(a, c \in X, (a, c) \in R_S\).
 
 \QED
 
@@ -1148,7 +1149,7 @@ For the first statement we need to prove the condition of an equivalence relatio
 
 \emph{Transitivity}: \((a, b), (b, c) \in R_{A/R} \implies a, b \in [x]_R \in A/R \land b,c \in [y]_R \in A/R \implies a \sim x \land b \sim x \land b \sim y \land a \sim y \implies (a, b),(b,c),(a, c) \in R_{A/R} \).
 
-Thus, \(R_{A/R} = R\). For the other direction \((a, b) \in R \implies b \in [a]_R \in A/R \implies a R_{A/R} b\)
+Thus, \(R_{A/R} = R\). For the other direction \((a, b) \in R \implies b \in [a]_R \in A/R \implies a R_{A/R} b\)).
 
 For the second part: \(A/R_S = S\):
 
@@ -1266,7 +1267,7 @@ Let \( M \) be a set.
 
 \subsection{Pre-image}
 
-Let \(f: A \to B\) and \(G\)be an equivalence relation in \(B\). The \emph{pre-image} of \(G\) in 
+Let \(f: A \to B\) and \(G\)be an equivalence relation in \(B\). The \emph{pre-image} of \(G\) in  
 \(A\) is defined as  
 
 \[
@@ -1277,7 +1278,7 @@ and it is also an equivalence relation.
 
 \subsection{Restriction}
 
-Similarly, we can also define the \emph{restriction} for when \(B \subseteq A\)
+Similarly, we can also define the \emph{restriction} for when \(B \subseteq A\):
 
 \[
 	G_{[B]} = \{(x, y) \mid x \in B \land y \in B \land (x, y) \in G\}
@@ -1312,8 +1313,8 @@ of \(H\) we know that \(x \sim x\), which means that \((x, x) \in H\); and there
 if \((x \sim y \land (y \sim x)\) were not true then \(H\) would not be an equivalence relation which leads to a contradiction of our initial conditions. Hence, 
 the symmetric property is present.
 
-\emph{Transitivity}: Lastly, the transitivity we again use the same argument as before using our base elements and pairs from \(H\) to arrive at a contradiction, which 
-guarantees us that their equivalence class counterpart are also part of an equivalence relation.
+\emph{Transitivity}: Lastly, the transitivity we again use the same argument as before using our base elements and pairs from \(H\) to arrive at a contradiction, which hich 
+guarantees us that their equivalence class counterpart are also part of an equivalence relation..
 
 \QED
 
@@ -1393,7 +1394,7 @@ The homomorphism theorem for Sets can be visualized through the following commut
 	\label{fig:homomorphism_theorem}
 \end{figure}
 
-This is saying us to first form collections of elements and then use our second function to associate that connections to their 
+This is saying us to first form collections of elements and then use our second function to associate that connections to their r 
 respective images. 
 
 \section{Family of Subsets Operations}
@@ -1434,7 +1435,7 @@ Is the set of all functions from \(I\) to \(\bigcup A_i\).
 
 For \(g: A \to B\) and \(|A| = n + 1\), \(|B| = n\) then there exists \(b \in B\) such that \(|g^{-1}(\{ b \})| \ge 2\). 
 
-In other words if you have \(n\) boxes and \(n + 1\) objects, then at least one of those boxes will have more than 2 elements.
+In other words if you have \(n\) boxes and \(n + 1\) objects, then at least one of those boxes will have more than 2 elements.t.
 
 \section{The Cantor Set}
 
@@ -1604,8 +1605,8 @@ Therefore, the Cantor set has to be uncountable.
 
 This is not the most rigorous proof, but accomplishes its goal:
 
-The original interval as length 1 and consist of one unit, the next \(1 - \frac{1}{3}\) and consist of two units, this pattern with 
-\(2^n \frac{1}{3^n}\) continues forever thus, 
+The original interval as length 1 and consist of one unit, the next \(1 - \frac{1}{3}\) and consist of two units, this pattern with  pattern with 
+\(2^n \frac{1}{3^n}\) continues forever thus,  
 
 \[
 	L = 1 - \sum_{i = 1}^{\infty} 2^n \frac{1}{3^n}
@@ -1621,4 +1622,4 @@ Note that the sum is a geometric series therefore,
 
 \section{Convexity}
 
-A set \(X\) is \emph{convex} is \(\metric{x - y} \in X, \ \forall x, y \in X\). 
+A set \(X\) is \emph{convex} is \(\metric{x - y} \in X, \ \forall x, y \in X\).

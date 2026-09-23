@@ -1,11 +1,11 @@
 \chapter{Mathematical Proofs}
 
-In this section I will provide with both definitions and examples of different types of proofs for the reader to 
+In this section, I will provide both definitions and examples of different types of proofs for the reader to 
 gain an overview of how to use the different proving methods.
 
 \section{Proof By Direct Argument}
 
-Assume \(A\) to prove to prove \(B\).
+Assume \(A\) to prove \(B\).
 
 \[
 	A \implies B
@@ -21,7 +21,7 @@ Assume \(n\) is an even integer. Then we can write \( n = 2k \) for some integer
 Now, we compute \( n^2 \):
 
 \[		
-	n^2 = {(2k)}^2 = 4k^2 = 2(2k^2)
+	n^2 = {(2k)}^2 = 4k^2 = 2(2k^2).
 \]
 	
 This shows that \( n^2 \) is even, as it can be expressed as \( 2m \) where \( m = 2k^2 \) is an integer.
@@ -47,13 +47,13 @@ Assume \(n\) is even. Then we can write \( n = 2k \) for some integer \(k\).
 Now, we compute \( n^2 \):
 	
 \[
-	n^2 = {(2k)}^2 = 4k^2 = 2(2k^2)
+	n^2 = {(2k)}^2 = 4k^2 = 2(2k^2).
 \]
 
 This shows that \( n^2 \) is even.
 
-Since the contrapositive statement is true, the original statement If \( n^2 \) is odd, then \(n\) is 
-odd is also true.
+Since the contrapositive statement is true, the original statement, ``If \( n^2 \) is odd, then \(n\) is 
+odd,'' is also true.
 
 \QED
 
@@ -75,7 +75,7 @@ even, but \(n\) is odd. Then we can write \( n = 2k + 1 \) for some integer \(k\
 Now, we compute \( n^2 \):
 
 \[
-	n^2 = {(2k + 1)}^2 = 4k^2 + 4k + 1 = 2(2k^2 + 2k) + 1
+	n^2 = {(2k + 1)}^2 = 4k^2 + 4k + 1 = 2(2k^2 + 2k) + 1.
 \]
 	
 This shows that \( n^2 \) is odd, which contradicts our assumption that \( n^2 \) is even. Therefore, our 
@@ -87,19 +87,19 @@ assumption that \(n\) is odd must be false, and thus, \(n\) must be even.
 
 Another example is the proof that there are infinite prime numbers.
 
-Let us define the prime numbers \(p_1, \dots, p_n\) where we assume \(p_n\) is the biggest prime number. 
-If we construct a number 
+Let us define the prime numbers \(p_1, \dots, p_n\), where we assume \(p_n\) is the biggest prime number. 
+We construct a number 
 
 \[
-	q = 1 + p_1 \cdot \cdots \cdot p_n 
+	q = 1 + p_1 \cdot \cdots \cdot p_n.
 \]
 
-This number is bigger than \(p_n\), but it is not divisible by any of the other prime numbers will give us always a residual of 
-1. Therefore, the assumption that there is the biggest prime number is false.
+This number is bigger than \(p_n\), but it is not divisible by any of the other prime numbers, since dividing by any of them 
+will always give us a residual of 1. Therefore, the assumption that there is a biggest prime number is false.
 
 \QED 
 
-\textbf{Example II:}
+\textbf{Example III:}
 
 Suppose, for contradiction, that \(\sqrt{2}\) is rational. Then there exist integers \(p\) and \(q\) 
 with \(q\neq0\), \(\gcd(p,q) = 1\), and
@@ -130,7 +130,7 @@ so \(q^2\) is even and hence \(q\) is even. Therefore, both \(p\) and \(q\) are 
 For all \( n \in \N \), the sum of the first \(n\) positive integers is given by:
 
 \[
-	S(n) = 1 + 2 + 3 + \cdots + n = \frac{n(n+1)}{2}
+	S(n) = 1 + 2 + 3 + \cdots + n = \frac{n(n+1)}{2}.
 \]
 
 We will prove this theorem by induction on \(n\).
@@ -138,7 +138,7 @@ We will prove this theorem by induction on \(n\).
 \textbf{Base Case:} For \( n = 1 \):
 
 \[
-	S(1) = 1 = \frac{1(1+1)}{2}
+	S(1) = 1 = \frac{1(1+1)}{2}.
 \]
 
 The base case holds.
@@ -146,13 +146,13 @@ The base case holds.
 \textbf{Inductive Step:} Assume that the statement holds for some \( n = k \), i.e., assume that:
 	
 \[
-	S(k) = 1 + 2 + 3 + \cdots + k = \frac{k(k+1)}{2}
+	S(k) = 1 + 2 + 3 + \cdots + k = \frac{k(k+1)}{2}.
 \]
 	
 We need to show that the statement holds for \( n = k + 1 \):
 
 \[
-	S(k+1) = S(k) + (k + 1)
+	S(k+1) = S(k) + (k + 1).
 \]
 	
 By the inductive hypothesis, we have:
@@ -161,7 +161,7 @@ By the inductive hypothesis, we have:
 	S(k+1) &= \frac{k(k+1)}{2} + (k + 1) \\
 	&= \frac{k(k+1)}{2} + \frac{2(k + 1)}{2}\\
     &= \frac{k(k+1) + 2(k + 1)}{2} \\
-	&= \frac{(k + 1)(k + 2)}{2}	
+	&= \frac{(k + 1)(k + 2)}{2}.	
 \end{align*}
 
 Thus, the statement holds for \( n = k + 1 \).
@@ -176,33 +176,33 @@ inductive hypothesis, we assume \(A(j)\) is true for \(1 \le j \le n\).
 
 The inductive step: Show \([A(1) \land A(2) \dots A(n)] \implies A(n + 1)\). 
 
-Sometimes, we will prove specific values are true for \(1 \le j \le n\), and sometimes just assume that 
+Sometimes, we will prove specific values are true for \(1 \le j \le n\), and sometimes we just assume that 
 \(A(j)\) is true for \(1 \le j \le n\). 
 
 \textbf{Example:}
 
-Prove that any integer \(\ge 1\) can be written as the product primes.
+Prove that any integer \(\ge 1\) can be written as the product of primes.
 
 Let \(A(n)\) be that if \(n\) is an integer greater than 1, then \(n\) can be written as the product of 
 primes. 
 
-\textbf{Basis: } \(A(2)\) is true because is prime 
+\textbf{Basis: } \(A(2)\) is true because 2 is prime. 
 
 \textbf{Inductive hypothesis:} \(A(j)\) for \(2 \le j \le n\) is true. \textbf{Important!}
 
-Consider the cases \(k + 1\) is prime or composite. 
+Consider the cases where \(k + 1\) is prime or composite. 
 
 The first case is true.
 
-For the case \(n + 1\) is not prime then \(n + 1 = ab\) with \(2 \le a,b \le n < n + 1\) and both 
-for \(a\) and \(b\) we know that they can be written as the product of primes thus 
+For the case where \(n + 1\) is not prime, we have \(n + 1 = ab\) with \(2 \le a,b \le n < n + 1\), and 
+for both \(a\) and \(b\) we know that they can be written as the product of primes; thus, 
 \(n + 1\) can be written as the product of primes. 
 
 \QED
 
 \section{Proof By Exhaustion}
 
-In \emph{exhaustion} we test all possible cases and their respective branches.
+In \emph{exhaustion}, we test all possible cases and their respective branches.
 
 \textbf{Example:}
 
@@ -234,25 +234,25 @@ Solution: \( (-1, 0) \).
 Thus, the only integer solutions to the equation are:
 	
 \[
-	(0, 1), (1, 0), (0, -1), (-1, 0)
+	(0, 1), (1, 0), (0, -1), (-1, 0).
 \]
 
 \QED
 
 \section{Proof By Counter-example}
 
-In a \emph{counter-example} is it enough to find one case for a statement to not be true, to prove an 
-statement false, and in some cases that the opposite is true.
+With a \emph{counter-example}, it is enough to find one case in which a statement is not true to prove the 
+statement false, and in some cases to prove that the opposite is true.
 
 \textbf{Example:}
 
-The statement all prime numbers are odd is false.
+The statement ``all prime numbers are odd'' is false.
 
 To prove this theorem, we will provide a counterexample.
 
 The number 2 is a prime number, as its only divisors are 1 and 2. However, 2 is 
 even, which contradicts the statement that all prime numbers are odd.
 
-Therefore, the statement All prime numbers are odd is false.
+Therefore, the statement ``all prime numbers are odd'' is false.
 
 \QED

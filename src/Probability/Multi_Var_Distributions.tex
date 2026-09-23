@@ -62,13 +62,13 @@ This is just the probability of \(n\) events happening simultaneously.
 
 \section{Joint Probability Of An Event}
 
-For any random variable 
+For any random variables:
 
 \[
     \prob(X_1 = x_1, \ldots, X_n = x_n) = \prob(X_1 = x_1) \prob(X_2 = x_2 \mid X_1 = x_1) \cdots \prob(X_n = x_n \mid X_1 = x_1, \ldots, X_{n - 1} = x_{n - 1})
 \]
 
-If they are independent then
+If they are independent, then
 
 \[
     \prob(X_1 = x_1, \ldots, X_n = x_n) = \prob(X_1 = x_1) \prob(X_2 = x_2) \cdots \prob(X_n = x_n)
@@ -134,9 +134,9 @@ The \emph{marginal probability functions} of \( X \) and \( Y \) are given by
 \]
 
 This means that we fix one variable and sum over all possible values of the other variable. For the 2d case, 
-if we want a marginal distribution of \(X\) we sum over all rows for a fixed column.
+if we want a marginal distribution of \(X\), we sum over all rows for a fixed column.
 
-Generalized, let \( X_1, \ldots, X_n \) be random variables and \( 1 \leq i_1 < \cdots < i_k \leq n \).
+More generally, let \( X_1, \ldots, X_n \) be random variables and \( 1 \leq i_1 < \cdots < i_k \leq n \).
 
 The joint distribution of \( X_{i_1}, \ldots, X_{i_k} \) is a \emph{\(k\)-dimensional marginal distribution} of \( X_1, \ldots, X_n \).
 
@@ -160,7 +160,7 @@ The joint distribution of \( X_1 \) and \( Y \) is given by:
     \end{array}
 \]
 
-In the last column and row we get the marginal distributions of \(X_1\) and \(Y\) respectively.
+In the last column and row, we get the marginal distributions of \(X_1\) and \(Y\), respectively.
 
 \subsection{Marginal Probability Function for Multiple Discrete Variables}
 
@@ -200,7 +200,7 @@ Let \( X \) and \( Y \) be random variables with the following joint probability
     \end{array}
 \]
 
-Let \(u(X,Y) = xy\) then our expected value is given by: 
+Let \(u(X,Y) = xy\), then our expected value is given by: 
 
 \[
     \expc[XY] = \sum_{(x,y) \in (X, Y)(\Omega)} xy \, p(x,y)
@@ -237,7 +237,7 @@ the following holds:
 \textbf{Example I:}
 
 Find the probability of \(\prob(X \le \frac{2}{3}, Y \le \frac{1}{2})\), with
-the constraint \(\Delta = \{(x,y) \in [0,1]^2 : 0 \le y \le x \le 1 \}\)
+the constraint \(\Delta = \{(x,y) \in [0,1]^2 : 0 \le y \le x \le 1 \}\).
 
 \begin{align*}
     \int_{0}^{\frac{2}{3}} \int_{0}^{\frac{1}{2}} f(x,y) dy dx \\
@@ -268,7 +268,7 @@ Density of \(X\):
     \end{cases}
 \]
 
-Density of \(Y\)
+Density of \(Y\):
 
 \[
     f_Y(y) = \int_0^1 6x^2 y \, dx = 6y \left[\frac{x^3}{3}\right]_0^1 = 2y \quad \text{for } 0 \leq y \leq 1
@@ -388,7 +388,7 @@ Also, if \(X_1, \dots, X_n\) are independent random variables and
     f_1, \cdots, f_n : \R \to \R
 \]
 
-Then are \(f_1(X_1), \dots, f_n(X_n)\) also independent random variables.
+Then \(f_1(X_1), \dots, f_n(X_n)\) are also independent random variables.
 
 \textbf{Example:}
 
@@ -424,7 +424,7 @@ Given the independent random variables \(X_1, \dots, X_n\) then
 
 \textbf{Proof:}
 
-For \(i \ne j\) we have due to independence
+For \(i \ne j\), we have, due to independence,
 
 \[
     \expc[(X_i - \expc[X_i])](X_j - \expc[X_j]) = \expc[X_i - \expc[X_i]] \cdot \expc[X_j - \expc[X_j]] = 0
@@ -459,7 +459,7 @@ The corresponding \emph{conditional probability function} of \( Y \) given \( X 
 \]
 
 Two conditional discrete random variables \(X\) and \(Y\) are independent if the conditional probability of \(Y\) given \(X = x\) is
-not dependent on \(x\) i.e.
+not dependent on \(x\), i.e.
 
 \textbf{Proof:}
 
@@ -544,7 +544,7 @@ Let \(X, Y\) be random variables with existing variances. Then the following hol
     \rho_{X,Y} = -1 \iff Y = aX + b \text{ with } a < 0
 \]
 
-\section{Variance Of The Sum Of Random Variance}
+\section{Variance Of The Sum Of Random Variables}
 
 Given the random variables \(X_1, \dots, X_n\) then
 
@@ -569,7 +569,7 @@ Then the following holds:
     |\expc[X, Y]| \le \sqrt{\expc[X^2] \expc[Y^2]}
 \]
 
-Following
+It follows that
 
 \[
     |\cov(X, Y)| \le \sqrt{\var(X) \var(Y)}
@@ -577,7 +577,7 @@ Following
 
 \section{Multivariable Normal Distribution}
 
-Given \(X_1, \dots, X_n\) independent \(\mathcal{N}(0,1)\) the density function of their joint distribution is given by
+Given \(X_1, \dots, X_n\) independent \(\mathcal{N}(0,1)\), the density function of their joint distribution is given by
 
 \[
     f(x_1, \dots ,x_n) = \prod_{i = 1}^{n} \frac{1}{\sqrt{2\pi}} e^{\left(-\frac{1}{2}x_{i}^{2}\right)} = \frac{1}{(2\pi)^{n/2}} e^{\left(-\frac{1}{2} X^T \cdot X\right)} 
@@ -798,7 +798,7 @@ This increases the standard deviation to \(\sqrt{22} \approx 4.690\) kg, making 
 
 Given \(X_1, \dots, X_n\) random variables with a joint normal distribution. If \(\cov(X_i, X_j) = 0\) for all \(i \ne j\), then they are mutually independent. 
 
-Important, this equivalence between zero correlation and independence is special to the multivariate normal distribution and does not hold in general.
+Importantly, this equivalence between zero correlation and independence is special to the multivariate normal distribution and does not hold in general.
 
 \section{Linear Combinations Of The Joint Normal Distribution}
 

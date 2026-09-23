@@ -1,10 +1,9 @@
-
 \chapter{Elementary Matrix}
 
 We are going to define 3 matrices that can be obtained from the Elementary Row
 Operations on the \emph{Identity Matrix} and call them \emph{Elementary Matrices}.
 
-\emph{C1: Row Addition}
+\section{C1: Row Addition}
 
 \[
     C_1 :=
@@ -28,7 +27,7 @@ Operations on the \emph{Identity Matrix} and call them \emph{Elementary Matrices
     \in \field^{n \times n}
 \]
 
-\emph{C2: Row swap}
+\section{C2: Row swap}
 
 \[
     C_2 :=
@@ -43,7 +42,7 @@ Operations on the \emph{Identity Matrix} and call them \emph{Elementary Matrices
     \in \field^{n \times n}
 \]
 
-\emph{C3: Row Scaling}
+\section{C3: Row Scaling}
 
 \[
     C_3 :=
@@ -57,8 +56,8 @@ Operations on the \emph{Identity Matrix} and call them \emph{Elementary Matrices
     \in \field^{n \times n}
 \]
 
-Each of them also encodes the row Operations from where they came from.
-So now Gaussian Elimination can be encoded as matrix multiplication.
+Each of them also encodes the row operations from which they came.
+So now Gaussian elimination can be encoded as matrix multiplication.
 
 Formally,
 
@@ -71,14 +70,15 @@ Formally,
     \end{cases}
 \]
 
-\[
-    C_2:= \text{Swap}_m (i,j) := (e_1, \dots, e_{i - 1}, e_j, e_{j + 1}, \dots, e_{j - 1}, e_i, e_{j + 1}, \dots, e_m): m \times m \to \field : (s,t) \mapsto
-    \begin{cases}
+\begin{align*}
+     C_2:= \text{Swap}_m (i,j) :=&  \\ 
+    & (e_1, \dots, e_{i - 1}, e_j, e_{j + 1}, \dots, e_{j - 1}, e_i, e_{j + 1}, \dots, e_m): m \times m \to \field : (s,t) \mapsto \\
+    &\begin{cases}
         1, & s = t \notin \{i, j\} \\ 
         1, & (s, t) \in \{(i,j), (j,i)\}\\ 
         0, &\text{ else} 
-    \end{cases}
-\]
+    \end{cases}   
+\end{align*}
 
 \[
     C_3:= \text{Mul}_m (i,\lambda) := I_m + (a - 1) e_i f_j: m \times m \to \field : (s,t) \mapsto 
@@ -89,10 +89,10 @@ Formally,
     \end{cases}
 \]
 
-\subsection{Invertibility}
+\section{Invertibility}
 
-Because every row operation is invertible now we can also claim that
-Elementary Matrices are invertible and thy also represented that inverted row operation.
+Because every row operation is \emph{invertible}, we can now also claim that elementary matrices are invertible and that they also represent 
+that inverted row operation.
 
 Formally, 
 
@@ -106,13 +106,13 @@ Formally,
 
 \end{itemize}
 
-\subsection{Determinants}
+\section{Determinants Of Elementary Matrices}
 
 The determinants corresponding to each matrix are:
 
 \begin{align*}
-     & \det C1 = 1       \\
-     & \det C2 = -1      \\
-     & \det C3 = \lambda
+     & \det(C1) = 1       \\
+     & \det(C2) = -1      \\
+     & \det(C3) = \lambda
 \end{align*}
 

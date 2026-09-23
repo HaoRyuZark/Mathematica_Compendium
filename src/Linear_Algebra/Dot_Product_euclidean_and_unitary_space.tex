@@ -1,21 +1,6 @@
+\chapter{Outer and Inner Product; Euclidean and Unitary Space}
 
-\chapter{Dot Product, Euclidean and Unitary Space}
-
-\subsection{Outer Product}
-
-The \emph{outer product} of two vectors \(a \in \field^m\) and \(b \in \field^n\) is defined as the matrix
-
-\[
-    a \otimes b := a b^T = 
-    \begin{bmatrix}
-        a_1 b_1 & a_1 b_2 & \dots & a_1 b_n \\
-        a_2 b_1 & a_2 b_2 & \dots & a_2 b_n \\
-        \vdots  & \vdots  & \ddots& \vdots  \\
-        a_m b_1 & a_m b_2 & \dots & a_m b_n 
-    \end{bmatrix} \in \field^{m \times n}.
-\]
-
-\subsection{Outer Product}
+\section{Outer Product}
 
 The \emph{outer product} of two vectors \(a \in \field^m\) and \(b \in \field^n\) is defined as the matrix
 
@@ -29,10 +14,10 @@ The \emph{outer product} of two vectors \(a \in \field^m\) and \(b \in \field^n\
     \end{bmatrix} \in \field^{m \times n}.
 \]
 
-\subsection{Inner Product}
+\section{Inner Product}
 
 Let \(V\) be a vector space over a field \(\field\). A mapping \(\langle \cdot, \cdot \rangle : V \times V 
-\to \field\) is called an inner product (or inner product) if the following conditions are satisfied:
+\to \field\) is called an \emph{inner product}, if the following conditions are satisfied:
 
 \emph{Symmetry}
 
@@ -86,39 +71,40 @@ and
     \inner{0}{0} = 0.
 \]
 
-It also can be interpreted as a linear transformation that takes a vector and maps it to a real number
- via matrix vector multiplication. Also, a more practical way of thinking about the 
- \emph{dot product} is the question: How much are two vectors pointing in the same direction?
+It can also be interpreted as a linear transformation that takes a vector and maps it to a real number via matrix-vector multiplication. Also, 
+a more practical way of thinking about the \emph{dot product} is the question: how much are two vectors pointing in the same direction? when 
+dealing with analytical geometry.
 
 \subsection{Trigonometric Definition}
 
 Think about the orthogonal projection as a triangle. Now, remember that to find the adjacent side \(x\) 
 you need to take \(x = \cos(\theta)h\), which is the value \(\alpha\) in our projection formula 
 \(p_a (b) = \frac{\inner{a}{b}}{\inner{a}{a}} \alpha a\). 
-Here we add \(\|a\|\|b\|\) to make this function linear.
+
+Here we add \(\metric{a}\metric{b}\) to make this function linear.
 
 \[
-    \inner{a}{b} = \|a\| \|b\| \cos (\theta)
+    \inner{a}{b} = \metric{a} \metric{b} \cos (\theta).
 \]
 
-\subsection{Standard Inner Product for Complex Number}
+\section{Standard Inner Product for Complex Numbers}
 
-Let \( a = {(a_i)}_{i=1}^n \) and \( b = {(b_i)}_{i=1}^n \) be vectors in \( \C^n \). The standard 
-inner product is defined by
+Let \( a = {(a_i)}_{i=1}^n \) and \( b = {(b_i)}_{i=1}^n \) be vectors in \( \C^n \). The \emph{standard 
+inner product} is defined by
 
 \[
     \inner{a}{b} := \sum_{i=1}^n a_i \overline{b_i} = a^T \overline{b}
 \]
 
-and by the \emph{hermitian inner product}
+and by the \emph{Hermitian inner product}
 
 \[
-   \inner{a}{b} := \overline{a^{T}} b
+   \inner{a}{b} := \overline{a^{T}} b.
 \]
 
 Here the \emph{symmetry} is given by \(\inner{a}{b} = \overline{\inner{b}{a}}\).
 
-\subsection{Inner Product on \texorpdfstring{\( C[a, b] \)}{}}
+\section{Inner Product on \texorpdfstring{\( C[a, b] \)}{}}
 
 Let \( f, g \in C[a, b] \). The inner product on \( C[a, b] \) is defined by
 
@@ -126,55 +112,54 @@ Let \( f, g \in C[a, b] \). The inner product on \( C[a, b] \) is defined by
     \inner{f}{g} := \int_a^b f(x) \cdot g(x) \, dx.
 \]
 
-\subsection{Euclidean and Unitary Vector Spaces}
+\section{Euclidean and Unitary Vector Spaces}
 
 A real vector space equipped with an inner product is called a \emph{Euclidean vector space}, while a 
 complex vector space with an inner product is called a \emph{unitary vector space}.
 
-\subsection{Norms in Vector Spaces}
+\section{Norms in Vector Spaces}
 
-Let \( V \) be a \( K \)-vector space and \( a, b \in V \). A function \( \| \cdot \| : V \to \R \) 
+Let \( V \) be a \( K \)-vector space and \( a, b \in V \). A function \( \metric{\cdot} : V \to \R \) 
 is called a norm if and only if the following conditions hold:
 
 \begin{itemize}
 
-    \item \( \|a\| \in \R \),
+    \item \( \metric{a} \in \R \),
 
-    \item \( \|a\| \geq 0 \),
+    \item \( \metric{a} \geq 0 \),
 
-    \item \( \|a\| = 0 \iff a = 0 \),
+    \item \( \metric{a} = 0 \iff a = 0 \),
 
-    \item \( \forall \lambda \in K, \ \| \lambda a \| = |\lambda| \| a \| \),
+    \item \( \forall \lambda \in K, \ \metric{ \lambda a } = |\lambda| \metric{ a } \),
 
-    \item \( \| a + b \| \leq \| a \| + \| b \| \).
+    \item \( \metric{ a + b } \leq \metric{ a } + \metric{ b } \).
 
 \end{itemize}
 
-\subsubsection{Induced Norm by a Inner Product}
+\subsection{Induced Norm by a Inner Product}
 
-As in the special case \( V = \R^n \), an inner product induces a norm.
+As in the special case \( V = \R^n \), an inner product \emph{induces} a norm.
 In a unitary (or Euclidean) space, the inner product induces a (standard) norm defined by
 
 \[
-    \| \cdot \| = \sqrt{\langle \cdot, \cdot \rangle}.
+    \metric{\cdot} = \sqrt{\langle \cdot, \cdot \rangle}.
 \]
 
-\subsection{Cauchy-Schwarz Inequality in Unitary Vector Spaces}
+\section{Cauchy-Schwarz Inequality in Unitary Vector Spaces}
 
-In all unitary vector spaces \( V \), the Cauchy-Schwarz inequality holds:
+In all unitary vector spaces \( V \), the \emph{Cauchy-Schwarz inequality} holds:
 
 \[
-    | \inner{a}{b} | \leq \| a \| \| b \| \quad \forall a, b \in V.
+    | \inner{a}{b} | \leq \metric{a} \metric{b} \quad \forall a, b \in V.
 \]
 
-\subsubsection{Proof of the Triangle Inequality}
+\section{Proof Of The Triangle Inequality}
 
-Both sides of the triangle inequality are real and, in particular, non-negative. 
-Therefore, it is sufficient to prove that the squares of both sides satisfy the 
-desired inequality, i.e., we need to show:
+Both sides of the triangle inequality are real and, in particular, non-negative. Therefore, it is sufficient to prove that the squares 
+of both sides satisfy the desired inequality, i.e., we need to show:
 
 \[
-    \inner{a + b}{a + b} \leq {(\|a\| + \|b\|)}^2.
+    \inner{a + b}{a + b} \leq {(\metric{a} + \metric{b})}^2.
 \]
 
 First, we expand the left-hand side:
@@ -200,42 +185,41 @@ real part, so:
 Using the Cauchy-Schwarz inequality, we can further bound this by:
 
 \[
-    2 \, \text{Re} \inner{a}{b} \leq 2 \|a\| \|b\|.
+    2 \, \text{Re} \inner{a}{b} \leq 2 \metric{a} \metric{b}.
 \]
 
 Thus, we have:
 
 \[
-    \inner{a + b}{a + b} \leq \inner{a}{a} + 2 \|a\| \|b\| + \inner{b}{b}.
+    \inner{a + b}{a + b} \leq \inner{a}{a} + 2 \metric{a} \metric{b} + \inner{b}{b}.
 \]
 
-Using the definition of the norm, \( \|a\|^2 = \inner{a}{a} \) and \( \|b\|^2 = \langle b, b 
+Using the definition of the norm, \( \metric{a}^2 = \inner{a}{a} \) and \( \metric{b}^2 = \langle b, b 
 \rangle \), we obtain:
 
 \[
-    \inner{a + b}{a + b} \leq \|a\|^2 + 2 \|a\| \|b\| + \|b\|^2.
+    \inner{a + b}{a + b} \leq \metric{a}^2 + 2 \metric{a} \metric{b} + \metric{b}^2.
 \]
 
-This is exactly the expansion of \( {(\|a\| + \|b\|)}^2 \), which completes the proof.
+This is exactly the expansion of \( {(\metric{a} + \metric{b})}^2 \), which completes the proof.
 
 \QED
 
-\subsection{Definiteness of Inner Products}
+\section{Definiteness of Inner Products}
 
-The concept of the \emph{inner product} plays a major rule in linear algebra, and there are various 
+The concept of the \emph{inner product} plays a major role in linear algebra, and there are various 
 manifestations of this element. We are going to see how inner products are constructed based on the 
-properties we are interested in. Those being linearity for the columns, symmetry and positive definiteness.
+properties we are interested in, those being linearity for the columns, symmetry, and positive definiteness.
 
-Let us start with a matrix \(A \in \R^{n \times n}\) and a map 
-\((\cdot , \cdot)_A : \R^n \times \R^n \to \R \) more specific 
+Let us start with a matrix \(A \in \R^{n \times n}\) and a map \((\cdot , \cdot)_A : \R^n \times \R^n \to \R \), more specifically 
 \((x,y)_A := \inner{x}{Ay}\) using the standard Euclidean inner product.
 
-For our first property, the linearity; it is granted for every matrix \(A = (a_1, a_2, \dots, a_n)\) 
-because of the rules of matrix-vector multiplication. For example for the basis vectors \(e_i, e_j\) 
+For our first property, the linearity, it is granted for every matrix \(A = (a_1, a_2, \dots, a_n)\) 
+because of the rules of matrix-vector multiplication. For example, for the basis vectors \(e_i, e_j\) 
 we get 
 
 \[
-    (e_i, e_j)_A = \inner{e_i}{Ae_j} = e_{i}^{T} A e_j = e_{i}^{T} a_j = a_{ij} 
+    (e_i, e_j)_A = \inner{e_i}{Ae_j} = e_{i}^{T} A e_j = e_{i}^{T} a_j = a_{ij}.
 \]
 
 Therefore, \((e_i, e_j)_A = (e_j, e_i)_A \iff a_{ij} = a_{ji}\). This means that \(A\) has to be symmetric.
@@ -243,7 +227,7 @@ As a side note, the choice for the Euclidean inner product for the structure of 
 kind of inner product would also do the job. This implies that each inner product can be described via a 
 matrix.
 
-\subsection{Definiteness and Quadratic Forms}
+\section{Definiteness and Quadratic Forms}
 
 Given a symmetric \(A \in \R^{n \times n}\) then:
 
@@ -252,19 +236,19 @@ Given a symmetric \(A \in \R^{n \times n}\) then:
     \item The map \(x \to \inner{x}{Ax}\) is called the \emph{Quadratic Form}
     
     \item \(A\) is \emph{positive definite} if \(\inner{x}{Ax} > 0 \forall x \in \R^n 
-          \setminus \{0\}\)
+          \setminus \{0\}\).
 
     \item \(A\) is \emph{negative definite} if \(\inner{x}{Ax} < 0 \forall x \in \R^n 
-          \setminus \{0\}\)
+          \setminus \{0\}\).
     
     \item \(A\) is \emph{positive semidefinite} if \(\inner{x}{Ax} \ge 0 \forall x \in \R^n 
-          \setminus \{0\}\)
+          \setminus \{0\}\).
 
     \item \(A\) is \emph{negative semidefinite} if \(\inner{x}{Ax} \le 0 \forall x \in \R^n 
           \setminus \{0\}\)
 
     \item \(A\) is \emph{indefinite} if \(\exists x,y \in \R^n  \setminus \{0\}: \inner{x}{Ax} 
-          < 0 \land \inner{y}{Ay} > 0 \)
+          < 0 \land \inner{y}{Ay} > 0 \).
     
 \end{enumerate}
 
@@ -274,7 +258,7 @@ Given a symmetric \(A \in \R^{n \times n}\) then:
 
 Given is the term \(x_{1}^{2} - x_{3}^{2} + x_1 x_4\), show that it is a quadratic form.
 
-First write the formula for the quadratic form \(\inner{x}{Ax}\) where \(A\) is real symmetric 
+First write the formula for the quadratic form \(\inner{x}{Ax}\) where \(A\) is a real symmetric 
 matrix
 
 \[
@@ -329,7 +313,7 @@ Now we have to compare the coefficients with the original expression
 
 Note that the only quadratic terms present in the expression are \(x_{1}^{2}\) and \(-x_{3}^{2}\) while the 
 others are zero. This means that they have to disappear in the main diagonal. Also, the only term 
-that \(x_1\) is also multiplying is \(x_4\) therefore all the others have to be zero like all 
+that \(x_1\) is also multiplying is \(x_4\), therefore all the others have to be zero, like all 
 other non-quadratic terms which are not present. Thus 
 
 \[
@@ -341,7 +325,7 @@ other non-quadratic terms which are not present. Thus
     \end{bmatrix}
 \]
 
-Now the question is what are \(d\) and \(m\) because \(A\) has to be symmetric, but they can not be 1 
+Now the question is what \(d\) and \(m\) are, because \(A\) has to be symmetric, but they cannot be 1 
 because then we would have \(2x_1 x_4\). Because of that, we will take the only available option 
 \(\frac{1}{2}\).
 
@@ -358,13 +342,13 @@ And now we are done.
 
 \section{Positive Definite Matrices}
 
-A matrix \(A \in \R^{n \times n}\) is called \emph{positive definite} if it is hermitian and if the quadratic form
+A matrix \(A \in \R^{n \times n}\) is called \emph{positive definite} if it is Hermitian and if the quadratic form
 
 \[
     \inner{x}{Ax} > 0 = x^T Ax > 0, \ \forall x \in \R^n, \ x \ne 0.
 \]
 
-\subsubsection*{Properties of Positive Definite Matrices}
+\subsection{Properties of Positive Definite Matrices}
 
 \begin{itemize}
     
@@ -382,7 +366,7 @@ A matrix \(A \in \R^{n \times n}\) is called \emph{positive definite} if it is h
 
 \end{itemize}
 
-\subsection{Conditions for Positive Definiteness}
+\subsection{Condition For Positive Definiteness}
 
 \(A\) is positive definite if and only if one of the following conditions is satisfied:
 
@@ -394,29 +378,29 @@ is also positive definite.
 
 \textbf{Proof:}
 
-\(A\) is positive definite then: 
+If \(A\) is positive definite, then: 
 
 \[
-    \inner{x}{Ax} = \inner{A_x}{x} = (Ax)^Tx = x^T A^T x 
+    \inner{x}{Ax} = \inner{A_x}{x} = (Ax)^Tx = x^T A^T x.
 \]
 
 Therefore, 
 
 \[
-    x^T Ax = x^T (A + A^T)x = 2x^TA_s x
+    x^T Ax = x^T (A + A^T)x = 2x^TA_s x.
 \]
 
 \QED
 
-\subsection{Minors}
+\section{Minors}
 
-For a matrix \(A \in \R^{n \times n}\) the starting from the left \(k \times k\)-submatrices 
-\(A_k = (a_{ij})_{i,j=1}^{k}\) of \(A\). The \(D_k  = \det(A_k)\) is called a \emph{main minor} or 
+For a matrix \(A \in \R^{n \times n}\), consider the leading \(k \times k\)-submatrices 
+\(A_k = (a_{ij})_{i,j=1}^{k}\) of \(A\). Then \(D_k  = \det(A_k)\) is called a \emph{main minor} or 
 \emph{minor} of \(A\).
 
-\subsubsection{Minors and Definiteness}
+\subsection{Minors and Definiteness}
 
-Let \(A\) be real, square symmetric matrix, then
+Let \(A\) be a real, square, symmetric matrix. Then:
 
 \begin{itemize}
     
@@ -424,9 +408,9 @@ Let \(A\) be real, square symmetric matrix, then
 
     \item \(A\) is negative definite if all main minors are negative.
 
-    \item \(A\) is positive semidefinite if all main minors are greater or equal to zero but not all zero. 
+    \item \(A\) is positive semidefinite if all main minors are greater than or equal to zero but not all zero. 
 
-    \item \(A\) is negative semidefinite if all main minors are less or equal to zero but not all zero.
+    \item \(A\) is negative semidefinite if all main minors are less than or equal to zero but not all zero.
 
     \item \(A\) is indefinite if all main minors are equal to zero.
 
@@ -434,7 +418,7 @@ Let \(A\) be real, square symmetric matrix, then
 
 \subsection{Connection to Symmetric Matrices}
 
-For a real symmetric matrix \(A\) the following statements are equivalent.
+For a real symmetric matrix \(A\), the following statements are equivalent.
 
 \begin{itemize}
     
@@ -446,7 +430,7 @@ For a real symmetric matrix \(A\) the following statements are equivalent.
 
 \end{itemize}
 
-Continuing, \(A\) is positive semidefinite, if all eigenvalues of \(A\) are not negative and the 
+Continuing, \(A\) is positive semidefinite if all eigenvalues of \(A\) are not negative and the 
 main minors are all not positive.
 
 \textbf{Example: Symmetry and Positive Definiteness of \(BAB^T\) and \(B^T A B\)}
@@ -498,20 +482,24 @@ Let \( z \in \mathbb{R}^n \), \( z \ne 0 \). Then:
 \[
     z^T D z = z^T B^T A B z = (B z)^T A (B z).
 \]
-Let \( w = B z \). Since \( A \) is positive definite, \( w^T A w > 0 \) if \( w \ne 0 \). Thus, \( D \) is positive definite if and only if \( B z \ne 0 \) for all \( z \ne 0 \), i.e., if \( B \) has full rank (i.e., \( \ker(B) = \{0\} \)).
+Let \( w = B z \). Since \( A \) is positive definite, \( w^T A w > 0 \) if \( w \ne 0 \). Thus, \( D \) is positive definite if 
+and only if \( B z \ne 0 \) for all \( z \ne 0 \), i.e., if \( B \) has full rank (i.e., \( \ker(B) = \{0\} \)).
 
 In summary:
 
 \begin{itemize}
+
     \item \( BAB^T \) is positive definite if \( B \) has full column rank.
+
     \item \( B^T A B \) is positive definite if \( B \) has full rank.
+
 \end{itemize}
 
 \QED
 
-\subsection{Sign of the \texorpdfstring{\(D_k\)}{}}
+\section{Sign of the \texorpdfstring{\(D_k\)}{}}
 
-For the main minors \(D_k\) of a negative definite matrix it applies that 
+For the main minors \(D_k\) of a negative definite matrix it holds that 
 
 \[
     (-1)^k D_k = (-1)^k \det(A_k) = \det(-A_k) > 0,
@@ -519,35 +507,35 @@ For the main minors \(D_k\) of a negative definite matrix it applies that
 
 because \(-A\) is positive definite.
 
-\subsection{Negative Quadratic Form}
+\section{Negative Quadratic Form}
 
-If \(A\) is negative definite then 
+If \(A\) is negative definite, then 
 
 \[
-    -\inner{x}{Ax} = \langle x -Ax \rangle > 0
+    -\inner{x}{Ax} = \langle x -Ax \rangle > 0.
 \]
 
-\subsection{Theorems for Non-squares matrices}
+\section{Theorems for Non-square Matrices}
 
-\subsubsection{Theorem I}
+\subsection{Theorem I}
 
 Given \(m \ge n\) and \(A \in \R^{m \times n}\) with \(rg(A) = n\). Then \(A^T A\) is positive 
-definite. For \(rg(A) < n\) is \(A^T A\) positive semidefinite.
+definite. For \(rg(A) < n\), \(A^T A\) is positive semidefinite.
 
 \textbf{Proof:}
 
-Because of \((A^T A)^T = A^T A\) is \(A^T A\) symmetric. Therefore, it applies that 
+Because \((A^T A)^T = A^T A\), \(A^T A\) is symmetric. Therefore, it holds that 
 
 \[
-    \inner{x}{A^T A x} = x^T A^T A x  = (Ax)^T Ax = \inner{Ax}{Ax} = \|Ax\|^2 \ge 0 
+    \inner{x}{A^T A x} = x^T A^T A x  = (Ax)^T Ax = \inner{Ax}{Ax} = \|Ax\|^2 \ge 0.
 \]
 
 Also, \(A^T A\) is positive semidefinite, and it is also invertible for \(rg(A) = n\). If there were an 
-\(x \ne 0\) such that \(\|Ax\| = 0\) this would imply that \(Ax = 0\), also \(A^T (Ax) = 0\) therefore 
+\(x \ne 0\) such that \(\|Ax\| = 0\), this would imply that \(Ax = 0\), and also \(A^T (Ax) = 0\), therefore 
 \(x \in ker(A^T A)\). And \(A^T A\) would not be invertible. Finally, 
 \(\inner{x}{A^T Ax} > 0 \forall x \ne 0\),  and \(A^T A\) is symmetric and positive definite.
 
-\subsection{Theorem II}
+\section{Theorem II}
 
 Given \(m \le n\) and \(A \in \R^{m \times n}\). Then \(A^T A\) is positive semidefinite and even 
 positive definite if \(rg(A) = m\).

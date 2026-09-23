@@ -1,11 +1,10 @@
-
 \chapter{The Determinant of a Matrix}
 
 The \emph{determinant} of a matrix \(A \in \R^{n \times n}\), denoted \(\det(A)\) or \(|A|\), is a
 scalar value that provides important information about the matrix, including whether it is
 invertible and the volume scaling factor of the linear transformation represented by \(A\).
 
-\section{Determinant Formulas for \texorpdfstring{\(\R^{2 \times 2}\, \R^{3 \times 3}\)}{}}
+\section{Determinant Formulas for \texorpdfstring{\(\R^{2 \times 2}, \R^{3 \times 3}\)}{}}
 
 The determinant of a \(2 \times 2\) matrix is given by:
 
@@ -38,7 +37,7 @@ The determinant of larger matrices can be computed using co-factor expansion alo
 
 where \(A_{ij}\) is the \((n-1) \times (n-1)\) sub-matrix obtained by deleting the \(i\)-th row and \(j\)-th column of \(A\).
 
-\section{Properties of the determinant}
+\section{Properties Of The Determinant}
 
 \begin{itemize}
 
@@ -62,7 +61,7 @@ where \(A_{ij}\) is the \((n-1) \times (n-1)\) sub-matrix obtained by deleting t
 
     \item The determinant of the identity matrix \(I_n\) is 1.
 
-    \item The determinant of can split into the sum of more determinants:
+    \item The determinant can be split into the sum of more determinants:
 
           \[
               \det(a,b,c + d) = \det(a,b,c) + \det(a,b,d)
@@ -72,7 +71,7 @@ where \(A_{ij}\) is the \((n-1) \times (n-1)\) sub-matrix obtained by deleting t
 
     \item For elementary matrices \(\det(C1) = 1\), \(\det(C2) = -1\), \(\det(C3) = \lambda\).
 
-    \item For \(A \in \R^{n\times n}\, \det(\lambda A) = \lambda^n \det(A)\)
+    \item For \(A \in \R^{n\times n}\), \(\det(\lambda A) = \lambda^n \det(A)\).
 
 \end{itemize}
 
@@ -122,7 +121,8 @@ It holds that
 
 \section{The Leibniz Formula}
 
-Let \( A = (a_{ij}) \in \field^{n \times n} \) be a square matrix over a field \( K \). The determinant of \(A\) is defined via the \textbf{Leibniz formula} as:
+Let \( A = (a_{ij}) \in \field^{n \times n} \) be a square matrix over a field \( K \). The determinant of \(A\) is defined via the 
+\emph{Leibniz formula} as:
 
 \[
     \det(A) = \sum_{\sigma \in S_n} \operatorname{sgn}(\sigma) \cdot a_{1\sigma(1)} a_{2\sigma(2)} \cdots a_{n\sigma(n)},
@@ -132,9 +132,10 @@ where:
 
 \begin{itemize}
 
-    \item \( S_n \) is the set of all permutations of \( \{1, 2, \dots, n\} \),
+    \item \( S_n \) is the set of all permutations of \( \{1, 2, \dots, n\} \).
 
-    \item \( \operatorname{sgn}(\sigma) \) is the sign of the permutation \( \sigma \), equal to \( +1 \) for even permutations and \( -1 \) for odd ones.
+    \item \( \operatorname{sgn}(\sigma) \) is the sign of the permutation \( \sigma \), equal to \( +1 \) for even permutations and 
+    \( -1 \) for odd ones.
 
 \end{itemize}
 
@@ -163,7 +164,7 @@ By multilinearity, this becomes a sum over all \(n\)-tuples \( (i_1, i_2, \dots,
 \textbf{Step 2: Eliminate repeated indices}
 
 If two indices \( i_j = i_k \) for \( j \neq k \), then the corresponding
-determinant is zero (because the determinant is alternating and thus, zero for repeated columns).
+determinant is zero (because the determinant is alternating and thus zero for repeated columns).
 Therefore, only terms with pairwise distinct indices remain. These correspond to permutations of \( \{1, 2, \dots, n\} \).
 
 Let \( \sigma \in S_n \) be such a permutation. Then we can write:
@@ -186,12 +187,12 @@ Equivalently, by re-indexing:
     \det(A) = \sum_{\sigma \in S_n} \operatorname{sgn}(\sigma) \cdot \prod_{i=1}^n a_{i \sigma(i)}.
 \]
 
-This formula expresses the determinant as a sum over all permutations of the indices \( \{1, \dots, n\} \), where each term is a product of matrix entries taken from different rows and columns, weighted by the sign of the corresponding permutation.
+This formula expresses the determinant as a sum over all permutations of the indices \( \{1, \dots, n\} \), where each term is a 
+product of matrix entries taken from different rows and columns, weighted by the sign of the corresponding permutation.
 
-\subsection{Laplace's Method (Co-factor Expansion)}
+\section{Laplace's Method (Co-factor Expansion)}
 
-The determinant of an \( n \times n \) matrix \( A = [a_{ij}] \) can be
-computed using the \emph{Laplace expansion}, also known as co-factor expansion.
+The determinant of an \( n \times n \) matrix \( A = [a_{ij}] \) can be computed using the \emph{Laplace expansion}, also known as \emph{co-factor expansion}.
 This method expands the determinant along a specific row or column.
 
 Expansion Along Row \(i\):
@@ -206,13 +207,14 @@ Expansion Along Column \(j\):
     \det(A) = \sum_{i=1}^{n} {(-1)}^{i+j} a_{ij} \det(M_{ij})
 \]
 
-Where:
+where:
 
 \begin{itemize}
 
     \item \( a_{ij} \) is the element in the \(i\)-th row and \(j\)-th column of matrix \(A\).
 
-    \item \( M_{ij} \) is the \emph{minor} of \( a_{ij} \), i.e., the determinant of the submatrix formed by removing the \(i\)-th row and \(j\)-th column from \(A\).
+    \item \( M_{ij} \) is the \emph{minor} of \( a_{ij} \), i.e., the determinant of the submatrix formed by removing the \(i\)-th row and \(j\)-th 
+    column from \(A\).
 
     \item \( {(-1)}^{i+j} \) is the \emph{sign factor}, determining the sign of each co-factor term.
 
@@ -220,47 +222,59 @@ Where:
 
 \textbf{Steps:}
 
-1.\textbf{ Choose a Row or Column:} Select any row or column of the matrix.  It's often easiest to choose one with many zeros.
 
-2.\textbf{ For Each Element:} For each element, \(a_{ij}\), in the chosen row or column:
+\begin{enumerate}
 
-\textbf{Find the Minor, \(M_{ij}\):} The minor \(M_{ij}\) is the determinant of the sub-matrix formed by deleting the
-\indent \(i\)-th row and the \(j\)-th column of the original matrix.
+    \item \textbf{Choose a Row or Column:} Select any row or column of the matrix. It's often easiest to choose one with many zeros.
 
-\textbf{Find the Co-factor, \(C_{ij}\):} The co-factor \(C_{ij}\) is the minor multiplied by a sign factor:
+    \item \textbf{For Each Element:} For each element, \(a_{ij}\), in the chosen row or column:
 
-\[
-    C_{ij} = {(-1)}^{i+j} M_{ij}
-\]
-The term  \({(-1)}^{i+j}\)  gives a checkerboard pattern of signs:
+    \subitem \textbf{Find the Minor, \(M_{ij}\):}  The minor \(M_{ij}\) is the determinant of the sub-matrix formed by deleting the \(i\)-th 
+    row and the \(j\)-th column of the original matrix.
 
-\[
-    \begin{bmatrix}
-        +      & -      & +      & -      & \cdots \\
-        -      & +      & -      & +      & \cdots \\
-        +      & -      & +      & -      & \cdots \\
-        -      & +      & -      & +      & \cdots \\
-        \vdots & \vdots & \vdots & \vdots & \ddots
-    \end{bmatrix}
-\]
+    \subitem \textbf{Find the Co-factor, \(C_{ij}\):} The co-factor \(C_{ij}\) is the minor multiplied by a sign factor:
 
-3.\textbf{ Calculate the Determinant:} The determinant of the matrix, \(A\), is the sum of
-the products of the elements in the chosen row or column and their corresponding co-factors.
+    \[
+        C_{ij} = {(-1)}^{i+j} M_{ij}
+    \]
 
-\textbf{Expansion along the \(i\)-th row:}
-\[
-    \det(A) = \sum_{j=1}^{n} a_{ij} C_{ij} = a_{i1}C_{i1} + a_{i2}C_{i2} + \cdots + a_{in}C_{in}
-\]
+    The term  \({(-1)}^{i+j}\)  gives a checkerboard pattern of signs:
 
-\textbf{Expansion along the \(j\)-th column:}
-\[
-    \det(A) = \sum_{i=1}^{n} a_{ij} C_{ij} = a_{1j}C_{1j} + a_{2j}C_{2j} + \cdots + a_{nj}C_{nj}
-\]
-Both expansions give the same result.
+    \[
+        \begin{bmatrix}
+            +      & -      & +      & -      & \cdots \\
+            -      & +      & -      & +      & \cdots \\
+            +      & -      & +      & -      & \cdots \\
+            -      & +      & -      & +      & \cdots \\
+            \vdots & \vdots & \vdots & \vdots & \ddots
+        \end{bmatrix}
+    \]
+
+    \subitem \textbf{ Calculate the Determinant:} The determinant of the matrix, \(A\), is the sum of
+    
+    the products of the elements in the chosen row or column and their corresponding co-factors.
+
+    \item \textbf{Expansion along the \(i\)-th row:}
+    
+    \[
+        \det(A) = \sum_{j=1}^{n} a_{ij} C_{ij} = a_{i1}C_{i1} + a_{i2}C_{i2} + \cdots + a_{in}C_{in}
+    \]
+    
+    \textbf{Expansion along the \(j\)-th column:}
+
+    \[
+        \det(A) = \sum_{i=1}^{n} a_{ij} C_{ij} = a_{1j}C_{1j} + a_{2j}C_{2j} + \cdots + a_{nj}C_{nj}
+    \]
+
+    Both expansions give the same result.
+
+\end{enumerate}
+
 
 \textbf{Example (\(3\times3\) Matrix):}
 
 Let
+
 \[
     A = \begin{bmatrix}
         a_{11} & a_{12} & a_{13} \\
@@ -271,13 +285,19 @@ Let
 
 Expanding along the first row:
 
-1. \(a_{11}\):  \(M_{11} = \det \begin{bmatrix} a_{22} & a_{23} \\ a_{32} & a_{33} \end{bmatrix}\),  \(C_{11} = +M_{11}\)
+\begin{enumerate}
 
-2. \(a_{12}\):  \(M_{12} = \det \begin{bmatrix} a_{21} & a_{23} \\ a_{31} & a_{33} \end{bmatrix}\),  \(C_{12} = -M_{12}\)
+    \item  \(a_{11}\):  \(M_{11} = \det \begin{bmatrix} a_{22} & a_{23} \\ a_{32} & a_{33} \end{bmatrix}\),  \(C_{11} = +M_{11}\)
 
-3. \(a_{13}\):  \(M_{13} = \det \begin{bmatrix} a_{21} & a_{22} \\ a_{31} & a_{32} \end{bmatrix}\),  \(C_{13} = +M_{13}\)
+    \item  \(a_{12}\):  \(M_{12} = \det \begin{bmatrix} a_{21} & a_{23} \\ a_{31} & a_{33} \end{bmatrix}\),  \(C_{12} = -M_{12}\)
+
+    \item  \(a_{13}\):  \(M_{13} = \det \begin{bmatrix} a_{21} & a_{22} \\ a_{31} & a_{32} \end{bmatrix}\),  \(C_{13} = +M_{13}\)
+
+\end{enumerate}
+
 
 Therefore,
+
 \[
     \det(A) = a_{11}C_{11} + a_{12}C_{12} + a_{13}C_{13}
 \]
@@ -331,17 +351,21 @@ For a \(4 \times 4\) matrix, we can use Laplace Method along the first row:
     \det(A) = 145
 \]
 
-\subsection{Determinant of the reduced echelon form}
+\section{Determinant Of The Reduced Echelon Form}
 
-The determinant has another trait that states that if your matrix \(A\) is REF then
+The determinant has another trait that states that if your matrix \(A\) is \emph{REF}, then
 its determinant is given by the product of the main diagonal.
 
-\subsection{Gaussian Method for finding determinants}
+\[
+    \det(A) = \prod_{i = 1}^{n} a_{i, i}
+\]
 
-Another method for finding determinants is using the row operations we already knew plus also column operations
+\section{Gaussian Method For Finding Determinants}
+
+Another method for finding determinants uses the row operations we already know plus column operations,
 but with the catch that for the column case we have to take into consideration how
-operating with columns affect the determinant, in contrast to the row operations, except for scaling
-a row by some \(\lambda\) in this case we would need to undo the change by multiplying the determinant
+operating with columns affects the determinant, in contrast to the row operations. The exception is scaling
+a row by some \(\lambda\); in this case, we would need to undo the change by multiplying the determinant
 by \(\frac{1}{\lambda}\).
 
 \textbf{Example: }

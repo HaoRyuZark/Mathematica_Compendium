@@ -1,6 +1,8 @@
+\chapter{Approximations}
+
 \section{Polynomial Linear Regression}
 
-Given data-points \((x_i, y_i) \in \R^2, \ i = 1, \dots, m\) we define the \emph{mean square error} as
+Given data-points \((x_i, y_i) \in \R^2, \ i = 1, \dots, m\), we define the \emph{mean square error} as
 
 \[
     \tilde{e} = \sqrt{ \sum_{i = 1}^{m} {(f(x_i) - y_i)}^2 } = \sqrt{\sum_{i = 1}^{m} e_i^2} = \metric{e}_2, \quad e = 
@@ -8,16 +10,16 @@ Given data-points \((x_i, y_i) \in \R^2, \ i = 1, \dots, m\) we define the \emph
         e_1 \\ 
         \vdots \\ 
         e_m
-    \end{bmatrix}   
+    \end{bmatrix}.   
 \]
 
-Now instead of using a linear term we define a polynomial of degree \(n- 1\): 
+Now, instead of using a linear term, we define a polynomial of degree \(n- 1\): 
 
 \[
     f(x) = p_1 + p_2 x + \cdots + p_m x^{n - 1}.
 \]
 
-Hence we wan to minimize the expression 
+Hence, we want to minimize the expression 
 
 \[
     \metric{e}_2 = \metric{
@@ -28,7 +30,7 @@ Hence we wan to minimize the expression
         \end{bmatrix}}_2
 \]
 
-Which delivers the following system 
+which delivers the following system 
 
 \[
     \metric{
@@ -49,7 +51,7 @@ Which delivers the following system
             y_m
         \end{bmatrix}
         }_2 = 
-        \metric{Ap - y}_2
+        \metric{Ap - y}_2.
 \]
 
 Thus, given \(A \in \R^{m \times n}\) such that \(\rank(A) = n\) and \(m \ge n\), we have the minimization problem 
@@ -64,22 +66,22 @@ whose solution \(\tilde{x} \in \R^n\) is also the solution of the \emph{normal e
         A^T A \tilde{x} = A^T b 
 \]
 
-whereas \(A^T A \in \R^{n \times n}\) is regular.
+where \(A^T A \in \R^{n \times n}\) is regular.
 
 \textbf{Proof:}
 
-We want to first show that \(A^T A\) is regular hence, we do the following: 
+We first want to show that \(A^T A\) is regular; hence, we do the following: 
 
-If \(A^T Ax = 0\) then 
+If \(A^T Ax = 0\), then 
 
 
 \[
-    0 = x^T A^T Ax = {(Ax)}^T Ax = \metric{Ax}_2^2 \implies Ax = 0
+    0 = x^T A^T Ax = {(Ax)}^T Ax = \metric{Ax}_2^2 \implies Ax = 0.
 \]
 
-Because \(A\) has maximal rank \(x = 0\), hence \(A^T A\) is regular.
+Because \(A\) has maximal rank, \(x = 0\); hence, \(A^T A\) is regular.
 
-Now we can show that \(\tilde{x} = (A^T A)^{-1}A^T b\) minimizes \(\metric{Ax - b}_2^2\)
+Now we can show that \(\tilde{x} = (A^T A)^{-1}A^T b\) minimizes \(\metric{Ax - b}_2^2\):
 
 \begin{align*}
     J(x) = \metric{Ax - b}_2 &= (Ax - b)^T(Ax - b) \\
@@ -89,7 +91,7 @@ Now we can show that \(\tilde{x} = (A^T A)^{-1}A^T b\) minimizes \(\metric{Ax - 
 
 Hence, \(J(\tilde{x}) = \tilde{x}^T((A^T)(A^TA)^{-1} A^Tb - A^Tb) + b^T(b - A\tilde{x}) = b^T(b - A\tilde{x})\).
 
-If we assume there exits another solution \(\tilde{y} =  \tilde{x} ++ v, \ v \in \R^n, \ v\ne 0\) then 
+If we assume there exists another solution \(\tilde{y} =  \tilde{x} + v, \ v \in \R^n, \ v\ne 0\), then 
 
 \begin{align*}
     J(\tilde{y}) &= (\tilde{x} + v)^T(A^T A(\tilde{x} + v) - A^Tb) + b^T (b - A(\tilde{x} + v)) \\ 
@@ -100,10 +102,10 @@ If we assume there exits another solution \(\tilde{y} =  \tilde{x} ++ v, \ v \in
      &= \metric{Av}_2^2 + J(\tilde{x})
 \end{align*}
 
-Because \(v \ne 0\) and \(A\) has the maximal rank, \(Av \ne 0\) and \(\metric{Av}_2^2 > 0\) hence 
+Because \(v \ne 0\) and \(A\) has the maximal rank, \(Av \ne 0\) and \(\metric{Av}_2^2 > 0\); hence 
 
 \[
-    J(\tilde{y}) = \metric{A(\tilde{y} - \tilde{x})}_2^2 + J(\tilde{x}) > J(\tilde{x})
+    J(\tilde{y}) = \metric{A(\tilde{y} - \tilde{x})}_2^2 + J(\tilde{x}) > J(\tilde{x}).
 \]
 
 Therefore, \(\tilde{x}\) is the solution with the minimal distance.
@@ -208,23 +210,23 @@ Hence by solving
         \end{bmatrix}
 \]
 
-using Gaussian elimination we get \(p_1 = \frac{15}{14}\) and \(p_2 = \frac{5}{14}\); giving us the final polynomial 
+using Gaussian elimination we get \(p_1 = \frac{15}{14}\) and \(p_2 = \frac{5}{14}\), giving us the final polynomial 
 
 \[
-        f(x) = \frac{5}{14} + \frac{15}{14}x
+        f(x) = \frac{5}{14} + \frac{15}{14}x.
 \]
 
 
 \section{Pseudo Inverse}
 
-Given \(A \in \R^{m \times n}\) and \(b \in \R^m\), there is exactly one solution to the minimization problem \(x\ in \R^n\) which is dependent on the 
+Given \(A \in \R^{m \times n}\) and \(b \in \R^m\), there is exactly one solution to the minimization problem \(x \in \R^n\), which is dependent on the 
 matrix \(A^+ \in \R^{n \times m}\) with the property 
 
 \[
         A^+ b = x, \ \forall b \in \R^m.
 \]
 
-This matrix is the \emph{pseudo inverse of  A} and obeys the following properties 
+This matrix is the \emph{pseudo inverse of A} and obeys the following properties: 
 
 \begin{itemize}
 
@@ -240,7 +242,7 @@ This matrix is the \emph{pseudo inverse of  A} and obeys the following propertie
 
 \section{Singular Value Decomposition}
 
-Given \(A \in \R^{m \times n}\), then there exists matrices \(U \in \R^{m \times m}, \ V \in \R^{n \times n}\) such that 
+Given \(A \in \R^{m \times n}\), then there exist matrices \(U \in \R^{m \times m}, \ V \in \R^{n \times n}\) such that 
 
 \[
     A = U \Sigma V^T
@@ -260,7 +262,7 @@ and
 
 This is the \emph{singular value decomposition of \(A\)}. 
 
-For the case \(A \in \R^{n \times n}\) this is just a diagonalisation.
+For the case \(A \in \R^{n \times n}\), this is just a diagonalisation.
 
 \subsubsection*{Properties Of The SVD}
 
@@ -282,7 +284,7 @@ For the case \(A \in \R^{n \times n}\) this is just a diagonalisation.
 
 \end{itemize}
 
-Hence, to compute the singular value decomposition we need to compute the eigenvalues and eigenvectors of \(AA^T\) or \(A^TA\) and take the 
+Hence, to compute the singular value decomposition, we need to compute the eigenvalues and eigenvectors of \(AA^T\) or \(A^TA\) and take the 
 square root of its eigenvalues to get the \emph{singular values}.
 
 \section{SVD Regularization}
@@ -293,7 +295,7 @@ Given \(A \in \R^{m \times n}\) with a SVD \(A = U \Sigma V^T\) with
     \Sigma = \mathrm{diag}(\frac{1}{\sigma_1}, \dots, \frac{1}{\sigma_r}, 0, \dots, 0,) \in \R^{m \times n}.
 \]
 
-For \(x = A^+b, \, \Delta x = A^+ \Delta b\), the following approximations are valid 
+For \(x = A^+b, \, \Delta x = A^+ \Delta b\), the following approximations are valid: 
 
 \[
     \frac{\metric{\Delta x}_2}{\metric{x}_2} \le \frac{\sigma_1}{\sigma_r} \frac{\metric{\Delta b}_2}{\metric{P_r U^T b}_2},
@@ -302,7 +304,7 @@ For \(x = A^+b, \, \Delta x = A^+ \Delta b\), the following approximations are v
 with \(P_r = \mathrm{diag}(1_1, \dots, 1_r, 0, \dots, 0) \in \R^{m \times m}\). There is always a \(b\) and \(\Delta b\) such that
 
 \[
-    \frac{\metric{\Delta x}_2}{\metric{x}_2} = \frac{\sigma_1}{\sigma_r} \frac{\metric{\Delta b}_2}{\metric{b}_2}
+    \frac{\metric{\Delta x}_2}{\metric{x}_2} = \frac{\sigma_1}{\sigma_r} \frac{\metric{\Delta b}_2}{\metric{b}_2}.
 \]
 
 We also define the \emph{condition} of our matrix as \(\kappa_2(A) = \frac{\sigma_1}{\sigma_r}\) if all of our singular values are greater than zero.
@@ -315,7 +317,7 @@ Given \(A \in \R^{n \times n}\) with a SVD \(A = U \Sigma V^T\),
     \Sigma = \mathrm{diag}(\sigma_1, \dots, \sigma_r, 0, \dots, 0,) \in \R^{m \times n}, \ \sigma_1 \ge \dots \ge \sigma_r > 0.
 \]
 
-For \(\alpha > 0\) is \(A_{\alpha} = U \Sigma_{\alpha} V^T\)
+For \(\alpha > 0\), \(A_{\alpha} = U \Sigma_{\alpha} V^T\) with
 
 \[
     \Sigma_{\alpha}= \mathrm{diag}(\sigma_1, \dots, \sigma_k, 0, \dots, 0,) \in \R^{m \times n}, \ \frac{\sigma_k}{\sigma_1} \ge \sqrt{\alpha} \ge \frac{\sigma_{k + 1}}{\sigma_1}.
@@ -323,17 +325,17 @@ For \(\alpha > 0\) is \(A_{\alpha} = U \Sigma_{\alpha} V^T\)
 
 is the \emph{truncated singular value decomposition} of \(A\).
 
-From this definition we also get the fact \(\kappa_2 (A_{\alpha}) \le \frac{1}{\sqrt{\alpha}}\).
+From this definition, we also get the fact that \(\kappa_2 (A_{\alpha}) \le \frac{1}{\sqrt{\alpha}}\).
 
 \section{Tikhonov Regularization}
 
-When computing \(x = A^+ b\) we get the equivalent minimization problem 
+When computing \(x = A^+ b\), we get the equivalent minimization problem 
 
 \[
     \min \metric{Ax - b}_2, \quad \min \metric{x}.
 \]
 
-By combining then in a expression we get 
+By combining them in an expression, we get 
 
 \begin{align*}
     J_{\alpha}(x) &= \metric{Ax - b}_2^2 + \alpha \metric{x}_2^2 \\ 
@@ -365,7 +367,7 @@ By combining then in a expression we get
 The rank is preserved by \(\alpha > 0\), hence we can minimize the normal equation
 
 \[
-    A_{\alpha}^T A_{\alpha} x_{\alpha} = A_{\alpha}^T b_{\alpha}
+    A_{\alpha}^T A_{\alpha} x_{\alpha} = A_{\alpha}^T b_{\alpha}.
 \]
 
 We can rewrite as
@@ -386,18 +388,10 @@ giving us
     x_{\alpha} = (A^T A + \alpha I)^{-1} A^T b
 \]
 
-Formally, for \(A \in \R^{m \times n},\ \alpha > 0\) is 
+Formally, for \(A \in \R^{m \times n},\ \alpha > 0\), 
 
 \[
     x_{\alpha} = (A^T A + \alpha I)^{-1} A^T b
 \]
 
-the \emph{Tikhonov regularization} of \(x = A^+ b\) with parameter \(\alpha\).
-
-
-
-
-
-
-
-
+is the \emph{Tikhonov regularization} of \(x = A^+ b\) with parameter \(\alpha\).

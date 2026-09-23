@@ -1,10 +1,6 @@
-
 \chapter{Continuity}
 
-A real-valued function \(f\) is continuous if it is continuous for all points in its 
-domain.
-
-\subsection{Definition of Continuity at a Point}
+\section{Definition of Continuity at a Point}
 
 A function \(f\) is \emph{continuous} at a point \(x_0\) if:
 
@@ -18,21 +14,27 @@ Equivalently,
     \lim_{x \to x_0} f(x) = f(x_0)
 \]
 
-To solve continuity problems the general approach is to:
+
+In other words, a real-valued function \(f\) is continuous if it is continuous at all points in its 
+domain.
+
+\subsection{Approach to Solve Problems}
+
+To solve continuity problems, the general approach is to:
 
 \begin{enumerate}
 
     \item Write down the definition.
 
-    \item Substitute \(f\) for the concrete function into the definition.
+    \item Substitute the concrete function for \(f\) in the definition.
 
-    \item Modify the expression with the concrete \(f\) \(|f(x) - f(y)|\) in way that you get 
-          \(| x - y|\) inside the expression.
+    \item Modify the expression with the concrete \(f\), \(|f(x) - f(y)|\), in such a way that you get 
+          \(|x - y|\) inside the expression.
     
-    \item Choose a \(\delta\) if not given. On the one side it is often \(\delta = |x - y |\) and then 
-          substitute into the expression. On the other side if \(\delta\) is given make an approximation 
-          which is greater than the current expression and then simplify. In both cases after simplifying 
-          you should get a \(\varepsilon\) is the function is continuous. 
+    \item Choose a \(\delta\) if not given. On one hand, it is often \(\delta = |x - y|\), and then 
+          substitute it into the expression. On the other hand, if \(\delta\) is given, make an approximation 
+          which is greater than the current expression and then simplify. In both cases, after simplifying, 
+          you should get an \(\varepsilon\) if the function is continuous. 
 
 \end{enumerate}
 
@@ -90,7 +92,7 @@ Recall, \(f\) is continuous at \(x_0 = 0\) if:
 
 We have \(\varepsilon > 0\) and we want to find \(\delta > 0\): 
 
-Let us assume \(|x - 0| < \delta \iff \delta > |x|\) then 
+Let us assume \(|x - 0| < \delta \iff \delta > |x|\), then 
 
 \begin{align*}
     |f(x) - f(0)| &= |f(x) - 0| = |x^2 \sin \left(\frac{1}{x}\right)| \\
@@ -109,11 +111,11 @@ Let \(\varepsilon > 0\) be given and choose \(\delta = \sqrt{\varepsilon}\). The
 
 \QED
 
-\subsection{Characterization using sequences}
+\section{Characterization Using Sequences}
 
-Let \(f : (a,b) \to \mathbb{R}\) be a function and \(x_0 \in (a,b\).
+Let \(f : (a,b) \to \mathbb{R}\) be a function and \(x_0 \in (a,b)\).
 
-The function \(f\) is continuous at \(x_0\) if and only if for every sequence 
+The function \(f\) is continuous at \(x_0\) if and only if for every \emph{sequence} 
 
 \[
     \{x_n\}_{n\in \N}
@@ -125,15 +127,14 @@ with \(x_n \in (a,b)\) for all \(n \in \N\) and \(\lim_{n\to\infty} x_n = x_0\),
     \lim_{n\to\infty} f(x_n) = f(x_0)
 \]
 
-\subsection{Left and Right Continuity}
+\section{Left and Right Continuity}
 
-Let \( f : D \to \R \) be a function and \( x_0 \in D \).
-The function \( f \) is called \emph{left-continuous} at \( x_0 \) if
+Let \( f : D \to \R \) be a function and \( x_0 \in D \).The function \( f \) is called \emph{left-continuous} at \( x_0 \) if
 \( f \) is continuous on \( D \cap (-\infty, x_0] \).
-Analogously, \( f \) is \emph{right-continuous} at \( x_0 \) if
-\( f \) is continuous on \( D \cap [x_0, \infty) \).
 
-\subsection{Rules of Continuity}
+Analogously, \( f \) is \emph{right-continuous} at \( x_0 \) if\( f \) is continuous on \( D \cap [x_0, \infty) \).
+
+\section{Rules of Continuity}
 
 Let \(f\) and \(g\) be continuous at \(x_0\):
 
@@ -148,9 +149,9 @@ Let \(f\) and \(g\) be continuous at \(x_0\):
 
 \end{itemize}
 
-\subsection{Continuity and Compactness}
+\section{Continuity and Compactness}
 
-A function over an interval \([a,b]\) which is continuous is \emph{bounded}.
+A function on an interval \([a,b]\) which is continuous is \emph{bounded}.
 
 \textbf{Proof:}
 
@@ -171,14 +172,14 @@ By continuity of \(f\):
     \lim_{k \to \infty} f(x_{n_k}) = f(x^*) = \infty
 \]
 
-But by construction \(|f(x_{n_k})| > n_k \to \infty\) as \(k \to \infty\), which is a contradiction to the 
-\(x^* \in \mathcal{D}(f)\)
+But by construction \(|f(x_{n_k})| > n_k \to \infty\) as \(k \to \infty\), which is a contradiction to 
+\(x^* \in \mathcal{D}(f)\).
 
 \QED
 
-\subsection{Extreme-Value Theorem}
+\section{Extreme-Value Theorem}
 
-If \(f: [a, b] \to \R\) is continuous on the closed interval \([a, b]\), then exist \(x_m, x_M in [a,b]\) such that 
+If \(f: [a, b] \to \R\) is continuous on the closed interval \([a, b]\), then there exist \(x_m, x_M \in [a,b]\) such that 
 
 \[
     f(x_m) = \inf_{[a,b]} f, \quad f(x_M) = \sup_{[a,b]} f
@@ -186,7 +187,7 @@ If \(f: [a, b] \to \R\) is continuous on the closed interval \([a, b]\), then ex
 
 \textbf{Proof:}
 
-Let \(m := \inf_{[a,b]} f, \quad M := \sup_{[a,b]} f\) we know by the previous theorem that \(f\) is bounded, so \(m, M \in \R\).
+Let \(m := \inf_{[a,b]} f, \quad M := \sup_{[a,b]} f\). We know by the previous theorem that \(f\) is bounded, so \(m, M \in \R\).
 
 By the Bolzano-Weierstrass theorem, there exist convergent subsequences \(\{x_{n_k}\}, \{x_{m_k}\} \subset [a,b]\) such that
 
@@ -202,9 +203,9 @@ Since \([a,b]\) is closed, the limits of these subsequences \(x_m, x_M \in [a,b]
 
 \QED
 
-\subsection{Extreme Points}
+\section{Extreme Points}
 
-If for set \(A \subseteq \R\) with \(f : A \to \R\) holds that 
+If for a set \(A \subseteq \R\) with \(f : A \to \R\) it holds that 
 
 \[
     f(x_m) = \inf_{x \in A} f(x) =: m \quad \text{or} \quad f(x_M) = \sup_{x \in A} f(x) =: M
@@ -214,25 +215,25 @@ then \(x_m\) is called a \emph{point of minimum} and \(x_M\) a \emph{point of ma
 \(f(x_m)\) is called the \emph{minimum} and \(f(x_M)\) the \emph{maximum} of \(f\) on \(A\). These are the 
 \emph{extreme values}.
 
-\subsection{Middle Value Theorem}
+\section{Middle Value Theorem}
 
 If \(f: [a, b] \to \R\) is continuous and \(f(a) \ne f(b)\), then for every \(y_0\) between \(f(a)\) and \(f(b)\) 
 there exists \(x_0 \in (a, b)\) such that \(f(x_0) = y_0\).
 
-\subsection{Continuity of the Inverse by a decreasing Function}
+\section{Continuity of the Inverse by a Decreasing Function}
 
-Given a monotonic decreasing continuous function \(f\) on \([a, b]\) with \(f(a) = c\) and \(f(b) = d\), then the inverse function \(f^{-1}: [d, c] \to [a, b]\) is also
-continuous and monotonic.
+Given a monotonically decreasing continuous function \(f\) on \([a, b]\) with \(f(a) = c\) and \(f(b) = d\), the inverse function 
+\(f^{-1}: [d, c] \to [a, b]\) is also continuous and monotonic.
 
 \textbf{Proof:}
 
-\subsubsection{Continuity of the Root and Logarithm Function}
+\subsection{Continuity of the Root and Logarithm Function}
 
-\(x \mapsto \sqrt[n]{x}\) is continuous on \([0, \infty)\)
+\(x \mapsto \sqrt[n]{x}\) is continuous on \([0, \infty)\).
 
-\(x \mapsto \log_n{x}\) is continuous on \((0, \infty)\)
+\(x \mapsto \log_n{x}\) is continuous on \((0, \infty)\).
 
-\subsection{Lipschitz Continuity}
+\section{Lipschitz Continuity}
 
 A function \(f: D \subset \R \to \R\) is \emph{Lipschitz continuous} if:
 
@@ -248,7 +249,7 @@ A function \(f: D \subset \R \to \R\) is \emph{Lipschitz continuous} if:
 
 \end{itemize}
 
-\subsection{Fixed Point}
+\section{Fixed Point}
 
 A \emph{fixed point} of a function \(f\) is a point \(x^*\) such that:
 
@@ -256,12 +257,12 @@ A \emph{fixed point} of a function \(f\) is a point \(x^*\) such that:
     f(x^*) = x^*
 \]
 
-\subsection{Fixed Point on Interval}
+\section{Fixed Point on Interval}
 
-Given a continuous function \(f:[a,b] \to \R\) with \(f([a,b]) \subseteq [a,b]\), then there exists at least one fixed 
+Given a continuous function \(f:[a,b] \to \R\) with \(f([a,b]) \subseteq [a,b]\), there exists at least one fixed 
 point \(x^* \in [a,b]\) such that \(f(x^*) = x^*\).
 
-\subsection{Banach Fixed Point Theorem}
+\section{Banach Fixed Point Theorem}
 
 Let \((X, d)\) be a complete metric space, and \(f: X \to X\) a \emph{contraction mapping}, i.e.,
 
@@ -293,7 +294,7 @@ The Banach Fixed Point Theorem ensures:
 
 \end{itemize}
 
-\subsubsection{A Priori and A Posteriori Approximations}
+\subsection{A Priori and A Posteriori Approximations}
 
 \emph{A priori estimate:}
 
@@ -307,7 +308,7 @@ The Banach Fixed Point Theorem ensures:
     |x_n - x^*| \le \frac{L}{1 - L} |x_n - x_{n-1}| \epsilon
 \]
 
-\subsubsection{Steps for a Fixed Point Exercise}
+\subsection{Steps for a Fixed Point Exercise}
 
 Given \(f: [a, b] \to [a, b]\), to prove existence and convergence:
 
@@ -331,7 +332,7 @@ Given \(f: [a, b] \to [a, b]\), to prove existence and convergence:
 
 \textbf{Step 1: Monotonicity}
 
-In this case we will assume that it is monotonous. 
+In this case, we will assume that it is monotonic. 
 
 \textbf{Step 2: Domain check} 
  
@@ -370,7 +371,7 @@ In this case we will assume that it is monotonous.
     &= \frac{4}{9} \cdot \left(\frac{1}{4}\right)^n
 \end{align*}
 
-For \(\varepsilon = 0,1\)
+For \(\varepsilon = 0.1\)
 
 \begin{align*}
     \frac{4}{9} \cdot \left(\frac{1}{4}\right)^n &< \varepsilon \\
@@ -388,7 +389,7 @@ For \(\varepsilon = 0,1\)
     |x_n - x^*| \le \frac{L}{1 - L} |x_n - x_{n-1}| = \frac{\frac{1}{4}}{1 - \frac{1}{4}} |x_n - x_{n-1}| = \frac{1}{3} |x_n - x_{n-1}|
 \]
 
-\subsection{Uniform Continuity}
+\section{Uniform Continuity}
 
 A function \(f: \mathcal{D} \subset \R \to \R\) is \emph{uniformly continuous} if:
 
@@ -405,7 +406,7 @@ Let \(\varepsilon = 1\). We want to find numbers in \((0,1)\) for \(x,y\) such t
 Choose \(x \in (0,1)\) with \(x < \delta\) and let \(y = \frac{x}{2}\). Then 
 
 \[
-    |x - y| = ||x - \frac{x}{2}| = \frac{x}{2} < \frac{\delta}{2} < \delta
+    |x - y| = |x - \frac{x}{2}| = \frac{x}{2} < \frac{\delta}{2} < \delta
 \]
 
 But, 
@@ -414,13 +415,13 @@ But,
     |f(x) - f(y)| = \left|\frac{1}{x} - \frac{1}{y}\right| = \left|\frac{1}{x} - \frac{2}{x}\right| = \left|-\frac{1}{x}\right| = \frac{1}{x} > 1
 \]
 
-Since \(\frac{1}{x} > 1\) for \(x < 1\), we have a contraction and therefore \(f\) is not uniformly continuous on \((0,1)\).
+Since \(\frac{1}{x} > 1\) for \(x < 1\), we have a contradiction, and therefore \(f\) is not uniformly continuous on \((0,1)\).
 
-\subsection{Boundedness by Uniform Continuity}
+\section{Boundedness by Uniform Continuity}
 
 If a function \(f: (a, b) \to \R\) is uniformly continuous on the open interval \((a, b)\), then \(f\) is bounded.
 
-\subsection{Cauchy Sequence by Uniform Continuity}
+\section{Cauchy Sequence by Uniform Continuity}
 
-Given \(\mathcal{D} \subseteq \R\) and a uniformly continuous function \(f: \mathcal{D} \to \R\).
-Then for every Cauchy sequence \(\{x_n\} \subseteq \mathcal{D}\), the sequence \(\{f(x_n)\}\) is also a Cauchy sequence.
+Given \(\mathcal{D} \subseteq \R\) and a uniformly continuous function \(f: \mathcal{D} \to \R\),
+for every \emph{Cauchy sequence} \(\{x_n\} \subseteq \mathcal{D}\), the sequence \(\{f(x_n)\}\) is also a Cauchy sequence.

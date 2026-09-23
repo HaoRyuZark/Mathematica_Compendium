@@ -1,64 +1,62 @@
-
 \chapter{The Gamma-Function}
 
-The Gamma function \( \Gamma(x) \) is defined for all \( x > 0 \) by the improper integral:
+The \emph{Gamma function} \( \Gamma(x) \) is defined for all \( x > 0 \) by the improper integral:
 
 \[
-    \Gamma(x) = \int_0^\infty t^{x-1} e^{-t} \,dt
+    \Gamma(x) = \int_0^\infty t^{x-1} e^{-t} \,dt.
 \]
 
 It converges for all \( x > 0 \) and can be analytically continued to most of the complex plane 
-(except non-positive integers, where it has poles).
 
 \textbf{Special Case: Factorials}
 
 For any natural number \( n \in \N \), we have:
 
 \[
-    \Gamma(n) = (n - 1)!
+    \Gamma(n) = (n - 1)!.
 \]
 
-\subsection{Recurrence Relation (Proof)}
+\section{Recurrence Relation}
 
 We show that:
 
 \[
-    \Gamma(x + 1) = x \cdot \Gamma(x)
+    \Gamma(x + 1) = x \cdot \Gamma(x).
 \]
 
 \textbf{Proof:}
 
 \[
-    \Gamma(x + 1) = \int_0^\infty t^x e^{-t} \,dt
+    \Gamma(x + 1) = \int_0^\infty t^x e^{-t} \,dt.
 \]
 
 Integrate by parts:
 
 \[
-    u = t^x, \quad dv = e^{-t} dt \Rightarrow du = x t^{x-1} dt, \quad v = -e^{-t}
+    u = t^x, \quad dv = e^{-t} dt \Rightarrow du = x t^{x-1} dt, \quad v = -e^{-t}.
 \]
 
 \[
-    \Gamma(x + 1) = {\left[ -t^x e^{-t} \right]}_{0}^{\infty} + \int_0^\infty x t^{x-1} e^{-t} dt = x \cdot \Gamma(x)
+    \Gamma(x + 1) = {\left[ -t^x e^{-t} \right]}_{0}^{\infty} + \int_0^\infty x t^{x-1} e^{-t} dt = x \cdot \Gamma(x).
 \]
 
 The boundary term vanishes because:
 
 \[
-    \lim_{t \to \infty} t^x e^{-t} = 0, \quad \lim_{t \to 0} t^x e^{-t} = 0 \quad (\text{for } x > 0)
+    \lim_{t \to \infty} t^x e^{-t} = 0, \quad \lim_{t \to 0} t^x e^{-t} = 0 \quad (\text{for } x > 0).
 \]
 
 \textbf{Example: Gamma Distribution}
 
-The Gamma distribution with shape \( \alpha > 0 \), rate \( \beta > 0 \) has the density:
+The Gamma distribution with shape \( \alpha > 0 \) and rate \( \beta > 0 \) has the density:
 
 \[
-    f(x) = \frac{\beta^\alpha x^{\alpha - 1} e^{-\beta x}}{\Gamma(\alpha)} \quad \text{for } x > 0
+    f(x) = \frac{\beta^\alpha x^{\alpha - 1} e^{-\beta x}}{\Gamma(\alpha)} \quad \text{for } x > 0.
 \]
 
-\section{Extension Of The Factorials}
+\section{Extension of the Factorials}
 
-Another extension of the factorial is given by the function 
+Another \emph{extension of the factorial} is given by the function 
 
 \[
     x! = \prod_{k = 1}^{\infty} \frac{(k + 1)^x k^{1 - x}}{x + k}.

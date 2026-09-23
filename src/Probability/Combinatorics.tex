@@ -6,15 +6,15 @@ These principles are \emph{Addition}, \emph{Multiplication} and \emph{Inclusion-
 
 \section{The Basic Counting Principle}
 
-For \(n\) outcomes of event \(A\) and \(m\) of \(B\) there are \(n \cdot m\) outcomes for event \(A\) and \(B\).
+For \(n\) outcomes of event \(A\) and \(m\) of \(B\), there are \(n \cdot m\) outcomes for event \(A\) and \(B\).
 
-In combinatorics we can model a lot of problems as having \(n\) elements from which we can take one at the time 
+In combinatorics we can model a lot of problems as having \(n\) elements from which we can take one at a time 
 a certain number of times, and then we take into consideration if we allow repetition or the order matters or not.
 
 \section{Permutation Without Repetition}
 
-The \emph{permutation} counts the number of ways of ordering \(n\) distinct elements. In other words the number of tuples of n distinct elements.
-Of course the order matters.
+The \emph{permutation} counts the number of ways of ordering \(n\) distinct elements. In other words, the number of tuples of \(n\) distinct elements.
+Of course, the order matters.
 
 \[
     n!
@@ -22,9 +22,9 @@ Of course the order matters.
 
 \subsection{Permutation With Repetition}
 
-NThe \emph{permutation with repetition} counts theumber of ways of ordering \(n\) non-distinct elements. Here \(m_1, \dots, m_n\)
-is the number a specific item is repeated in the original set. By dividing by the respective amount of the 
-repeated non-distinct element, we eliminate the permutations, where the identical element swap their place.
+The \emph{permutation with repetition} counts the number of ways of ordering \(n\) non-distinct elements. Here \(m_1, \dots, m_n\)
+is the number of times a specific item is repeated in the original set. By dividing by the respective amount of the 
+repeated non-distinct element, we eliminate the permutations where the identical elements swap their place.
 
 \[
     \frac{n!}{m_1! \cdots m_n!}
@@ -43,10 +43,10 @@ which comes from
 \]
 
 This is also a kind of \emph{partition problem}, because it can be formulated as if you have 
-\(n\) different elements, and you want to divide them into \(m\) bins with capacities \(m_1, m_2, \cdots, m_m\) how 
-many possibles way are there for these partitions. 
+\(n\) different elements, and you want to divide them into \(m\) bins with capacities \(m_1, m_2, \cdots, m_m\), how 
+many possible ways are there for these partitions. 
 
-In this case the order matters but only for the different elements. 
+In this case, the order matters, but only for the different elements. 
 
 \textbf{Example:}
 
@@ -59,9 +59,9 @@ to take with repetition until we fill our \(k\) slots.
     \binom{n + k - 1}{n - 1} 
 \]
 
-For understanding, we have \(n\) types of objects and because we want a combination of those objects the order does not matter.
-Thus, we can put them together as contiguous groups. We have \(k\) slots and \(n\) types thus we can separate our groups 
-with \(n - 1\) separators \(|\). The question becomes how many ways are there to put \(n - 1\) separator into \(n + k - 1\) slots. Note 
+For understanding, we have \(n\) types of objects, and because we want a combination of those objects, the order does not matter.
+Thus, we can put them together as contiguous groups. We have \(k\) slots and \(n\) types, thus we can separate our groups 
+with \(n - 1\) separators \(|\). The question becomes how many ways are there to put \(n - 1\) separators into \(n + k - 1\) slots. Note 
 that we have \(n + k - 1\) positions if we count the actual slots and the separator slots in between.
 
 \[
@@ -70,7 +70,7 @@ that we have \(n + k - 1\) positions if we count the actual slots and the separa
 
 \section{Variation}
 
-The \emph{variation} counts the ways of putting \(n\) objects in \(k\) slots with repetition. Here the order does not matter.
+The \emph{variation} counts the ways of putting \(n\) objects in \(k\) slots with repetition. Here, the order does not matter.
 
 \[
     n^k
@@ -87,7 +87,7 @@ elements which can be selected from \(n\) elements, without repetition. The orde
 
 \section{Combination Without Repetition}
 
-The \emph{combination} can be unsertood as choose \(k\) objects of \(n\) elements. Or put \(k\) elements from \(n\) into \(k\) slots where the order does not matter.
+The \emph{combination} can be understood as choosing \(k\) objects of \(n\) elements. Or putting \(k\) elements from \(n\) into \(k\) slots where the order does not matter.
 
 \[
     \binom{n}{k} = \frac{n!}{k!(n-k)!}
@@ -99,18 +99,18 @@ repeated combinations.
 
 \section{Multinomial Coefficients}
 
-When using the binomial coefficient repeatedly one after the other we can abbreviate 
-this consecutive uses as 
+When using the binomial coefficient repeatedly, one after the other, we can abbreviate 
+these consecutive uses as 
 
 \[
     \binom{n}{k_1, \dots, k_n}
 \]
 
-This is like from \(n\) choose \(k_1\) then from \(n - k_1\) choose \(k_2\) and so on.
+This is like from \(n\) choose \(k_1\), then from \(n - k_1\) choose \(k_2\), and so on.
 
 \subsection{Multinomial Theorem}
 
-Given \(x_1, \dots, x_p \in \R\) and \(\N\) then 
+Given \(x_1, \dots, x_p \in \R\) and \(\N\), then 
 
 \[
     (x_1 + \cdots, x_n)^n = \sum_{k_1 + \cdots + k_{p = n}}  \binom{n}{k_1, \dots, k_p} x_{1}^{k_1} \cdots x_{p}^{k_p}
@@ -120,7 +120,7 @@ Given \(x_1, \dots, x_p \in \R\) and \(\N\) then
 
 \subsection*{Defected Machines}
 
-A new delivery with 10 machines from which 2 are not working properly have to be tested. For that purpose a 
+A new delivery with 10 machines from which 2 are not working properly has to be tested. For that purpose a 
 man in charge selects 5 of the machines randomly, and then he proceeds to make a decision based on the number of faulty machines found 
 in the delivery. If among the 5 samples only 1 machine does not work it will be accepted otherwise it will be rejected. What is the 
 probability of a delivery being accepted?
@@ -131,11 +131,11 @@ Total cases: \(\binom{10}{5}\)
 
 \(\prob(\text{accepted}) = \frac{\binom{8}{5}}{\binom{10}{5}} + \frac{\binom{2}{1}\binom{8}{4}}{\binom{10}{5}}\)
 
-\(\binom{8}{5}\) represents no faulty machine in the choice, \(\binom{2}{1}\binom{8}{4}\) represents only one machine does not work. 
+\(\binom{8}{5}\) represents no faulty machine in the choice; \(\binom{2}{1}\binom{8}{4}\) represents that only one machine does not work. 
 
 \section{Disarray}
 
-A \emph{disarray} is the number of permutation in which no object ends in the same initial spot. Also, know as the 
+A \emph{disarray} is the number of permutations in which no object ends in the same initial spot. It is also known as the 
 \emph{sub-factorial}.
 
 \[
@@ -154,7 +154,7 @@ with \(B(1) = 1\) and \(B(2) = 2\).
 
 \section{Ramanujan Numbers}
 
-The \emph{Ramanujan numbers} are same as the Bell Numbers but, all objects are equal. As an example the number of ways
+The \emph{Ramanujan numbers} are the same as the Bell numbers, but all objects are equal. As an example, the number of ways
 to decompose a number.
 
 \[
@@ -179,7 +179,7 @@ The ways of grouping \(n\) items in \(k\) slots are given by the \emph{Stirling 
 
 \section{Lah Numbers}
 
-The \emph{Lah numbers} represen the ways of building \(K\) lists with a set \(N\) elements.
+The \emph{Lah numbers} represent the ways of building \(K\) lists with a set of \(N\) elements.
 
 \[
     \genfrac{\lfloor}{\rfloor}{0pt}{}{N}{K} = \binom{N - 1}{K - 1} \frac{N!}{K!} = \sum_{j=0}^{K} 
@@ -198,7 +198,7 @@ The \emph{Euler's numbers} are the number of permutations of a set of \(N\) elem
 \section{Catalan Numbers}
 
 The \emph{Catalan numbers} have different applications like the number of ways of the triangulations of
-a polygon or the number of trees with \(N\) leafs.
+a polygon or the number of trees with \(N\) leaves.
 
 \[
     \mathfrak{C}(N) = \binom{2N}{N} - \binom{2N}{N + 1}

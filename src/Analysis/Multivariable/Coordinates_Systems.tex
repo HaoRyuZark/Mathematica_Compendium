@@ -1,40 +1,39 @@
-
 \chapter{Coordinate Systems}
 
-Coordinate systems provide different ways of describing points in space, adapted to the geometry of the 
+\emph{Coordinate systems} provide different ways of describing points in space, adapted to the geometry of the 
 problem. Below are the most common systems used in multi-variable calculus.
 
-\subsection{Cartesian Coordinates}
+\section{Cartesian Coordinates}
 
 The \emph{Cartesian coordinate system} uses mutually orthogonal axes. A point in \( \R^2 \) 
 is given by:
 
 \[
-    (x, y) \quad \text{and in } \R^3: \quad (x, y, z)
+    (x, y) \quad \text{and in } \R^3: \quad (x, y, z).
 \]
 
 
 This is the most natural system for rectangular domains and is the basis for most definitions in vector 
 calculus. The coordinate axes are orthogonal and equidistant.
 
-\subsection{Polar Coordinates}
+\section{Polar Coordinates}
 
-In polar coordinates, a point \( (x, y) \in \R^2 \) is described by:
+In \emph{polar coordinates}, a point \( (x, y) \in \R^2 \) is described by:
 
 \[
-    r \ge 0 \text{ (radius from origin)}, \quad \varphi \in [0, 2\pi) \text{ (angle from x-axis)}
+    r \ge 0 \text{ (radius from origin)}, \quad \varphi \in [0, 2\pi) \text{ (angle from the \(x\)-axis)}
 \]
 
 \textbf{Transformations:}
 
 \[
-    x = r \cos \varphi, \quad y = r \sin \varphi
+    x = r \cos(\varphi), \quad y = r \sin(\varphi)
 \]
 
-This comes from our right triangle with \(r = 1\) where
+This comes from our right triangle with \(r = 1\), where
 
 \[
-    \cos \varphi = \frac{x}{r} \quad \sin \varphi = \frac{y}{r}
+    \cos(\varphi) = \frac{x}{r}, \quad \sin(\varphi) = \frac{y}{r}
 \]
 
 \textbf{Inverse:}
@@ -46,12 +45,12 @@ This comes from our right triangle with \(r = 1\) where
 This system is useful for circular or radial symmetry. The Jacobian determinant is:
 
 \[
-    |J| = r dr d\theta
+    |J| = r \, dr \, d\theta
 \]
 
-\subsection{Cylindrical Coordinates}
+\section{Cylindrical Coordinates}
 
-Cylindrical coordinates extend polar coordinates by adding a height \(z\) component:
+\emph{Cylindrical coordinates} extend polar coordinates by adding a height \(z\) component:
 
 \[
     (r, \varphi, z) \quad \text{where } r \ge 0, \ \varphi \in [0, 2\pi), \ z \in \R
@@ -60,7 +59,7 @@ Cylindrical coordinates extend polar coordinates by adding a height \(z\) compon
 \textbf{Transformations:}
 
 \[
-    x = r \cos \varphi, \quad y = r \sin \varphi, \quad z = z
+    x = r \cos(\varphi), \quad y = r \sin(\varphi), \quad z = z
 \]
 
 \textbf{Inverse:}
@@ -73,12 +72,12 @@ This coordinate system is ideal for objects with rotational symmetry about the \
 The Jacobian determinant is:
 
 \[
-    |J| = r dr d\theta dz
+    |J| = r \, dr \, d\varphi \, dz
 \]
 
-\subsection{Spherical Coordinates}
+\section{Spherical Coordinates}
 
-In spherical coordinates, a point \( (x, y, z) \in \R^3 \) is represented using:
+In \emph{spherical coordinates}, a point \( (x, y, z) \in \R^3 \) is represented using:
 
 \[
     \rho \ge 0 \text{ (radial distance)}, \quad \theta \in [0, \pi] \text{ (inclination)}, \quad 
@@ -88,8 +87,8 @@ In spherical coordinates, a point \( (x, y, z) \in \R^3 \) is represented using:
 \textbf{Transformations:}
 
 \[
-    x = \rho \sin \theta \cos \varphi, \quad y = \rho \sin \theta \sin \varphi, \quad z = \rho \cos 
-    \theta
+    x = \rho \sin(\theta)\cos(\varphi), \quad y = \rho \sin(\theta) \sin(\varphi), \quad z = \rho \cos 
+    (\theta)
 \]
 
 \textbf{Inverse:}
@@ -103,7 +102,7 @@ Spherical coordinates are useful for spherical symmetry (e.g., in gravitational 
 The Jacobian determinant is:
 
 \[
-    |J| = \rho^2 \sin \theta d\rho d\phi d \theta
+    |J| = \rho^2 \sin(\theta) \, d\rho \, d\phi \, d\theta
 \]
 
 Each coordinate system is tailored to specific geometries and greatly simplifies integrals when used 

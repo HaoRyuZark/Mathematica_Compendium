@@ -1,8 +1,8 @@
 \chapter{Statistics}
 
-In \emph{probability}, we had models, and we assumed that have its ideal form. 
+In \emph{probability}, we had models, and we assumed that they have their ideal form. 
 In \emph{Statistics}, we try to estimate the model from samples. We will approximate its parameters and 
-test hypothesis about the model. 
+test hypotheses about the model. 
 
 \section{Basic Nomenclature}
 
@@ -12,7 +12,7 @@ test hypothesis about the model.
 
     \item \emph{Sample}: Finite set of the Population. 
 
-    \item \emph{Sample Perimeter}: Number of the samples. Like the number of participants. 
+    \item \emph{Sample Perimeter}: Number of samples, like the number of participants. 
 
     \item \emph{Trait}: Special characteristic we are looking for. They can be discrete, continuous, non-numerical (can be converted to numerical).
 
@@ -53,10 +53,10 @@ Let \(x_1, x_2, \dots, x_N\) be the elements of the population.
 
 \section{The 5 Number Summary}
 
-In the \emph{descriptive statistics} we call the \emph{5 number summary} of a data set as the 
-list of number consisting on the: minimum, lower quantile, median, upper quantile and the maximum.
+In the \emph{descriptive statistics} we call the \emph{5 number summary} of a data set the 
+list of numbers consisting of the: minimum, lower quantile, median, upper quantile and the maximum.
 
-This numbers can be plotted in a box-plot
+These numbers can be plotted in a box-plot.
 
 \section{Sample Statistics}
 
@@ -132,7 +132,7 @@ called \emph{order Statistic} of the variables \(X_1, \dots, X_n\) if for each \
     X_{(1)} (\omega) \le X_{(2)} (\omega) \le \dots \le X_{(n)} (\omega)
 \]
 
-and for each \(i\) there exist \(k_i\) such that \(X_(i)(\omega) = X_{k_i}(\omega)\).
+and for each \(i\) there exists \(k_i\) such that \(X_(i)(\omega) = X_{k_i}(\omega)\).
 
 Note
 
@@ -153,7 +153,7 @@ Given \(5,1,3,4,2\) we get
 
 \section{Empirical Median}
 
-Given \(X_1, \dots, X_n\) random variables with their correspondent order statistic. 
+Given \(X_1, \dots, X_n\) random variables with their corresponding order statistic. 
 Their \emph{empiric median} is defined as 
 
 \[
@@ -176,11 +176,11 @@ Given \(3.80, 4.33, 4.96, 3.71, 3.40\). What is the median?
 
 \emph{Order statistic}: \(3.40, 3.71, 3.80, 4.33, 4.96\).
 
-\emph{Median}: \(n = 5\) thus, \(\frac{n + 1}{2} = 3\) our median is \(\med(X) = X_{(3)} = 3.80\).
+\emph{Median}: \(n = 5\), thus \(\frac{n + 1}{2} = 3\), and our median is \(\med(X) = X_{(3)} = 3.80\).
 
 \section{Empirical Quantile}
 
-Given \(X_1, \dots, X_n\) random variables with their correspondent order statistic. 
+Given \(X_1, \dots, X_n\) random variables with their corresponding order statistic. 
 The \emph{empirical p-quantile} is defined as 
 
 \[
@@ -208,11 +208,11 @@ recurrence of the class \(c_i\) in the sample set.
     h_i = |\{x_j \in c_i : j = 1, \dots, n\}|
 \]
 
-for \(i = 1, \dots, d\). Then is the class \(c_k\) a modus if \(h_k = \max_{i = 1}^{d} h_i\).
+for \(i = 1, \dots, d\). Then the class \(c_k\) is a modus if \(h_k = \max_{i = 1}^{d} h_i\).
 
 \section{Empirical Variance}
 
-Let \(X_1, \ldots, X_n\) be random variables with mean \(\overline{X}_n\) 
+Let \(X_1, \ldots, X_n\) be random variables with mean \(\overline{X}_n\). 
 The \emph{empirical variance} is defined as
 
 \[
@@ -243,7 +243,7 @@ Given \(X \sim \mathcal{N}(\mu, \sigma^2)\)
 
 \section{Absolute Deviation And Range}
 
-Let\(X_1, \ldots, X_n\) be random variables with mean \(\overline{X}_n\), 
+Let \(X_1, \ldots, X_n\) be random variables with mean \(\overline{X}_n\), 
 minimum \(X_{(1)}\) and maximum \(X_{(n)}\).
 
 The range \emph{absolute deviation} is defined as
@@ -284,18 +284,18 @@ is defined as
     \cov(X, Y) = \frac{1}{n - 1} \sum_{i = 1}^{n}(X_i - \overline{X_n}) (Y_i - \overline{Y_n}).
 \]
 
-If the result is greater than zero they are 'moving' in the same direction and the slope is positive, less 'opposite' with 
+If the result is greater than zero, they are 'moving' in the same direction and the slope is positive, less 'opposite' with 
 negative slope and equal to zero means that they are independent, and the slope is zero.
 
 \section{Pearson Correlation Coefficient}
 
-The \emph{pearson correlation coefficient} describes the degree of which two features are linearly correlated, and it is given by: 
+The \emph{Pearson correlation coefficient} describes the degree to which two features are linearly correlated, and it is given by: 
 
 \[
     \rho_p = \frac{\cov(X,Y)}{\sigma(X) \sigma(Y)}, \quad -1 < r < 1.
 \]
 
-The closer the result the closer the relationship between the values. Zero means 
+The closer the result, the closer the relationship between the values. Zero means 
 independence.
 
 Classification of the values:
@@ -309,7 +309,7 @@ Classification of the values:
     \end{cases}
 \]
 
-The individual interpretation of this values and the slope of the line is dependent on the context.
+The individual interpretation of these values and the slope of the line is dependent on the context.
 
 \subsection{Invariance Under Linear Transformation}
 
@@ -319,7 +319,7 @@ Given random variables \(X,Y\), we can transform them linearly
     \tilde{X} = a_x X - b_x, \quad \tilde{Y} = a_y Y + b_y
 \]
 
-And get the following result when applying the pearson correlation coefficient
+and get the following result when applying the Pearson correlation coefficient
 
 \[
     \rho_p (\tilde{X}, \tilde{Y}) = |\rho_p (X, Y)|
@@ -339,7 +339,7 @@ We now define the \emph{Spearman correlation coefficient} as
     \rho_s = \frac{\sum_{i = 1}^{n} \left(\rank(x_i) - \frac{n + 1}{2}\right) \left(\rank(y_i) - \frac{n + 1}{2}\right)}{\sqrt{\sum_{i = 1}^{n} \left(\rank(x_i) - \frac{n + 1}{2}\right)^2 \sum_{i = 1}^n \left(\rank(y_i) - \frac{n + 1}{2}\right)^2}}
 \]
 
-Or in simpler terms, we compute the pearson correlation of the ranks.
+Or in simpler terms, we compute the Pearson correlation of the ranks.
 
 This coefficient is used to measure non-linear, monotone correlation.
 
@@ -375,7 +375,7 @@ is the \emph{empirical distribution} function
     F_n (a_i) = \frac{1}{n} \sum_{j = 1}^{n} \ind_{X_j \le a_i}
 \]
 
-If the trait are sorted \(a_1 < a_2 < \dots\) then 
+If the traits are sorted \(a_1 < a_2 < \dots\) then 
 
 \[
     F_n (a_i) = \frac{1}{n} \sum_{j = 1}^{n} \ind_{X_j \le a_i} = \sum_{k = 1}^{i} \frac{1}{n} \sum_{j = 1}^{n} \ind_{x_j = a_k} = \sum_{k = 1}^{i} r_k
@@ -423,7 +423,7 @@ where \(h_k\) is the absolute frequency of \(k\).
 
 \section{Grouped Data}
 
-When dealing with a lot of data sometimes it is easier to put it into \emph{classes} \(A_1, \dots, A_k\) which represent a certain range \([a,b], [a,b),\) etc. 
+When dealing with a lot of data, sometimes it is easier to put it into \emph{classes} \(A_1, \dots, A_k\) which represent a certain range \([a,b], [a,b),\) etc. 
 with a corresponding \emph{absolute frequency} \(h_i\), \emph{relative frequency} \(r_i\), \emph{class middle} \( \frac{a_{i + 1} - a_{i}}{2} = \alpha_i\).
 
 For the next definitions, the following example table will be used.
@@ -464,7 +464,7 @@ For the next definitions, the following example table will be used.
 
 \emph{Empirical Quantile}:
 
-For the quantile \(q_p\) find \(F_i \ge p\) and \(F_{i  - 1} < p\) this will give you a class 
+For the quantile \(q_p\), find \(F_i \ge p\) and \(F_{i  - 1} < p\); this will give you a class 
 \(A(a_i, a_{i + 1}]\). Then plug into the formula.
 
 \[
@@ -571,7 +571,7 @@ In simpler terms, an estimator is a function that takes in our samples and gives
 
 \section{Consistence Of An Estimate}
 
-If \(\hat{\theta}_n\) is an estimate of \(\theta\) based on the sample size \(n\). Then \(\hat{\theta}_n\) is 
+If \(\hat{\theta}_n\) is an estimate of \(\theta\) based on the sample size \(n\), then \(\hat{\theta}_n\) is 
 consistent if 
 
 \[
@@ -622,7 +622,7 @@ moments of the sample. The first moment is the expectation, the second moment is
 Based on the first and second moments, we have the following \emph{unbiased and consistent estimators}:
 
 Given \(X_1, \ldots, X_n\) random variables from a population with mean \(\mu\) and variance \(\sigma^2\). 
-The for some \(i in 1, \dots, n\)
+Then for some \(i in 1, \dots, n\)
 
 \[
     \expc[X_i] = \mu
@@ -652,12 +652,12 @@ The for some \(i in 1, \dots, n\)
 
 \section{Errors In The Method Of Moments}
 
-Approximating the error when estimating the mean with the sample mean or variance can be challenging depending on the size of the population and the kind distribution
+Approximating the error when estimating the mean with the sample mean or variance can be challenging depending on the size of the population and the kind of distribution
 of the data. 
 
 Sometimes we can use our methods for unbiased and consistent estimators, but they might not be accurate enough. 
 
-Another method is bootstrapping, which consists of resampling with replacement from the sample and calculating the estimator
+Another method is bootstrapping, which consists of resampling with replacement from the sample and calculating the estimator.
 
 \section{Sample Variance As Estimator}
 
@@ -697,8 +697,8 @@ From this fact we can derive that
 Let \(X_1, \ldots, X_n\) be random variables from a population with mean \(\mu\) and variance \(\sigma^2\). The 
 \emph{sample mean} \(\overline{X_n}\) is approximately normally distributed with mean \(\mu\) and variance \(\frac{\sigma^2}{n}\) for large \(n\).
 
-Note, that this fact comes from the \emph{Central Limit Theorem} which only applies for independent random variables. In our case 
-because our population is very large we can assume independence due to the covariance between samples being very small.
+Note that this fact comes from the \emph{Central Limit Theorem}, which only applies to independent random variables. In our case, 
+because our population is very large, we can assume independence due to the covariance between samples being very small.
 
 This approximation gives us the ability to calculate probabilities about the sample mean using the normal distribution. 
 
@@ -731,7 +731,7 @@ by differentiating with respect to \(a\) and \(b\).
     \frac{\partial Q}{\partial b}  = \sum_{i = 1}^{n} a x_i + b - y_i = 0
 \]
 
-We proceed by  defining the following terms 
+We proceed by defining the following terms 
 
 \[
     S = \sum_{i = 1}^{n} x_i^w
@@ -800,7 +800,7 @@ by solving for \(a\) and \(b\) we get using the inverse of the Hessian
     \end{bmatrix}
 \]
 
-Thus, our square error is minimized when \(S > 0, \det(H_f) > 0\)
+Thus, our square error is minimized when \(S > 0, \det(H_f) > 0\).
 
 With a simple calculation we get 
 
@@ -841,7 +841,7 @@ The \emph{Likelihood} answers the following question: "Given the data observed, 
     \prob_{\theta}(x_1, x_2, \dots, x_n \mid \theta)
 \]
 
-If we chose just some random parameters, we may get a probability distribution, but our observations could be so rare that we could misinterpret our data.
+If we choose just some random parameters, we may get a probability distribution, but our observations could be so rare that we could misinterpret our data.
 
 Assuming that our data is independent then we get the following function: 
 
@@ -849,13 +849,13 @@ Assuming that our data is independent then we get the following function:
     L(\theta) = \prob_{\theta}(x_1, x_2, \dots, x_n \mid \theta) = \prob(x_1 \mid \theta) \prob(x_2 | \theta) \cdot \dots \cdot \prob(x_n \mid \theta).
 \]
 
-Note, that we choose to make a product out of this measurement we want to do, because for higher probabilities our product becomes bigger.
+Note that we choose to make a product out of this measurement we want to do, because for higher probabilities our product becomes bigger.
 Maximizing this function is interpreted as: maximizing the probability of observing the whole data given a variable parameter \(\theta\).
 
 \textbf{Example:}
 
-A coin has been flipped 4 times as we observed the following data: H H H H. Our intuition tells us that the coin is biased; 
-thus we want to find the probability \(p \in [0,1]\) of getting heads,  with counter probability \(1 - p\) of getting tails. 
+A coin has been flipped 4 times and we observed the following data: H H H H. Our intuition tells us that the coin is biased; 
+thus we want to find the probability \(p \in [0,1]\) of getting heads, with counter probability \(1 - p\) of getting tails. 
 
 Our sequence is given by
 
@@ -892,8 +892,8 @@ The mapping \(\hat{\theta}(x_{1}, \ldots, x_{n})\) is called the \emph{maximum-l
 
 \subsection{The Log-Likelihood-Estimator}
 
-The likelihood function can be pretty challenging to optimize, therefore, the less complicated \emph{Log-Likelihood-function} is often used for maximization
-problem. 
+The likelihood function can be pretty challenging to optimize; therefore, the less complicated \emph{Log-Likelihood-function} is often used for maximization
+problems. 
 
 \[
     l(\theta) = 
@@ -964,20 +964,20 @@ where \(\hat{\theta} = \argmax_\theta l(\theta)\). We get the following properti
     \item \(\hat{\theta} \sim \mathcal{N}\left(\theta_{\text{true}}, \frac{1}{n I(\theta_{\text{true}})}\right)\)
     where \(I(\theta) = \expc \left[\frac{\partial}{\partial \theta} \ln(\prob(x \mid \theta))\right]^2 = - \expc \left[\frac{\partial^2}{\partial \theta^2} \ln(\prob(x \mid \theta))\right]\).
 
-    \item \emph{Crammer-Rao Inequality:} Given \(X_1, \dots, X_n\) i.i.d. random variables with the unbiased estimator \(\hat{\theta} = \hat{\theta}(X_1, \dots, X_n)\)
+    \item \emph{Cramér-Rao Inequality:} Given \(X_1, \dots, X_n\) i.i.d. random variables with the unbiased estimator \(\hat{\theta} = \hat{\theta}(X_1, \dots, X_n)\)
 
     \[
         \var(\hat{\theta}) \ge \frac{1}{n I(\theta)} 
     \]
 
-    for all \(\prob(X \mid \theta)\) smooth.
+    for all smooth \(\prob(X \mid \theta)\).
 
 \end{itemize}
 
 \section{Bayesian Maximum A-posteriori Estimation}
 
-Recall the MLE but, we model the probability for the observations of the samples as \(\prob(x_i \mid \theta)\) and treat 
-them as real conditional probabilities instead as a notational trick for probability of \(x\) with the parameter \(\theta\) then we get 
+Recall the MLE, but we model the probability for the observations of the samples as \(\prob(x_i \mid \theta)\) and treat 
+them as real conditional probabilities instead of as a notational trick for the probability of \(x\) with the parameter \(\theta\), then we get 
 
 \[
     \prob(\theta \mid x) = \frac{\prob(x \mid \theta) \prob(\theta)}{\prob(x)}
@@ -989,7 +989,7 @@ If we optimize \(\theta\) we get
     MAP = \max \log(\prob(x \mid \theta) \prob(\theta)).
 \]
 
-the \emph{maximum a-posteriori estimation}.
+This is the \emph{maximum a-posteriori estimation}.
 
 \section{Confidence Intervals}
 
@@ -1022,7 +1022,7 @@ In general,
 
 Given \emph{Confidence}\(= 0.95\), \(\alpha = 0.05\), \(\overline{X_n} = 8978814.2\)
 
-The critical probability is \(1 - \alpha/2 = 0.975\) which leads us to look at the \(Z-\)table it gives 
+The critical probability is \(1 - \alpha/2 = 0.975\), which leads us to look at the \(Z-\)table, which gives 
 us \(1.96\). 
 
 Next we have \(\sigma - 12471455.74\) and \(n = 15\)
@@ -1059,7 +1059,7 @@ It is defined as
     t_{n - 1} = \frac{\overline{X_n} - \mu}{s_n/\sqrt{n}}.
 \]
 
-This distribution is symmetric to the \(y\)-axis and approximates the standard normal distribution for 
+This distribution is symmetric about the \(y\)-axis and approximates the standard normal distribution for 
 large \(n\).
 
 \section{Confidence Intervals For The Expected Value And Standard Deviation Of Normal Distributions}
@@ -1079,7 +1079,7 @@ using the formula
     q = \Phi^{-1}(1 - \alpha/2)
 \]
 
-If \(\sigma^2\) is not known, we can use the \(s_n^2\)
+If \(\sigma^2\) is not known, we can use \(s_n^2\).
 
 \subsection{Confidence Interval for \(\mu\) with unknown \(\sigma\)}
 
@@ -1117,7 +1117,7 @@ the last value is determined by the mean and the other \(n - 1\) values.
 
 \section{Hypothesis Testing}
 
-Given \(X: \Omega \to \mathcal{X}\) be random variable with statistical model
+Let \(X: \Omega \to \mathcal{X}\) be a random variable with statistical model
 \(P = \{\prob_\theta : \theta \in \Theta\}\). A subset \(\Theta_i\) of \(\Theta\) with \(H_1 \in \Theta_i\) is 
 called a \emph{hypothesis}.
 
@@ -1140,7 +1140,7 @@ We want to test if a coin is fair.
 
 \section{Test Statistic}
 
-Given \(X: \Omega \to \mathcal{X}\) be random variable with statistical model \(P = \{\prob_\theta : \theta \in \Theta\}\). 
+Let \(X: \Omega \to \mathcal{X}\) be a random variable with statistical model \(P = \{\prob_\theta : \theta \in \Theta\}\). 
 A \emph{test statistic} is a mapping \(\varphi: \mathcal{X} \to \{0,1\}\) where \(\varphi(x) = 1\) means that we reject \(H_0\) and \(\varphi(x) = 0\) 
 means that we do not reject \(H_0\).
 
@@ -1169,7 +1169,7 @@ and try to minimize \(\beta\).
 
 \section{Quality, Power And Level}
 
-Let \(X: \Omega \to \mathcal{X}\) be random variable with statistical model \(P = \{\prob_\theta : \theta \in \Theta\}\).
+Let \(X: \Omega \to \mathcal{X}\) be a random variable with statistical model \(P = \{\prob_\theta : \theta \in \Theta\}\).
 For the test \(\varphi: \mathcal{X} \to \{0,1\}\) of the hypothesis \(H_0: \theta \in \Theta_0\) against \(H_1: \theta \in \Theta_1\): 
 
 \subsection{Quality Function}
@@ -1200,7 +1200,7 @@ For \(\alpha \in [0,1]\) the test \(\varphi\) is called a \emph{significance lev
     \sup_{\theta \in \Theta_0} \beta_{\varphi}(\theta) \le \alpha
 \]
 
-\(\sup_{\theta \in \Theta_0} \beta_\varphi (\theta)\) is called the \emph{level} of the test
+\(\sup_{\theta \in \Theta_0} \beta_\varphi (\theta)\) is called the \emph{level} of the test.
     
 
 \subsection{Power}
@@ -1214,7 +1214,7 @@ Note the following:
     \item In practice, we choose a significance level \(\alpha\) and look for a test \(\varphi\) with level \(\le \alpha\) that maximizes the power 
     \(\beta_\varphi (\theta)\) for \(\theta \in \Theta_1\).
 
-    \item A good test should have  for \(n \to \infty\), \(\beta_\varphi (\theta) \to 1\).
+    \item A good test should have, for \(n \to \infty\), \(\beta_\varphi (\theta) \to 1\).
 
 \end{itemize}
 
@@ -1228,7 +1228,7 @@ Note the following:
 
 \section{Critical Value}
 
-Given \(X: \Omega \to \mathcal{X}\) be random variable with statistical model 
+Let \(X: \Omega \to \mathcal{X}\) be a random variable with statistical model 
 \(P = \{\prob_\theta : \theta \in \Theta\}\). For the test \(H_0 : \theta \in \Theta_0\) vs. \(H_1: \theta \in \Theta_1\) 
 and test \(\varphi\) with level \(\alpha\). A value \(c_\alpha \in \R\) is called a \emph{critical value} if
 
@@ -1242,8 +1242,8 @@ and test \(\varphi\) with level \(\alpha\). A value \(c_\alpha \in \R\) is calle
 
 \section{Test-Statistic}
 
-Given \(X: \Omega \to \mathcal{X}\) be random variable with statistical model \(P = \{\prob_\theta : \theta \in \Theta\}\). \(t : \mathcal{X} \to \R\) is 
-a called a \emph{test-statistic} for the test \(H_0 : \theta \in \Theta_0\) vs. \(H_1: \theta \in \Theta_1\) and 
+Let \(X: \Omega \to \mathcal{X}\) be a random variable with statistical model \(P = \{\prob_\theta : \theta \in \Theta\}\). \(t : \mathcal{X} \to \R\) is 
+called a \emph{test-statistic} for the test \(H_0 : \theta \in \Theta_0\) vs. \(H_1: \theta \in \Theta_1\) and 
 \(c_\alpha\) the critical value for the choice rule 
 
 \[
@@ -1269,7 +1269,7 @@ assuming that the null hypothesis \(H_0\) is true.
 
     \item A small p-value means the observed data would be rare under \(H_0\).
 
-    \item A large p-value means the data are consistent with  \(H_0\).
+    \item A large p-value means the data are consistent with \(H_0\).
 
 \end{itemize}
 
@@ -1429,7 +1429,7 @@ with \(\xi = \Phi\left(z_{1 - \frac{\alpha}{2}} + \sqrt{n}\frac{\mu_0 - \mu}{\si
 
 \textbf{Example:}
 
-Given a sample of size \(n = 400\) \(\mu_0 = 1,74m \) and \(\sigma_0^2 = 0.1m\) from height measurement of men in a city. 
+Given a sample of size \(n = 400\), \(\mu_0 = 1,74m \) and \(\sigma_0^2 = 0.1m\) from height measurements of men in a city. 
 We get a sample mean of \(\overline{X_n} = 1.72m\). We want to test if the mean height is less than \(1.74m\) with a significance level of \(\alpha = 0.05\). 
 
 Following hypotheses are stated:
@@ -1448,7 +1448,7 @@ We compute the test-statistic
     Z = \frac{\overline{X_n} - \mu_0}{\frac{\sigma}{\sqrt{n}}} = \frac{1.72 - 1.74}{\frac{\sqrt{0.1}}{\sqrt{400}}} = -4
 \]
 
-The critical value is given by \(z_{0.05} = -1.645\). Since \(-4 < -1.645\) we reject \(H_0\) and conclude that the mean height is less than \(1.74m\).
+The critical value is given by \(z_{0.05} = -1.645\). Since \(-4 < -1.645\), we reject \(H_0\) and conclude that the mean height is less than \(1.74m\).
 
 \section{t-Test}
 
@@ -1470,7 +1470,7 @@ if \(\mu = \mu_0: T \sim t_{n - 1}\)
     \end{tabular}
 \end{center}
 
-\textbf{Use Case:} This is test is used when we want to know if the mean of a normal distribution is equal to some value \(\mu_0\) 
+\textbf{Use Case:} This test is used when we want to know if the mean of a normal distribution is equal to some value \(\mu_0\) 
 when the variance \(\sigma^2\) is unknown.
 
 \textbf{Example:}
@@ -1497,7 +1497,7 @@ The test-statistic gives us
     T = \sqrt{n} \frac{\overline{X_n} - \mu_0}{s_n} = \sqrt{25} \frac{99.32 - 100}{1.683} = -1.618
 \]
 
-The critical value is given by \(t_{24, 0.975} = 2.064\). Since \(|-1.618| < 2.064\) we do not reject \(H_0\) and conclude that the mean is 
+The critical value is given by \(t_{24, 0.975} = 2.064\). Since \(|-1.618| < 2.064\), we do not reject \(H_0\) and conclude that the mean is 
 not significantly different from \(100\).
 
 \section{Between-Sample t-Tests}
@@ -1578,7 +1578,7 @@ We compute the test-statistic
     T_1 = \frac{(n - 1)s^2}{\sigma_0^2} = \frac{17 \cdot 13.5^2}{15^2} = 16.38
 \]
 
-The critical value is given by \(\chi_{17, 0.05}^2 = 8.672\). Since \(16.38 > 8.672\) we do not reject \(H_0\) and conclude that the 
+The critical value is given by \(\chi_{17, 0.05}^2 = 8.672\). Since \(16.38 > 8.672\), we do not reject \(H_0\) and conclude that the 
 standard deviation is not significantly less than \(15\).
 
 \section{Bayesian Inference}
@@ -1591,7 +1591,7 @@ The big idea is
 
 where \(\prob(X \mid \theta)\) is the \emph{likelihood} and \(\prob(\theta)\) is the \emph{prior}.
 
-We want to create derive a statistical model for some collected data with its corresponding parameters 
+We want to derive a statistical model for some collected data with its corresponding parameters 
 using prior beliefs.
 
 \subsection{Bayesian Update}

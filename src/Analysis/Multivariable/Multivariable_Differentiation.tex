@@ -1,7 +1,6 @@
-
 \chapter{Multi-variable Differentiation}
 
-\subsection{Partial Derivatives}
+\section{Partial Derivatives}
 
 Let \( f : U \subseteq \R^n \to \R \) and \( \vec{X}_0 = (x_1^{(0)}, \dots, x_n^{(0)}) 
 \in U \). Then \(f\) is \emph{partially differentiable with respect to \( x_i \)} at 
@@ -18,9 +17,9 @@ while keeping all other variables fixed.
 A function is \emph{(partially) differentiable} at \( \vec{X}_0 \) if all partial derivatives 
 \( \frac{\partial f}{\partial x_i}(\vec{X}_0) \) exist.
 
-\subsection{Differentiability}
+\section{Differentiability}
 
-We call a function \(f\) differentiable at \((x_1, x_2, \cdots, x_n)\) if and only if:
+We call a function \(f\) \emph{differentiable} at \((x_1, x_2, \cdots, x_n)\) if and only if:
 
 \[
     f(x_1 + \Delta x_1, x_2 + \Delta x_2, \dots, x_n + \Delta x_n) - f(x_1, x_2, \dots, x_n) = 
@@ -33,9 +32,9 @@ We call a function \(f\) differentiable at \((x_1, x_2, \cdots, x_n)\) if and on
 \]
 
 where \(\lim_{\Delta x_1 \to 0}\frac{E_1(\Delta x_1)}{\Delta x_1} = \lim_{\Delta x_2 \to 0}
-\frac{E_2(\Delta x_2)}{\Delta x_2} = \cdots = 0\)
+\frac{E_2(\Delta x_2)}{\Delta x_2} = \cdots = 0\).
 
-\subsection{The Gradient}
+\section{The Gradient}
 
 Let \( f : U \subseteq \R^n \to \R \) be differentiable at \( \vec{X}_0 = (x_1^{(0)}, 
 \dots, x_n^{(0)}) \). The \emph{gradient} of \(f\) at \( \vec{X}_0 \) is:
@@ -49,7 +48,7 @@ Let \( f : U \subseteq \R^n \to \R \) be differentiable at \( \vec{X}_0 = (x_1^{
 \]
 
 The angle of the maximal slope is \(\phi = 0\). This comes from the fact that 
-the directional derivative which is defined as 
+the directional derivative, which is defined as
 
 \[
     D_{\vec{v}}f(\vec{x}_0) = \langle \nabla f(\vec{x}_0), \vec{v} \rangle
@@ -61,8 +60,8 @@ which can be written as
     \langle \nabla f, \vec{v}\rangle = \metric{\nabla f} \metric{\vec{v}} \cos(\phi)
 \]
 
-tells us that our gradient is orthogonal to the tangent vector of the level curve, i.e. \(\phi = \frac{\pi}{2}\) and 
-the largest slope is when \(\phi = 0\) which is the direction of the gradient.
+tells us that our gradient is orthogonal to the tangent vector of the level curve, i.e., \(\phi = \frac{\pi}{2}\), and 
+the largest slope is when \(\phi = 0\), which is the direction of the gradient.
 
 Another way of thinking about this fact is using the definition as a projection of the dot product. 
 
@@ -70,11 +69,11 @@ Another way of thinking about this fact is using the definition as a projection 
     \mathrm{proj}_{\nabla f} (\vec{v}) = \frac{\langle \nabla f, \vec{v}\rangle}{\metric{\nabla f}^2} \nabla f
 \]
 
-Now our directional derivative is the projection of the gradient onto the direction vector \(\vec{v}\) and we want to maximize this projection.
-This happens when \(\vec{v}\) is in the same direction as the gradient, i.e. \(\vec{v} = \nabla f\). Hence the direction of the maximal slope is 
+Now our directional derivative is the projection of the gradient onto the direction vector \(\vec{v}\), and we want to maximize this projection.
+This happens when \(\vec{v}\) is in the same direction as the gradient, i.e., \(\vec{v} = \nabla f\). Hence, the direction of the maximal slope is 
 in the direction of the gradient.
 
-Formally, we have a vector \(d^*\) which points in the direction of the max slope defined by 
+Formally, we have a vector \(d^*\) that points in the direction of the maximum slope, defined by
 
 \[
     d^* = \text{arg}_{\metric{d} = 1} \text{max} D_{\vec{v}}f(\vec{x})
@@ -82,19 +81,19 @@ Formally, we have a vector \(d^*\) which points in the direction of the max slop
 
 where \(\vec{v}\) is a unit vector. 
 
-The directional derivative written as the inner product wit the gradient gives us 
+The directional derivative, written as the inner product with the gradient, gives us
 
 \[
     d^* = \text{arg}_{\metric{d} = 1} \text{max} \langle \nabla f, \vec{v} \rangle 
 \]
 
-Then using the definition of the dot product
+Then, using the definition of the dot product,
 
 \[
     d^* = \text{arg}_{\metric{d} = 1} \text{max} \metric{\nabla f} \metric{\vec{v}} \cos(\phi) 
 \]
 
-Finally, because the magnitude of \(\vec{v}\) is one and to maximize cosine we set \(\phi = \frac{\pi}{2}\) 
+Finally, because the magnitude of \(\vec{v}\) is one, and to maximize cosine we set \(\phi = \frac{\pi}{2}\),
 
 \[
     d^* = \metric{\nabla f}
@@ -102,12 +101,12 @@ Finally, because the magnitude of \(\vec{v}\) is one and to maximize cosine we s
 
 Therefore, the magnitude of the gradient is the maximal slope. 
 
-\subsubsection{Origin of the formula}
+\section{Origin of the Formula}
 
 Suppose along the curve \(r(t) = x_1(t)\hat{v_1} + x_2(t)\hat{v_2} + \cdots + x_n(t)\hat{v_n}\) that 
 \(f(x_1(t), \dots, x_n(t)) = C\).
 
-For a fixed \(t\) we get a constant value \(C\) and differentiating with respect to \(t\) gives us the following:
+For a fixed \(t\), we get a constant value \(C\), and differentiating with respect to \(t\) gives us the following:
 
 \[
     \frac{\partial}{\partial t}f(x_1(t), \dots, x_n(t)) = \frac{\partial}{\partial t}C
@@ -125,12 +124,12 @@ We can write it as a dot product of two vectors:
     \hat{v_n}\right) , \left( \frac{dx_1}{dt}\hat{v_1} + \cdots + \frac{dx_n}{dt}\hat{v_n}\right)\right\rangle = 0
 \]
 
-From the formula we see that: \(\nabla f\) is the normal and \(\frac{d\vec{r}}{dt}\) the tangent vector 
-of the curve
+From the formula, we see that \(\nabla f\) is the normal and \(\frac{d\vec{r}}{dt}\) is the tangent vector 
+of the curve.
 
 \QED
 
-\subsubsection{Gradient Operations:}
+\subsection{Gradient Operations}
 
 \begin{itemize}
 
@@ -143,8 +142,8 @@ of the curve
 \end{itemize}
 
 The \(\frac{\operatorname{grad}f}{\metric{\operatorname{grad}f}}\) points in the direction of the 
-steepest increase of \(f\) and \(- \frac{\operatorname{grad}f}{\metric{\operatorname{grad}f}}\) in 
-the lowest increase.
+steepest increase of \(f\), and \(- \frac{\operatorname{grad}f}{\metric{\operatorname{grad}f}}\) in 
+the direction of the steepest decrease.
 
 \section{The Tangent Plane}
 
@@ -155,7 +154,7 @@ plane that best approximates the surface near that point. It is given by the lin
     T(x, y) = f(x_0, y_0) + f_x(x_0, y_0)(x - x_0) + f_y(x_0, y_0)(y - y_0)
 \]
 
-This plane touches the graph of the function at a single point\\
+This plane touches the graph of the function at a single point 
 and shares its slope in both \(x\)- and \(y\)-directions.
 
 It can also be written in the parameterized form:
@@ -167,7 +166,7 @@ It can also be written in the parameterized form:
     \end{bmatrix}
 \]
 
-\subsubsection{Generalization}
+\subsection{Generalization}
 
 \[
     T(\vec{X}) = f(\vec{x_0}) + \sum_{i = 1}^{n} f_{x_i}(\vec{x_0})(x_i - x_{i}^0)
@@ -198,7 +197,7 @@ Thus, the tangent plane is:
     \Rightarrow T(x, y) = 9x + 6y - 9
 \]
 
-\subsection{The Directional Derivative}
+\section{The Directional Derivative}
 
 Let \( f : \R^n \to \R \) be differentiable at \( \vec{x}_0 \), 
 and let \( \vec{v} \in \R^n \) be a direction vector with \( \metric{\vec{v}} = 1 \). The 
@@ -226,7 +225,7 @@ This implies:
     |D_{\vec{v}}f(\vec{x}_0)| \le \metric{\nabla f(\vec{x}_0)}
 \]
 
-\subsubsection{Derivation of the Directional Derivative Formula}
+\subsection{Derivation of the Directional Derivative Formula}
 
 Let \( f(x, y) \) be differentiable, and let \( \vec{v} = (e_1, e_2) \) be a direction vector. We aim to 
 derive the formula for the directional derivative \( D_{\vec{v}} f(x_0, y_0) \).
@@ -302,7 +301,7 @@ Solving for \( D_{\vec{v}}f \), we obtain:
 This is the desired result: the directional derivative equals the dot product of the gradient of \(f\) 
 and the direction vector \( \vec{v} \).
 
-\subsection{The Total Differential}
+\section{The Total Differential}
 
 If \( f : \R^n \to \R \) is differentiable at \( \vec{x}_0 \), then the 
 \emph{total differential} of \(f\) at \( \vec{x}_0 \) is the linear approximation:
@@ -314,7 +313,7 @@ If \( f : \R^n \to \R \) is differentiable at \( \vec{x}_0 \), then the
 
 This expresses how small changes in the input variables propagate into changes in the function values.
 
-\subsection{The Chain Rule}
+\section{The Chain Rule}
 
 Let \( f : \R^n \to \R \) be differentiable, and suppose \( \vec{x} = \vec{x}(t) \in \R^n \) 
 is a differentiable path. Then:
@@ -323,17 +322,17 @@ is a differentiable path. Then:
     \frac{d}{dt} f(\vec{x}(t)) = \left\langle \nabla f(\vec{x}(t)), \frac{d\vec{x}(t)}{dt} \right\rangle
 \]
 
-This is the chain rule in vector form.
+This is the \emph{chain rule} in vector form.
 
-Or to be more explicit, the small change in \(t\) makes a change in \(x_1, x_2, \cdots\) and the addition 
-of all this changes sum up to the total change in the original function.
+Or, to be more explicit, a small change in \(t\) induces a change in \(x_1, x_2, \cdots\), and all these changes 
+sum up to the total change in the original function.
 
 \[
     \frac{\partial z}{\partial t} = \frac{\partial z}{\partial x_1}\frac{\partial x_1}{ \partial t} + 
     \cdots + \frac{\partial z}{\partial x_n}\frac{\partial x_n}{\partial t}
 \]
 
-\subsection{Absolute and Relative Error}
+\section{Absolute and Relative Error}
 
 Given an approximate value \( \tilde{x} \) for the exact value \(x\):
 
@@ -364,7 +363,7 @@ with the measured values:
 \]
 
 Both \(x\) and \(y\) are measured with a precision of \( \Delta x = \Delta y = 0{,}1 \, \text{cm} \). 
-The side length calculated is \( z = 5 \, \text{cm} \). We now determine the maximum possible absolute 
+The calculated length is \( z = 5 \, \text{cm} \). We now determine the maximum possible absolute 
 error in \(z\).
 
 \textbf{Step 1: Partial derivatives of \(z\):}
@@ -394,7 +393,7 @@ error in \(z\).
 
 \textbf{Conclusion:}  
 
-The result for \(z\) is accurate to within \( 0,14 \text{cm} \).
+The result for \(z\) is accurate to within \( 0{,}14 \, \text{cm} \).
 
 \textbf{Relative Error Example}
 
@@ -429,7 +428,7 @@ Let:
 \]
 
 Assume the side lengths \( a = b = c \) are measured with a uniform relative error 
-\( \varepsilon_{\text{in}} = \frac{\Delta a}{a} = \frac{\Delta b}{b} = \frac{\Delta c}{c} = \varepsilon \)
+\( \varepsilon_{\text{in}} = \frac{\Delta a}{a} = \frac{\Delta b}{b} = \frac{\Delta c}{c} = \varepsilon \).
 
 Then the partial derivatives are:
 
@@ -448,7 +447,7 @@ Applying the relative error formula:
 
 \textbf{Target accuracy:}  
 
-If the final result \(z\) must be accurate within \( \varepsilon_z = 0{,}01 \) (i.e., 1), then we must 
+If the final result \(z\) must be accurate to within \( \varepsilon_z = 0{,}01 \) (i.e., \(1\%\)), then we must 
 satisfy:
 
 \[
@@ -461,22 +460,22 @@ satisfy:
 Each input measurement must be made with a maximum relative error of \( 0,33\% \) to ensure 
 the output \( z = abc \) is accurate to within 1 percent.
 
-\subsection{Implicit Differentiation}
+\section{Implicit Differentiation}
 
-If a function \( F(x, y) = 0 \) defines \(y\) implicitly as a function of \(x\), and \(F\) is 
+If a function \( F(x, y) = 0 \) defines \(y\) \emph{implicitly} as a function of \(x\), and \(F\) is 
 differentiable, then:
 
 \[
-    \frac{dz}{dx} = -\frac{F_x}{F_z}
+    \frac{dy}{dx} = -\frac{F_x}{F_y}
 \]
 
 This generalizes to higher dimensions using the total differential and the implicit function theorem.
 
 \textbf{Example:}
 
-Given is \(x^2 + y^2 + z^2 = 1\) differentiate with respect to \(x\).
-See \(z\) or the target function as function in terms of the other variables. 
-In this case \(z(x,y)\).
+Given \(x^2 + y^2 + z^2 = 1\), differentiate with respect to \(x\). 
+Regard \(z\), the target function, as a function of the other variables, 
+in this case \(z(x,y)\).
 
 \[
     \frac{d}{dx} x^2 + y^2 + z^2  -1 = 0
@@ -499,7 +498,7 @@ Given the implicitly defined function:
 \]
 
 We are asked to compute the derivative \( y'(1) \), that is, the derivative of \(y\) 
-with respect to \(y\) at the point \( (1, 1) \).
+with respect to \(x\) at the point \( (1, 1) \).
 
 \textbf{Step 1: Differentiate implicitly}
 
@@ -523,7 +522,7 @@ Factor \( y' \):
     y' \left(x^2 - \frac{x}{y^2} + 1\right) = -\left(2xy + \frac{1}{y} + 1\right)
 \]
 
-Evaluate at \( x = 1, y = 1 \)
+Evaluate at \( x = 1, y = 1 \):
 
 Substitute \( x = 1 \), \( y = 1 \):
 
@@ -533,13 +532,13 @@ Substitute \( x = 1 \), \( y = 1 \):
     y' &= -4
 \end{align*}
 
-Final Answer
+\textbf{Final Answer:}
 
 \[
     y'(1) = -4
 \]
 
-\subsection{Schwarz’s Theorem (Clairaut’s Theorem)}
+\section{Schwarz’s Theorem (Clairaut’s Theorem)}
 
 Let \( f : \R^n \to \R \) be twice continuously differentiable. Then for any \( i \ne j \), 
 the mixed partial derivatives satisfy:
@@ -564,25 +563,25 @@ For a function \(f:\R^n \to \R\),  we define the \emph{Hessian} as the matrix co
 \]
 
 
-When analyzing the Hessian at critical points we get 
+When analyzing the Hessian at critical points, we get:
 
 \begin{itemize}
         
     \item For the \(\R^2\) case we use:
 
-        \subitem If \( H_f(x)\) is \emph{positive definite} \(f_{xx}(x_0, y_0) > 0,\, \det(H) > 0\), then \(x_0, y_0\) is a local minimum
+        \subitem If \( H_f(x)\) is \emph{positive definite} \(f_{xx}(x_0, y_0) > 0,\, \det(H) > 0\), then \((x_0, y_0)\) is a local minimum.
 
-        \subitem If \( H_f(x)\) is \emph{negative definite} \(f_{xx}(x_0, y_0) < 0,\, \det(H) > 0 \), then is a local maximum
+        \subitem If \( H_f(x)\) is \emph{negative definite} \(f_{xx}(x_0, y_0) < 0,\, \det(H) > 0 \), then it is a local maximum.
 
-        \subitem If \( H_f(x) \) has mixed signs, \emph{indefinite}, \(\det(H) < 0\), then it is  a saddle point
+        \subitem If \( H_f(x) \) has mixed signs, \emph{indefinite}, \(\det(H) < 0\), then it is a saddle point.
 
-        \subitem If \(\det(H) = 0\), then the next derivative decides
+        \subitem If \(\det(H) = 0\), then the next derivative decides.
 
-    \item For the general case \(\R^n\) we use the eigenvalues 
+    \item For the general case \(\R^n\), we use the eigenvalues:
 
         \subitem \emph{Positive definite} if \(\lambda_i > 0,\, \forall \lambda_i\), which implies a local minimum.
 
-        \subitem \emph{negative definite} if \(\lambda_i < 0,\, \forall \lambda_i\), which implies a local maximum.
+        \subitem \emph{Negative definite} if \(\lambda_i < 0,\, \forall \lambda_i\), which implies a local maximum.
 
         \subitem \emph{Indefinite} for mixed signs, which implies a saddle point.
 
@@ -613,10 +612,10 @@ The \emph{Jacobian matrix} of \( \vec{f} \) is the \( m \times n \) matrix:
 In the case \( n = m \), the \emph{Jacobian determinant} \( \det J_{\vec{f}}(\vec{x}) \) 
 describes local invertibility and orientation.
 
-\subsection{Taylor's Theorem}
+\section{Taylor's Theorem}
 
 Let \( f : \R^n \to \R \) be \(k\)-times continuously differentiable at \( \vec{x}_0 \). Then 
-the Taylor polynomial of degree 2 around \( \vec{x}_0 \) is:
+the \emph{Taylor polynomial} of degree 2 around \( \vec{x}_0 \) is:
 
 \[
     f(\vec{x}) \approx f(\vec{x}_0) + \langle \nabla f(\vec{x}_0), \vec{x} - \vec{x}_0 \rangle + 
@@ -640,7 +639,7 @@ First, compute the necessary derivatives at \( (0, 0) \):
     f_{yy} &= -3 e^y \sin(x + 2y) + 4e^y \cos(x + 2y) \quad \Rightarrow \quad f_{yy}(0, 0) = 0 + 4 = 4
 \end{align*}
 
-Now, the second order Taylor polynomial at \( (0, 0) \) is:
+Now, the second-order Taylor polynomial at \( (0, 0) \) is:
 
 \begin{align*}
     f(x, y) \approx\ & 0 + 1 \cdot x + 2 \cdot y \\
@@ -648,8 +647,7 @@ Now, the second order Taylor polynomial at \( (0, 0) \) is:
     =\, & x + 2y + 3xy + 2y^2
 \end{align*}
 
-
-\subsection{The Tangent Vector}
+\section{The Tangent Vector}
 
 Let \( \vec{X}(t) \in \R^n \) be a differentiable, parameterized curve. The \emph{tangent vector} 
 at the point \( \vec{X}(t_0) \) is given by:
@@ -685,7 +683,7 @@ and the tangent is:
     \end{bmatrix}
 \]
 
-\subsubsection{Derivation of the Tangent Vector Formula}
+\subsection{Derivation of the Tangent Vector Formula}
 
 Given a position vector function \(\vec{r}(t)\), the tangent vector to the curve described by 
 \(\vec{r}(t)\) is obtained by taking the derivative of \(\vec{r}(t)\) with respect to time. This 

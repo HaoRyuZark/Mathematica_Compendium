@@ -1,22 +1,21 @@
-
 \chapter{Parameterized Curves}
 
-\subsection{Definition}
+\section{Definition}
 
 A \emph{parameterized curve} is a mathematical object where each point on the curve is described as a 
 function of one or more parameters, typically denoted by \(t\). Formally, a parameterized curve in 
 \( \R^n \) is a continuous function:
 
 \[
-    \mathbf{r}(t) = (x(t), y(t), z(t), \ldots)
+    \mathbf{r}(t) = (x(t), y(t), z(t), \ldots),
 \]
 
-Where \(t\) ranges over some interval \( I \subseteq \R \), and each component function 
+where \(t\) ranges over some interval \( I \subseteq \R \), and each component function 
 (e.g., \( x(t) \), \( y(t) \)) is real-valued.
 
 \subsection{Purpose}
 
-The purpose of parameterizing a curve is to provide a flexible and detailed way of describing geometric 
+The \emph{purpose} of parameterizing a curve is to provide a flexible and detailed way of describing geometric 
 objects, particularly when they cannot be easily expressed as a simple function \( y = f(x) \). 
 Parameterizations allow us to:
 
@@ -30,14 +29,14 @@ Parameterizations allow us to:
 
 \end{itemize}
 
-\subsection{From parametric to explicit form}
+\section{From Parametric to Explicit Form}
 
-This process is rather simple because in the case where it is possible to change from one form tho the other we only need to 
-write the parameter in terms of one of the variables and then substitute. 
+This process is rather simple because, in the case where it is possible to change from one form to the other, we only need to 
+write the parameter in terms of one of the variables and then substitute.
 
 \subsection{How to Parameterize a Function}
 
-To parameterize a curve or a function:
+To \emph{parameterize} a curve or a function:
 
 \begin{enumerate}
 
@@ -66,29 +65,29 @@ Consider the unit circle defined by the equation:
 A natural parameterization uses the trigonometric functions sine and cosine:
 
 \[
-    x(t) = \cos(t), \quad y(t) = \sin(t)
+    x(t) = \cos(t), \quad y(t) = \sin(t),
 \]
 
-For \( t \in [0, 2\pi] \).  
+for \( t \in [0, 2\pi] \).  
 
 As \(t\) varies from \( 0 \) to \( 2\pi \), the point \( (x(t), y(t)) \) traces out the entire circle 
 exactly once.
 
-\subsection{Arclength and t Parameter}
+\section{Arclength and t Parameter}
 
-Recall that the arclength of a curve in 3 dimensions is
-
-\[
-    \int_{a}^{b} \sqrt{{f'(t9)}^2 + {g'(t)}^2 + {h'(t)}^2} dt,
-\]
-
-which is norm of our tangent vector.
+Recall that the \emph{arclength} of a curve in 3 dimensions is
 
 \[
-    \int_{a}^{b} \sqrt{|\vec{v}(t)|} dt
+    \int_{a}^{b} \sqrt{{f'(t)}^2 + {g'(t)}^2 + {h'(t)}^2} \, dt,
 \]
 
-\subsubsection{Arclength Parameter}
+which is the norm of our tangent vector,
+
+\[
+    \int_{a}^{b} \sqrt{|\vec{v}(t)|} \, dt.
+\]
+
+\subsection{Arclength Parameter}
 
 This is given by
 
@@ -98,11 +97,11 @@ This is given by
 
 where \(\tau\) is the length parameter.
 
-This parameter is intrinsic to the curve, and represents one choice because there only one valid
+This parameter is intrinsic to the curve and represents one choice, because there is only one valid
 interpretation of the length. The downside is that this is hard to compute.
 
-\subsubsection{The t Parameter}
+\subsection{The t Parameter}
 
-For the \(t\) parameter, we can say that this is intrinsic to the object along the curve,
-it can be interpreted in multiple ways therefore, many choices and is easy to compute. 
+For the \(t\) parameter, we can say that it is intrinsic to the object along the curve. It can be
+interpreted in multiple ways and therefore offers many choices, and it is easy to compute.
 

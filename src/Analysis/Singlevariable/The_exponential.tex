@@ -1,17 +1,16 @@
-
 \chapter{The Exponential Function and Relatives}
 
-The exponential function and its related functions such as sine, cosine, and the hyperbolic functions 
-are fundamental in both pure and applied mathematics. This section explores these functions through their 
+The \emph{exponential function} and its related functions, such as sine, cosine, and the hyperbolic functions, 
+are fundamental in both pure and applied mathematics. This chapter explores these functions through their 
 series expansions and interrelationships.
 
 \[
     \exp(x) := e^x :=\lim_{n \to \infty} \left(1 + \frac{x}{n}\right)^n
 \]
 
-\subsection{Exponential Function as a Series}
+\section{Exponential Function as a Series}
 
-The exponential function \(e^x\) is defined as an infinite series:
+The \emph{exponential function} \(e^x\) is defined as an infinite series:
 
 \[
     e^x := \sum_{n=0}^{\infty} \frac{x^n}{n!}
@@ -20,7 +19,7 @@ The exponential function \(e^x\) is defined as an infinite series:
 
 This series converges for all real and complex values of \(x\).
 
-\subsection{Properties of the Exponential}
+\section{Properties of the Exponential}
 
 \begin{itemize}
 
@@ -34,45 +33,45 @@ This series converges for all real and complex values of \(x\).
 
 \end{itemize}
 
-\subsection{General Definition}
+\section{General Definition}
 
-For \(a > 0\) and \(x \in \R\) we define 
-
-\[
-    a^x := \exp(x \ln(x)) = e^{x \ln(a)}
-\]
-
-\subsection{Difference of Exponentials}
-
-For \(a,b \in \R\) and \(n \in \N\)
+For \(a > 0\) and \(x \in \R\), we define
 
 \[
-    a^n - b^n = (a - b) \sum_{k = 1}^{n} a^{n - k} b^{k - 1}
+    a^x := \exp(x \ln(x)) = e^{x \ln(a)}.
 \]
 
-\subsection{Sine and Cosine Definitions with \texorpdfstring{\(e\)}{e}}
+\section{Difference of Exponentials}
 
-Using Euler's identities and Taylor series, sine and cosine can be defined in terms of exponential 
+For \(a,b \in \R\) and \(n \in \N\),
+
+\[
+    a^n - b^n = (a - b) \sum_{k = 1}^{n} a^{n - k} b^{k - 1}.
+\]
+
+\section{Sine and Cosine Definitions with \texorpdfstring{\(e\)}{e}}
+
+Using Euler's identities and Taylor series, \emph{sine and cosine} can be defined in terms of exponential 
 functions:
 
 \[
-    \sin x = \frac{e^{ix} - e^{-ix}}{2i}, \quad
-    \cos x = \frac{e^{ix} + e^{-ix}}{2}
+    \sin(x) = \frac{e^{ix} - e^{-ix}}{2i}, \quad
+    \cos(x) = \frac{e^{ix} + e^{-ix}}{2}
 \]
 
 These definitions are consistent with their Taylor expansions:
 
 \[
-    \sin x = \sum_{n=0}^{\infty} {(-1)}^n \frac{x^{2n+1}}{(2n+1)!}, \quad
-    \cos x = \sum_{n=0}^{\infty} {(-1)}^n \frac{x^{2n}}{(2n)!}
+    \sin(x) = \sum_{n=0}^{\infty} {(-1)}^n \frac{x^{2n+1}}{(2n+1)!}, \quad
+    \cos(x) = \sum_{n=0}^{\infty} {(-1)}^n \frac{x^{2n}}{(2n)!}
 \]
 
-\subsection{Euler's Formula}
+\section{Euler's Formula}
 
-One of the most elegant formulas in mathematics is Euler’s formula:
+One of the most elegant formulas in mathematics is \emph{Euler's formula}:
 
 \[
-    e^{ix} = \cos x + i\sin x
+    e^{ix} = \cos(x) + i\sin(x)
 \]
 
 This identity provides a deep connection between exponential and trigonometric functions and is valid 
@@ -87,7 +86,7 @@ for all real (and complex) \(x\).
 This is known as Euler's Identity and is often celebrated as one of the most beautiful equations in 
 mathematics.
 
-\subsection{Reason for the Infinite Series of \texorpdfstring{\(e\)}{e} (Differentiation)}
+\section{Reason for the Infinite Series of \texorpdfstring{\(e\)}{e} (Differentiation)}
 
 The exponential series:
 
@@ -110,27 +109,27 @@ Now replace the index \(m = n - 1\):
 This shows that \(e^x\) is the unique function (up to constant multiples) that is equal to its own 
 derivative.
 
-\subsection{Hyperbolic Functions with \texorpdfstring{\(e\)}{e}}
+\section{Hyperbolic Functions with \texorpdfstring{\(e\)}{e}}
 
-The hyperbolic functions are analogs of the trigonometric functions but defined using the exponential 
+The \emph{hyperbolic functions} are analogs of the trigonometric functions but defined using the exponential 
 function:
 
 \begin{align*}
-    \sinh x &= \frac{e^x - e^{-x}}{2} \\
-    \cosh x &= \frac{e^x + e^{-x}}{2} \\
-    \tanh x &= \frac{\sinh x}{\cosh x} = \frac{e^x - e^{-x}}{e^x + e^{-x}}
+    \sinh(x) &= \frac{e^x - e^{-x}}{2} \\
+    \cosh(x) &= \frac{e^x + e^{-x}}{2} \\
+    \tanh(x) &= \frac{\sinh(x)}{\cosh(x)} = \frac{e^x - e^{-x}}{e^x + e^{-x}}
 \end{align*}
 
 These functions satisfy identities similar to those of trigonometric functions, for example:
 
 \[
-    \cosh^2 x - \sinh^2 x = 1
+    \cosh^2(x) - \sinh^2(x) = 1
 \]
 
 They naturally arise in the study of differential equations, special relativity, and the 
 geometry of hyperbolas.
 
-\subsection{Inverse of the Hyperbolic Trigonometric Functions}
+\section{Inverse of the Hyperbolic Trigonometric Functions}
 
 \begin{itemize}
     

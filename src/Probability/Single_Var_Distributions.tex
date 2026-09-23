@@ -3,7 +3,7 @@
 \section{Random Variables}
 
 Given a probability space \((\Omega, \mathcal{A}, \prob)\), we call a function \(f: \Omega \to \R\) \emph{measurable} if 
-for all \(z \in \R\) the following applies 
+for all \(z \in \R\), the following applies 
 
 \[
     f^{-1} ((- \infty, z ]) = \{\omega \in \Omega : f(\omega) \le z \} \in \mathcal{A}
@@ -13,7 +13,7 @@ This measurable function \(X: \Omega \to \R\) is a \emph{random variable}.
 
 Note that for discrete probability spaces \(\{\omega: X(\omega) \le z\} \subseteq \Omega \in \mathcal{P}\).
 
-Also, it considered discrete if it has only a finite or an infinite countable number of values. 
+Also, it is considered discrete if it has only a finite or an infinite countable number of values. 
 Finally, we define the probability for random variables as
 
 \[
@@ -40,7 +40,7 @@ Given two R.V. \(X\),\(Y\) and some number \(\alpha \in \R\), then
 
 \end{itemize}
 
-The result of these operations result in a random variable as well.
+The result of these operations results in a random variable as well.
 
 \textbf{Example:}
 
@@ -64,7 +64,7 @@ Given \(A \subseteq \Omega\), we define the \emph{indicator function} as
     \end{cases}
 \]
 
-We also the get the following rules:
+We also get the following rules:
 
 \begin{itemize}
     
@@ -84,7 +84,7 @@ We also the get the following rules:
 
 \subsection{Indicator Sum}
 
-Given the events \(A_1, \dots A_n \in \Omega\). We define the random variable 
+Given the events \(A_1, \dots A_n \in \Omega\), we define the random variable 
 
 \[
     X:= \sum_{j = 1}^{n} \ind-{A_j}   
@@ -92,7 +92,7 @@ Given the events \(A_1, \dots A_n \in \Omega\). We define the random variable
 
 as the \emph{indicator sum} or \emph{counting variable}. 
 
-The realization of \(X\) gives us how much \(A_j\) have occurred. 
+The realization of \(X\) gives us how many \(A_j\) have occurred. 
 
 \[
     \{X = k\} = \sum_{T \subseteq \{1, \dots, n\}: |T| = k} \left( \bigcap_{j \in T} A_j \cap \bigcap_{j \notin T} A_{j}^{c} \right), k \in \{0, 1, \dots, n\}.
@@ -100,19 +100,19 @@ The realization of \(X\) gives us how much \(A_j\) have occurred.
 
 \section{Distributions}
 
-Given our probability space and a R.V. \(X\). The probability measurement \(\prob_X\) to 
+Given our probability space and a R.V. \(X\), the probability measurement \(\prob_X\) to 
 \(\R\) defined by 
 
 \[
     \prob_X (A) := \prob(\{\omega: X(w) \in A\}), \text{ for } A \subseteq \R
 \]
 
-is called as the \emph{distribution} of \(X\). Also, we write \(\prob(X \in A)\) as an abbreviation for
+is called the \emph{distribution} of \(X\). Also, we write \(\prob(X \in A)\) as an abbreviation for
 \(\prob(\{\omega: X(w) \in A\}) \).
 
 \section{Distribution Function}
 
-Given a probability space, a probability variable and a distribution \(\prob_X\) we define 
+Given a probability space, a probability variable and a distribution \(\prob_X\), we define 
 the function 
 
 \[
@@ -125,7 +125,7 @@ as the \emph{distribution function}.
 
 \begin{itemize}
     
-    \item \(\mathbb{F}_X\) is monotonic growing.
+    \item \(\mathbb{F}_X\) is monotonically increasing.
 
     \item It is right-sided continuous.
 
@@ -155,7 +155,7 @@ as the \emph{distribution function}.
 
 \section{The Expected Value For Discrete Random Variables}
 
-Given \(\Omega, \mathcal{A}, \prob\), a probability space and \(X\) a discrete random variable. We 
+Given \(\Omega, \mathcal{A}, \prob\), a probability space and \(X\) a discrete random variable, we 
 define the \emph{expected result} as 
 
 \[
@@ -168,11 +168,11 @@ which exists only if
     \sum_{x \in X(\Omega)} |x| \prob(X = x) < \infty
 \]
 
-where \(x\) is an event \(\prob(X = x)\) its respective probability. It represents the mean of the random variable.
+where \(x\) is an event and \(\prob(X = x)\) its respective probability. It represents the mean of the random variable.
 
 \subsection{Transformation of the  Expected Value}
 
-Given \(u: X(\Omega) \to \R\) where \(\sum_{x \in X(\Omega)} |u(x)|p(x) < \infty\) then 
+Given \(u: X(\Omega) \to \R\) where \(\sum_{x \in X(\Omega)} |u(x)|p(x) < \infty\), then 
 
 \[
     \expc[u(X)] = \sum_{x \in X(\Omega)} u(x)\prob(X = x)
@@ -197,7 +197,7 @@ This represents the expectation of the function.
 
 \subsection{Properties of Expected Values}
 
-Given two random variables \(X\) and \(Y\), if both have an expected value then 
+Given two random variables \(X\) and \(Y\), if both have an expected value, then 
 
 \begin{itemize}
 	
@@ -213,7 +213,7 @@ Given two random variables \(X\) and \(Y\), if both have an expected value then
 
 \section{Variance}
 
-Given a random variable \(X\) for which \(\expc[(X - \expc[X])^2]\) exists. Then we define 
+Given a random variable \(X\) for which \(\expc[(X - \expc[X])^2]\) exists, we define 
 the \emph{variance} of \(X\) as 
 
 \[
@@ -253,11 +253,11 @@ Given \(\expc(X) = 1.2\) and \(\prob(X = 0) = 0.16, \quad \prob(X = 1) = 0.48, \
 
 \section{Moments}
 
-For a random variable \(X\), we define \(k\). \emph{moment} as \(\expc[X^k]\).
+For a random variable \(X\), we define the \(k\)-th \emph{moment} as \(\expc[X^k]\).
 
 \section{Markov Inequality}
 
-Given a random variable \(X\), \(a \in \R\) and \(h: D \to [0, \infty)\) a monotonic growing 
+Given a random variable \(X\), \(a \in \R\) and \(h: D \to [0, \infty)\) a monotonically increasing 
 function with the properties \(h(a) > 0\) and \(X(\Omega) \subseteq D\), then 
 
 \[
@@ -278,13 +278,13 @@ There is a special case for \(Y = |X|, a > 0\) and \(h(x) = x\)
 
 \section{Chebychev Inequality}
 
-Given a random variable \(X\) with a variance and \(a > 0\) then 
+Given a random variable \(X\) with a variance and \(a > 0\), then 
 
 \[
     \prob(|X - \expc[X]| \ge a) \le \frac{\var(X)}{a^2}
 \]
 
-This states that the probability of \(X\) is at least \(a\) away of its mean can not be too big.
+This states that the probability of \(X\) being at least \(a\) away from its mean cannot be too big.
 
 \section{Probability Density}
 
@@ -317,7 +317,7 @@ Distributions that possess a probability density are called \emph{continuous dis
 
 \subsubsection{How To Test If F Function Works As A Density Function}
 
-To test if given a function it can be used as a density functions we test:
+To test if a given function can be used as a density function, we test:
 
 \begin{itemize}
 	
@@ -329,7 +329,7 @@ To test if given a function it can be used as a density functions we test:
 
 \section{Zero Property}
 
-Given a continuous random variable \(X\), then 
+Given a continuous random variable \(X\).
 
 For \(a, b \in \R\):
 
@@ -347,8 +347,8 @@ And \(A \in \mathcal{B}(\R) \text{ (discrete) }: A = \{a_i\}_{i \in I}, I \in \N
 
 \section{Expected Value for Continuous Random Variables}
 
-Given a continuous random variable \(X\) with a density \(f_X\). The \emph{expected value} of \(X\) exists if \(\int |x|f_X(x)dx , \infty\). 
-In that case we define it as 
+Given a continuous random variable \(X\) with a density \(f_X\), the \emph{expected value} of \(X\) exists if \(\int |x|f_X(x)dx , \infty\). 
+In that case, we define it as 
 
 \[
     \expc[X] = \int x f_X (x)dx.
@@ -356,10 +356,10 @@ In that case we define it as
 
 We also get all of its properties like for the discrete case.
 
-\section{Transformation Lemma For Continous Random Variables}
+\section{Transformation Lemma For Continuous Random Variables}
 
 Given a continuous random variable \(X\) with a density \(f\) and a measurable function \(u: \R \to \R\) 
-with \(\int |u(x)|f(x)dx < \infty\) then the following applies 
+with \(\int |u(x)|f(x)dx < \infty\), then the following applies 
 
 \[
     \expc[u(X)] = \int u(x) f(x) dx.
@@ -368,7 +368,7 @@ with \(\int |u(x)|f(x)dx < \infty\) then the following applies
 \section{Transformation Theorem for Densities}
 
 Given a random variable \(X\) with values in the open interval \(I \subseteq \R\) and the density \(f_X\). If 
-\(j \subseteq \R\) is an open interval and \(u: I \to J\) is a diffeomorphism then has \(Y = u(X)\) the density 
+\(j \subseteq \R\) is an open interval and \(u: I \to J\) is a diffeomorphism, then \(Y = u(X)\) has the density 
 
 \[
     f_Y (y) = f_X(u^{-1}(y)) | (u^{-1})'(y)|.
@@ -401,7 +401,7 @@ If \( q_p \) is not unique, we can make it “unique” by defining the smallest
 
 \section{The Moment Generating Function}
 
-The \(n-th\)\emph{moment} of a distribution are given by \(\expc[X^n]\). We also 
+The \(n\)-th \emph{moment} of a distribution is given by \(\expc[X^n]\). We also 
 know that the first moment is the mean and the variance is closely related to the second moment.
 The moments \emph{uniquely} determine the distribution.
 
@@ -437,7 +437,7 @@ We will handle only the continuous case, but the same holds for the discrete cas
     \frac{d}{dt} \int_{-\infty}^{\infty} xe^{tx} \prob(X = x) dx  = \int_{-\infty}^{\infty} x^2 e^{tx} \prob(X = x) dx
 \]
 
-And the pattern repeats. This is just given us the definition of each of the moments. 
+And the pattern repeats. This just gives us the definition of each of the moments. 
 
 \QED
 
@@ -455,7 +455,7 @@ Let \(Z = \sum_i X_i\) then
 A random variable \(X \in \{1, 2, \dots, n\}\) with 
 \(\prob(X = i) = \frac{1}{n}\) for \(i = 1, \dots, n\) is uniformly distributed. 
 The distribution \(\prob_X\) is called the \emph{discrete uniform distribution}. Noted as 
-\(\mathcal{U}(n)\)
+\(\mathcal{U}(n)\).
 
 \[
     \prob(X = i) = 
@@ -488,7 +488,7 @@ Finally, its cumulative distribution is  given by
 A random variable \(X \in \{1, 2, \dots, n\}\) with 
 \(\prob(X = i) = \frac{1}{n}\) for \(i = \in [a, b]\) is uniformly distributed. 
 The distribution is called the \emph{continuous uniform distribution}. Noted as 
-\(\mathcal{U}(a,b)\)
+\(\mathcal{U}(a,b)\).
 
 \[
     \prob(X = i) = 
@@ -524,7 +524,7 @@ Finally, its cumulative distribution is given by
 
 \section{Bernoulli Distribution}
 
-The \emph{Bernoulli distribution} is used modeling for binary events with only one trial, noted as \(\mathcal{B}(p)\)
+The \emph{Bernoulli distribution} is used for modeling binary events with only one trial, noted as \(\mathcal{B}(p)\).
 
 \[
     \prob(X = x) =
@@ -534,7 +534,7 @@ The \emph{Bernoulli distribution} is used modeling for binary events with only o
     \end{cases}
 \]
 
-The expected value, variance and cumulative distribution function are give by 
+The expected value, variance and cumulative distribution function are given by 
 
 \[
     \expc(X) = p
@@ -555,7 +555,7 @@ The expected value, variance and cumulative distribution function are give by
 
 \section{Binomial Distribution}
 
-From the Bernoulli distribution we can derive the \emph{binomial distribution} \(\mathrm{Bin}(n, p)\)as having a number 
+From the Bernoulli distribution we can derive the \emph{binomial distribution} \(\mathrm{Bin}(n, p)\) as having a number 
 of consecutive independent Bernoulli experiments.
 
 This distribution is for discrete binary experiments. Either an event occurs or it does not. 
@@ -580,7 +580,7 @@ The cumulative distribution function is given by
     \mathbb{F}_X = \sum_{i = 0}^{k} \prob(X = i)
 \]
 
-If we let \(n \to \infty\) with \(np\) being not to small then the limit of this distribution becomes the normal distribution.
+If we let \(n \to \infty\) with \(np\) being not too small, then the limit of this distribution becomes the normal distribution.
 
 \section{Normal Distribution}
 
@@ -601,8 +601,8 @@ It also has
     \var(X) = \expc[X] (1-p).
 \]
 
-To compute its cumulative probability we need to use special tables, due to the fact that the function can not be analytically integrated. 
-To get a specific we use tables which pre-calculated values computed numerically using the so called \(\Phi\) function. 
+To compute its cumulative probability, we need to use special tables, due to the fact that the function cannot be analytically integrated. 
+To get a specific value, we use tables with pre-calculated values computed numerically using the so-called \(\Phi\) function. 
 This function is used in the following manner:
 
 We plug the values in the expression, our expected value and the standard deviation 
@@ -674,7 +674,7 @@ A random variable \(X \in \N_0\) with \(\prob(X = n) = p(1 - p)^n\) for some \(p
 is geometrically distributed. The distribution \(\prob_X\) is called the \emph{geometric distribution}.
 
 Similar to the binomial distribution, the \emph{geometric} \(\mathrm{Geo}(n, p)\) distribution is used for an experiment with two 
-outcomes, and we want to know the probability of \(k - 1\) non-successes until a success happens  
+outcomes, and we want to know the probability of \(k - 1\) non-successes until a success happens.  
 
 \[
     \prob(X = k) = (1 - p)^{k - 1}p.
@@ -714,7 +714,7 @@ We also define the distribution function
     \mathbb{F}_X(n) = \sum_{i = 0}^{n} \frac{\lambda^i}{i!} i^{-\lambda}
 \]
 
-is Poisson distributed. The distribution \(\prob_X\) is called the \emph{Poisson distribution} \(\text{Poi}(\lambda)\)
+is Poisson distributed. The distribution \(\prob_X\) is called the \emph{Poisson distribution} \(\text{Poi}(\lambda)\).
 In simple words, it is the number of events x, in a specific interval. This is 
 a limit of the binomial distribution for large \(n\) and small \(p\).
 
@@ -744,7 +744,7 @@ The derivation is the following, let \(\lambda = np\)
 
 \section{Hyper-geometric Distribution}
 
-The \emph{hyper-geometric distritibution} is similar to the binomial distribution, but we keep track of the changes after each choice. In other words, 
+The \emph{hyper-geometric distribution} is similar to the binomial distribution, but we keep track of the changes after each choice. In other words, 
 binomial distribution without repetition. We notate this as \(\text{HG}(M, N, n)\).
 
 \[
@@ -761,7 +761,7 @@ Nomenclature:
 
     \item \(N - M\): Elements without the trait \(A\)
 
-    \item \(k\): Number to elements to take
+    \item \(k\): Number of elements to take
 
     \item \(n\): Number of iterations
 
@@ -789,7 +789,7 @@ The cumulative distribution function is given by
 
 \section{Exponential Distribution}
 
-We define the \emph{exponential distribution} \(\mathcal{E}(\lambda)\)as a real defined random variable, used mostly 
+We define the \emph{exponential distribution} \(\mathcal{E}(\lambda)\) as a real-valued random variable, used mostly 
 for the duration of time intervals.
 
 \[
@@ -799,10 +799,10 @@ for the duration of time intervals.
     \end{cases} 
 \] 
 
-Where \(lambda\) our \emph{rate} parameter. 
+Where \(lambda\) is our \emph{rate} parameter. 
 
 \[
-    \lambda = \frac{1}{\text{avarage}}
+    \lambda = \frac{1}{\text{average}}
 \]
 
 We also define the distribution function 
@@ -840,7 +840,7 @@ over some time \(t\) then the number of events which occurred during that interv
 
 \textbf{Example:}
 
-Emails com at a rate of 5 per minute (\(\lambda = 5\)). What is the probability of waiting \(t\) until the next email?
+Emails come at a rate of 5 per minute (\(\lambda = 5\)). What is the probability of waiting \(t\) until the next email?
 
 The probability of getting an email after \(t\) waiting is given by the following exponential distribution
 
@@ -860,7 +860,7 @@ This is given by the following Poisson process
 
 This distribution comes directly from the connection between the exponential distribution and the Poisson process.
 Given events \(w_0, \dots, w_n\) with an exponential distribution. The \emph{gamma} distribution gives us the waiting time 
-for the \(r-th\) event. 
+for the \(r\)-th event. 
 
 \[
     T_r = \sum_{k = 0}^{r} w_k 
@@ -872,11 +872,11 @@ We denote this as \(T_r \sim \mathrm{gamma}(r, \lambda)\). The probability densi
     \prob(T_r > t) = \prob(N_t \ge r - 1) = \sum_{k = 0}^{r - 1} \frac{e^{-\lambda t}(\lambda t)^k}{k!} = \cdots = e^{-\lambda t}\frac{\lambda^r t^{r - 1}}{(r - 1)!}
 \]
 
-with \(N_t\) is the number of Poisson events in \(t\).
+with \(N_t\) being the number of Poisson events in \(t\).
 
 \section{Chi-Square Distribution}
 
-The square of the \emph{normal distribution} is called the \emph{Chi-Square Distribution} noted as \(\mathcal{N}(a\mu + b, a^2 \sigma^2)\) or \(\chi^2_n\) 
+The square of the \emph{normal distribution} is called the \emph{Chi-Square Distribution}, noted as \(\mathcal{N}(a\mu + b, a^2 \sigma^2)\) or \(\chi^2_n\) 
 with \(n \in \N\) degrees of freedom.
 
 Given a random variable \(X\) with density 
@@ -891,7 +891,7 @@ where \(\Gamma\) is the gamma function defined as
     \Gamma (x) = \int_{0}^{\infty} t^{x - 1} e^{-t} dt
 \]
 
-For the 1 degree of freedom we get 
+For 1 degree of freedom, we get 
 
 \[
     f(x) = \frac{1}{\sqrt{2\pi}} y^{-\frac{1}{2}} e^{-\frac{y}{2}}
@@ -930,7 +930,7 @@ This gives us
 \end{align*}
 
 
-\section{Students t-Distribution}
+\section{Student's t-Distribution}
 
 This is a distribution mostly used in statistics for hypothesis testing.
 
@@ -938,22 +938,22 @@ This is a distribution mostly used in statistics for hypothesis testing.
     f_n(x) = \frac{\Gamma \left(\frac{n + 1}{2}\right)}{\sqrt{n \pi} \Gamma \left(\frac{n}{2}\right)} \left(1 + \frac{x^2}{n}\right)^{- \frac{n + 1}{2}}
 \]
 
-This used to test the mean \(\overline{X_n}\) against the true \(\mu\) when \(\sigma^2\) is unknown.
+This is used to test the mean \(\overline{X_n}\) against the true \(\mu\) when \(\sigma^2\) is unknown.
 
 \section{Activity Examples}
 
 \subsection{Night guard}
 
-A night guard has 2 methods for finding the correct key out of 10. The first one \(A\), consists in 
-just testing each key without repetition. The second one \(B\), consists on choosing one random key and then 
+A night guard has 2 methods for finding the correct key out of 10. The first one, \(A\), consists of 
+just testing each key without repetition. The second one, \(B\), consists of choosing one random key and then 
 if it was not the correct one it just shuffles the keys and repeats the process. 
 
 What are the distributions of both the methods? 
 
 The distribution for \(A\) is the uniform with \(n = 10\), for \(B\) it is the geometric distribution \(P(X = k) = \left(\frac{9}{10}\right)^{k - 1} \frac{1}{10}\)
 
-The guard is drunk \(1/3\) of times. When it is drunk it uses method \(B\), else \(A\). What is the conditional probability of him 
-being caught drunk during work after failing 8 times. 
+The guard is drunk \(1/3\) of the time. When he is drunk, he uses method \(B\), otherwise \(A\). What is the conditional probability of him 
+being caught drunk during work after failing 8 times? 
 
 \[
     \prob(\text{drunk} \mid X > 8) = \frac{\prob(\text{drunk}) \prob(X > 8 \mid \text{not drunk})}{\prob(X > 8)}

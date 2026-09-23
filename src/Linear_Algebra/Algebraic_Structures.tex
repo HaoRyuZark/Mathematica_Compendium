@@ -1,46 +1,45 @@
-
 \chapter{Algebraic Structures}
 
-Algebraic structures are mathematical systems consisting of a set equipped with one or more operations 
-that satisfy certain axioms. They provide a unified language to study various objects in mathematics, 
-from numbers and matrices to functions and vector spaces. Understanding these structures is fundamental 
-in abstract algebra and has applications in computer science, cryptography, coding theory, and physics.
+\emph{Algebraic structures} are mathematical systems consisting of a set equipped with one or more operations 
+that satisfy certain axioms. 
 
-\subsection{Operations: Internal and External}
+\section{Internal And External Operations}
 
-An \emph{internal composition law} is a binary operation that takes two elements from a set and returns another element in the same set. Formally, for a set \(S\) and operation \(\circ\), we have:
+An \emph{internal composition law} is a binary operation that takes two elements from a set and returns another element in the same set. 
+Formally, for a set \(S\) and operation \(\circ\), we have:
 
 \[
-  \oplus: S \times S \to S
+  \circ: S \times S \to S
 \]
 
 An \emph{external composition law} involves a second set acting on the structure, such as scalar multiplication in vector spaces:
 
 \[
-  \oplus: \field \times V \to V
+  \circ: \field \times V \to V
 \]
 
 where \(\field\) is a field and \(V\) is a vector space.
 
 \subsection{Properties of Operations}
 
-Let \(\circledcirc\) and \(\circledast\) be a binary operations on a set \(S\). The most important properties include:
+Let \(\circ\) and \(\circledast\) be binary operations on a set \(S\). The most important properties include:
 
 \begin{itemize}
     
-    \item \emph{Associativity:} \((a \circledcirc b) \circledcirc c = a \circledcirc (b \circledcirc c)\) for all \(a,b,c \in S\)
+    \item \emph{Associativity:} \((a \circ b) \circ c  = a \circ (b \circ c)\) for all \(a,b,c \in S\).
     
-    \item \emph{Commutativity:} \(a \circledcirc b = b \circledcirc a\) for all \(a,b \in S\)
+    \item \emph{Commutativity:} \(a \circ b = b \circ a\) for all \(a,b \in S\).
     
-    \item \emph{Identity Element:} There exists \(e \in S\) such that \(a \circledcirc e = e \circledcirc a = a\) for all \(a \in S\)
+    \item \emph{Identity Element:} There exists \(e \in S\) such that \(a \circ e = e \circ a = a\) for all \(a \in S\).
     
-    \item \emph{Inverse Element:} For every \(a \in S\), there exists \(a^{-1} \in S\) such that \(a \circledcirc a^{-1} = a^{-1} \circledcirc a = e\)
+    \item \emph{Inverse Element:} For every \(a \in S\), there exists \(a^{-1} \in S\) such that \(a \circ a^{-1} = a^{-1} \circ a = e\).
     
-    \item \emph{Distributivity:} \(a \circledast (b \circledcirc c) = (a \circledast b) \circledcirc (a \circledast c)\) and/or \((b \circledcirc c) \circledast a = (b \circledast a) \circledcirc (c \circledast a)\)
+    \item \emph{Distributivity:} \(a \odot (b \oplus c) = (a \odot b) \oplus (a \odot c)\) and/or \((b \oplus c) \odot a = (b \odot a) \oplus 
+    (c \odot a)\).
 
 \end{itemize}
 
-\subsection{Homomorphisms and Isomorphisms}
+\section{Homomorphisms And Isomorphisms}
 
 Let \((G, \oplus)\) and \((H, \oplus')\) be two algebraic structures.
 
@@ -53,10 +52,10 @@ A \emph{homomorphism} is a function \(\varphi: G \to H\) such that:
 An \emph{isomorphism} is a bijective homomorphism. If such a map exists, we say the structures are \emph{isomorphic}, 
 written as \(G \cong H\).
 
-\subsection{Lattice}
+\section{Lattice}
 
-A \emph{lattice} \((L, \land, \lor)\) is an algebraic structure with two binary, associative and commutative operations.
-which satisfies the following properties:
+A \emph{lattice} \((L, \land, \lor)\) is an algebraic structure with two binary, associative, and commutative operations, which satisfy 
+the following properties:
 
 \[
     a \lor (a \land b) = a
@@ -70,7 +69,7 @@ and
 
 for all \(a,b \in L\).
  
-\subsection{Semigroup \texorpdfstring{\((S, \oplus)\)}{}}
+\section{Semigroup \texorpdfstring{\((S, \oplus)\)}{}}
 
 A \emph{semigroup} is a set \(S\) equipped with a binary operation \(\oplus\) that is \emph{associative}. This means:
 
@@ -78,10 +77,7 @@ A \emph{semigroup} is a set \(S\) equipped with a binary operation \(\oplus\) th
     (a \oplus b) \oplus c = a \oplus (b \oplus c) \quad \text{for all } a, b, c \in S.
 \]
 
-There is no requirement for an identity element or inverses. Semigroups 
-capture the essence of combining elements consistently (e.g., string concatenation).
-
-\subsection{Monoid \texorpdfstring{\((M, \oplus)\)}{}}
+\section{Monoid \texorpdfstring{\((M, \oplus)\)}{}}
 
 A \emph{monoid} builds on a semigroup by adding an \emph{identity element} \(e\) such that:
 
@@ -89,9 +85,9 @@ A \emph{monoid} builds on a semigroup by adding an \emph{identity element} \(e\)
     a \oplus e = e \oplus a = a \quad \text{for all } a \in M.
 \]
 
-This structure is useful when an operation must have a “do nothing” element, like \(0\) for addition or \(1\) for multiplication.
+This structure is useful when an operation must have a ``do nothing'' element, like \(0\) for addition or \(1\) for multiplication.
 
-\subsection{Group \texorpdfstring{\((G, \oplus)\)}{}}
+\section{Group \texorpdfstring{\((G, \oplus)\)}{}}
 
 A \emph{group} is a monoid where every element has an \emph{inverse}:
 
@@ -99,9 +95,7 @@ A \emph{group} is a monoid where every element has an \emph{inverse}:
     \text{For each } a \in G, \text{ there exists } a^{-1} \in G \text{ such that } a \oplus a^{-1} = a^{-1} \oplus a = e.
 \]
 
-Groups model reversible processes and are foundational in symmetry and abstract algebra.
-
-\subsection{Abelian Group \texorpdfstring{\((A, \oplus)\)}{}}
+\section{Abelian Group \texorpdfstring{\((A, \oplus)\)}{}}
 
 An \emph{Abelian group} (or commutative group) is a group where the operation is \emph{commutative}:
 
@@ -109,9 +103,7 @@ An \emph{Abelian group} (or commutative group) is a group where the operation is
     a \oplus b = b \oplus a \quad \text{for all } a, b \in A.
 \]
 
-This property makes Abelian groups especially important theory and linear algebra.
-
-\subsection{Ring \texorpdfstring{\((R, \oplus, \odot)\)}{}}
+\section{Ring \texorpdfstring{\((R, \oplus, \odot)\)}{}}
 
 A \emph{ring} is a set with two operations:
 
@@ -124,14 +116,12 @@ A \emph{ring} is a set with two operations:
     \item Multiplication distributes over addition:
   
     \[
-      a \odot (b \oplus c) = a \odot b \oplus a \odot c.
+        a \odot (b \oplus c) = a \odot b \oplus a \odot c.
     \]
 
   \end{itemize}
 
-Rings generalize arithmetic of integers, where addition and multiplication interact in a structured way.
-
-\subsection{Commutative Ring \texorpdfstring{\((R, \oplus, \odot)\)}{}}
+\section{Commutative Ring \texorpdfstring{\((R, \oplus, \odot)\)}{}}
 
 A \emph{commutative ring} is a ring where multiplication is also \emph{commutative}:
 
@@ -141,7 +131,7 @@ A \emph{commutative ring} is a ring where multiplication is also \emph{commutati
 
 This is the kind of ring most often encountered in basic algebra, such as the integers \(\Z\).
 
-\subsection{Field \texorpdfstring{\((\field, \oplus, \odot)\)}{}}
+\section{Field \texorpdfstring{\((\field, \oplus, \odot)\)}{}}
 
 A \emph{field} is a commutative ring where every nonzero element has a \emph{multiplicative inverse}:
 
@@ -151,9 +141,9 @@ A \emph{field} is a commutative ring where every nonzero element has a \emph{mul
 
 Fields like \(\Q\), \(\R\), and \(\C\) allow division (except by zero), enabling the full range of arithmetic operations.
 
-\subsubsection{Field Proofs}
+\subsection{Field Proofs}
 
-\textbf{Inverses are well-defined:}
+\subsubsection{Inverses are well-defined:}
 
 We know \(a + -a = 0\). Now let us say \(-a' \ne -a\) and \(a -a' = 0\).
 
@@ -162,7 +152,7 @@ We know \(a + -a = 0\). Now let us say \(-a' \ne -a\) and \(a -a' = 0\).
         -a &= -a'
 \end{align*}
 
-This contradicts our initial assumption, therefore, they are the same. Analog for the multiplication
+This contradicts our initial assumption; therefore, they are the same. The proof is analogous for the multiplication:
 
 \begin{align*}
     a \cdot a^{-1} &= a \cdot a'^{-1} \quad \mid * a^{-1} \\ 
@@ -171,7 +161,7 @@ This contradicts our initial assumption, therefore, they are the same. Analog fo
 
 \QED
 
-\textbf{Neutral Element for the Addition is well-defined:}
+\subsubsection{Neutral Element for the Addition is well-defined:}
 
 We know \(a + 0 = a\). Now let us say \(0' \ne 0\) and \(a + 0' = a\).
 
@@ -182,17 +172,17 @@ We know \(a + 0 = a\). Now let us say \(0' \ne 0\) and \(a + 0' = a\).
            0 &= 0'
 \end{align*}
 
-There is a contradiction to the assumption that there are more than one neutral element for the addition. Thus, 
+There is a contradiction to the assumption that there is more than one neutral element for the addition. Thus, 
 it is well-defined.
 
 Neutral Element for the Multiplication is well-defined: This proof is 
-very similar to the other, thus it will be skipped. 
+very similar to the previous one; thus, it will be skipped. 
 
 \QED
 
-\textbf{Minus times Minus is Plus:}
+\subsubsection{Minus times Minus is Plus:}
 
-We will prove that \(ab = (-a)(-b)\) for some elements of a field.
+We will prove that \(ab = (-a)(-b)\) for any two elements of a field.
 
 \begin{align*}
 	ab &= (-a)(-b) \\
@@ -200,7 +190,7 @@ We will prove that \(ab = (-a)(-b)\) for some elements of a field.
 	b(a + (-a)) &= (-a)((-b) + b) = 0\\
 \end{align*}
 
-From that point, for the right side we can do the following 
+From that point, for the right side we can do the following:
 
 \begin{align*}
 	(-a)((-b) + b) &= 0\\
@@ -208,7 +198,7 @@ From that point, for the right side we can do the following
 	(-a)(-b) &= -(-a)b\\
 \end{align*}
 
-Then, by looking on the left side of the original equally
+Then, by looking at the left side of the original equality:
 
 \begin{align*}
 	b(a + (-a)) &= 0\\
@@ -216,11 +206,11 @@ Then, by looking on the left side of the original equally
 	ab &= -(-a)b\\
 \end{align*}
 
-Thus, we have got our equality \(ab = (-a)(-b)\).
+Thus, we have obtained our equality \(ab = (-a)(-b)\).
 
 \QED
 
-\subsection{Vector Space \texorpdfstring{\((V, \oplus, \cdot)\)}{}}
+\section{Vector Space \texorpdfstring{\((V, \oplus, \cdot)\)}{}}
 
 A \emph{vector space} over a field \(\field\) consists of:
 

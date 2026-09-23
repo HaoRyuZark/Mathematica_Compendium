@@ -1,4 +1,3 @@
-
 \chapter{Convergence Radius}
 
 Consider a power series of the form
@@ -7,32 +6,30 @@ Consider a power series of the form
     f(x) = \sum_{n=0}^{\infty} c_n {(x - a)}^n,
 \]
 
-where \(c_n\) are the coefficients, \(x\) is the variable, and \(a\) is the center of the series. 
-The radius of convergence, denoted by \(R\), is a non-negative real number (or \(\infty\)) 
-such that the series converges if \(|x - a| < R\) and diverges if \(|x - a| > R\). In other words, 
+where \(c_n\) are the coefficients, \(x\) is the variable, and \(a\) is the center of the series. The radius of convergence, denoted by \(R\), is a 
+non-negative real number (or \(\infty\)) such that the series converges if \(|x - a| < R\) and diverges if \(|x - a| > R\). In other words, 
 the interval of convergence is \((a - R, a + R)\), possibly including one or both endpoints.
 
 \[
-    R = \frac{1}{\limsup_{n \to \infty} \sqrt[n]{|a_n|}}
+    R = \frac{1}{\limsup_{n \to \infty} \sqrt[n]{|a_n|}},
 \]
 
-or 
+or
 
 \[
-    R = \limsup_{n \to \infty} \frac{a_n}{ a_{n + 1}}
+    R = \limsup_{n \to \infty} \frac{a_n}{ a_{n + 1}}.
 \]
 
-\subsection{Test of the Borders}
+\section{Test of the Borders}
 
 When the absolute value of the difference between \(x\) and \(a\) is equal to the radius of convergence 
-(i.e., \(|x - a| = R\)), the convergence of the power series must be checked separately. This involves 
+(i.e., \(|x - a| = R\)), the convergence of the power series at the \emph{borders} must be checked separately. This involves 
 substituting the values \(x = a \pm R\) into the series and determining whether the resulting series 
-converges or diverges using other convergence tests (e.g., the comparison test, ratio test, alternating 
-series test).
+converges or diverges using other convergence tests .
 
-\subsection{Approximating the Error}
+\section{Approximating the Error}
 
-When a power series is used to approximate a function, it is often necessary to estimate the error in the 
+When a power series is used to approximate a function, it is often necessary to estimate the \emph{error} in the 
 approximation. If the power series converges, the error can be made arbitrarily small by including a 
 sufficient number of terms. For an alternating series that satisfies the conditions of the Alternating 
 Series Test, the error in approximating the sum by the first \(n\) terms is bounded by the absolute value 
@@ -44,7 +41,7 @@ of the \((n+1)\)-th term:
 
 For other power series, techniques such as Taylor's Theorem with remainder can be used to estimate the error.
 
-\subsection{Complete Example}
+\section{Complete Example}
 
 Find the convergence radius of 
 
@@ -59,13 +56,13 @@ at \(x = 0\).
 The general form is 
 
 \[
-    \sum_{0}^{\infty} a_n (x - x_0)^n 
+    \sum_{0}^{\infty} a_n (x - x_0)^n,
 \]
 
-in our case
+which in our case is
 
 \[
-    = \sum_{n = 1}^{\infty} x^n \frac{1}{n2^n}
+    = \sum_{n = 1}^{\infty} x^n \frac{1}{n2^n},
 \]
 
 with \(\frac{1}{n2^n}\) as \(a_n\).
@@ -80,24 +77,24 @@ with \(\frac{1}{n2^n}\) as \(a_n\).
 
 \textbf{Step 3: Check Borders}
 
-The borders to check are \( 0 - 2 \) to \( 0 + 2 \).
+The borders to check are from \( 0 - 2 \) to \( 0 + 2 \).
 
-For -2:
+For \(-2\):
 
 \[
     \sum_{n = 1}^{\infty} \frac{(-2)^n}{n2^n} = \sum_{n = 1}^{\infty} \frac{(-1)^n (2)^n}{n2^n} 
-    = \sum_{n = 1}^{\infty} \frac{(-1)^n}{n} 
+    = \sum_{n = 1}^{\infty} \frac{(-1)^n}{n},
 \]
 
-by Leibniz, it converges.
+which converges by Leibniz.
 
-For 2:
+For \(2\):
 
 \[
-    \sum_{n = 1}^{\infty} \frac{(2)^n}{n2^n} = \sum_{n = 1}^{\infty} \frac{1}{n}
+    \sum_{n = 1}^{\infty} \frac{(2)^n}{n2^n} = \sum_{n = 1}^{\infty} \frac{1}{n},
 \]
 
-This is the harmonic series therefore it diverges.
+which is the harmonic series; therefore, it diverges.
 
 \textbf{Step 4: Write the interval}
 

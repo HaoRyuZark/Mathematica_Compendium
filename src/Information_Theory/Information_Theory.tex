@@ -4,7 +4,7 @@
 
 \section{Core Concepts}
 
-An important note, depending on the the type of random variable: discrete or continuous, the formulas use the logarithm base 2 or the natural logarithm.
+An important note: depending on the type of random variable, discrete or continuous, the formulas use the logarithm base 2 or the natural logarithm.
 
 \subsection{Surprise}
 
@@ -15,7 +15,7 @@ The \emph{surprise} of an event \(X = x\) is defined as
 \]
 
 The intuition behind this definition is the inverse relationship between a high probability and the amount of information it delivers. An event with a high probability is not 
-"surprising" while a unprobable event is.
+``surprising'', while an improbable event is.
 
 The logarithm is used to get rid of discontinuities and simplify work.
 
@@ -42,7 +42,7 @@ It is defined as
     H(X | Y) = -\sum_{y \in Y} P(Y = y) \sum_{x \in X} P(X = x | Y = y) \log(P(X = x | Y = y)).
 \]
 
-For the intuition: Given an event \(y\) how is our avarage surprise under such conditions?
+For the intuition, given an event \(y\), what is our average surprise under such conditions?
 
 \section{Mutual Information}
 
@@ -52,16 +52,16 @@ For the intuition: Given an event \(y\) how is our avarage surprise under such c
     I(X; Y) = \sum_{x \in X} \sum_{y \in Y} P(X = x, Y = y) \log \left[\frac{P(X = x, Y = y)}{P(X = x) P(Y = y)} \right].
 \]
 
-If one of the random variables is continuous then we can make bins for different range of values and then proceed 
+If one of the random variables is continuous, then we can make bins for different ranges of values and then proceed 
 to work with the bins as the discrete classes.
 
 \[
     I(X; Y) = H(X) - H(X | Y).
 \]
 
-For the intuition, given a certain entropy (uncertainty) of \(X\) after you observe \(Y\) you have a new entropy \(H(X | Y)\) and the difference between the two is the mutual information.
+For the intuition, given a certain entropy (uncertainty) of \(X\), after you observe \(Y\) you have a new entropy \(H(X | Y)\), and the difference between the two is the mutual information.
 
-Imagine that after observing \(Y\) the amount of entropy of \(X\) is reduced by half, then \(Y\) contains a lot of information about \(X\).
+Imagine that after observing \(Y\), the amount of entropy of \(X\) is reduced by half; then \(Y\) contains a lot of information about \(X\).
 
 \section{Cross Entropy}
 
@@ -69,7 +69,7 @@ Imagine that after observing \(Y\) the amount of entropy of \(X\) is reduced by 
 events.
 
 \[
-    H(P, Q) = - \sum_{x \in X} P(X = x) \log(Q(X = x))    
+H(P, Q) = - \sum_{x \in X} P(X = x) \log(Q(X = x)).
 \]
 
 where \(P\) is the true distribution and \(Q\) is the estimated distribution (model).   
@@ -98,10 +98,10 @@ It also has the following properties:
 expected probability distribution \(P\).
 
 \[
-    D_{KL}(P \| Q) = \sum_{x \in X} P(X = x) \log \left(\frac{P(X = x)}{Q(X = x)}\right)
+D_{KL}(P \| Q) = \sum_{x \in X} P(X = x) \log \left(\frac{P(X = x)}{Q(X = x)}\right).
 \]
 
-It measures surprise from using \(Q\) to approximate \(P\). The reverse of the cross entropy, where we use 
+It measures surprise from using \(Q\) to approximate \(P\). It is the reverse of the cross entropy, where we use 
 \(P\) to approximate \(Q\).
 
 We can also write it as 
@@ -116,7 +116,7 @@ We can also write it as
 \emph{Information Gain} measures how much information a feature \(A\) gives us about the class label \(Y\). It is defined as
 
 \[
-    IG(S, A) = H(S) - \sum_{v \in \text{values}(A)} \frac{|S_v|}{|S|} H(S_v)
+    IG(S, A) = H(S) - \sum_{v \in \text{values}(A)} \frac{|S_v|}{|S|} H(S_v).
 \]
 
 where \(H(S)\) is the entropy of the original set \(S\), \(S_v\) is the subset of \(S\) 
@@ -125,7 +125,7 @@ for which feature \(A\) has value \(v\), and \(|S|\) and \(|S_v|\) are the sizes
 In the context of Trees we can think about information gain as  
 
 \[
-    IG = H(\text{parent}) - \sum_i  w_i H(\text{child}_i)
+    IG = H(\text{parent}) - \sum_i  w_i H(\text{child}_i).
 \]
 
 where \(w_i = \frac{|\text{parent}|}{|\text{child}_i|}\). 
@@ -140,7 +140,7 @@ Suppose we have a dataset \(S\) with 10 samples, where 6 belong to class A and 4
 
 Now, let's say we split the dataset based on a feature \(A\) that can take two values: \(v_1\) and \(v_2\). After the split, we have:
 
-Subset \(S_{v_1}\) with 4 samples (3 from class A and 1 from class B) and subset \(S_{v_2}\) with 6 samples (3 from class A and 3 from class B)
+Subset \(S_{v_1}\) with 4 samples (3 from class A and 1 from class B) and subset \(S_{v_2}\) with 6 samples (3 from class A and 3 from class B).
 
 The entropy for each subset is calculated as:
 
@@ -166,11 +166,11 @@ Therefore, the information gain from splitting on feature \(A\) is:
 
 \section{Gini Impurity}
 
-\emph{Gini Impurity} is a measure of how often a randomly chosen element from the set would be incorrectly labeled if it was randomly 
+\emph{Gini Impurity} is a measure of how often a randomly chosen element from the set would be incorrectly labeled if it were randomly 
 labeled according to the distribution of labels in the subset. It is calculated as
 
 \[
-    Gini(S) = 1 - \sum_{i=1}^{C} p_i^2
+    Gini(S) = 1 - \sum_{i=1}^{C} p_i^2.
 \]
 
 where \(C\) is the number of classes and \(p_i\) is the proportion of instances in class \(i\) in the set \(S\).

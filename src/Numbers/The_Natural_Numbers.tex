@@ -29,15 +29,15 @@ A set \(I\) is inductive if
 
 An inductive set exists.
 
-\subsection{Definition of the Sets of Naturals Numbers}
+\subsection{Definition of the Set of Natural Numbers}
 
 \[
-	\N := \{x \mid x \in I, \text{ for every inductive set }\}
+	\N := \{x \mid x \in I, \text{ for every inductive set }\}.
 \]
 
 \textbf{Proof that \(\N\) is inductive for every inductive set \(I, \N \subseteq I\):}
 
-\(\forall I, \emptyset \in I\), hence \(0 \in \N\), for \(n \in \N\), let \(I\) be inductive then 
+\(\forall I, \emptyset \in I\), hence \(0 \in \N\). For \(n \in \N\), let \(I\) be inductive, then 
 
 \[
 	S(n) \in I \therefore S(n) \in \N.
@@ -45,7 +45,7 @@ An inductive set exists.
 
 \section{The Standard Order}
 
-We define \(<\) for the \(\N\) as: 
+We define \(<\) for \(\N\) as: 
 
 \[
 	\forall m, n \in \N, m < n \iff m \in n.
@@ -139,7 +139,7 @@ By Axiom 8, we have \( n = m \), which is a contradiction. Therefore, \( S(n) \n
 \(M = \{n \in \N \| n \ne S(n) \}\ \)
 
 By \(1 \ne S(n)\ \) for any \(n \in \N\), this implies that 1 is part of the set \(M\). 
-This implies that \(S(n) \ne S(S(n)) \implies S(n) \in M\ \) By Axiom 9 \(M = \N\)
+This implies that \(S(n) \ne S(S(n)) \implies S(n) \in M\). By Axiom 9, \(M = \N\).
 
 \subsection{Proposition 3: \texorpdfstring{\(n \ne 1\ \exists m \in \N \mid n = S(m)\)}{n!= 1, exists m in N | n = S (m)}}
 
@@ -149,7 +149,7 @@ This implies that \(S(n) \ne S(S(n)) \implies S(n) \in M\ \) By Axiom 9 \(M = \N
 	M = \{1\} \cup\{n \in \N | \text{Proposition 3 is true}\}
 \]
 
-We know that 1 ins in the set \(M\). And by proposition 1 we know that
+We know that 1 is in the set \(M\). And by Proposition 1 we know that
 
 \[
 	S(n) = S(S(m)) \implies S(n) \in M,
@@ -159,7 +159,7 @@ and by Axiom 9 we know that \(M = \N\).
 
 \section{Definition of Addition in \texorpdfstring{\(\N\)}{}}
 
-For any pair n, m \(\in \N\) there is a unique way to define
+For any pair n, m \(\in \N\), there is a unique way to define
 
 \[
 	\mathrm{Add}(n , m) = n + m.
@@ -175,7 +175,7 @@ For any pair n, m \(\in \N\) there is a unique way to define
 
 \textbf{Uniqueness:} 
 
-Suppose, \(A \, B\) satisfy our conditions. Fix \(n\) and then let \(M = \{ m \in \N | 
+Suppose \(A \, B\) satisfy our conditions. Fix \(n\) and then let \(M = \{ m \in \N | 
 A(n,m) = B(n, m)\}\). Then
 
 \[
@@ -190,9 +190,9 @@ A(n,m) = B(n, m)\}\). Then
 	\implies A(n , S(m)) = B(n, S(m))
 \]
 
-by Axiom 9 we know that \(M = \N\) and  \(A = B\).
+By Axiom 9, we know that \(M = \N\) and \(A = B\).
 
-\textbf{Construction:} For \(n = 1\) Define \(A(n, m) = S(m)\)
+\textbf{Construction:} For \(n = 1\), define \(A(n, m) = S(m)\).
 
 \begin{enumerate}
 	
@@ -215,9 +215,9 @@ Define: \(A(S(n), S(m)) = S(A(n, m))\)
 \textbf{Commutativity of Addition:}
 
 The proposition says \(n + m = m + n\) for any \(n, m \in \N\). We will prove this by 
-induction on \(m\). Fix n and consider \(M = \{ n \in \N | A(n, m) = A(n, m)\}\)
+induction on \(m\). Fix \(n\) and consider \(M = \{ n \in \N | A(n, m) = A(n, m)\}\).
 
-Now recall that \(A(n, 1) = S(n)\)
+Now recall that \(A(n, 1) = S(n)\).
 
 For \(n = 1\):
 
@@ -225,9 +225,9 @@ For \(n = 1\):
 	A(n, 1) = S(1) = A(1, n) \implies 1 \in \N
 \]
 
-also \(A(n , k) = 1 + k \implies 1 + m = S(m) \implies 1 + m = m + 1 \implies 1 \in \N\)
+Also, \(A(n , k) = 1 + k \implies 1 + m = S(m) \implies 1 + m = m + 1 \implies 1 \in \N\).
 
-Suppose: \(n \in \N \implies n + m = m + n\) or \(A(n, m) = A(m, n)\)
+Suppose \(n \in \N \implies n + m = m + n\) or \(A(n, m) = A(m, n)\).
 
 By construction \(A(S(n), m) = S(A(n, m))\) and by definition
 \(A(S(n), m) = S(A(n, m)) = A(m, S(n)) = S(n) + m =  m + S(n) \implies S(n) \in M \implies 

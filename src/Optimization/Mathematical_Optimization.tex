@@ -7,7 +7,7 @@ Optimization relates closely to derivatives and iterative numerical methods for 
 
 \section{Global And Local Minima}
 
-Are \(f \in \R^n \to \R,\ \tilde{x} \in \R^n\), then \(\tilde{x}\) is a \emph{global minima} if
+Let \(f \in \R^n \to \R,\ \tilde{x} \in \R^n\), then \(\tilde{x}\) is a \emph{global minimum} if
 
 \[
     f(\tilde{x}) \le f(x), \quad \forall x \in \R^n
@@ -39,8 +39,8 @@ To determine the nature of the critical point:
         f''(c) < 0 \Rightarrow \text{local maximum}
     \]
 
-    This works, because the second derivative is telling us about the concavity of the function. If it is 
-    positive then we will have function which is concave up a minimum; and if negative concave down a maximum. 
+    This works because the second derivative tells us about the concavity of the function. If it is 
+    positive, then we will have a function which is concave up, a minimum; and if negative, concave down, a maximum. 
 
 \end{itemize}
 
@@ -61,7 +61,7 @@ To determine local extrema for \( f : \R^n \to \R \) without constraints, follow
             = 0.
         \]
 
-        For each of the equations. This process is called \emph{finding the candidates} which we denote as \(\tilde{x}\).
+        This must hold for each of the equations. This process is called \emph{finding the candidates}, which we denote as \(\tilde{x}\).
 
     \item Compute the Hessian matrix:
 
@@ -80,7 +80,7 @@ To determine local extrema for \( f : \R^n \to \R \) without constraints, follow
 
         \subitem If \( H_f(x)\) is \emph{positive definite} \(f_{xx}(x_0, y_0) > 0,\, \det(H) > 0\), then \(x_0, y_0\) is a local minimum.
 
-        \subitem If \( H_f(x)\) is \emph{negative definite} \(f_{xx}(x_0, y_0) < 0,\, \det(H) > 0 \), then is a local maximum.
+        \subitem If \( H_f(x)\) is \emph{negative definite} \(f_{xx}(x_0, y_0) < 0,\, \det(H) > 0 \), then it is a local maximum.
 
         \subitem If \( H_f(x) \) has mixed signs, \emph{indefinite}, \(\det(H) < 0\), then it is  a saddle point.
 
@@ -90,14 +90,14 @@ To determine local extrema for \( f : \R^n \to \R \) without constraints, follow
 
         \subitem \emph{Positive definite} if \(\lambda_i > 0,\, \forall \lambda_i\), which implies a local minimum.
 
-        \subitem \emph{negative definite} if \(\lambda_i < 0,\, \forall \lambda_i\), which implies a local maximum.
+        \subitem \emph{Negative definite} if \(\lambda_i < 0,\, \forall \lambda_i\), which implies a local maximum.
 
         \subitem \emph{Indefinite} for mixed signs, which implies a saddle point.
 
 \end{enumerate}
 
 In real life cases, the Hessian is not widely used due to the high computational cost. Other methods are used to approximate the 
-extreme points. But, if the Hessian shows a definite-behavior via eigenvectors, we can guarantee that our problem is a convex-optimization problem.
+extreme points. However, if the Hessian shows definite behavior via eigenvectors, we can guarantee that our problem is a convex optimization problem.
 
 \textbf{Example: }
 
@@ -116,7 +116,7 @@ Find the minima and maxima of \( f(x, y) = x^2 + y^2 \).
 
 If the function \(f\) is not differentiable at some point \( \vec{x}_0 \), but defined there, this 
 point may also be a candidate for extremum and should be examined separately using \emph{limit-based analysis} 
-or directional behavior i.e., taking the limit at at that point when analyzing the derivatives.
+or directional behavior, i.e., taking the limit at that point when analyzing the derivatives.
 
 \section{Lagrange Multipliers}
 
@@ -125,7 +125,7 @@ Let \( f : \R^n \to \R \) be the function to optimize, subject to the constraint
 
 If we look at the constraint intersection with the original function we are going to notice that along 
 the intersection there are maxima and minima with their respective tangent lines and gradients that are 
-normal to them. We also are going to see that both the gradient of \(f\) and the gradient of \(g\) are just scalar version of each other. 
+normal to them. We also are going to see that both the gradient of \(f\) and the gradient of \(g\) are just scalar versions of each other. 
 
 We start with the \emph{Lagrange system}:
 
@@ -156,7 +156,7 @@ We can also compact these equations in the \emph{Lagrangian} as
 
 \section{Determinant method}
 
-In certain cases, this is the way to solve a problem of this topic, hence, here steps to follow.
+In certain cases, this is the way to solve a problem of this topic, hence, here are the steps to follow.
 
 \begin{enumerate}
     
@@ -197,7 +197,7 @@ where
 
 Find the point on the circle \(x^2 + y^2 = 4\) that is the closest to the point \((3,4)\).
 
-The function \(f(x,y)\) is this case the euclidean norm:
+The function \(f(x,y)\) is in this case the Euclidean norm:
 
 \[
     f(x, y) = \sqrt{(x - 3)^2 + (y - 4)^2}
@@ -224,8 +224,8 @@ Build the Lagrangian:
     \mathcal{L}(x, y, \lambda) = f(x, y) + \lambda g(x, y).
 \]
 
-In this case we can use a property of the root the function to our advantage. Notice that the minimum 
-of the root function is the minimum of the term under root therefore, we can simplify some work by writing 
+In this case we can use a property of the root function to our advantage. Notice that the minimum 
+of the root function is the minimum of the term under the root; therefore, we can simplify some work by writing 
 \(f(x,y)\) without the root. 
 
 \[
@@ -240,7 +240,7 @@ We solve
    \textbf{III } &\frac{\partial \mathcal{L}}{\partial \lambda} = x^2 + y^2 - 4 = 0.
 \end{align*}
 
-Now, this is the difficult part. The best approach in this case is to use substitution to 
+Now, this is the difficult part. The best approach in this case is to use substitution 
 with a top-bottom approach:
 
 \[
@@ -251,8 +251,8 @@ with a top-bottom approach:
     y = \frac{4}{1 + \lambda}
 \]
 
-Solving for \(\lambda\) is also an option but in these kinds of systems of equations where 
-both the partial with respect to \(x\) and \(y\) are very similar it is a good idea to solve for them 
+Solving for \(\lambda\) is also an option, but in these kinds of systems of equations, where 
+both the partial with respect to \(x\) and \(y\) are very similar, it is a good idea to solve for them 
 because they tend to have a similar form when solving for them.
 
 \begin{align*}
@@ -314,9 +314,9 @@ Optimize the distance to the origin \(f(x,y,z)\) with respect to the constraints
     g_2 &= 0 
 \end{align*}
 
-We know that \(f(x,y,z) = \sqrt{x^2 + y^2 + z^2}\). Like with other minimization problems we can 
-just find the minimum of the part under root thus, \(f(x,y,z) = x^2 + y^2 + z^2\). Now we can put 
-the build our system of equations
+We know that \(f(x,y,z) = \sqrt{x^2 + y^2 + z^2}\). Like with other minimization problems, we can 
+just find the minimum of the part under the root; thus, \(f(x,y,z) = x^2 + y^2 + z^2\). Now we can 
+build our system of equations:
 
 \begin{align*}
     \textbf{I   } &2x = \lambda(-2x) + \mu \\
@@ -326,8 +326,8 @@ the build our system of equations
     \textbf{V   } &x = 2z + 3.   
 \end{align*}
 
-For the equation \textbf{II} we can already see that the equation is equal to zero only if 
-\(\lambda = -1\) or \(y = 0\). Thus, we have got our first numbers to work with.
+For the equation \textbf{II}, we can already see that the equation is equal to zero only if 
+\(\lambda = -1\) or \(y = 0\). Thus, we have our first numbers to work with.
 
 \textbf{Case \(\lambda = -1\):}
 
@@ -364,26 +364,26 @@ So the distance is \(\sqrt{2}\).
 
 Thus, the distance is \(3\sqrt{2}\).
 
-Our final Answer is that \(P_1\) is the closest point to the intersection of the two planes with the 
+Our final answer is that \(P_1\) is the closest point to the intersection of the two planes with the 
 function \(f\).
 
 \section{Convexity}
 
-A function \(f\) is \emph{convex} is \(\metric{x - y} \in X, \ \forall x, y \in X\) where \(X\) is the \emph{epigraph} of the function. Visually 
-in 2D and 3D as cup shaped. 
+A function \(f\) is \emph{convex} if \(\metric{x - y} \in X, \ \forall x, y \in X\), where \(X\) is the \emph{epigraph} of the function. Visually, 
+in 2D and 3D, it is cup-shaped. 
 
-\emph{Convexity} delivers the property that local extrema become global extrema. In the context of optimization \emph{convexity} generalizes 
+\emph{Convexity} delivers the property that local extrema become global extrema. In the context of optimization, \emph{convexity} generalizes 
 linearity.
 
 \section{Penalty Functions}
 
 A way to get rid of constraints in an optimization problem is to add the constraint equality or inequality as a part of our target 
-function \(f\) accompanied by a scalar for the linear case and more exotic terms for non-linear cases. This technique allows for the maintenance 
+function \(f\), accompanied by a scalar for the linear case and more exotic terms for non-linear cases. This technique allows for the maintenance 
 of continuity.
 
 \section{The Primal And Dual Problem}
 
-Given a convex optimization problem with a target function \(f(X)\), equality constraints \(h_i(X)\), and inequality constraints \(g_i(X)\) we 
+Given a convex optimization problem with a target function \(f(X)\), equality constraints \(h_i(X)\), and inequality constraints \(g_i(X)\), we 
 define the \emph{primal problem} as 
 
 \[
@@ -396,7 +396,7 @@ with \(u_i > 0\) and \(v_i \ne 0\). We can build as the \emph{dual problem} as
      \max_{v_i, u_i \ge 0}  \min_{X \in \R^n} f(X) + \sum_i v_i h_i(X) + \sum_j u_j g_j(X),
 \]
 
-this problem can be easier to solve than the primal problem and using the Karush-KuhnTucker conditions we get 
+this problem can be easier to solve than the primal problem, and using the Karush-Kuhn-Tucker conditions, we get 
 a much simpler problem.
 
 \section{Gradient Descent}

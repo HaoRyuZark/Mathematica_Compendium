@@ -1,23 +1,24 @@
-
 \chapter{The Change Of Basis}
 
-\section{Translation Formula}
+Imagine you have a vector \( \vec{\lambda} \) in a vector space \( V \) with basis \( B_v \), and you also have another basis \( B_w \) 
+for the same vector space.
 
-Imagine you have a vector \( \vec{\lambda} \) in a vector space \( V \) with basis \( B_v \) and you also have a another basis \( B_w \) for the same vector space. 
-The basis \( B_w \) is written in terms of the basis \( B_v \) as usual. The question is, given a vector written in the basis \( B_v \), how is this vector expressed in the basis \( B_w \)? 
-Note that simply taking \(B_w \vec{v}\) will not give you the correct answer, as it will give another vector.
+The basis \( B_w \) is written in terms of the basis \( B_v \) as usual. The question is, given a vector written in the basis \( B_v \),
+how is this vector expressed in the basis \( B_w \)? Note, that simply taking \(B_w \vec{v}\) will not give you the correct answer, as it 
+will give another vector.
 
-The key to get the correct answer is to frame the question as: which vector \(\vec{\mu}\) when applied the transformation \(B_w\) will give us the vector \(\vec{v}\)? To answer this
-question, we need to take the inverse of \(B_w\) and apply it to \(\vec{\lambda}\). This will give us the vector \(\vec{\mu}\) which is the representation of \(\vec{v}\) in the basis \(B_w\) since 
-when we apply \(B_w\) to \(\vec{\mu}\) we will get back the vector \(\vec{\lambda}\).
+The key to getting the correct answer is to frame the question as: which vector \(\vec{\mu}\), when the transformation \(B_w\) is applied to it, 
+will give us the vector \(\vec{v}\)? To answer this question, we need to take the inverse of \(B_w\) and apply it to \(\vec{\lambda}\). 
+This will give us the vector \(\vec{\mu}\), which is the representation of \(\vec{v}\) in the basis \(B_w\), since
+when we apply \(B_w\) to \(\vec{\mu}\), we will get back the vector \(\vec{\lambda}\).
 
-Using the information above, we can write the following formula for translating between basis:
+Using the information above, we can write the following formula for translating between bases:
 
 \[
     B_v \vec{\lambda}_v = B_w\vec{\mu}_w.   
 \]
 
-\subsection{Coordinate mapping}
+\section{Coordinate mapping}
 
 Let \( V \) be a \(\field\)-vector space with a basis \( \beta = \{v_1, \ldots, v_n\} \).
 Then there exists exactly one isomorphism
@@ -29,12 +30,12 @@ Then there exists exactly one isomorphism
 such that
 
 \[
-    \varphi_\beta(e_i) = v_i, \quad \text{for } 1 \leq i \leq n.
+    \varphi_\beta(e_i) = v_i, \quad \text{for } 1 \leq i \leq n,
 \]
 
 which is called the \emph{coordinate mapping} of \( V \) with respect to the basis \( \beta \).
 
-\subsection{Coordinates with respect to a basis}
+\section{Coordinates with respect to a basis}
 
 The isomorphism \( \varphi_\beta \) from the previous theorem is called the \emph{coordinate mapping},
 and for \( v \in V \), we define
@@ -45,7 +46,7 @@ and for \( v \in V \), we define
 
 as the \emph{coordinates of \( v \) with respect to \(\beta\)}.
 
-\subsection{Translation of Coordinates}
+\section{Translation of Coordinates}
 
 We define the \emph{Translation} of a vector to another basis as:
 
@@ -53,7 +54,7 @@ We define the \emph{Translation} of a vector to another basis as:
     T_{\beta}^{\gamma} = \varphi_{\beta}^{-1} \circ \varphi_\gamma
 \]
 
-where \(\varphi_\beta\) and \(\varphi_\gamma\) are the matrices made of the basis vector of the bases \(\beta\) and \(A\) with respect
+where \(\varphi_\beta\) and \(\varphi_\gamma\) are the matrices made of the basis vectors of the bases \(\beta\) and \(\gamma\) with respect
 to the standard basis, respectively.
 
 \[
@@ -63,13 +64,13 @@ to the standard basis, respectively.
     \end{tikzcd}
 \]
 
-\subsection{Change of Basis Theorem}
+\section{Change of Basis Theorem}
 
 Let \( v \in V \) be arbitrary, with \( (\vec{v})_\gamma = {(x_1, \dots, x_n)}^T \)
 and \( (\vec{v})_\beta = {(y_1, \dots, y_n)}^T \).  Then the following holds:
 
 \[
-    (\vec{v})_\beta =  \varphi_\beta^{-1} \circ \varphi_\gamma (\vec{v})_\gamma
+    (\vec{v})_\beta =  \varphi_\beta^{-1} \circ \varphi_\gamma (\vec{v})_\gamma.
 \]
 
 In vector notation with the translation:
@@ -89,28 +90,27 @@ In vector notation with the translation:
     \end{bmatrix}
 \]
 
-\subsection{Change of Basis in Linear Maps}
+\section{Change of Basis In Linear Maps}
 
-Let \( V \) and \( W \) be finitely generated \( \field\)-vector spaces with
-bases \(\gamma\) and \(\beta\), respectively, and let \( f \in \mathrm{Hom}(V, W) \).
+Let \( V \) and \( W \) be finitely generated \( \field\)-vector spaces with bases \(\gamma\) and \(\beta\), respectively, and let \( f \in \mathrm{Hom}(V, W) \).
 Then we have
 
 \[
-    M_\beta^\gamma(f) = \varphi_\beta^{-1} \circ f \circ \varphi_\gamma
+    M_\beta^\gamma(f) = \varphi_\beta^{-1} \circ f \circ \varphi_\gamma.
 \]
 
-Thus, \( M_\beta^\gamma(f) \) tells you to take vector in the basis \(\gamma\), translate it to the canonical basis,
-apply the linear map \(f\) and then convert the result to the basis \(\beta\).
+Thus, \( M_\beta^\gamma(f) \) tells you to take a vector in the basis \(\gamma\), translate it to the canonical basis,
+apply the linear map \(f\), and then convert the result to the basis \(\beta\).
 
 \[
     \begin{tikzcd}
-        \field^n \arrow[rrrr, "M_{\beta}^{\gamma}"] \arrow[rd, "\varphi_\gamma"] &                   &  &   & \field^m \arrow[ld, "\varphi_\beta"'] \\
+        \field^n \arrow[rrrr, "M_{\beta}^{\gamma}"] \arrow[rd, "\varphi_\gamma"] &  &  &   & \field^m \arrow[ld, "\varphi_\beta"'] \\
         & V \arrow[rr, "f"] &  & W &
     \end{tikzcd}
 \]
 
 
-\subsection{Transformations involving multiple bases}
+\section{Transformations involving multiple bases}
 
 Let \( V \) and \( W \) be finitely generated vector spaces with bases \(\gamma\) and \( \gamma' \)
 for \( V \), and \(\beta\) and \( \beta' \) for \( W \), respectively.  Furthermore, let \( f: V \to W \) be
@@ -128,7 +128,7 @@ More explicitly, we can write this as:
                             & = (\varphi_{\beta'}^{-1} \circ \varphi_{\beta}) \circ   (\varphi_{\beta}^{-1} \circ f \circ \varphi_{\gamma}) \circ ( \varphi_{\gamma}^{-1} \circ \varphi_{\gamma'}).
 \end{align*}
 
-We can visualize this as a commutative diagram where when take an inverse we reverse the direction of the arrows:
+We can visualize this as a commutative diagram where, when we take an inverse, we reverse the direction of the arrows:
 
 \[
     \begin{tikzcd}

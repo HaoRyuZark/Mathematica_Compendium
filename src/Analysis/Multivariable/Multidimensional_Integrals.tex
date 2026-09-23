@@ -1,28 +1,27 @@
-
 \chapter{Multidimensional Integrals}
 
-\subsection{Arclength of a Curve}
+\section{Arclength of a Curve}
 
 We will use the famous technique of approximating the length/area/volume of something
-by dividing it in to equally smaller section that are straight lines in this case. In other cases 
-they will be prisms, squares, etc. Now if we look at the difference between two points in our 3D space, 
-for this Example
-we notice that there are three differences \(\Delta i\) \(\Delta j\) \(\Delta k\).j
-Now let us take the length of the vector \(\sqrt{{(\Delta i)}^2 + {(\Delta j)}^2 + {(\Delta k)}^2}\)
+by dividing it into smaller, equal sections that are straight lines in this case. In other cases
+they will be prisms, squares, etc. Now, if we look at the difference between two points in our 3D space,
+for this example we notice that there are three differences: \(\Delta i\), \(\Delta j\), \(\Delta k\).
+Now let us take the length of the vector \(\sqrt{{(\Delta i)}^2 + {(\Delta j)}^2 + {(\Delta k)}^2}\).
 
-The total Arclength is going to be the sum of all of these sectors
+The total \emph{arclength} is going to be the sum of all of these sectors.
 
 \[
     L =  \sum_{i = 1}^{n}\sqrt{{(\Delta i)}^2 + {(\Delta j)}^2 + {(\Delta k)}^2}
 \]
 
-if we use a clever one \( \left(\frac{\Delta t}{\Delta t}\right)^2 \) we get
+If we use a clever one \( \left(\frac{\Delta t}{\Delta t}\right)^2 \), we get
 
 \[
-    L =  \sum_{i = 1}^{n} \sqrt{{\left(\frac{\Delta i}{\Delta t}\right)}^2 + {\left(\frac{\Delta j}{\Delta t}\right)}^2 + {\left(\frac{\Delta k}{\Delta t}\right)}^2}\Delta t
+    L =  \sum_{i = 1}^{n} \sqrt{{\left(\frac{\Delta i}{\Delta t}\right)}^2 + {\left(\frac{\Delta j}{\Delta t}\right)}^2 + 
+    {\left(\frac{\Delta k}{\Delta t}\right)}^2}\Delta t
 \]
 
-Now if we take the limit we get
+Now, if we take the limit, we get
 
 \[
     L =  \lim_{n \to \infty} \sum_{i = 1}^{n} \sqrt{\left(\frac{\Delta i}{\Delta t}\right)}^2 + {\left(\frac{\Delta j}{\Delta t}\right)}^2 + {\left(\frac{\Delta k}{\Delta t}\right)^2}\Delta t
@@ -38,11 +37,11 @@ which is
     L =  \int_{a}^{b}\sqrt{{(f'(t))}^2 + {(g'(t))}^2 + {(h'(t))}^2}\,dt
 \]
 
-For differentiable function on the interval \(t \in [a; b]\)
+For a differentiable function on the interval \(t \in [a, b]\).
 
-\subsection{Line Integrals}
+\section{Line Integrals}
 
-\subsubsection{Over Vector Field}
+\section{Over Vector Field}
 
 Let \( F : \R^n \to \R^n \) be a \emph{vector field}, and let \( \gamma \) be a 
 smooth curve parametrized by \( \vec{r}(t) \), \( t \in [a, b] \). 
@@ -54,10 +53,10 @@ The \emph{line integral} of \(F\) along \( \gamma \) is:
     - \vec{F}(\vec{r}(a))
 \]
 
-In the context of physics this integral measures the work done by the field \( \vec{F} \) 
+In the context of physics, this integral measures the work done by the field \( \vec{F} \) 
 along the path \( \gamma \), such as force over distance.
 
-In compact form 
+In compact form:
 
 \[
     \int_\gamma \langle \vec{F}, d\vec{r} \rangle
@@ -126,7 +125,7 @@ Therefore, the line integral is:
 
 The line integral of the gradient vector field \(f(x,y) = 2x + 2y \) over this curve is zero. 
 
-\subsubsection{Over Scalar field}
+\subsection{Over Scalar Field}
 
 Let \( f(x_1, x_2, \ldots, x_n) \) be a scalar field defined on a smooth curve \(c\), which 
 is parametrized by a vector function.
@@ -146,49 +145,49 @@ Then, the line integral of \(f\) over \(c\) is given by:
 \end{center}
 
 This formula comes from approximating the area of the squares under the curve with height \(f(x_k, y_k)\) 
-and the arclength \(\varDelta s_k\), we will simplify to three dimensions for the sake
-of simplicity, but like seen before this works for \(n\) dimensions. 
+and the arclength \(\varDelta s_k\). We will simplify to three dimensions for the sake
+of simplicity, but as seen before, this works for \(n\) dimensions. 
 \(A_k = f(x_k, y_k) \varDelta s_k\), where 
-\(\varDelta s_k = \sqrt{(\varDelta s_k)^2 + (\varDelta y_k)^2} \). Now by using or formula 
+\(\varDelta s_k = \sqrt{(\varDelta s_k)^2 + (\varDelta y_k)^2} \). Now, by using the formula 
 for the arclength we already know, we get \(\| \frac{\vec{r}(t)}{dt}\| dt = ds\). 
 
 \textbf{Example: Scalar Field}
 
 Compute the line integral of \(f(x,y) = x^2 + y^2\) over the straight line segment going
-from \((1,1)\) to \((3,3)\)
+from \((1,1)\) to \((3,3)\).
 
-This time or curve is \(y = x\) to the parametrized curve is \(\begin{bmatrix}
+This time our curve is \(y = x\), so the parametrized curve is \(\begin{bmatrix}
     x(t) = t \\ y(t) = t
-\end{bmatrix}\) this left us with:
+\end{bmatrix}\). This leaves us with:
 
 \[
     \int_{1}^{3}  2t^2 \sqrt{2}dt = \frac{52\sqrt{2}}{3} 
 \]
 
-\subsection{Line Integrals with respect to a specific variable}
+\section{Line Integrals with Respect to a Specific Variable}
 
-We are going to take another look at line integrals but from the perspective of just one variable and how 
-this affects the formulas we know. For the next explanation we will use only functions of two variables 
+We are going to take another look at line integrals, but from the perspective of just one variable and how 
+this affects the formulas we know. For the next explanation, we will use only functions of two variables 
 to keep the examples simple.
 
-\subsubsection{Over Scalar Field with respect to \texorpdfstring{\(x\) or \(y\)}{}}
+\subsection{Over Scalar Field with Respect to \texorpdfstring{\(x\) or \(y\)}{}}
 
-Imagining how this works in not specially difficult. Imagine taking a line integral where we do not move 
-along the \(y\)-axis and only care about the plane \(xz\). Here our line integral only changes in the 
-fact that in the norm of our curve the component that was responsible for \(y\) will be set 0 and the 
-\(ds\) changes to the variable we are integrating with respect to. In this case \(dx\).
+Imagining how this works is not especially difficult. Imagine taking a line integral where we do not move 
+along the \(y\)-axis and only care about the plane \(xz\). Here, our line integral only changes in the 
+fact that in the norm of our curve, the component that was responsible for \(y\) will be set to 0, and the 
+\(ds\) changes to the variable we are integrating with respect to. In this case, \(dx\).
 
 \[
     \int_{c} f(x,y)dx = \int_{c} f(g(t), h(t)) \sqrt{g'(t)^2}dt 
 \]
 
-\subsubsection{Over Vector Field with respect to \texorpdfstring{\(x\) or \(y\)}{}}
+\subsection{Over Vector Field with Respect to \texorpdfstring{\(x\) or \(y\)}{}}
 
-In the case of a field the story is different in the fact that now our output vectors change depending 
-on the variable we are choosing to left out.
+In the case of a field, the story is different in the fact that now our output vectors change depending 
+on the variable we are choosing to leave out.
 
 Now, given a field \(\vec{F}(x,y) = M(x,y)\imath + N(x,y)\jmath\) and the curve
- \(\vec{r}(t) = g(t)\imath + h(t)\jmath\). The line integral of \(\vec{F}\) along \(C\) is 
+ \(\vec{r}(t) = g(t)\imath + h(t)\jmath\), the line integral of \(\vec{F}\) along \(C\) is:
 
 \[
     \int_\gamma \left\langle \nabla \vec{F}, \frac{\vec{r(t)}}{dt} \right\rangle dt
@@ -198,7 +197,7 @@ Now, given a field \(\vec{F}(x,y) = M(x,y)\imath + N(x,y)\jmath\) and the curve
     \int_{a}^{b} M(x,y)g'(t)dt + \int_{a}^{b} N(x,y)h'(t)dt
 \]
 
-Here \(g'(t)dt = dx\) and \(h'(t)dt = dy\)
+Here \(g'(t)dt = dx\) and \(h'(t)dt = dy\).
 
 \[
     \int_{a}^{b} Mdx + \int_{a}^{b} Ndy
@@ -208,16 +207,16 @@ These two integrals give us both the integral with respect to \(x\) and \(y\).
 
 \textbf{Example:}
 
-Curve \(C\) is a portion of the parabola \(y = x^2\) that goes through the points (1,1) to (2,4)
+Curve \(C\) is a portion of the parabola \(y = x^2\) that goes through the points \((1,1)\) to \((2,4)\).
 
 Compute: \(\int_{a}^{b} \frac{x}{y} dy\)
 
 \textbf{Step 1: Parameterize \(C\)}
 
-The trick for this cases where the curve is the graph of a function is to set \(x = t\) and them solve for 
+The trick for these cases, where the curve is the graph of a function, is to set \(x = t\) and then solve for 
 \(y\) in terms of \(x\).
 
-In this case we get
+In this case, we get
 
 \[
     \vec{r}(t) = t\imath + t^2 \jmath \text{ with } 1 \le t \le 2
@@ -234,33 +233,33 @@ In this case we get
 \]
 
 
-\subsection{Flow and Circulation}
+\section{Flow and Circulation}
 
 For velocity \(\vec{F} = M(x,y)\hat{i} + N(x,y)\hat{j}\) and a smooth curve \(C\) parameterized by \(\vec{r}(t)\)
 
 \[
-    Flow = \int_C \langle \vec{F}, \vec{T} \rangle ds
+    \mathrm{Flow} = \int_C \langle \vec{F}, \vec{T} \rangle ds
 \]
 
 
-If the curve \(C\) is closed, the it is called \emph{Circulation}. 
+If the curve \(C\) is closed, then it is called \emph{Circulation}. 
 
 \[
-    Circulation = \oint_C \langle \vec{F}, \vec{T} \rangle ds
+    \mathrm{Circulation} = \oint_C \langle \vec{F}, \vec{T} \rangle ds
 \]
 
-\emph{Flow} is a measurement of the degree of which a curve goes along the vector field.
+\emph{Flow} is a measurement of the degree to which a curve goes along the vector field.
 
-\subsubsection{Circulation Density}
+\subsection{Circulation Density}
 
 The \emph{circulation density} of a vector field \(\vec{F}(x,y) = M(x,y)\hat{i} + N(x,y)\hat{j}\) is given by 
 
 \[
-    CD = \left(\frac{\partial N}{\partial x}- \frac{\partial M}{\partial y}\right)
+    \mathrm{CD} = \left(\frac{\partial N}{\partial x}- \frac{\partial M}{\partial y}\right)
 \]
 
-It derives from imagining having a square as our curve where from our starting point \((x,y)\) we move \((x + \Delta x, y), (x + \Delta x, y + \Delta y), 
-(x, y + \Delta y)\) generating four different curves. Therefore our total circulation is given by 
+It derives from imagining having a square as our curve, where from our starting point \((x,y)\) we move to \((x + \Delta x, y), (x + \Delta x, y + \Delta y), 
+(x, y + \Delta y)\), generating four different curves. Therefore, our total circulation is given by 
 
 \[
     \oint_C \langle \vec{F}, d\vec{r} \rangle = \sum_{i = 1}^{4} \int_{C_i} \langle \vec{F}, \vec{T} \rangle d\vec{r}
@@ -270,27 +269,27 @@ The dot products are given by
 
 \begin{itemize}
 
-    \item Bottom: \(\langle \vec{F}(x,y) \Delta x \hat{i}\rangle = M(x,y)\Delta x\)
+    \item Bottom: \(\langle \vec{F}(x,y) \Delta x \hat{i}\rangle = M(x,y)\Delta x\).
     
-    \item Right: \(\langle \vec{F}(x + \Delta x, y ) \Delta y \hat{j}\rangle = N(x + \Delta x, y)\Delta y \)
+    \item Right: \(\langle \vec{F}(x + \Delta x, y ) \Delta y \hat{j}\rangle = N(x + \Delta x, y)\Delta y \).
 
-    \item Top: \(\langle \vec{F}(x,y + \Delta y) -\Delta x \hat{i}\rangle = -M(x,y + \Delta y)\Delta x\)
+    \item Top: \(\langle \vec{F}(x,y + \Delta y) -\Delta x \hat{i}\rangle = -M(x,y + \Delta y)\Delta x\).
 
-    \item Left: \(\langle \vec{F}(x, y) -\Delta y \hat{j}\rangle = N(x , y)\Delta y\)
+    \item Left: \(\langle \vec{F}(x, y) -\Delta y \hat{j}\rangle = N(x , y)\Delta y\).
 
 \end{itemize}
 
-Then the Top minus Bottom is \(- (M(x ,y + \Delta y) - M(x,y)\Delta x)\) and notice that inside the parenthesis we have something 
+Then the top minus the bottom is \(- (M(x ,y + \Delta y) - M(x,y)\Delta x)\), and notice that inside the parentheses we have something 
 similar to the partial 
 
 \[
-    \frac{\partial M}{\partial y} = \lim_{\Delta y \to 0} \frac{M(x,y + \Delta y) - M(x,y)}{\Delta y}
+    \frac{\partial M}{\partial y} = \lim_{\Delta y \to 0} \frac{M(x,y + \Delta y) - M(x,y)}{\Delta y}.
 \]
 
-Thus, by multiplying a clever one \(\frac{\Delta y}{\Delta y}\) we get \(- \frac{\partial M}{\partial y} \Delta y \Delta x \). Similarly, we 
-get for the Right minus left case \(\frac{\partial N}{\partial x} \Delta y \Delta x\) 
+Thus, by multiplying by a clever one \(\frac{\Delta y}{\Delta y}\), we get \(- \frac{\partial M}{\partial y} \Delta y \Delta x \). Similarly, we 
+get for the right minus left case \(\frac{\partial N}{\partial x} \Delta y \Delta x\). 
 
-Finally by putting all together 
+Finally, by putting it all together 
 
 \[
      \oint_C \langle \vec{F}, d\vec{r} \rangle =  - \frac{\partial M}{\partial y} \Delta y \Delta x + \frac{\partial N}{\partial x} \Delta y \Delta x = 
@@ -299,7 +298,7 @@ Finally by putting all together
 
 \(\Delta y \Delta x\) is the area of the rectangle.
 
-\subsection{Green's Theorem Circulation-Curl Form}
+\section{Green's Theorem Circulation-Curl Form}
 
 For \(C\), a smooth, simple, closed curve enclosing \(R\), \(\vec{F} = M \hat{i} + N \hat{j}\) having \(M\), \(N\) continuous first partials in an open region 
 containing \(R\)
@@ -309,7 +308,7 @@ containing \(R\)
     \left(-\frac{\partial M}{\partial y} + \frac{\partial N}{\partial x}\right) dx dy  
 \]
 
-\subsection{Flux}
+\section{Flux}
 
 For a continuous field \(\vec{F} = M(x,y)\hat{i} + N(x,y)\hat{j}\), a smooth curve with no intersections \(C\) and \(\vec{n}\) the outward normal 
 
@@ -317,14 +316,14 @@ For a continuous field \(\vec{F} = M(x,y)\hat{i} + N(x,y)\hat{j}\), a smooth cur
     Flux = \oint_C \langle \vec{F}, \vec{n} \rangle ds
 \]
 
-The derivation of the formula for actually computing the \emph{flux} goes as follows: First, we find ourselves is 2 dimensions 
+The derivation of the formula for actually computing the \emph{flux} goes as follows: First, we find ourselves in 2 dimensions 
 and we want to find a normal vector to the curve. We can pretend that we are in 3 dimensions and define a vector 
 
 \[
     \vec{k} = \begin{bmatrix} 0 \\ 0 \\ 1 \end{bmatrix}
 \] 
 
-This gives us \(\vec{n} = \vec{T} \times \vec{k}\). Now either by using the determinant trick or formally computing the cross product we get 
+This gives us \(\vec{n} = \vec{T} \times \vec{k}\). Now, either by using the determinant trick or formally computing the cross product, we get 
 
 \[
     \vec{T} \times \vec{k} = \vec{n} = \begin{bmatrix} \frac{dy}{ds} \\ \frac{dx}{ds} \\ 0 \end{bmatrix}
@@ -337,20 +336,20 @@ The final formula is then
     \int_{a}^{b} M dy - \int_{a}^{b} N dx
 \]
 
-One extra note about the derivation is that if the curve goes counter clockwise we use 
-\(\vec{n} = \vec{T} \times \vec{k}\) but if it goes clockwise \(\vec{n} = \vec{k} \times \vec{T}\) because of the right-hand-rule.
+One extra note about the derivation is that if the curve goes counterclockwise, we use 
+\(\vec{n} = \vec{T} \times \vec{k}\), but if it goes clockwise, \(\vec{n} = \vec{k} \times \vec{T}\), because of the right-hand rule.
 
 
 \subsection{Flux Density}
 
-Just like for the \emph{Circulation Density} we will use the small square to examine the divergence in a small region. Following a similar process with the formula 
-for flux we can get a similar result.
+Just like for the \emph{Circulation Density}, we will use the small square to examine the divergence in a small region. Following a similar process 
+with the formula for flux, we can get a similar result.
 
 \[
    FD = \left(-\frac{\partial M}{\partial x} + \frac{\partial N}{\partial y}\right)  
 \]
 
-\subsection{Green's Theorem Divergence-Flux Form}
+\section{Green's Theorem Divergence-Flux Form}
 
 For \(C\), a smooth, simple, closed curve enclosing \(R\), \(\vec{F} = M \hat{i} + N \hat{j}\) having \(M\), \(N\) continuous first partials in an open region 
 containing \(R\)
@@ -360,7 +359,7 @@ containing \(R\)
     \left(\frac{\partial M}{\partial x} + \frac{\partial N}{\partial y}\right) dx dy  
 \]
 
-\subsection{Conservative Vectors Fields}
+\section{Conservative Vector Fields}
 
 A field \(\vec{F}\) is \emph{conservative} on an open domain if 
 
@@ -368,10 +367,10 @@ A field \(\vec{F}\) is \emph{conservative} on an open domain if
     \int_C \langle \vec{F}, d\vec{r} \rangle
 \]
 
-is the same for all paths \(C\) between points \(A\) and \(B\) in the domain. In other words it 
+is the same for all paths \(C\) between points \(A\) and \(B\) in the domain. In other words, it 
 only depends on the endpoints.
 
-\subsection{The Potential Function}
+\section{The Potential Function}
 
 A vector field \( \vec{F} : \R^n \to \R^n \) is called \emph{conservative} if there exists a 
 scalar function \( f : \R^n \to \R \) such that:
@@ -398,7 +397,7 @@ By assumption
     = \int_{a}^{b} \left\langle \nabla f(\vec{r}(t)), \frac{d\vec{r}(t)}{dt} \right\rangle dt
 \]
 
-This this like the chain rule. Therefore, 
+This is like the chain rule. Therefore, 
 
 \[
     \left\langle \nabla f (\vec{r}(t)), \frac{d\vec{r}(t)}{dt} \right\rangle =
@@ -418,7 +417,7 @@ By the fundamental theorem of calculus
 
 \QED
 
-\subsubsection{Check for conservative vector fields}
+\section{Check for Conservative Vector Fields}
 
 Using the definition \(\vec{F} = \nabla f\) and by writing 
 
@@ -427,7 +426,7 @@ Using the definition \(\vec{F} = \nabla f\) and by writing
             &= \frac{\partial f}{\partial x_1}\hat{i}_1 + \frac{\partial f}{\partial x_2}\hat{i}_2 + \cdots \frac{\partial f}{\partial x_n}\hat{i}_n  
 \end{align*}
 
-We get the following and reducing to 3 variables and dimensions for the sake of simplicity
+We get the following by reducing to 3 variables and dimensions for the sake of simplicity:
 
 \[
     \frac{\partial f_1}{\partial y} = \frac{\partial}{\partial y} \frac{\partial f}{\partial x} = 
@@ -436,7 +435,7 @@ We get the following and reducing to 3 variables and dimensions for the sake of 
 
 We can also keep making pairs like this, but checking one is enough. 
 
-\subsubsection{Finding the Potential Function of a Vector Field}
+\subsection{Finding the Potential Function of a Vector Field}
 
 To find the potential function \( f(x, y) \) of a vector field \( \vec{F}(x, y) = (P(x, y), Q(x, y)) \), 
 we must check if the field is conservative and then integrate accordingly. A vector field is conservative 
@@ -523,9 +522,9 @@ For rectangular domains, the order of integration does not affect the result:
     f(x, y)\, dx\, dy
 \]
 
-\subsection{Steps for finding the Region of Integration}
+\section{Steps for Finding the Region of Integration}
 
-When Integrals are not defined over regions defined from constants then finding the bounds 
+When integrals are not defined over regions defined by constants, finding the bounds 
 of integration can become a tricky task depending on the region we want to integrate.
 
 The general process for setting up iterated integrals over a non-rectangular region is as follows:
@@ -562,7 +561,7 @@ The general process for setting up iterated integrals over a non-rectangular reg
 
 \end{enumerate}
 
-\subsection{Integration over Curvilinear Domains}
+\section{Integration over Curvilinear Domains}
 
 If the region \( A \subset \R^2 \) is not rectangular, it is divided into subregions 
 \( \Delta A_k \), and the integral is defined as the limit:
@@ -581,8 +580,8 @@ Here, \( y \in [u(x), o(x)] \) describes the vertical bounds as functions of \(x
 
 \textbf{Example:}
 
-Compute the volume under \(f(x,y) = 1 + x + y^2\) bounded by \(x\)-axis, \(x = 1\) and \(y\)-axis 
-\(y = \sqrt{x}\)
+Compute the volume under \(f(x,y) = 1 + x + y^2\) bounded by the \(x\)-axis, \(x = 1\), and the 
+\(y\)-axis \(y = \sqrt{x}\).
 
 \begin{center}
     \begin{tikzpicture}
@@ -612,7 +611,7 @@ Compute the volume under \(f(x,y) = 1 + x + y^2\) bounded by \(x\)-axis, \(x = 1
 \end{center}
 
 First we are going to imagine slicing the area under this sector vertically along the \(x\)-axis from 
-\(0\) up to \(1\) which is the volume of an Area under a curve that is represented by going along the 
+\(0\) up to \(1\), which is the volume of an area under a curve that is represented by going along the 
 \(y\)-axis.
 
 \begin{align*}
@@ -622,14 +621,14 @@ First we are going to imagine slicing the area under this sector vertically alon
     = \left| \frac{2}{3} x^{\frac{3}{2}} + \frac{4}{3} \frac{2}{5} x^{\frac{5}{2}} \right|_{0}^{1} = \frac{6}{5}
 \end{align*}
 
-If we choose the other way then we have an area with a fix \(y\) in the inside that goes from \(y^2\) to 
+If we choose the other way, then we have an area with a fixed \(y\) on the inside that goes from \(y^2\) to 
 1 with respect to \(x\).
 
 \[
     \int_{0}^{1}\int_{y^2}^{1} 1 + x + y^2 dx dy
 \]
 
-\subsection{Changing the order of integration to solve tricky integrals}
+\subsection{Changing the Order of Integration to Solve Tricky Integrals}
 
 Given \(\int_{0}^{8}\int_{\sqrt[3]{x}}^{2} \frac{1}{y^4 +1}dy dx\) which is very hard to integrate, 
 let us change the order to make it easier.
@@ -638,18 +637,18 @@ let us change the order to make it easier.
     \int_{0}^{2}\int_{0}^{y^3} \frac{1}{y^4 +1}dx dy
 \]
 
-The steps are the same as in the previous Example.
+The steps are the same as in the previous example.
 
 \begin{enumerate}
 
-    \item Identify the area you want to integrate, what are the bounds respective to \(x\) and \(y\)
+    \item Identify the area you want to integrate; what are the bounds with respect to \(x\) and \(y\)?
 
     \item Write the same expression without bounds and change the order of the differentials
 
     \item Imagine slicing the area underneath vertically for \(x\) and horizontally for \(y\) with their 
           respective bounds corresponding to the perspective.
 
-    \item Write the new integral with the opposite of order of integration
+    \item Write the new integral with the opposite order of integration
 
 \end{enumerate}
 
@@ -695,24 +694,24 @@ The steps are the same as in the previous Example.
     \end{tikzpicture}
 \end{center}
 
-Here the original bounds are: \(x\) goes from 0 to 8 and \(y\) goes from \(\sqrt[3]{x}\) to 2.
-As you can see in the diagram by slicing vertically the value of \(x\) is fixed, and we move 
-towards the upper-bound of \(y\) which is 2.
-Therefore, the smallest \(x\) can get is 0 and the biggest is 2. While for \(y\) by slicing 
-vertically we get that \(x\) goes from 0 to \(\sqrt[3]{x}\), but 
+Here, the original bounds are: \(x\) goes from 0 to 8, and \(y\) goes from \(\sqrt[3]{x}\) to 2.
+As you can see in the diagram, by slicing vertically the value of \(x\) is fixed, and we move 
+towards the upper bound of \(y\), which is 2.
+Therefore, the smallest \(x\) can get is 0 and the biggest is 2. While for \(y\), by slicing 
+vertically, we get that \(x\) goes from 0 to \(\sqrt[3]{x}\), but 
 we do not want to leave \(x\), so we solve for \(y\) and get \(y^3\). 
 Now we can put all of this together and integrate.
 
-In general changing the order of integration is only about using the logic to set the bounds of integration, 
+In general, changing the order of integration is only about using logic to set the bounds of integration, 
 but starting from a different perspective.
 
-\subsection{The Jacobian}
+\section{The Jacobian}
 
-The Jacobian matrix is a fundamental concept in multi-variable calculus. The Jacobian is the best
-approximation of a linear transformation for a point.
+The \emph{Jacobian} matrix is a fundamental concept in multivariable calculus. The Jacobian is the best
+approximation of a linear transformation at a point.
 
-For the intuition of why, we use partial derivatives, just think about
-how we use them as this tiny changes in the component of original
+For the intuition of why we use partial derivatives, just think about
+how we use them as these tiny changes in the components of the original
 basis vectors.
 
 Given a vector-valued function
@@ -739,17 +738,18 @@ the \emph{Jacobian matrix} of \(f\) is the \(m \times n\) matrix of all first-or
     \end{bmatrix}.
 \]
 
-\subsubsection{Local linearity}
+\section{Local Linearity}
 
-While performing non-linear transformations on a space. We can see that in a tiny neighborhood
-around a point, the transformation appears to be linear. And the matrix that encodes that
+While performing non-linear transformations on a space, we can see that in a tiny neighborhood
+around a point, the transformation appears to be linear, and the matrix that encodes that
 transformation is the \emph{Jacobian}.
 
 For intuition, just imagine that in the tiny neighborhood the transformation is composed
-of small steps in the \(x_1, \dots, x_n\) directions which give of the partial derivatives that
-represent this small steps. 
+of small steps in the \(x_1, \dots, x_n\) directions, which give the partial derivatives that
+represent these small steps. 
 
-\subsubsection{Determinant}
+\section{Determinant}
+
 When \(m = n\), i.e., the function maps from \(\R^n\) to \(\R^n\), the Jacobian matrix is square. 
 In this case, the \emph{Jacobian determinant} is defined as:
 
@@ -769,8 +769,8 @@ and provides important information about the local behavior of the function. For
 
 \end{itemize}
 
-When we change our systems of coordinates it is important that our differential make sense in the original 
-system we were. Because of that, we take the determinant with respect to the new coordinates to tell us 
+When we change our system of coordinates, it is important that our differential makes sense in the original 
+system we were in. Because of that, we take the determinant with respect to the new coordinates to tell us 
 the scaling factor that we have to use for our result to make sense.
 
 \textbf{Use Cases:}
@@ -790,7 +790,7 @@ The Jacobian matrix and its determinant appear in many areas, including:
 
 \end{itemize}
 
-\subsubsection{List of Common Jacobians}
+\section{List of Common Jacobians}
 
 \begin{itemize}
 
@@ -819,7 +819,7 @@ The Jacobian matrix and its determinant appear in many areas, including:
         \item Jacobian:
         
         \[
-            J_{\text{Polar}} = rd rd\theta
+            J_{\text{Polar}} = r\, dr\, d\theta
         \]
 
     \end{itemize}
@@ -835,7 +835,7 @@ The Jacobian matrix and its determinant appear in many areas, including:
         \item Jacobian:
         
             \[
-                J_{\text{Cylindrical}} = r\ dr d\theta dz
+                J_{\text{Cylindrical}} = r\, dr\, d\theta\, dz
             \]
 
     \end{itemize}
@@ -859,21 +859,21 @@ The Jacobian matrix and its determinant appear in many areas, including:
         \item Jacobian:
                
               \[
-                    J_{\text{Spherical}} = \rho^2 \sin (\phi) d\rho d\theta d\phi
+                    J_{\text{Spherical}} = \rho^2 \sin (\phi)\, d\rho\, d\theta\, d\phi
               \]
             
     \end{itemize}
 
 \end{itemize}
 
-\subsection{Integration in Polar Coordinates}
+\section{Integration in Polar Coordinates}
 
 For radially symmetric regions or functions, switching to polar coordinates simplifies the computation.
 
 \emph{Transformation:}
 
 \[
-    x = r \cos \varphi, \quad y = r \sin \varphi
+    x = r \cos(\varphi), \quad y = r \sin (\varphi).
 \]
 
 The Jacobian of the transformation gives the area element:
@@ -885,19 +885,19 @@ The Jacobian of the transformation gives the area element:
 \emph{Integral:}
 
 \[
-    \iint_D f(x, y)\, dA = \int_{\varphi_0}^{\varphi_1} \int_{0}^{R(\varphi)} f(r \cos \varphi, r 
-    \sin \varphi)\, r\, dr\, d\varphi
+    \iint_D f(x, y)\, dA = \int_{\varphi_0}^{\varphi_1} \int_{0}^{R(\varphi)} f(r \cos(\varphi), r 
+    \sin(\varphi))\, r\, dr\, d\varphi
 \]
 
-\subsubsection{Origin of the Area}
+\subsection{Origin of the Area Formula}
 
-When we divide our circle in the sections we get both a difference in then angle and the radius which 
-generate another area. The difference \(\Delta A =\) Area of big wedge \(-\) Area of small wedge
+When we divide our circle into sections, we get both a difference in the angle and the radius, which 
+generates another area. The difference \(\Delta A =\) Area of big wedge \(-\) Area of small wedge
 
 \emph{Radius: }\(r_k + \frac{\Delta r}{2}\) for the big wedge and \(r_k - \frac{\Delta r}{2}\) for the 
 small wedge
 
-\emph{Angle: }\(\frac{\Delta \theta}{2 \pi}\) which is the angle of the fraction of the circle 
+\emph{Angle: }\(\frac{\Delta \theta}{2 \pi}\), which is the angle of the fraction of the circle 
 because the formula for the area is \(r^2 \pi\) and the whole circle would be \(2\pi\)
 
 \emph{Final Formula for the difference in the Area}
@@ -911,7 +911,7 @@ because the formula for the area is \(r^2 \pi\) and the whole circle would be \(
     = r_k \Delta r \Delta \theta
 \]
 
-Which multiplied by the function value and by taking the limit of these sections we get that the volume:
+Multiplying by the function value and taking the limit of these sections, we get the volume:
 
 \[
     V = \int_{\theta_1}^{\theta_2} \int_{r_1 (\theta)}^{r_2 (\theta)} f(r, \theta) r \Delta r \Delta 
@@ -920,7 +920,7 @@ Which multiplied by the function value and by taking the limit of these sections
 
 \textbf{Example:}
 
-\(f(r, \theta) = r\) above cardioid \(r = 1 - \sin \theta\)
+\(f(r, \theta) = r\) above the cardioid \(r = 1 - \sin \theta\).
 
 Then
 
@@ -933,7 +933,7 @@ Then
     \frac{{(1 - \sin\theta)}^3}{3} d\theta = \frac{5 \pi}{3}
 \]
 
-\subsection{Improper Integrals over Unbounded Regions}
+\section{Improper Integrals over Unbounded Regions}
 
 If the domain of integration is unbounded (e.g., the entire plane \( \R^2 \)), the double integral is 
 defined via a limit process:
@@ -950,10 +950,10 @@ Often, using polar coordinates simplifies such cases, reducing multiple limits t
     r\, dr\, d\varphi
 \]
 
-\subsubsection{Gaussian Integral}
+\subsection{Gaussian Integral}
 
 We are going to find the integral of the \emph{unbounded integral} 
-\(e^{-x^2}\)using a combination of techniques.
+\(e^{-x^2}\) using a combination of techniques.
 
 \begin{align*}
     S &= \int_{-\infty}^{\infty} e^{-x^2}dx\\
@@ -975,7 +975,7 @@ Now let us translate to polar coordinates
 
 \QED
 
-\subsection{Triple Integrals}
+\section{Triple Integrals}
 
 The triple integral allows the computation of volume or mass in three-dimensional space.
 
@@ -1000,12 +1000,12 @@ simplify computation.
     \int_{x=a}^{x=b}\int_{y=g_1(x)}^{y=g_2(x)} \int_{f_1(x,y)}^{f_2(x,y)} dz dy dx
 \]
 
-\subsubsection{Triple Integrals in Cartesian Coordinates}
+\subsection{Triple Integrals in Cartesian Coordinates}
 
-In this short section we, will look at an example of how to calculate the volume enclose in
+In this short section, we will look at an example of how to calculate the volume enclosed
 between two functions using triple integrals.
 
-Given are the functions \(f_1(x,y) = x^2 + y^2\) and \(f_2(x,y) = 3 - x^2 - y^2\)
+Given are the functions \(f_1(x,y) = x^2 + y^2\) and \(f_2(x,y) = 3 - x^2 - y^2\).
 
 \begin{center}
     
@@ -1066,13 +1066,12 @@ using our constraint and our original functions.
     \int_{x^2 + y^3}^{3-x^2-y^2} dz dy dx
 \]
 
-Here \(z\) means the height which is just the output
+Here, \(z\) means the height, which is just the output
 of the original functions.
 
-The bounds of \(y\) just by looking at out constraint and solving for it.
-And \(x\) only depends on the concrete limit of integration.
+The bounds of \(y\) come just by looking at our constraint and solving for it, and \(x\) only depends on the concrete limit of integration.
 
-\subsubsection{Coordinate Transformation and the Jacobian Determinant}
+\subsection{Coordinate Transformation and the Jacobian Determinant}
 
 Let a coordinate transformation be defined by:
 
@@ -1125,7 +1124,7 @@ Thus, the triple integral in cylindrical coordinates becomes:
     dz
 \]
 
-\subsubsection{Calculating the center of mass with triple integrals}
+\subsection{Calculating the Center of Mass with Triple Integrals}
 
 We can make use of triple integration to calculate the center of mass of a body with
 respect to \(x\), \(y\) or \(z\) with the following formulas:
@@ -1138,26 +1137,26 @@ respect to \(x\), \(y\) or \(z\) with the following formulas:
 
 Where \(p(x,y,z)\) is our mass function.
 
-\subsection{Surfaces}
+\section{Surfaces}
 
-In vector calculus sometimes, we want to examine the surface generated by a function. An approach to analyze this surfaces is via 
+In vector calculus, we sometimes want to examine the \emph{surface} generated by a function. One approach to analyzing these surfaces is via 
 parameterization, and another is using explicit and implicit forms.
 
-\subsubsection{Explicit and Implicit Forms}
+\subsection{Explicit and Implicit Forms}
 
-For a 3d surfaces the \emph{Implicit form} is given by 
+For a 3D surface, the \emph{implicit form} is given by 
 
 \[
     F(x,y,z) = c 
 \]
 
-and the \emph{Explicit} by 
+and the \emph{explicit form} by 
 
 \[
     z = f(x,y)
 \]
 
-\subsubsection{Parametric Form}
+\subsection{Parametric Form}
 
 It is given by 
 
@@ -1169,9 +1168,9 @@ where \(a \le u \le b\) and \(c \le v \le d\).
 
 \textbf{Example:}
 
-For the example we take the cone formed by the function \(z = \sqrt{x^{2} + y^{2}}\) which is in the explicit form. 
+For the example, we take the cone formed by the function \(z = \sqrt{x^{2} + y^{2}}\), which is in the explicit form. 
 
-The implicit form is then \(0 = z - \sqrt{x^{2} + y^{2}}\) and the parametric form can be described very naturally by 
+The implicit form is then \(0 = z - \sqrt{x^{2} + y^{2}}\), and the parametric form can be described very naturally by 
 
 \[
     \vec{r}(r,\theta) = r \cos(\theta) \hat{i} + r \sin(\theta) \hat{j} + r \hat{k}
@@ -1179,16 +1178,16 @@ The implicit form is then \(0 = z - \sqrt{x^{2} + y^{2}}\) and the parametric fo
 
 using something similar to cylindrical coordinates with \(r = \sqrt{x^{2} + y^{2}}\).
 
-\subsubsection{Surface Area Formula}
+\subsection{Surface Area Formula}
 
-Continuing with the surfaces in 3d we can compute the area using the following formula 
+Continuing with the surfaces in 3D, we can compute the area using the following formula:
 
 \[
     A = \iint_{D} \left\| \frac{\partial \vec{r}}{\partial u} \times \frac{\partial \vec{r}}{\partial v} \right\| \, du \, dv.
 \]
 
-Notice that we are using the fact that the length of a cross product is the area of the parallelogram formed by vectors 
-it is orthogonal to. Using the this on a small scale with the partial of \(u\) and \(v\) and then adding up results in the formula.
+Notice that we are using the fact that the length of a cross product is the area of the parallelogram formed by the vectors 
+it is orthogonal to. Using this on a small scale with the partials of \(u\) and \(v\) and then adding up results in the formula.
 
 \textbf{Example I: Area of the sphere}
 
@@ -1347,9 +1346,9 @@ The final result is
     4 \pi \sqrt{2}
 \]
 
-\subsection{Implicit Surface Area}
+\section{Implicit Surface Area}
 
-Given a smooth, continuous surface \(F(x,y,z) = c\) where \(\langle \nabla F , \vec{p} \rangle \neq 0\) the surface area 
+Given a smooth, continuous surface \(F(x,y,z) = c\) where \(\langle \nabla F , \vec{p} \rangle \neq 0\), the surface area 
 is given by 
 
 \[
@@ -1358,7 +1357,7 @@ is given by
 
 \(\vec{p}\) can be \(\hat{i}, \hat{j}\) or \(\hat{k}\).
 
-\subsection{Explicit Surface Area}
+\section{Explicit Surface Area}
 
 Given a smooth, continuous surface \(F(x,y,z) = f(x,y) - z = 0\) where \(\nabla F = f_x \hat{i} + f_y \hat{j} - \hat{k} \), 
 \(  | \langle \nabla F , \hat{k} \rangle | = |-1| = 1\) and \( \| \nabla F \| = \sqrt{f_{x}^{2} + f_{y}^{2} + 1} \)
@@ -1367,9 +1366,9 @@ Given a smooth, continuous surface \(F(x,y,z) = f(x,y) - z = 0\) where \(\nabla 
     SA = \iint_{R}  \sqrt{f_{x}^{2} + f_{y}^{2} + 1} dA
 \]
 
-\subsection{Surface Integrals}
+\section{Surface Integrals}
 
-We define a function \(G(x,y,z)\) define on a smooth surface \(S\) with an area \(d\sigma\) whose integral is  
+We define a function \(G(x,y,z)\) defined on a smooth surface \(S\) with an area \(d\sigma\), whose integral is  
 
 \[
     SI = \iint_R G(x,y,z) d\sigma
@@ -1397,11 +1396,11 @@ Surface integral in different forms:
     SI = \iint_{R} G(x,y, f(x,y)) \frac{\|\nabla F\|}{|\langle \nabla F, \vec{p}\rangle|} dA
 \]
 
-\subsection{The Orientation of a Surface}
+\section{The Orientation of a Surface}
 
 A smooth surface is \emph{orientable} if there exists a continuous field of unit normal vectors to the surface.
 
-\subsection{The Flux of a Surface}
+\section{The Flux of a Surface}
 
 For a continuous field \( \vec{F} \) on a smooth surface \( S \) oriented with normal unit vectors \( \vec{n} \), 
 
@@ -1409,20 +1408,20 @@ For a continuous field \( \vec{F} \) on a smooth surface \( S \) oriented with n
     Flux = \iint_{S} \langle \vec{F}, \vec{n} \rangle d \sigma 
 \]
 
-where \( \sigma \) is the surface area in the corresponding form. And the normal unit \( \vec{n} \) is for parametric forms 
+where \( \sigma \) is the surface area in the corresponding form, and the normal unit vector \( \vec{n} \) for parametric forms is 
 
 \[
     \vec{n} = \frac{ \frac{ \partial \vec{r} }{ \partial u } \times \frac{ \partial \vec{r} }{ \partial v}}
     { \left\| \frac{ \partial \vec{r} }{ \partial u } \times \frac{ \partial \vec{r} }{ \partial v} \right\| }
 \]
 
-and for the implicit surfaces 
+and for implicit surfaces 
 
 \[
     \vec{n} = \frac{ \nabla g}{ \| \nabla g \| }
 \]
 
-\subsection{Curl}
+\section{Curl}
 
 Let \( \vec{F} = (F_1, F_2, F_3) : \R^3 \to \R^3 \) be a vector field.
 
@@ -1435,24 +1434,24 @@ Let \( \vec{F} = (F_1, F_2, F_3) : \R^3 \to \R^3 \) be a vector field.
 \]
 
 These describe how the field spreads or rotates around a point. 
-As a side not, the curl of the gradient of \(f\) is 0 if \(f\) has continuous mixed second derivatives.
+As a side note, the \emph{curl} of the gradient of \(f\) is 0 if \(f\) has continuous mixed second derivatives.
 
 There exists a connection between the curl and conservative vector fields. Notice that the components of the curl vector 
-are the conditions similar to the conditions for a vector field to be conservative. Therefore, a conservative vector field has no curl because 
-if the conditions are true then the curl is the zero-vector.
+are similar to the conditions for a vector field to be conservative. Therefore, a conservative vector field has no curl, because 
+if the conditions are true, then the curl is the zero vector.
 
 A point where \(\operatorname{curl}\vec{f} \ne  0\) is called a whirlpool. 
 
-\subsection{Stokes's Theorem}
+\section{Stokes's Theorem}
 
-For \(S\) a piecewise smooth oriented surface with piecewise smooth boundary \(C\) and \(\vec{F}\) a field wit continuous 
+For \(S\) a piecewise smooth oriented surface with piecewise smooth boundary \(C\), and \(\vec{F}\) a field with continuous 
 first partials for each component on an open region containing \(S\). The circulation around the curve is equal to 
 
 \[
     C = \oint_C \langle \vec{F}, d\vec{r} \rangle = \iint_S \langle (\nabla \times F), \vec{n} \rangle d\sigma
 \]
 
-\subsection{Divergence}
+\section{Divergence}
 
 We define \emph{divergence} as 
 
@@ -1462,24 +1461,22 @@ We define \emph{divergence} as
 \]
 
 
-A point where \( \operatorname{div}\vec{f} > 0\) is a called a source.
+A point where \( \operatorname{div}\vec{f} > 0\) is called a source.
 
-\subsection{The Divergence Theorem}
+\section{The Divergence Theorem}
 
-For \(S\) a piecewise smooth oriented, closed surface with piecewise smooth boundary \(C\) and \(\vec{F}\) a field wit continuous 
+For \(S\) a piecewise smooth oriented, closed surface with piecewise smooth boundary \(C\), and \(\vec{F}\) a field with continuous 
 first partials for each component on an open region containing \(S\). The flux around the curve is equal to 
 
 \[
     \iint_{S} \langle \vec{F}, \vec{n}\rangle ds = \iiint_D \langle \nabla, \vec{F} \rangle dV 
 \]
 
-\subsection{Unified View of Vector Calculus}
+\section{Unified View of Vector Calculus}
 
 Integrating a differential operator acting on a field over a domain is the same as adding the field components along the boundary.
 
-Formally: 
-
-The integral of a differential form over a boundary \(\partial \Omega\) of some orientable mainfold \(\Omega\) is equal to the integral of its exterior 
+Formally, the integral of a differential form over a boundary \(\partial \Omega\) of some orientable manifold \(\Omega\) is equal to the integral of its exterior 
 derivative over the whole of \(\Omega\).
 
 \[

@@ -1,29 +1,29 @@
+\chapter{Growth Models}
 
-\chapter{Growth}
+\emph{Growth models} are fundamental to understanding population dynamics, resource consumption, and many natural and artificial processes. Two 
+primary models of growth are the \textbf{exponential} and the \textbf{logistic} growth models. Each of these has discrete and continuous forms.
 
-Growth models are fundamental in understanding population dynamics, resource consumption, and many natural and artificial processes. Two primary models of growth are the \textbf{exponential} and the \textbf{logistic} growth models. Each of these has discrete and continuous forms.
+\section{Exponential Growth}
 
-\subsection{Exponential Growth}
+\emph{Exponential growth} describes a process that increases at a rate proportional to its current value.
 
-Exponential growth describes a process that increases at a rate proportional to its current value.
-
-\subsubsection{Discrete Exponential Growth}
+\subsection{Discrete Exponential Growth}
 
 \[
-  P_{n} = P_0 \cdot (1 + r)^n
+  P_{n} = P_0 \cdot (1 + r)^n,
 \]
 
-Where:
+where:
 
 \begin{itemize}
 
-  \item \(P_n\) is the population at time step \(n\)
+  \item \(P_n\) is the population at time step \(n\).
 
-  \item \(P_0\) is the initial population
+  \item \(P_0\) is the initial population.
 
-  \item \(r\) is the growth rate per time step
+  \item \(r\) is the growth rate per time step.
 
-  \item \(n\) is the number of time steps
+  \item \(n\) is the number of time steps.
 
 \end{itemize}
 
@@ -32,24 +32,24 @@ Where:
 If \(P_0 = 100\) and \(r = 0.1\), after 5 steps:
 
 \[
-  P_5 = 100 \cdot {(1 + 0.1)}^5 = 100 \cdot 1.61051 \approx 161.05
+    P_5 = 100 \cdot {(1 + 0.1)}^5 = 100 \cdot 1.61051 \approx 161.05.
 \]
 
-\subsubsection{Continuous Exponential Growth}
+\subsection{Continuous Exponential Growth}
 
-  \[
-P(t) = P_0 \cdot e^{rt}
+\[
+    P(t) = P_0 \cdot e^{rt},
 \]
 
-Where:
+where:
 
 \begin{itemize}
 
-  \item \(P(t)\) is the population at time \(t\)
+  \item \(P(t)\) is the population at time \(t\).
 
-  \item \(e\) is Euler’s number (\(\approx 2.718\))
+  \item \(e\) is Euler’s number (\(\approx 2.718\)).
 
-  \item \(r\) is the continuous growth rate
+  \item \(r\) is the continuous growth rate.
 
 \end{itemize}
 
@@ -58,7 +58,7 @@ Where:
 If \(P_0 = 100\), \(r = 0.1\), and \(t = 5\):
 
 \[
-    P(5) = 100 \cdot e^{0.5} \approx 100 \cdot 1.64872 \approx 164.87
+    P(5) = 100 \cdot e^{0.5} \approx 100 \cdot 1.64872 \approx 164.87.
 \]
 
 \begin{center}
@@ -77,17 +77,17 @@ If \(P_0 = 100\), \(r = 0.1\), and \(t = 5\):
     \end{tikzpicture}
 \end{center}
 
-\subsection{Logistic Growth}
+\section{Logistic Growth}
 
-Logistic growth occurs when a population grows rapidly at first and then slows as it approaches a maximum sustainable size (carrying capacity).
+\emph{Logistic growth} occurs when a population grows rapidly at first and then slows as it approaches a maximum sustainable size (carrying capacity).
 
-\subsubsection{Discrete Logistic Growth}
+\subsection{Discrete Logistic Growth}
 
 \[
-    P_{n+1} = P_n + r \cdot P_n \cdot \left(1 - \frac{P_n}{K}\right)
+    P_{n+1} = P_n + r \cdot P_n \cdot \left(1 - \frac{P_n}{K}\right),
 \]
 
-Where:
+where:
 
 \begin{itemize}
 
@@ -102,7 +102,7 @@ Where:
 With \(P_0 = 10\), \(r = 0.5\), \(K = 100\):
 
 \[
-    P_1 = 10 + 0.5 \cdot 10 \cdot \left(1 - \frac{10}{100}\right) = 10 + 0.5 \cdot 10 \cdot 0.9 = 10 + 4.5 = 14.5
+    P_1 = 10 + 0.5 \cdot 10 \cdot \left(1 - \frac{10}{100}\right) = 10 + 0.5 \cdot 10 \cdot 0.9 = 10 + 4.5 = 14.5.
 \]
 
 \begin{center}
@@ -139,10 +139,10 @@ With \(P_0 = 10\), \(r = 0.5\), \(K = 100\):
     \end{tikzpicture}
 \end{center}
 
-\subsubsection{Continuous Logistic Growth}
+\subsection{Continuous Logistic Growth}
 
 \[
-    P(t) = \frac{K}{1 + \left( \frac{K - P_0}{P_0} \right)e^{-rt}}
+    P(t) = \frac{K}{1 + \left( \frac{K - P_0}{P_0} \right)e^{-rt}}.
 \]
 
 \textbf{Example:}
@@ -150,7 +150,7 @@ With \(P_0 = 10\), \(r = 0.5\), \(K = 100\):
 With \(P_0 = 10\), \(K = 100\), and \(r = 0.5\), at \(t = 5\):
 
 \[
-    P(5) = \frac{100}{1 + \left( \frac{90}{10} \right)e^{-0.5 \cdot 5}} = \frac{100}{1 + 9e^{-2.5}} \approx \frac{100}{1.7387} \approx 57.52
+    P(5) = \frac{100}{1 + \left( \frac{90}{10} \right)e^{-0.5 \cdot 5}} = \frac{100}{1 + 9e^{-2.5}} \approx \frac{100}{1.7387} \approx 57.52.
 \]
 
 \begin{center}

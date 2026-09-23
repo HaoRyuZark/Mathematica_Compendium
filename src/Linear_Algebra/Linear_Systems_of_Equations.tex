@@ -1,9 +1,6 @@
-
 \chapter{Linear Systems of Equations}
 
-\section{Linear Systems Standard Form}
-
-A linear system of equations is a set of equations that can be expressed in the form:
+A \emph{linear system of equations} is a set of equations that can be expressed in the form:
 
 \begin{align*}
     a_{1,1}x_1 + a_{1,2}x_2 + \cdots + a_{1,n}x_n & = b_1  \\
@@ -16,20 +13,20 @@ where \( a_{i,j} \) are the coefficients of the variables \( x_j \), and \( b_i 
 on the right-hand side of the equations. The goal is to find the values of \( x_1, x_2, \ldots, x_n \)
 that satisfy all equations simultaneously.
 
-More formally, given \(M, N\) with \(f: M \to N\). For each \(n \in N\) is the corresponding 
-\emph{linear system of equation} given by 
+More formally, given \(M, N\) with \(f: M \to N\), for each \(n \in N\) the corresponding 
+\emph{linear system of equations} is given by 
 
 \[
-    f(m) = n
+    f(m) = n,
 \]
 
-With the solution set 
+with the solution set 
 
 \[
-    f^{-1}(\{n\}) = \{m \in M \mid f(m) = n\}
+    f^{-1}(\{n\}) = \{m \in M \mid f(m) = n\}.
 \]
 
-Wit the following types of solutions depending on the nature of \(f\)
+There are the following types of solutions depending on the nature of \(f\):
 
 \begin{itemize}
  
@@ -39,7 +36,7 @@ Wit the following types of solutions depending on the nature of \(f\)
 
 \end{itemize}
 
-\section{Linear System as Matrices}
+\section{Linear System As Matrices}
 
 A linear system can be represented in matrix form as:
 
@@ -47,39 +44,36 @@ A linear system can be represented in matrix form as:
     A x = b
 \]
 
-Where \(A\) is the coefficient matrix, \(x\) is the vector of variables, and \(b\) is the vector
-of constants. The coefficient matrix \(A\) is an \( m \times n \) matrix, where \( m \) is the number
-of equations and \(n\) is the number of variables. The vector \(x\) is an \( n \times 1 \) column
+where \(A\) is the coefficient matrix, \(x\) is the vector of variables, and \(b\) is the vector of constants. The coefficient matrix \(A\) is an 
+\( m \times n \) matrix, where \( m \) is the number of equations and \(n\) is the number of variables. The vector \(x\) is an \( n \times 1 \) column
 vector, and the vector \(b\) is an \( m \times 1 \) column vector.
 
-\subsection{Solution Set of a Linear System}
+\section{Solution Set Of A Linear System}
 
-In the context of Definition 6.1, the solution set \( L(A, b) \) of the system of equations associated
-with \( (A, b) \) is defined as
+The solution set \( L(A, b) \) of the system of equations associated with \( (A, b) \) is defined as
 
 \[
     L(A, b) := \{ x \in \field^n \mid Ax = b \}.
 \]
 
-\subsubsection{Reduced Echelon Form}
+\section{Reduced Echelon Form}
 
-For a matrix \(A \in \field^{m \times n}\) with rows \(Z_1, \dots, Z_n\). 
-
-We define \(i \in \underbar{m}\) the \(i\)-t \emph{echelon index} \(Ei_i(A)\) as 
+For a matrix \(A \in \field^{m \times n}\) with rows \(Z_1, \dots, Z_n\), we define for \(i \in \underbar{m}\) the \(i\)-th \emph{echelon index} 
+\(Ei_i(A)\) as 
 
 \[
-    Ei := \min \{j \in \underbar{n} \mid A_{i,j} \ne 0\}
+    Ei := \min \{j \in \underbar{n} \mid A_{i,j} \ne 0\}.
 \]
 
 We define the \emph{echelon form} as the sequence 
 
 \[
-    Ei(A) := (Ei_1 (A), Ei_2 (A), \dots,Ei_s (A))
+    Ei(A) := (Ei_1 (A), Ei_2 (A), \dots,Ei_s (A)).
 \]
 
 If the index of all \(Ei_i(A)\) coincides with the column number, then we call it the \emph{strict echelon form}.
 
-\subsection{Equality of the Rank \texorpdfstring{\(\rank(A) = \rank_S(A)\)}{}}
+\section{Equality of the Rank \texorpdfstring{\(\rank(A) = \rank_S(A)\)}{}}
 
 We have \(\rank(A) = \rank_S(A)\).
 
@@ -104,7 +98,7 @@ It follows that
     = \dim(L(a_1, \ldots, a_n)) = \rank_S(A).
 \]
 
-\subsection{Solvability of the Linear System \texorpdfstring{\(Ax = b\)}{}}
+\section{Solvability Of A Linear System \texorpdfstring{\(Ax = b\)}{}}
 
 The linear system \(Ax = b\) is solvable if and only if
 
@@ -134,7 +128,7 @@ Therefore, a solution vector \(x\) exists if and only if
 
 where \(L(a_1, \ldots, a_n)\) denotes the linear span of \(a_1, \ldots, a_n\).
 
-\subsection{Solution Set of the Linear System \texorpdfstring{\(Ax = b\)}{}}
+\section{Solution Set Of The Linear System \texorpdfstring{\(Ax = b\)}{}}
 
 Let \(x_s \in \field^n\) be a solution of \(Ax = b\). Then the solution set is given by
 
@@ -148,16 +142,14 @@ Let \(x_s \in \field^n\) be a solution of \(Ax = b\). Then the solution set is g
     x \in \ker(A) \;\iff\; Ax = 0 \;\iff\; A(x_s + x) = Ax_s + Ax = Ax_s = b.
 \]
 
-\subsection{Free Variables}
+\section{Free Variables}
 
-In a system of linear equations, a \emph{free variable} is a variable whose column in the coefficient
-matrix does not correspond to a pivot column after row reduction. Free variables are not directly solved by
-any equation in the system; instead, they can take any real value, and the values of the leading
-(or dependent) variables are expressed in terms of them.
+In a system of linear equations, a \emph{free variable} is a variable whose column in the coefficient matrix does not correspond to a pivot column 
+after row reduction. Free variables are not directly solved by any equation in the system; instead, they can take any real value, and the values of 
+the leading (or dependent) variables are expressed in terms of them.
 
-Free variables arise naturally in systems with infinitely many solutions and play a key role in
-describing the solution set. Given a system of with \(p\) equations and \(q\) unknowns then if
-\(q > p\) then there are \(q - p\) free variables.
+Free variables arise naturally in systems with infinitely many solutions and play a key role in describing the solution set. Given a system with 
+\(p\) equations and \(q\) unknowns, if \(q > p\) then there are \(q - p\) free variables.
 
 \textbf{Example:}
 
@@ -179,11 +171,10 @@ which row reduces to
     \end{bmatrix}.
 \]
 
-Here, the pivot is in the first column corresponding to \( x_1 \), while \( x_2 \) and \( x_3 \) are free
-variables. Assigning parameters to \( x_2 \) and \( x_3 \), the general solution can be expressed in terms
-of these free variables.
+Here, the pivot is in the first column corresponding to \( x_1 \), while \( x_2 \) and \( x_3 \) are free variables. Assigning parameters to \( x_2 \) 
+and \( x_3 \), the general solution can be expressed in terms of these free variables.
 
-\subsection{Gaussian Elimination}
+\section{Gaussian Elimination}
 
 \emph{Gaussian elimination} is a method for solving linear systems by transforming the system into an upper
 triangular form. The steps involved in Gaussian elimination are:
@@ -203,23 +194,21 @@ The forward elimination process involves performing row operations on the augmen
 
 \begin{itemize}
 
-    \item Swapping two rows
+    \item Swapping two rows.
 
-    \item Multiplying a row by a non-zero scalar
+    \item Multiplying a row by a non-zero scalar.
 
-    \item Adding or subtracting a multiple of one row from another row
+    \item Adding or subtracting a multiple of one row from another row.
 
 \end{itemize}
 
-These steps are defined as linear maps applied to a system like \(f(m) = n\) to \((g \circ f)(m) = g(n)\).
-We need to be able to find the respective inverses to get to the result \((g \circ f)^{-1}({g(n)}) = n\). This 
-is accomplished via the \emph{elementary matrices}.
+These steps are defined as linear maps applied to a system like \(f(m) = n\) to \((g \circ f)(m) = g(n)\). We need to be able to find the respective inverses 
+to get to the result \((g \circ f)^{-1}({g(n)}) = n\). This is accomplished via the \emph{elementary matrices}.
 
-Once the matrix is in upper triangular form, back substitution is used to find the values of the
-variables. The last equation gives the value of the last variable, which can then be substituted into
-the previous equations to find the other variables.
+Once the matrix is in upper triangular form, back substitution is used to find the values of the variables. The last equation gives the value of the last 
+variable, which can then be substituted into the previous equations to find the other variables.
 
-\subsubsection*{Procedure}
+\subsection{Procedure}
 
 Starting with \(Ax = b\)
 
@@ -240,11 +229,11 @@ For eliminating the elements underneath a pivot element we apply
     \text{Row}_n - \frac{a_{n, i}}{a_{n - 1, i}} \text{Row}_{n - 1},
 \]
 
-where \(n\) the index of the target row and \(i\) the index of the column.
+where \(n\) is the index of the target row and \(i\) is the index of the column.
 
-We denote the coefficient \(\frac{a_{n, i}}{a_{n - 1, i}} = l_{n, i}\) 
+We denote the coefficient \(\frac{a_{n, i}}{a_{n - 1, i}} = l_{n, i}\).
 
-This results into
+This results in
 
 \[  
     \left[
@@ -257,12 +246,11 @@ This results into
     \right]
 \]
 
-With \(\lambda\) and \(\gamma\) being a complex sums of results of the other manipulations.
+With \(\lambda\) and \(\gamma\) being complex sums of the results of the other manipulations.
 
-\subsection{Invariability of the Solution Set}
+\section{Invariability of the Solution Set}
 
-Let \( f : M \to N \) and \( n \in N \). For every bijective map 
-\( g : N \to N \), the following holds for the fiber of \( f \) over \( n \):
+Let \( f : M \to N \) and \( n \in N \). For every bijective map \( g : N \to N \), the following holds for the fiber of \( f \) over \( n \):
 
 \[
     f^{-1}(\{n\}) = (g \circ f)^{-1}(\{g(n)\}).
@@ -272,18 +260,15 @@ Let \( f : M \to N \) and \( n \in N \). For every bijective map
 
 The first inclusion does not use the bijectivity of \( g \):
 
-Let \( m \in f^{-1}(\{n\}) \), i.e.\ \( f(m) = n \). Then
-\( g(f(m)) = g(n) \), i.e.\ \( m \in (g \circ f)^{-1}(\{g(n)\}) \).
-For the reverse implication one needs a left inverse of \( g \),
-which of course exists because \( g \) is bijective.
+Let \( m \in f^{-1}(\{n\}) \), i.e.\ \( f(m) = n \). Then \( g(f(m)) = g(n) \), i.e.\ \( m \in (g \circ f)^{-1}(\{g(n)\}) \).
+For the reverse implication one needs a left inverse of \( g \), which of course exists because \( g \) is bijective.
 
 \QED 
 
-\subsection{Gauss-Jordan Elimination}
+\section{Gauss-Jordan Elimination}
 
-Gauss-Jordan elimination is an extension of Gaussian elimination that transforms the matrix into
-reduced row echelon form (RREF). In RREF, each leading entry in a row is 1, and all entries above and
-below the leading entry are zeros. The steps involved in Gauss-Jordan elimination are:
+\emph{Gauss-Jordan elimination} is an extension of Gaussian elimination that transforms the matrix into reduced row echelon form (RREF). In RREF, each 
+leading entry in a row is 1, and all entries above and below the leading entry are zeros. The steps involved in Gauss-Jordan elimination are:
 
 \begin{enumerate}
 
@@ -296,9 +281,8 @@ below the leading entry are zeros. The steps involved in Gauss-Jordan eliminatio
 
 \end{enumerate}
 
-The Gauss-Jordan elimination method is particularly useful for finding the inverse of a matrix, as it 7
-can be applied to the augmented matrix \([A | I]\), where \(I\) is the identity matrix. If the left side
-of the augmented matrix becomes \(I\), then the right side will be the inverse of \(A\).
+The Gauss-Jordan elimination method is particularly useful for finding the inverse of a matrix, as it can be applied to the augmented matrix \([A | I]\), 
+where \(I\) is the identity matrix. If the left side of the augmented matrix becomes \(I\), then the right side will be the inverse of \(A\).
 
 \textbf{Example:}
 
@@ -346,7 +330,7 @@ Thus, the solution to the system is:
     z & = 1
 \end{align*}
 
-\subsection{Homogeneous Linear Equations}
+\section{Homogeneous Linear Equations}
 
 A linear equation is said to be \emph{homogeneous} if its constant term is zero. That is, it
 can be written in the form:
@@ -357,13 +341,12 @@ can be written in the form:
 
 Such equations always have at least the trivial solution \(x_1 = x_2 = \cdots = x_n = 0\).
 
-\subsection{Particular Solution}
+\section{Particular Solution}
 
-A \emph{particular solution} to a linear system of equations is a specific solution that satisfies the system.
-It can be found using various methods, including substitution, elimination, or matrix methods. A
-particular solution is not unique; there may be multiple particular solutions depending on the system.
-A particular solution can be found by substituting specific values for the variables and solving for the
-remaining variables. For example, in the system
+A \emph{particular solution} to a linear system of equations is a specific solution that satisfies the system. It can be found using various methods, 
+including substitution, elimination, or matrix methods. A particular solution is not unique; there may be multiple particular solutions depending on the 
+system. A particular solution can be found by substituting specific values for the variables and solving for the remaining variables. For example, in 
+the system:
 
 \begin{align*}
     2x + 3y & = 5 \\
@@ -381,7 +364,7 @@ we can substitute \(x = 1\) into the first equation to find \(y\):
 Thus, \((x, y) = (1, 1)\) is a particular solution to the system. However, this is not the only solution;
 other values of \(x\) may yield different values of \(y\).
 
-\subsection{General = Particular + Homogeneous}
+\section{General = Particular + Homogeneous}
 
 The \emph{general solution} of a linear system of equations is the complete set of solutions that satisfy the
 system. It can be expressed as the sum of a particular solution and the general solution of the associated
@@ -398,7 +381,7 @@ solution to the homogeneous system. The homogeneous system is obtained by settin
 of the equations to zero:
 
 \[
-    A x = 0
+    A x = 0.
 \]
 
 The theorem says:
@@ -417,8 +400,8 @@ elimination.
 
 \textbf{Proof:}
 
-We want to proof that every linear system of equations \(Ax = b\) which has at least one solution fulfills 
-the following properties 
+We want to prove that every linear system of equations \(Ax = b\) which has at least one solution fulfills 
+the following properties:
 
 \begin{enumerate}
 
@@ -428,19 +411,19 @@ the following properties
 
 \end{enumerate}
 
-For the first property the solution of \(Ax = 0\) is the \(\ker(A)\) more precisely \(\ker(\phi_A)\) and thus, 
-it is not empty because \(0 \in \ker(A)\)
+For the first property, the solution of \(Ax = 0\) is \(\ker(A)\), more precisely \(\ker(\phi_A)\), and thus 
+it is not empty because \(0 \in \ker(A)\).
 
-The second proposition follows for the second one because the addition of the zero vector to a linear 
+The second proposition follows because the addition of the zero vector to a linear 
 combination of other vectors just gives you the original combination by the axioms of the vector spaces.
 
 \QED 
 
-\subsection{Linear Combination Lemma}
+\section{Linear Combination Lemma}
 
 Any linear combination of linear combinations is a linear combination.
 
-\subsection{Example: Gaussian Elimination with 3 Equations and 4 Unknowns}
+\section{Example: Gaussian Elimination with 3 Equations and 4 Unknowns}
 
 Consider the following system of linear equations:
 
@@ -492,21 +475,26 @@ Consider the following system of linear equations:
 \textbf{Step 4: Back Substitution}
 
 From Row 3:
+
 \[
     2x_3 = 1 \implies x_3 = \frac{1}{2}
 \]
 
 From Row 2:
+
 \[
     x_2 - x_3 + x_4 = 2 \implies x_2 = 2 + x_3 - x_4 = 2 + \frac{1}{2} - x_4 = \frac{5}{2} - x_4
 \]
 
 From Row 1:
+
 \[
     x_1 + 2x_2 + x_3 + x_4 = 4
     \implies x_1 = 4 - 2x_2 - x_3 - x_4
 \]
+
 Substitute:
+
 \[
     x_1 = 4 - 2\left( \frac{5}{2} - x_4 \right) - \frac{1}{2} - x_4
     = 4 - 5 + 2x_4 - \frac{1}{2} - x_4
@@ -542,9 +530,9 @@ Let \(x_4 = t\) (free variable), then:
     \right\}
 \]
 
-\subsection{The Determinant, the cross product and the solutions of linear Systems of Equations}
+\section{The Determinant, The Cross Product And The Solutions Of Linear Systems Of Equations}
 
-A linear system of three equation has the following properties:
+A linear system of three equations has the following properties:
 
 \begin{itemize}
 
@@ -568,7 +556,7 @@ A linear system of three equation has the following properties:
 
 \end{itemize}
 
-\subsection{Chart for the number of solutions}
+\section{Chart for the number of solutions}
 
 \begin{tikzpicture}[node distance=1cm and 2cm]
     \node [terminator] (start) {Linear \(n \times n\) System};
@@ -602,7 +590,7 @@ A linear system of three equation has the following properties:
     \path [connector] (decision2.south east) -- node[above right] {Yes} (oneS.north west);
 \end{tikzpicture}
 
-\subsection{Proof of the Gaussian Elimination}
+\section{Proof of the Gaussian Elimination}
 
 The row operations do not change the solution set.
 
@@ -612,7 +600,7 @@ A linear system of equations of the form \(Ax = b\), \(A \in \field^{m \times n}
 \(x\) can be multiplied by some elementary matrix \(C_1, C_2, C_3\) which correspond to a row
 operation \(CAx = Cb\).
 
-The Equality is kept and therefore, \(L(A,b) \subset L(CA, Cb)\). If \(x \in L(CA, Cb)\) then
+The equality is kept and therefore, \(L(A,b) \subset L(CA, Cb)\). If \(x \in L(CA, Cb)\) then
 
 \[
     CAx = Cb \implies C^{-1}CAx = C^{-1}Cb \implies Ax = b
@@ -620,10 +608,10 @@ The Equality is kept and therefore, \(L(A,b) \subset L(CA, Cb)\). If \(x \in L(C
 
 Because of the invertibility of elementary matrices we can be sure that  \(L(CA, Cb) \subset L(A,b) \).
 
-Now for the case that \(L(A,b) = \emptyset\). If we assume that \(L(CA,CB) \ne \emptyset \), then
-there would be some \(x \in L(CA,CB)\) with \(CAx = Cb\). By multiplying both side by \(C^{-1}\) we
-get \(Ax = b\) and therefore, \(L(A, b) \ne \emptyset \),  which is a contradiction to our original
-assumption  \(L(A,b) = \emptyset\).
+Now for the case that \(L(A,b) = \emptyset\). If we assume that \(L(CA,Cb) \ne \emptyset \), then
+there would be some \(x \in L(CA,Cb)\) with \(CAx = Cb\). By multiplying both sides by \(C^{-1}\) we
+get \(Ax = b\) and therefore, \(L(A, b) \ne \emptyset \), which is a contradiction to our original
+assumption \(L(A,b) = \emptyset\).
 
 \QED
 
@@ -633,13 +621,13 @@ the rank of the matrix.
 
 \textbf{Proof:}
 
-If \(C\) is an elementary matrix and \(A \in \field^{m \times n}\) some matrix. The statement \(rg(CA) = rg(A)\)
+If \(C\) is an elementary matrix and \(A \in \field^{m \times n}\) some matrix. The statement \(\rank(CA) = \rank(A)\)
 is true because of the invertibility of the elementary matrices and the isomorphism in vector spaces.
 
 Given \(A = (a_1, a_2, \dots, a_n)\). The exchange of two columns preserves \(L := L(a_1, \dots, a_n)\),
-and also the \(rg_s (A)\). Concerning the scaling of a column by some \(\lambda \) \(L := L(a_1, \dots, \lambda a_k, \dots, a_n)\)
-also preserves \(dim(L) = rg_s(A)\). And finally, the addition \(L = L(a_1, \dots, a_i + \lambda a_k, \dots, a_n)\) also preserves
-\(rg_s (A) = rg(A)\). Thus, \(rg(CA) = rg(A)\).
+and also the \(\rank_s (A)\). Concerning the scaling of a column by some \(\lambda \), \(L := L(a_1, \dots, \lambda a_k, \dots, a_n)\)
+also preserves \(dim(L) = \rank_s(A)\). And finally, the addition \(L = L(a_1, \dots, a_i + \lambda a_k, \dots, a_n)\) also preserves
+\(\rank_s (A) = \rank(A)\). Thus, \(\rank(CA) = \rank(A)\).
 
 \QED
 
@@ -665,11 +653,11 @@ like:
     \end{bmatrix}
 \]
 
-Because of \(rg(A) = rg(A^{(\ell)})\), \(a^{(\ell)}_{i,i} \ne 0\) for \(1 \le i < k\). All of these
+Because of \(\rank(A) = \rank(A^{(\ell)})\), \(a^{(\ell)}_{i,i} \ne 0\) for \(1 \le i < k\). All of these
 elements will not change for the rest of the Gaussian Elimination. Now we want to build another matrix
-with row operations \(A^{(\mu)}\) where \(a^{(\mu)}_{k,k} \ne 0\) and \(a^{(\mu)}_{i,k} = 0\) for
-\(i > k\). If \(a^{(\ell)}_{k,k} \ne 0\) then \((i,k)\)-th element will become 0 by subtracting
-\(\frac{a^{(\ell)}_{ink}}{a^{(\ell)}_{k,k}}\) time the \(k\)-th row of the \(i\)-th row. So can the \(k\)-th
+with row operations \(A^{(\mu)}\) where \(a^{(\mu)}_{k,k} \ne 0\) and \(a^{(\mu)}_{i,k} = 0\) for \(i > k\).
+If \(\ a^{(\ell)}_{k,k} \ne 0\) then \((i,k)\)-th element will become 0 by subtracting
+\(\frac{a^{(\ell)}_{i,k}}{a^{(\ell)}_{k,k}}\) time the \(k\)-th row of the \(i\)-th row. So can the \(k\)-th
 column be transformed with a series of row operations to the desired form. But if \(a^{(\ell)}_{k,k} = 0\),
 then you have to swap it with another row under it. This is the critical point of the algorithm: What
 if there is no row, also \(a^{(\ell)}_{i,k} = 0\) for \(i \ge k\)? Then \(A^{(\ell)}\) would be:
@@ -688,18 +676,18 @@ if there is no row, also \(a^{(\ell)}_{i,k} = 0\) for \(i \ge k\)? Then \(A^{(\e
 \]
 
 But, that would imply that the \(k\)-th column is a linear combination of the other \(k - 1\) columns,
-and then \(rg(A^{(\ell)}) \le n - 1\) which is a contradiction to the assumption  \(rg(A^{(\ell)}) = n\)
+and then \(\rank(A^{(\ell)}) \le n - 1\) which is a contradiction to the assumption \(\rank(A^{(\ell)}) = n\).
 
 \QED
 
-\subsection{Alternative Method for finding the Rank of a matrix}
+\section{Alternative Method For Finding The Rank Of A Matrix}
 
-For a matrix \(A \in \field^{(m \times n)}\). The biggest submatrix of the size \(r \times r\) with a
-non-zero determinant gives us the \emph{rank} of the matrix. \(rg(A) = r\).
+For a matrix \(A \in \field^{(m \times n)}\). The biggest submatrix of size \(r \times r\) with a
+non-zero determinant gives us the \emph{rank} of the matrix. \(\rank(A) = r\).
 
-\subsection{Cramer's Rule}
+\section{Cramer's Rule}
 
-For a square matrix \(A = (a_1, \dots, a_n)\) and \(x,b \in \field^{n}\) with \(Ax = b\) with \(\det A \ne 0\)
+For a square matrix \(A = (a_1, \dots, a_n)\) and \(x,b \in \field^{n}\) with \(Ax = b\) and \(\det A \ne 0\),
 then
 
 \[
@@ -728,8 +716,7 @@ Given a matrix \(X_i \in \field^{n \times n}\) by
     \end{bmatrix}
 \]
 
-\(X_i = (e_1, \dots, e_{i - 1}, e_i, e_{i + 1}, \dots, e_n)\). By using an \(n\)-times the
-Laplace formula in the first row shows \(|X_i| = x_i\).
+\(X_i = (e_1, \dots, e_{i - 1}, e_i, e_{i + 1}, \dots, e_n)\). Applying the Laplace formula \(n\) times along the first row shows that \(|X_i| = x_i\).
 
 \begin{align*}
     A X_i & = A (e_1, \dots, e_{i - 1}, e_i, e_{i + 1}, \dots, e_n)     \\
@@ -737,35 +724,32 @@ Laplace formula in the first row shows \(|X_i| = x_i\).
     A X_i & = A (a_1, \dots, a_{i - 1}, b, a_{i + 1}, \dots, a_n) = A_i
 \end{align*}
 
-This implies \(|A_i| = |AX_i| = |A||X_i|\) therefore, \(x_i = \frac{|A_i|}{A}\).
+This implies \(|A_i| = |AX_i| = |A||X_i|\) therefore, \(x_i = \frac{|A_i|}{\det(A)}\).
 
 \QED
 
-Another way of thinking about this in a more geometric way is to first think at the determinant as
-the area/volume/etc. that is spanned by the basis vector and the stretching factor of the transformation
-\(\det(A)\). Now visualize your matrix \(A\) as a linear transformation with
-a non-zero determinant and think about \(\det(A_i)\) as the area/volume/etc. which is spanned by the
-basis vector but with one of the vector substituted by \(b\).
+Another way of thinking about this in a more geometric way is to first think of the determinant as the area/volume/etc. that is spanned by the basis 
+vector and the stretching factor of the transformation \(\det(A)\). Now visualize your matrix \(A\) as a linear transformation with
+a non-zero determinant and think about \(\det(A_i)\) as the area/volume/etc. which is spanned by the basis vector but with one of the vectors substituted 
+by \(b\).
 
-Now in two dimensions, think of the area spanned by the basis vectors \(A = xy\).
-The signed area of the original parallelogram gets
-stretched by \(\det(A)\) this gives us \(Area = \det(A)y \implies y = \frac{Area}{\det(A)}\). This
-also works for \(x\).
+Now in two dimensions, think of the area spanned by the basis vectors \(A = xy\). The signed area of the original parallelogram gets
+stretched by \(\det(A)\), which gives us \(Area = \det(A)y \implies y = \frac{Area}{\det(A)}\). This also works for \(x\).
 
-\subsection{LU Decomposition}
+\section{LU Decomposition}
 
-Given a regular system \(Ax = b\) with \(a_{k,k}^{(k - 1)} \ne 0\), then the Gaussian elimination delivers a so called 
+Given a regular system \(Ax = b\) with \(a_{k,k}^{(k - 1)} \ne 0\), then the Gaussian elimination delivers a so-called 
 \emph{\(LU\)-Decomposition} 
 
 \[
     A = LU
 \]
 
-of \(A\), where \(L\) is a under triangular matrix with main diagonal consisting of only of ones and 
-\(U\) being a upper triangular matrix. \(a_{k,k}^{(k - 1)} \ne 0\) depicts the elements of the main diagonal for the 
+of \(A\), where \(L\) is a lower triangular matrix with main diagonal consisting only of ones and 
+\(U\) being an upper triangular matrix. \(a_{k,k}^{(k - 1)} \ne 0\) denotes the elements of the main diagonal for the 
 \(k - 1\) matrix generated after applying a Gauss operation.
 
-\subsubsection*{Derivation}
+\subsection{Derivation}
 
 Given our matrix \(A\), we want to eliminate the coefficients underneath the main diagonal. This is accomplished by applying an elementary matrix of the form: 
 
@@ -823,7 +807,7 @@ To eliminate \(a_{2,1}\) we need to subtract \(\frac{a_{2,1}}{a_{1,1}}\) times t
     \end{bmatrix}
 \]
 
-The multiplication results into
+The multiplication results in
 
 \[
     FA = 
@@ -887,7 +871,7 @@ The individual members are
 
 Therefore \(A = LU\) and \(Ly = b\).
 
-\subsubsection{Algorithm}
+\subsection{Algorithm}
 
 Overview: 
 
@@ -903,20 +887,21 @@ Overview:
 
 Concrete algorithm: 
 
-Start with the your \(n \times n\) matrix perform the following steps across all of the 
+Start with your \(n \times n\) matrix and perform the following steps across all of the 
 entries in the main diagonal and its corresponding sub-square-matrix.
 
 \begin{enumerate}
 
-    \item Take current diagonal element and proceed to divide all entries in the same column underneath by it. Do not forget, that if we are in a sub-matrix.
+    \item Take the current diagonal element and proceed to divide all entries in the same column underneath by it. Do not forget that we may be working 
+    within a sub-matrix.
 
     \item The current row of our matrix is going to be subtracted from all of the rows underneath inside our sub-matrix. The factor we 
-    are going to use for our row at each subtraction is going to be first entry of the current column inside our sub-matrix.
+    are going to use for our row at each subtraction is going to be the first entry of the current column inside our sub-matrix.
     
     \item We reduce the scope of our matrix and repeat the steps above until we have a 1 by 1 matrix.
     
-    \item After the previous process, the resulting matrix will be divided into two matrices. \(L\) consisting on 
-    the elements underneath the main diagonal with it being all ones and above all zeros; and \(U\) begin the rest upper triangular matrix.
+    \item After the previous process, the resulting matrix will be divided into two matrices. \(L\) consisting of 
+    the elements underneath the main diagonal with it being all ones and above all zeros; and \(U\) being the rest, the upper triangular matrix.
 
 \end{enumerate}
 
@@ -1062,21 +1047,21 @@ Then we solve \(Ux = y\)
     \end{bmatrix} 
 \]
 
-\subsubsection{Extended Algorithm for Any Regular Matrix}
+\subsection{Extended Algorithm for Any Regular Matrix}
 
 We want to expand the algorithm to be compatible with the swap rows operations. Given a regular matrix 
-\(A^{(k - 1)} = F_{k - 1} \cdot \dots \cdot F_1 A\), where after a Gaussian operations we get \(a_{k,k}^{(k - 1)} = 0\), then 
-there exists in the \(k\)-th. row underneath at a least a \(a_{i,k}^{(k - 1)} \ne 0, i > k\), so that we can swap the rows.
+\(A^{(k - 1)} = F_{k - 1} \cdot \dots \cdot F_1 A\), where after Gaussian operations we get \(a_{k,k}^{(k - 1)} = 0\), then 
+there exists in the \(k\)-th row underneath at least one \(a_{i,k}^{(k - 1)} \ne 0, i > k\), so that we can swap the rows.
 
 \textbf{Proof:}
 
-Let us suppose, that there does not exists such an element; then the \(k-th\) column must be a linear combination of the other 
+Let us suppose that there does not exist such an element; then the \(k\)-th column must be a linear combination of the other 
 columns because there is a free variable, which contradicts our initial assumption. Note that due to \(F_{i}\) also being regular, the multiplication 
 of \(A^{(k - 1)}\) must also be regular. Therefore, it is always possible to swap rows.
 
 \QED
 
-\subsubsection{Derivation of the Algorithm}
+\subsection{Derivation of the Algorithm}
 
 We start with the same setup as before, but now we also have 
 
@@ -1095,7 +1080,7 @@ We start with the same setup as before, but now we also have
     \end{bmatrix}
 \]
 
-which the following properties \(P = P^T\) and \(PP = I\) which means \(P = P^{-1}\)
+with the following properties: \(P = P^T\) and \(PP = I\), which means \(P = P^{-1}\).
 
 Our \(U\) and \(L\) becomes 
 
@@ -1134,9 +1119,9 @@ Where
       &=  P_{n - 2} \cdot \dots \cdot P_2 F_{1}^{-1} P_2 F_{2}^{-1} \cdot \dots \cdot P_{n - 1} F_{n - 1}^{-1}
 \end{align*}
 
-Now \(L\) is lower triangular matrix, because of the following inductive proof: 
+Now \(L\) is a lower triangular matrix, because of the following inductive proof: 
 
-Let \(L_1 = F_{1}^{-1}\), \(L_k = P_k L_{k -1} P_k F_{k}^{-1}\) for \(k = 2, \dots, n - 1\). This is \(L_{n  - 1} = L\)
+Let \(L_1 = F_{1}^{-1}\), \(L_k = P_k L_{k -1} P_k F_{k}^{-1}\) for \(k = 2, \dots, n - 1\). That is, \(L_{n  - 1} = L\).
 
 We show that all \(L_k\) are lower triangular matrices.
 
@@ -1157,7 +1142,7 @@ We show that all \(L_k\) are lower triangular matrices.
 
 For \(L_2 = P_2 L_1 P_2 F_{2}^{-1}\): 
 
-In \(P_2 L_1\) are the second and \(j\) row changed
+In \(P_2 L_1\), the second and \(j\)-th rows are changed
 
 \[
     P_2 L_1= 
@@ -1170,7 +1155,7 @@ In \(P_2 L_1\) are the second and \(j\) row changed
         \end{bmatrix}
 \]
 
-Then in \(P_2 L_1 P_2\) the change get undone; and finally, when multiplied by 
+Then in \(P_2 L_1 P_2\) the change gets undone; and finally, when multiplied by 
 
 \[
     F_{2}^{-1} =     
@@ -1207,9 +1192,9 @@ Formally we state that given a regular matrix \(A \in \R^{n \times n}\), there a
     PA = LU
 \]
 
-where \(L\) and \(U\) are lower and upper triangular matrices respectively.
+where \(L\) and \(U\) are lower and upper triangular matrices, respectively.
 
-\subsubsection{Extended \(LU\)-Decomposition Algorithm}
+\subsection{Extended \(LU\)-Decomposition Algorithm}
 
 The only important change for the algorithm is that for each row swaps to our matrix \(A^{(i)}\) we perform the same on the matrix 
 \(P^{(i)}\). The process for the Gaussian elimination remains the same.
@@ -1220,7 +1205,7 @@ Overview:
 
     \item Decompose \(A\) into  \(L,U\) and \(P\).
 
-    \item Solve \(Ly = Pb\). By first permuting \(b\) just like \(A\) and then \(Ly = Pv\)
+    \item Solve \(Ly = Pb\). First permute \(b\) just like \(A\), and then solve \(Ly = Pv\).
     
     \item Solve \(Ux = y\). 
 
@@ -1240,7 +1225,7 @@ Find the \(L,U\) and \(P\) for
     \end{bmatrix}
 \]
 
-We now use a vector \(p\) of size \(n \times 1\) where the \(j\)-th entry \(p_j\) is read as: switch the rows \(j\) with \(p_j\)
+We now use a vector \(p\) of size \(n \times 1\), where the \(j\)-th entry \(p_j\) is read as: switch row \(j\) with \(p_j\).
 
 We swap rows 1 and 2, giving us \(p_1 = 2\):
 
@@ -1385,28 +1370,28 @@ Finally, \(Ux = y\):
     \end{bmatrix}
 \]
 
-\subsubsection*{Greatest Pivot Strategy}
+\subsection{Greatest Pivot Strategy}
 
 As a side note, to mitigate the rounding errors in scientific computing, the swap row strategy is 
-modified to always take the row with biggest element in the current column, before perfoming the division step. In such a case we swap the entire row 
+modified to always take the row with the biggest element in the current column, before performing the division step. In such a case we swap the entire row 
 and not just the row inside our sub-matrix. 
 
-We also need to keep track of the swaps which is accomplished by storing a vector \(x \in \R^n\)  where \(x_i\) is the position of \(i\)-row.
+We also need to keep track of the swaps, which is accomplished by storing a vector \(x \in \R^n\) where \(x_i\) is the position of the \(i\)-th row.
 
-\subsection{Cholesky Decomposition}
+\section{Cholesky Decomposition}
 
-This is a special a special case of the \(LU\)-Decomposition. Given \(A \in \R^{n \times n}\) a symmetric, positive definite matrix it can be decomposed as 
+This is a special case of the \(LU\)-Decomposition. Given \(A \in \R^{n \times n}\) a symmetric, positive definite matrix it can be decomposed as 
 
 \[
     A = \tilde{L}D\tilde{L}^T,
 \]
 
-where \(\tilde{L}\) is a lower triangular matrix with 1's in the main diagonal and \(D\) a diagonal matrix with positive 
+where \(\tilde{L}\) is a lower triangular matrix with 1's on the main diagonal and \(D\) a diagonal matrix with positive 
 diagonal elements. (\emph{Rational Cholesky Decomposition}).
 
-Or \(A = G G^T\), \(G\) is lower triangular matrix. (\emph{Cholesky Decomposition}).
+Or \(A = G G^T\), where \(G\) is a lower triangular matrix. (\emph{Cholesky Decomposition}).
 
-\subsubsection{Algorithm for the Cholesky Decomposition}
+\subsection{Algorithm for the Cholesky Decomposition}
 
 \begin{enumerate}
 
@@ -1414,10 +1399,10 @@ Or \(A = G G^T\), \(G\) is lower triangular matrix. (\emph{Cholesky Decompositio
 
     \item \(D\) is given by the entries in the diagonal of \(U\). 
     
-    \item Determine \(V\) by taking \(L^T\), replacing its main diagonal with the diagonal of \(U\) and then dividing each row with the pivot 
+    \item Determine \(V\) by taking \(L^T\), replacing its main diagonal with the diagonal of \(U\) and then dividing each row by the pivot 
     elements of \(D\). For symmetric matrices \(V = L^T\).
 
-    \item Find the root of \(D\) by splitting it into two diagonal matrices which consist on the square roots of the elements in the main diagonal.
+    \item Find the root of \(D\) by splitting it into two diagonal matrices which consist of the square roots of the elements in the main diagonal.
     Take one of them and call it \(S\).
 
     \item Find \(G = LS\). 

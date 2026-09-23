@@ -1,9 +1,8 @@
-
 \chapter{Orthogonality and Inner Products}
 
-\subsection{Orthogonality and Projection}
+\section{Orthogonality and Projection}
 
-Let \( a, b \in V \). The vectors \(a\) and \(b\) are orthogonal to each other if
+Let \( a, b \in V \). The vectors \(a\) and \(b\) are \emph{orthogonal} to each other if
 
 \[
     \inner{a}{b} = 0.
@@ -26,24 +25,24 @@ formula in every unitary vector space is:
     p_b(a) = \frac{\inner{a}{b}}{\inner{b}{b}} b.
 \]
 
-\subsection{Induced Metric}
+\section{Induced Metric}
 
-Given \((V, \metric{\cdot})\) a metric space there is an inner product \(\inner{\cdot}{\cdot}\) on \(\field\) such that 
+Given \((V, \metric{\cdot})\) a metric space, there is an inner product \(\inner{\cdot}{\cdot}\) on \(\field\) such that 
 \(\metric{x}^2 = \inner{x}{x}\) if and only if the \emph{parallelepiped equation} holds. 
 
 \[
-    \metric{x + y}^2 + \metric{x - y}^2 = 2(\metric{x}^2 + \metric{y}), \ \forall x,y \in V
+    \metric{x + y}^2 + \metric{x - y}^2 = 2(\metric{x}^2 + \metric{y}), \ \forall x,y \in V.
 \]
 
 In such a case, the inner product is given by 
 
 \[
-    \inner{x}{y} = \frac{1}{4} (\metric{x + y}^2 - \metric{x - y}^2)
+    \inner{x}{y} = \frac{1}{4} (\metric{x + y}^2 - \metric{x - y}^2).
 \]
 
 \textbf{Proof:}
 
-\(\Rightarrow\): If \(\|x\|^2 = \inner{x}{x}\) then 
+\(\Rightarrow\): If \(\|x\|^2 = \inner{x}{x}\), then 
 
 \begin{align*} 
     \metric{x + y}^2 + \metric{x - y}^2 &= \inner{x + y}{x + y} + \inner{x - y}{x - y} \\ 
@@ -53,13 +52,13 @@ In such a case, the inner product is given by
     2\inner{x}{x} +  2\inner{y}{y} +  &= 2 (\inner{x}{x} + \inner{y}{y})
 \end{align*}
 
-\(\Leftarrow\): The parallelepiped equation holds, then want to show that the equation 
+\(\Leftarrow\): Assume the parallelepiped equation holds, then we want to show that the equation 
 
 \[
     f(x, y) = \frac{1}{4} (\metric{x + y}^2 - \metric{x - y}^2)
 \]
 
-Satisfies the properties of a inner product:
+satisfies the properties of an inner product:
 
 \begin{itemize}
 
@@ -69,11 +68,11 @@ Satisfies the properties of a inner product:
 
     \item \(f(x, y) = f(y,x)\) is also trivial by our definition.
 
-    \item \(f(\alpha x + y, z) = \alpha f(x, y) + f(y, z)\) Must be shown in a two step process.
+    \item \(f(\alpha x + y, z) = \alpha f(x, y) + f(y, z)\) must be shown in a two-step process.
 
 \end{itemize}
 
-First we show that \(f(x + y, z) = f(x,z) + f(y,z)\):
+First, we show that \(f(x + y, z) = f(x,z) + f(y,z)\):
 
 \begin{align*}
     4(f(x,y) + f(z, y)) &= \metric{x + y}^2 - \metric{x - y}^2 + \metric{z + y}^2 - \metric{z - y}^2 \\ 
@@ -98,34 +97,34 @@ Therefore, \(f(x + z, y) = f(x,y) + f(z, y)\).
 
 Now we need to prove that \(f(\alpha x, y) = \alpha f(x, y)\):
 
-For the Natural starting with \(n = 2\): \(f(2x, y) = f(x + x, y) = f(x, y) + f(x, y) = 2f(x, y)\), hence 
-using induction for \(n \in \N\) with base case 2 and summation, the prove is concluded.
+For the naturals, starting with \(n = 2\): \(f(2x, y) = f(x + x, y) = f(x, y) + f(x, y) = 2f(x, y)\), hence 
+using induction for \(n \in \N\) with base case 2 and summation, the proof is concluded.
 
-For the Rationals, \(r \in \Q\) with \(r = \frac{m}{n}\) we have that 
+For the rationals, \(r \in \Q\) with \(r = \frac{m}{n}\), we have that 
 
 \[
     f(rx, y) = f\left(\frac{mx}{n}, y\right) = m f\left(\frac{1}{n}x, y\right) =
-    \frac{m}{n}n f\left(\frac{1}{n}x, y\right) = \frac{m}{n} f\left(x, y\right)
+    \frac{m}{n}n f\left(\frac{1}{n}x, y\right) = \frac{m}{n} f\left(x, y\right).
 \]
 
-Finally, for the Reals; each Real number can be approximated as a limit of an infinite sequence of Rationals.
+Finally, for the reals: each real number can be approximated as the limit of an infinite sequence of rationals.
 
 For \(\alpha \in \R\) there is \(r_K \in \Q\) such that \(\lim_{k \to \infty} r_k = \alpha\). 
 
-Given that \(f\) is continuous we can then use the following 
+Given that \(f\) is continuous, we can then use the following 
 
 \[
-    f\left(\lim_{k \to \infty} r_K x, y\right) = \lim_{k \to \infty}f(r_K x, y) = \lim_{k \to \infty}r_k f(x, y) = \alpha f(x, y)
+    f\left(\lim_{k \to \infty} r_K x, y\right) = \lim_{k \to \infty}f(r_K x, y) = \lim_{k \to \infty}r_k f(x, y) = \alpha f(x, y).
 \]
 
 \QED
 
-\subsection{Euclidean Inner Product as Sum of Metrics}
+\section{Euclidean Inner Product As Sum Of Metrics}
 
-Given our Euclidean inner product for any two vector in \(\R^n\), the following holds:
+Given our Euclidean inner product for any two vectors in \(\R^n\), the following holds:
 
 \[
-    \inner{x_i}{x_j} = \frac{1}{2} (\metric{x_i}^2 + \metric{x_j}^2 - \metric{x_i - x_j}^2)
+    \inner{x_i}{x_j} = \frac{1}{2} (\metric{x_i}^2 + \metric{x_j}^2 - \metric{x_i - x_j}^2).
 \]
 
 \textbf{Proof:}
@@ -148,13 +147,13 @@ Now by substituting into the original equality
 
 \QED
 
-\subsection{Orthogonal Projection and Orthogonal Complement}
+\section{Orthogonal Projection And The Orthogonal Complement}
 
-Let \( U \) be a finitely generated subspace of \( V \) and \( a \in V \). A vector 
-\( p_U(a) \in U \) is called the orthogonal projection of \(a\) onto \( U \) if
+Let \( U \) be a finitely generated subspace of \( V \) and \( a \in V \). A vector  \( p_U(a) \in U \) is called the 
+\emph{orthogonal projection} of \(a\) onto \( U \) if
 
 \[
-    a - p_U(a) \perp u \quad \forall u \in U
+    a - p_U(a) \perp u \quad \forall u \in U.
 \]
 
 The question arises about well-definedness, i.e., whether such a vector \( p_U(a) \) always exists and 
@@ -167,8 +166,11 @@ For \( M \subseteq V \), the \emph{orthogonal complement} of \( M \) is defined 
 \]
 
 \begin{itemize}
+
     \item \( M^\perp \) is a subspace of \( V \).
+
     \item Let \( U \) be a subspace of \( V \). Then, we have \( U \cap U^\perp = \{0\} \).
+
 \end{itemize}
 
 \textbf{Proof:}
@@ -183,11 +185,12 @@ We need to check the closure property. For \( u \in M \), \( x, y \in M^\perp \)
     \inner{\lambda x}{u} = \lambda \inner{x}{u} = 0.
 \]
 
-Let \( a \in U \cap U^\perp \). Then, we have \( \inner{a}{u} = 0 \) for all \( u \in U \), 
-because \( a \in U^\perp \), and in particular, \( \inner{a}{a} = 0 \) since \( a \in U \), 
-which implies \( a = 0 \).
+Let \( a \in U \cap U^\perp \). Then, we have \( \inner{a}{u} = 0 \) for all \( u \in U \), because \( a \in U^\perp \), and in particular, 
+\( \inner{a}{a} = 0 \) since \( a \in U \), which implies \( a = 0 \).
 
-\subsection{Orthogonality of the basis to the Complement}
+\QED
+
+\section{Orthogonality Of The Basis To The Complement}
 
 Let \( U \) be as before, and let \( (u_1, \ldots, u_m) \) be a basis of \( U \). For \( v \in V \), we 
 have:
@@ -196,29 +199,34 @@ have:
     v \in U^\perp \quad \text{if and only if} \quad \inner{v}{u_i} = 0 \quad \forall 1 \leq i \leq m.
 \]
 
-\subsection{How to find the orthogonal complement}
+\section{How To Find The Orthogonal Complement}
 
 Let \( U \) be a finitely generated subspace of \( V \) with basis \( (u_1, \ldots, u_m) \). To find the 
 orthogonal complement \( U^\perp \), we can solve the system of equations:
 
 \[
-\inner{v}{u_i} = 0 \quad \forall 1 \leq i \leq m.
+    \inner{v}{u_i} = 0 \quad \forall 1 \leq i \leq m.
 \]
 
 This system can be expressed in matrix form as \( A \cdot v = 0 \), where \(A\) is the matrix whose rows 
 are the vectors \( u_i \) and \( v \) is the vector we want to find in \( U^\perp \).
 
-\subsection{Orthogonal and Orthonormal Systems}
+\section{Orthogonal And Orthonormal Systems}
 
 Let \( B = (v_1, \ldots, v_m) \) be an \( m \)-tuple of vectors in \( V \setminus \{0\} \).
 
 \begin{itemize}
+
     \item \(B\) is called an orthogonal system in \( V \) if all the vectors \( v_i \) are pairwise 
-          orthogonal.
+    orthogonal.
+
     \item An orthogonal system is called an orthonormal system if, in addition, \( \metric{v_i} = 1 \) for 
-          all \( i = 1, \ldots, m \).
+    all \( i = 1, \ldots, m \).
+
     \item An orthogonal system that forms a basis of \( V \) is called an orthogonal basis of \( V \).
+
     \item An orthonormal system that forms a basis of \( V \) is called an orthonormal basis of \( V \).
+
 \end{itemize}
 
 \textbf{Notation:}
@@ -239,9 +247,9 @@ Using the Kronecker delta symbol \( \delta_{i,j} \):
 
 we have \( \inner{v_i}{v_j} = \delta_{i,j} \) for any orthonormal system.
 
-\subsection{Writing a vector in terms of the Orthogonal Basis}
+\section{Writing A Vector In Terms Of The Orthogonal Basis}
 
-\textbf{Example:}
+\textbf{Example I:}
 
 The vectors
 \[
@@ -262,7 +270,7 @@ The vectors
 are orthogonal and normalized, but do not form a basis. Thus, they constitute an 
 \emph{orthonormal system}.
 
-\textbf{Example:}
+\textbf{Example II:}
 
 The vectors
 
@@ -286,9 +294,10 @@ The vectors
     1
     \end{bmatrix}
 \]
+
 form a basis, are orthogonal and normalized. Therefore, they form an \emph{orthonormal basis}.
 
-\subsection{Linear Independence of Orthogonal Systems}
+\section{Linear Independence Of Orthogonal Systems}
 
 An orthogonal system \( (v_1, \ldots, v_n) \) is linearly independent.
 
@@ -312,7 +321,7 @@ implying \( \lambda_j = 0 \) for all \( 1 \leq j \leq n \).
 
 \QED
 
-\subsection{Representation with Respect to an Orthogonal Basis}
+\section{Representation With Respect To An Orthogonal Basis}
 
 Let \( B = (v_1, \ldots, v_n) \) be an orthogonal basis of a vector space \( V \). Then for every 
 \( v \in V \), we have:
@@ -333,33 +342,34 @@ Let \( B = (v_1, \ldots, v_m) \) be an orthogonal system in \( V \), and let \( 
 subspace of \( V \) spanned by \(B\).
 
 \begin{itemize}
+    
     \item For every \( v \in V \), the orthogonal projection of \( v \) onto \( U \) is given by:
         
-          \[
-               p_U(v) = \sum_{i=1}^{m} \frac{\inner{v}{v_i}}{\inner{v_i}{v_i}} v_i.
-          \]
+    \[
+        p_U(v) = \sum_{i=1}^{m} \frac{\inner{v}{v_i}}{\inner{v_i}{v_i}} v_i.
+    \]
 
     \item Every vector \( v \in V \) can be uniquely written as the sum \( v = p_U(v) + w \), with 
-          \( w \in U^\perp \). In this case, we have:
-          
-          \[
-               w = v - p_U(v).
-          \]
+    \( w \in U^\perp \). In this case, we have:
+    
+    \[
+        w = v - p_U(v).
+    \]
 
     \item \( V = U \oplus U^\perp \), which means that every vector in \( V \) can be uniquely 
-          decomposed into a sum of a vector from \( U \) and a vector from \( U^\perp \).
+    decomposed into a sum of a vector from \( U \) and a vector from \( U^\perp \).
 
     \item If \( \dim(V) = n \), then:
   
-          \[
-               \dim(U) + \dim(U^\perp) = n \quad \text{for every subspace } U.
-          \]
+    \[
+        \dim(U) + \dim(U^\perp) = n \quad \text{for every subspace } U.
+    \]
 
 \end{itemize}
 
-\subsection{The Gram-Schmidt Process}
+\section{The Gram-Schmidt Process}
 
-The Gram-Schmidt process is a method for orthonormalizing a set of vectors in an inner product space. 
+The \emph{Gram-Schmidt process} is a method for orthonormalizing a set of vectors in an inner product space. 
 Given a finite set of linearly independent vectors \( (v_1, \ldots, v_n) \), the process generates an orthonormal basis \( (u_1, \ldots, u_n) \) as follows:
 
 \begin{enumerate}
@@ -377,9 +387,9 @@ Given a finite set of linearly independent vectors \( (v_1, \ldots, v_n) \), the
     \end{enumerate}
 
     \item The resulting set \( (u_1, \ldots, u_n) \) is an orthonormal basis of the subspace spanned 
-          by \( (v_1, \ldots, v_n) \).
+    by \( (v_1, \ldots, v_n) \).
 
-        \end{enumerate}
+\end{enumerate}
 
 The Gram-Schmidt process can be applied to any finite set of linearly independent vectors in an inner 
 product space, and it is particularly useful for constructing orthonormal bases in Euclidean spaces.
@@ -397,10 +407,10 @@ Let \(v_1 = u_1\), then compute the vector \(u_2\) orthogonal to the space \(W_1
 
 Then normalize the vector.
 
-We can continue this approach to of projecting the vector of \(u_i\) orthogonal to the space \(W_i\) 
-spanned by all basis previously computed \(v_i\) basis vectors and then normalize it 
-until we get our orthonormal basis. Note, that because our previous vectors formed a basis we can be 
-sure that during this process no zero vector will be generated because then we will have 
+We can continue this approach of projecting the vector \(u_i\) orthogonal to the space \(W_i\) 
+spanned by all the previously computed basis vectors \(v_i\) and then normalize it 
+until we get our orthonormal basis. Note that, because our previous vectors formed a basis, we can be 
+sure that during this process no zero vector will be generated, because then we would have 
 some \(u_i\) that is a linear combination of the other vectors. Thus, this would be a contradiction.
 
 \QED
@@ -421,7 +431,7 @@ yields:
 
 Thus, the orthonormal basis is \( (1, 0, 0), (0, 1, 0), (0, 0, 1) \).
 
-\subsection{Existence of Orthonormal Bases and Orthogonal Projections}
+\section{Existence of Orthonormal Bases And Orthogonal Projections}
 
 \begin{itemize}
 
@@ -432,25 +442,25 @@ Thus, the orthonormal basis is \( (1, 0, 0), (0, 1, 0), (0, 0, 1) \).
     \item We now provide the existence proof of the orthogonal projection.
     
     \item Let \( V \) be a unitary vector space and \( U \) a finitely generated subspace. 
-          Then for every \( v \in V \), the orthogonal projection \( p_U(v) \) of \( v \) onto \( U \) 
-          exists.
+    Then for every \( v \in V \), the orthogonal projection \( p_U(v) \) of \( v \) onto \( U \) 
+    exists.
 
     \item Let \( V \) be a finitely generated unitary vector space and \( U \) any subspace. Then we have \( V = U \oplus U^\perp \), and
       
-          \[
-                \dim(V) = \dim(U) + \dim(U^\perp).
-          \]
+    \[
+        \dim(V) = \dim(U) + \dim(U^\perp).
+    \]
     
     \item Every hyperplane in \( \R^n \) admits a normal form; the normal vector is 
-          unique up to scalar multiplication.
+    unique up to scalar multiplication.
     
     \item Let \( V \) be as above and let \( v_1, \ldots, v_m \in V \). If it is possible to 
-          construct orthonormal vectors \( w_1, \ldots, w_m \) from them using the Gram-Schmidt process, 
-          then \( (v_1, \ldots, v_m) \) are linearly independent.
+    construct orthonormal vectors \( w_1, \ldots, w_m \) from them using the Gram-Schmidt process, 
+    then \( (v_1, \ldots, v_m) \) are linearly independent.
 
 \end{itemize}
 
-\subsubsection{Visualization of the Gram-Schmidt process in 2 dimension}
+\section{Visualization of the Gram-Schmidt process in 2 dimension}
 
 \begin{center}
 \begin{tikzpicture}
@@ -466,24 +476,24 @@ Thus, the orthonormal basis is \( (1, 0, 0), (0, 1, 0), (0, 0, 1) \).
 \end{tikzpicture}
 \end{center}
 
-\subsection{Best Approximation}
+\section{Best Approximation}
 
-Let \(V\) be a unitary vector space and \(U\) a finitely generated subspace of \(V\).
-A vector \(v* \in U\) is called Best Approximation in \(U\) on \(v\), if:
+Let \(V\) be a unitary vector space and \(U\) a finitely generated subspace of \(V\). A vector \(v* \in U\) is called the best approximation in 
+\(U\) to \(v\) if:
 
 \[
-    \|v* - v\| = \inf_{x \in U}\|x - v\|
+    \metric{v* - v} = \inf_{x \in U}\metric{x - v}
 \]
 
 also
 
 \[
-    \|v* - P_u(v)\| = \inf_{u \in U}\|u - v\|
+    \metric{v* - P_u(v)} = \inf_{u \in U}\metric{u - v}.
 \]
 
 \textbf{Proof:}
 
-Let \(x \in V\), \(v\) be some point and \(v* = proj_{V} v\). Then 
+Let \(x \in V\), \(v\) be some point and \(v* = \mathrm{proj}_{U} v\). Then 
 
 \[
     v - x = v - v* + v* - x
@@ -492,13 +502,13 @@ Let \(x \in V\), \(v\) be some point and \(v* = proj_{V} v\). Then
 where \(v - v* \in V^{\bot}\) and \(v* - x \in V\). By the Pythagorean Theorem
 
 \[
-    \| x - v \|^2 = \|v* - v\|^2 + \|v* - x\|^2
+    \metric{ x - v }^2 = \metric{v* - v}^2 + \metric{v* - x}^2
 \]
 
 Therefore
 
 \[
-    \|v* - v\|^2 \le \|v* - x\|^2
+    \metric{v* - v}^2 \le \metric{v* - x}^2
 \]
 
 \QED

@@ -1,21 +1,20 @@
-
 \chapter{Linear Maps}
 
-A linear map \( f: V \to W \) is a function that satisfies the following properties:
+A \emph{linear map} \( f: V \to W \) is a function that satisfies the following properties:
 
 \begin{itemize}
     
     \item \( f(v_1 + v_2) = f(v_1) + f(v_2) \) for all \( v_1, v_2 \in V \).
     
-    \item \( f(\lambda v) = \lambda f(v) \) for all \( v \in V \) and \( \lambda \in \R \).
+    \item \( f(\lambda v) = \lambda f(v) \) for all \( v \in V \) and \( \lambda \in \field \).
     
     \item \( f(0) = 0 \).
 
 \end{itemize} 
 
-This kind of function is also called \emph{Homomorphism}. If \(V = W\) is it called \emph{Endomorphism}.
+This kind of function is also called a \emph{homomorphism}. If \(V = W\), it is called an \emph{endomorphism}.
 
-\subsection{Types of Linear Maps}
+\section{Types of Linear Maps}
 
 \begin{itemize}
     
@@ -30,11 +29,11 @@ This kind of function is also called \emph{Homomorphism}. If \(V = W\) is it cal
 
 \end{itemize}
 
-\emph{Isomorphic} if there exists a bijective linear map between them. In this case, we can say 
+Two vector spaces are \emph{isomorphic} if there exists a bijective linear map between them. In this case, we can say 
 that the two vector spaces are \emph{isomorphic}, 
 and we write \( V \cong W \).
 
-\subsection{Properties of Linear Maps}
+\section{Properties of Linear Maps}
 
 \begin{itemize}
     
@@ -62,7 +61,7 @@ and we write \( V \cong W \).
     \item The composition of linear maps is compatible with scalar multiplication, i.e., 
           \( (cf) \circ g = c(f \circ g) \).
     
-    \item Linear Maps compose a vector space 
+    \item Linear maps form a vector space 
           over the field of scalars.
           
           \[
@@ -71,10 +70,10 @@ and we write \( V \cong W \).
 
 \end{itemize}
 
-\subsection{Composition as Matrix Multiplication}
+\section{Composition as Matrix Multiplication}
 
 Given \(A \in \field^{m \times n}, B \in \field^{n \times l}\) and  \(\phi_A: \field^{n \times 1} \to \field^{m \times 1}\) and 
-\(\phi_B: \field^{l \times 1} \to \field^{n \times 1}\) induced linear maps then 
+\(\phi_B: \field^{l \times 1} \to \field^{n \times 1}\) be the induced linear maps, then 
 
 \begin{itemize}
 
@@ -93,10 +92,10 @@ Given \(A \in \field^{m \times n}, B \in \field^{n \times l}\) and  \(\phi_A: \f
 \textbf{Proof I:}
 
 \begin{align*}
-(\varphi_A \circ \varphi_B)(au + bv) &= \varphi_A(\varphi_B(au + bv))\\ 
-&= \varphi_A(a\,\varphi_B(u) + b\,\varphi_B(v))\\ 
-&= a\,\varphi_A(\varphi_B(u)) + b\,\varphi_A(\varphi_B(v)) \\ 
-&= a(\varphi_A \circ \varphi_B)(u) + b(\varphi_A \circ \varphi_B)(v) 
+    (\varphi_A \circ \varphi_B)(au + bv) &= \varphi_A(\varphi_B(au + bv))\\ 
+        &= \varphi_A(a\,\varphi_B(u) + b\,\varphi_B(v))\\ 
+        &= a\,\varphi_A(\varphi_B(u)) + b\,\varphi_A(\varphi_B(v)) \\ 
+        &= a(\varphi_A \circ \varphi_B)(u) + b(\varphi_A \circ \varphi_B)(v) 
 \end{align*}
 
 \QED 
@@ -113,22 +112,24 @@ Given \(A \in \field^{m \times n}, B \in \field^{n \times l}\) and  \(\phi_A: \f
 
 \QED
 
-\subsection{Injectivity and Surjectivity}
+\section{Injectivity And Surjectivity}
 
 Let \( A \in \field^{m \times n} \). Then:
 
-\( \varphi_A \) is injective if and only if the fiber of
-\( \varphi_A \) over the zero column \( 0_m \in \field^{m \times 1} \)
-consists only of the zero column \( 0_n \in \field^{n \times 1} \).
+\begin{itemize}
 
-\( \varphi_A \) is surjective if and only if every column in
-\( \field^{m \times 1} \) can be written as a linear combination of
-the columns of \( A \).
+    \item \( \varphi_A \) is injective if and only if the fiber of \( \varphi_A \) over the zero column \( 0_m \in \field^{m \times 1} \)
+    consists only of the zero column \( 0_n \in \field^{n \times 1} \).
 
-\subsection{Linear Extension Theorem}
+    \item  \( \varphi_A \) is surjective if and only if every column in \( \field^{m \times 1} \) can be written as a linear combination of the columns 
+    of \( A \).
+
+\end{itemize}
+
+\section{Linear Extension Theorem}
 
 Let \(\beta = \{v_1, \dots, v_n\}\) be a basis of the finite dimensional vector space \(V\) and 
-\(w_1, \dots, w_n\) be arbitrary vector in \(W\). Then \(!\exists L\) with \(L : V \to W\) such 
+\(w_1, \dots, w_n\) be arbitrary vectors in \(W\). Then \(!\exists L\) with \(L : V \to W\) such 
 that \(T(v_i) = w_i\).
 
 \textbf{Proof:}
@@ -153,14 +154,14 @@ Finally, for the uniqueness of \(T\) itself, let us assume there is a map \(U\) 
 fact that 
 
 \[
-    U(x) = \lambda_1U(v_1) + \dots + \lambda_n U(v_n) =  \lambda_1Tv_1) + \dots + \lambda_n T(v_n) 
+    U(x) = \lambda_1U(v_1) + \dots + \lambda_n U(v_n) =  \lambda_1T(v_1) + \dots + \lambda_n T(v_n) 
 \]
 
 Therefore, \(U = T\).
 
 \QED
 
-\subsection{The Kernel of a Linear Map}
+\section{The Kernel of a Linear Map}
 
 The \emph{kernel} of a linear map \( f: V \to W \) is the set of all vectors in \( V \) that are mapped to 
 the zero vector in \( W \):
@@ -171,17 +172,17 @@ the zero vector in \( W \):
 
 and also \(\ker(f) \subseteq V\). 
 
-To compute the \emph{kernel} of the linear map, we just solve the homogenous system of equations \(Ax = \vec{0}\) 
+To compute the \emph{kernel} of the linear map, we just solve the homogeneous system of equations \(Ax = \vec{0}\) 
 where \(A\) is the matrix representation of \(f\). The number of free variables is the \(\dim(\ker(f))\).
 
 \textbf{Proof:}
 
 \(\ker(f) \ne \emptyset \) because \(0 \in \ker(f)\) (at least zero should be in the kernel by the definition of the vector space and linear maps). 
-Also, for \(v, w \in \ker(A)\) we know that \(f(av + bw) = = af(v) + bf(w) = a0 + b0 = 0\). 
+Also, for \(v, w \in \ker(A)\) we know that \(f(av + bw) = af(v) + bf(w) = a0 + b0 = 0\). 
 
 \QED
 
-\subsubsection{The Nullity}
+\section{The Nullity}
 
 The \emph{nullity} of a linear map \( f: V \to W \) is the dimension of its kernel:
 
@@ -189,16 +190,16 @@ The \emph{nullity} of a linear map \( f: V \to W \) is the dimension of its kern
     \mathrm{nullity}(f) = \dim(\ker(f))
 \]
 
-\subsection{The Image of a Linear Map}
+\section{The Image of a Linear Map}
 
-The image of a linear map \( f: V \to W \) is the set of all vectors in \( W \) that can be expressed 
+The \emph{image} of a linear map \( f: V \to W \) is the set of all vectors in \( W \) that can be expressed 
 as \( f(v) \) for some \( v \in V \):
 
 \[
-    \img(f) = \{ w \in W \mid w = f(v) \text{ for some } v \in V \}
+    \img(f) = \{ w \in W \mid w = f(v) \text{ for some } v \in V \}.
 \]
 
-Also, \(\img(f) \subseteq W \)
+Also, \(\img(f) \subseteq W\).
 
 To find \( \dim(\text{im}(f)) \), compute the rank of the matrix representing \( f \). This 
 is the number of pivot columns in the row-reduced form of \( A \).
@@ -209,46 +210,46 @@ is the number of pivot columns in the row-reduced form of \( A \).
 \(w_1 = f(v_1)\) and \(w_2 = f(v_2)\) due to 
 
 \[
-    aw_1 + bw_2 = af(v_1) = bf(v_2) = f(av_1 + bv_2) \in \img(f)
+    aw_1 + bw_2 = af(v_1) = bf(v_2) = f(av_1 + bv_2) \in \img(f).
 \]
 
 \QED 
 
-\subsection{The Rank of a Linear Map}
+\section{The Rank Of A Linear Map}
 
-The rank of a linear map \( f: V \to W \) is the dimension of its image:
+The \emph{rank} of a linear map \( f: V \to W \) is the dimension of its image.
 
 \[
     \rank(f) = \dim(\img(f))
 \]
 
-\subsection{The Nullity of a Linear Map}
+\section{The Nullity Of A Linear Map}
 
-The nullity of a linear map \( f: V \to W \) is the dimension of its kernel:
+The \emph{nullity} of a linear map \( f: V \to W \) is the dimension of its kernel:
     
 \[
-    \mathrm{nullity}(f) = \dim(\ker(f))
+    \mathrm{nullity}(f) = \dim(\ker(f)).
 \]
 
-\subsection{Proof of the injectivity of the Kernel}
+\section{Proof Of The injectivity Of The Kernel}
 
 Suppose we have a linear map \(f\) and two vectors \(v_1\) and \(v_2\) which are not equal. 
-We are going to assume that they both map to the \(\vec{0}\) therefore:
+We are going to assume that they both map to the \(\vec{0}\); therefore,
 
 \[
-    f(v_1) = f(v_2) = \vec{0}
+    f(v_1) = f(v_2) = \vec{0}.
 \]
 
-Because of the linearity of the map we can write:
+Because of the linearity of the map we can write
 
 \[
-    f(v_1 - v_2) = f(v_1) - f(v_2) = \vec{0} - \vec{0} = \vec{0}
+    f(v_1 - v_2) = f(v_1) - f(v_2) = \vec{0} - \vec{0} = \vec{0}.
 \]
 
 And that contradicts the assumption that \(v_1\) and \(v_2\) are not equal. Therefore, the 
 kernel of a linear map is injective.
 
-\subsection{Dimension Formula for Linear Mappings}
+\section{Dimension Formula for Linear Mappings}
 
 Let \(f: V \to W\) be linear and \(\dim(V) = n\). Then
     
@@ -256,7 +257,9 @@ Let \(f: V \to W\) be linear and \(\dim(V) = n\). Then
     \dim(\ker(f)) + \rank(f) = n.
 \]
     
-Remember that \(\ker(f)\) forms a subspace of \(V\) and therefore, \(\dim(\ker(f)) := r \leq n\). We extend an arbitrary basis \((v_1, \ldots, v_r)\) of \(\ker(f)\) to a basis \((v_1, \ldots, v_r, v_{r+1}, \ldots, v_n)\) of \(V\). Setting \(w_{r+i} = f(v_{r+i})\) for \(i = 1, \ldots, n - r\), we have \(\forall v \in V\):
+Remember that \(\ker(f)\) forms a subspace of \(V\) and therefore, \(\dim(\ker(f)) := r \leq n\). We extend an arbitrary basis \((v_1, \ldots, v_r)\) of 
+\(\ker(f)\) to a basis \((v_1, \ldots, v_r, v_{r+1}, \ldots, v_n)\) of \(V\). Setting \(w_{r+i} = f(v_{r+i})\) for \(i = 1, \ldots, n - r\), we have 
+\(\forall v \in V\):
 
 \begin{align*}
     f(v) &= f(\lambda_1v_1 + \cdots + \lambda_r v_r + \lambda_{r+1}v_{r+1} + \cdots + \lambda_n v_n) \\
@@ -268,28 +271,28 @@ Remember that \(\ker(f)\) forms a subspace of \(V\) and therefore, \(\dim(\ker(f
 Thus, \(\img(f) = \operatorname{span}(w_{r+1}, \ldots, w_n)\). We now show that \(w_{r+1}, \ldots, w_n\) are linearly independent. Let 
     
 \[
-    \lambda_{r+1}w_{r+1} + \cdots + \lambda_n w_n = 0
+    \lambda_{r+1}w_{r+1} + \cdots + \lambda_n w_n = 0.
 \]
     
 From
 
 \[
-    0 = \lambda_{r+1}w_{r+1} + \cdots + \lambda_n w_n = f(\lambda_{r+1}v_{r+1} + \cdots + \lambda_n v_n)
+    0 = \lambda_{r+1}w_{r+1} + \cdots + \lambda_n w_n = f(\lambda_{r+1}v_{r+1} + \cdots + \lambda_n v_n),
 \]
     
 it follows that
 
 \[
-    \lambda_{r+1}v_{r+1} + \cdots + \lambda_n v_n \in \ker(f)
+    \lambda_{r+1}v_{r+1} + \cdots + \lambda_n v_n \in \ker(f).
 \]
     
 Therefore,
     
 \[
     \lambda_{r+1}v_{r+1} + \cdots + \lambda_n v_n = \lambda_1v_1 + \cdots + \lambda_r v_r
-\]\
+\]
 
-For some \(\lambda_1, \ldots, \lambda_r\). Since \(v_1, \ldots, v_n\) are linearly independent, 
+for some \(\lambda_1, \ldots, \lambda_r\). Since \(v_1, \ldots, v_n\) are linearly independent, 
 we have \(\lambda_1 = \cdots = \lambda_n = 0\). Thus, the vectors \(w_{r+1}, \ldots, w_n\) are linearly 
 independent.
     
@@ -301,14 +304,14 @@ It follows that \(\dim(\img(f)) = \rank(f) = n - r\) and therefore,
 
 \QED
   
-\subsection{Linear Maps and Matrices}
+\section{Linear Maps and Matrices}
 
 Let \( V \) and \( W \) be finite-dimensional vector spaces over the same field \( \field \). 
 If \( \dim V = n \) and \( \dim W = m \), then a linear map \( f: V \to W \) can be represented by 
 an \( m \times n \) matrix. The action of the linear map on a vector can be expressed as:
 
 \[
-    f(x) = A \cdot x,
+    f(x) = Ax,
 \]
 
 where \(A\) is the matrix representation of \(f\) and \( v \) is the vector represented in a column 
@@ -323,9 +326,9 @@ This fact comes from \(f\) being linear which means that
 
 with \(e_i\) being a basis vector. And from that expression we can derive \((f(e_1), \dots, f(e_n))x\).
 
-We can state that matrices \emph{induce} linear maps which we are denoted as \(\varphi_A\).
+We can state that matrices \emph{induce} linear maps, which we denote as \(\varphi_A\).
 
-\subsection{How to identify the type of Linear Map Summary}
+\section{How To Identify The Type Of Linear Map}
 
 We want to summarize how to identify the type of linear map given \( f: V \to W \),
 
@@ -344,7 +347,7 @@ We want to summarize how to identify the type of linear map given \( f: V \to W 
         \dim(\img(f)) = \dim(W).
     \]
 
-    That is, the image of \( f \) are the linear independent vector of \(f\).
+    That is, the image of \( f \) consists of the linearly independent vectors of \(f\).
 
     \item \emph{Bijective}: A linear map is bijective if it is both injective and surjective. 
     Therefore, it must satisfy both conditions:

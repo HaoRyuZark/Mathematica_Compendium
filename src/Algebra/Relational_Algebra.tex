@@ -76,7 +76,7 @@ The \emph{domain} of an attribute \(a\) in a relation \(R\) is the set of all po
 \subsection{Cartesian Product for Relations}
 
 The \emph{Cartesian product} combines every tuple of one relation with every tuple of another.
-This is also called the \emph{cross join} is some implementations.
+This is also called the \emph{cross join} in some implementations.
 
 \[
     S \times T = \bigcup_{(s_1, \dots, s_n) \in S} \left[ \bigcup_{(t_1, \dots, t_n) \in T} \{(s_1, \dots, s_n, t_1, \dots, t_k)\} 
@@ -105,7 +105,7 @@ For the union of relations they have to be \emph{union compatible} which means:
 
 \begin{itemize}
 
-    \item They have the same numbers of elements in the tuple. 
+    \item They have the same number of elements in the tuple. 
 
     \item The relations need to have the same columns.
 
@@ -169,7 +169,7 @@ Selects specific attributes.
     \prod_{a_{i1}, \dots, a_{ik}}(S) \{(a_{i1}, \dots, a_{ik}) \mid a \in S\}
 \]
 
-This gives us the same tuples of the original relational but only with the columns we selected. 
+This gives us the same tuples of the original relation but only with the columns we selected. 
 
 It can also be noted as \(\pi\).
 
@@ -211,11 +211,11 @@ Renames relations or attributes.
 
 \subsection{\texorpdfstring{\(\mathrm{with}\)}{with}}
 
-\(\mathrm{with}\) allows us to store products of specific operation with a special name which can be used later in other operations.
+\(\mathrm{with}\) allows us to store products of specific operations with a special name which can be used later in other operations.
 
 \subsection{Join \texorpdfstring{\(\bowtie\)}{}}
 
-It is a \emph{theta/inner join} is the Cartesian product plus a selection based on a condition \(\theta\).
+A \emph{theta/inner join} is the Cartesian product plus a selection based on a condition \(\theta\).
 
 \[
     S \bowtie_{\theta } T = \sigma_\theta (S \times T)
@@ -251,7 +251,7 @@ The name and domain of the attributes must be the same.
 
 \subsection{Natural Join}
 
-It is a special case of the equi-join which can only be performed only if there is a common attribute.
+It is a special case of the equi-join which can only be performed if there is a common attribute.
 
 \[
     R \bowtie S
@@ -272,7 +272,7 @@ Let \(C = \mathrm{ident}(R) \cap \mathrm{ident}(S)\) be the common attributes.
 
 \subsection{Semi-Join}
 
-It is a case were we only care about the attribute names but not its values.
+It is a case where we only care about the attribute names but not their values.
 
 \[
     R \ltimes S
@@ -657,7 +657,7 @@ This normal is mostly given in relational algebra problems.
 
 Each non-key attribute must depend on the entire primary key.
 
-The relation is in the second normal form if it is already in the first normal form and each \textbf{non-key} attribute is functionally dependent on the \textbf{key-candidate}.
+The relation is in the second normal form if it is already in the first normal form and each \textbf{non-key} attribute is functionally dependent on the \textbf{candidate key}.
 
 \textbf{Example I:}
 
@@ -671,7 +671,7 @@ Candidates \(AD, BD\), not prime attribute \(C\). Thus, it obeys the 2NF.
 
 \subsection{III Normal Form} 
 
-A schema \(R\) is in the 3NF if for all \( \alpha \to \beta \in FD\) at least one of the following statements 
+A schema \(R\) is in 3NF if for all \( \alpha \to \beta \in FD\) at least one of the following statements 
 is true: 
 
 \begin{itemize}
@@ -689,7 +689,7 @@ is not dependent on other \emph{non-key} attribute.
  
 \subsection{Boyce-Codd III Normal Form} 
 
-A schema \(R\) is in the BCNF if for all \( \alpha \to \beta \in FD\) at least one of the following statements 
+A schema \(R\) is in BCNF if for all \( \alpha \to \beta \in FD\) at least one of the following statements 
 is true: 
 
 \begin{itemize}
@@ -712,12 +712,12 @@ Multivalued dependencies in a table must be multivalued dependencies on the key.
 
 \subsection{V Normal Form} 
 
-Our table in the forth normal form cannot be describable as the logical result of joining some other tables.
+A table in the fifth normal form cannot be described as the logical result of joining some other tables.
 
 \section{Synthesis Algorithm}
 
 The \emph{synthesis algorithm} transforms a relation schema into a set of schemas that are in Third Normal Form (3NF), 
-while ensuring \emph{lossless join} and \emph{dependency preservation}. The algorithm proceeds as follows:
+while ensuring \emph{lossless joins} and \emph{dependency preservation}. The algorithm proceeds as follows:
 
 \begin{itemize}
 
@@ -969,7 +969,7 @@ The following equivalences hold for relational algebra expressions:
         \pi_C (R \cup S) = \pi_C (R) \cup \pi_C (S)
     \]
     
-    \item De Morgam for Joins with selections 
+    \item De Morgan’s Laws for Joins with selections 
 
     \[
         \neg (A \land B) = \neg A \lor \neg B \quad \neg (A \lor B) = \neg A \land \neg B

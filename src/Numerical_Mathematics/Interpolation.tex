@@ -1,30 +1,29 @@
- 
-\chapter{Polynomial Interpolation}
+ \chapter{Polynomial Interpolation}
 
 \emph{Polynomial interpolation} is a family of procedures to find a polynomial given 
-a certain numbers of data points \((x_0, y_0), \dots, (x_n, y_n)\) such that 
+a certain number of data points \((x_0, y_0), \dots, (x_n, y_n)\) such that 
 
 \[
     f(x_i) = y_i, \quad \forall i = 0, 1, \dots, n.
 \]
 
-This results into finding a polynomial with at most degree\(n\), with \(n + 1\) terms and \(n\) constant terms \(c_i\)
+This results in finding a polynomial of degree at most \(n\), with \(n + 1\) terms and \(n\) constant terms \(c_i\)
 
 \[
-    f(x) = c_0 + c_1 x + c_2 x^2 + \dots + c_{n}x^n
+    f(x) = c_0 + c_1 x + c_2 x^2 + \dots + c_{n}x^n.
 \]
 
 \section{Set of Polynomials of Degree \texorpdfstring{\(n\)}{n}}
 
-We define the set of polynomials with at degree \(n\) as \(P_n\).
+We define the set of polynomials of degree \(n\) as \(P_n\).
 
 \subsection{Maximal Number of Zeros For A Polynomial}
 
-A polynomial \(p \in P_n\) has at most \(n\) zeros or is identical 0.
+A polynomial \(p \in P_n\) has at most \(n\) zeros or is identically zero.
 
 \subsection{Uniqueness of The Polynomial Interpolation}
 
-Given a set of points \((x_0, y_0), \dots, (x_n, y_n)\) there exists only one polynomial of degree at most \(n\) 
+Given a set of points \((x_0, y_0), \dots, (x_n, y_n)\), there exists only one polynomial of degree at most \(n\) 
 such that \(f(x_0) = y_0, \dots\).
 
 \textbf{Proof:}
@@ -32,7 +31,7 @@ such that \(f(x_0) = y_0, \dots\).
 \emph{Uniqueness}: Let us assume that such a polynomial \(p(x)\) exists, and also \(q(x) \ne p(x)\) such that both interpolate our 
 points.
 
-Using the fact that a polynomial \(P_n\) has at most \(n\) zeros or is identical 0.
+Using the fact that a polynomial \(p \in P_n\) has at most \(n\) zeros or is identically zero.
 
 If we perform the following operation
 
@@ -74,7 +73,7 @@ Now our problem of finding the constants in the vector \(c\) has been transforme
 
 \subsection{Invertibility Of The Vandermonde Matrix}
 
-There exits an \(V^{-1}\) to the corresponding \(V\).
+There exists a \(V^{-1}\) for the corresponding \(V\).
 
 \textbf{Proof:}
 
@@ -151,7 +150,7 @@ Giving us an inductive procedure and the following results
 
 \section{Lagrange Polynomials}
 
-\emph{Lagrange polynomial} are used to interpolate polynomial by using the following property
+\emph{Lagrange polynomials} are used to interpolate polynomials by using the following property
 
 \[
     L_j(x_i) = 
@@ -167,7 +166,7 @@ This is done by the definition
     L_j (x) = \prod_{i = 0}^{j - 1} \frac{x - x_i}{x_j- x_i} \prod_{i = 1}^{n} \frac{x - x_{j + i}}{x_j - x_{j + i}} = \prod_{i = 0, i \ne j}^{n} \frac{x - x_i}{x_j - x_i}
 \]
 
-This comes from the fact that given our points \(x_0, x_1, \dots x_n\) and we want for \(x_n\) that \(L_m(x_m) = 1\) and zero else where we get 
+This comes from the fact that, given our points \(x_0, x_1, \dots, x_n\), we want for \(x_n\) that \(L_m(x_m) = 1\) and zero elsewhere, so we get 
 
 \[
     (x - x_1)(x - x_2)\cdot \dots \cdot (x - x_{m - 1})(x - x_{m + 1}) \cdot \dots \cdot \dot (x - x_n) \ne 1, \quad \text{but zero for every other}\, x_k
@@ -210,14 +209,14 @@ Resulting in the following interpolating polynomial
 
 \section{Newton Polynomials}
 
-The interpolation polynomial in the \emph{Newtonian form} is a defined as 
+The interpolation polynomial in the \emph{Newtonian form} is defined as 
 
 \[
     p(x) = y_0 + a_1(x - x_0) + a_2(x - x_0)(x - x_1) + \dots + a_n \prod_{i = 0}^{n-1} (x - x_i)
 \]
 
-Note, that for for \(p(x) = y_0 + a_1(x - x_0)\) if we put \(p(x_0) = y0\) which is a quality we want.  If we set 
-our polynomial to \(y_1\) we also get the first \emph{divided difference} 
+Note that for \(p(x) = y_0 + a_1(x - x_0)\), if we put \(p(x_0) = y_0\), which is an equality we want. If we set 
+our polynomial to \(y_1\), we also get the first \emph{divided difference} 
 
 \[
     y_1 = y_0 + a_1 (x_1 - x_0) \iff a_1 = \frac{y_1 - y_0}{x_1 - x_0} = f[x_0, x_1]
@@ -320,14 +319,14 @@ When working out an exercise, it is useful to write down the divided differences
 \end{tikzpicture}
 \end{center}
 
-Although the table looks complicated, when using the actual values for \(x_i\) and \(x_j\) we follow a simple pattern to fill in the table of 
-going up the diagonally down and up, starting. For example for 
+Although the table looks complicated, when using the actual values for \(x_i\) and \(x_j\) we follow a simple pattern to fill in the table by 
+going diagonally down and up. For example, for 
 
 \[
     f[x_0, x_1] = \frac{y_1 \text{ (start) } - y_0 \text{ (up)}}{x_1 \text{ (diagonally down) } - x_0 \text{ (diagonally up) }}
 \]
 
-It is important to note that the first column of the table is just the \(y_i\) values, for the next columns we use the previous column to compute nominator and the denominator is 
+It is important to note that the first column of the table is just the \(y_i\) values; for the next columns we use the previous column to compute the numerator, and the denominator is 
 still defined by the \(x_i\) values.
 
 \textbf{Example:}
@@ -401,9 +400,9 @@ For \(x_0 < x_1 < \dots < x_n\) we denote \(\Omega_n = \{x_0, \dots, x_n\}\) the
 
 where \(C^{k - 1}\) means differentiable to degree at most \(k - 1\); is denoted as \emph{polynomial spline} of order \(k\) with respect to \(\Omega_n\).
 
-\emph{Polynomial splines} are a way of interpolating a polynomial to fit a continuous function in certain interval, 
-and then combining those piecewise function into one continuous functions. This can be used when an interpolation method delivers 
-errors certain regions of the domain. To address the discontinuities we use constrains using the derivatives of our polynomials.
+\emph{Polynomial splines} are a way of interpolating a polynomial to fit a continuous function in a certain interval, 
+and then combining those piecewise functions into one continuous function. This can be used when an interpolation method delivers 
+errors in certain regions of the domain. To address the discontinuities, we use constraints using the derivatives of our polynomials.
 
 \subsection{Cubic Splines}
 
@@ -457,7 +456,7 @@ given both \(u,v\).
 
 \subsubsection{Direct Computation}
 
-Given our the derivatives of \(s_3\)
+Given the derivatives of \(s_3\)
 
 \begin{align*}
     s_3(x) &= a_i + b_ix + + c_i x^2 + d_i x^3 \\ 
@@ -495,7 +494,7 @@ This will deliver a system of equations of \(4n \times 4n\).
 
 \textbf{Example:}
 
-For four variables we would get the following cubic spines \(S_i\) with the main conditions:
+For four variables we would get the following cubic splines \(S_i\) with the main conditions:
 
 \begin{align*}
     S_1(x_1) &= y_1 \\   
@@ -531,7 +530,7 @@ We define a \emph{moment} as
 
 We also define  \(\alpha_i := s_3'(x_i)\). 
 
-Given that our first and second derivatives are both defined, we can define our second derivate of the form 
+Given that our first and second derivatives are both defined, we can define our second derivative in the form 
 
 \[
     s_3''(x) = \beta_i + \frac{x - x_i}{x_{i + 1} - x_i}(\beta_{i + 1} - \beta_i) = \frac{\beta_{i + 1} - \beta_{i}}{h_i}(x - x_i)
@@ -551,7 +550,7 @@ Giving the following line
     s_3'(x) = \alpha_i + \beta_i (x - x_i) + \frac{b_{i + 1} - \beta_i}{2h_i} (x - x_i)^2 
 \]
 
-Then by repeating the integration over the same integral delivers 
+Then, repeating the integration over the same integral delivers 
 
 \[
     s_3(x) = y_i + \alpha_i (x - x_i) + \frac{\beta_i}{2} (x - x_i)^3 + \frac{\beta_{i + 1} - \beta_i}{6h_i}(x - x_i)^3
@@ -573,14 +572,14 @@ Continuing, by substituting \(x = x_{i + 1}\) into \(s_3(x_i)\) we get
     \frac{y_{i + 1} - y_i}{h_i} &= \alpha_i + \frac{\beta_i}{3} h_i + \frac{\beta_{i + 1}}{6} h_i
 \end{align*}
 
-By evaluating on ton the inner points of an interval \([x_i, x_{i + 1}],\) \([x_{i - 1}, x_i]\) we get 
+By evaluating on the inner points of an interval \([x_i, x_{i + 1}],\) \([x_{i - 1}, x_i]\) we get 
 
 \begin{align*}
     \frac{y_{i + 1} - y_i}{h_i} &= \alpha_i + \frac{\beta_i}{3} h_i + \frac{\beta_{i + 1}}{6} h_i \\ 
     \frac{y_{i} - y_{i - 1}}{h_{i - 1}} &= \alpha_{i - 1} + \frac{\beta_{i - 1}}{3} h_{i - 1} + \frac{\beta_{i}}{6} h_{i - 1}
 \end{align*}
 
-Now by subtracting the two equations we get
+Now, by subtracting the two equations, we get
 
 \begin{align*}
      \frac{y_{i + 1} - y_i}{h_i} - \frac{y_{i} - y_{i - 1}}{h_{i - 1}} &= \alpha_i - \alpha_{i - 1} + \frac{\beta_i}{3} h_i + \frac{\beta_{i + 1}}{6} h_i - \frac{\beta_{i - 1}}{3} h_{i - 1} - \frac{\beta_{i}}{6} h_{i - 1} \\ 
@@ -588,7 +587,7 @@ Now by subtracting the two equations we get
      &= \frac{h_{i - 1}}{6}\beta_{i -1} + \frac{h_{i - 1} + h_i}{3}\beta_i + \frac{h_i}{6} \beta_{i + 1}
 \end{align*}
 
-more specifically we get the following system of equation 
+More specifically, we get the following system of equations 
 
 \[
     h_{i - 1}\beta_{i -1} + 2(h_{i - 1} + h_i)\beta_i + h_i \beta_{i + 1} = 6\left(\frac{y_{i + 1} - y_i}{h_i} - \frac{y_{i} - y_{i - 1}}{h_{i - 1}}\right)
@@ -627,7 +626,7 @@ where
     \gamma_i = 6\left(\frac{y_{i + 1} - y_i}{h_i} - \frac{y_{i} - y_{i - 1}}{h_{i - 1}}\right), \quad h_i = x_{i + 1} - x_i
 \]
 
-Every thing but the \(\alpha_i\) is know, but they can be computed by
+Everything but the \(\alpha_i\) is known, but they can be computed by
 
 \[
     \alpha_i = \frac{y_{i + 1} - y_i}{h_i} - \frac{\beta_i}{3} h_i - \frac{\beta_{i + 1}}{6} h_i
@@ -637,7 +636,7 @@ Hence, we get the following algorithm for computing the cubic spline interpolati
 
 \subsection{Algorithm For Cubic Spline Interpolation}
 
-Given the points \((x_0, y_0), \dots, (x_n, y_n)\), we can compute the cubic spline interpolation by following steps:
+Given the points \((x_0, y_0), \dots, (x_n, y_n)\), we can compute the cubic spline interpolation by the following steps:
 
 \begin{enumerate}
 
@@ -691,7 +690,7 @@ We substitute into our system
     \end{bmatrix}
 \]
 
-using the condition \(\beta_0 = \beta_n = 0\) we get 
+using the condition \(\beta_0 = \beta_n = 0\), we get 
 
 \begin{center}
 \begin{tabular}{c|c|c|c|c|c}
@@ -730,7 +729,7 @@ We define a continuous function
 
 as \emph{curve} with a parameter \(t \in [a, b]\).
 
-Now given \((t_i, z_i), t_i \in [a, b], z_i \in \R^m\) we want to find \(f:[a, b] \to \R^m\) such that 
+Now, given \((t_i, z_i), t_i \in [a, b], z_i \in \R^m\), we want to find \(f:[a, b] \to \R^m\) such that 
 \(f(t_i) = z_i\ \forall i\). We will use \emph{polynomial curves}
 
 \[
@@ -744,7 +743,7 @@ Now given \((t_i, z_i), t_i \in [a, b], z_i \in \R^m\) we want to find \(f:[a, b
 
 where \(p_j(t)\) is a polynomial of degree \(n\).
 
-One of the methods for computing such polynomials are Newtonian Divided Differences but instead of using individual 
+One of the methods for computing such polynomials is Newtonian divided differences, but instead of using individual 
 \(y_i\) we use the vectors with the corresponding values from \(x_i\) for the differences.
 
 

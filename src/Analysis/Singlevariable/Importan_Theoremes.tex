@@ -1,7 +1,6 @@
-
 \chapter{Important Theorems of Single Variable Calculus}
 
-\subsection{Intermediate Value Theorem}
+\section{Intermediate Value Theorem}
 
 Let \(f\) be a continuous function on the closed interval \([a, b]\). If \( f(a) \ne f(b) \) 
 and \emph{N} is any number between \( f(a) \) and \( f(b) \), then there exists \( c \in (a, b) \) 
@@ -13,16 +12,16 @@ Without loss of generality, assume \( f(a) < N < f(b) \).
 Define:
 
 \[
-    S = \{ x \in [a, b] \mid f(x) < N \}
+    S = \{ x \in [a, b] \mid f(x) < N \}.
 \]
 
 Since \( a \in S \), \(S\) is non-empty and bounded above by \(b\). Let \( c = \sup S \). We want 
-to show that \( f(c) = N \) by satisfiying the inequalities \(f(c) \ge N\) and \(f(c) \le N\).
+to show that \( f(c) = N \) by satisfying the inequalities \(f(c) \ge N\) and \(f(c) \le N\).
 
 If \(f(c) < N\), by the continuity of \(f\), there exists \( \delta > 0 \) such that for all \( x \in (c, c + \delta) \):
 
 \[
-    f(x) < N
+    f(x) < N.
 \]
 
 This contradicts the definition of \( c \) as the supremum of \( S \).
@@ -30,7 +29,7 @@ This contradicts the definition of \( c \) as the supremum of \( S \).
 If \(f(c) > N\), again by the continuity of \(f\), there exists \( \delta > 0 \) such that for all \( x \in (c - \delta, c) \): 
 
 \[
-    f(x) > N    
+    f(x) > N.
 \]
 
 This contradicts the definition of \( c \) as the supremum of \( S \). Hence, we must have \( f(c) = N \).
@@ -38,28 +37,32 @@ This contradicts the definition of \( c \) as the supremum of \( S \). Hence, we
 \QED
 
 \begin{center}
-\begin{tikzpicture}[scale=1]
-\draw[->] (-0.5,0) -- (5.5,0) node[right] {\(x\)};
-\draw[->] (0,-1) -- (0,4.5) node[above] {\(f(x)\)};
-\draw[scale=1,domain=0.5:5,smooth,variable=\x,blue,thick] plot ({\x},{0.5*(\x-3)^2+1});
-\draw[dashed] (1.2,0) -- (1.2,2.6);
-\draw[dashed] (4.2,0) -- (4.2,1.82);
-\draw[dashed] (0,1.82) -- (5.5,1.82);
-\node at (5.3,1.65) {\(N\)};
-\node at (1.2,-0.3) {\(a\)};
-\node at (4.2,-0.3) {\(b\)};
-\node at (3,-0.3) {\(c\)};
-\filldraw (3,0.99) circle (1.5pt);
-\end{tikzpicture}
+    \begin{tikzpicture}[scale=1]
+     
+        \draw[->] (-0.5,0) -- (5.5,0) node[right] {\(x\)};
+        \draw[->] (0,-1) -- (0,4.5) node[above] {\(f(x)\)};
+        \draw[scale=1,domain=0.5:5,smooth,variable=\x,blue,thick] plot ({\x},{0.5*(\x-3)^2+1});
+        \draw[dashed] (1.2,0) -- (1.2,2.6);
+        \draw[dashed] (4.2,0) -- (4.2,1.82);
+        \draw[dashed] (0,1.82) -- (5.5,1.82);
+        
+        \node at (5.3,1.65) {\(N\)};
+        \node at (1.2,-0.3) {\(a\)};
+        \node at (4.2,-0.3) {\(b\)};
+        \node at (3,-0.3) {\(c\)};
+      
+        \filldraw (3,0.99) circle (1.5pt);
+    
+    \end{tikzpicture}
 \end{center}
 
-\subsection{Extreme Value Theorem}
+\section{Extreme Value Theorem}
 
 If \(f\) is continuous on the closed interval \([a, b] \), then \(f\) attains a maximum and a 
 minimum value on \([a, b]\). That is, there exist \( c, d \in [a, b] \) such that:
 
 \[
-    f(c) \le f(x) \le f(d) \quad \text{for all } x \in [a, b]
+    f(c) \le f(x) \le f(d) \quad \text{for all } x \in [a, b].
 \]
 
 \textbf{Proof:}  
@@ -72,14 +75,14 @@ Therefore, there exist \( c, d \in [a, b] \) such that:
 
 \[
     f(c) = \min\{f(x): x \in [a, b]\}, \quad
-    f(d) = \max\{f(x): x \in [a, b]\}
+    f(d) = \max\{f(x): x \in [a, b]\}.
 \]
 
 \QED
 
-\subsection{Rolle’s Theorem}
+\section{Rolle’s Theorem}
 Let \(f\) be continuous on \([a, b] \), differentiable on \((a, b) \), and suppose \( f(a) = f(b) \).  
-Then, there exists \( c \in (a, b) \) such that \( f'(c) = 0 \).
+Then there exists \( c \in (a, b) \) such that \( f'(c) = 0 \).
 
 \textbf{Proof:}  
 
@@ -92,25 +95,30 @@ constant, so \( f'(x) = 0 \) everywhere on \((a, b)\), and in particular for som
 \QED
 
 \begin{center}
-\begin{tikzpicture}[scale=1]
-\draw[->] (-0.5,0) -- (5.5,0) node[right] {\(x\)};
-\draw[->] (0,-1) -- (0,4) node[above] {\(f(x)\)};
-\draw[scale=1,domain=0.5:5,smooth,variable=\x,blue,thick] plot ({\x},{-0.5*(\x-3)^2+3});
-\node at (0.5,-0.3) {\(a\)};
-\node at (5,-0.3) {\(b\)};
-\node at (2.8,-0.3) {\(c\)};
-\filldraw (2.8,3) circle (1.5pt);
-\draw[dashed] (2.8,0) -- (2.8,3);
-\end{tikzpicture}
+    \begin{tikzpicture}[scale=1]
+        
+        \draw[->] (-0.5,0) -- (5.5,0) node[right] {\(x\)};
+        \draw[->] (0,-1) -- (0,4) node[above] {\(f(x)\)};
+        \draw[scale=1,domain=0.5:5,smooth,variable=\x,blue,thick] plot ({\x},{-0.5*(\x-3)^2+3});
+        
+        \node at (0.5,-0.3) {\(a\)};
+        \node at (5,-0.3) {\(b\)};
+        \node at (2.8,-0.3) {\(c\)};
+        
+        \filldraw (2.8,3) circle (1.5pt);
+        
+        \draw[dashed] (2.8,0) -- (2.8,3);
+    
+    \end{tikzpicture}
 \end{center}
 
-\subsection{Mean Value Theorem}
+\section{Mean Value Theorem}
 
 Let \(f\) be continuous on \([a, b] \) and differentiable on \((a, b) \).  
 Then there exists \( c \in (a, b) \) such that:
 
 \[
-    f'(c) = \frac{f(b) - f(a)}{b - a}
+    f'(c) = \frac{f(b) - f(a)}{b - a}.
 \]
 
 \textbf{Proof:}  
@@ -118,18 +126,18 @@ Then there exists \( c \in (a, b) \) such that:
 Define the auxiliary function:
 
 \[
-    g(x) = f(x) - \left( \frac{f(b) - f(a)}{b - a} \right)(x - a)
+    g(x) = f(x) - \left( \frac{f(b) - f(a)}{b - a} \right)(x - a).
 \]
 
-Then \( g(a) = f(a) \), \( g(b) = f(b) - m(b - a) = f(a) \Rightarrow g(a) = g(b) \)
+Then \( g(a) = f(a) \), \( g(b) = f(b) - m(b - a) = f(a) \Rightarrow g(a) = g(b) \).
 
 Apply Rolle’s theorem to \( g(x) \):  
-Since \( g(a) = g(b) \), and \( g \) is continuous and differentiable, there exists \( c \in (a, b) \) such that \( g'(c) = 0 \)
+Since \( g(a) = g(b) \) and \( g \) is continuous and differentiable, there exists \( c \in (a, b) \) such that \( g'(c) = 0 \).
 
 Then:
 
 \[
-    g'(x) = f'(x) - \left( \frac{f(b) - f(a)}{b - a} \right) \Rightarrow f'(c) = \frac{f(b) - f(a)}{b - a}
+    g'(x) = f'(x) - \left( \frac{f(b) - f(a)}{b - a} \right) \Rightarrow f'(c) = \frac{f(b) - f(a)}{b - a}.
 \]
 
 \QED
