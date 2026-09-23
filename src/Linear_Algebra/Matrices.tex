@@ -50,7 +50,7 @@ The set of all \(m \times n\) matrices with real entries is denoted by \(\R^{m \
 
 Matrix addition/subtraction satisfies the following properties:
 
-\subsection{Properties Of Matrix Addition And Subtraction}
+\subsection{Properties of Matrix Addition and Subtraction}
 
 \begin{itemize}
 
@@ -178,7 +178,7 @@ Since \(B\) is a \(3 \times 2\) matrix and \(A\) is a \(2 \times 3\) matrix, the
 this calculation cannot be performed since the number of columns in \(B\) (which is 2) does not equal the number of rows in \(A\) (which is 2). T
 hus, \(BA\) is undefined, demonstrating that matrix multiplication is not always commutative.
 
-\subsection{Properties Of Matrix Multiplication}
+\subsection{Properties of Matrix Multiplication}
 
 Matrix multiplication satisfies the following properties:
 
@@ -196,7 +196,7 @@ Matrix multiplication satisfies the following properties:
 
 Note that matrix multiplication is generally not commutative, i.e., \(AB \neq BA\) in most cases.
 
-\section{Outer Product For Matrix Multiplication}
+\section{Outer Product for Matrix Multiplication}
 
 The \emph{outer product} of two vectors \(a \in \field^m\) and \(b \in \field^n\) is defined as the matrix
 
@@ -218,7 +218,7 @@ For the case where \(A \in \field^{n \times m}\) and \(B \in \field^{m \times n}
 
 where \(a_k\) is the \(k\)-th column of \(A\) and \(b_k\) is the \(k\)-th row of \(B\).
 
-\section{The Transpose Of A Matrix}
+\section{The Transpose of a Matrix}
 
 The \emph{transpose} of a matrix \(A \in \R^{m \times n}\), denoted \(A^T \in \R^{n \times m}\), is obtained by interchanging rows and columns:
 
@@ -256,7 +256,7 @@ Here we are given \(A = (a_1, \dots, a_n)\) with \(Ax\) as some vector, \(b\) so
     \inner{a_k}{b - Ax} = 0 \quad \forall k \iff A^{T} (b - Ax) = \vec{0}
 \]
 
-\subsubsection{Proof That The Inverse Of The Transpose Is The Transpose Of The Inverse}
+\subsubsection{Proof That the Inverse of the Transpose Is the Transpose of the Inverse}
 
 To prove: \((A^{-1})^T = (A^T)^{-1}\)
 
@@ -268,7 +268,7 @@ To prove: \((A^{-1})^T = (A^T)^{-1}\)
 
 \QED
 
-\section{The Equivalence Of Matrices}
+\section{The Equivalence of Matrices}
 
 Two matrices \(A\) and \(B\) are said to be \emph{equivalent} if one can be transformed into the other through a finite sequence of elementary 
 row operations. We write \(A \sim B\) to denote this equivalence.
@@ -501,7 +501,7 @@ For a square matrix \(A \in \R^{n \times n}\), the \emph{inverse} matrix \(A^{-1
     \item \emph{Eigenvalues of the inverse}: \(\mathrm{eig}(A^{-1}) = \mathrm{eig}(A)^{-1}\).
 \end{itemize}
 
-\subsection{Finding The Inverse}
+\subsection{Finding the Inverse}
 
 There are several methods to find the inverse of a matrix:
 
@@ -678,7 +678,7 @@ To verify, we can check that \(AA^{-1} = I_3\):
 
 This confirms that we have correctly found the inverse of matrix \(A\).
 
-\section{How To Isolate Matrices In Equations}
+\section{How to Isolate Matrices in Equations}
 
 Like in other types of equations, we can isolate a matrix by performing the proper operations.
 
@@ -811,7 +811,7 @@ To find a basis for these spaces:
 
 \end{itemize}
 
-\section{Linear Maps As Matrices}
+\section{Linear Maps as Matrices}
 
 \emph{Linear maps} between vector spaces \(V\) and \(W\) can be represented by matrices, in the following way:
 
@@ -821,7 +821,7 @@ To find a basis for these spaces:
 
 where \(\vec{a}_i\) are images of the basis vectors of \(V\) as columns of \(A\) and \(\vec{x} = (x_1, \dots, x_n)^T\).
 
-\subsection{Matrix Representation of Linear Maps on Basis vectors}
+\subsection{Matrix Representation of Linear Maps on Basis Vectors}
 
 Let \(V\) and \(W\) be two \(\field\)-vector spaces, \(\beta = \{v_1, \dots, v_n\}\) a basis of \(V\) and \( \gamma = \{w_1, \dots, w_m\}\) a basis of 
 \(W\), and let \(f : V \to W\) be linear. Then there exists a unique matrix \(A = (a_{ij}) \in \field^{m \times n}\) with
@@ -885,7 +885,7 @@ We check that:
 
 This confirms the matrix representation is correct.
 
-\section{Matrices With Respect To A Basis}
+\section{Matrices With Respect to a Basis}
 
 Expressing a linear map in terms of a different basis means that, given two vector spaces \(V\) and \(W\)
 with the bases \(\beta = \{v_1, \dots, v_n\}\) and \(\gamma = \{w_1, \dots, w_n\}\) respectively,
@@ -918,7 +918,7 @@ The intuition behind it is that in the previous method we are solving the system
 each basis vector \(w_i\) in \(\gamma\), which is equivalent to \(\vec{x}_i = \varphi_{\gamma}^{-1} A_\beta w_i\) when using
 Gaussian elimination. If you then put all \(\vec{x}_i\) in order in a matrix then you get \(A_{\gamma}\).
 
-\section{Example Of A Complete Exercise}
+\section{Example of a Complete Exercise}
 
 \begin{enumerate}
 
@@ -1072,7 +1072,7 @@ not a multiple of the first. It follows therefore,
     \right\}
 \]
 
-\section{Diagonal And Triangular Matrices}
+\section{Diagonal and Triangular Matrices}
 
 A matrix is called \emph{Diagonal} if the only non-zero elements are the elements on the main diagonal. A matrix is \emph{triangular} if all 
 elements under or above the main diagonal are zero.
@@ -1122,7 +1122,7 @@ Then
 
 \QED
 
-\section{Derivative Of A Matrix}
+\section{Derivative of a Matrix}
 
 Given a matrix \(A \in \C^{n \times n}\) and a vector \(x \in \C^{n}\) we can find the 
 derivatives of 

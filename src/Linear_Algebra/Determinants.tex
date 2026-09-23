@@ -37,7 +37,7 @@ The determinant of larger matrices can be computed using co-factor expansion alo
 
 where \(A_{ij}\) is the \((n-1) \times (n-1)\) sub-matrix obtained by deleting the \(i\)-th row and \(j\)-th column of \(A\).
 
-\section{Properties Of The Determinant}
+\section{Properties of the Determinant}
 
 \begin{itemize}
 
@@ -75,7 +75,7 @@ where \(A_{ij}\) is the \((n-1) \times (n-1)\) sub-matrix obtained by deleting t
 
 \end{itemize}
 
-\subsection{Proof of the multiplication of determinants}
+\subsection{Proof of the Multiplication of Determinants}
 
 For \( A, B \in \field^{n \times n} \), it holds that
 
@@ -190,7 +190,7 @@ Equivalently, by re-indexing:
 This formula expresses the determinant as a sum over all permutations of the indices \( \{1, \dots, n\} \), where each term is a 
 product of matrix entries taken from different rows and columns, weighted by the sign of the corresponding permutation.
 
-\section{Laplace's Method (Co-factor Expansion)}
+\section{Laplace's Method (Co-Factor Expansion)}
 
 The determinant of an \( n \times n \) matrix \( A = [a_{ij}] \) can be computed using the \emph{Laplace expansion}, also known as \emph{co-factor expansion}.
 This method expands the determinant along a specific row or column.
@@ -351,7 +351,7 @@ For a \(4 \times 4\) matrix, we can use Laplace Method along the first row:
     \det(A) = 145
 \]
 
-\section{Determinant Of The Reduced Echelon Form}
+\section{Determinant of the Reduced Echelon Form}
 
 The determinant has another trait that states that if your matrix \(A\) is \emph{REF}, then
 its determinant is given by the product of the main diagonal.
@@ -360,7 +360,7 @@ its determinant is given by the product of the main diagonal.
     \det(A) = \prod_{i = 1}^{n} a_{i, i}
 \]
 
-\section{Gaussian Method For Finding Determinants}
+\section{Gaussian Method for Finding Determinants}
 
 Another method for finding determinants uses the row operations we already know plus column operations,
 but with the catch that for the column case we have to take into consideration how

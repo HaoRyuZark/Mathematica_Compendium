@@ -9,7 +9,7 @@ Note that I will start with sets as such instead of going through classes and th
 properties to sets. Classes will only be handled shortly with the axioms and some proofs, but some of their properties will be 
 directly presented as set properties. 
 
-\section{Set Definition And Symbology}
+\section{Set Definition and Symbology}
 
 To be concise, a \emph{set} is a collection of other sets; yes, the definition is recursive. Once the foundation 
 is set, we can abstract those nested sets as mathematical objects.
@@ -327,7 +327,7 @@ Hence, \(x \notin A\) therefore, for every \(x \in B^c\) we conclude \(B^c \subs
 
 \QED
 
-\section{Proof The Power Set of a Set is not an Element of the Set}
+\section{Proof the Power Set of a Set Is Not an Element of the Set}
 
 Let \(X\) be a set and \(Y = \{x \in X \mid x \notin x\}\). 
 
@@ -539,7 +539,7 @@ Thus, both inclusions hold and the equality follows.
 
 \QED 
 
-\subsection{Proof That The Cartesian Product Is A Set}
+\subsection{Proof That the Cartesian Product Is a Set}
 
 We need to prove that \(A \times B \subseteq \mathcal{P}(A \cup B)\). By the definition of the ordered pair we know that 
 for \(x \in A \cup B \implies \{x\} \subseteq A \cup B\) the same for \(x,y \in A \cup B\) which implies 
@@ -552,7 +552,7 @@ subset of \(\mathcal{P}(\mathcal{P}(A \cup B))\) for any \(x\) and \(y\). Hence
 
 \QED
 
-\subsection{The Empty Set Of The Cartesian Product}
+\subsection{The Empty Set of the Cartesian Product}
 
 \(A \times B = \emptyset \iff A = \emptyset \lor B = \emptyset\). We will prove the negation of the 
 statement, which is logically equivalent.
@@ -622,7 +622,7 @@ Let \(X\) be the universal set and \(A, B, C \subseteq X\).
 
 \end{itemize}
 
-\subsection{Proof Of The Distributive Law}
+\subsection{Proof of the Distributive Law}
 
 \begin{align*}
 	&\text{Let } x \in A \cap (B \cup C). \\
@@ -655,7 +655,7 @@ Thus,
 
 \QED
 
-\subsection{Proof of De Morgan's Law for sets and logic}
+\subsection{Proof of De Morgan's Law for Sets and Logic}
 
 The complement of \( A \cup B \) is \( \overline{(A \cup B)} \), and the law on disjoint decomposition 
 states:
@@ -721,7 +721,7 @@ We also can define the graph of the sets with their respective indexes:
 	G_{A_i} = A_i \times I = \{(i, A_i) \mid i \in I \land  A_i \in \{A_i\}_{i \in I}\}
 \]
 
-\section{Generalized Union, Intersection and Cartesian Product For Indexed Sets}
+\section{Generalized Union, Intersection and Cartesian Product for Indexed Sets}
 
 For a class of classes or sets of sets with an index set \(I\) we define the generalized \emph{union}, \emph{intersection} 
 and \emph{Cartesian product} as:
@@ -802,7 +802,7 @@ universal set. Then the following holds:
 	A = (A \cap B) \cup (A \setminus B), \quad |A| = |A \cap B| + |A \setminus B|
 \]
 
-\subsubsection*{Cardinality of the complements}
+\subsubsection*{Cardinality of the Complements}
 
 \[
 	|A| = |X \setminus A| = |X| - |A|
@@ -841,14 +841,14 @@ Let \( |A \cap B| = k \), then:
 	&= |A| + |B| + |C| - |A \cap B| - |A \cap C| - |B \cap C| + |A \cap B \cap C|
 \end{align*}
 
-\subsubsection{General Formula for the cardinality of the union of sets}
+\subsubsection{General Formula for the Cardinality of the Union of Sets}
 
 \[
 	\left\vert \bigcup_{i = 1}^n M_i \right\vert  = \sum_{I \subseteq \{1, \dots, n\}, I \neq \emptyset}
 	{(-1)}^{|I| - 1} \left\vert \bigcap_{i \in I} M_i \right\vert
 \]
 
-\section{Definition of Countable and Non-countable}
+\section{Definition of Countable and Non-Countable}
 
 A set \(A\) is \emph{infinite countable} or just \emph{countable} if there exists a bijection from \(\N\) to 
 \(A\). If \(A\) has infinitely many elements and there is no such bijection, we call it \emph{non-countable}.
@@ -863,7 +863,7 @@ Given \(A_n, n \in \N\) countable sets, then
 
 is also countable.
 
-\section{Countability Of Subsets}
+\section{Countability of Subsets}
 
 Given \(A \subseteq B\), where \(B\) is countable, then \(A\) is also countable. The other case is 
 that if \(A\) is non-countable, then \(B\) must be non-countable as well.
@@ -900,7 +900,7 @@ Therefore, the set of rational numbers \( \Q \) is countable.
 
 \QED 
 
-\section{Cantor's Diagonal Argument: The Real Numbers are Uncountable}
+\section{Cantor's Diagonal Argument: The Real Numbers Are Uncountable}
 
 We show that the set of real numbers in the interval \( (0,1) \subseteq \R \) is uncountable.
 
@@ -973,7 +973,7 @@ and
 
 as the \emph{intersection} and \emph{union} of the sets.
 
-\subsection{The Intersection Of The Empty Set Is The Universal Class}
+\subsection{The Intersection of the Empty Set Is the Universal Class}
 
 \textbf{Proof:}
 
@@ -1010,7 +1010,7 @@ The condition is always false; therefore the union has to be the empty set.
 
 \QED
 
-\subsubsection{Subset-property of Set Systems}
+\subsubsection{Subset-Property of Set Systems}
 
 Let \(A \in \mathcal{B}\) then \(A \subseteq \bigcup \mathcal{B} \land \bigcap \mathcal{B} \subseteq A\).
 
@@ -1108,7 +1108,7 @@ A subset of \(M\) with an element of each of the classes of \(M\) is called the 
 
 The function \(v: P \to M\) with \(v(X) \in X\) for all \(X \in P\) is called \emph{representative function}.
 
-\subsection{Equivalence Relation From A Partition}
+\subsection{Equivalence Relation From a Partition}
 
 Given the partition \(S\) of the set \(A\), then 
 
@@ -1129,7 +1129,7 @@ is an equivalence relation.
 
 \QED
 
-\subsection{Relation From The Relation Of The Quotient Space And Partition From The Quotient Space}
+\subsection{Relation From the Relation of the Quotient Space and Partition From the Quotient Space}
 
 Given \(R\) on \(A\), \(R_{A/R} = R\) with 
 
@@ -1162,7 +1162,7 @@ For the other direction if \(a, b \in Y \implies a E_S b \implies b \in [a]_{R_S
 
 \QED
 
-\subsection{The Quotient Space Satisfies The Partition Properties}
+\subsection{The Quotient Space Satisfies the Partition Properties}
 
 Given \(A/R\), it satisfies the properties of a partition.
 
@@ -1225,7 +1225,7 @@ in different equivalence classes \(A_i \cap A_j = \emptyset \implies \forall x \
 \QED
 
 
-\subsection{Equivalence Relations And Partitions}
+\subsection{Equivalence Relations and Partitions}
 
 Let \( M \) be a set.
 
@@ -1265,7 +1265,7 @@ Let \( M \) be a set.
 
 \section{Equivalence Relations Under Functions}
 
-\subsection{Pre-image}
+\subsection{Pre-Image}
 
 Let \(f: A \to B\) and \(G\)be an equivalence relation in \(B\). The \emph{pre-image} of \(G\) in  
 \(A\) is defined as  
@@ -1289,7 +1289,7 @@ Similarly, we can also define the \emph{restriction} for when \(B \subseteq A\):
 Let \(G\) and \(H\) be equivalence relations in \(A\). We call \(G\) a \emph{refinement} of \(H\) if 
 \(G \subseteq H\); we also say that \(G\) is \emph{finer} than \(H\), and that \(H\) is \emph{coarser} than \(G\).
 
-\subsection{Quotient Space For Refinements}
+\subsection{Quotient Space for Refinements}
 
 Let \(G\) and \(H\) be equivalence relations on a set \(A\) and let \(G\) be a refinement of \(H\). 
 The \emph{quotient} of \(H\) by \(G\) usually denoted as \(H/G\), is a relation in \(A/G\) defined as follows: 
@@ -1300,7 +1300,7 @@ The \emph{quotient} of \(H\) by \(G\) usually denoted as \(H/G\), is a relation 
 
 In simpler words, it is a set of the pairs consisting of the equivalence classes of a pair \((x, y) \in H\).
 
-\subsection{The Quotient is an Equivalence Relation}
+\subsection{The Quotient Is an Equivalence Relation}
 
 The Quotient is an Equivalence Relation.
 
@@ -1318,7 +1318,7 @@ guarantees us that their equivalence class counterpart are also part of an equiv
 
 \QED
 
-\subsection{Equivalence Classes under Refinements}
+\subsection{Equivalence Classes Under Refinements}
 
 Let \(G\) and \(H\) be equivalence relations in \(A\), suppose \(G \subseteq H\). Then 
 \(z \in [x]_{H} \implies [z]_G \subseteq [x]_H\).
@@ -1421,7 +1421,7 @@ Given a family of classes \(\{A_i\}_{i \in I}\) we define the \emph{product of c
 
 Is the set of all functions from \(I\) to \(\bigcup A_i\).
 
-\subsection{Properties Products Of Classes}
+\subsection{Properties Products of Classes}
 
 \begin{itemize}
 

@@ -1,4 +1,4 @@
-\chapter{Machine Learning And Data Science}
+\chapter{Machine Learning and Data Science}
 
 \emph{Machine Learning} is an area of computer science which focuses on making accurate
 predictions based on gathered data and mathematical models. It heavily uses \emph{data science}, which is another
@@ -25,7 +25,7 @@ Our main terminologies and notation are:
 
 Our goal is to find a function \(g: \mathcal{X} \to \mathcal{Y}\) which approximates \(f\).
 
-\subsection{Classification And Regression}
+\subsection{Classification and Regression}
 
 \emph{Classification} predicts categories based on discrete labels, i.e., classes or groups, while \emph{regression} predicts
 continuous values, i.e., identifying trends and patterns.
@@ -182,13 +182,13 @@ Common methods for feature scaling include:
 A \emph{hyper-parameter} is a parameter used by a model/algorithm which cannot be approximated directly during the training process.
 For example, the \(k\) in K-Means is given at the start.
 
-\subsection{Hyper-parameter Tuning}
+\subsection{Hyper-Parameter Tuning}
 
 \emph{Hyper-parameter tuning} is the process of improving the hyper-parameters via validation methods. In such methods not only is the model
 tested against other models with the same hyper-parameters, but also against the same model with different hyper-parameters. We do this via 
 cross-validation among other techniques.
 
-\section{Accuracy Metrics For Classification}
+\section{Accuracy Metrics for Classification}
 
 A \emph{confusion matrix} is a table that is often used to describe the performance of a classification model (or classifier) on a set of test data for
 which the true values are known. It allows the visualization of the performance of an algorithm.
@@ -271,9 +271,9 @@ When we read a value like \((0.8, 0.2)\), we can say that 80 percent were correc
 The higher the curve, the better our classification model. This can be compared using the area under the ROC curve of different 
 curves.
 
-\section{Accuracy Metrics For Regression}
+\section{Accuracy Metrics for Regression}
 
-\subsection{R-squared}
+\subsection{R-Squared}
 
 \emph{R-squared} provides a measurement of how much variation in the response the model explains.
 
@@ -292,7 +292,7 @@ This metric is not available for all models. Linear regressions, among others, s
 A problem of this metric is that it increases when more predictors are added, which means that even irrelevant coefficients are
 taken into consideration.
 
-\subsection{Adjusted R-squared}
+\subsection{Adjusted R-Squared}
 
 This is a penalized version of \(R^2\) to avoid taking irrelevant predictors.
 
@@ -328,7 +328,7 @@ The types of data which arise from the splitting of the data are:
 
 \end{itemize}
 
-\subsubsection*{Quote From The Statistical Learn-theory}
+\subsubsection*{Quote From the Statistical Learn-Theory}
 
 The more often you use a data-set for training a model, taking decisions, etc., the harder it is to approximate
 the capacity of the data-set to approximate the out-of-sample error.
@@ -1155,7 +1155,7 @@ with
 
 \emph{Nearest neighbors models NNM} use the labels of the neighbors in the proximity to perform classification or regression.
 
-\subsection{Quantifying the Differences between Features}
+\subsection{Quantifying the Differences Between Features}
 
 Examples of metrics, distance measurements:
 
@@ -1685,7 +1685,7 @@ note that this is maximal when \(\lambda_i\) is maximal.
 
 Depending on how many dimensions we want to reduce to, we can choose the eigenvectors corresponding to the largest eigenvalues.
 
-\subsection{Projection Of The Data After The Analysis}
+\subsection{Projection of the Data After the Analysis}
 
 Each of our principal components represents a direction in our high dimensional space. Given our data set \(X \in \R^{n \times p}\)
 and our matrix of \(k\) principal components \(W^T \in \R^{k\times p}\); the projection of our data onto the components is given by
@@ -1788,7 +1788,7 @@ The algorithm goes as following:
 
 This is an extension of PCA to non-linear feature spaces via the kernel trick.
 
-\subsection{Reformulation of the PCA with Non-Linear Features}
+\subsection{Reformulation of the PCA With Non-Linear Features}
 
 The covariance matrix \(S = \frac{1}{N} \sum_{n = 1}^{N} (x_n - \overline{x})(x_n - \overline{x})^T\) can
 be reformulated with \(x_i \to \Phi(x_i)\) to
@@ -1804,7 +1804,7 @@ Then we have
 	S = \frac{1}{N} \sum_{n = 1}^{N} \Phi(x_n) \Phi(x_n)^T.
 \]
 
-\subsection{Eigenvector as Linear Combination of the transformed Features}
+\subsection{Eigenvector as Linear Combination of the Transformed Features}
 
 \begin{align*}
 	S u_j & = \lambda_j u_j                                                                   \\
@@ -1870,7 +1870,7 @@ with
 	\vec{\alpha_j} \to \hat{\vec{\alpha}}_j = \frac{\vec{\alpha_j}}{\sqrt{\hat{\lambda_j}}} \frac{\vec{\alpha}_j}{\|\vec{\alpha}_j\|}.
 \]
 
-\subsection{Projection onto the KPCA Axis}
+\subsection{Projection Onto the KPCA Axis}
 
 \begin{align*}
 	\Phi(x)^T u_j & = \Phi(x)^T \sum_{l} \alpha_{jl} \Phi(x_l) \\
@@ -1989,7 +1989,7 @@ The idea is similar to PCA, but instead of using correlation between samples, we
 metric for the method is part of the art. As an important note, the previously discussed method only works with the Euclidean distance; for a generalization with any metric
 there is an alternative algorithm.
 
-\subsection{Proportion Of Distance Matrix Explained (PDME)}
+\subsection{Proportion of Distance Matrix Explained (PDME)}
 
 The \emph{PDME} is given by: 
 
@@ -2021,7 +2021,7 @@ For the direction \(u_1\) with the projection of some data point \(x_i\) onto th
 	\hat{x_i} = u_1^T x_i.
 \]
 
-\subsection{Mean Vector of A Class}
+\subsection{Mean Vector of a Class}
 
 Let
 
@@ -2390,7 +2390,7 @@ We can also define the \emph{average silhouette width} and \emph{silhouette scor
 The main idea of the \emph{prediction strength} is that the quality of a clustering is good if
 the belonging to a specific cluster can be well predicted.
 
-\subsubsection{The Co-membership Matrix and The Prediction Strength}
+\subsubsection{The Co-Membership Matrix and the Prediction Strength}
 
 Given the clusters \(C_1, \dots, C_k\) of \(\mathcal{D}_{\text{train}}\) and \(A_1, \dots, A_k\) of
 \(\mathcal{D}_{\text{val}}\) with size \(n' = |\mathcal{D}_{\text{val}}|\); we denote our \emph{co-membership matrix} \(M \in \R^{n' \times n'}\).
@@ -2419,7 +2419,7 @@ cluster \(l\) of the validation labels and divide it by the number of elements i
 Note that this algorithm is highly dependent on the chosen clustering strategy, here the K-Means variant was used for the
 clustering metric, but for example, if we do agglomerative clustering, we would use the mean Euclidean distance as our similarity measurement.
 
-\subsubsection{Prediction Strength Algorithm For K-Means}
+\subsubsection{Prediction Strength Algorithm for K-Means}
 
 \begin{enumerate}
 

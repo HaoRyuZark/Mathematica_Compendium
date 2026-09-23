@@ -1,6 +1,6 @@
 \chapter{Numerical Linear Algebra}
 
-\section{QR-Decomposition For Numerical Mathematics}
+\section{QR-Decomposition for Numerical Mathematics}
 
 We want to find \(A = QR\), where \(R\) is an upper-triangular matrix and \(Q\) is just a matrix. 
 
@@ -483,7 +483,7 @@ And we apply it to \(A\)
 
 Now, we have an upper triangular matrix and we can compute \(Q\) as \(H_1\) and \(R\) as \(H_1 A\), and we have \(A = QR\).
 
-\section{Iterative Methods For Linear Systems}
+\section{Iterative Methods for Linear Systems}
 
 An \emph{iterative method} 
 
@@ -601,7 +601,7 @@ For any matrix metric \(\metric{\cdot}\) the following holds:
 \]
 
 Also for an induced matrix metric \(\metric{\cdot}_I\) \(\metric{B}_I^{\frac{1}{k}}\) converges towards \(\rho(B)\).
-\subsection{Splitting Method For Linear Systems}
+\subsection{Splitting Method for Linear Systems}
 
 Given a regular matrix \(A \in \R^{n \times n}\) in a system \(Ax = b\), we can split \(A\) into 
 
@@ -731,7 +731,7 @@ The iteration is then given by
     x^{(k + 1)} = D^{-1}(L + U)x^{(k)} + D^{-1}b
 \]
 
-\subsection{The Residuum As Stopping Criterion}
+\subsection{The Residuum as Stopping Criterion}
 
 The \emph{residuum} is defined as
 
@@ -741,7 +741,7 @@ The \emph{residuum} is defined as
 
 When \(\metric{r^{(k)}} \le \varepsilon \metric{b}\) for a given \(\varepsilon > 0\) then we can stop the iteration because we are close enough to the solution.
 
-\subsection{Convergence For Semi Positive Definite Matrices}
+\subsection{Convergence for Semi Positive Definite Matrices}
 
 Given semi positive definite matrices \(A, M\); if \(2M - A\) is also semi positive definite, then 
 
@@ -761,7 +761,7 @@ Also, the splitting \(M + M^T - A\) is also spd. and \(\rho(B) \le \metric{B}_A 
     |a_{i,i}| > \sum_{j \ne i} |a_{i,j}|, \ \forall i = 1, \dots, n
 \]
 
-\subsection{The Jacobi Method For Linear Systems}
+\subsection{The Jacobi Method for Linear Systems}
 
 The Jacobi method is a single step stationary iteration method with the splitting 
 \(A = D - (L + U)\) and the iteration:
@@ -964,7 +964,7 @@ Giving us
    = \frac{\inner{p^{(k)}}{r^{(k)}}}{\inner{p^{(k)}}{Ap^{(k)}}}
 \]
 
-\section{Iterative Methods For Eigenvalue Problems}
+\section{Iterative Methods for Eigenvalue Problems}
 
 \subsection{The Vector Iteration}
 
@@ -996,7 +996,7 @@ means that by applying \(A\) to \(x\) multiple times, we get closer to the domin
 
 \end{enumerate}
 
-\subsection{The Jacobi Method For Eigenvalues}
+\subsection{The Jacobi Method for Eigenvalues}
 
 The \emph{Jacobi method} is an iterative method for computing the eigenvalues of a symmetric matrix \(A\) by applying a sequence 
 of orthogonal transformations to \(A\) to make it diagonal. 

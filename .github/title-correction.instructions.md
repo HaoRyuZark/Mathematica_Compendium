@@ -1,6 +1,7 @@
 # Tile Correction Rules 
 
 For each of the files in the directory I am going to give you, you are going to `spawn` a sub-agent which is goin to perform the task underneath.
+If there are other directories you may procced recusively.
 
 --- 
 

@@ -165,7 +165,7 @@ Assuming we already know our maximum, we would get:
 Hence, we need to use an \(n \ge 4.24\).
 
 
-\section{Lagrange Integration For \texorpdfstring{\([0, 1]\)}{}}
+\section{Lagrange Integration for \texorpdfstring{\([0, 1]\)}{}}
 
 For the interval \([0,1]\) we get the equidistant points \(x_k = \frac{k}{n}\) giving 
 us the interpolation 
@@ -190,7 +190,7 @@ Using them gives us the approximation
 
 with \(\beta_k = \int_0^1 L_k (x) dx\).
 
-\subsection{Generalization For \texorpdfstring{\([a,b]\)}{}}
+\subsection{Generalization for \texorpdfstring{\([a,b]\)}{}}
 
 We can extend the previous idea to any real, closed interval 
 
@@ -198,7 +198,7 @@ We can extend the previous idea to any real, closed interval
     \int_a^b f(x) dx = (b - a) \int_0^1 f(a + (b - a)y) dy \approx (b - a) \sum_{k = 0}^n \beta_k f \left(a + (b - a)\frac{k}{n}\right).
 \]
 
-\section{Summation For Error Mitigation}
+\section{Summation for Error Mitigation}
 
 \[
     \int_a^b f(x) dx = (b - a) \sum_{i = 0}^{m - 1} \int_{a_i}^{b_i} f(x) dx \approx \sum_{i = 0}^{m - 1}(b_i - a_i) \sum_{k = 0}^n \beta_k f(x_{k,i})
@@ -212,7 +212,7 @@ For the case when the intervals have the same size then our intervals boundaries
     h = \frac{b - a}{m} = b_i - a_i, \quad a_i = a + ih, \, b_i = a + (i + 1)h.
 \]
 
-\subsection{Bernoulli Polynomials And The Bernoulli Numbers}
+\subsection{Bernoulli Polynomials and the Bernoulli Numbers}
 
 The \emph{Bernoulli polynomials} \(b_k\) are defined by 
 

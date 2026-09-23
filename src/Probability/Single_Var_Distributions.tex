@@ -20,7 +20,7 @@ Finally, we define the probability for random variables as
     \prob(X = k) := \prob(\{X = k\})
 \]
 
-\subsection{Operations with Random Variables}
+\subsection{Operations With Random Variables}
 
 Given two R.V. \(X\),\(Y\) and some number \(\alpha \in \R\), then
 
@@ -153,7 +153,7 @@ as the \emph{distribution function}.
 
 \end{itemize}
 
-\section{The Expected Value For Discrete Random Variables}
+\section{The Expected Value for Discrete Random Variables}
 
 Given \(\Omega, \mathcal{A}, \prob\), a probability space and \(X\) a discrete random variable, we 
 define the \emph{expected result} as 
@@ -315,7 +315,7 @@ Distributions that possess a probability density are called \emph{continuous dis
 
 \end{itemize}
 
-\subsubsection{How To Test If F Function Works As A Density Function}
+\subsubsection{How to Test if F Function Works as a Density Function}
 
 To test if a given function can be used as a density function, we test:
 
@@ -356,7 +356,7 @@ In that case, we define it as
 
 We also get all of its properties like for the discrete case.
 
-\section{Transformation Lemma For Continuous Random Variables}
+\section{Transformation Lemma for Continuous Random Variables}
 
 Given a continuous random variable \(X\) with a density \(f\) and a measurable function \(u: \R \to \R\) 
 with \(\int |u(x)|f(x)dx < \infty\), then the following applies 
@@ -417,7 +417,7 @@ The \emph{moment generating function} is defined as
 
 \(M(t)\) uniquely determines the cumulative probability distribution of \(\prob(X = x)\).
 
-\subsection{Derivative Of The Moment Generating Function}
+\subsection{Derivative of the Moment Generating Function}
 
 The \(n-th\) derivative of the \emph{moment generating function} has the following property 
 
@@ -742,7 +742,7 @@ The derivation is the following, let \(\lambda = np\)
                         &= \frac{\lambda^k}{k!} \cdot e^{-\lambda} 
 \end{align*}
 
-\section{Hyper-geometric Distribution}
+\section{Hyper-Geometric Distribution}
 
 The \emph{hyper-geometric distribution} is similar to the binomial distribution, but we keep track of the changes after each choice. In other words, 
 binomial distribution without repetition. We notate this as \(\text{HG}(M, N, n)\).
@@ -824,7 +824,7 @@ We also have
     \var(X) = \frac{1}{\lambda^2}
 \]
     
-\subsection{Memory-less Property Of The Exponential Distribution}
+\subsection{Memory-less Property of the Exponential Distribution}
 
 This distribution is \emph{memory-less}. This means that the future probabilities of an event are independent 
 of the previous ones. 
@@ -833,7 +833,7 @@ of the previous ones.
     \prob (X \ge x + y \mid X > y) = \prob(X \ge x)
 \]
 
-\subsection{The Connection Between The Exponential Distribution And The Poisson Process}
+\subsection{The Connection Between the Exponential Distribution and the Poisson Process}
 
 A neat connection between these two concepts is that given an exponential distribution 
 over some time \(t\) then the number of events which occurred during that interval is given by a Poisson distribution \(\mathrm{Poi}(\lambda t)\).
@@ -942,7 +942,7 @@ This is used to test the mean \(\overline{X_n}\) against the true \(\mu\) when \
 
 \section{Activity Examples}
 
-\subsection{Night guard}
+\subsection{Night Guard}
 
 A night guard has 2 methods for finding the correct key out of 10. The first one, \(A\), consists of 
 just testing each key without repetition. The second one, \(B\), consists of choosing one random key and then 

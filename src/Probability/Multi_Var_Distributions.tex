@@ -2,7 +2,7 @@
 
 \emph{Multivariable} or \emph{joint distributions} are a way of combining two or more random variables.
 
-\section{Measurability Of Random Variables And Random Vectors}
+\section{Measurability of Random Variables and Random Vectors}
 
 Let \( X_1, X_2, \ldots, X_n \) be random variables on \((\Omega, \mathcal{A}, P)\).
 Then each \( X_i : \Omega \to \R \) is measurable.
@@ -46,7 +46,7 @@ Hence, the probability
 
 is well-defined for all \( A \subseteq \R^n \).
 
-\section{Joint Distribution And Random Vectors}
+\section{Joint Distribution and Random Vectors}
 
 Let \( X_1, \ldots, X_n \) be random variables on a probability space \((\Omega, \mathcal{A}, P)\).
 Then \( P_X \) (respectively \( P_{X_1, \ldots, X_n} \)) is defined as
@@ -60,7 +60,7 @@ The vector \( X = (X_1, \ldots, X_n) \) is called a \emph{random vector}.
 
 This is just the probability of \(n\) events happening simultaneously.
 
-\section{Joint Probability Of An Event}
+\section{Joint Probability of an Event}
 
 For any random variables:
 
@@ -124,7 +124,7 @@ Their combined probability function is
     \end{cases}
 \]
 
-\section{Marginal Distributions Of Discrete Random Variables}
+\section{Marginal Distributions of Discrete Random Variables}
 
 Let \( X, Y \) be two discrete random variables.
 The \emph{marginal probability functions} of \( X \) and \( Y \) are given by
@@ -281,7 +281,7 @@ Density of \(Y\):
     \end{cases}
 \]
 
-\section{Multivariate Expected Value For Continuous Random Variables}
+\section{Multivariate Expected Value for Continuous Random Variables}
 
 Let \( X_1, \ldots, X_n \) be random variables with joint density \( f(x_1, \ldots, x_n) \),
 or equivalently, with joint distribution \( P_{X_1, \ldots, X_n} \).
@@ -293,7 +293,7 @@ Let \( u : \R^n \to \R \) be a measurable function. Then, if the expectation exi
     = \int_{\R^n} u(x_1, \ldots, x_n) f(x_1, \ldots, x_n) \, dx_1 \cdots dx_n
 \]
 
-\section{Uniform Distribution On A Measurable Set}
+\section{Uniform Distribution on a Measurable Set}
 
 Let \( I \subseteq \R^n \) be a measurable set. Random variables \( (X_1, \ldots, X_n) \in \R^n \) with joint density
 
@@ -314,7 +314,7 @@ For every measurable set \( R \subseteq \R^n \), the following holds:
     = \int_R f(x_1, \ldots, x_n) \, dx_1 \cdots dx_n
 \]
 
-\section{Joint Distribution Function For Multiple Variables}
+\section{Joint Distribution Function for Multiple Variables}
 
 Let \( X_1, \ldots, X_n \) be random variables. The function \( F : \R^n \to \R \), defined by
 
@@ -345,7 +345,7 @@ For random variables \( X, Y \) with joint density \( f(x, y) \), the following 
 
 The idea for higher dimensions is to eliminate all variables we are not interested in.
 
-\section{Expectation With Respect To A Joint Density}
+\section{Expectation With Respect to a Joint Density}
 
 Let \( X_1, \ldots, X_n \) be random variables with joint density \( f(x_1, \ldots, x_n) \),
 and let \( u : \R^n \to \R \) be a measurable function. Then the following holds:
@@ -355,7 +355,7 @@ and let \( u : \R^n \to \R \) be a measurable function. Then the following holds
     = \int u(x_1, \ldots, x_n) f(x_1, \ldots, x_n) \, dx_1 \cdots dx_n
 \]
 
-\section{Stochastic Independence Of Random Variables}
+\section{Stochastic Independence of Random Variables}
 
 The random variables \( X_1, \ldots, X_n \) are \emph{stochastically independent} if,
 for all intervals \( I_1, \ldots, I_n \subseteq \R \), the following holds:
@@ -365,7 +365,7 @@ for all intervals \( I_1, \ldots, I_n \subseteq \R \), the following holds:
     = \prod_{k=1}^{n} \prob(X_k \in I_k)
 \]
 
-\section{Independence Of Densities}
+\section{Independence of Densities}
 
 Let \( X, Y \) be discrete random variables with joint probability function \( p_{X,Y}(x, y) \)
 and marginal probability functions \( p_X(x) \) and \( p_Y(y) \). Then \( X \) and \( Y \) are \emph{independent if and only if}
@@ -439,7 +439,7 @@ This implies that
     &= \sum_{i=1}^n \var(X_i)
 \end{align*}
 
-\section{Conditional Distribution Of Discrete Random Variables}
+\section{Conditional Distribution of Discrete Random Variables}
 
 Let \( X, Y \) be discrete random variables and \( x \in \R \) such that \( \prob(X = x) > 0 \).
 The mapping
@@ -477,7 +477,7 @@ Otherwise, if \(p_{Y \mid X}(y \mid x) = \prob(Y = y \mid X = x)\) is not depend
 
 Then \(p_{X, Y}(x,y) =  p_X(x) p_{Y \mid X}(y \mid x)= p_X(x)p_Y(y)\)
 
-\section{Conditional Density For Continuous Random Variables}
+\section{Conditional Density for Continuous Random Variables}
 
 Let \(X, Y\) be continuous random variables with joint density \(f(x,y)\).
 The conditional density \(f_{Y\mid X}(y\mid x)\) of \(Y\) given \(X = x\) is defined by
@@ -498,7 +498,7 @@ Thus, for any measurable set \(A \subseteq \R\),
     \prob(Y \in A \mid X = x) = \int_A f_{Y\mid X}(y\mid x)\, dy.
 \]
 
-\section{Covariance And Correlation Of Random Variables}
+\section{Covariance and Correlation of Random Variables}
 
 Let \(X, Y\) be random variables with existing variances. The \emph{covariance}, joint dependence, is defined by
 
@@ -532,7 +532,7 @@ If \(\rho_{X,Y} = 0\), the random variables \(X\) and \(Y\) are called \emph{unc
 
 \end{itemize}
 
-\subsection{Correlation Between Minus And Plus One}
+\subsection{Correlation Between Minus and Plus One}
 
 Let \(X, Y\) be random variables with existing variances. Then the following holds:
 
@@ -544,7 +544,7 @@ Let \(X, Y\) be random variables with existing variances. Then the following hol
     \rho_{X,Y} = -1 \iff Y = aX + b \text{ with } a < 0
 \]
 
-\section{Variance Of The Sum Of Random Variables}
+\section{Variance of the Sum of Random Variables}
 
 Given the random variables \(X_1, \dots, X_n\) then
 
@@ -794,13 +794,13 @@ Suppose instead that \(Y_1\) and \(Y_2\) are correlated with \(\cov(Y_1, Y_2) = 
 
 This increases the standard deviation to \(\sqrt{22} \approx 4.690\) kg, making extreme values more likely.
 
-\section{Independence Of Random Variables Under The Joint Normal Distribution}
+\section{Independence of Random Variables Under the Joint Normal Distribution}
 
 Given \(X_1, \dots, X_n\) random variables with a joint normal distribution. If \(\cov(X_i, X_j) = 0\) for all \(i \ne j\), then they are mutually independent. 
 
 Importantly, this equivalence between zero correlation and independence is special to the multivariate normal distribution and does not hold in general.
 
-\section{Linear Combinations Of The Joint Normal Distribution}
+\section{Linear Combinations of the Joint Normal Distribution}
 
 Given \(X_1, \dots, X_n\) random variables with a joint normal distribution \(\mathcal{N}(\mu, \Sigma)\). For any sequence of coefficients \(a_1, \dots, a_n \in \R\), 
 the linear combination \(\sum_{i = 1}^{n} a_i X_i\) is also normally distributed.

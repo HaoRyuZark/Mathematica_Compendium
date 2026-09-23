@@ -17,11 +17,11 @@ This results in finding a polynomial of degree at most \(n\), with \(n + 1\) ter
 
 We define the set of polynomials of degree \(n\) as \(P_n\).
 
-\subsection{Maximal Number of Zeros For A Polynomial}
+\subsection{Maximal Number of Zeros for a Polynomial}
 
 A polynomial \(p \in P_n\) has at most \(n\) zeros or is identically zero.
 
-\subsection{Uniqueness of The Polynomial Interpolation}
+\subsection{Uniqueness of the Polynomial Interpolation}
 
 Given a set of points \((x_0, y_0), \dots, (x_n, y_n)\), there exists only one polynomial of degree at most \(n\) 
 such that \(f(x_0) = y_0, \dots\).
@@ -71,7 +71,7 @@ For our interpolation \(p(x)\) we define the following system
 
 Now our problem of finding the constants in the vector \(c\) has been transformed into finding the inverse of \(V\).
 
-\subsection{Invertibility Of The Vandermonde Matrix}
+\subsection{Invertibility of the Vandermonde Matrix}
 
 There exists a \(V^{-1}\) for the corresponding \(V\).
 
@@ -634,7 +634,7 @@ Everything but the \(\alpha_i\) is known, but they can be computed by
 
 Hence, we get the following algorithm for computing the cubic spline interpolation. 
 
-\subsection{Algorithm For Cubic Spline Interpolation}
+\subsection{Algorithm for Cubic Spline Interpolation}
 
 Given the points \((x_0, y_0), \dots, (x_n, y_n)\), we can compute the cubic spline interpolation by the following steps:
 

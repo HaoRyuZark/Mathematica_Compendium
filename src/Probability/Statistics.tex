@@ -241,7 +241,7 @@ Given \(X \sim \mathcal{N}(\mu, \sigma^2)\)
 
 \end{itemize}
 
-\section{Absolute Deviation And Range}
+\section{Absolute Deviation and Range}
 
 Let \(X_1, \ldots, X_n\) be random variables with mean \(\overline{X}_n\), 
 minimum \(X_{(1)}\) and maximum \(X_{(n)}\).
@@ -267,7 +267,7 @@ Let \(X_1, \ldots, X_n\) be random variables with 25\% and 75\% quantiles
     \mathrm{IQR} = q_{0.75} - q_{0.25}.
 \]
 
-\section{Coefficient Of Variation}
+\section{Coefficient of Variation}
 
 Let \(X_1, \ldots, X_n\) be random variables with mean \(\overline{X}_n\) and empirical variance \(s^2\). The \emph{empirical coefficient of variation}
 is defined as
@@ -488,7 +488,7 @@ With \(A_i = \text{interval}(a_i, a_{i + 1})\)
     A_i \text{ with } h_i = \max_{j = 1}^{k} h_j
 \]
 
-\section{Samples Via Random Variables}
+\section{Samples via Random Variables}
 
 Let \(\mathcal{X} \subset \R^{n}\) and \(X : \Omega \to \mathcal{X}\) be a 
 random variable.  A \emph{sample is a realization} of \(X = (X_{1}, \ldots, X_{n})^{T}\), i.e., \(X(\omega)\) for some \(\omega \in \Omega\).
@@ -569,7 +569,7 @@ Let \(X : \Omega \to \mathcal{X}\) be a random variable with statistical model \
 
 In simpler terms, an estimator is a function that takes in our samples and gives us an estimate of the parameter we are looking for.
 
-\section{Consistence Of An Estimate}
+\section{Consistence of an Estimate}
 
 If \(\hat{\theta}_n\) is an estimate of \(\theta\) based on the sample size \(n\), then \(\hat{\theta}_n\) is 
 consistent if 
@@ -611,7 +611,7 @@ expectation with respect to \(P_{\theta}\), and let \(\var_{\theta}\) denote the
 
 \end{itemize}
 
-\section{Method Of Moments Estimators}
+\section{Method of Moments Estimators}
 
 Let \(X : \Omega \to \mathcal{X}\) be a random variable with \(X = (X_{1}, \ldots, X_{n})^{T}\) for independent, identically distributed
 random variables \(X_{1}, \ldots, X_{n}\).
@@ -636,7 +636,7 @@ Then for some \(i in 1, \dots, n\)
     \sigma[X_i] = \sigma
 \]
 
-\section{Expected Value, Standard Deviation And Variance Of The Sample Mean}
+\section{Expected Value, Standard Deviation and Variance of the Sample Mean}
 
 \[
     \expc[\overline{X_n}] = \mu
@@ -650,7 +650,7 @@ Then for some \(i in 1, \dots, n\)
     \var(\overline{X_n}) = \frac{\sigma^2}{n}
 \]
 
-\section{Errors In The Method Of Moments}
+\section{Errors in the Method of Moments}
 
 Approximating the error when estimating the mean with the sample mean or variance can be challenging depending on the size of the population and the kind of distribution
 of the data. 
@@ -659,7 +659,7 @@ Sometimes we can use our methods for unbiased and consistent estimators, but the
 
 Another method is bootstrapping, which consists of resampling with replacement from the sample and calculating the estimator.
 
-\section{Sample Variance As Estimator}
+\section{Sample Variance as Estimator}
 
 The \emph{sample variance} is given by 
 
@@ -692,7 +692,7 @@ From this fact we can derive that
 
 \QED 
 
-\section{Normal Approximation To Distribution Of The Sample Mean}
+\section{Normal Approximation to Distribution of the Sample Mean}
 
 Let \(X_1, \ldots, X_n\) be random variables from a population with mean \(\mu\) and variance \(\sigma^2\). The 
 \emph{sample mean} \(\overline{X_n}\) is approximately normally distributed with mean \(\mu\) and variance \(\frac{\sigma^2}{n}\) for large \(n\).
@@ -974,7 +974,7 @@ where \(\hat{\theta} = \argmax_\theta l(\theta)\). We get the following properti
 
 \end{itemize}
 
-\section{Bayesian Maximum A-posteriori Estimation}
+\section{Bayesian Maximum A-Posteriori Estimation}
 
 Recall the MLE, but we model the probability for the observations of the samples as \(\prob(x_i \mid \theta)\) and treat 
 them as real conditional probabilities instead of as a notational trick for the probability of \(x\) with the parameter \(\theta\), then we get 
@@ -1062,9 +1062,9 @@ It is defined as
 This distribution is symmetric about the \(y\)-axis and approximates the standard normal distribution for 
 large \(n\).
 
-\section{Confidence Intervals For The Expected Value And Standard Deviation Of Normal Distributions}
+\section{Confidence Intervals for the Expected Value and Standard Deviation of Normal Distributions}
 
-\subsection{Confidence Interval for \(\mu\) with known \(\sigma\)}
+\subsection{Confidence Interval for \(\mu\) With Known \(\sigma\)}
 
 Given \(X_1,  \dots, X_n \sim \mathcal{N}(\mu, \sigma^2)\). We can build a confidence interval for \(\mu\) as follows:
 
@@ -1081,7 +1081,7 @@ using the formula
 
 If \(\sigma^2\) is not known, we can use \(s_n^2\).
 
-\subsection{Confidence Interval for \(\mu\) with unknown \(\sigma\)}
+\subsection{Confidence Interval for \(\mu\) With Unknown \(\sigma\)}
 
 Given \(X_1,  \dots, X_n \sim \mathcal{N}(\mu, \sigma^2)\). We can build a confidence interval for \(\mu\) as follows:
 
@@ -1091,7 +1091,7 @@ Given \(X_1,  \dots, X_n \sim \mathcal{N}(\mu, \sigma^2)\). We can build a confi
 
 where \(t_{n - 1, \alpha/2}\) is the \((1 - \alpha/2)\)-quantile of the t-distribution with \(n - 1\) degrees of freedom.
 
-\subsection{Confidence Interval for \(\sigma\) with known \(\mu\)}
+\subsection{Confidence Interval for \(\sigma\) With Known \(\mu\)}
 
 Given \(X_1,  \dots, X_n \sim \mathcal{N}(\mu, \sigma^2)\). We can build a confidence interval for \(\sigma\) as follows:
 
@@ -1099,7 +1099,7 @@ Given \(X_1,  \dots, X_n \sim \mathcal{N}(\mu, \sigma^2)\). We can build a confi
     \left[\frac{\sum_{i = 1}^{n} (X_i - \mu)^2}{\chi^2_{n, 1 - \alpha/2}}, \frac{\sum_{i = 1}^{n} (X_i - \mu)^2}{\chi^2_{n,\alpha/2}}\right]
 \]
 
-\subsection{Confidence Interval for \(\sigma\) with unknown \(\mu\)}
+\subsection{Confidence Interval for \(\sigma\) With Unknown \(\mu\)}
 
 Given \(X_1,  \dots, X_n \sim \mathcal{N}(\mu, \sigma^2)\). We can build a confidence interval for \(\sigma\) as follows:
 
@@ -1167,7 +1167,7 @@ means that we do not reject \(H_0\).
 We can sadly not minimize both errors at the same time, therefore, we choose a significance level \(\alpha\)
 and try to minimize \(\beta\).
 
-\section{Quality, Power And Level}
+\section{Quality, Power and Level}
 
 Let \(X: \Omega \to \mathcal{X}\) be a random variable with statistical model \(P = \{\prob_\theta : \theta \in \Theta\}\).
 For the test \(\varphi: \mathcal{X} \to \{0,1\}\) of the hypothesis \(H_0: \theta \in \Theta_0\) against \(H_1: \theta \in \Theta_1\): 
@@ -1512,12 +1512,13 @@ Define \(D_i := X_i - Y_i \sim \mathcal{N}(\mu_X - \mu_Y, \sigma_{X + Y}^{2})\).
 We get the test-statistic 
 
 \[
-    T = \frac{\overline{X_n} - \overline{Y_m}}{\sqrt{\frac{\sigma_X^2}{n} + \frac{\sigma_Y^2}{m}}} \sim \mathcal{N} \left( \frac{\mu_X - \mu_Y}{\sqrt{\frac{\sigma_X^2}{n} + \frac{\sigma_Y^2}{m}}}, 1 \right) 
+    T = \frac{\overline{X_n} - \overline{Y_m}}{\sqrt{\frac{\sigma_X^2}{n} + \frac{\sigma_Y^2}{m}}} 
+    \sim \mathcal{N} \left( \frac{\mu_X - \mu_Y}{\sqrt{\frac{\sigma_X^2}{n} + \frac{\sigma_Y^2}{m}}}, 1 \right) 
 \]
 
 We reject \(H_0\) if \(|T| > z_{1 - \alpha/2}\). 
 
-\subsection{Case with Unknown Variances}
+\subsection{Case With Unknown Variances}
 
 If the \(\sigma_X^2\) and \(\sigma_Y^2\) are unknown we use the test-statistic 
 
