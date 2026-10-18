@@ -3,14 +3,102 @@
 \emph{Inequalities} play a big role in all of mathematics, but especially at the start of real analysis it is 
 of major importance to get familiar with them. 
 
-\section{Triangle Inequality}
+\section{The Absolute Value}
+
+The \emph{absolute value} of a real number \(x\), denoted by \(|x|\), is defined as
+\[
+    |x| = 
+    \begin{cases} 
+        x & \text{if } x \ge 0, \\
+        -x & \text{if } x < 0.
+    \end{cases}
+\]
+
+\subsection{Properties of Absolute Value}
 
 \begin{itemize}
-    \item \(|x + y| \le |x| + |y|\)
-    \item \(|x - y| \ge |x| - |y|\)
-    \item \(||x| - |y|| \le |x - y|\)
-    \item \(xy \le |x| \cdot |y|\)
+
+    \item \(|x| \ge 0\)
+
+    \item \(|x| = 0 \iff x = 0\)
+
+    \item \(|-x| = |x|\)
+
+    \item \(|xy| = |x| \cdot |y|\)
+
+    \item \(\left|\frac{x}{y}\right| = \frac{|x|}{|y|}, \quad y \ne 0\)
+
 \end{itemize}
+
+\subsection{Interval Property of the Absolute Value}
+
+Let \(a, b, x \in \R\) and assume that \(b \ge 0\). 
+
+\[
+    |x - a| \le b \implies a - b \le x \le a + b
+\]
+
+\textbf{Proof:}
+
+Assume that \(|x - a| \le b\). Now we have two cases. 
+
+If \(x - a \ge 0\), then \(0 \le x - a \le b\), which implies \(a \le x \le a + b\). Hence,
+
+\[
+   a - b \le x \le a + b.
+\]
+
+If \(x - a < 0\), then \(|x - a| = -(x - a) = -x + a\), which implies \(0 \le -x + a \le b\), and hence \(a - b \le x \le a\). Therefore, combining both cases, we get the desired interval property.
+
+\[
+   a - b \le x \le a + b.
+\]
+
+\QED
+
+\section{Triangle Inequality}
+
+Let \(x, y \in \R\). The following inequalities hold:
+
+\begin{itemize}
+
+    \item \(|x + y| \le |x| + |y|\)
+
+    \item \(|x - y| \ge |x| - |y|\)
+
+    \item \(||x| - |y|| \le |x - y|\)
+
+    \item \(xy \le |x| \cdot |y|\)
+
+\end{itemize}
+
+\textbf{Proof of the triangle inequality:}
+
+Let \(x \ge 0\) and \(y \ge 0\), then \(|x + y| = x + y\) and \(|x| = x, |y| = y\). Therefore,
+
+\[
+    |x + y| = x + y = |x| + |y|.
+\]
+
+If \(x < 0\) and \(y < 0\), then \(|x + y| = -(x + y) = -x - y\) and \(|x| = -x, |y| = -y\). Therefore,
+
+\[
+    |x + y| = -x - y = |x| + |y|.
+\]
+
+If \(x \ge 0\) and \(y < 0\), then \(|x + y| = x + (-y) = x - y\) and \(|x| = x, -|y| = y\). Because 
+
+\[
+    -|y| < |y| \implies x - y < x + |y| = |x| + |y|.
+\]
+
+Similarly, for the case \(x < 0\) and \(y \ge 0\), then \(|x + y| = -x + y\) and \(|x| = -x, |y| = y\). Because 
+
+\[
+    -|x| < |x| \implies -x + y < |x| + |y|.
+\]
+
+\QED
 
 \section{Reciprocal Inequality}
 

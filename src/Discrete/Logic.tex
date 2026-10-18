@@ -65,7 +65,7 @@ us \(a = x\), \(a = b\) and finally \(a = c\).
 
 	\subsection*{NOT (\(\neg\), \(\sim\))}
 
-	\begin{tabular}{cc}
+	\begin{tabular}{|c|c|}
 		\toprule
 		\(p\) & \(\neg q\) \\
 		\midrule
@@ -78,7 +78,7 @@ us \(a = x\), \(a = b\) and finally \(a = c\).
 
 	\subsection*{AND (\(\land\))}
 
-	\begin{tabular}{ccc}
+	\begin{tabular}{|c|c|c|}
 		\toprule
 		\(p\) & \(q\) & \(p \land q\) \\
 		\midrule
@@ -93,7 +93,7 @@ us \(a = x\), \(a = b\) and finally \(a = c\).
 
 	\subsection*{OR (\(\lor\))}
 
-	\begin{tabular}{ccc}
+	\begin{tabular}{|c|c|c|}
 		\toprule
 		\(p\) & \(q\) & \(p \lor q\) \\
 		\midrule
@@ -108,7 +108,7 @@ us \(a = x\), \(a = b\) and finally \(a = c\).
 
 	\subsection*{IMPLIES (\(\implies\))}
 
-	\begin{tabular}{ccc}
+	\begin{tabular}{|c|c|c|}
 		\toprule
 		\(p\) & \(q\) & \(p \implies q\) \\
 		\midrule
@@ -123,7 +123,7 @@ us \(a = x\), \(a = b\) and finally \(a = c\).
 
 	\subsection*{IFF (\(\iff\))}
 
-	\begin{tabular}{ccc}
+	\begin{tabular}{|c|c|c|}
 		\toprule
 		\(p\) & \(q\) & \(p \iff q\) \\
 		\midrule
@@ -138,7 +138,7 @@ us \(a = x\), \(a = b\) and finally \(a = c\).
 
 	\subsection*{XOR (\(\oplus\))}
 
-	\begin{tabular}{ccc}
+	\begin{tabular}{|c|c|c|}
 		\toprule
 		\(p\) & \(q\) & \(p \oplus q\) \\
 		\midrule
@@ -153,7 +153,7 @@ us \(a = x\), \(a = b\) and finally \(a = c\).
 
 	\subsection*{NOR (\(\downarrow\))}
 
-	\begin{tabular}{ccc}
+	\begin{tabular}{|c|c|c|}
 		\toprule
 		\(p\) & \(q\) & \(p \downarrow q\) \\
 		\midrule
@@ -168,7 +168,7 @@ us \(a = x\), \(a = b\) and finally \(a = c\).
 
 	\subsection*{NAND (\(\uparrow\))}
 
-	\begin{tabular}{ccc}
+	\begin{tabular}{|c|c|c|}
 		\toprule
 		\(p\) & \(q\) & \(p \uparrow q\) \\
 		\midrule
@@ -182,10 +182,60 @@ us \(a = x\), \(a = b\) and finally \(a = c\).
 \end{multicols}
 \medskip
 
-\subsection{Implications}
+\section{Implications}
 
-As a side note, for the \emph{implication} we can think about it as \emph{if, then}. For the cases 
-false, true; and false, false; we call them \emph{vacuously} true. From a false premise, anything can follow.
+As a side note, for the \emph{implication} 
+
+\[
+	p \implies q
+\]
+
+we can think about it as \emph{if, then}. For the cases  false, true; and false, false; we call them \emph{vacuously} true. 
+From a false premise, anything can follow.
+
+\textbf{Example:}
+
+Let \(p\) be ``it rained'' and \(q\) ``the street is wet'', with theirs respective negations ``it did not rain'', ``the street is not wet''. 
+
+Now, let us study each of the cases:
+
+\begin{center}
+		\begin{tabular}{|c|c|c|}
+		\toprule
+		\(p\) & \(q\) & \(p \implies q\) \\
+		\midrule
+		T   & T   & T        \\
+		T   & F   & F        \\
+		F   & T   & T        \\
+		F   & F   & T        \\
+		\bottomrule
+	\end{tabular}
+\end{center}
+
+\begin{itemize}
+
+	\item \(p\) and \(q\) are both true: ``It rained and the street is wet.'' This makes the implication \(p \implies q\) true.
+
+	\item \(p\) is true and \(q\) is false: ``It rained but the street is not wet.'' This makes the implication \(p \implies q\) false, since the stree should be wet.
+
+	\item \(p\) is false and \(q\) is true: ``It did not rain but the street is wet.'' This makes the implication \(p \implies q\) true (vacuously true). 
+	An external factor could have been responsible for the street being wet.
+
+	\item \(p\) and \(q\) are both false: ``It did not rain and the street is not wet.'' This makes the implication \(p \implies q\) true (vacuously true).
+
+\end{itemize}
+
+We simplify the possibilites inside this mini universe and the implication becomes very intuitive.
+
+\section{If And Only If}
+
+\emph{If and only if} \(\iff\) is equivalent to  
+
+\[
+	(A \implies B) \land (B \implies A).
+\]
+
+Which is justs its definition.
 
 \section{Tautology and Contradiction}
 
@@ -210,6 +260,11 @@ Common tautologies
 \emph{Contradiction}: A formula that is always false.
 
 \section{Logical Equivalences}
+
+Two logical formulas \(P, Q\) are said to be \emph{logically equivalent} if they have the same truth value in every possible scenario.
+We can write this as \(P \equiv Q\) or \(P \iff Q\).
+
+\subsection{Laws of Logical Equivalences}
 
 \emph{Commutative Laws}
 
@@ -600,8 +655,7 @@ To solve a Karnaugh Map and simplify a Boolean expression, follow these steps:
 	 
 		\end{itemize}
 
-	\item \textbf{Write the Simplified Expression:} \\
-	      For each group:
+	\item \textbf{Write the Simplified Expression:} For each group:
 
 		  \begin{itemize}
 
@@ -616,7 +670,23 @@ To solve a Karnaugh Map and simplify a Boolean expression, follow these steps:
 
 	\end{enumerate}
 
+\section{Open Sentences}
+
+When writting statements we normally do not write the statement with concrete values, but instead define it in terms of variables like 
+\(x\) which is used to denote the members of a collection for which our statement holds or not holds. We denote this as 
+an \emph{open sentence}.
+
+\textbf{Example:}
+
+\[
+	P(x): \text{ The sum of the angles of } x \text{ is } 180^{\circ}, \, \forall x \in S
+\]
+
+where \(S\) is the set of the triangles for which \(P\) holds.
+
 \section{Mathematical Quantifiers}
+
+\emph{Mathematical quantifiers} are symbols used as shorthand for common quantifying of elements when writting mathmatical statements.
 
 \subsection{Universal Quantifier \texorpdfstring{\(\forall\)}{}}  
 
@@ -624,6 +694,23 @@ Means \textbf{``for all''} or \textbf{``for every''}.
 
 \emph{Negation:} \(\neg (\forall x)\,P(x) \equiv (\exists x)\, \neg P(x)\) ``Not all'' is the same as 
 ``There exists one that does not''.
+
+\[
+	\neg (\forall x, P(x)) \equiv \exists x, \neg P(x)
+\]
+
+\textbf{Proof:}
+
+We want to prove that \(\neg (\forall i \in I : E(i)) \iff (\exists i \in I: \neg E(i))\), given \(I \neq \emptyset\)
+
+\begin{align*}
+	\neg (\forall i \in I : E(i)) &\iff \neg (I = \{i \in I \mid E(i)\})\\
+								  &\iff I \neq \{i \in I \mid E(i)\} \\
+								  &\iff \{i \in I \mid \neg E(i)\} \neq \emptyset \\
+								  &\iff (\exists i \in I : \neg E(i)
+\end{align*}
+
+\QED
 
 \textbf{Example:} 
 
@@ -641,6 +728,18 @@ Means \textbf{``there exists at least one''}.
 \emph{Negation:}  \(\neg (\exists x)\,P(x) \equiv (\forall x)\, \neg P(x)\) ``There does not exist'' is 
 the same as ``For all, not''.
 
+\textbf{Proof:}
+
+We want to prove that \(\neg (\exists i \in I : E(i)) \iff (\forall i \in I: \neg E(i))\), given \(I \neq \emptyset\)
+
+\begin{align*}
+	\neg (\exists i \in I : E(i)) &\iff \neg (I = \{i \in I \mid E(i)\} \neq \emptyset)\\
+								  &\iff  I \neq \{i \in I \mid E(i)\} = \emptyset \\
+								  & \iff \forall i \in I: \neg E(i)
+\end{align*}
+
+\QED
+
 \textbf{Example:} 
 
 \(\exists x \in \N,\ x > 10\) There exists a natural number greater than 10.
@@ -653,9 +752,13 @@ the same as ``For all, not''.
 	
 Means \textbf{``there exists exactly one''}.
 		
-\emph{Negation:} ``Not exactly one'' means:
-\(\neg (\exists! x)\, P(x) \equiv (\forall x)\, \neg P(x)\ \lor\ (\exists x_1 \neq x_2)\, P(x_1) \land 
-P(x_2)\) Either no such \(x\) exists, or more than one does.
+\emph{Negation:} ``Not exactly one'' means 
+
+\[ 
+	\neg (\exists! x)\, P(x) \equiv (\forall x)\, \neg P(x)\ \lor\ (\exists x_1 \neq x_2)\, P(x_1) \land  P(x_2)
+\] 
+
+Either no such \(x\) exists, or more than one does.
 
 \textbf{Example:} 
 
@@ -665,6 +768,52 @@ P(x_2)\) Either no such \(x\) exists, or more than one does.
 
 \(\exists x_1 \neq x_2 \in \R,\ x_1^2 = 4 \land x_2^2 = 4\) There are multiple solutions to 
 \( x^2 = 4 \).
+
+\subsection{Negations Remark}
+
+When dealing with proofs, it is not uncommon that we will need to negate an statement for the purpose of prooving 
+a simpler equivalent statement. For example: 
+
+Note that \(p \implies q\) is logically equivalent to \(\neg p \lor q\). Hence, if would to prove its negation we can use the following equivalences:
+
+\[
+	\neg (p \implies q) \equiv \neg (\neg p \lor q) \equiv p \land \neg q.
+\]
+
+
+\subsection{Order Remark}
+
+When using quantifiers, \emph{the order matters}, it is not same to write 
+
+\[
+	\forall x \in M, \exists y \in N: \, E(x, y)
+\]
+
+and 
+
+\[
+	\exists y \in N, \forall x \in M: \, E(x, y)
+\]
+
+Note that in the first example \(y\) can depend on \(x\) which means that for each \(x\) the may be different \(y\); while in the second example 
+we declare one or more \(y\)'s which satisfy the condition for all \(x\).
+
+
+\section{Equivalence Reformulations}
+
+An \emph{equivalence reformulation} is when we trasnform a statement from one form to another which is \emph{logically equivalent}, it has the values in a truth table. 
+
+\[
+	A \iff B
+\]
+
+We use them all the time during our proofs as the connectors when we want to rewrite a statement is form which more easier to work with. 
+
+\textbf{Example:}
+
+\[
+	|x| \le y \iff (x \le y \land -x \le y) \iff -y \le x \le y
+\]
 
 
 

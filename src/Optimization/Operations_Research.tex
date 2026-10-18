@@ -1,1 +1,364 @@
 \chapter{Operations Research}
+
+\emph{Operations research} is the discipline of applying advanced analytical methods to help
+make better decisions. It is used in logistics, finance, healthcare, manufacturing, etc.
+
+\section{Linear Programming}
+
+\emph{Linear programing} si the process od optimizing a linear objective function subsect to a set of linear functional constraints.
+Formally, given \(A \in \R^{m \times n}\), \(b \in \R^m\), and \(c \in \R^n\), a linear programming problem can be written as:
+
+\[
+    \text{maximize } c^T x \text{ subject to } Ax \le b, \; x \ge 0.
+\]
+
+We denote our optimal solution as
+
+\[
+    x^{*} = \argmax \{c^T x \mid x \ge 0, Ax \le b\}.
+\]
+
+\subsection{Standard Form}
+
+A linear program is in the \emph{standard form} if \(\forall b_i \in b, \ b_i \ge 0\). This means that we can manipulate our
+expresions to get \(b\) to the standard form if needed.
+
+We also can modify our problem in the following way
+
+\[
+    g(x) \ge b \to -g(x) \le -b
+\]
+
+and
+
+\[
+    g(x) = b \to g(x) \le b \land g(x) \ge b
+\]
+
+This also allows to get an optimal solution from a minimization problem
+
+\[
+    \min(f(x)) = \max (-f(x)).
+\]
+
+When modelling a problem as a linear program, \textbf{always} use the standard form.
+
+\textbf{Example:}
+
+Given
+
+\[
+    z = 3 x_1 + 2 x_2
+\]
+
+which we want to maximaze subject to
+
+\begin{align*}
+    -x_1 - x_2 &\le -3 \\
+    2x_1 + x_2 &\le 8 \\
+    -x_1 + x_2 &\le 1 \\
+    x_1 + 2x_2 &\le 8 \\
+\end{align*}
+
+and the non-negativity constraints \(x_1, x_2 \ge 0\). The \emph{standard form} of this problem is given by
+
+\[
+    Ax =
+    \begin{bmatrix}
+        1 & 1 \\
+        2 & 1  \\
+        -1 & 1 \\
+        1 & 2
+    \end{bmatrix}
+    \begin{bmatrix}
+        x_1 \\
+        x_2
+    \end{bmatrix}
+    \leq
+    \begin{bmatrix}
+        3 \\
+        8 \\
+        1 \\
+        8
+    \end{bmatrix}
+    = b.
+\]
+
+With
+
+\[
+    c =
+    \begin{bmatrix}
+        3 \\
+        2
+    \end{bmatrix}.
+\]
+
+\section{Vertex Enumeration}
+
+\emph{Vertex enumeration} is the process of listing all vertices (extreme points) of a convex polyhedron defined by a set of linear
+inequalities.
+
+Formally, given \(A \in \R^{m \times n}\) and \(b \in \R^m\), we want to find all \(x \in \R^n\) such that:
+
+\[
+    Ax \le b.
+\]
+
+The vertices of this polyhedron are the points that cannot be expressed as a convex combination of
+other points in the polyhedron.
+
+It is computationally challenging and expensive, especially for high-dimensional polyhedra.
+
+\section{Families of Methods for Solving Linear Programs}
+
+\subsection{Simplex Method}
+
+The \emph{simplex method} is an iterative algorithm which ``moves'' along the edges of the feasible region defined
+by the linear constraints, from one vertex to another, in search of the optimal solution.
+
+Formally, starting from an initial feasible vertex \(x_0\), the simplex method iteratively moves to an adjacent vertex
+\(x_{k+1}\) such that \(c^T x_{k+1} > c^T x_k\), until no further improvement is possible, at which point the current vertex is the optimal solution
+\(x^*\).
+
+The simplex method is widely used in practice due to its efficiency on many real-world problems, despite its worst-case
+exponential time complexity.
+
+\subsection{Exterior Point Methods}
+
+\emph{Exterior point methods} are a class of algorithms for solving linear and nonlinear convex optimization problems. Unlike the simplex method, which traverses
+the boundary of the feasible region, exterior point methods move through the interior and exterior of the feasible region. They are not mainstream.
+
+\subsection{Intetior Point Methods}
+
+\emph{Interior point methods} are a class of algorithms for solving linear and nonlinear convex optimization problems. They operate by traversing the interior of the feasible region,
+rather than its boundary, and iteratively improve the solution until convergence to the optimal point.
+
+A common example of an interior point method is the \emph{primal-dual interior point method}, which simultaneously considers the primal and dual formulations of the
+optimization problem to guide the search for the optimal solution.
+
+\section{The Simplex Method}
+
+The \emph{simplex method} uses the corner-points of the feasable region to find the best solution. To accomplish this we solve a system of equations induced by a subset
+of inequalities of our LP; the \textbf{unique solutions} of this systems are the cornerpoints of our corner points. Also note, that
+LPs re system of inequelities, not of equalities threfore, we need to \textbf{modify} our LP get equalities.
+
+We use projections to a higher dimensional space by adding extra \emph{slack variables} so that our inequalities become equalities like for example:
+
+\[
+    x_1 \le 4,\,  x_1 \ge 0 \to x_1 + x_3 = 4, \, x_1, x_3 \ge 0.
+\]
+
+We do this for all of our functional constraints, giving us the \emph{augmented for of a linear program}.
+
+From this augmented system there are subsets which will have unique solution and hence will give us the corner points.
+
+\subsection{Basic Feasable Solution}
+
+A \emph{basic solution} is a solution which cames from a system of our augmented form which also feasable if and only if all of the decision variables and slack
+variables are non-negative.
+
+The variables of our subs-system of equations are called \emph{basic} variables while the remaning are called \emph{non-basic}.
+
+\subsubsection{Adjacency}
+
+
+\subsubsection{Convexity}
+
+
+\subsection{The Simplex Algorithm}
+
+Note that we use the value of the objective function
+
+\[
+    Z =  a_1 x_1 + \cdots + a_n x_n
+\]
+
+as a variable hence,
+
+\[
+    Z - a_1 x_1 - \cdots - a_n x_n = 0.
+\]
+
+\begin{enumerate}
+
+    \item Find basic feasable solution to start by using the slack variables as a basis for the first system.
+
+    \[
+        \begin{bmatrix}
+            x_{n + 1} \\
+            x_{n + 2} \\
+            \vdots \\
+            x_{n + m}
+        \end{bmatrix}
+        =
+        \begin{bmatrix}
+            b_1 \\
+            b_2 \\
+            \vdots \\
+            b_n
+        \end{bmatrix}
+    \]
+
+    \item Can a current \textbf{non-basic} variable improve the objective function? Check coefficients in row 0. If no, terminate. 
+
+    \item Pick a non-basic variable with the greate    \item Pick a non-basic variable with the greatest potential to improbe the objective function as the entering variable.
+    st potential to improbe the objective function as the entering variable.
+    
+    \[
+        x_{i} = \max (\{c_i \mid c_i \text{ is coefficient of the target function (also after modification)}\})
+    \]
+    
+    \item Use the minimum ratio test to identify the leaving variable. Using the system of equation gained from the basic solution check which one as the 
+    smallest fraction when solving for the \(x_i\). That one is the one which is going to hit zero first. 
+
+    \item Update the system for the new basic feasa   ble solution using Gaussian elimination. Go to step two. This means 
+    to update the column \(i\) for all coefficients to be zero, execept for the row \textbf{owned} by the variable to eliminate where it should be one.
+
+    \item Read the solution by noting the solution from the target variables and the slack variables which did not turn 0.
+
+\end{enumerate}
+
+If a our system of equations fails to have a unique solution, then our problem is either infisible or it has infinitely
+many solutions. In both cases our simplex is not affected since for the first case we can not start the algorithm and for the second case,
+it will just find a solution and then stop.
+
+
+\textbf{Example:}
+
+Given \(3_x1 + 5 x_2 = Z\) subject to 
+
+\begin{align*}
+    x_1  &\le 4 \\ 
+    x_2 &\le 12 \\ 
+    3x_1 + 2x_2 &\le 18
+\end{align*}
+
+We first bring the problem to the standard form 
+
+\begin{align*}
+    Z - 3_x1 - 5 x_2 = 0\
+    x_1  + x_3 &= 4 \\ 
+    x_2  + x_4 &= 12 \\ 
+    3x_1 + 2x_2  + x_5 &= 18
+\end{align*}
+
+
+ First, we know that there is a basic solution
+
+\[
+    \begin{bmatrix}
+        x_3 \\ 
+        x_4 \\ 
+        x_5
+    \end{bmatrix}
+    = 
+    \begin{bmatrix}
+        4 \\ 
+        12 \\ 
+        18
+    \end{bmatrix}
+\]
+
+with \(x_1 = 0 = x_2\).
+
+Now, we know that \(x_2\) has the biggest impact on the target function since it has weight \(5\). Therefore, we need 
+to take \(x_2\) into consideration for our subsystem of equations and solve
+
+\begin{align*}
+    x_3 &= 4 \\ 
+    x_4 &= 12 - 2x_2 \\ 
+    x_5 &= 18 - 2x_2
+\end{align*}
+
+Here since \(\frac{12}{2} < \frac{18}{2}\) we need need to decrease \(x_4\) to zero first.
+
+\[
+    \left[
+    \begin{array}{ccccc|c}
+       -3 & -5 & 0 & 0 & 0 & 0 \\ 
+        1 & 0 & 1 & 0 & 0 & 4 \\ 
+        0 & 2 & 0 & 1 & 0 & 12 \\   
+        3 & 2 & 0 & 0 & 1 & 18 
+    \end{array}
+    \right]
+\]
+
+Row 3 becomes 
+
+\[
+    \left[
+    \begin{array}{ccccc|c}
+       -3 & -5 & 0 & 0 & 0 & 0 \\ 
+        1 & 0 & 1 & 0 & 0 & 4 \\ 
+        0 & 1 & 0 & \frac{1}{2} & 0 & 6 \\   
+        3 & 2 & 0 & 0 & 1 & 18 
+    \end{array}
+    \right]
+\]
+
+
+Now we need to get ri of the -5 in row 1 and the 2 in  row 4. 
+
+\[
+    \left[
+    \begin{array}{ccccc|c}
+       -3 & 0 & 0 & 2.5 & 0 & 30 \\ 
+        1 & 0 & 1 & 0 & 0 & 4 \\ 
+        0 & 1 & 0 & \frac{1}{2} & 0 & 6 \\   
+        3 & 0 & 0 & -1 & 1 & 6
+    \end{array}
+    \right]
+\]
+
+This completes the first iteration of the algorithm. Note that the non-basic variable \(x_1\) still has potential and that 
+the coefficient of \(x_4\) is already non-negative.
+
+We now contine with \(x_1\):
+
+\begin{align*}
+        x_3 &= 4 - x_1 \\ 
+        x_5 &= 6 - 3x_1
+\end{align*}.
+
+Since \(4 > 2\) we know that \(x_5\) has to leave. Hence we will perform Gaussian elimination again in the row of the leaving variable \(x_5\):
+
+Row 3, 
+
+\[
+    \left[
+    \begin{array}{ccccc|c}
+       -3 & 0 & 0 & 2.5 & 0 & 30 \\ 
+        1 & 0 & 1 & 0 & 0 & 4 \\ 
+        0 & 1 & 0 & \frac{1}{2} & 0 & 6 \\   
+        1 & 0 & 0 & \frac{-1}{3} & \frac{1}{3} & 2
+    \end{array}
+    \right]
+\]
+
+For the other rows =: 
+
+\[
+    \left[
+    \begin{array}{ccccc|c}
+        0 & 0 & 0 & \frac{3}{2} & 1 & 36 \\ 
+        0 & 0 & 1 & \frac{1}{3} & \frac{-1}{3} & 2 \\ 
+        0 & 1 & 0 & \frac{1}{2} & 0 & 6 \\   
+        1 & 0 & 0 & \frac{-1}{3} & \frac{1}{3} & 2
+    \end{array}
+    \right]
+\]
+
+Since our slack variables except for \(x_3\) are zero we know have the solution vector 
+
+\[
+    \begin{bmatrix}
+        2 \\
+        6 \\ 
+        4 \\ 
+        0 \\ 
+        0
+    \end{bmatrix}
+\]
+
+and the maximum of our objective function 36.

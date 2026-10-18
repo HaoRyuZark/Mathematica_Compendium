@@ -1,5 +1,13 @@
 \chapter{Arithmetic}
 
+\section{Divisor}
+
+Let \(a,b \in \Z\). We say that \(a\) \emph{divides} \(b\) if 
+
+\[
+	a \mid b \iff \exists k \in \Z : b = ak.
+\]
+
 \section{Even and Odd Numbers}
 
 A natural number \(a\) is \emph{even} if \(a = 2k\) with \(k \in \N\).
@@ -69,15 +77,7 @@ A \emph{prime number} \(p \in \N \setminus \{1\}\) fulfills the following condit
 \emph{Pythagorean triplets} are 3 natural numbers such that 
 
 \[
-	a^2 + b^2 = c^c.
-\]
-
-\section{Divisibility}
-
-A number \(a \in \Z\) is divisible by a number \(b \in \Z\) if 
-
-\[
-	a = kb \quad k \in \Z.
+	a^2 + b^2 = c^2.
 \]
 
 \section{Division}
@@ -422,4 +422,194 @@ The \(\gcd\) of two or more numbers can also be found with the following algorit
 	\item Multiply the noted prime factors together. 
 	
 \end{itemize}
+
+\section{Modular Arithmetic}
+
+We define an equivalence relation 
+
+\[
+    a \equiv b \mod n \iff n | (a - b) \land  a,b \in \Z.
+\]
+
+or equivlently 
+
+\[
+    a \equiv b \mod n \iff  a - b = nk\, \land  a,b,k \in \Z.
+\]
+
+This means that both have the \textbf{same remainder} when divided by \(n\).
+
+\section{Residual Classes and Residual Class Rings}
+
+Because we have an equivalence relation, we can classify the partitions of our set \(\Z\) into classes, which we will call \emph{residual classes}.
+
+\textbf{Example:}
+
+\[
+    [13]_7 + \{m \in \Z \mid m \equiv 13 \mod 7\}
+\]
+
+The set of all residual classes can be written as \(\Z / n \Z\), where \(n\) is the modulus. 
+
+\section{Properties}
+
+\begin{itemize}
+    
+    \item  
+    \[
+        (a + b) \mod n = (a \mod n + b \mod n) \mod n
+    \]
+
+    \item 
+    \[
+        (a * b) \mod n = (a \mod n * b \mod n) \mod n
+    \]
+
+    \item 
+    \[
+        (a^m) \mod n = ({(a \mod n)}^n) \mod n
+    \]
+
+    \item 
+    \[
+        \left(\frac{a}{b}\right) \mod n \ne  \frac{a \mod n}{b \mod n}
+    \]
+
+\end{itemize}
+
+\section{General Division Rules}
+
+\subsection*{Sum Rules}
+
+If the number \(a\) can be expressed as a sum and \(b\) is a common divisor of all the terms, 
+then \(b\) is also a divisor of \(a\).
+
+\textbf{Example:} 
+
+\( 742 = 700 + 42 \). Then 7, as a common divisor of 700 and 42, is a divisor of 742.
+
+\subsection*{Product Rule}
+
+If the number \(a\) can be written as a product of two factors and \(b\) is a divisor of one of these factors, then \(b\) is also a divisor of \(a\).
+
+\textbf{Example:}
+
+\( 1500 = 15 \cdot 100 \). Then 3 and 5 are divisors of 15, and 2, 4, 5, 10, 25, and 50 are divisors of 
+100—thus, all are divisors of 1500.
+
+\subsubsection*{Divisor Pair Rules}
+
+If the number \(a\) has \(b\) as a divisor, then \( \frac{a}{b} \) is also a divisor of \(a\).
+
+\textbf{Example:}
+
+3 is a divisor of 315. Then \( 105 = \frac{315}{3} \) is also a divisor of 315.
+
+\subsection*{Divisor Rule}
+
+If the number \(a\) has \(b\) as a divisor, then every divisor of \(b\) is also a divisor of 
+\(a\).
+
+\textbf{Example:}
+
+45 is a divisor of 450. Then 3, 5, 9, and 15 (divisors of 45) are also divisors of 450.
+
+\subsection*{Difference Rule}
+
+If the number \(a\) can be expressed as a difference and \(b\) is a common divisor of the minuend 
+and subtrahend, then \(b\) is also a divisor of \(a\).
+
+\textbf{Example:}
+
+\( 686 = 700 - 14 \). Then 7, as a common divisor of 700 and 14, is a divisor of 686.
+
+\subsection*{Relative Prime Rule}
+
+If the number \(a\) has two relatively prime numbers \(b\) and \( c \) as divisors, then their 
+product \( b \cdot c \) is also a divisor of \(a\).
+
+\textbf{Example:}
+
+1540 has the relatively prime numbers 7 and 11 as divisors. Then \( 77 = 7 \cdot 11 \) is also a divisor 
+of 1540.
+
+\section{Using Modular Arithmetic to Find the n-th Digit of a Large Number}
+
+What is the last digit of the number \(13^{2023}\)?
+
+Note that \(13 \mod 10 = 3\) and  \(13^2 \mod 10 =  ((13 \mod 10)  (13\mod 10)) \mod 10 = 9 \).
+
+We can continue this process, and we will notice a pattern. After some iterations, we will know that
+
+\[
+    (13^{2020} 13) \mod 10 = 7.
+\]
+
+\section{Gaussian Brackets}
+
+The Gaussian brackets refer to two closely related functions used to round real numbers to integers in specific ways:
+
+\subsection{Floor Function}
+
+The floor function, denoted by \(\lfloor x \rfloor\), gives the greatest integer less than or equal 
+to a real number \(x\).
+
+\textbf{Example:}
+
+\(\lfloor 3.7 \rfloor = 3\), \(\lfloor -1.2 \rfloor = -2\)
+
+\subsection{Ceiling Function} 
+    
+The ceiling function, denoted by \(\lceil x \rceil\), gives the smallest integer greater than or 
+equal to a real number \(x\).
+
+\textbf{Example:}
+
+\(\lceil 3.7 \rceil = 4\), \(\lceil -1.2 \rceil = -1\)
+
+These functions are particularly useful in number theory, computer science, and rounding operations, where precise integer bounds of real numbers are required.
+
+\section{Residual Class Ring Modulo \texorpdfstring{\(n\)}{}}
+
+Given \(n \in \N\), we define the relation \(\sim_n\) for \(\Z\).
+
+\[
+    a \sim b \iff n \mid (a - b).
+\]
+
+Also, \(a / n\) and \(b / n\) have the same remainder.
+
+\subsection{Equivalence Class of \texorpdfstring{\(\Z\)}{}} 
+
+For \(i, n \in \Z\) 
+
+\[
+    \overline{i} := i + n \Z = \{ i + na \mid a \in \Z\}
+\]
+
+and 
+
+\[
+    \Z_N = \Z / n \Z = \{\overline{0}:= n \Z, \overline{1}:= 1 + n \Z, \dots, \overline{n - 1} := n - 1 + n \Z \},
+\]
+
+is the set of all equivalence classes for \(\Z\) with respect to the relation 
+\(k \sim l \iff n \mid (k - l)\). We define the addition and multiplication for \(\Z / n \Z\) using the representatives:
+
+\[
+    (a  + n \Z) + (b + n \Z) := (a + b) + n\Z
+\]
+
+and 
+
+\[
+    (a  + n \Z) \cdot (b + n \Z) := ab + n\Z
+\]
+
+For all \(a, b \in \Z\). Therefore, 
+
+\[
+    \overline{a} + \overline{b} = \overline{a + b}, \quad \overline{a} \cdot \overline{b} = \overline{ab}.
+\]
+
 

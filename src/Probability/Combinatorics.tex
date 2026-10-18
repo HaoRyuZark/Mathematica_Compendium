@@ -1,8 +1,81 @@
 \chapter{Combinatorics}
 
-\section{Three Principles of Combinatorics}
+\emph{Combinatorics} is an area of mathematics concerned with counting, arrangements, and combinations of objects.
 
-These principles are \emph{Addition}, \emph{Multiplication} and \emph{Inclusion-Exclusion}.
+\section{Lists}
+
+A \emph{list} is an ordered sequence of elements.
+
+\[
+    (a_1, a_2, \dots, a_n)
+\]
+
+Unlike sets, where the order of elements does not matter, in lists the order of elements is important. Hence, two 
+lists with the same elements but in different orders are considered different.
+
+\subsection{Length}
+
+A list can have a \emph{length}, which is the number of elements it contains.
+
+\[
+    \text{length}((a_1, a_2, \dots, a_n)) = n.
+\]
+
+\subsection{Strings}
+
+A \emph{string} is a list where the elements are not separated by commas or parenthesis.
+
+\[
+    a_1 a_2 \dots a_n
+\]
+
+\section{The Three Principles of Combinatorics}
+
+The three principles of combinatorics are \emph{Addition}, \emph{Multiplication} and \emph{subtraction}.
+
+\subsection{Principle of Multiplication}
+
+Suppose in making a list of length \(n\) there \(a_1\) possible choices for the first entry, \(a_2\) for the second choicesa, and 
+so on. Then, the total number of possible lists is the product of the number of choices for each entry:
+
+\[
+    a_1 \cdot a_2 \cdot \dots \cdot a_n.
+\] 
+
+If repetition is allowed, then each entry can be chosen independently from the same set of possibilities, and the total number of possible lists 
+is still given by the product formula:
+
+\[
+    a^n
+\]
+
+\subsection{Principle of Addition}
+
+Suppose a finite set \(X\) can be decomposed as a union \(X = X_1 \cup X_2 \cup \cdots \cup X_n\) where 
+\(X_i \cap X_j = \emptyset\) whenever \(i \neq j\). Then, the total number of elements in \(X\) is the sum of the number of elements in each \(X_i\):
+
+\[
+    |X| = |X_1| + |X_2| + \cdots + |X_n|.
+\]
+
+\subsection{Principle of Subtraction}
+
+If \(X\) is a subset of a finite set \(U\), then \(|\bar{X}| = |U| - |X|\). In other words, 
+
+\[
+    X \subseteq U \implies |U \setminus X | = |U| - |X|.
+\]
+
+This principle is used when we have overlapping sets, and we want to count the number of elements in their union accurately by correcting for the overcounting 
+of elements in the intersections.
+
+\section{Inclusion-Exclusion Principle}
+
+Using the principles above, we can know state our \emph{principle of inclusion-exclusion}.
+
+\[
+    \left| \bigcup_{i=1}^n X_i \right| = \sum_{i=1}^n |X_i| - \sum_{1 \le i < j \le n} |X_i \cap X_j| + \sum_{1 \le i < j < k \le n} |X_i \cap X_j \cap X_k| - \cdots + (-1)^{n+1} |X_1 \cap X_2 \cap \cdots \cap X_n|.
+\]
 
 \section{The Basic Counting Principle}
 

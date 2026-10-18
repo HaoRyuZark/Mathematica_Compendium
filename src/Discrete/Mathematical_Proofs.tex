@@ -1,9 +1,65 @@
 \chapter{Mathematical Proofs}
 
-In this section, I will provide both definitions and examples of different types of proofs for the reader to 
+In this chapter, I will provide both definitions and examples of different types of proofs for the reader to 
 gain an overview of how to use the different proving methods.
 
-\section{Proof by Direct Argument}
+\section{Nomenclature}
+
+In this book I do not really used a lot of the formal mathematical nomenclature found in academic texts like: theorem, lemma, etc. with the 
+exception of the QED symbol to denote the end of a proof and really important theorems like the Fundamental Theorem of Calculus. Yet, 
+it is important to understand these formal terms.
+
+\begin{itemize}
+
+	\item \emph{Theorem}: A ``big'' result that is considered important and is usually proven using a formal argument.
+
+	\item \emph{Lemma}: A ``small'' result that is usually proven to help in proving a theorem.
+
+	\item \emph{Corollary}: A result that follows directly from a theorem or a lemma.
+
+	\item \emph{Proposition}: A result that is considered less important than a theorem but still worth stating formally.
+
+\end{itemize}
+
+\section{Vacouly True}
+
+As a reminder, a stement \(p \implies q\) is \emph{vacuously true} if \(p\) is false. In some cases we can arrive at interesing results due 
+to this phenomenon. 
+
+\textbf{Example}:
+
+Take the definition of the intersection of a set system 
+
+\[
+	\bigcap_{i \in I} A_i = \{ x \mid x \in A_i \text{ for all } i \in I \}.
+\]
+
+Now let \(I = \emptyset\). Then the intersection over an empty index set is
+
+\[
+	\bigcap_{i \in \emptyset} A_i = \{ x \mid x \in A_i \text{ for all } i \in \emptyset \}.
+\]
+
+Since there are no elements \(i \in \emptyset\), the condition ``for all \(i \in \emptyset\)'' is vacuously true for any \(x\). Therefore,
+
+\[
+	\bigcap_{i \in \emptyset} A_i = \{ x \mid \text{true} \} = \text{the universal set}.
+\]
+
+\QED
+
+\section{Trivial Proofs}
+
+A proof is \emph{trivial} if for 
+
+\[
+	\forall x \in X, P(x) \implies Q(x)
+\]
+
+we can find a simpler statement \(\forall x \in X, Q(x)\) which is true. In other words, an 
+implication is trivially true when the conclusion of the implicationis always true.
+
+\section{Proof by Direct Argument (Direct Proof)}
 
 Assume \(A\) to prove \(B\).
 
@@ -29,10 +85,38 @@ Therefore, we conclude that if \(n\) is even, then \( n^2 \) is even.
 
 \QED
 
-\section{Proof by Contrapositive}
+\textbf{Example:}
+
+Let \(z \in \Z\) be odd. It can be written as the difference of the squares of \(a, b \in \N_0\). First some 
+examples: 
 
 \[
-	A \implies B \iff \neg B \implies \neg A
+	1 = 1^2 - 0^2, \quad 3 = 2^2 - 1^2, \quad 5 = 3^2 - 2^2, \quad 7 = 4^2 - 3^2, \quad \dots
+\]
+
+We know that any odd integer has the form
+
+\[
+	z = 2m \pm 1 \quad \text{for some } m \in \Z.
+\]
+
+and we have noticed the pattern \(b = a - 1\). Now let us assume that every odd integer can be written as \(a^2 - b^2\).
+
+\begin{align*}
+	z &= a^2 - b^2 \\
+	  &= a^2 - (a-1)^2 \\
+	  &= a^2 - (a^2 - 2a + 1) \\
+	  &= 2a - 1 \in \Z.
+\end{align*}
+
+\QED
+
+\section{Proof by Contrapositive}
+
+The contrapositive of an implication is logically equivalent to the original implication:
+
+\[
+	A \implies B \iff \neg B \implies \neg A.
 \]
 
 \textbf{Example:}
@@ -125,6 +209,42 @@ so \(q^2\) is even and hence \(q\) is even. Therefore, both \(p\) and \(q\) are 
 
 \QED
 
+\section{If and only Proofs}
+
+Given two statements \(A\) and \(B\), the statement \(A \iff B\) means that \(A\) is true if and only if \(B\) is true. 
+This is equivalent to proving both 
+
+\[ 	
+	A \iff B \equiv A \implies B \text{ and } B \implies A.
+\]
+
+Note that we can use techniques like: direct, contrapositive and contradiction proofs for both directions of the implication.
+
+\textbf{Example}
+
+Let \(x\) be a odd integer. We want to prove that \(x^2\) is also odd if and only if \(x\) is odd. 
+
+\textbf{Proof:}
+
+(\(\Rightarrow\)) Assume \(x\) is odd. Then we can write \(x = 2k + 1\) for some integer \(k\).
+Now, we compute \(x^2\):
+
+\[
+	x^2 = (2k + 1)^2 = 4k^2 + 4k + 1 = 2(2k^2 + 2k) + 1,
+\]
+
+which shows that \(x^2\) is odd.
+
+(\(\Leftarrow\)) Assume \(x^2\) is odd. Suppose, for contradiction, that \(x\) is even. Then \(x = 2k\) for some integer \(k\), and
+
+\[
+	x^2 = (2k)^2 = 4k^2 = 2(2k^2),
+\]
+
+which is even, contradicting our assumption that \(x^2\) is odd. Therefore, \(x\) must be odd.
+
+\QED
+
 \section{Proof by Induction}
 
 For all \( n \in \N \), the sum of the first \(n\) positive integers is given by:
@@ -200,9 +320,10 @@ for both \(a\) and \(b\) we know that they can be written as the product of prim
 
 \QED
 
-\section{Proof by Exhaustion}
+\section{Proof by Cases (Exhaustion)}
 
-In \emph{exhaustion}, we test all possible cases and their respective branches.
+In \emph{exhaustion}, we test all possible cases and their respective branches. This kinds of proofs tend 
+to be lengthy and tedious, especially when the number of cases is large.
 
 \textbf{Example:}
 
