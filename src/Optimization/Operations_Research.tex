@@ -141,7 +141,7 @@ optimization problem to guide the search for the optimal solution.
 
 The \emph{simplex method} uses the corner-points of the feasable region to find the best solution. To accomplish this we solve a system of equations induced by a subset
 of inequalities of our LP; the \textbf{unique solutions} of this systems are the cornerpoints of our corner points. Also note, that
-LPs re system of inequelities, not of equalities threfore, we need to \textbf{modify} our LP get equalities.
+LPs are system of inequelities, not of equalities threfore, we need to \textbf{modify} our LP get equalities.
 
 We use projections to a higher dimensional space by adding extra \emph{slack variables} so that our inequalities become equalities like for example:
 
@@ -202,18 +202,23 @@ as a variable hence,
 
     \item Can a current \textbf{non-basic} variable improve the objective function? Check coefficients in row 0. If no, terminate. 
 
-    \item Pick a non-basic variable with the greate    \item Pick a non-basic variable with the greatest potential to improbe the objective function as the entering variable.
+    \item Pick a non-basic variable with the greatest potential to improbe the objective function as the entering variable.
     st potential to improbe the objective function as the entering variable.
     
     \[
         x_{i} = \max (\{c_i \mid c_i \text{ is coefficient of the target function (also after modification)}\})
     \]
     
-    \item Use the minimum ratio test to identify the leaving variable. Using the system of equation gained from the basic solution check which one as the 
-    smallest fraction when solving for the \(x_i\). That one is the one which is going to hit zero first. 
+    \item Use the minimum ratio test to identify the leaving variable. Using the system of equation gained from the basic solution check which one has the 
+    smallest fraction when solving for the \(x_i\). That variable \(x_j\) is the one which is going to hit zero first. This is the \emph{minimum ratio test}
 
-    \item Update the system for the new basic feasa   ble solution using Gaussian elimination. Go to step two. This means 
-    to update the column \(i\) for all coefficients to be zero, execept for the row \textbf{owned} by the variable to eliminate where it should be one.
+    \begin{align*}
+        x_j = \min \left( \frac{b_i}{a_{ij}} \mid a_{ij} > 0 \right)    
+    \end{align*}
+
+    \item Update the system for the new basic feasible solution using Gaussian elimination. 
+    This means we need to update the column of the variable \(x_i\) for all coefficients to be zero, except for the row \textbf{owned} by 
+    the variable the variable \(x_j\) identified by the minimum ratio test as the leaving variable.
 
     \item Read the solution by noting the solution from the target variables and the slack variables which did not turn 0.
 
@@ -349,13 +354,34 @@ For the other rows =:
     \right]
 \]
 
-Since our slack variables except for \(x_3\) are zero we know have the solution vector 
+Since our slack variables except for \(x_3\) are zero we know that 
+
+\begin{align*}
+    Z + 0x_1 + 0x_2 + 0x_3+ \frac{3}{2}x_4 + 1x_5 &= 36 \\
+    0x_1 + 0x_2 + x_3 + 0x_4 + 0x_5 &= 2 \\
+    0x_1 + x_2 + 0x_3 + 0x_4 + 0x_5 &= 6 \\
+    x_1 + 0x_2 + 0x_3 + 0x_4 + 0x_5 &= 2 \\
+\end{align*}
+
+which corresponds to 
+
+\begin{align*}
+    Z  &= 36 \\
+    x_3&= 2 \\
+    x_2 &= 6 \\
+    x_1 &= 2 \\
+    x_4 &= 0 \\
+    x_5 &= 0 \\
+\end{align*}
+
+
+Giving us 
 
 \[
     \begin{bmatrix}
         2 \\
         6 \\ 
-        4 \\ 
+        2 \\ 
         0 \\ 
         0
     \end{bmatrix}

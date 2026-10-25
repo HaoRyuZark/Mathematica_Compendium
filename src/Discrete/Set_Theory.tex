@@ -147,6 +147,23 @@ is set, we can abstract those nested sets as mathematical objects.
 \end{figure}
 \smallskip
 
+\textbf{Example:}
+
+Prove that \(A \setminus (B \setminus C) = (A \setminus B) \cup (A \cap C)\). 
+
+\textbf{Proof:}
+
+\begin{align*}
+	x \in A \setminus (B \setminus C) &\iff x \in A \land x \notin (B \setminus C) \\
+	&\iff x \in A \land x \notin (x \in B \land x \notin C) \\ 
+	&\iff x \in A \land x \in (x \notin B  \lor x \in C) \\
+	&\iff x \in A \land (x \notin B  \lor x \in C) \\
+	&\iff (x \in A \land x \notin B) \lor  (x \in A \land x \in C) \\
+	&\iff x \in (A \setminus B) \cup (A \cap C)
+\end{align*}
+
+\QED
+
 \section{Short History Lesson}
 
 When set theory was invented back then by Cantor, he had no formal axioms but a set of basic 'common sense' rules he assumed when 
@@ -213,6 +230,7 @@ If \(X \in Y\) for some class \(Y\) then \(X\) is a set. If \(X \notin Y\) for a
 	which is formed from a chain like: \(a_1 \in a_2 \in a_3 \in \dots\). \(\forall a (\exists b ( b \in a) \implies \exists c (c \in a \land \forall d ( d \in c \implies d \notin a)))\)
 
 	\item \emph{Axiom of Replacement}: If \(A\) is a set and \(f: A \to B\) is a surjective function, then \(B\) is a set. Let \(P\) be a predicate on \(a, b, c\) and let \(d,e,f,g\) not be yet introduced, 
+
 	\begin{align*}
 		\forall a \exists b ((\forall c((c \in a \land \exists d P) \implies \exists e ( e \exists (e \in b \land [e/d]P)) \\ 
 		\land \forall f (f \in b \implies \exists g (g \in a \land [g/c][f/d]P)))
@@ -220,13 +238,20 @@ If \(X \in Y\) for some class \(Y\) then \(X\) is a set. If \(X \notin Y\) for a
 
 	\item \emph{Axiom of Infinity}: An infinity set exists. \(\exists a( \exists b (b \in a) \land \forall c (c \in a \implies \exists d ( d \in a \land c \in d)))\).
 
-	\item \emph{Axiom of Choice}: Given a non-empty set, \(A_1, A_2, \dots\), there is a set containing exactly one element from each \(A_i\).
+	\item \emph{Axiom of Choice}: Given a non-empty set, \(A = \{A_1, A_2, \dots\}\), there is a set containing exactly one element from each \(A_i\).
+
 	\begin{align*}
 		\forall a (\forall b (b \in a \implies (\exists c ( c \in b) \\ 
 		\land \forall d ((d \in a \land \exists e ( e \in b \land e \in d)) \implies b = d))) \\ 
 		\implies \exists f \forall g (g \in a \implies \exists h ((h \in g \land h \in f) \\ 
 		\land \forall i ((i \in g \land i \in f) \implies i = h))))
 	\end{align*}
+
+	Simplified 
+
+	\[
+		F: A \to \bigcup_{X \in A} X, \quad F(X) \in X.
+	\]
 
 \end{enumerate}
 
@@ -393,6 +418,39 @@ the definition of the subset. Then this tells us that \(\forall x \in A \cap B: 
 
 \QED 
 
+\section{Properties of Set Differences}
+
+Given the sets \(A,B\) and \(C\) then the following properties apply: 
+
+\begin{enumerate}
+
+	\item \(A \setminus B \subseteq A\).
+
+	\item \((A \setminus B) \cap B = \emptyset\).
+
+	\item \((A \setminus B) \cup B = A \cup B\).
+
+	\item \(A \setminus (A \setminus B) = A \cap B\).
+
+	\item \(A \setminus (B \cup C) = (A \setminus B) \cap (A \setminus C)\).
+
+	\item \(A \setminus (B \cap C) = (A \setminus B) \cup (A \setminus C)\).
+
+\end{enumerate}
+
+\textbf{Proof V:}
+
+Let \(x \in A \setminus (B \cup C)\), then \(x \in A\) and \(x \notin B\) \textbf{and} \(x \notin C\), we may 
+think to use or in this case, but we need both conditions to hold, hence \(x \in (A \setminus B) \cap (A \setminus C)\), and therefore 
+
+\[
+	A \setminus (B \cup C) = (A \setminus B) \cap (A \setminus C)
+\]
+
+The other direction is trivial once we already broke down the definition of the sets with logic operators.
+
+\QED
+
 \section{The Singleton and Doubleton}
 
 We define the \emph{singleton} as 
@@ -407,7 +465,7 @@ and the \emph{doubleton} as
 	\{a, b\} := \{x \mid x = a \lor x = b\},
 \]
 
-\subsubsection*{Properties}
+\subsection{Properties of Singletons and Doubletons}
 
 \begin{itemize}
 
@@ -773,7 +831,7 @@ and only if:
 	{(A_i)}_{i \in J} \text{ are pairwise disjoint and } \bigcup_{i \in J} A_i = X
 \]
 
-\section{Cardinality Laws}
+\section{Union and Interscion for Indexed Sets}
 
 Let \( A_i, B_j \subseteq X \) for \( i \in I \) and \( j \in J \). Then the following holds:
 
@@ -806,7 +864,6 @@ Here, \( I = \{ 1, 2, 3, \dots, n \} \) and \( J = \{ 1, 2, 3, \dots, m \} \). T
 	&= \{ (1, 1), (1, 2), \dots, (1, m), (2, 1), (2, 2), \dots, (2, m), \dots, (n, 1), (n, 2), \dots, (n, m) \}
 \end{align*}
 
-
 \section{Cardinality}
 
 The cardinality of a set is the number of elements in that set.
@@ -814,13 +871,27 @@ The cardinality of a set is the number of elements in that set.
 Let \(A\) and \(B\) be finite sets with \( |A| = n \), \( |B| = m \), and let \(X\) be the finite 
 universal set. Then the following holds:
 
-\subsubsection*{Cardinality of a Set}
+\subsection{Cardinality Via Maps}
+
+Given \(f: A \to B\), where \(A,B\) have a finte number of elements, for all elements of the image of \(A\), we can add the cardinalities of 
+the fibers 
+
+\[
+	|A| = \sum_{b \in B} |f^{-1}(b)|,
+\]
+
+which will give us the total cardinality. We use this for the following proofs.
+
+\section{Cardinality Laws}
+
+\emph{Cardinality of a Set}
 
 \[
 	A = (A \cap B) \cup (A \setminus B), \quad |A| = |A \cap B| + |A \setminus B|
 \]
+\textbf{Proof:}
 
-\subsubsection*{Cardinality of the Complements}
+\emph{Cardinality of the Complements}
 
 \[
 	|A| = |X \setminus A| = |X| - |A|
@@ -829,19 +900,25 @@ universal set. Then the following holds:
 	A \setminus B = A \cap (X \setminus B), \quad |A \setminus B| = |A| - |A \cap B|
 \]
 
-\subsubsection*{Cardinality of the Cartesian Product}
+\textbf{Proof:}
+
+\emph{Cardinality of the Cartesian Product}
 
 \[
 	|A \times B| = |A| \cdot |B| = n \cdot m
 \]
 
-\subsubsection{*Inclusion-Exclusion Formula for Two Disjoint Sets}
+\textbf{Proof:}
+
+\emph{Inclusion-Exclusion Formula for Two Disjoint Sets}
 
 \[
 	|A \cup B| = |A| + |B| = n + m
 \]
 
-\subsubsection*{Inclusion-Exclusion Formula for Two Non-Disjoint Sets}
+\textbf{Proof:}
+
+\subsection{Inclusion-Exclusion Formula for Two Non-Disjoint Sets}
 
 Let \( |A \cap B| = k \), then:
 
@@ -850,7 +927,7 @@ Let \( |A \cap B| = k \), then:
 	twice)}
 \]
 
-\subsubsection*{Inclusion-Exclusion Formula for Three Non-Disjoint Sets}
+\subsection{Inclusion-Exclusion Formula for Three Non-Disjoint Sets}
 
 \begin{align*}
 	|A \cup B \cup C| &= |(A \cup B) \cup C| \\ 
@@ -859,14 +936,24 @@ Let \( |A \cap B| = k \), then:
 	&= |A| + |B| + |C| - |A \cap B| - |A \cap C| - |B \cap C| + |A \cap B \cap C|
 \end{align*}
 
-\subsubsection{General Formula for the Cardinality of the Union of Sets}
+\subsection{General Formula for the Cardinality of the Union of Sets}
 
 \[
 	\left\vert \bigcup_{i = 1}^n M_i \right\vert  = \sum_{I \subseteq \{1, \dots, n\}, I \neq \emptyset}
 	{(-1)}^{|I| - 1} \left\vert \bigcap_{i \in I} M_i \right\vert
 \]
 
-\section{Definition of Countable and Non-Countable}
+\section{Finite Definition}
+
+A set \(A\) is \emph{finite}, if there is a number \(\Z_{\ge 0}\) and a bijection 
+
+\[
+	\xi: \hat{n} \to M, \quad \hat{n} = \{0, \ 1, \ 2, \ \cdots, \ n\}.
+\]
+
+is such a bijection does not exists, then is it \emph{non-finite, infinite}.
+
+\section{Countable and Non-Countable}
 
 A set \(A\) is \emph{infinite countable} or just \emph{countable} if there exists a bijection from \(\N\) to 
 \(A\). If \(A\) has infinitely many elements and there is no such bijection, we call it \emph{non-countable}.
@@ -969,6 +1056,25 @@ The \emph{power set} of a set is the set of all subsets of a given set.
 \]
 
 Its cardinality is \(2^n\) with \(n\) being the number of elements in the original set \(X\).
+
+\textbf{Example:}
+
+Prove that 
+
+\[
+	M \subseteq N \iff \mathcal{P}(M) \subseteq \mathcal{P}(N)
+\]
+
+\textbf{Proof:}
+
+\(\Rightarrow\): Let \(M = N\), then because they have the same elements they are going to have the same subsets.
+
+\(\Leftarrow\): Let us take the contraposite statement, i.e., assume that \(M \not\subseteq N\). 
+
+Then there exists an element \(x \in M\) such that \(x \notin N\).  Consequently, the singleton set \(\{x\} \subseteq \mathcal{P}(M)\) but \(\{x\} \not\subseteq \mathcal{P}(N)\), 
+which contradicts the assumption that \(\mathcal{P}(M) \subseteq \mathcal{P}(N)\).  Hence, \(M \subseteq N\).
+
+\QED
 
 \section{Set Systems}
 

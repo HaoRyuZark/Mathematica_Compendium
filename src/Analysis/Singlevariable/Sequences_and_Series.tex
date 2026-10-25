@@ -748,13 +748,23 @@ There are two types of \emph{geometric series}.
 \emph{1. Finite geometric series:}
 
 \[
-    \sum_{n = 0}^{r - 1} aq^n = a \cdot \frac{1 - q^r}{1 - q} \quad \text{for } q \ne 1
+    \sum_{n = 0}^{r + 1} aq^n = a \cdot \frac{1 - q^{r + 1}}{1 - q} \quad \text{for } q \ne 1
 \]
 
 \emph{2. Infinite geometric series:}
 
 \[
     \sum_{n = 0}^{\infty} aq^n = \frac{a}{1 - q} \quad \text{for } |q| < 1
+\]
+
+The proof of this in the chapter \emph{Sums and Products}.
+
+\subsection{Generalized Geomtric Series}
+
+Let \(n \in \N_0\) and \(a, b \in \C\) such that \(a \neq b\), then 
+
+\[
+    \sum_{k = 0}^{n} a^kb^{n - k} = \frac{a^{n + 1} - b^{n + 1}}{a - b}.
 \]
 
 \section{Point-Wise Convergence}

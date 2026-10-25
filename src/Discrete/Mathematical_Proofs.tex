@@ -169,24 +169,29 @@ assumption that \(n\) is odd must be false, and thus, \(n\) must be even.
 
 \textbf{Example II:}
 
-Another example is the proof that there are infinite prime numbers.
-
-Let us define the prime numbers \(p_1, \dots, p_n\), where we assume \(p_n\) is the biggest prime number. 
-We construct a number 
+We will prove that there are infinitely many prime numbers by assuming that there is a biggest prime number \(p_n\). 
+Let us then create a new number 
 
 \[
-	q = 1 + p_1 \cdot \cdots \cdot p_n.
+	p_1 \cdot \dots \cdot p_n + 1 = a
 \]
 
-This number is bigger than \(p_n\), but it is not divisible by any of the other prime numbers, since dividing by any of them 
-will always give us a residual of 1. Therefore, the assumption that there is a biggest prime number is false.
+Note that \(a\) like any other integer has to be a multiple of some prime which means \(p_kc = a\). If we divide both 
+sides by \(p_k\) we get
+
+\[
+	(p_1 \cdot \dots \cdot p_{k - 1} \cdot p_{k + 1} \cdot \dots \cdot p_n) + \frac{1}{p_k} = c.
+\]
+
+On the left we have a rational whereas on the right we have an integer which is contradiction. Therefore, 
+there are infinitely many prime numbers.
 
 \QED 
 
 \textbf{Example III:}
 
 Suppose, for contradiction, that \(\sqrt{2}\) is rational. Then there exist integers \(p\) and \(q\) 
-with \(q\neq0\), \(\gcd(p,q) = 1\), and
+with \(q \neq 0\), \(\gcd(p,q) = 1\), and
 
 \[
 	\sqrt{2}=\frac{p}{q}.
@@ -245,47 +250,91 @@ which is even, contradicting our assumption that \(x^2\) is odd. Therefore, \(x\
 
 \QED
 
-\section{Proof by Induction}
+\section{Proof by Full Induction}
+
+For all \(n \in \N\), \(A(n)\) is a statement. Then  the following holds 
+
+\begin{itemize}
+
+	\item \emph{Base case}: Is \(A(1)\) true and,
+
+	\item \emph{Inductive Hypothesis}: We assume that \(A(n)\) is true for some arbitrary \(n \in \N\).
+
+	\item  \emph{Inductive step}: \(A(n) \implies A(n + 1)\) for all \(n \in \N\)
+
+\end{itemize}
+
+Then \(A(n)\) is true for all \(n \in \N\).
+
+\textbf{Proof:}
+
+Let
+
+\[
+	M := \{n \in \N \mid A(n) \text{ holds }\}.
+\]
+
+We need to show that \(M = \N\). 
+
+In our first step we assume that \(A(1)\) is true, then we know \(1 \in M\). We need to prove the 
+inductive step, which is done by using the follwing axiom \(1 \in M \implies 1' \in M\), hence by the last 
+Peano axiom 
+
+\[
+	M = \N.
+\]
+
+\QED
+
+\textbf{Remark:} Most induction proofs follow the same structure during the inductive step in which we can just substitute one part of the expression 
+with our inductive hypothesis, \textbf{but} sometimes this wield yield no progress and way need to use extra information and also consider 
+other manipulations to our expresssion to derive at a useful conclusion; like for example the \emph{Bernoulli inequality}.
+
+Another trick is to start from the final result we want to get and then work backwards to arrive at some conclusion.
+
+\textbf{Example:}
 
 For all \( n \in \N \), the sum of the first \(n\) positive integers is given by:
 
 \[
-	S(n) = 1 + 2 + 3 + \cdots + n = \frac{n(n+1)}{2}.
+	\sum_{i = 1}^{n} i = 1 + 2 + 3 + \cdots + n = \frac{n(n+1)}{2}.
 \]
 
 We will prove this theorem by induction on \(n\).
 
-\textbf{Base Case:} For \( n = 1 \):
+\emph{Base Case:} For \( n = 1 \):
 
 \[
-	S(1) = 1 = \frac{1(1+1)}{2}.
+	\sum_{i = 1}^{n} i = 1 = \frac{1(1+1)}{2}.
 \]
 
 The base case holds.
 
-\textbf{Inductive Step:} Assume that the statement holds for some \( n = k \), i.e., assume that:
-	
-\[
-	S(k) = 1 + 2 + 3 + \cdots + k = \frac{k(k+1)}{2}.
-\]
-	
-We need to show that the statement holds for \( n = k + 1 \):
+\emph{Inductive Hypothesis}: Let 
 
 \[
-	S(k+1) = S(k) + (k + 1).
+	\sum_{i = 1}^{n} i = 1 + 2 + 3 + \cdots + n = \frac{n(n+1)}{2}
+\]
+
+be true. 
+
+\emph{Inductive Step:} Let us prove the stement for  \(n + 1\)
+	
+\[
+	\sum_{i = 1}^{n + 1} i = 1 + 2 + 3 + \cdots + n + 1= \frac{(n + 1)(n + 2)}{2}.
 \]
 	
 By the inductive hypothesis, we have:
 
 \begin{align*}
-	S(k+1) &= \frac{k(k+1)}{2} + (k + 1) \\
-	&= \frac{k(k+1)}{2} + \frac{2(k + 1)}{2}\\
-    &= \frac{k(k+1) + 2(k + 1)}{2} \\
-	&= \frac{(k + 1)(k + 2)}{2}.	
+	\sum_{i = 1}^{n + 1} i &= \sum_{i = 1}^{n} i + (n + 1)\\
+	&= \frac{n(n+1)}{2} + (n + 1)\\
+	&= \frac{n(n+1) + 2(n + 1)}{2} \\
+	&= \frac{(n + 1)(n + 2)}{2}
 \end{align*}
 
-Thus, the statement holds for \( n = k + 1 \).
-By the principle of mathematical induction, the statement holds for all \( n \in \N \).
+Thus, we have prooven the statement for \( n + 1 \), completing the inductive step. By the principle of mathematical induction, the 
+statement holds for all \( n \in \N \).
 
 \QED
 
@@ -314,9 +363,9 @@ Consider the cases where \(k + 1\) is prime or composite.
 
 The first case is true.
 
-For the case where \(n + 1\) is not prime, we have \(n + 1 = ab\) with \(2 \le a,b \le n < n + 1\), and 
+For the case where \(k + 1\) is not prime, we have \(k + 1 = ab\) with \(2 \le a \le b < k + 1\), and 
 for both \(a\) and \(b\) we know that they can be written as the product of primes; thus, 
-\(n + 1\) can be written as the product of primes. 
+\(k + 1\) can be written as the product of primes. 
 
 \QED
 
@@ -377,3 +426,53 @@ even, which contradicts the statement that all prime numbers are odd.
 Therefore, the statement ``all prime numbers are odd'' is false.
 
 \QED
+
+\section{Mathematical Writting}
+
+As mathematicians we must not only obey the respective language of our field as well as the grammar and punctuation rules of 
+our writing tongue, but also it is essential to follow conventions and formulate our sentences to be as clear and free from ambiguity as possible.
+
+For example, look at the following sentences: 
+
+\begin{itemize}
+	\item ``The set \(A\) is empty.'' is good in contrast to ``\(A\) is empty'', what is \(A\) 
+	\item ``Let \(x \in \R\) be such that \(x^2 = 4\).'' is good in contrast to ``\(x^2 = 4\)'', what is \(x\)?
+\end{itemize}
+
+Other rules which apply are 
+
+\begin{itemize}
+
+	\item  Punctuation at the end of equations which are part of a sentence.
+
+	\item Do not mix different notations for the same mathematical object. This is confusing.
+
+	\item Use the first person plural ``we'' when writing mathematical proofs, as it is the convention in mathematical writing. This 
+	creates a connection between the author and the reader, making the exposition more engaging and easier to follow.
+
+	\item Use the active voice.
+
+	\item Use ``thus'', ``hence'', ``therefore'' to indicate logical conclusions.
+
+\end{itemize}
+
+\section{Combining Techniques}
+
+For more complex theorems somtimes a single proof technique is not enough, and we may need to combine multiple of them.
+
+Common patterns include: 
+
+\begin{itemize}
+
+	\item Combining direct proof and proof by contradiction: Sometimes we can start with a direct proof and then use contradiction to handle a specific case.
+
+	\item Combining direct proof and proof by induction: We may use a direct argument for the base case and then apply induction for the general case.
+
+	\item Combining proof by contrapositive and proof by contradiction: In some situations, proving the contrapositive can simplify the argument, and contradiction can be used for the remaining cases.
+
+	\item Contraposite for if and only if proofs where a direction is easier to prove by considering the contrapositive. This can simplify the argument for one direction, 
+	while the other direction may be handled directly or by another technique.
+
+	\item Negation of the if and only if statements.
+
+\end{itemize}

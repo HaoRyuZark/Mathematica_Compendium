@@ -58,6 +58,20 @@ Suppose a finite set \(X\) can be decomposed as a union \(X = X_1 \cup X_2 \cup 
     |X| = |X_1| + |X_2| + \cdots + |X_n|.
 \]
 
+\textbf{Example:}
+
+An example of this principle is given the following task: given the number from 0 to 9, how many strings including the 6 exactly one time 
+are possible if this words are of length 3.
+
+We have the following cases: \(X_1 = 6,\_,\_\), \(X_2 = \_,6,\_\), \(X_3 = \_,\_,6\). Therefore, 
+
+\[
+    |X_1| + |X_2| + |X_3| = 9^2 + 9^2 + 9^2 = 243
+\]
+
+Note that if the 6 could occur more than once, we would have to consider additional cases where the 6 appears in multiple positions, which 
+would mean that we would use the inclusion-exclusion principle.
+
 \subsection{Principle of Subtraction}
 
 If \(X\) is a subset of a finite set \(U\), then \(|\bar{X}| = |U| - |X|\). In other words, 
@@ -68,6 +82,21 @@ If \(X\) is a subset of a finite set \(U\), then \(|\bar{X}| = |U| - |X|\). In o
 
 This principle is used when we have overlapping sets, and we want to count the number of elements in their union accurately by correcting for the overcounting 
 of elements in the intersections.
+
+\textbf{Example:}
+
+Let \(U\) be the set of all 3-digit strings formed from the digits 0 to 9, and let \(X\) be the set of strings that contain the digit 6 exactly once. 
+Then, by the principle of subtraction, we have
+
+\[
+    |U| = 10^3, \quad |X| = 243
+\]
+
+Therefore, 
+
+\[
+    |\bar{X}| = |U| - |X| = 10^3 - 243 = 1000 - 243 = 757
+\]
 
 \section{Inclusion-Exclusion Principle}
 
@@ -84,6 +113,14 @@ For \(n\) outcomes of event \(A\) and \(m\) of \(B\), there are \(n \cdot m\) ou
 In combinatorics we can model a lot of problems as having \(n\) elements from which we can take one at a time 
 a certain number of times, and then we take into consideration if we allow repetition or the order matters or not.
 
+\textbf{Example:}
+
+A restaurant has 8 waiters and 5 types of steaks. How many ways of ordering a steak are there.
+
+\[
+    8 \cdot 5 = 40
+\]
+
 \section{Permutation Without Repetition}
 
 The \emph{permutation} counts the number of ways of ordering \(n\) distinct elements. In other words, the number of tuples of \(n\) distinct elements.
@@ -92,6 +129,16 @@ Of course, the order matters.
 \[
     n!
 \]
+
+\textbf{Example:}
+
+5 men and 4 women are ranked by heigjht. If the men are ordered among themselves and women as well, how many rankins are possible?
+
+\[
+    5! \cdot 4! = 120 \cdot 24 = 2880
+\]
+
+For reach ranking, we consider the men and women separately, and then multiply the number of ways to order each group.
 
 \subsection{Permutation With Repetition}
 
@@ -123,6 +170,26 @@ In this case, the order matters, but only for the different elements.
 
 \textbf{Example:}
 
+
+\section{Multisets}
+
+A \emph{multiset} is similar to a set, but we allow multiple occurrences of an elements, but the order does not matter unlike lists.
+We will use this multiset for combinations with repetition. 
+
+As an example: 
+
+\[
+    [1, 1, 2, 2, 2, 3]
+\]
+
+\textbf{Example:}
+
+Consider the multiset \(\{a, a, b, b, b, c\}\). The number of distinct permutations of this multiset is given by
+
+\[
+    \frac{6!}{2! \cdot 3! \cdot 1!} = \frac{720}{12} = 60.
+\]
+
 \section{Combination With Repetition}
 
 We can think of the \emph{combination} as having \(n\) types of objects, and we want 
@@ -139,6 +206,21 @@ that we have \(n + k - 1\) positions if we count the actual slots and the separa
 
 \[
     *|* * *|* *, \quad n = 6, \quad k = 2, \quad \text{positions in between } = 7
+\]
+
+This called the \emph{stars and bars} method. For this method we make the assumption that identical are next to each other, forming contiguous groups.
+
+\textbf{Example}
+
+We have 10 balls and 3 boxes, but we do not know how many ways are there to distribute the balls into the boxes. 
+We use the bars and stars method to represent the distribution of balls into boxes. Here, the balls are represented by stars and the separations between boxes are represented by bars. 
+
+We have 10 balls and 3 boxes, so we need 2 bars to separate the boxes.
+The total number of positions is \(10 + 2 = 12\), and we need to choose 2 positions for the bars.
+Thus, the number of ways to distribute the balls is 
+
+\[
+    \binom{10 + 2}{2} = \binom{12}{2} = 66.
 \]
 
 \section{Variation}
@@ -183,11 +265,60 @@ This is like from \(n\) choose \(k_1\), then from \(n - k_1\) choose \(k_2\), an
 
 \subsection{Multinomial Theorem}
 
-Given \(x_1, \dots, x_p \in \R\) and \(\N\), then 
+Given \(x_1, \dots, x_r \in \R\) and \(\N\), then 
 
 \[
-    (x_1 + \cdots, x_n)^n = \sum_{k_1 + \cdots + k_{p = n}}  \binom{n}{k_1, \dots, k_p} x_{1}^{k_1} \cdots x_{p}^{k_p}
+    (x_1 + \cdots + x_r)^n = \sum_{k_1 + \cdots + k_{r} = n}  \binom{n}{k_1, \dots, k_r} x_{1}^{k_1} \cdots x_{r}^{k_r}
 \]
+
+where \(k_1, \dots, k_p\) are less or equal to \(n\).
+
+This can be better understood with an example.
+
+\textbf{Example:}
+
+Let us use the formula for \((x + y + z)^3\). 
+
+
+\[
+    \sum_{i, j, k, i + j + k = 4}^{4} \binom{4}{i, j, k}x^i y^j z^k
+\]
+
+\textbf{Proof:}
+
+Let \(r = 1\) be our \emph{base case}, then \(x_1 = x_1\).
+
+We assume as our \emph{inductive hypothesis} that 
+
+\[
+    (x_1 + \cdots + x_r)^n = \sum_{k_1 + \cdots + k_{r} = n}  \binom{n}{k_1, \dots, k_r} x_{1}^{k_1} \cdots x_{r}^{k_r}
+\]
+
+Now for our \emph{inductive step} we take \(n + 1\)
+
+\begin{align*} 
+    (x_1 + \cdots + x_{n} + x_{r + 1})^{n + 1} &= ((x_1 + \cdots + x_{n}) + x_{r + 1})^{n + 1} \\
+     &= \sum_{k = 0}^{n}\binom{n}{k} (x_1 + \cdots + x_{n} + x_n)^{k} x_{r + 1}^{n - k} \\
+     &= \sum_{k = 0}^{n}\binom{n}{k}  \left(\sum_{k_1 + \cdots + k_{r} = n}  \binom{n}{k_1, \dots, k_r} x_{1}^{k_1} \cdots x_{r}^{k_r} \right)x_{r + 1}^{n - k} \\
+     &= \sum_{k_1 + \cdots + k_{r + 1} = n}  \binom{n}{k_1, \dots, k_r + k_{r + 1}} x_{1}^{k_1} \cdots x_{r}^{k_r} x_{r + 1}^{k_{r + 1}}
+\end{align*}
+
+Note that we used both the definition of the multinomial coefficient and the binomial theorem to get this result.
+
+\QED
+
+\section{The Division Principle}
+
+Suppose \(n\) objets are placed into \(k\) boxes. Then at least one box contains \(\left\lceil \frac{n}{k} \right\rceil\) or more 
+objects and at least one box contains \(\left\lfloor \frac{n}{k} \right\rfloor\) or fewer objects. This is called 
+the \emph{division principle}.
+
+\section{The Pigeonhole Principle}
+
+The \emph{pigeonhole principle} states that if \(n\) objects are placed into \(k\) boxes and \(n > k\), then 
+at least one box contains more than one objects. If \(n < k\), then at least one box is empty. This is a direct consecuence from the division 
+principle.
+
 
 \section{Example Problems}
 

@@ -108,26 +108,39 @@ Similarly, for the case \(x < 0\) and \(y \ge 0\), then \(|x + y| = -x + y\) and
 
 \section{Bernoulli Inequality}
 
-Given \(x \in \R, x > -1, x \ne 0\), then for \(n \in \N, n \ge 2\), we have
+Given \(x \in \R, x \ge -1, x \ne 0\), then for \(n \in \N, n \ge 1\), we have
 
 \[
-    (1 + x)^n > 1 + nx
+    (1 + x)^n \ge 1 + nx
 \]
+
+This inequality is known as the \emph{Bernoulli inequality} and it is useful for proving that some functions are stricly greater than other 
+on some intervals of the real line, among other applications.
 
 \textbf{Proof:}
 
-For \(n = 2\):
+Suppose \(a \ge -1\). 
+
+Let our \emph{base case} be \(n = 1\). Then \((1 + x)^1 = 1 + x\), which satisfies the inequality \(1 + x \ge 1 + x\).
+
+\emph{Induction hypothesis}: suppose the inequality holds for some \(n = k\), i.e.,
 
 \[
-    (1 + x)^2 > 1 + 2x.
+    (1 + x)^k \ge 1 + kx
 \]
 
-For \(n + 1\) with \(n > 2\):
+\emph{Induction Step}: We want to prove that \((1 + x)^{k + 1} \ge 1 + (k  + 1)x\).
 
 \begin{align*}
-    (1 + x)^{n + 1} &> 1 + (n + 1)x \\
-    (1 + x)^n &> 1 + (n + 1)x.
+    (1 + x)^{k + 1} &= (1 + x)^k (1 + x) \\ 
+    &\ge (1 + xn)(1 + x) \\ 
+    &= 1 + x + xn + nx^2 \\ 
+    &= 1 + (k + 1)x + nx^2 \\ 
+    &\ge 1 + (k + 1)x
 \end{align*}
+
+In this induction proof we could not just use the induction hypothesis directly and manipulate our expression; we had to multiply both sides by \(1 + x\) and then expand and 
+simplify to show that the inequality still holds for \(n = k + 1\).
 
 \QED
 

@@ -143,6 +143,48 @@ Fields like \(\Q\), \(\R\), and \(\C\) allow division (except by zero), enabling
 
 \subsection{Field Proofs}
 
+\subsubsection{Uniqueness of Differences}
+
+There exists exactly one \(x \in \field\) such that \(a + x = b\), \(x = b + (-a)\) also written 
+\(x = b - a\).
+
+Let \(x, x' \in \field\) such that the property is satified then, 
+
+\[
+    x = b - a \land x' = b - a \implies x = 'x.
+\]
+
+\QED
+
+A special case of this property is when \(b = a\), which gives us that 
+
+\[
+    a + x = a \land a + x' = a \iff a + 0 = a \land a - 0 = a \implies 0 = -0.
+\]
+
+\subsubsection{Distribution of Negative Signs}
+
+For any \(a, b \in \field\) the following holds \(-(a + b)  = (-a) + (-b)\).
+
+Note that \(-(a + b)\) satisfies
+
+\[
+    (a + b) - (a + b) = 0
+\]
+
+Now note that 
+
+\begin{align*}
+    (a + b) - a - b &=  (b + a) - a - b \\
+    &= b + (a - a) - b \\
+    &= b - b = 0
+\end{align*}
+
+Hence, \(-a - b\) also satisfies the same difference. By our previous propert we know that 
+difference are unique hence, \(-(a + b) = (-a) + (-b)\).
+
+\QED
+
 \subsubsection{Inverses Are Well-Defined:}
 
 We know \(a + -a = 0\). Now let us say \(-a' \ne -a\) and \(a -a' = 0\).

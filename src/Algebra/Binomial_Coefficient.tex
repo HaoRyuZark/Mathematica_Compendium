@@ -17,25 +17,101 @@ or as a product:
 
 with \(n\) and \(k\) as natural numbers (for the moment).
 
-\section{Properties}
+\section{Properties of the Binomial Coefficient}
 
 \begin{itemize}
     
     \item \( \binom{n}{k} =  \binom{n}{n - k} \)
+
     \item \( \binom{n}{k - 1} = \binom{n}{k} \frac{n - k}{k + 1} \)
+
     \item \( \sum_{k = 0}^{n} \binom{n}{k} = 2^n \)
+
     \item \( \sum_{k = 0}^{n} \binom{m}{k} = \binom{n + 1}{m + 1} \)
+
     \item \( \binom{n}{0} = 1 = \binom{n}{n} \)
+
     \item \( \binom{n}{k} + \binom{n}{k + 1} = \binom{n + 1}{k + 1} \)
+
     \item \( \binom{n}{k} = {(-1)}^k \binom{k - n - 1}{k} \)
 
+    \item \emph{Pascals Identity}: \( \binom{n}{k} + \binom{n}{k - 1} = \binom{n + 1}{k} \)
+
 \end{itemize}
+
+For 
+
+\[
+    \binom{n + 1}{k} = \binom{n}{k - 1} + \binom{n}{k}
+\]
+
+we think of it as: ``number of \(k\)-elements subsets of \(S = \{0, 1, \dots, n\}\)''  is equal to 
+``number of \(k\)-elements subsets of \(S\) with 0'' plus ``number of \(k\)-elements subset of \(S\) without 0''
+
+\textbf{Proof of Pascal's Indentity:}
+
+\begin{align*}
+    \binom{n}{k} + \binom{n}{k - 1} &= \binom{n + 1}{k} \\
+    \frac{n!}{k! (n - k)!} + \frac{n!}{(k - 1)!(n - (k - 1))!} &= \frac{(n + 1)!}{k!(n + 1 - k)!} \\ 
+    \frac{n!}{k! (n - k)!} + \frac{n!}{(k - 1)!(n - k + 1)!} &= \frac{(n + 1)!}{k!(n + 1 - k)!} \\ 
+    \frac{(n + 1 - k)n!}{k! (n + 1 - k)!} + \frac{kn!}{k!(n - k + 1)!} &= \frac{(n + 1)!}{k!(n + 1 - k)!} \\ 
+    \frac{(n + 1 - k)n! + kn!}{k! (n + 1 - k)!}  &= \frac{(n + 1)!}{k!(n + 1 - k)!} \\ 
+    \frac{n!(n + 1 - k + k)}{k! (n + 1 - k)!}  &= \frac{(n + 1)!}{k!(n + 1 - k)!} \\ 
+    \frac{n!(n + 1)}{k! (n + 1 - k)!}  &= \frac{(n + 1)!}{k!(n + 1 - k)!} \\ 
+    \frac{(n + 1)!}{k! (n + 1 - k)!}  &= \frac{(n + 1)!}{k!(n + 1 - k)!}
+\end{align*}
+
+\QED
+
+\section{Proof that the Binomial Coefficient is a Natural Number}
+
+We will prove this via induction for all \(n \ge k\).
+
+\emph{Base case}: \(k = 0\). 
+
+\[
+    \binom{0}{0} = 1, \quad \binom{n + 1}{n + 1} = 1, \binom{n}{0} = 1
+\]
+
+\emph{Induction hypothesis}:
+
+\[
+    \binom{n}{k} = \frac{n!}{k!(n - k)!}  = \binom{n + 1}{k} - \binom{n}{k - 1}\in \N
+\]
+
+\emph{Induction step}: 
+
+We want to prove 
+
+\[
+    \binom{n + 1}{k} \in \N
+\]
+
+We know that 
+
+\[ 
+    \binom{n + 1}{k} = \binom{n}{k} + \binom{n}{k  - 1}
+\]
+
+Note that we can manipulate this expression so that 
+
+\[ 
+   \binom{n}{k} = \binom{n + 1}{k} - \binom{n}{k  - 1} 
+\]
+
+
+\QED
 
 \section{The Binomial Theorem}
 
 \[
-    (a + b)^n =\sum_{k = 0}^{n} \binom{n}{k}a^{n - k}b^k
+    {(a + b)}^n =\sum_{k = 0}^{n} \binom{n}{k}a^{n - k}b^k
 \]
+
+The \emph{binomial}, and later multinomial theorem looks out of place at first, but if we first take a look at the sum 
+without the sum without the binomial coefficient, we will notice that \(a^{n - k}b^k\) is just a patter in which the 
+power of \(x\) decreases and the one of \(y\) increases. Finally the binomial coefficients just tells us ``how many ways are there to get the 
+specific \(a^{n - k}b^k\)''
 
 \textbf{Proof:}
 
@@ -106,6 +182,32 @@ Therefore,
 \]
 
 \QED
+
+
+\textbf{Example:}
+
+We will expand the binomial \((x + y)^3\) using the binomial theorem with some extra 
+information to make it easier to understand. 
+
+First, 
+
+\[
+    (x + y)^3 = (x + y)(x + y)(x + y) = \sum_{k = 0}^{3} \binom{3}{k} x^{3 - k} y^k = \binom{3}{0} x^3 + \binom{3}{1} x^2 y + \binom{3}{2} x y^2 + \binom{3}{3} y^3.    
+\]
+
+\[
+    \begin{array}{|c|c|c|}
+    \hline 
+        k = 0 & xxx & \binom{3}{0} x^{3 - 0} y^0  \\ 
+    \hline 
+        k = 1 & xxy + xyx + yxx & \binom{3}{1} x^{3 - 1} y^1 \\ 
+    \hline 
+        k = 2 & xyy + yxy + yyx  &\binom{3}{2} x^{3 - 2} y^2 \\ 
+    \hline 
+        k = 3 &  yyy & \binom{3}{3} x^{3 - 3} y^3 \\
+    \hline 
+    \end{array}
+\]
 
 \section{Pascal's Triangle}
 

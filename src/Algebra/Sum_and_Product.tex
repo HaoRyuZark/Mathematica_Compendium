@@ -1,4 +1,4 @@
-\chapter{Sum and Product}
+\chapter{Sums and Products}
 
 These notations are essential for working with sequences, series, and algebraic expressions.
 In mathematics, the sum and product notations are compact ways to represent repeated addition and multiplication, respectively.
@@ -88,10 +88,10 @@ A telescoping sum is a sum in which intermediate terms cancel out, leaving only 
 
 \subsection{Finite Geometric Series}
 
-For a geometric sequence \(a, ar, ar^2, \dots, ar^{n-1}\):
+For a geometric sequence \(a, ar, ar^2, \dots, ar^n\):
 
 \[
-    \sum_{i = 0}^{n - 1} ar^i = a \cdot \frac{1 - r^n}{1 - r}, \quad r \ne 1
+    \sum_{i = 0}^{n} ar^i = a \cdot \frac{1 - r^{n + 1}}{1 - r}, \quad r \ne 1
 \]
 
 \subsection{Infinite Geometric Series}
@@ -106,17 +106,16 @@ If \(|r| < 1\), then:
 
 Let \(S_n = \sum_{k = 0}^{n}aq^k\) with \(|q| < 1\).
 
-Then \(S_n q = a(\sum_{k = 0}^{n + 1})q^k = a\left( \sum_{k= 0}^{n} q^k + q^{n + 1}\right)\).
+Then 
 
-\[
-    a + S_n q = \sum_{k = 0}^{n}aq^k + aq^{n + 1}  = S_n + aq^{n + 1}
-\]
-
-Finally, we subtract \(S_n\) and \(a\), and then divide by \(q - 1\):
-
-\[
-    S_n = \frac{a - aq^{n + 1}}{q - 1}
-\]
+\begin{align*} 
+    S_n &= a +  - aq^{n + 1} \\ 
+    S_n - \sum_{k = 0}^{n} aq^{k + 1} &= a - aq^{n + 1} \\
+    S_n - q\left(\sum_{k = 0}^{n} aq^{k}\right) &= a - aq^{n + 1} \\
+    S_n - qS_n &= a - aq^{n + 1} \\
+    S_n(1 - q) &= a - aq^{n + 1} \\
+    S_n &= a\frac{1 - q^{n + 1}}{1 - q}
+\end{align*}
 
 \QED
 
