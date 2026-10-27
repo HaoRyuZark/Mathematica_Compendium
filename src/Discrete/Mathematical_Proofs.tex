@@ -21,9 +21,9 @@ it is important to understand these formal terms.
 
 \end{itemize}
 
-\section{Vacouly True}
+\section{Vacuously True}
 
-As a reminder, a stement \(p \implies q\) is \emph{vacuously true} if \(p\) is false. In some cases we can arrive at interesing results due 
+As a reminder, a statement \(p \implies q\) is \emph{vacuously true} if \(p\) is false. In some cases we can arrive at interesting results due 
 to this phenomenon. 
 
 \textbf{Example}:
@@ -57,7 +57,7 @@ A proof is \emph{trivial} if for
 \]
 
 we can find a simpler statement \(\forall x \in X, Q(x)\) which is true. In other words, an 
-implication is trivially true when the conclusion of the implicationis always true.
+implication is trivially true when the conclusion of the implications always true.
 
 \section{Proof by Direct Argument (Direct Proof)}
 
@@ -277,7 +277,7 @@ Let
 We need to show that \(M = \N\). 
 
 In our first step we assume that \(A(1)\) is true, then we know \(1 \in M\). We need to prove the 
-inductive step, which is done by using the follwing axiom \(1 \in M \implies 1' \in M\), hence by the last 
+inductive step, which is done by using the following axiom \(1 \in M \implies 1' \in M\), hence by the last 
 Peano axiom 
 
 \[
@@ -288,7 +288,7 @@ Peano axiom
 
 \textbf{Remark:} Most induction proofs follow the same structure during the inductive step in which we can just substitute one part of the expression 
 with our inductive hypothesis, \textbf{but} sometimes this wield yield no progress and way need to use extra information and also consider 
-other manipulations to our expresssion to derive at a useful conclusion; like for example the \emph{Bernoulli inequality}.
+other manipulations to our expression to derive at a useful conclusion; like for example the \emph{Bernoulli inequality}.
 
 Another trick is to start from the final result we want to get and then work backwards to arrive at some conclusion.
 
@@ -318,7 +318,7 @@ The base case holds.
 
 be true. 
 
-\emph{Inductive Step:} Let us prove the stement for  \(n + 1\)
+\emph{Inductive Step:} Let us prove the statement for  \(n + 1\)
 	
 \[
 	\sum_{i = 1}^{n + 1} i = 1 + 2 + 3 + \cdots + n + 1= \frac{(n + 1)(n + 2)}{2}.
@@ -333,7 +333,7 @@ By the inductive hypothesis, we have:
 	&= \frac{(n + 1)(n + 2)}{2}
 \end{align*}
 
-Thus, we have prooven the statement for \( n + 1 \), completing the inductive step. By the principle of mathematical induction, the 
+Thus, we have proven the statement for \( n + 1 \), completing the inductive step. By the principle of mathematical induction, the 
 statement holds for all \( n \in \N \).
 
 \QED
@@ -427,7 +427,7 @@ Therefore, the statement ``all prime numbers are odd'' is false.
 
 \QED
 
-\section{Mathematical Writting}
+\section{Mathematical Writing}
 
 As mathematicians we must not only obey the respective language of our field as well as the grammar and punctuation rules of 
 our writing tongue, but also it is essential to follow conventions and formulate our sentences to be as clear and free from ambiguity as possible.
@@ -458,7 +458,7 @@ Other rules which apply are
 
 \section{Combining Techniques}
 
-For more complex theorems somtimes a single proof technique is not enough, and we may need to combine multiple of them.
+For more complex theorems sometimes a single proof technique is not enough, and we may need to combine multiple of them.
 
 Common patterns include: 
 
@@ -470,9 +470,31 @@ Common patterns include:
 
 	\item Combining proof by contrapositive and proof by contradiction: In some situations, proving the contrapositive can simplify the argument, and contradiction can be used for the remaining cases.
 
-	\item Contraposite for if and only if proofs where a direction is easier to prove by considering the contrapositive. This can simplify the argument for one direction, 
+	\item Contrapositive for if and only if proofs where a direction is easier to prove by considering the contrapositive. This can simplify the argument for one direction, 
 	while the other direction may be handled directly or by another technique.
 
 	\item Negation of the if and only if statements.
 
 \end{itemize}
+
+\section{Typical Forms}
+
+\begin{center}
+	\begin{tabular}{|p{0.3\linewidth}|p{0.6\linewidth}|}
+		\hline 
+		\textbf{Pattern} & \textbf{How to Prove} \\
+		\hline
+		\(A \implies B\) & Assume \(A\) and show \(B\) or use the contrapositive or contradiction. \\
+		\hline 
+		\(A \iff B\) & Assume \(A\) and show \(B\), then assume \(B\) and show \(A\). The rules from above apply for both directions. You can also prove \(\neg A \iff \neg B\). \\
+		\hline
+		\(\forall x \in X: A(x)\) & Prove for some arbitrary \(x \in X\). \\
+		\hline
+		\(\exists x \in X: A(x)\) & Find an \(x \in X\) such that \(A(x)\) holds. \\
+		\hline
+		\(A = B\) & Show \(A \subseteq B\) and \(B \subseteq A\). \\
+		\hline
+		\(A(n)\ \forall n \in \N\) & Prove by induction on \(n\) or strong induction. \\
+		\hline	
+	\end{tabular}
+\end{center}
