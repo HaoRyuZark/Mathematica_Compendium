@@ -388,3 +388,55 @@ Giving us
 \]
 
 and the maximum of our objective function 36.
+
+\subsection{Simplex Tabular Form}
+
+Another way of writing the simplex method to save time is to use the tabular form which given by the table 
+
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|}
+    \hline
+    Iteration & Basic Variable & Eq. & \(Z\) & \(x_1\) & \(\cdots\) & \(x_n\) & RHS & MRT & Entering & Leaving \\
+    \hline
+    \(n\) & \(Z\)      & 0        & 1        & \(c_1\)    & \(\cdots\) & \(c_n\)    & 0        &  &  &  \\
+          & \(x_1\)    & 1        & 0        & \(a_{11}\) & \(\cdots\) & \(a_{1n}\) & \(b_1\)  &  &  &  \\
+          & \(\vdots\) & \(\vdots\) & \(\vdots\) & \(\vdots\) & \(\ddots\) & \(\vdots\) & \(\vdots\) &  &  &  \\
+          & \(x_m\)    & \(m\)    & 0        & \(a_{m1}\) & \(\cdots\) & \(a_{mn}\) & \(b_m\)  &  &  &  \\
+    \hline
+\end{tabular}
+
+\subsection{Multiple Optima}
+
+\emph{Multiple optima} appear when there infinitely many solutions for the LP, i.e. the solutions 
+are found in a hyperplane. Most solvers can deal with this.
+
+\subsection{Degeneracy, Cycling and Stalling}
+
+\emph{Degeneracy} appears when at least one of the \textbf{basic} variables of a basic feasible solution if 0.
+When this happens the next pivot may lead the algorithm towards a non-degenerate state, but else we can counter the next states.
+
+\emph{Cycling} occurs when the simplex starts going from optimal direction to a previous state due to the way we are choosing the pivot variable.
+
+\emph{Stalling} refers to the situation where a pivot does not increase the objective value but changes the basis, hence we are stuck.
+If no degenerate pivot is present we come out of this state and the algorithm converges.
+
+\subsubsection{Bland's Rule}
+
+\emph{Bland's} rule is used to avoid cycling and it works by: 
+
+\begin{itemize}
+
+    \item \textbf{Entering variable}: among all variables with negative coefficient in objection function. choose the one with the smallest index.
+
+    \item \textbf{Leaving variable}: among all candidates that tie in the minimum ratio test, choose the one with the smallest index to leave.
+
+\end{itemize}
+
+This rule guarantees that the algorithm terminates at the cost of not being as efficient.
+
+\subsection{Unbounded Solution}
+
+\emph{Unbounded solutions} happen when the feasible region is not bounded. This is not dangerous since the simple method stops when a solution is found.
+
+
+
+

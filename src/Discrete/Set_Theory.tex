@@ -1052,7 +1052,7 @@ Therefore, the interval \( (0,1) \), and thus the set of real numbers \( \R \), 
 The \emph{power set} of a set is the set of all subsets of a given set.
 
 \[
-	\mathcal{P}(x):= \{ M: M \subseteq X\}
+	\mathcal{P}(X):= \{ M \mid M \subseteq X\}
 \]
 
 Its cardinality is \(2^n\) with \(n\) being the number of elements in the original set \(X\).
@@ -1062,17 +1062,17 @@ Its cardinality is \(2^n\) with \(n\) being the number of elements in the origin
 Prove that 
 
 \[
-	M \subseteq N \iff \mathcal{P}(M) \subseteq \mathcal{P}(N)
+	A \subseteq B \iff \mathcal{P}(A) \subseteq \mathcal{P}(B)
 \]
 
 \textbf{Proof:}
 
-\(\Rightarrow\): Let \(M = N\), then because they have the same elements they are going to have the same subsets.
+\(\Rightarrow\): Let \(A \subseteq B\), then because they have the same elements they are going to have the same subsets.
 
-\(\Leftarrow\): Let us take the contraposite statement, i.e., assume that \(M \not\subseteq N\). 
+\(\Leftarrow\): Let us take the contraposite statement, i.e., assume that \(A \not\subseteq B\). 
 
-Then there exists an element \(x \in M\) such that \(x \notin N\).  Consequently, the singleton set \(\{x\} \subseteq \mathcal{P}(M)\) but \(\{x\} \not\subseteq \mathcal{P}(N)\), 
-which contradicts the assumption that \(\mathcal{P}(M) \subseteq \mathcal{P}(N)\).  Hence, \(M \subseteq N\).
+Then there exists an element \(x \in A\) such that \(x \notin B\).  Consequently, the singleton set \(\{x\} \subseteq \mathcal{P}(A)\) but \(\{x\} \not\subseteq \mathcal{P}(B)\), 
+which contradicts the assumption that \(\mathcal{P}(A) \subseteq \mathcal{P}(B)\).  Hence, \(A \subseteq B\).
 
 \QED
 
@@ -1195,330 +1195,6 @@ Given two sets \(A\) and \(B\), we define the \emph{characteristic function} of 
 	\end{cases}
 \]
 
-\section{Partitions}
-
-Let \(A\) be a set. A \emph{partition} of \(A\) is a set of non-empty subsets in \(\mathcal{P}(A)\) with the following properties:
-
-\[
-	\forall i, j \in I A_i \cap A_j = \emptyset \quad \text{for} \quad i \neq j
-\]
-
-and 
-
-\[
-	\bigcup_{i \in I} A_i = A \quad \text{ or equivalently } \quad \bigcup_{i \in I} A_i \subseteq A
-\]
-
-\textbf{Example:}
-
-Prove that \(B_n = \{m \in \Z \mid \exists q, m = n + 5q\}\) is a partition of \(\Z\). 
-
-First, we prove the disjoint property, which means \(m \in B_x \land m \in B_y \iff x = y\).
-
-For the union, we need to prove that every \(B_n\) is not empty, which is very easy by letting \(m = n + 5\cdot0 \implies m = n\); then 
-combining all of them with the union will give us the entire set of integers, because each of the sets \(B_n\) has at least the number 
-\(n\) in it, which can be any integer.
-
-\QED
-
-\subsection{Equivalence Classes}
-
-Given a partition \(P\) of a set \(M\), the elements of \(P\) are called \emph{classes}. 
-If \(X\) is a class, then its members are called \emph{representatives} of the class.
-
-A subset of \(M\) with an element of each of the classes of \(M\) is called the \emph{representative set} or \emph{traversal}. 
-
-The function \(v: P \to M\) with \(v(X) \in X\) for all \(X \in P\) is called \emph{representative function}.
-
-\subsection{Equivalence Relation From a Partition}
-
-Given the partition \(S\) of the set \(A\), then 
-
-\[
-	R_S = \{(a, b) \mid (a, b) \in A \times A, \exists X \in S, a,b \in X\}
-\]
-
-is an equivalence relation.
-
-\textbf{Proof:}
-
-\emph{Reflexivity}: \(a \in A = \bigcup S \implies a \in X \in S \implies (a, a) \in R_S\).
-
-\emph{Symmetry}: \(a, b \in A \bigcup S \implies a,b \in X \in S \implies (a, b), (b, a) \in R_S\).
-
-\emph{Transitivity}: \((a, b), (b, c) \in R_S \implies a,b \in X \in S \land b,y \in Y \in S \implies b \in X \cap Y\) by definition 
-\(X \cap Y \neq \emptyset \iff X = Y\); therefore, \(a, c \in X, (a, c) \in R_S\).
-
-\QED
-
-\subsection{Relation From the Relation of the Quotient Space and Partition From the Quotient Space}
-
-Given \(R\) on \(A\), \(R_{A/R} = R\) with 
-
-\[
-	R_{A/R} = \{(a, b) \mid (a, b) \in A \times A, \exists X \in A/R, a,b \in X\}.
-\]
-
-And for \(S\) a partition of \(A\), then \(A/R_S = S\).
-
-\textbf{Proof:}
-
-For the first statement we need to prove the condition of an equivalence relation: 
-
-\emph{Reflexivity}: \((a, b) \in R_{A/R} \implies a, b \in [x]_R \in A/R \implies a \sim x \land b \sim x \land a \sim b \land a \sim a \implies (a, a) \in R_{A/R}\).
-
-\emph{Symmetry}: \((a, b), (b, a) \in R_{A/R} \implies a, b \in [x]_R \in A/R \implies a \sim x \land b \sim x \land a \sim b \land b \sim a \implies (a, b),(b,a) \in R_{A/R}\).
-
-\emph{Transitivity}: \((a, b), (b, c) \in R_{A/R} \implies a, b \in [x]_R \in A/R \land b,c \in [y]_R \in A/R \implies a \sim x \land b \sim x \land b \sim y \land a \sim y \implies (a, b),(b,c),(a, c) \in R_{A/R} \).
-
-Thus, \(R_{A/R} = R\). For the other direction \((a, b) \in R \implies b \in [a]_R \in A/R \implies a R_{A/R} b\)).
-
-For the second part: \(A/R_S = S\):
-
-Let \(S\) be a partition of \(A\), and \(X \in A/R_S\). For \(X = [a]_{R_S} = \{x \in A \mid a R_S x\}\). 
-For \(a\) and \(b\) to be in a relation they need to be part of the same element \(Y \in S\). We need to prove that 
-\(Y = [a]_{R_S}\). 
-
-This is proven directly by the very definition of the relation \(R_S\) which implies that all elements belong to the same set \(Y\).
-For the other direction if \(a, b \in Y \implies a E_S b \implies b \in [a]_{R_S} \in A/R_S\).
-
-\QED
-
-\subsection{The Quotient Space Satisfies the Partition Properties}
-
-Given \(A/R\), it satisfies the properties of a partition.
-
-\textbf{Proof:}
-
-For \(X, Y \in A/R\), we know by the one of the properties of equivalence classes that \([a]_R \cap [b]_R \neq \emptyset \iff [a]_R = [b]_R\).
-Therefore, the first condition is satisfied. 
-
-To prove: \(\bigcup_{[a]_R \in A/R} [a]_R = A\).
-
-\(x \in \bigcup A/R \implies x \in [a]_R \in A/R\), this implies that \(x \in A\) because \(\nexists a \in A, a \notin (x, y) \in R\). This was also already proven in the section 
-subsection dedicated to the quotient space.
-
-\QED
-
-\subsection{Properties of Partitions }
-
-\begin{itemize}
-
-	\item Every equivalence relation corresponds to a partition:
-
-		  \[
-		      J: \{ R : R \text{ is an equivalence relation on } X\} \to \{ F: F\ \text{is a partition of } X\}
-	      \]
-
-	      where \( J(R) := X / R \) is a bijection.
-
-	\item If \(F\) is a partition of \(X\), then we can define an equivalence relation \( R_F \) by:
-	      
-		  \[
-		      R_F := \{ (x, y) \in X \times X : \exists M \in F\ \text{such that } x, y \in M \}
-	      \]
-	      
-		  Then \( R_F \) is an equivalence relation on \(X\).
-
-	\item Two equivalence classes are either disjunctive or equal.
-
-\end{itemize}
-
-\textbf{Proof: Equivalence Relations Correspond to Partitions}
-
-We want to prove that there exists a one-to-one correspondence between equivalence relations and 
-partitions. We first start by start proving that from a family of equivalence classes we get a partition. 
-
-Let \(\mathscr{C}\) be the set of all the equivalence classes for an equivalence relation on \(A\), and 
-\(C_x\) be some of those sets of equivalence classes.
-
-We must prove that each of its equivalence classes are disjoint if not equal. By the definition 
-if \(\exists y \in [a]_{\sim} \land y \in [b]_{\sim}\), then this would imply that \(y\) is related to both 
-\(a\) and \(b\) which means that they are in the same equivalence class, because otherwise \(a \sim y \land b \sim y \iff \neg (a \sim b)\), which 
-is a contradiction. Hence, equivalence classes are either equal or disjoint.
-
-Now, for the union. We can state that \(\bigcap [a]_{\sim} \subseteq A\) due to all of its elements 
-forming at least a proper subset of \(A\). The equality, can be shown via the definition of the equivalence class which 
-states that each element in \(A\) in has its own equivalence class.
-
-Analogously, we can prove it the other way around. By having disjoint sets, we know that they have to be 
-in different equivalence classes \(A_i \cap A_j = \emptyset \implies \forall x \in A_i, x \neg(\sim) y, \forall y \in A_j\).
-
-\QED
-
-
-\subsection{Equivalence Relations and Partitions}
-
-Let \( M \) be a set.
-
-\begin{enumerate}
-
-	\item If \( \sim \) is an equivalence relation on \( M \), then the equivalence classes defined by  
-    
-	\[
-        [m_0] := [m_0]_{\sim} := \{\, m \in M \mid m \sim m_0 \,\}
-    \]
-
-	for \( m_0 \in M \) form a \emph{partition} of \( M \).  
-    This partition is usually denoted by \( M / \!\sim \).
-
-    \item If \( P \) is a partition of \( M \), then the relation \( \sim_P \) defined by  
-
-	\[
-        m \sim_P n \quad \text{if and only if there exists } X \in P \text{ such that } m, n \in X,
-    \]
-
-	is an \emph{equivalence relation}.
-
-    \item The following holds:
-
-	\[
-        M / \!\sim_P = P,
-        \quad \text{for all partitions } P \text{ of } M,
-    \]
-
-	and
-
-	\[
-        \sim_{(M / \!\sim)} = \sim, \text{ for every equivalence relation } \sim \text{ on } M.
-    \]
-
-\end{enumerate}
-
-\section{Equivalence Relations Under Functions}
-
-\subsection{Pre-Image}
-
-Let \(f: A \to B\) and \(G\)be an equivalence relation in \(B\). The \emph{pre-image} of \(G\) in  
-\(A\) is defined as  
-
-\[
-	f^{-1} (G) = \{(x, y) \mid (f(x), f(y)) \in G\},
-\]
-
-and it is also an equivalence relation.
-
-\subsection{Restriction}
-
-Similarly, we can also define the \emph{restriction} for when \(B \subseteq A\):
-
-\[
-	G_{[B]} = \{(x, y) \mid x \in B \land y \in B \land (x, y) \in G\}
-\]
-
-\subsection{Refinement}
-
-Let \(G\) and \(H\) be equivalence relations in \(A\). We call \(G\) a \emph{refinement} of \(H\) if 
-\(G \subseteq H\); we also say that \(G\) is \emph{finer} than \(H\), and that \(H\) is \emph{coarser} than \(G\).
-
-\subsection{Quotient Space for Refinements}
-
-Let \(G\) and \(H\) be equivalence relations on a set \(A\) and let \(G\) be a refinement of \(H\). 
-The \emph{quotient} of \(H\) by \(G\) usually denoted as \(H/G\), is a relation in \(A/G\) defined as follows: 
-
-\[
-	H/G = \{([x]_{G}, [y]_{G}) \mid (x, y) \in H\}
-\]
-
-In simpler words, it is a set of the pairs consisting of the equivalence classes of a pair \((x, y) \in H\).
-
-\subsection{The Quotient Is an Equivalence Relation}
-
-The Quotient is an Equivalence Relation.
-
-\textbf{Proof:}
-
-\emph{Reflexivity}: For \(([x]_{G}, [y]_{G}) \in H/G\) we know claim that \([x]_{G} \sim [x]_{G}\). By the reflexivity 
-of \(H\) we know that \(x \sim x\), which means that \((x, x) \in H\); and therefore, \([x]_{G} \sim [x]_{G}\). 
-
-\emph{Symmetry}: For \(([x]_{G}, [y]_{G}) \in H/G\) we know claim that \(([x]_{G} \sim [y]_{G}) \land ([y]_{G} \sim [x]_{G})\). Analogously to our last property, 
-if \((x \sim y \land (y \sim x)\) were not true then \(H\) would not be an equivalence relation which leads to a contradiction of our initial conditions. Hence, 
-the symmetric property is present.
-
-\emph{Transitivity}: Lastly, the transitivity we again use the same argument as before using our base elements and pairs from \(H\) to arrive at a contradiction, which hich 
-guarantees us that their equivalence class counterpart are also part of an equivalence relation..
-
-\QED
-
-\subsection{Equivalence Classes Under Refinements}
-
-Let \(G\) and \(H\) be equivalence relations in \(A\), suppose \(G \subseteq H\). Then 
-\(z \in [x]_{H} \implies [z]_G \subseteq [x]_H\).
-
-\textbf{Proof:}
-
-\(z \in [x]_{H}\) means that \((z, x) \in H\), then 
-
-\begin{align*}
-	y \in [z]_G	\implies (y, z) \in G \subseteq H &\implies (y, x) \in H \\ 
-	&\implies y \in [x]_H
-\end{align*}
-
-Thus, \([z]_G \subseteq [x]_H\).
-
-\QED
-
-This can also be extended for all elements \(x \in A\), as \([x]_G \subseteq [x]_H\).
-
-\section{Equivalence Relations and Surjective Mappings}
-
-\begin{itemize}
-
-	\item Let \( M \) be a set and \( \sim \) an equivalence relation on \( M \).  
-    Then there exists a set \( P \) and a surjective mapping  
-    \( \Gamma : M \to P \) such that \( \sim = \sim_{\Gamma} \).  
-    Hence, every equivalence relation can be represented as the equality of images under a surjective mapping.
-
-    \item If \( \Gamma : M \to N \) is a surjective mapping and  
-    \( P := M / \!\sim_{\Gamma} \) is the partition corresponding to equality of images,  
-    then the function
-    \[
-        f : P \to N, \quad [m]_{\sim_{\Gamma}} \mapsto \Gamma(m)
-    \]
-    is a well-defined bijection.
-
-    \item If \( \Gamma_1 : M \to P_1 \) and \( \Gamma_2 : M \to P_2 \) are two surjective mappings,  
-    then \( \sim_{\Gamma_1} = \sim_{\Gamma_2} \) if and only if there exists a bijection \(f: P_1 \to P_2\) with 
-	\(\Gamma_2  = f \circ \Gamma_1\)
-
-\end{itemize}
-
-\section{Homomorphism Theorem for Sets}
-
-Given \(f: M \to N\) with \( M / \!\sim_f = \{f^{-1}(\{n\}) \mid m \in f(M)\}\)  
-
-By factorizing \(f\) as \(f = \overline{f} \circ \iota_f\) with 
-\(\iota_f\) surjective and \(\overline{f}\) injective, we obtain the following:
-
-\begin{itemize}
-
-	\item The mapping \(\iota_f: M \to M / \!\sim_f\) is the natural map of the partition 
-	\(M / \!\sim_f\) induced by \(f\).
-
-	\item The mapping \(\overline{f}: M / \!\sim_f \to N: f^{-1}(\{f(m)\}) \mapsto f(m)\) is well-defined.
-
-\end{itemize}
-
-The homomorphism theorem for Sets can be visualized through the following commutative diagram:
-
-\begin{figure}[H]
-	\centering
-	\begin{tikzpicture}[node distance=3cm, auto]
-		\node (M) {\(M\)};
-		\node (N) [right of=M] {\(N\)};
-		\node (Mquot) [below right of=M] {\(M/\!\sim_f\)};
-		
-		\draw[->, thick] (M) -- node[above] {\(f\)} (N);
-		\draw[->, thick] (M) -- node[left] {\(\iota_f\)} (Mquot);
-		\draw[->, thick] (Mquot) -- node[below] {\(\overline{f}\)} (N);
-		
-	\end{tikzpicture}
-	\label{fig:homomorphism_theorem}
-\end{figure}
-
-This is saying us to first form collections of elements and then use our second function to associate that connections to their r 
-respective images. 
-
 \section{Family of Subsets Operations}
 
 Let \(\mathscr{F}\) be a system of sets (a family of subsets) on the set \(X\). We define:
@@ -1552,12 +1228,6 @@ Is the set of all functions from \(I\) to \(\bigcup A_i\).
 	\item \(\left(\prod_{i \in I} A_i\right) \cup \left(\prod_{j \in J} B_j\right) = \prod_{(i, j) \in I \times J}(A_i \cup B_i)\)	
 
 \end{itemize}
-
-\section{Pigeon Principle}
-
-For \(g: A \to B\) and \(|A| = n + 1\), \(|B| = n\) then there exists \(b \in B\) such that \(|g^{-1}(\{ b \})| \ge 2\). 
-
-In other words if you have \(n\) boxes and \(n + 1\) objects, then at least one of those boxes will have more than 2 elements.t.
 
 \section{The Cantor Set}
 
@@ -1741,7 +1411,3 @@ Note that the sum is a geometric series therefore,
 \]
 
 \QED
-
-\section{Convexity}
-
-A set \(X\) is \emph{convex} is \(\metric{x - y} \in X, \ \forall x, y \in X\).

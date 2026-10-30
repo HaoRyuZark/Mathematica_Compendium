@@ -1,12 +1,12 @@
 \chapter{Mathematical Proofs}
 
-In this chapter, I will provide both definitions and examples of different types of proofs for the reader to 
+In this chapter, I will provide both definitions and examples of different types of proofs for the reader to
 gain an overview of how to use the different proving methods.
 
 \section{Nomenclature}
 
-In this book I do not really used a lot of the formal mathematical nomenclature found in academic texts like: theorem, lemma, etc. with the 
-exception of the QED symbol to denote the end of a proof and really important theorems like the Fundamental Theorem of Calculus. Yet, 
+In this book I do not really used a lot of the formal mathematical nomenclature found in academic texts like: theorem, lemma, etc. with the
+exception of the QED symbol to denote the end of a proof and really important theorems like the Fundamental Theorem of Calculus. Yet,
 it is important to understand these formal terms.
 
 \begin{itemize}
@@ -23,12 +23,12 @@ it is important to understand these formal terms.
 
 \section{Vacuously True}
 
-As a reminder, a statement \(p \implies q\) is \emph{vacuously true} if \(p\) is false. In some cases we can arrive at interesting results due 
-to this phenomenon. 
+As a reminder, a statement \(p \implies q\) is \emph{vacuously true} if \(p\) is false. In some cases we can arrive at interesting results due
+to this phenomenon.
 
 \textbf{Example}:
 
-Take the definition of the intersection of a set system 
+Take the definition of the intersection of a set system
 
 \[
 	\bigcap_{i \in I} A_i = \{ x \mid x \in A_i \text{ for all } i \in I \}.
@@ -50,13 +50,13 @@ Since there are no elements \(i \in \emptyset\), the condition ``for all \(i \in
 
 \section{Trivial Proofs}
 
-A proof is \emph{trivial} if for 
+A proof is \emph{trivial} if for
 
 \[
 	\forall x \in X, P(x) \implies Q(x)
 \]
 
-we can find a simpler statement \(\forall x \in X, Q(x)\) which is true. In other words, an 
+we can find a simpler statement \(\forall x \in X, Q(x)\) which is true. In other words, an
 implication is trivially true when the conclusion of the implications always true.
 
 \section{Proof by Direct Argument (Direct Proof)}
@@ -76,10 +76,10 @@ Assume \(n\) is an even integer. Then we can write \( n = 2k \) for some integer
 
 Now, we compute \( n^2 \):
 
-\[		
+\[
 	n^2 = {(2k)}^2 = 4k^2 = 2(2k^2).
 \]
-	
+
 This shows that \( n^2 \) is even, as it can be expressed as \( 2m \) where \( m = 2k^2 \) is an integer.
 Therefore, we conclude that if \(n\) is even, then \( n^2 \) is even.
 
@@ -87,8 +87,8 @@ Therefore, we conclude that if \(n\) is even, then \( n^2 \) is even.
 
 \textbf{Example:}
 
-Let \(z \in \Z\) be odd. It can be written as the difference of the squares of \(a, b \in \N_0\). First some 
-examples: 
+Let \(z \in \Z\) be odd. It can be written as the difference of the squares of \(a, b \in \N_0\). First some
+examples:
 
 \[
 	1 = 1^2 - 0^2, \quad 3 = 2^2 - 1^2, \quad 5 = 3^2 - 2^2, \quad 7 = 4^2 - 3^2, \quad \dots
@@ -123,20 +123,20 @@ The contrapositive of an implication is logically equivalent to the original imp
 
 If \(n\) is an integer such that \( n^2 \) is odd, then \(n\) is odd.
 
-We will prove this theorem by contrapositive. The contrapositive of the statement is: If \(n\) is an 
+We will prove this theorem by contrapositive. The contrapositive of the statement is: If \(n\) is an
 integer such that \(n\) is even, then \( n^2 \) is even.
 
 Assume \(n\) is even. Then we can write \( n = 2k \) for some integer \(k\).
 
 Now, we compute \( n^2 \):
-	
+
 \[
 	n^2 = {(2k)}^2 = 4k^2 = 2(2k^2).
 \]
 
 This shows that \( n^2 \) is even.
 
-Since the contrapositive statement is true, the original statement, ``If \( n^2 \) is odd, then \(n\) is 
+Since the contrapositive statement is true, the original statement, ``If \( n^2 \) is odd, then \(n\) is
 odd,'' is also true.
 
 \QED
@@ -153,7 +153,7 @@ Assume the negation of \(A\) to derive a false statement.
 
 If \(n\) is an integer such that \( n^2 \) is even, then \(n\) is even.
 
-We will prove this theorem by contradiction. Assume that \(n\) is an integer such that \( n^2 \) is 
+We will prove this theorem by contradiction. Assume that \(n\) is an integer such that \( n^2 \) is
 even, but \(n\) is odd. Then we can write \( n = 2k + 1 \) for some integer \(k\).
 
 Now, we compute \( n^2 \):
@@ -161,36 +161,36 @@ Now, we compute \( n^2 \):
 \[
 	n^2 = {(2k + 1)}^2 = 4k^2 + 4k + 1 = 2(2k^2 + 2k) + 1.
 \]
-	
-This shows that \( n^2 \) is odd, which contradicts our assumption that \( n^2 \) is even. Therefore, our 
+
+This shows that \( n^2 \) is odd, which contradicts our assumption that \( n^2 \) is even. Therefore, our
 assumption that \(n\) is odd must be false, and thus, \(n\) must be even.
 
 \QED
 
 \textbf{Example II:}
 
-We will prove that there are infinitely many prime numbers by assuming that there is a biggest prime number \(p_n\). 
-Let us then create a new number 
+We will prove that there are infinitely many prime numbers by assuming that there is a biggest prime number \(p_n\).
+Let us then create a new number
 
 \[
 	p_1 \cdot \dots \cdot p_n + 1 = a
 \]
 
-Note that \(a\) like any other integer has to be a multiple of some prime which means \(p_kc = a\). If we divide both 
+Note that \(a\) like any other integer has to be a multiple of some prime which means \(p_kc = a\). If we divide both
 sides by \(p_k\) we get
 
 \[
 	(p_1 \cdot \dots \cdot p_{k - 1} \cdot p_{k + 1} \cdot \dots \cdot p_n) + \frac{1}{p_k} = c.
 \]
 
-On the left we have a rational whereas on the right we have an integer which is contradiction. Therefore, 
+On the left we have a rational whereas on the right we have an integer which is contradiction. Therefore,
 there are infinitely many prime numbers.
 
-\QED 
+\QED
 
 \textbf{Example III:}
 
-Suppose, for contradiction, that \(\sqrt{2}\) is rational. Then there exist integers \(p\) and \(q\) 
+Suppose, for contradiction, that \(\sqrt{2}\) is rational. Then there exist integers \(p\) and \(q\)
 with \(q \neq 0\), \(\gcd(p,q) = 1\), and
 
 \[
@@ -209,17 +209,17 @@ Thus, \(p^2\) is even, so \(p\) is even. Write \(p=2k\) for some integer \(k\). 
 	(2k)^2=2q^2 \implies 4k^2=2q^2 \implies q^2=2k^2,
 \]
 
-so \(q^2\) is even and hence \(q\) is even. Therefore, both \(p\) and \(q\) are even, contradicting 
+so \(q^2\) is even and hence \(q\) is even. Therefore, both \(p\) and \(q\) are even, contradicting
 \(\gcd(p,q)=1\). This contradiction shows \(\sqrt{2}\) is irrational.
 
 \QED
 
 \section{If and only Proofs}
 
-Given two statements \(A\) and \(B\), the statement \(A \iff B\) means that \(A\) is true if and only if \(B\) is true. 
-This is equivalent to proving both 
+Given two statements \(A\) and \(B\), the statement \(A \iff B\) means that \(A\) is true if and only if \(B\) is true.
+This is equivalent to proving both
 
-\[ 	
+\[
 	A \iff B \equiv A \implies B \text{ and } B \implies A.
 \]
 
@@ -227,7 +227,7 @@ Note that we can use techniques like: direct, contrapositive and contradiction p
 
 \textbf{Example}
 
-Let \(x\) be a odd integer. We want to prove that \(x^2\) is also odd if and only if \(x\) is odd. 
+Let \(x\) be a odd integer. We want to prove that \(x^2\) is also odd if and only if \(x\) is odd.
 
 \textbf{Proof:}
 
@@ -252,7 +252,7 @@ which is even, contradicting our assumption that \(x^2\) is odd. Therefore, \(x\
 
 \section{Proof by Full Induction}
 
-For all \(n \in \N\), \(A(n)\) is a statement. Then  the following holds 
+For all \(n \in \N\), \(A(n)\) is a statement. Then  the following holds
 
 \begin{itemize}
 
@@ -274,11 +274,11 @@ Let
 	M := \{n \in \N \mid A(n) \text{ holds }\}.
 \]
 
-We need to show that \(M = \N\). 
+We need to show that \(M = \N\).
 
-In our first step we assume that \(A(1)\) is true, then we know \(1 \in M\). We need to prove the 
-inductive step, which is done by using the following axiom \(1 \in M \implies 1' \in M\), hence by the last 
-Peano axiom 
+In our first step we assume that \(A(1)\) is true, then we know \(1 \in M\). We need to prove the
+inductive step, which is done by using the following axiom \(1 \in M \implies 1' \in M\), hence by the last
+Peano axiom
 
 \[
 	M = \N.
@@ -286,8 +286,8 @@ Peano axiom
 
 \QED
 
-\textbf{Remark:} Most induction proofs follow the same structure during the inductive step in which we can just substitute one part of the expression 
-with our inductive hypothesis, \textbf{but} sometimes this wield yield no progress and way need to use extra information and also consider 
+\textbf{Remark:} Most induction proofs follow the same structure during the inductive step in which we can just substitute one part of the expression
+with our inductive hypothesis, \textbf{but} sometimes this wield yield no progress and way need to use extra information and also consider
 other manipulations to our expression to derive at a useful conclusion; like for example the \emph{Bernoulli inequality}.
 
 Another trick is to start from the final result we want to get and then work backwards to arrive at some conclusion.
@@ -310,20 +310,20 @@ We will prove this theorem by induction on \(n\).
 
 The base case holds.
 
-\emph{Inductive Hypothesis}: Let 
+\emph{Inductive Hypothesis}: Let
 
 \[
 	\sum_{i = 1}^{n} i = 1 + 2 + 3 + \cdots + n = \frac{n(n+1)}{2}
 \]
 
-be true. 
+be true.
 
 \emph{Inductive Step:} Let us prove the statement for  \(n + 1\)
-	
+
 \[
 	\sum_{i = 1}^{n + 1} i = 1 + 2 + 3 + \cdots + n + 1= \frac{(n + 1)(n + 2)}{2}.
 \]
-	
+
 By the inductive hypothesis, we have:
 
 \begin{align*}
@@ -333,52 +333,75 @@ By the inductive hypothesis, we have:
 	&= \frac{(n + 1)(n + 2)}{2}
 \end{align*}
 
-Thus, we have proven the statement for \( n + 1 \), completing the inductive step. By the principle of mathematical induction, the 
+Thus, we have proven the statement for \( n + 1 \), completing the inductive step. By the principle of mathematical induction, the
 statement holds for all \( n \in \N \).
 
 \QED
 
+\subsection{Variations}
+
+Some variations of this principle due exists like:
+
+\begin{itemize}
+
+	\item If \(S(1)\) and \(S(2)\) is true; if \(S(k)\) and \(S(k + 1)\) are true, then \(S(k + 2)\) is true for all integers.
+
+	\item If \(S(1)\) and \(S(2)\) is true; if \(S(k)\) is true for some positive integer, then \(S(k + 2)\) is true.
+
+\end{itemize}
+
 \section{Strong Induction}
 
-\emph{Strong induction} is a form of mathematical induction where instead of assuming \(A(n)\) is true in our 
-inductive hypothesis, we assume \(A(j)\) is true for \(1 \le j \le n\). 
+\emph{Strong induction} is a form of mathematical induction where instead of assuming \(A(n)\) is true in our
+inductive hypothesis, we assume \(A(j)\) is true for \(1 \le j \le n\).
 
-The inductive step: Show \([A(1) \land A(2) \dots A(n)] \implies A(n + 1)\). 
+The inductive step: Show \([A(1) \land A(2) \dots A(n)] \implies A(n + 1)\).
 
-Sometimes, we will prove specific values are true for \(1 \le j \le n\), and sometimes we just assume that 
-\(A(j)\) is true for \(1 \le j \le n\). 
+Sometimes, we will prove specific values are true for \(1 \le j \le n\), and sometimes we just assume that
+\(A(j)\) is true for \(1 \le j \le n\).
 
 \textbf{Example:}
 
 Prove that any integer \(\ge 1\) can be written as the product of primes.
 
-Let \(A(n)\) be that if \(n\) is an integer greater than 1, then \(n\) can be written as the product of 
-primes. 
+Let \(A(n)\) be that if \(n\) is an integer greater than 1, then \(n\) can be written as the product of
+primes.
 
-\textbf{Basis: } \(A(2)\) is true because 2 is prime. 
+\textbf{Basis: } \(A(2)\) is true because 2 is prime.
 
 \textbf{Inductive hypothesis:} \(A(j)\) for \(2 \le j \le n\) is true. \textbf{Important!}
 
-Consider the cases where \(k + 1\) is prime or composite. 
+Consider the cases where \(k + 1\) is prime or composite.
 
 The first case is true.
 
-For the case where \(k + 1\) is not prime, we have \(k + 1 = ab\) with \(2 \le a \le b < k + 1\), and 
-for both \(a\) and \(b\) we know that they can be written as the product of primes; thus, 
-\(k + 1\) can be written as the product of primes. 
+For the case where \(k + 1\) is not prime, we have \(k + 1 = ab\) with \(2 \le a \le b < k + 1\), and
+for both \(a\) and \(b\) we know that they can be written as the product of primes; thus,
+\(k + 1\) can be written as the product of primes.
 
 \QED
 
+\section{Forward-Backward Induction}
+
+Let \(S(n)\) denote a statement involving a variable \(n\). Suppose
+
+\begin{itemize}
+
+	\item \(S(n) \implies P(2n)\) is true for infinitely many natural numbers n;
+
+	\item if \(S(k) \implies P(n - 1)\) is true for some positive integer \(k > 1\), then \(S(k - 1)\) is also true.
+
+\end{itemize}
+
 \section{Proof by Cases (Exhaustion)}
 
-In \emph{exhaustion}, we test all possible cases and their respective branches. This kinds of proofs tend 
+In \emph{exhaustion}, we test all possible cases and their respective branches. This kinds of proofs tend
 to be lengthy and tedious, especially when the number of cases is large.
 
 \textbf{Example:}
-
 The only integer solutions to the equation \( x^2 + y^2 = 1 \) are \( (0, 1), (1, 0), (0, -1), (-1, 0) \).
 
-We will prove this theorem by exhaustion. We will check all possible integer values of \(x\) and 
+We will prove this theorem by exhaustion. We will check all possible integer values of \(x\) and
 \(y\) such that \( x^2 + y^2 = 1 \).
 
 The possible integer values for \(x\) and \(y\) are \( -1, 0, 1 \). We will check each case:
@@ -402,7 +425,7 @@ Then \( y^2 = 0 \) gives \( y = 0 \).
 Solution: \( (-1, 0) \).
 
 Thus, the only integer solutions to the equation are:
-	
+
 \[
 	(0, 1), (1, 0), (0, -1), (-1, 0).
 \]
@@ -411,7 +434,7 @@ Thus, the only integer solutions to the equation are:
 
 \section{Proof by Counter-Example}
 
-With a \emph{counter-example}, it is enough to find one case in which a statement is not true to prove the 
+With a \emph{counter-example}, it is enough to find one case in which a statement is not true to prove the
 statement false, and in some cases to prove that the opposite is true.
 
 \textbf{Example:}
@@ -420,7 +443,7 @@ The statement ``all prime numbers are odd'' is false.
 
 To prove this theorem, we will provide a counterexample.
 
-The number 2 is a prime number, as its only divisors are 1 and 2. However, 2 is 
+The number 2 is a prime number, as its only divisors are 1 and 2. However, 2 is
 even, which contradicts the statement that all prime numbers are odd.
 
 Therefore, the statement ``all prime numbers are odd'' is false.
@@ -429,17 +452,17 @@ Therefore, the statement ``all prime numbers are odd'' is false.
 
 \section{Mathematical Writing}
 
-As mathematicians we must not only obey the respective language of our field as well as the grammar and punctuation rules of 
+As mathematicians we must not only obey the respective language of our field as well as the grammar and punctuation rules of
 our writing tongue, but also it is essential to follow conventions and formulate our sentences to be as clear and free from ambiguity as possible.
 
-For example, look at the following sentences: 
+For example, look at the following sentences:
 
 \begin{itemize}
-	\item ``The set \(A\) is empty.'' is good in contrast to ``\(A\) is empty'', what is \(A\) 
+	\item ``The set \(A\) is empty.'' is good in contrast to ``\(A\) is empty'', what is \(A\)
 	\item ``Let \(x \in \R\) be such that \(x^2 = 4\).'' is good in contrast to ``\(x^2 = 4\)'', what is \(x\)?
 \end{itemize}
 
-Other rules which apply are 
+Other rules which apply are
 
 \begin{itemize}
 
@@ -447,7 +470,7 @@ Other rules which apply are
 
 	\item Do not mix different notations for the same mathematical object. This is confusing.
 
-	\item Use the first person plural ``we'' when writing mathematical proofs, as it is the convention in mathematical writing. This 
+	\item Use the first person plural ``we'' when writing mathematical proofs, as it is the convention in mathematical writing. This
 	creates a connection between the author and the reader, making the exposition more engaging and easier to follow.
 
 	\item Use the active voice.
@@ -460,7 +483,7 @@ Other rules which apply are
 
 For more complex theorems sometimes a single proof technique is not enough, and we may need to combine multiple of them.
 
-Common patterns include: 
+Common patterns include:
 
 \begin{itemize}
 
@@ -470,7 +493,7 @@ Common patterns include:
 
 	\item Combining proof by contrapositive and proof by contradiction: In some situations, proving the contrapositive can simplify the argument, and contradiction can be used for the remaining cases.
 
-	\item Contrapositive for if and only if proofs where a direction is easier to prove by considering the contrapositive. This can simplify the argument for one direction, 
+	\item Contrapositive for if and only if proofs where a direction is easier to prove by considering the contrapositive. This can simplify the argument for one direction,
 	while the other direction may be handled directly or by another technique.
 
 	\item Negation of the if and only if statements.
@@ -481,11 +504,11 @@ Common patterns include:
 
 \begin{center}
 	\begin{tabular}{|p{0.3\linewidth}|p{0.6\linewidth}|}
-		\hline 
+		\hline
 		\textbf{Pattern} & \textbf{How to Prove} \\
 		\hline
 		\(A \implies B\) & Assume \(A\) and show \(B\) or use the contrapositive or contradiction. \\
-		\hline 
+		\hline
 		\(A \iff B\) & Assume \(A\) and show \(B\), then assume \(B\) and show \(A\). The rules from above apply for both directions. You can also prove \(\neg A \iff \neg B\). \\
 		\hline
 		\(\forall x \in X: A(x)\) & Prove for some arbitrary \(x \in X\). \\
@@ -495,6 +518,6 @@ Common patterns include:
 		\(A = B\) & Show \(A \subseteq B\) and \(B \subseteq A\). \\
 		\hline
 		\(A(n)\ \forall n \in \N\) & Prove by induction on \(n\) or strong induction. \\
-		\hline	
+		\hline
 	\end{tabular}
 \end{center}
