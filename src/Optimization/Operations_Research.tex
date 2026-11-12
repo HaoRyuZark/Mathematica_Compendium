@@ -9,13 +9,13 @@ make better decisions. It is used in logistics, finance, healthcare, manufacturi
 Formally, given \(A \in \R^{m \times n}\), \(b \in \R^m\), and \(c \in \R^n\), a linear programming problem can be written as:
 
 \[
-    \text{maximize } c^T x \text{ subject to } Ax \le b, \; x \ge 0.
+	\text{maximize } c^T x \text{ subject to } Ax \le b, \; x \ge 0.
 \]
 
 We denote our optimal solution as
 
 \[
-    x^{*} = \argmax \{c^T x \mid x \ge 0, Ax \le b\}.
+	x^{*} = \argmax \{c^T x \mid x \ge 0, Ax \le b\}.
 \]
 
 \subsection{Standard Form}
@@ -26,19 +26,19 @@ expresions to get \(b\) to the standard form if needed.
 We also can modify our problem in the following way
 
 \[
-    g(x) \ge b \to -g(x) \le -b
+	g(x) \ge b \to -g(x) \le -b
 \]
 
 and
 
 \[
-    g(x) = b \to g(x) \le b \land g(x) \ge b
+	g(x) = b \to g(x) \le b \land g(x) \ge b
 \]
 
 This also allows to get an optimal solution from a minimization problem
 
 \[
-    \min(f(x)) = \max (-f(x)).
+	\min(f(x)) = \max (-f(x)).
 \]
 
 When modelling a problem as a linear program, \textbf{always} use the standard form.
@@ -48,50 +48,50 @@ When modelling a problem as a linear program, \textbf{always} use the standard f
 Given
 
 \[
-    z = 3 x_1 + 2 x_2
+	z = 3 x_1 + 2 x_2
 \]
 
 which we want to maximaze subject to
 
 \begin{align*}
-    -x_1 - x_2 &\le -3 \\
-    2x_1 + x_2 &\le 8 \\
-    -x_1 + x_2 &\le 1 \\
-    x_1 + 2x_2 &\le 8 \\
+	-x_1 - x_2 & \le -3 \\
+	2x_1 + x_2 & \le 8  \\
+	-x_1 + x_2 & \le 1  \\
+	x_1 + 2x_2 & \le 8  \\
 \end{align*}
 
 and the non-negativity constraints \(x_1, x_2 \ge 0\). The \emph{standard form} of this problem is given by
 
 \[
-    Ax =
-    \begin{bmatrix}
-        1 & 1 \\
-        2 & 1  \\
-        -1 & 1 \\
-        1 & 2
-    \end{bmatrix}
-    \begin{bmatrix}
-        x_1 \\
-        x_2
-    \end{bmatrix}
-    \leq
-    \begin{bmatrix}
-        3 \\
-        8 \\
-        1 \\
-        8
-    \end{bmatrix}
-    = b.
+	Ax =
+	\begin{bmatrix}
+		1  & 1 \\
+		2  & 1 \\
+		-1 & 1 \\
+		1  & 2
+	\end{bmatrix}
+	\begin{bmatrix}
+		x_1 \\
+		x_2
+	\end{bmatrix}
+	\leq
+	\begin{bmatrix}
+		3 \\
+		8 \\
+		1 \\
+		8
+	\end{bmatrix}
+	= b.
 \]
 
 With
 
 \[
-    c =
-    \begin{bmatrix}
-        3 \\
-        2
-    \end{bmatrix}.
+	c =
+	\begin{bmatrix}
+		3 \\
+		2
+	\end{bmatrix}.
 \]
 
 \section{Vertex Enumeration}
@@ -102,7 +102,7 @@ inequalities.
 Formally, given \(A \in \R^{m \times n}\) and \(b \in \R^m\), we want to find all \(x \in \R^n\) such that:
 
 \[
-    Ax \le b.
+	Ax \le b.
 \]
 
 The vertices of this polyhedron are the points that cannot be expressed as a convex combination of
@@ -146,7 +146,7 @@ LPs are system of inequelities, not of equalities threfore, we need to \textbf{m
 We use projections to a higher dimensional space by adding extra \emph{slack variables} so that our inequalities become equalities like for example:
 
 \[
-    x_1 \le 4,\,  x_1 \ge 0 \to x_1 + x_3 = 4, \, x_1, x_3 \ge 0.
+	x_1 \le 4,\,  x_1 \ge 0 \to x_1 + x_3 = 4, \, x_1, x_3 \ge 0.
 \]
 
 We do this for all of our functional constraints, giving us the \emph{augmented for of a linear program}.
@@ -171,56 +171,56 @@ The variables of our subs-system of equations are called \emph{basic} variables 
 Note that we use the value of the objective function
 
 \[
-    Z =  a_1 x_1 + \cdots + a_n x_n
+	Z =  a_1 x_1 + \cdots + a_n x_n
 \]
 
 as a variable hence,
 
 \[
-    Z - a_1 x_1 - \cdots - a_n x_n = 0.
+	Z - a_1 x_1 - \cdots - a_n x_n = 0.
 \]
 
 \begin{enumerate}
 
-    \item Find basic feasable solution to start by using the slack variables as a basis for the first system.
+	\item Find basic feasable solution to start by using the slack variables as a basis for the first system.
 
-    \[
-        \begin{bmatrix}
-            x_{n + 1} \\
-            x_{n + 2} \\
-            \vdots \\
-            x_{n + m}
-        \end{bmatrix}
-        =
-        \begin{bmatrix}
-            b_1 \\
-            b_2 \\
-            \vdots \\
-            b_n
-        \end{bmatrix}
-    \]
+	      \[
+		      \begin{bmatrix}
+			      x_{n + 1} \\
+			      x_{n + 2} \\
+			      \vdots    \\
+			      x_{n + m}
+		      \end{bmatrix}
+		      =
+		      \begin{bmatrix}
+			      b_1    \\
+			      b_2    \\
+			      \vdots \\
+			      b_n
+		      \end{bmatrix}
+	      \]
 
-    \item Can a current \textbf{non-basic} variable improve the objective function? Check coefficients in row 0. If no, terminate. 
+	\item Can a current \textbf{non-basic} variable improve the objective function? Check coefficients in row 0. If no, terminate.
 
-    \item Pick a non-basic variable with the greatest potential to improbe the objective function as the entering variable.
-    st potential to improbe the objective function as the entering variable.
-    
-    \[
-        x_{i} = \max (\{c_i \mid c_i \text{ is coefficient of the target function (also after modification)}\})
-    \]
-    
-    \item Use the minimum ratio test to identify the leaving variable. Using the system of equation gained from the basic solution check which one has the 
-    smallest fraction when solving for the \(x_i\). That variable \(x_j\) is the one which is going to hit zero first. This is the \emph{minimum ratio test}
+	\item Pick a non-basic variable with the greatest potential to improbe the objective function as the entering variable.
+	      st potential to improbe the objective function as the entering variable.
 
-    \begin{align*}
-        x_j = \min \left( \frac{b_i}{a_{ij}} \mid a_{ij} > 0 \right)    
-    \end{align*}
+	      \[
+		      x_{i} = \max (\{c_i \mid c_i \text{ is coefficient of the target function (also after modification)}\})
+	      \]
 
-    \item Update the system for the new basic feasible solution using Gaussian elimination. 
-    This means we need to update the column of the variable \(x_i\) for all coefficients to be zero, except for the row \textbf{owned} by 
-    the variable the variable \(x_j\) identified by the minimum ratio test as the leaving variable.
+	\item Use the minimum ratio test to identify the leaving variable. Using the system of equation gained from the basic solution check which one has the
+	      smallest fraction when solving for the \(x_i\). That variable \(x_j\) is the one which is going to hit zero first. This is the \emph{minimum ratio test}
 
-    \item Read the solution by noting the solution from the target variables and the slack variables which did not turn 0.
+	      \begin{align*}
+		      x_j = \min \left( \frac{b_i}{a_{ij}} \mid a_{ij} > 0 \right)
+	      \end{align*}
+
+	\item Update the system for the new basic feasible solution using Gaussian elimination.
+	      This means we need to update the column of the variable \(x_i\) for all coefficients to be zero, except for the row \textbf{owned} by
+	      the variable the variable \(x_j\) identified by the minimum ratio test as the leaving variable.
+
+	\item Read the solution by noting the solution from the target variables and the slack variables which did not turn 0.
 
 \end{enumerate}
 
@@ -231,182 +231,182 @@ it will just find a solution and then stop.
 
 \textbf{Example:}
 
-Given \(3_x1 + 5 x_2 = Z\) subject to 
+Given \(3_x1 + 5 x_2 = Z\) subject to
 
 \begin{align*}
-    x_1  &\le 4 \\ 
-    x_2 &\le 12 \\ 
-    3x_1 + 2x_2 &\le 18
+	x_1         & \le 4  \\
+	x_2         & \le 12 \\
+	3x_1 + 2x_2 & \le 18
 \end{align*}
 
-We first bring the problem to the standard form 
+We first bring the problem to the standard form
 
 \begin{align*}
-    Z - 3_x1 - 5 x_2 = 0\
-    x_1  + x_3 &= 4 \\ 
-    x_2  + x_4 &= 12 \\ 
-    3x_1 + 2x_2  + x_5 &= 18
+	Z - 3_x1 - 5 x_2 = 0\
+	x_1  + x_3         & = 4  \\
+	x_2  + x_4         & = 12 \\
+	3x_1 + 2x_2  + x_5 & = 18
 \end{align*}
 
 
- First, we know that there is a basic solution
+First, we know that there is a basic solution
 
 \[
-    \begin{bmatrix}
-        x_3 \\ 
-        x_4 \\ 
-        x_5
-    \end{bmatrix}
-    = 
-    \begin{bmatrix}
-        4 \\ 
-        12 \\ 
-        18
-    \end{bmatrix}
+	\begin{bmatrix}
+		x_3 \\
+		x_4 \\
+		x_5
+	\end{bmatrix}
+	=
+	\begin{bmatrix}
+		4  \\
+		12 \\
+		18
+	\end{bmatrix}
 \]
 
 with \(x_1 = 0 = x_2\).
 
-Now, we know that \(x_2\) has the biggest impact on the target function since it has weight \(5\). Therefore, we need 
+Now, we know that \(x_2\) has the biggest impact on the target function since it has weight \(5\). Therefore, we need
 to take \(x_2\) into consideration for our subsystem of equations and solve
 
 \begin{align*}
-    x_3 &= 4 \\ 
-    x_4 &= 12 - 2x_2 \\ 
-    x_5 &= 18 - 2x_2
+	x_3 & = 4         \\
+	x_4 & = 12 - 2x_2 \\
+	x_5 & = 18 - 2x_2
 \end{align*}
 
 Here since \(\frac{12}{2} < \frac{18}{2}\) we need need to decrease \(x_4\) to zero first.
 
 \[
-    \left[
-    \begin{array}{ccccc|c}
-       -3 & -5 & 0 & 0 & 0 & 0 \\ 
-        1 & 0 & 1 & 0 & 0 & 4 \\ 
-        0 & 2 & 0 & 1 & 0 & 12 \\   
-        3 & 2 & 0 & 0 & 1 & 18 
-    \end{array}
-    \right]
+	\left[
+		\begin{array}{ccccc|c}
+			-3 & -5 & 0 & 0 & 0 & 0  \\
+			1  & 0  & 1 & 0 & 0 & 4  \\
+			0  & 2  & 0 & 1 & 0 & 12 \\
+			3  & 2  & 0 & 0 & 1 & 18
+		\end{array}
+		\right]
 \]
 
-Row 3 becomes 
+Row 3 becomes
 
 \[
-    \left[
-    \begin{array}{ccccc|c}
-       -3 & -5 & 0 & 0 & 0 & 0 \\ 
-        1 & 0 & 1 & 0 & 0 & 4 \\ 
-        0 & 1 & 0 & \frac{1}{2} & 0 & 6 \\   
-        3 & 2 & 0 & 0 & 1 & 18 
-    \end{array}
-    \right]
+	\left[
+		\begin{array}{ccccc|c}
+			-3 & -5 & 0 & 0           & 0 & 0  \\
+			1  & 0  & 1 & 0           & 0 & 4  \\
+			0  & 1  & 0 & \frac{1}{2} & 0 & 6  \\
+			3  & 2  & 0 & 0           & 1 & 18
+		\end{array}
+		\right]
 \]
 
 
-Now we need to get ri of the -5 in row 1 and the 2 in  row 4. 
+Now we need to get ri of the -5 in row 1 and the 2 in  row 4.
 
 \[
-    \left[
-    \begin{array}{ccccc|c}
-       -3 & 0 & 0 & 2.5 & 0 & 30 \\ 
-        1 & 0 & 1 & 0 & 0 & 4 \\ 
-        0 & 1 & 0 & \frac{1}{2} & 0 & 6 \\   
-        3 & 0 & 0 & -1 & 1 & 6
-    \end{array}
-    \right]
+	\left[
+		\begin{array}{ccccc|c}
+			-3 & 0 & 0 & 2.5         & 0 & 30 \\
+			1  & 0 & 1 & 0           & 0 & 4  \\
+			0  & 1 & 0 & \frac{1}{2} & 0 & 6  \\
+			3  & 0 & 0 & -1          & 1 & 6
+		\end{array}
+		\right]
 \]
 
-This completes the first iteration of the algorithm. Note that the non-basic variable \(x_1\) still has potential and that 
+This completes the first iteration of the algorithm. Note that the non-basic variable \(x_1\) still has potential and that
 the coefficient of \(x_4\) is already non-negative.
 
 We now contine with \(x_1\):
 
 \begin{align*}
-        x_3 &= 4 - x_1 \\ 
-        x_5 &= 6 - 3x_1
+	x_3 & = 4 - x_1  \\
+	x_5 & = 6 - 3x_1
 \end{align*}.
 
 Since \(4 > 2\) we know that \(x_5\) has to leave. Hence we will perform Gaussian elimination again in the row of the leaving variable \(x_5\):
 
-Row 3, 
+Row 3,
 
 \[
-    \left[
-    \begin{array}{ccccc|c}
-       -3 & 0 & 0 & 2.5 & 0 & 30 \\ 
-        1 & 0 & 1 & 0 & 0 & 4 \\ 
-        0 & 1 & 0 & \frac{1}{2} & 0 & 6 \\   
-        1 & 0 & 0 & \frac{-1}{3} & \frac{1}{3} & 2
-    \end{array}
-    \right]
+	\left[
+		\begin{array}{ccccc|c}
+			-3 & 0 & 0 & 2.5          & 0           & 30 \\
+			1  & 0 & 1 & 0            & 0           & 4  \\
+			0  & 1 & 0 & \frac{1}{2}  & 0           & 6  \\
+			1  & 0 & 0 & \frac{-1}{3} & \frac{1}{3} & 2
+		\end{array}
+		\right]
 \]
 
-For the other rows =: 
+For the other rows =:
 
 \[
-    \left[
-    \begin{array}{ccccc|c}
-        0 & 0 & 0 & \frac{3}{2} & 1 & 36 \\ 
-        0 & 0 & 1 & \frac{1}{3} & \frac{-1}{3} & 2 \\ 
-        0 & 1 & 0 & \frac{1}{2} & 0 & 6 \\   
-        1 & 0 & 0 & \frac{-1}{3} & \frac{1}{3} & 2
-    \end{array}
-    \right]
+	\left[
+		\begin{array}{ccccc|c}
+			0 & 0 & 0 & \frac{3}{2}  & 1            & 36 \\
+			0 & 0 & 1 & \frac{1}{3}  & \frac{-1}{3} & 2  \\
+			0 & 1 & 0 & \frac{1}{2}  & 0            & 6  \\
+			1 & 0 & 0 & \frac{-1}{3} & \frac{1}{3}  & 2
+		\end{array}
+		\right]
 \]
 
-Since our slack variables except for \(x_3\) are zero we know that 
+Since our slack variables except for \(x_3\) are zero we know that
 
 \begin{align*}
-    Z + 0x_1 + 0x_2 + 0x_3+ \frac{3}{2}x_4 + 1x_5 &= 36 \\
-    0x_1 + 0x_2 + x_3 + 0x_4 + 0x_5 &= 2 \\
-    0x_1 + x_2 + 0x_3 + 0x_4 + 0x_5 &= 6 \\
-    x_1 + 0x_2 + 0x_3 + 0x_4 + 0x_5 &= 2 \\
+	Z + 0x_1 + 0x_2 + 0x_3+ \frac{3}{2}x_4 + 1x_5 & = 36 \\
+	0x_1 + 0x_2 + x_3 + 0x_4 + 0x_5               & = 2  \\
+	0x_1 + x_2 + 0x_3 + 0x_4 + 0x_5               & = 6  \\
+	x_1 + 0x_2 + 0x_3 + 0x_4 + 0x_5               & = 2  \\
 \end{align*}
 
-which corresponds to 
+which corresponds to
 
 \begin{align*}
-    Z  &= 36 \\
-    x_3&= 2 \\
-    x_2 &= 6 \\
-    x_1 &= 2 \\
-    x_4 &= 0 \\
-    x_5 &= 0 \\
+	Z   & = 36 \\
+	x_3 & = 2  \\
+	x_2 & = 6  \\
+	x_1 & = 2  \\
+	x_4 & = 0  \\
+	x_5 & = 0  \\
 \end{align*}
 
 
-Giving us 
+Giving us
 
 \[
-    \begin{bmatrix}
-        2 \\
-        6 \\ 
-        2 \\ 
-        0 \\ 
-        0
-    \end{bmatrix}
+	\begin{bmatrix}
+		2 \\
+		6 \\
+		2 \\
+		0 \\
+		0
+	\end{bmatrix}
 \]
 
 and the maximum of our objective function 36.
 
 \subsection{Simplex Tabular Form}
 
-Another way of writing the simplex method to save time is to use the tabular form which given by the table 
+Another way of writing the simplex method to save time is to use the tabular form which given by the table
 
 \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|}
-    \hline
-    Iteration & Basic Variable & Eq. & \(Z\) & \(x_1\) & \(\cdots\) & \(x_n\) & RHS & MRT & Entering & Leaving \\
-    \hline
-    \(n\) & \(Z\)      & 0        & 1        & \(c_1\)    & \(\cdots\) & \(c_n\)    & 0        &  &  &  \\
-          & \(x_1\)    & 1        & 0        & \(a_{11}\) & \(\cdots\) & \(a_{1n}\) & \(b_1\)  &  &  &  \\
-          & \(\vdots\) & \(\vdots\) & \(\vdots\) & \(\vdots\) & \(\ddots\) & \(\vdots\) & \(\vdots\) &  &  &  \\
-          & \(x_m\)    & \(m\)    & 0        & \(a_{m1}\) & \(\cdots\) & \(a_{mn}\) & \(b_m\)  &  &  &  \\
-    \hline
+	\hline
+	Iteration & Basic Variable & Eq.        & \(Z\)      & \(x_1\)    & \(\cdots\) & \(x_n\)    & RHS        & MRT & Entering & Leaving \\
+	\hline
+	\(n\)     & \(Z\)          & 0          & 1          & \(c_1\)    & \(\cdots\) & \(c_n\)    & 0          &     &          &         \\
+	          & \(x_1\)        & 1          & 0          & \(a_{11}\) & \(\cdots\) & \(a_{1n}\) & \(b_1\)    &     &          &         \\
+	          & \(\vdots\)     & \(\vdots\) & \(\vdots\) & \(\vdots\) & \(\ddots\) & \(\vdots\) & \(\vdots\) &     &          &         \\
+	          & \(x_m\)        & \(m\)      & 0          & \(a_{m1}\) & \(\cdots\) & \(a_{mn}\) & \(b_m\)    &     &          &         \\
+	\hline
 \end{tabular}
 
 \subsection{Multiple Optima}
 
-\emph{Multiple optima} appear when there infinitely many solutions for the LP, i.e. the solutions 
+\emph{Multiple optima} appear when there infinitely many solutions for the LP, i.e. the solutions
 are found in a hyperplane. Most solvers can deal with this.
 
 \subsection{Degeneracy, Cycling and Stalling}
@@ -421,13 +421,13 @@ If no degenerate pivot is present we come out of this state and the algorithm co
 
 \subsubsection{Bland's Rule}
 
-\emph{Bland's} rule is used to avoid cycling and it works by: 
+\emph{Bland's} rule is used to avoid cycling and it works by:
 
 \begin{itemize}
 
-    \item \textbf{Entering variable}: among all variables with negative coefficient in objection function. choose the one with the smallest index.
+	\item \textbf{Entering variable}: among all variables with negative coefficient in objection function. choose the one with the smallest index.
 
-    \item \textbf{Leaving variable}: among all candidates that tie in the minimum ratio test, choose the one with the smallest index to leave.
+	\item \textbf{Leaving variable}: among all candidates that tie in the minimum ratio test, choose the one with the smallest index to leave.
 
 \end{itemize}
 
@@ -439,44 +439,44 @@ This rule guarantees that the algorithm terminates at the cost of not being as e
 
 \section{The Transportation Problem}
 
-The \emph{trasportation} problems originates from the situation of having a series of supply and demand locations and the transportation between a 
+The \emph{trasportation} problems originates from the situation of having a series of supply and demand locations and the transportation between a
 supplier and a consumer has some cost \(c_{i, j}\). The function we want to optimize is given by
 
 \[
-    Z = \sum_{i} \sum_{j} c_{i,j} x_{i, j}
+	Z = \sum_{i} \sum_{j} c_{i,j} x_{i, j}
 \]
 
-where \(x_{i, j}\) represents the number of units from suppier \(i\) to demand \(j\), and 
+where \(x_{i, j}\) represents the number of units from suppier \(i\) to demand \(j\), and
 
 \[
-    \sum_j x_{i, j} = s_i, \quad \sum_i x_{i, j} = d_i
+	\sum_j x_{i, j} = s_i, \quad \sum_i x_{i, j} = d_i
 \]
 
-are the sum of the supply and demand constraints. When the sum of the  amount of supply and demand is equal we have a \emph{balanced} transportation problem, 
+are the sum of the supply and demand constraints. When the sum of the  amount of supply and demand is equal we have a \emph{balanced} transportation problem,
 while when one of the last 2 is greater or less thant the other we need to modify our constraints.
 
-In a system of linear equations it will look like 
+In a system of linear equations it will look like
 
 \[
-    \begin{array}{c|ccc|ccc|ccc|c}
-        & x_{1,1} & \cdots & x_{1,m} & x_{2,1} & \cdots & x_{2,m} & x_{n,1} & \cdots & x_{n,m} & \\ \hline
-        \text{obj.} & c_{1,1} & \cdots & c_{1,m} & c_{2,1} & \cdots & c_{2,m} & c_{n,1} & \cdots & c_{n,m} & \min \\ \hline
-        % ---- supply rows: sum_j x_{i,j} = a_i ----
-        1   & 1 & \cdots & 1 & 0 & \cdots & 0 & 0 & \cdots & 0 & = s_1 \\
-        2   & 0 & \cdots & 0 & 1 & \cdots & 1 & 0 & \cdots & 0 & = s_2 \\
-        \vdots & & & & & \ddots & & & & & \vdots \\
-        n   & 0 & \cdots & 0 & 0 & \cdots & 0 & 1 & \cdots & 1 & = s_n \\ \hline
-        % ---- demand rows: sum_i x_{i,j} = b_j ----
-        1   & 1 & \cdots & 0 & 1 & \cdots & 0 & 1 & \cdots & 0 & = d_1 \\
-        \vdots & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots & \vdots \\
-        m   & 0 & \cdots & 1 & 0 & \cdots & 1 & 0 & \cdots & 1 & = d_m
-    \end{array}
+	\begin{array}{c|ccc|ccc|ccc|c}
+		            & x_{1,1} & \cdots & x_{1,m} & x_{2,1} & \cdots & x_{2,m} & x_{n,1} & \cdots & x_{n,m} &        \\ \hline
+		\text{obj.} & c_{1,1} & \cdots & c_{1,m} & c_{2,1} & \cdots & c_{2,m} & c_{n,1} & \cdots & c_{n,m} & \min   \\ \hline
+		% ---- supply rows: sum_j x_{i,j} = a_i ----
+		1           & 1       & \cdots & 1       & 0       & \cdots & 0       & 0       & \cdots & 0       & = s_1  \\
+		2           & 0       & \cdots & 0       & 1       & \cdots & 1       & 0       & \cdots & 0       & = s_2  \\
+		\vdots      &         &        &         &         & \ddots &         &         &        &         & \vdots \\
+		n           & 0       & \cdots & 0       & 0       & \cdots & 0       & 1       & \cdots & 1       & = s_n  \\ \hline
+		% ---- demand rows: sum_i x_{i,j} = b_j ----
+		1           & 1       & \cdots & 0       & 1       & \cdots & 0       & 1       & \cdots & 0       & = d_1  \\
+		\vdots      & \vdots  & \ddots & \vdots  & \vdots  & \ddots & \vdots  & \vdots  & \ddots & \vdots  & \vdots \\
+		m           & 0       & \cdots & 1       & 0       & \cdots & 1       & 0       & \cdots & 1       & = d_m
+	\end{array}
 \]
 
 \subsection{Dummy Destination and Sources}
 
-A \emph{dummy destination} can be use to absorb the exces supply and depending if the over production represents a lost or not to the current situation 
-assign a cost of zero a positive cost as penalty. 
+A \emph{dummy destination} can be use to absorb the exces supply and depending if the over production represents a lost or not to the current situation
+assign a cost of zero a positive cost as penalty.
 
 \emph{Dummy sources} are use to allow consumers to receive less than demanded. The have zero costs.
 
