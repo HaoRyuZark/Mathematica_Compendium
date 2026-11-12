@@ -1,12 +1,12 @@
 \chapter{Functions}
 
-A \emph{function} for two sets \(X\) and \(Y\) is defined as a subset of \(X \times Y\), and it is denoted by 
+A \emph{function} for two sets \(X\) and \(Y\) is defined as a subset of \(X \times Y\), and it is denoted by
 
 \[
-	f: X \to Y \subseteq X \times Y 
+	f: X \to Y \subseteq X \times Y
 \]
 
-where 
+where
 
 \[
 	\forall x \in X, !\exists y \in Y: \, (x, y) \in f.
@@ -15,12 +15,12 @@ where
 That is, for \textbf{each} \(x \in X\), there exists at most one \(y \in Y\) such that \((x, y) \in f\).
 This is informally known as the vertical line test.
 
-When writing proofs, it is important to take into consideration that the whole set \(X\) is in use by the function. This guarantees 
+When writing proofs, it is important to take into consideration that the whole set \(X\) is in use by the function. This guarantees
 the existence of \(f(x)\).
 
 \section{The Set of All Functions}
 
-For the sets \(X\) and \(Y\), we define the set of all functions \(f: X \to Y\) as 
+For the sets \(X\) and \(Y\), we define the set of all functions \(f: X \to Y\) as
 
 \[
 	Y^X := \{f \mid f: X \to Y\}
@@ -32,31 +32,31 @@ Given two functions \(f: X \to Y\) and \(g: X' \to Y'\), they are equal if \(X =
 
 \subsection{The Characteristic Function}
 
-Given \(T \subseteq X\), we define the \emph{characteristic function} as 
+Given \(T \subseteq X\), we define the \emph{characteristic function} as
 
 \[
-	\mathcal{X}_T: X \to \{0,1\} : x \to \begin{cases} 
-		1, &x \in T \\ 
-		0, &x \notin T
+	\mathcal{X}_T: X \to \{0,1\} : x \to \begin{cases}
+		1, & x \in T    \\
+		0, & x \notin T
 	\end{cases}
 \]
 
-This function tells us if an element is in the subset. Also, each function \(\alpha : X \to \{0, 1\}\) defines a 
-unique subset \(T\) of \(X\), 
+This function tells us if an element is in the subset. Also, each function \(\alpha : X \to \{0, 1\}\) defines a
+unique subset \(T\) of \(X\),
 
 \[
 	T := \{x \in X \mid \alpha(x) = 1\}
-\] 
+\]
 
 Because of that fact, we can use this function and the concept of a subset interchangeably.
 
 \textbf{Proof:}
 
-We want to show \(\alpha = \mathcal{X}_T\). Therefore, we need to show that both have the same domain and image. 
+We want to show \(\alpha = \mathcal{X}_T\). Therefore, we need to show that both have the same domain and image.
 
 For the domain, \(X \subseteq X\), \(\forall x \in X: x \in X\), which is trivial.
 
-Now we need to prove that the images are the same; let \(x \in T \land x \in X\), then \(\alpha(x) = 1\). 
+Now we need to prove that the images are the same; let \(x \in T \land x \in X\), then \(\alpha(x) = 1\).
 Also, if \(x \in X \setminus T\), then \(\alpha(x) = 0\). This is the definition of the characteristic function.
 
 \QED
@@ -71,31 +71,31 @@ We can also consider the graph as a set of ordered pairs \(x, y\) where \(y = f(
 
 \subsection{The Inverse Graph}
 
-Let \(G\) be a graph. We define 
+Let \(G\) be a graph. We define
 
 \[
-    G^{-1} := \{(x,y) \mid (y, x) \in G\}
+	G^{-1} := \{(x,y) \mid (y, x) \in G\}
 \]
 
 as \emph{inverse graph} of \(G\).
 
 \subsection{The Composite Graph}
 
-Let \(G\) and \(H\) be graphs. We define 
+Let \(G\) and \(H\) be graphs. We define
 
 \[
-    G \circ H := \{(x,y) \mid \exists z \in (x, z) \in H \land (z, y) \in G\}
+	G \circ H := \{(x,y) \mid \exists z \in (x, z) \in H \land (z, y) \in G\}
 \]
 
 as the \emph{composite graph} of \(G\) and \(H\).
 
 \begin{itemize}
 
-    \item \(G \circ (H \circ J) = (G \circ H) \circ J\).
+	\item \(G \circ (H \circ J) = (G \circ H) \circ J\).
 
-    \item \((G^{-1})^{-1} = G\).
+	\item \((G^{-1})^{-1} = G\).
 
-    \item \((G \circ H)^{-1} = H^{-1} \circ G^{-1}\).
+	\item \((G \circ H)^{-1} = H^{-1} \circ G^{-1}\).
 
 \end{itemize}
 
@@ -104,10 +104,10 @@ as the \emph{composite graph} of \(G\) and \(H\).
 \(((G \circ H) \circ J) = G \circ (H \circ J)\)
 
 \[
-	G \circ H = \{(z, y) \mid \exists w \in (z, w) \in H \land (w, y) \in G\} 
+	G \circ H = \{(z, y) \mid \exists w \in (z, w) \in H \land (w, y) \in G\}
 \]
 
-Proceeding 
+Proceeding
 
 \[
 	(G \circ H) \circ J = \{(x, y) \mid \exists z,w \text{ s.t. }  (x, z) \in J \land  (z, w) \in H \land (w, y) \in G  \}.
@@ -122,7 +122,7 @@ For \(G \circ (H \circ J)\)
 Proceeding
 
 \[
-	G \circ (H \circ J) = \{(x, y) \mid \exists z,w \in  (x, z) \in J \land  (z, w) \in H \land (w, y) \in G  \} 
+	G \circ (H \circ J) = \{(x, y) \mid \exists z,w \in  (x, z) \in J \land  (z, w) \in H \land (w, y) \in G  \}
 \]
 
 \QED
@@ -132,8 +132,8 @@ Proceeding
 \((G^{-1})^{-1} = G\)
 
 \begin{align*}
-	(x, y) \in (G^{-1})^{-1} &\iff (y, x) \in G^{-1} \\ 
-	&\iff (x, y) \in (G^{-1})^{-1}
+	(x, y) \in (G^{-1})^{-1} & \iff (y, x) \in G^{-1}        \\
+	                         & \iff (x, y) \in (G^{-1})^{-1}
 \end{align*}
 
 \QED
@@ -142,30 +142,30 @@ Proceeding
 
 \((G \circ H)^{-1} = H^{-1} \circ G^{-1}\).
 
-\begin{align*}	
-    (G \circ H)^{-1} &=  \{(x, y) \mid \exists z \in (y, z) \in H \land (z, x) \in G\} \\ 
-	&\iff (y, z) \in H \land (z, x) \in G \\
-	&\iff (z, y) \in H^{-1} \land (x, z) \in G^{-1} 
+\begin{align*}
+	(G \circ H)^{-1} & =  \{(x, y) \mid \exists z \in (y, z) \in H \land (z, x) \in G\} \\
+	                 & \iff (y, z) \in H \land (z, x) \in G                             \\
+	                 & \iff (z, y) \in H^{-1} \land (x, z) \in G^{-1}
 \end{align*}
 
 \QED
 
 \subsection{Functional Graph}
 
-A functional graph is a graph that satisfies the second constraint of functions. Therefore, it corresponds to a function. Hence, 
+A functional graph is a graph that satisfies the second constraint of functions. Therefore, it corresponds to a function. Hence,
 all of our graph properties are applicable to functions.
 
 \section{Domain}
 
-The \emph{domain} of a relation \emph{R} from set \(A\) to set \(B\) is the set of all elements in 
-\(A\) that are related to at least one element in \(B\). Formally, if \(R \subseteq A \times B\) 
+The \emph{domain} of a relation \emph{R} from set \(A\) to set \(B\) is the set of all elements in
+\(A\) that are related to at least one element in \(B\). Formally, if \(R \subseteq A \times B\)
 is a relation, then the domain of \emph{R} is defined as:
 
 \[
 	\dom(R) = \{a \in A \mid \exists b \in B \text{ such that } (a,b) \in R\}
 \]
 
-In other words, the domain consists of all the input values that appear in the ordered pairs of the 
+In other words, the domain consists of all the input values that appear in the ordered pairs of the
 relation. For example, if \(R = \{(1,4), (2,5), (3,4), (2,6)\}\), then \(\text{Dom}(R) = \{1, 2, 3\}\).
 
 \section{The Identity}
@@ -176,15 +176,15 @@ relation. For example, if \(R = \{(1,4), (2,5), (3,4), (2,6)\}\), then \(\text{D
 
 \section{Image}
 
-The \emph{image} of a relation \emph{R} from set \(A\) to set \(B\) is the set 
-of all elements in \(B\) that are related to at least one element in \(A\). Formally, if 
+The \emph{image} of a relation \emph{R} from set \(A\) to set \(B\) is the set
+of all elements in \(B\) that are related to at least one element in \(A\). Formally, if
 \(R \subseteq A \times B\) is a relation, then the image of \emph{R} is defined as:
 
 \[
 	\img(R[A]) = \{y \in \text{ ran}(R) \mid \exists a \in A \text{ such that } xRy\} \subseteq B
 \]
 
-In other words, the image consists of all the output values that appear in the ordered pairs of the 
+In other words, the image consists of all the output values that appear in the ordered pairs of the
 relation. For example, if \(R = \{(1,4), (2,5), (3,4), (2,6)\}\), then \(\img(R) = \{4, 5, 6\}\).
 
 \section{The Range}
@@ -211,14 +211,14 @@ By iterating one more time we get the union of the union
 	\bigcup \bigcup G = \{x, y, z, \dots\}
 \]
 
-Hence, by the definition of the domain and the image of the graph we can directly see that they are subsets of the union of the union of the graph 
+Hence, by the definition of the domain and the image of the graph we can directly see that they are subsets of the union of the union of the graph
 \(G\), and thus they are sets.
 
 \QED
 
 \section{The Fiber}
 
-We denote a \emph{fiber} for \(y \in Y\) as 
+We denote a \emph{fiber} for \(y \in Y\) as
 
 \[
 	f^{-1}(\{y\}) := \{x \in X \mid f(x) = y\}.
@@ -226,7 +226,7 @@ We denote a \emph{fiber} for \(y \in Y\) as
 
 \section{The Pre-Image}
 
-Given a map \(f: X \to Y\) and a subset \(B \subseteq Y\), we denote the set 
+Given a map \(f: X \to Y\) and a subset \(B \subseteq Y\), we denote the set
 
 \[
 	f^{-1}(B) := \{x \in X \mid f(x) \in B\} = \bigcup_{y \in B} f^{-1}(\{y\})
@@ -236,19 +236,19 @@ as the \emph{pre-image} of \(B\).
 
 \section{Composition of Maps}
 
-The composition of two functions is the operation of applying one function to the result of another 
-function. If we have functions \(f: X \to Y\) and \(g: Y \rightarrow Z\), then the composition of \(g\) 
-and \(f\), denoted as \(g \circ f\) (read as g composed with f), is a function from \(X\) to \(Z\) defined 
+The composition of two functions is the operation of applying one function to the result of another
+function. If we have functions \(f: X \to Y\) and \(g: Y \rightarrow Z\), then the composition of \(g\)
+and \(f\), denoted as \(g \circ f\) (read as g composed with f), is a function from \(X\) to \(Z\) defined
 by:
 
 \[
 	(g \circ f)(x) = g(f(x)) \quad \text{for all } x \in X
 \]
 
-The composition applies \(f\) first, then applies \(g\) to the result. 
+The composition applies \(f\) first, then applies \(g\) to the result.
 Note that the co-domain of \(f\) must match the domain of \(g\) for the composition to be defined.
 
-The formal definition is 
+The formal definition is
 
 \[
 	g \circ f := \{ (x, z) \in X \times Z \mid \exists y \in Y \text{ such that } (x, y) \in f \land (y, z) \in g \}
@@ -264,7 +264,7 @@ For uniqueness, suppose \((x,z_1), (x,z_2) \in g \circ f\). Then there are \(y_1
 
 \textbf{Example:}
 
-Let \(f: \R \to \R\) be defined by \(f(x) = x^2\) and \(g: \R \rightarrow \R\) be defined 
+Let \(f: \R \to \R\) be defined by \(f(x) = x^2\) and \(g: \R \rightarrow \R\) be defined
 by \(g(x) = x+3\). Then:
 
 \[
@@ -275,7 +275,7 @@ by \(g(x) = x+3\). Then:
 	(f \circ g)(x) = f(g(x)) = f(x+3) = {(x+3)}^2 = x^2 + 6x + 9
 \]
 
-Note that \(g \circ f \neq f \circ g\) in general, which shows that function composition is not 
+Note that \(g \circ f \neq f \circ g\) in general, which shows that function composition is not
 commutative.
 
 \subsection{Associativity of the Composition}
@@ -290,8 +290,8 @@ under the conditions \(f(X) \subseteq Y\) and \(g(Y) \subseteq Z\).
 
 \textbf{Proof:}
 
-For any \(x \in X\), we know that \(f(x) \in Y\), hence by the map property, \(\exists z \in Z, \ (f(x), z) \in g\). Continuing, 
-because \(z = g(f(x)) \in Z\), there exists \(w \in W\) such that \((z, w) \in h\), and hence \(h(g(f(x))) = w\) and we have a proper map. 
+For any \(x \in X\), we know that \(f(x) \in Y\), hence by the map property, \(\exists z \in Z, \ (f(x), z) \in g\). Continuing,
+because \(z = g(f(x)) \in Z\), there exists \(w \in W\) such that \((z, w) \in h\), and hence \(h(g(f(x))) = w\) and we have a proper map.
 
 Therefore, \((x, w) \in (h \circ g) \circ f\) and \((x, w) \in h \circ (g \circ f)\), proving the associativity.
 
@@ -299,7 +299,7 @@ Therefore, \((x, w) \in (h \circ g) \circ f\) and \((x, w) \in h \circ (g \circ 
 
 \subsection{Injectivity and Surjectivity Under Composition}
 
-Let \(f: X \to Y\) and \(g: Y \to Z\). Then the following holds: 
+Let \(f: X \to Y\) and \(g: Y \to Z\). Then the following holds:
 
 \begin{itemize}
 
@@ -311,9 +311,9 @@ Let \(f: X \to Y\) and \(g: Y \to Z\). Then the following holds:
 
 \textbf{Proof I:}
 
-\(g \circ f\) is injective; therefore, for \(x_1, x_2 \in X\), 
+\(g \circ f\) is injective; therefore, for \(x_1, x_2 \in X\),
 
-\[ 
+\[
 	g(f(x_1)) = g(f(x_2)) \implies f(x_1) = f(x_2) \implies x_1 = x_2
 \]
 
@@ -321,8 +321,8 @@ Let \(f: X \to Y\) and \(g: Y \to Z\). Then the following holds:
 
 \textbf{Proof II:}
 
-\(g \circ f\) is surjective; therefore, for all \(z \in Z\), there exists \(x \in X\) such that \(g(f(x)) = z\). This also 
-implies that there exists \(y = f(x) \in Y\) such that \(g(y) = z\). 
+\(g \circ f\) is surjective; therefore, for all \(z \in Z\), there exists \(x \in X\) such that \(g(f(x)) = z\). This also
+implies that there exists \(y = f(x) \in Y\) such that \(g(y) = z\).
 
 \QED
 
@@ -332,14 +332,14 @@ Let \(G\) and \(H\) be graphs, then \(\img(H) \subseteq \dom(G) \implies \dom(G 
 
 \textbf{Proof:}
 
-Note that for 
+Note that for
 
 \[
 	\forall y \in \img(H) : y \in \dom (G).
 \]
 
-Also, when constructing \(G \circ H\) we get a map from \(\dom(H)\) to the \(\img(G)\), because for all 
-of our \(y \in \img(H)\) we can always find a pair \((y, w) \in \img(G)\) due to the structure of our graph. Hence, 
+Also, when constructing \(G \circ H\) we get a map from \(\dom(H)\) to the \(\img(G)\), because for all
+of our \(y \in \img(H)\) we can always find a pair \((y, w) \in \img(G)\) due to the structure of our graph. Hence,
 the domain of our composite graph is \(\dom(H)\).
 
 \QED
@@ -348,7 +348,7 @@ the domain of our composite graph is \(\dom(H)\).
 
 \subsection{Injective Functions}
 
-An injective function (also called a one-to-one function) is a 
+An injective function (also called a one-to-one function) is a
 function that maps distinct elements from the domain to distinct elements in the co-domain.
 
 Formally, a function \(f: X \to Y\) is injective if for all \(x_1, x_2 \in X\):
@@ -381,7 +381,7 @@ Hence, \(\mathrm{Id}_X\) is injective.
 
 \subsection{Injection}
 
-Given \(X \subseteq Y\), the \emph{injection} from \(X\) to \(Y\) defined as 
+Given \(X \subseteq Y\), the \emph{injection} from \(X\) to \(Y\) defined as
 
 \[
 	\iota_{X}: X \to Y : x \mapsto x
@@ -391,7 +391,7 @@ is an \emph{injective function}.
 
 \subsection{Surjective Functions}
 
-A \emph{surjective function} (also called an onto function) is a function whose image equals its co-domain, 
+A \emph{surjective function} (also called an onto function) is a function whose image equals its co-domain,
 meaning that every element in the co-domain has at least one pre-image in the domain.
 
 Formally, a function \(f: X \to Y\) is surjective if:
@@ -400,8 +400,8 @@ Formally, a function \(f: X \to Y\) is surjective if:
 	\forall y \in Y, \exists x \in X \text{ such that } f(x) = y
 \]
 
-To prove that a function is surjective, one must show that given any element \(y \in Y\), there exists an element \(x \in X\) such that \(f(x) = y\). When 
-a concrete function definiton like \(f(x) = 2x\) is given we just need to solve for \(x\), and show that it is an element of the domain. For the case 
+To prove that a function is surjective, one must show that given any element \(y \in Y\), there exists an element \(x \in X\) such that \(f(x) = y\). When
+a concrete function definiton like \(f(x) = 2x\) is given we just need to solve for \(x\), and show that it is an element of the domain. For the case
 where we are dealing with an more abstract function, we need to use the \textbf{function definition} to guarantee the existence of elements in the domain.
 
 \textbf{Example I:}
@@ -410,7 +410,7 @@ Prove that the function \(f: \R \to \R\) defined by \(f(x) = 2x\) is surjective.
 
 \textbf{Proof:}
 
-Let \(y \in \R\), so \(y = 2x\). Solving for \(x\) gives \(x = \frac{y}{2}\). Note that \(\frac{y}{2} \in \R\), hence 
+Let \(y \in \R\), so \(y = 2x\). Solving for \(x\) gives \(x = \frac{y}{2}\). Note that \(\frac{y}{2} \in \R\), hence
 we have shown that for any \(y \in \R\), there exists an \(x \in \R\) such that \(f(x) = y\). Therefore, \(f\) is surjective.
 
 \QED
@@ -420,16 +420,16 @@ we have shown that for any \(y \in \R\), there exists an \(x \in \R\) such that 
 Given the characteristic function \(\mathcal{X}_T: X \to \{0,1\}\) defined by
 
 \[
-	\mathcal{X}_T(x) = 
+	\mathcal{X}_T(x) =
 	\begin{cases}
-		1 & \text{if } x \in T \\
+		1 & \text{if } x \in T    \\
 		0 & \text{if } x \notin T
 	\end{cases}
 \]
 
 where \(T \subseteq X\).
 
-Prove that \(\mathcal{X}_T\) is surjective. 
+Prove that \(\mathcal{X}_T\) is surjective.
 
 \textbf{Proof:}
 
@@ -445,7 +445,7 @@ Hence, for every \(b \in \{0,1\}\), there exists an \(x \in X\) such that \(\mat
 
 \subsection{Bijective Functions}
 
-A \emph{bijective function} (also called a one-to-one correspondence) is a function that is both injective and surjective. In other words, every 
+A \emph{bijective function} (also called a one-to-one correspondence) is a function that is both injective and surjective. In other words, every
 element in the co-domain is mapped to by exactly one element in the domain.
 
 Formally, a function \(f: X \to Y\) is bijective if it is both:
@@ -458,17 +458,17 @@ Formally, a function \(f: X \to Y\) is bijective if it is both:
 
 \end{itemize}
 
-Bijective functions establish a perfect pairing between elements of the domain and co-domain, where each 
-element in the domain corresponds to exactly one element in the co-domain, and vice versa. A bijection 
+Bijective functions establish a perfect pairing between elements of the domain and co-domain, where each
+element in the domain corresponds to exactly one element in the co-domain, and vice versa. A bijection
 allows us to define an inverse function \(f^{-1}: Y \to X\).
 
 \section{Cardinality of Injective and Surjective Functions}
 
-Given finite sets \(X\) and \(Y\) with the map \(f: X \to Y\), the following holds: 
+Given finite sets \(X\) and \(Y\) with the map \(f: X \to Y\), the following holds:
 
 \begin{itemize}
 
-	\item If \(f\) is injective, then \(|X| \le |Y|\). 
+	\item If \(f\) is injective, then \(|X| \le |Y|\).
 
 	\item If \(f\) is surjective, then \(|X| \ge |Y|\).
 
@@ -478,27 +478,27 @@ Given finite sets \(X\) and \(Y\) with the map \(f: X \to Y\), the following hol
 
 \textbf{Proof I:}
 
-\(f\) is injective; therefore, \(|f^{-1}(y)| \le 1\) for all \(y \in Y\), hence,
+\(f\) is injective; therefore, \(|f^{-1}(\{y\})| \le 1\) for all \(y \in Y\), hence,
 
 \[
-	|X| = \sum_{y \in Y} |f^{-1}(y)| \le \sum_{y \in Y} 1 = |Y|.
+	|X| = \sum_{y \in Y} |f^{-1}(\{y\})| \le \sum_{y \in Y} 1 = |Y|.
 \]
 
 \QED
 
 \textbf{Proof II:}
 
-\(f\) is surjective, so \(|f^{-1}(y)| \ge 1\) for all \(y \in Y\); therefore,
+\(f\) is surjective, so \(|f^{-1}(\{y\})| \ge 1\) for all \(y \in Y\); therefore,
 
 \[
-	|X| = \sum_{y \in Y} |f^{-1}(y)| \ge \sum_{y \in Y} 1 = |Y|.
+	|X| = \sum_{y \in Y} |f^{-1}(\{y\})| \ge \sum_{y \in Y} 1 = |Y|.
 \]
 
 \QED
 
 \textbf{Proof III:}
 
-Proven by using I and II. 
+Proven by using I and II.
 
 \QED
 
@@ -519,7 +519,7 @@ Let \( f : X \to Y \) be a function.
 	      \]
 
 	\item For subsets \( B_1, B_2 \subseteq Y \), we have:
-	      
+
 	      \[
 		      f^{-1}(B_1 \cup B_2) = f^{-1}(B_1) \cup f^{-1}(B_2)
 		      \quad \text{and} \quad
@@ -531,37 +531,37 @@ Let \( f : X \to Y \) be a function.
 
 We prove the second part of 1 and the first part of 2.
 
-Let \( y \in f(A_1 \cap A_2) \). Then there exists \( x \in A_1 \cap A_2 \) such that 
-\( f(x) = y \). Since \( x \in A_1 \) and \( x \in A_2 \), it follows that \( y \in f(A_1) \) 
-and \( y \in f(A_2) \), hence \( y \in f(A_1) \cap f(A_2) \). Therefore, every element of 
+Let \( y \in f(A_1 \cap A_2) \). Then there exists \( x \in A_1 \cap A_2 \) such that
+\( f(x) = y \). Since \( x \in A_1 \) and \( x \in A_2 \), it follows that \( y \in f(A_1) \)
+and \( y \in f(A_2) \), hence \( y \in f(A_1) \cap f(A_2) \). Therefore, every element of
 \( f(A_1 \cap A_2) \) is also an element of \( f(A_1) \cap f(A_2) \), so:
 
 \[
 	f(A_1 \cap A_2) \subseteq f(A_1) \cap f(A_2)
 \]
 
-The reason we do not have equality is because: 
+The reason we do not have equality is because:
 
 \begin{align*}
-	y \in f(A_1) \cap f(A_2) &\iff \exists f^{-1}(y) \in A_1 \land f^{-1}(y) \in A_2 \\
-	&= x_1 \in A_1 \land x_2 \in A_2
+	y \in f(A_1) \cap f(A_2) & \iff \exists f^{-1}(y) \in A_1 \land f^{-1}(y) \in A_2 \\
+	                         & = x_1 \in A_1 \land x_2 \in A_2
 \end{align*}
 
-Note, that if \(x_1 = x_2\) we have equality, but if \(x_1 \neq x_2\) then \(y \notin f(A_1 \cap A_2)\). Hence 
+Note, that if \(x_1 = x_2\) we have equality, but if \(x_1 \neq x_2\) then \(y \notin f(A_1 \cap A_2)\). Hence
 we have a propert subset.
 
 \QED
 
-Let \( x \in f^{-1} (B_1 \cup B_2) \). Then \( f(x) \in B_1 \cup B_2 \), which means \( f(x) \in B_1 \) 
-or \( f(x) \in B_2 \). Thus, \( x \in f^{-1}(B_1) \) 
+Let \( x \in f^{-1} (B_1 \cup B_2) \). Then \( f(x) \in B_1 \cup B_2 \), which means \( f(x) \in B_1 \)
+or \( f(x) \in B_2 \). Thus, \( x \in f^{-1}(B_1) \)
 or \( x \in f^{-1}(B_2) \), which implies:
-	      
+
 \[
-	 x \in f^{-1}(B_1) \cup f^{-1}(B_2)
+	x \in f^{-1}(B_1) \cup f^{-1}(B_2)
 \]
 
 Hence, both sets contain the same elements and are therefore equal:
-	      
+
 \[
 	f^{-1}(B_1 \cup B_2) = f^{-1}(B_1) \cup f^{-1}(B_2)
 \]
@@ -576,7 +576,7 @@ Let \( f : X \to Y \) be a function.
 
 	\item Let \( \mathcal{F} \) be a collection of subsets of \(X\). Then:
 
-   	      \[
+	      \[
 		      f\left( \bigcup_{A \in \mathcal{F}} A \right) = \bigcup_{A \in \mathcal{F}} f(A)
 		      \quad \text{and} \quad
 		      f\left( \bigcap_{A \in \mathcal{F}} A \right) \subseteq \bigcap_{A \in \mathcal{F}} f(A)
@@ -622,13 +622,13 @@ It follows that:
 
 \textbf{Example:}
 
-We define \(A = \{1, 0\}\) and \(B = \{2\}\) and \(f(1) = 3\), \(f(2) = 3\), \(f(0) = 1\). Then 
+We define \(A = \{1, 0\}\) and \(B = \{2\}\) and \(f(1) = 3\), \(f(2) = 3\), \(f(0) = 1\). Then
 
 \[
 	f(A \cap B) = f( \emptyset) = \emptyset
 \]
 
-And 
+And
 
 \[
 	f(A) \cap f(B) = 3
@@ -637,24 +637,24 @@ And
 \section{Bijection of the Power Set and \texorpdfstring{\(2^A\)}{}}
 
 We denote \(2^A\) as the set of all functions from \(A\) to a set of two elements.
-The statement goes as follows: there is a bijection between the power set \(\mathcal{P}(A)\) and 
+The statement goes as follows: there is a bijection between the power set \(\mathcal{P}(A)\) and
 \(2^A\).
 
 \textbf{Proof:}
 
-Let \(\gamma: \mathcal{P}(A) \to 2^A\). If \(B \in \mathcal{P}\) let 
+Let \(\gamma: \mathcal{P}(A) \to 2^A\). If \(B \in \mathcal{P}\) let
 
 \[
 	\gamma (B) = C_B, \forall B \in \mathcal{P}(A).
 \]
 
-By this definition we get the properties of a function directly. Now we have to prove that 
+By this definition we get the properties of a function directly. Now we have to prove that
 the function is a one-to-one correspondence.
 
-For the injectivity, we already know that for \(\gamma(B) = \gamma(C) \implies B = C\), since otherwise it would be the case 
+For the injectivity, we already know that for \(\gamma(B) = \gamma(C) \implies B = C\), since otherwise it would be the case
 that we have two elements in the power set which are identical.
 
-For the surjectivity, if \(f \in 2^A\), and we let \(B = f^{-1}(0)\), then \(f = C_B = \gamma(B)\). Thus, 
+For the surjectivity, if \(f \in 2^A\), and we let \(B = f^{-1}(0)\), then \(f = C_B = \gamma(B)\). Thus,
 \(\gamma\) satisfies the surjectivity.
 
 \QED
@@ -678,9 +678,9 @@ The range of this restricted map can be denoted as:
 A real function \(f\) is \emph{even} if
 
 \begin{itemize}
-	
+
 	\item \(\forall x \in \text{Dom}(f) \exists -x \in \text{Dom}(f)\)
-	
+
 	\item \(\forall x \in \text{Dom}(f) \text{ the following is true } f(x) = f(-x)\)
 
 \end{itemize}
@@ -690,21 +690,21 @@ A real function \(f\) is \emph{even} if
 A real function \(f\) is \emph{odd} if
 
 \begin{itemize}
-	
+
 	\item \(\forall x \in \text{Dom}(f) \exists -x \in \text{Dom}(f)\)
-	
+
 	\item \(\forall x \in \text{Dom}(f) \text{ the following is true } f(x) = - f(x)\)
 
 \end{itemize}
 
 \section{Inverse of a Function}
 
-The \emph{inverse} of a function \(f: X \to Y\) is a function \(f^{-1}: Y \to X\) that 
-reverses the operation of \(f\). That is, if \(f\) maps an element \(x \in X\) to an 
+The \emph{inverse} of a function \(f: X \to Y\) is a function \(f^{-1}: Y \to X\) that
+reverses the operation of \(f\). That is, if \(f\) maps an element \(x \in X\) to an
 element \(y \in Y\), then the inverse function \(f^{-1}\) maps \(y\) back to \(x\).
 
-Formally, a function \(f: X \to Y\) has an inverse \(f^{-1}: Y \to X\)  
-if and only if \(f\) is bijective (both injective and surjective). The inverse function satisfies the 
+Formally, a function \(f: X \to Y\) has an inverse \(f^{-1}: Y \to X\)
+if and only if \(f\) is bijective (both injective and surjective). The inverse function satisfies the
 following properties:
 
 \[
@@ -725,7 +725,7 @@ where \(id_X\) and \(id_Y\) are the identity functions on sets \(X\) and \(Y\), 
 
 \textbf{Proof:}
 
-\(\Rightarrow\): direction is trivial, due to the definition of a bijective function. 
+\(\Rightarrow\): direction is trivial, due to the definition of a bijective function.
 
 \(\Leftarrow\): Our function has the following properties:
 
@@ -740,10 +740,10 @@ where \(id_X\) and \(id_Y\) are the identity functions on sets \(X\) and \(Y\), 
 The first condition gives us injectivity because for all \(y \in Y\) there exists exactly one \(x \in X\)
 such that \(f(x) = y\). Otherwise, the condition would not be obeyed.
 
-The second one gives us the surjectivity of \(f\) by providing a definition for each \(y \in Y\). Otherwise, 
-our condition would be violated. 
+The second one gives us the surjectivity of \(f\) by providing a definition for each \(y \in Y\). Otherwise,
+our condition would be violated.
 
-The uniqueness is guaranteed by 
+The uniqueness is guaranteed by
 
 \[
 	f^{-1}(y) \ne g^{-1}(y)
@@ -773,26 +773,26 @@ We will prove the last two statements, since the fist two are trivial due to the
 
 \textbf{Proof III:}
 
-By definition 
+By definition
 
 \[
 	f^{-1}(B) = \{x \in X \mid f(x) \in B\}
 \]
 
-Note that there may be some \(b \in B\) such that \(b \neq f(x) \forall x \in f^{-1}(B)\), thus proving that 
+Note that there may be some \(b \in B\) such that \(b \neq f(x) \forall x \in f^{-1}(B)\), thus proving that
 \(f(f^{-1}(B)) \subseteq B\).
 
 \QED
 
 \textbf{Proof IV:}
 
-By definition 
+By definition
 
 \[
 	f(A) = \{y \in Y \mid f^{-1}(x) \in A\}
 \]
 
-Similarly, there might be some \(y \in f(A)\) for which there exits some \(x \in X \setminus A\) such that \(f(x) \in f(A)\). Hence, 
+Similarly, there might be some \(y \in f(A)\) for which there exits some \(x \in X \setminus A\) such that \(f(x) \in f(A)\). Hence,
 we do not have a set equality.
 
 \QED
@@ -802,15 +802,15 @@ we do not have a set equality.
 To find the inverse of a function \(f (x)\), follow these steps:
 
 \begin{enumerate}
-	
+
 	\item Replace \(f (x)\) with \(y\): \(y = f (x)\)
-	
+
 	\item Interchange the variables \(x\) and \(y\): \(x = f (y)\)
-	
+
 	\item Solve for \(y\) in terms of \(x\): \(y = f^{-1} (x)\)
-	
-	\item Verify that the resulting function is indeed the inverse by checking that \(f^{-1}(f(x)) = x\) 
-		  and \(f (f^{-1} (x)) = x\)
+
+	\item Verify that the resulting function is indeed the inverse by checking that \(f^{-1}(f(x)) = x\)
+	      and \(f (f^{-1} (x)) = x\)
 
 \end{enumerate}
 
@@ -864,7 +864,7 @@ And let's verify \(f(f^{-1}(x)) = x\):
 	             & = x
 \end{align*}
 
-Since both compositions yield the identity function, \(f^{-1} (x) = \frac{x - 3}{2}\) is indeed the 
+Since both compositions yield the identity function, \(f^{-1} (x) = \frac{x - 3}{2}\) is indeed the
 inverse of \(f (x) = 2x + 3\).
 
 \subsection{Properties of the Inverse Function}
@@ -875,58 +875,58 @@ Let \(f: X \to Y\) be a function.
 
 	\item Assume \(x \sim y\) if \(f(x) = f(y)\); then \(\sim\) is an equivalence relation.
 
-	\item Consider the quotient set \( X_f := X/\sim \), where \( \sim \) is the equivalence relation 
-	      defined by \( x \sim x' \iff f(x) = f(x') \). Let \( q_f : X \to X_f \) be the canonical 
-		  projection defined by \( q_f(x) = [x]_{\sim} \), and let \( \iota_f : f(X) \to Y \) be the inclusion  
-		  map, \( y \mapsto y \). Then the function
-	      
-		  \[
+	\item Consider the quotient set \( X_f := X/\sim \), where \( \sim \) is the equivalence relation
+	      defined by \( x \sim x' \iff f(x) = f(x') \). Let \( q_f : X \to X_f \) be the canonical
+	      projection defined by \( q_f(x) = [x]_{\sim} \), and let \( \iota_f : f(X) \to Y \) be the inclusion
+	      map, \( y \mapsto y \). Then the function
+
+	      \[
 		      \hat{f} : X_f \to f(X), \quad [x]_{\sim} \mapsto f(x)
 	      \]
-	  
-		  is a bijection, and the original map \(f\) can be written as the composition
-	 
-		  \[
+
+	      is a bijection, and the original map \(f\) can be written as the composition
+
+	      \[
 		      f = \iota_f \circ \hat{f} \circ q_f.
 	      \]
-	 
-		  Here, \( q_f \) is surjective, \( \hat{f} \) is bijective, and \( \iota_f \) is injective. 
-		  This yields the following commutative diagram:
-	      
-		  \begin{center}
-				\begin{tikzcd}
-					X \arrow[r, "f"] \arrow[d, "q_f"] & Y                         \\
-					X_f \arrow[r, "\hat{f}"]          & f(X) \arrow[u, "\iota f"]
-				\end{tikzcd}
+
+	      Here, \( q_f \) is surjective, \( \hat{f} \) is bijective, and \( \iota_f \) is injective.
+	      This yields the following commutative diagram:
+
+	      \begin{center}
+		      \begin{tikzcd}
+			      X \arrow[r, "f"] \arrow[d, "q_f"] & Y                         \\
+			      X_f \arrow[r, "\hat{f}"]          & f(X) \arrow[u, "\iota f"]
+		      \end{tikzcd}
 	      \end{center}
 
 \end{itemize}
 
 \subsection{Left and Right Inverses}
 
-Given \(f: X \to Y\), \(g: Y \to X\), and \(\gamma: Y \to X\), then  
+Given \(f: X \to Y\), \(g: Y \to X\), and \(\gamma: Y \to X\), then
 
 \begin{itemize}
-	
+
 	\item \(f\) is \emph{injective} if and only if \(g \circ f = \mathrm{Id}_X\). Each \(g\) is surjective and called the \emph{left inverse} of \(f\).
 
 
 	\item \(f\) is \emph{surjective} if and only if \(f \circ \gamma = \mathrm{Id}_Y\). Each \(\gamma\) is injective and called the \emph{right inverse} of \(f\).
-	
+
 \end{itemize}
 
 \textbf{Proof I:}
 
-\(\Leftarrow\): We assume \(g \circ f = \mathrm{Id}_X\). Let \(f(x_1) = f(x_2)\) for \(x_1, x_2 \in X\). Applying our composite function gives 
+\(\Leftarrow\): We assume \(g \circ f = \mathrm{Id}_X\). Let \(f(x_1) = f(x_2)\) for \(x_1, x_2 \in X\). Applying our composite function gives
 \(g(f(x_1)) = g(f(x_2)) \implies x_1 = x_2\), since \(g \circ f = \mathrm{Id}_X\). Therefore, \(f\) is injective.
 
-\(\Rightarrow\): Let \(f\) be injective; now let us define 
+\(\Rightarrow\): Let \(f\) be injective; now let us define
 
 \[
-	g: 
+	g:
 	\begin{cases}
-		x, & f(x) = y \\ 
-		x_0, & y \notin \img(f) 
+		x,   & f(x) = y         \\
+		x_0, & y \notin \img(f)
 	\end{cases}
 \]
 
@@ -936,33 +936,33 @@ For \(x \in \dom(f)\), \(g \circ f = \mathrm{Id}_X\) and \(g\) is also surjectiv
 
 \textbf{Proof II:}
 
-\(\Rightarrow\): Assume \(f \circ \gamma = \mathrm{Id}_Y\); now let \(y \in Y\), then \(f(\gamma(y)) = y \implies y \in \img(f)\), so \(f\) is 
+\(\Rightarrow\): Assume \(f \circ \gamma = \mathrm{Id}_Y\); now let \(y \in Y\), then \(f(\gamma(y)) = y \implies y \in \img(f)\), so \(f\) is
 surjective.
 
-\(\Leftarrow\): Let \(f\) be surjective. This means that \(|f^{-1}(\{y\})| \neq 0\) for all \(y \in Y\). Now let us define 
+\(\Leftarrow\): Let \(f\) be surjective. This means that \(|f^{-1}(\{y\})| \neq 0\) for all \(y \in Y\). Now let us define
 
 \[
 	\gamma:
 	\begin{cases}
-		x, & |f^{-1}(\{y\})| = 1 \\
+		x,                              & |f^{-1}(\{y\})| = 1 \\
 		\mathrm{choose}(f^{-1}(\{y\})), & \text{ else }
 	\end{cases}
 \]
 
 
-Note that \(f \circ \gamma = \mathrm{Id}_Y\) since there is always at least one \(x\) such that we return to \(Y\), and if there are multiple choices, 
+Note that \(f \circ \gamma = \mathrm{Id}_Y\) since there is always at least one \(x\) such that we return to \(Y\), and if there are multiple choices,
 we choose one from the fiber.
 
 \QED
 
 \textbf{Example:}
 
-Given \(f: X \to Y\) having a right inverse \(\gamma: Y \to X\) guarantees the existence of a solution to \(f(x) = y\). Set \(x = \gamma(y)\), then 
+Given \(f: X \to Y\) having a right inverse \(\gamma: Y \to X\) guarantees the existence of a solution to \(f(x) = y\). Set \(x = \gamma(y)\), then
 \(f(x) = f(\gamma(y)) = (f \circ \gamma)(y) = \text{Id}_Y(y) = y\).
 
 \subsection{Equivalent Definitions of the Inverse Function}
 
-Given the map \(f: X \to Y\), both statements are equivalent 
+Given the map \(f: X \to Y\), both statements are equivalent
 
 \begin{enumerate}
 
@@ -974,7 +974,7 @@ Given the map \(f: X \to Y\), both statements are equivalent
 
 \textbf{Proof:}
 
-\(\Rightarrow\): We assume that 1. is true, hence \(\forall y \in Y, !\exists x \in X: f^{-1}(y) = x\), in other words 
+\(\Rightarrow\): We assume that 1. is true, hence \(\forall y \in Y, !\exists x \in X: f^{-1}(y) = x\), in other words
 
 \[
 	f^{-1}(\{y\}) = \{x\}.
@@ -1004,11 +1004,11 @@ A function is \emph{bijective} (invertible) is and only if it has a left and rig
 Here, we examine how different algebraic changes to a function \( f(x) \) affect its graph:
 
 \emph{Vertical Translation:} \( f(x) + a \)
-	    
+
 \begin{itemize}
-	
+
 	\item Shifts the graph \emph{upward} if \( a > 0 \), and \emph{downward} if \( a < 0 \).
-	
+
 	\item Each point on the graph moves vertically by \(a\) units.
 
 \end{itemize}
@@ -1019,7 +1019,7 @@ Here, we examine how different algebraic changes to a function \( f(x) \) affect
 
 	\item Shifts the graph \emph{left} if \( a > 0 \), and \emph{right} if \( a < 0 \).
 
-	\item This is opposite of what might be expected: adding to \(x\) shifts the graph in the negative 
+	\item This is opposite of what might be expected: adding to \(x\) shifts the graph in the negative
 	      direction.
 
 \end{itemize}
@@ -1027,11 +1027,11 @@ Here, we examine how different algebraic changes to a function \( f(x) \) affect
 \emph{Vertical Scaling (Stretch/Compression):} \( a f(x) \)
 
 \begin{itemize}
-	
+
 	\item If \( |a| > 1 \): the graph is \emph{stretched} vertically (taller and narrower).
-	
+
 	\item If \( 0 < |a| < 1 \): the graph is \emph{compressed} vertically (shorter and wider).
-	
+
 	\item If \( a < 0 \): includes a reflection across the \emph{x-axis}.
 
 \end{itemize}
@@ -1049,7 +1049,7 @@ Here, we examine how different algebraic changes to a function \( f(x) \) affect
 \end{itemize}
 
 \emph{Reflection across the x-axis:} \( -f(x) \)
-	
+
 \begin{itemize}
 
 	\item Flips the graph upside-down over the x-axis.
@@ -1070,28 +1070,28 @@ Here, we examine how different algebraic changes to a function \( f(x) \) affect
 
 \section{Counting Functions From \texorpdfstring{\(X \to Y\)}{X to Y}}
 
-Given \(f: X \to Y\) with \(|X| = n\) and \(|Y| = m\), we can count the number of different types of functions from 
+Given \(f: X \to Y\) with \(|X| = n\) and \(|Y| = m\), we can count the number of different types of functions from
 \(X\) to \(Y\):
 
 \begin{itemize}
 
-	\item \emph{Total functions:} There are \(m^n\) total functions from \(X\) to \(Y\). Each of the \(n\) elements in 
-		  \(X\) can be mapped to any of the \(m\) elements in \(Y\).
+	\item \emph{Total functions:} There are \(m^n\) total functions from \(X\) to \(Y\). Each of the \(n\) elements in
+	      \(X\) can be mapped to any of the \(m\) elements in \(Y\).
 
-	\item \emph{Injective functions:} If \(n \leq m\), the number of injective functions is given by 
-	\(m \times (m-1) \times (m-2) \times \ldots \times (m-n+1)\). This is because the first element in \(X\) has \(m\) choices, the second has \(m-1\)
-	choices, and so on.
+	\item \emph{Injective functions:} If \(n \leq m\), the number of injective functions is given by
+	      \(m \times (m-1) \times (m-2) \times \ldots \times (m-n+1)\). This is because the first element in \(X\) has \(m\) choices, the second has \(m-1\)
+	      choices, and so on.
 
-	\item \emph{Surjective functions:} The number of surjective functions can be calculated using the 
-		  principle of inclusion-exclusion:
-		  
-		  \[
-			  \text{Number of surjective functions} = \sum_{k=0}^{m} (-1)^k \binom{m}{k} (m-k)^n
-		  \]
-		  
-		  This formula counts all functions and subtracts those that miss at least one element in \(Y\). 
+	\item \emph{Surjective functions:} The number of surjective functions can be calculated using the
+	      principle of inclusion-exclusion:
 
-	\item \emph{Bijective functions:} If \(n = m\), the number of bijective functions (one-to-one and onto) is 
-		  \(n!\) (n factorial), which counts all possible permutations of the \(n\) elements in \(X\) to the \(n\) elements in \(Y\).
+	      \[
+		      \text{Number of surjective functions} = \sum_{k=0}^{m} (-1)^k \binom{m}{k} (m-k)^n
+	      \]
+
+	      This formula counts all functions and subtracts those that miss at least one element in \(Y\).
+
+	\item \emph{Bijective functions:} If \(n = m\), the number of bijective functions (one-to-one and onto) is
+	      \(n!\) (n factorial), which counts all possible permutations of the \(n\) elements in \(X\) to the \(n\) elements in \(Y\).
 
 \end{itemize}

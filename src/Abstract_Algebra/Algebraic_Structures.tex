@@ -278,3 +278,37 @@ A \emph{vector space} over a field \(\field\) consists of:
 
 Vector spaces provide the foundation for linear algebra, where scalars from a field combine with vectors from a set.
 
+\section{Group Homomorphism}
+
+Given 
+
+\[
+    \varphi: G_1 \to G_2
+\]
+
+a function between two groups, then \(\varphi\) is called a \emph{group homomorphism} and if for all 
+\(g_1, g_2 \in G_1\) the following holds: 
+
+\[
+    \varphi(g_1 \circ_{G_1} g_2) = \varphi(g_1) \circ_{G_2} \varphi (g_2)
+\]
+
+then the \emph{kernel} of \(\varphi\) is the set 
+
+\[
+    \ker (\varphi) := \{g \in G_1 \mid \varphi(g) = e_{G_2}\}
+\]
+
+and the \emph{image} is the set 
+
+\[
+    \img (\varphi) := \{x \in G_2 \mid \exists g \in G_1: \varphi(g) = x\}.
+\]
+
+\textbf{Example:}
+
+We take \(\exp: (\R, +) \to (\R, \cdot)\) with 
+
+\[
+    \exp(x + y) = \exp(x) \cdot \exp(y).
+\]

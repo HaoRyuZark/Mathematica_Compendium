@@ -426,3 +426,59 @@ Now the matrix is upper triangular. The determinant is the product of diagonal e
     \det(A) = -3
 \]
 
+\section{Alternative Method for Finding the Rank of a Matrix}
+
+For a matrix \(A \in \field^{(m \times n)}\). The biggest submatrix of size \(r \times r\) with a
+non-zero determinant gives us the \emph{rank} of the matrix. \(\rank(A) = r\).
+
+\section{Cramer's Rule}
+
+For a square matrix \(A = (a_1, \dots, a_n)\) and \(x,b \in \field^{n}\) with \(Ax = b\) and \(\det A \ne 0\),
+then
+
+\[
+    A_i = (a_1, \dots, a_{i - 1}, b, a_{i + 1}, \dots, a_n), i = 1,\dots,n.
+\]
+
+The solution \(i\) is then
+
+\[
+    x_i = \frac{\det(A_i)}{\det(A)}
+\]
+
+\textbf{Proof:}
+
+Given a matrix \(X_i \in \field^{n \times n}\) by
+
+\[
+    \begin{bmatrix}
+        1      &   & \cdots    & x_1    &  & \cdots \\
+        \vdots &   & \ddots    & \vdots &  & 0      \\
+               &   & x_{i - 1} &        &  &        \\
+               & 0 & x_i       &        &  &        \\
+               &   & x_{i + 1} &        &  &        \\
+               &   & \vdots    & \ddots &  &        \\
+               &   & x_n       &        &  & 1
+    \end{bmatrix}
+\]
+
+\(X_i = (e_1, \dots, e_{i - 1}, e_i, e_{i + 1}, \dots, e_n)\). Applying the Laplace formula \(n\) times along the first row shows that \(|X_i| = x_i\).
+
+\begin{align*}
+    A X_i & = A (e_1, \dots, e_{i - 1}, e_i, e_{i + 1}, \dots, e_n)     \\
+    A X_i & = A (a_1, \dots, a_{i - 1}, Ax, a_{i + 1}, \dots, a_n)      \\
+    A X_i & = A (a_1, \dots, a_{i - 1}, b, a_{i + 1}, \dots, a_n) = A_i
+\end{align*}
+
+This implies \(|A_i| = |AX_i| = |A||X_i|\) therefore, \(x_i = \frac{|A_i|}{\det(A)}\).
+
+\QED
+
+Another way of thinking about this in a more geometric way is to first think of the determinant as the area/volume/etc. that is spanned by the basis 
+vector and the stretching factor of the transformation \(\det(A)\). Now visualize your matrix \(A\) as a linear transformation with
+a non-zero determinant and think about \(\det(A_i)\) as the area/volume/etc. which is spanned by the basis vector but with one of the vectors substituted 
+by \(b\).
+
+Now in two dimensions, think of the area spanned by the basis vectors \(A = xy\). The signed area of the original parallelogram gets
+stretched by \(\det(A)\), which gives us \(Area = \det(A)y \implies y = \frac{Area}{\det(A)}\). This also works for \(x\).
+

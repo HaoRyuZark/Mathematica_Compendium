@@ -319,6 +319,29 @@ The \emph{pigeonhole principle} states that if \(n\) objects are placed into \(k
 at least one box contains more than one objects. If \(n < k\), then at least one box is empty. This is a direct consecuence from the division 
 principle.
 
+\textbf{Example:}
+
+Prove that under 8 different integer there exists at least two whose difference is divisible by 7.
+
+\textbf{Prove}
+
+Let \(A = \{z_0, \dots, z_7\} \subsetneq \Z\) and \(R = \{0, \dots, 6\}\). Because the every integer can be writen as 
+\(z = 7q + r\) we now use the pigeonhole principle and note that \(|A| > |B|\), hence there are \(a, a' \in A\) such that \(\gamma(a) = \gamma(a')\). Thus, 
+under the function 
+
+\[
+    \gamma: A \to R
+\]
+
+which assigns every element from \(A\) to its corresponding residual class. Thus,
+
+\[
+    7q_1 + r - (7q_1 + r) = 7(q_1 - q_2)
+\]
+
+Therefore, their difference is divisible by seven.
+
+\QED
 
 \section{Example Problems}
 

@@ -18,49 +18,236 @@ A natural number \(b\) is \emph{odd} if \(b = 2q - 1\) with \(q \in \N\).
 
 A natural number \(a\) is a \emph{perfect square} if \(\sqrt{a} \in \N\).
 
-\section{Division Algorithm}
+\section{General Divisibility Rules}
 
-Given any two integers \(a\) and \(b\) with \(a > 0\), there exist unique integers \(q\) and \(r\) such that 
-\(b  =qa + r\) with \(0 \ge r < a\).
+For \(x, y, z, a, b \in \Z\) are the follwoing statements true: 
+
+\begin{itemize}
+
+	\item \(x \mid y\) and \(y \mid z\) follows that \(x \mid z\).
+
+	\item \(0 \mid x \implies x = 0\).
+
+	\item \(x \mid 0\) for all \(x\).
+
+	\item \(\pm \mid x\) for all \(x\).
+
+	\item \(x \mid \pm 1 \implies x = \pm 1\)
+
+	\item \(x \mid y\) and \(y \mid x\) implies \(x = \pm y\).
+
+	\item \(x\ mid y\) and \(x \mid z\) implies \(x \mid ay + b z\).
+
+\end{itemize}
+
+\section{General Division Rules}
+
+\subsection*{Sum Rules}
+
+If the number \(a\) can be expressed as a sum and \(b\) is a common divisor of all the terms, 
+then \(b\) is also a divisor of \(a\).
+
+\textbf{Example:} 
+
+\( 742 = 700 + 42 \). Then 7, as a common divisor of 700 and 42, is a divisor of 742.
+
+\subsection*{Product Rule}
+
+If the number \(a\) can be written as a product of two factors and \(b\) is a divisor of one of these factors, then \(b\) is also a divisor of \(a\).
+
+\textbf{Example:}
+
+\( 1500 = 15 \cdot 100 \). Then 3 and 5 are divisors of 15, and 2, 4, 5, 10, 25, and 50 are divisors of 
+100—thus, all are divisors of 1500.
+
+\subsubsection*{Divisor Pair Rules}
+
+If the number \(a\) has \(b\) as a divisor, then \( \frac{a}{b} \) is also a divisor of \(a\).
+
+\textbf{Example:}
+
+3 is a divisor of 315. Then \( 105 = \frac{315}{3} \) is also a divisor of 315.
+
+\subsection*{Divisor Rule}
+
+If the number \(a\) has \(b\) as a divisor, then every divisor of \(b\) is also a divisor of 
+\(a\).
+
+\textbf{Example:}
+
+45 is a divisor of 450. Then 3, 5, 9, and 15 (divisors of 45) are also divisors of 450.
+
+\subsection*{Difference Rule}
+
+If the number \(a\) can be expressed as a difference and \(b\) is a common divisor of the minuend 
+and subtrahend, then \(b\) is also a divisor of \(a\).
+
+\textbf{Example:}
+
+\( 686 = 700 - 14 \). Then 7, as a common divisor of 700 and 14, is a divisor of 686.
+
+\subsection*{Relative Prime Rule}
+
+If the number \(a\) has two relatively prime numbers \(b\) and \( c \) as divisors, then their 
+product \( b \cdot c \) is also a divisor of \(a\).
+
+\textbf{Example:}
+
+1540 has the relatively prime numbers 7 and 11 as divisors. Then \( 77 = 7 \cdot 11 \) is also a divisor 
+of 1540.
+
+\section{Using Modular Arithmetic to Find the n-th Digit of a Large Number}
+
+What is the last digit of the number \(13^{2023}\)?
+
+Note that \(13 \mod 10 = 3\) and  \(13^2 \mod 10 =  ((13 \mod 10)  (13\mod 10)) \mod 10 = 9 \).
+
+We can continue this process, and we will notice a pattern. After some iterations, we will know that
+
+\[
+    (13^{2020} 13) \mod 10 = 7.
+\]
+
+\section{Gaussian Brackets}
+
+The Gaussian brackets refer to two closely related functions used to round real numbers to integers in specific ways:
+
+\subsection{Floor Function}
+
+The floor function, denoted by \(\lfloor x \rfloor\), gives the greatest integer less than or equal 
+to a real number \(x\).
+
+\textbf{Example:}
+
+\(\lfloor 3.7 \rfloor = 3\), \(\lfloor -1.2 \rfloor = -2\)
+
+\subsection{Ceiling Function} 
+    
+The ceiling function, denoted by \(\lceil x \rceil\), gives the smallest integer greater than or 
+equal to a real number \(x\).
+
+\textbf{Example:}
+
+\(\lceil 3.7 \rceil = 4\), \(\lceil -1.2 \rceil = -1\)
+
+These functions are particularly useful in number theory, computer science, and rounding operations, where precise integer bounds of real numbers are required.
+
+\section{Residual Class Ring Modulo \texorpdfstring{\(n\)}{}}
+
+Given \(n \in \N\), we define the relation \(\sim_n\) for \(\Z\).
+
+\[
+    a \sim b \iff n \mid (a - b).
+\]
+
+Also, \(a / n\) and \(b / n\) have the same remainder.
+
+\subsection{Equivalence Class of \texorpdfstring{\(\Z\)}{}} 
+
+For \(i, n \in \Z\) 
+
+\[
+    \overline{i} := i + n \Z = \{ i + na \mid a \in \Z\}
+\]
+
+and 
+
+\[
+    \Z_N = \Z / n \Z = \{\overline{0}:= n \Z, \overline{1}:= 1 + n \Z, \dots, \overline{n - 1} := n - 1 + n \Z \},
+\]
+
+is the set of all equivalence classes for \(\Z\) with respect to the relation 
+\(k \sim l \iff n \mid (k - l)\). We define the addition and multiplication for \(\Z / n \Z\) using the representatives:
+
+\[
+    (a  + n \Z) + (b + n \Z) := (a + b) + n\Z
+\]
+
+and 
+
+\[
+    (a  + n \Z) \cdot (b + n \Z) := ab + n\Z
+\]
+
+For all \(a, b \in \Z\). Therefore, 
+
+\[
+    \overline{a} + \overline{b} = \overline{a + b}, \quad \overline{a} \cdot \overline{b} = \overline{ab}.
+\]
+
+\section{Minimal Multiple}
+
+For all integers \(a \in \Z_{\ge 0}\). 0 is the only multiple of \(a\) between \(a\) and 0.
 
 \textbf{Proof:}
 
-Let \(S = \{b - xa \mid b - xa \ge 0, x \in \Z\}\).
-
-By the well-ordering principle of the natural numbers, we know that our set has 
-a minimum \(r\). 
-
-First, we prove \( 0 \le r\).
-
-If \(b \ge 0\), then let \(x = 0 \implies b \in S\).
-For \(b < 0\), let \(x = b\). Thus,
+Let us suppose there exist an integer \(z\) with \(0 < z < a\) such that \(a \mid z\). Then 
 
 \[
-	b - ba  = b(1 - a) \implies b - ba \in S.
+	z = aq
 \]
 
-Now, to prove that \(r < a\), assume \( r \ge a\), but then 
+Since \(a > z\), if \(q > 0\), then \(aq > qz > z\), for \(q < 0\) we have that \(aq < qz < z\) and finally 
+for \(q = 0\) we get that \(z = 0\), thus we have a contradiction.
 
+\QED
+
+This important for the next theorem.
+
+\section{Division Theorem}
+
+Given any two integers \(a\) and \(b\) with \(a > 0\), there exist unique integers \(q\) and \(r\) such that 
+\(a = qb + r\) with \(0 \ge r < b\).
+
+This is very important as it allows to write a number in terms of another with ease by just using our number a the left side and the other on the right side with 
+the product and the residual \(\text{target}\, = q(\text{some number}) + r\). Of course, obeying the constraints that our target is greater or equal that our current number.
+
+\textbf{Proof:}
+
+We first will prove that such integers exists. We do this by first reduce our scope to \(b > 0\) and prove the 
+existence of \(r\) by constructing the following set. 
+
+\[
+	S = \{a - bq \mid q \in \Z, \, a - bx \ge 0\}
+\]
+
+Note that \(S\) is not empty since, for \(a \ge 0\) we can choose \(q = 0\) giving us 
+
+\[
+	a - 0 = a \in S
+\]
+
+and for \(a < 0\) we can choose \(q = a\) giving us since \(b > 0\)
+
+\[ 
+	a_{< 0}(1 - b)_{< 0} \ge 0.
+\] 
+
+Since \(S\) is not empty at it only contains positive integers we can apply the \emph{well-ordering-principle} which tells us that 
+every subset of the Natural has minimum which we will call \(r\). Hence \(r = a - bq \ge 0\). We now need to 
+show that \(0 \le r < b\), by contradiction.
+
+If \(r \ge b\), then 
 
 \begin{align*}
-	b  - qa &\ge a \\
-	b  - qa - a &\ge 0\\ 
-	b  - a(q + 1) &\ge 0\\ 
-	b  - a(q + 1) &\ge 0 \implies b - a(q + 1) \in S.
+	a - qb &\ge b \\	
+	a - qb - b &= a - (q + 1)b \ge 0
 \end{align*}
 
-And \(b - a(q + 1) < b - aq = r \implies r < a\). Therefore, we have a contradiction.
+Hence, \(r - b \in S\), but \(r - b < r\) and thus we have a contradiction since \(r\) is the minimum of \(S\).
 
-Now, we will prove the uniqueness. 
+For the uniqueness, we suppose that \(q, q'\) and \(r, r'\) satisfy our equality and we also assume without loosing generality that \(r' \ge r\).
 
-Assume \(pq + r = a = pq' + r'\) with \(q \ne q' \) and \(r \ne r'\).
+Then from our equality we can get the following
 
-\[	
-	r - r' = a(q - q') = 0
+\[
+	b(q - q') = r' - r
 \]
 
-Using the property of inverses of \(\Z \setminus \{0\}\) as a field, we know that 
-\(r = r'\) and \(q - q'\).
+where \(0 \ge r' - r < b\) and the left-hand-side is a multiple of \(b\). Now now note, the only multiple of \(b\) which is between 
+\(b\) and zero without including \(b\) itself is \(0\) hence \(r = r'\) and because of the equality \(q = q'\).
+
+For \(b < 0\) we use the case of \(-b > 0\) and also use \(-q\) and do the same.
 
 \QED 
 
@@ -116,7 +303,7 @@ If \(t = 1\), then \(a\) and \(b\) are said to be \emph{coprime} or \emph{relati
 
 If \(a = bq + r\) then \(\gcd(a, b) = \gcd(b, r)\). 
 
-\textbf{Input:} \(a, b \in \mathbb{Z}\), \(a \neq 0 \neq b\).  
+\textbf{Input:} \(a, b \in \Z\), \(a \neq 0 \neq b\).  
 
 \textbf{Output:} The greatest common divisor \(t\) of \(a\) and \(b\).
 
@@ -128,7 +315,10 @@ If \(a = bq + r\) then \(\gcd(a, b) = \gcd(b, r)\).
 
 	\item Set \(r_1 := a\); \(r_2 := b\); \(k := 2\).
 
-	\item As long as \(r_k \neq 0\), define \(r_{k+1} := r_{k-1} \bmod r_k\).
+	\item As long as \(r_k \neq 0\), define \(r_{k+1} := r_{k - 1} \mod r_k\) or equivalently and easier 
+	\[
+		r_{k + 1} = r_k - q r_{k - 1}, \quad q \in \Z
+	\]
 
 	\item As soon as \(r_k = 0\), return \(r_{k-1}\).
 
@@ -145,7 +335,7 @@ the well-ordering principle of the natural numbers.
 For the correctness: given is \(a = bq + r\) to show that \(\gcd(a, b) = \gcd(b, r)\). This is like saying:
 
 \begin{align*}
-	\gcd(a,b) & = gcd(b, r) \\ 
+	\gcd(a,b) & = \gcd(b, r) \\ 
 	\gcd(b,r) & = \gcd(r, r_1)\\
 	\gcd(r, r_1) & = \gcd(r_1, r_2) \\
 	& \vdots \\
@@ -166,7 +356,6 @@ so their greatest common divisors are equal.
 Find \(\gcd(252, 198)\):
 
 \begin{align*}
-	r_{n - 1} & = q_{n - 1} r_n + r_{n + 1} \\
 	252 & = 1 \cdot 198 + 54  \\
 	198 & = 3 \cdot 54 + 36   \\
 	54  & = 1 \cdot 36 + 18   \\
@@ -236,66 +425,83 @@ Also, we can express \(\varepsilon\) as a matrix multiplication:
 
 with \(a = qb + r\) and \(q \in \Z, 0 \le q < |b|\).
 
-\subsection{Bezout Identity}
+\section{Bezout Identity}
 
 This is one of the most important properties of the \emph{gcd}. 
-Given \(a, b \in \Z\), not both zero, there exist integers \(\alpha, \beta \in \Z\) such that
+Given \(a, b \in \Z\), not both zero, there exist integers \(x, y \in \Z\) such that
 
 \[
-	\gcd(a, b) = a\alpha + b\beta
+	\gcd(a, b) = ax + by
 \]
 
 This equation comes directly from \emph{Euclid's Algorithm}. For the intuition, when writing your iterations 
-you can manipulate them to arrive at the solution.
+you can manipulate them to arrive at the solution by substituting the previous reminders in to its form of \(r_{q} - kr_{k}\).
 
 \textbf{Proof:}
 
-Given 
+To prove this we will use a construction of a set
 
 \[
-	M := \{a\alpha + b \beta \mid a\alpha + b \beta > 0 \land \alpha \in \Z \land \beta \in \Z\}
+	M := \{ax + by \mid ax + b y > 0 \land x \in \Z \land y \in \Z\}
 \]
 
-\(M\) is not empty because \(\alpha, \beta \in M\), and it has a minimum by the well-ordering principle 
-of the natural numbers which we will call \(c\).
+We will prove that \(\min(M) = \gcd(a, b)\).
 
-Then, let \(k \in M\). Then there exist \(q \in \N_0\) and \(r \in \N_0\) with \(r < c\) such 
-that
+
+We know that \(M\) is not empty because \(\alpha, \beta \in M\), and it has a minimum by the well-ordering principle 
+of the natural numbers which we will call \(d = a x_0 + b y_0\). Now we will use that fact any integer can be written as a product plus 
+reminder by writing \(a\) as 
 
 \[
-	k = qc + r
+	a = qd + r
 \]
 
-because \(k\) and \(c\) are elements of \(M\) we should be able to find \(r_1, r_2, s_1, s_2\)  such that 
-
-\[
-	k = r_1 a + s_1 b \quad c = r_2 a + s_2 b
-\]
-
-Now let us
+Now we proceed to 
 
 \begin{align*}	
-	k = r_1 a + s_1 b &= qc + r \\ 
-		r_1 a + s_1 b &= q(r_2 a + s_2 b) + r \\ 
-		r &= r_1 a + s_1 b - q(r_2 a + s_2 b)  \\ 
-		r &= r_1 a + s_1 b - qr_2 a  -qs_2 b  \\
-		r &= (r_1  - qr_2)a + (s_1   -qs_2) b 
+	a &= qd + r \\
+	r &= a - qd \\
+	&= a - q( a x_0 + b y_0)\\
+	&= a - qax_0 - bqy_0\\
+	&= a(1 - qx_0) + b (-qy_0)
 \end{align*}
 
-\(r \ge 0\) and  \(r < c\), but if \(r \ne 0\) then \(r \in M\) would be the minimum which is a contradiction to the assumption 
-that \(c\) is the minimum, also \(r = 0\), \(k = qc\). Thus, \emph{every element of M is a multiple of c}. Therefore, 
-\(a,b\) are also divisible by \(c\).
-
-Now we need to show that \(c\) is in fact the greatest common divisor. \(c = r_2 a + s_2 b\) 
+This is also a member of \(M\) since \(1 - qx_0\) and \(-qy_0\) are also integers. Also note that 
 
 \[
-	c = a \alpha_0 + b \beta_0
+	0 < a - qd < ax_0 + by_0
 \]
 
-Because \(c \mid a \land c \mid b\) we know that \(c \mid a \alpha_0 + b \beta_0 \). We also 
-know that \(c \mid \gcd(a,b)\) and thus, \(|c| =|g = \gcd(a,b| \), but because both are positive \(c = g\).
+But this would be a contradiction to the fact that \(d\) is the minimum of \(M\). Therefore, \(r = 0\) thus, 
+giving us \(d \mid a\). Using the same argument with \(q'\) and \(r'\) we would arrive at the same conclusion for \(b\). 
+Now we have a common divisor, leaving us with only proving that it is in fact the greatest.
+
+Let \(c\) be a common divisor of both \(a\) and \(b\). Then, \(c \mid ax_0 + by_0\). Note that any common divisor of \(a\) and \(b\)
+also divides \(d\), hence it is the greatest common divisor.
 
 \QED
+
+\textbf{Example}
+
+Find \(\gcd(252, 198)\) and the Bezout coefficients:
+
+\begin{align*}
+	252 & = 1 \cdot 198 + 54  \\
+	198 & = 3 \cdot 54 + 36   \\
+	54  & = 1 \cdot 36 + 18   \\
+	36  & = 2 \cdot 18 + 0
+\end{align*}
+
+So, \(\gcd(252, 198) = 18\). Now we work backwards 
+
+
+\begin{align*}	
+	18 &= 54 - 36 \\
+	   &= 54 - (198 - 3(54)) \\
+	   &= -198 + 4(54)) \\
+\end{align*}
+
+So, \(\alpha = 4\) and \(\beta = -1\).
 
 \section{Prime Field}
 
@@ -446,6 +652,33 @@ or equivalently
 
 This means that both have the \textbf{same remainder} when divided by \(n\).
 
+\subsection{Properties of Modular Arithmetic}
+
+\begin{itemize}
+    
+    \item  \emph{Addition}:
+    \[
+        (a + b) \mod n = (a \mod n + b \mod n) \mod n
+    \]
+
+    \item \emph{multiplication}:
+    \[
+        (a \cdot b) \mod n = (a \mod n \cdot b \mod n) \mod n
+    \]
+
+    \item \emph{Potenziation}:
+    \[
+        (a^m) \mod n = ({(a \mod n)}^m) \mod n
+    \]
+
+    \item \emph{Division}:
+    \[
+        \left(\frac{a}{b}\right) \mod n \ne  \frac{a \mod n}{b \mod n}
+    \]
+
+\end{itemize}
+
+
 \section{Residual Classes and Residual Class Rings}
 
 Because we have an equivalence relation, we can classify the partitions of our set \(\Z\) into classes, which we will call \emph{residual classes}.
@@ -458,165 +691,32 @@ Because we have an equivalence relation, we can classify the partitions of our s
 
 The set of all residual classes can be written as \(\Z / n \Z\), where \(n\) is the modulus. 
 
-\section{Properties}
+\subsection{Addition and Multiplication}
 
-\begin{itemize}
-    
-    \item  
-    \[
-        (a + b) \mod n = (a \mod n + b \mod n) \mod n
-    \]
-
-    \item 
-    \[
-        (a * b) \mod n = (a \mod n * b \mod n) \mod n
-    \]
-
-    \item 
-    \[
-        (a^m) \mod n = ({(a \mod n)}^n) \mod n
-    \]
-
-    \item 
-    \[
-        \left(\frac{a}{b}\right) \mod n \ne  \frac{a \mod n}{b \mod n}
-    \]
-
-\end{itemize}
-
-\section{General Division Rules}
-
-\subsection*{Sum Rules}
-
-If the number \(a\) can be expressed as a sum and \(b\) is a common divisor of all the terms, 
-then \(b\) is also a divisor of \(a\).
-
-\textbf{Example:} 
-
-\( 742 = 700 + 42 \). Then 7, as a common divisor of 700 and 42, is a divisor of 742.
-
-\subsection*{Product Rule}
-
-If the number \(a\) can be written as a product of two factors and \(b\) is a divisor of one of these factors, then \(b\) is also a divisor of \(a\).
-
-\textbf{Example:}
-
-\( 1500 = 15 \cdot 100 \). Then 3 and 5 are divisors of 15, and 2, 4, 5, 10, 25, and 50 are divisors of 
-100—thus, all are divisors of 1500.
-
-\subsubsection*{Divisor Pair Rules}
-
-If the number \(a\) has \(b\) as a divisor, then \( \frac{a}{b} \) is also a divisor of \(a\).
-
-\textbf{Example:}
-
-3 is a divisor of 315. Then \( 105 = \frac{315}{3} \) is also a divisor of 315.
-
-\subsection*{Divisor Rule}
-
-If the number \(a\) has \(b\) as a divisor, then every divisor of \(b\) is also a divisor of 
-\(a\).
-
-\textbf{Example:}
-
-45 is a divisor of 450. Then 3, 5, 9, and 15 (divisors of 45) are also divisors of 450.
-
-\subsection*{Difference Rule}
-
-If the number \(a\) can be expressed as a difference and \(b\) is a common divisor of the minuend 
-and subtrahend, then \(b\) is also a divisor of \(a\).
-
-\textbf{Example:}
-
-\( 686 = 700 - 14 \). Then 7, as a common divisor of 700 and 14, is a divisor of 686.
-
-\subsection*{Relative Prime Rule}
-
-If the number \(a\) has two relatively prime numbers \(b\) and \( c \) as divisors, then their 
-product \( b \cdot c \) is also a divisor of \(a\).
-
-\textbf{Example:}
-
-1540 has the relatively prime numbers 7 and 11 as divisors. Then \( 77 = 7 \cdot 11 \) is also a divisor 
-of 1540.
-
-\section{Using Modular Arithmetic to Find the n-th Digit of a Large Number}
-
-What is the last digit of the number \(13^{2023}\)?
-
-Note that \(13 \mod 10 = 3\) and  \(13^2 \mod 10 =  ((13 \mod 10)  (13\mod 10)) \mod 10 = 9 \).
-
-We can continue this process, and we will notice a pattern. After some iterations, we will know that
+For the residual class rigns we can define 
 
 \[
-    (13^{2020} 13) \mod 10 = 7.
-\]
-
-\section{Gaussian Brackets}
-
-The Gaussian brackets refer to two closely related functions used to round real numbers to integers in specific ways:
-
-\subsection{Floor Function}
-
-The floor function, denoted by \(\lfloor x \rfloor\), gives the greatest integer less than or equal 
-to a real number \(x\).
-
-\textbf{Example:}
-
-\(\lfloor 3.7 \rfloor = 3\), \(\lfloor -1.2 \rfloor = -2\)
-
-\subsection{Ceiling Function} 
-    
-The ceiling function, denoted by \(\lceil x \rceil\), gives the smallest integer greater than or 
-equal to a real number \(x\).
-
-\textbf{Example:}
-
-\(\lceil 3.7 \rceil = 4\), \(\lceil -1.2 \rceil = -1\)
-
-These functions are particularly useful in number theory, computer science, and rounding operations, where precise integer bounds of real numbers are required.
-
-\section{Residual Class Ring Modulo \texorpdfstring{\(n\)}{}}
-
-Given \(n \in \N\), we define the relation \(\sim_n\) for \(\Z\).
-
-\[
-    a \sim b \iff n \mid (a - b).
-\]
-
-Also, \(a / n\) and \(b / n\) have the same remainder.
-
-\subsection{Equivalence Class of \texorpdfstring{\(\Z\)}{}} 
-
-For \(i, n \in \Z\) 
-
-\[
-    \overline{i} := i + n \Z = \{ i + na \mid a \in \Z\}
+	[a] + [b] = [a + b]
 \]
 
 and 
 
 \[
-    \Z_N = \Z / n \Z = \{\overline{0}:= n \Z, \overline{1}:= 1 + n \Z, \dots, \overline{n - 1} := n - 1 + n \Z \},
+	[a] \cdot [b] = [a \cdot b]
 \]
 
-is the set of all equivalence classes for \(\Z\) with respect to the relation 
-\(k \sim l \iff n \mid (k - l)\). We define the addition and multiplication for \(\Z / n \Z\) using the representatives:
+which are both well defined functions.
+
+\textbf{Proof:}
+
+For \(a \in [a]\) and \(b \in [b]\) we have that 
 
 \[
-    (a  + n \Z) + (b + n \Z) := (a + b) + n\Z
+	qp + r_1 + kp + r_2 = p(q + k) + r_1 + r_2
 \]
 
-and 
+which is member of a class on its onw \([a + b]\). Similar for the multiplication. 
 
-\[
-    (a  + n \Z) \cdot (b + n \Z) := ab + n\Z
-\]
-
-For all \(a, b \in \Z\). Therefore, 
-
-\[
-    \overline{a} + \overline{b} = \overline{a + b}, \quad \overline{a} \cdot \overline{b} = \overline{ab}.
-\]
+\QED
 
 

@@ -1,7 +1,7 @@
 \chapter{Propositional Logic}
 
-\emph{Propositional logic}, also called Boolean logic, is one of the foundational branches of mathematics and, thus, the 
-first chapter of this book. In propositional logic, we use symbolic variables to represent the logic, and we can use any symbol to represent a proposition, such as 
+\emph{Propositional logic}, also called Boolean logic, is one of the foundational branches of mathematics and, thus, the
+first chapter of this book. In propositional logic, we use symbolic variables to represent the logic, and we can use any symbol to represent a proposition, such as
 \(p, q, r, s, t,\) etc. Propositions can be either \emph{true} (\(1\), T) or \emph{false} (\(0\), F), but they cannot be both.
 
 \textbf{Remark}: In programming languages like C, any number greater than 0 is treated as T.
@@ -12,7 +12,7 @@ A \emph{predicate} is a statement which contains variables linked by some proper
 
 \section{Predicate Substitution}
 
-Given a predicate \(P\) on the variable \(v\), we can substitute every free instance of \(v\) with the term \(v\) to extend 
+Given a predicate \(P\) on the variable \(v\), we can substitute every free instance of \(v\) with the term \(v\) to extend
 our predicate to another variable space.
 
 \[
@@ -23,11 +23,11 @@ our predicate to another variable space.
 Types of substitution:
 
 \begin{itemize}
-	
+
 	\item \emph{Full replacement}: \([y/x]\forall z((z = x) \land (y \in x))\), converted to \(\forall z((z = y) \land (y \in y))\).
 
 	\item \emph{Partial replacement}: \([y/ x]x = y \land \forall x (x \in y)\), the \(x\) of \(\forall x(x \in y)\) is not a free variable, hence it can not be
-	replaced completely, just \(y = y \land \forall x (x \in y)\).
+	      replaced completely, just \(y = y \land \forall x (x \in y)\).
 
 \end{itemize}
 
@@ -49,11 +49,11 @@ Let \(P:= x = a\) be a predicate in \(a\) and \(x\). We apply:
 	[b / x](x = a) \text{ to } b = a \text{, then by extension of our predicate } \forall a \forall ( a = b \implies b = a )).
 \]
 
-\QED 
+\QED
 
 Prove \(\forall a (a = b \land b = c \implies c = a)\):
 
-We know \(a = b \land b = a\), let this be our predicate with \(x\) and apply the substitution \([c/b]\), which gives 
+We know \(a = b \land b = a\), let this be our predicate with \(x\) and apply the substitution \([c/b]\), which gives
 us \(a = x\), \(a = b\) and finally \(a = c\).
 
 \QED
@@ -69,8 +69,8 @@ us \(a = x\), \(a = b\) and finally \(a = c\).
 		\toprule
 		\(p\) & \(\neg q\) \\
 		\midrule
-		T   & F        \\
-		F   & T        \\
+		T     & F          \\
+		F     & T          \\
 		\bottomrule
 	\end{tabular}
 
@@ -82,10 +82,10 @@ us \(a = x\), \(a = b\) and finally \(a = c\).
 		\toprule
 		\(p\) & \(q\) & \(p \land q\) \\
 		\midrule
-		T   & T   & T           \\
-		T   & F   & F           \\
-		F   & T   & F           \\
-		F   & F   & F           \\
+		T     & T     & T             \\
+		T     & F     & F             \\
+		F     & T     & F             \\
+		F     & F     & F             \\
 		\bottomrule
 	\end{tabular}
 
@@ -97,10 +97,10 @@ us \(a = x\), \(a = b\) and finally \(a = c\).
 		\toprule
 		\(p\) & \(q\) & \(p \lor q\) \\
 		\midrule
-		T   & T   & T          \\
-		T   & F   & T          \\
-		F   & T   & T          \\
-		F   & F   & F          \\
+		T     & T     & T            \\
+		T     & F     & T            \\
+		F     & T     & T            \\
+		F     & F     & F            \\
 		\bottomrule
 	\end{tabular}
 
@@ -112,10 +112,10 @@ us \(a = x\), \(a = b\) and finally \(a = c\).
 		\toprule
 		\(p\) & \(q\) & \(p \implies q\) \\
 		\midrule
-		T   & T   & T        \\
-		T   & F   & F        \\
-		F   & T   & T        \\
-		F   & F   & T        \\
+		T     & T     & T                \\
+		T     & F     & F                \\
+		F     & T     & T                \\
+		F     & F     & T                \\
 		\bottomrule
 	\end{tabular}
 
@@ -127,10 +127,10 @@ us \(a = x\), \(a = b\) and finally \(a = c\).
 		\toprule
 		\(p\) & \(q\) & \(p \iff q\) \\
 		\midrule
-		T   & T   & T         \\
-		T   & F   & F         \\
-		F   & T   & F         \\
-		F   & F   & T         \\
+		T     & T     & T            \\
+		T     & F     & F            \\
+		F     & T     & F            \\
+		F     & F     & T            \\
 		\bottomrule
 	\end{tabular}
 
@@ -142,10 +142,10 @@ us \(a = x\), \(a = b\) and finally \(a = c\).
 		\toprule
 		\(p\) & \(q\) & \(p \oplus q\) \\
 		\midrule
-		T   & T   & F            \\
-		T   & F   & T            \\
-		F   & T   & T            \\
-		F   & F   & F            \\
+		T     & T     & F              \\
+		T     & F     & T              \\
+		F     & T     & T              \\
+		F     & F     & F              \\
 		\bottomrule
 	\end{tabular}
 
@@ -157,10 +157,10 @@ us \(a = x\), \(a = b\) and finally \(a = c\).
 		\toprule
 		\(p\) & \(q\) & \(p \downarrow q\) \\
 		\midrule
-		T   & T   & F                \\
-		T   & F   & F                \\
-		F   & T   & F                \\
-		F   & F   & T                \\
+		T     & T     & F                  \\
+		T     & F     & F                  \\
+		F     & T     & F                  \\
+		F     & F     & T                  \\
 		\bottomrule
 	\end{tabular}
 
@@ -172,10 +172,10 @@ us \(a = x\), \(a = b\) and finally \(a = c\).
 		\toprule
 		\(p\) & \(q\) & \(p \uparrow q\) \\
 		\midrule
-		T   & T   & F              \\
-		T   & F   & T              \\
-		F   & T   & T              \\
-		F   & F   & T              \\
+		T     & T     & F                \\
+		T     & F     & T                \\
+		F     & T     & T                \\
+		F     & F     & T                \\
 		\bottomrule
 	\end{tabular}
 
@@ -184,30 +184,30 @@ us \(a = x\), \(a = b\) and finally \(a = c\).
 
 \section{Implications}
 
-As a side note, for the \emph{implication} 
+As a side note, for the \emph{implication}
 
 \[
 	p \implies q
 \]
 
-we can think about it as \emph{if, then}. For the cases  false, true; and false, false; we call them \emph{vacuously} true. 
+we can think about it as \emph{if, then}. For the cases  false, true; and false, false; we call them \emph{vacuously} true.
 From a false premise, anything can follow.
 
 \textbf{Example:}
 
-Let \(p\) be ``it rained'' and \(q\) ``the street is wet'', with theirs respective negations ``it did not rain'', ``the street is not wet''. 
+Let \(p\) be ``it rained'' and \(q\) ``the street is wet'', with theirs respective negations ``it did not rain'', ``the street is not wet''.
 
 Now, let us study each of the cases:
 
 \begin{center}
-		\begin{tabular}{|c|c|c|}
+	\begin{tabular}{|c|c|c|}
 		\toprule
 		\(p\) & \(q\) & \(p \implies q\) \\
 		\midrule
-		T   & T   & T        \\
-		T   & F   & F        \\
-		F   & T   & T        \\
-		F   & F   & T        \\
+		T     & T     & T                \\
+		T     & F     & F                \\
+		F     & T     & T                \\
+		F     & F     & T                \\
 		\bottomrule
 	\end{tabular}
 \end{center}
@@ -218,8 +218,8 @@ Now, let us study each of the cases:
 
 	\item \(p\) is true and \(q\) is false: ``It rained but the street is not wet.'' This makes the implication \(p \implies q\) false, since the stree should be wet.
 
-	\item \(p\) is false and \(q\) is true: ``It did not rain but the street is wet.'' This makes the implication \(p \implies q\) true (vacuously true). 
-	An external factor could have been responsible for the street being wet.
+	\item \(p\) is false and \(q\) is true: ``It did not rain but the street is wet.'' This makes the implication \(p \implies q\) true (vacuously true).
+	      An external factor could have been responsible for the street being wet.
 
 	\item \(p\) and \(q\) are both false: ``It did not rain and the street is not wet.'' This makes the implication \(p \implies q\) true (vacuously true).
 
@@ -229,7 +229,7 @@ We simplify the possibilites inside this mini universe and the implication becom
 
 \section{If And Only If}
 
-\emph{If and only if} \(\iff\) is equivalent to  
+\emph{If and only if} \(\iff\) is equivalent to
 
 \[
 	(A \implies B) \land (B \implies A).
@@ -241,16 +241,16 @@ Which is justs its definition.
 
 \emph{Tautology}: A logical formula that is always true.
 
-Common tautologies 
+Common tautologies
 
 \begin{itemize}
 
 	\item \(p \implies q \lor p\)
 
 	\item \(q \implies p \lor q\)
-	
+
 	\item \(p \land q \implies p\)
-	
+
 	\item \(q \land q \implies q \)
 
 	\item \([(p \implies q) \land (q \implies r)] \implies  (p \implies r)\)
@@ -283,6 +283,12 @@ We can write this as \(P \equiv Q\) or \(P \iff Q\).
 \[
 	p \land (q \lor r) \iff (p \land q) \lor (p \land r) \qquad
 	p \lor (q \land r) \iff (p \lor q) \land (p \lor r)
+\]
+
+and for composite statements
+
+\[
+	(p \lor q) \land (r \lor s)  \iff (p \land r) \lor (p \land s) \lor (q \land  r) \lor (q \land s).
 \]
 
 \emph{Identity Laws}
@@ -371,7 +377,7 @@ We can write this as \(P \equiv Q\) or \(P \iff Q\).
 \section{Truth Tables}
 
 \emph{Truth tables} are a fundamental tool in logic that systematically show the truth value
-(true or false) of a compound statement for every possible combination of the truth values of 
+(true or false) of a compound statement for every possible combination of the truth values of
 its individual component statements.
 
 Essentially, they lay out all the scenarios and the resulting truth of the overall logical expression.
@@ -385,44 +391,44 @@ under which a complex statement is true or false.
 		\hline
 		\(p\) & \(q\) & \(\neg p\) & \(\neg q\) & \(\neg p \implies q\) & \((\neg p \implies q) \land \neg p\) & \(\left[(\neg p \implies q) \land \neg p\right] \Rightarrow q\) \\
 		\hline
-		T   & T   & F        & F        & T                      & F                                     & T                                                                \\
-		T   & F   & F        & T        & T                      & F                                     & T                                                                \\
-		F   & T   & T        & F        & T                      & T                                     & T                                                                \\
-		F   & F   & T        & T        & F                      & F                                     & T                                                                \\
+		T     & T     & F          & F          & T                     & F                                    & T                                                               \\
+		T     & F     & F          & T          & T                     & F                                    & T                                                               \\
+		F     & T     & T          & F          & T                     & T                                    & T                                                               \\
+		F     & F     & T          & T          & F                     & F                                    & T                                                               \\
 		\hline
 	\end{tabular}
 \end{center}
 
 \subsection{Filling a Truth Table}
-To fill a truth table for a logical expression with truth values (True or False), you follow a 
-specific order for the input variables. This order ensures that all possible combinations of truth values 
+To fill a truth table for a logical expression with truth values (True or False), you follow a
+specific order for the input variables. This order ensures that all possible combinations of truth values
 for the variables are covered.
 
 \begin{enumerate}
 
-	\item \textbf{List all possible combinations of truth values for the input variables}: 
-			If you have \(n\) variables, the number of rows in the truth table will be \(2^n\). Each 
-			variable can be either True (T) or False (F).
+	\item \textbf{List all possible combinations of truth values for the input variables}:
+	      If you have \(n\) variables, the number of rows in the truth table will be \(2^n\). Each
+	      variable can be either True (T) or False (F).
 
 	\item \textbf{Order of the input variables}:
 
-			\begin{itemize}
-					
-				\item Start by filling in the truth values for the first variable. It alternates between 
-					  True and False every \(2^{n-1}\) rows.
-					
-				\item Then for the second variable, it alternates every \(2^{n-2}\) rows, and so on.
-					
-				\item In short: the first variable alternates every other row, the second variable every two 
-					rows, the third every four rows, and so on.
-			
-			\end{itemize}
+	      \begin{itemize}
+
+		      \item Start by filling in the truth values for the first variable. It alternates between
+		            True and False every \(2^{n-1}\) rows.
+
+		      \item Then for the second variable, it alternates every \(2^{n-2}\) rows, and so on.
+
+		      \item In short: the first variable alternates every other row, the second variable every two
+		            rows, the third every four rows, and so on.
+
+	      \end{itemize}
 
 \end{enumerate}
 
-\textbf{Example:} 
+\textbf{Example:}
 
-For 3 variables, there are \(2^3 = 8\) possible combinations of truth values. The truth values are filled 
+For 3 variables, there are \(2^3 = 8\) possible combinations of truth values. The truth values are filled
 in the following order:
 
 \[
@@ -430,14 +436,14 @@ in the following order:
 		\hline
 		p & q & r & \text{Expression Result} \\
 		\hline
-		T & T & T &       -                  \\
-		T & T & F &       -                  \\
-		T & F & T &       -                  \\
-		T & F & F &       -                  \\
-		F & T & T &       -                  \\
-		F & T & F &       -                  \\
-		F & F & T &       -                  \\
-		F & F & F &       -                  \\
+		T & T & T & -                        \\
+		T & T & F & -                        \\
+		T & F & T & -                        \\
+		T & F & F & -                        \\
+		F & T & T & -                        \\
+		F & T & F & -                        \\
+		F & F & T & -                        \\
+		F & F & F & -                        \\
 		\hline
 	\end{array}
 \]
@@ -454,7 +460,7 @@ The pattern for filling the input truth values
 
 \end{itemize}
 
-This ensures that all combinations of \(p\), \(q\), and \(r\) are covered, and you 
+This ensures that all combinations of \(p\), \(q\), and \(r\) are covered, and you
 can then evaluate the logical expression for each combination.
 
 \subsubsection{Truth Table for the Expression \texorpdfstring{\( (p \land q) \lor q \)}{}}
@@ -478,7 +484,7 @@ can then evaluate the logical expression for each combination.
 
 \subsection{Disjunctive Normal Form (DNF)}
 
-\emph{Disjunctive Normal Form (DNF)} is a standard way of writing a logical expression as a 
+\emph{Disjunctive Normal Form (DNF)} is a standard way of writing a logical expression as a
 \emph{disjunction(OR)} of \emph{conjunctions (ANDs)}. A DNF expression consists of a series of
 conjunctions of literals, where each conjunction is connected by disjunctions.
 
@@ -498,12 +504,12 @@ This is in DNF because it is a disjunction (OR) of conjunctions (ANDs) of litera
 
 \subsection{Conjunctive Normal Form (CNF)}
 
-\emph{Conjunctive Normal Form (CNF)} is a standard way of writing a logical expression as a 
-\emph{conjunction (AND)} of \emph{disjunctions (ORs)}. A CNF expression consists of a series of 
+\emph{Conjunctive Normal Form (CNF)} is a standard way of writing a logical expression as a
+\emph{conjunction (AND)} of \emph{disjunctions (ORs)}. A CNF expression consists of a series of
 disjunctions of literals, where each disjunction is connected by conjunctions.
 
 To find the CNF proceed just as the DNF but with the false rows and instead
-of ANDs inside the parenthesis use OR and connect the terms with OR\@. 
+of ANDs inside the parenthesis use OR and connect the terms with OR\@.
 Also add a negation before each parenthesis.
 
 \textbf{Example:}
@@ -518,22 +524,22 @@ This is in CNF because it is a conjunction (AND) of disjunctions (ORs) of litera
 
 \section{Basis}
 
-A \emph{Basis} in the field of logic is a set of operations with which you can 
+A \emph{Basis} in the field of logic is a set of operations with which you can
 represent all possible logic operations.
 
 \textbf{Example:} The set \(\{ \lnot, \land\}\)
 
 \section{Karnaugh Maps}
 
-\emph{Karnaugh Maps (K-Maps)} are a graphical method used to simplify Boolean expressions. 
-The main goal of a K-map is to group adjacent cells that contain 1's in order to simplify the expression. 
+\emph{Karnaugh Maps (K-Maps)} are a graphical method used to simplify Boolean expressions.
+The main goal of a K-map is to group adjacent cells that contain 1's in order to simplify the expression.
 A K-map helps identify common terms, allowing the Boolean expression to be reduced to its simplest form.
 
 \subsection{Karnaugh Map for Two Variables}
 
 Consider the Boolean expression \( (A \lor (B \land \neg A \land \neg B)) \).
 
-We first construct a K-map for two variables, \(A\) and \(B\). The truth table for this expression 
+We first construct a K-map for two variables, \(A\) and \(B\). The truth table for this expression
 gives the following values:
 
 \[
@@ -569,8 +575,8 @@ Here, we group the ones together to simplify the Boolean expression. The simplif
 
 \subsection{Karnaugh Map for Three Variables}
 
-Now, let's consider the expression \( \neg C \). This expression only 
-depends on one variable, but for illustration, we will use a 
+Now, let's consider the expression \( \neg C \). This expression only
+depends on one variable, but for illustration, we will use a
 3-variable K-map with variables \(A\), \(B\), and \(C\).
 
 The truth table for \( \neg C \) is as follows:
@@ -618,62 +624,62 @@ We see that the ones are grouped in a column, leading to the simplified Boolean 
 To solve a Karnaugh Map and simplify a Boolean expression, follow these steps:
 
 \begin{enumerate}
-	
-	\item \textbf{Determine the Number of Variables:} Decide how many variables are in the 
-		   Boolean function. This determines the size of the K-Map:
-	      
-		\begin{itemize}
-		 
-			\item 2 variables: \(2 \times 2\).
-		 	
-			\item 3 variables: \(2 \times 4\).
-		 
-			\item 4 variables: \(4 \times 4\).
-		 
-			\item etc.
-	  
-		\end{itemize}
 
-	\item \textbf{Fill in the K-Map:} Place 1's in the cells that correspond to the min-terms 
-		  (where the function outputs 1). You may also include do not care conditions 
-		  (usually denoted as \(X\)).
+	\item \textbf{Determine the Number of Variables:} Decide how many variables are in the
+	      Boolean function. This determines the size of the K-Map:
 
-	\item \textbf{Group the 1's:} Form groups (called \emph{implicants}) of 1's. 
-		   The groups must follow these rules:
-	      
-		\begin{itemize}
-		 
-			\item Each group must contain \(1, 2, 4, 8, \ldots\) (powers of 2) 1's.
-		 
-			\item Groups must be rectangular (e.g., \(1 \times 2\), \(2 \times 2\)).
-		 
-			\item Groups can wrap around the edges of the K-Map.
-		 
-			\item Try to form the largest groups possible to simplify the expression.
-		 
-			\item Each 1 should be included in at least one group.
-	 
-		\end{itemize}
+	      \begin{itemize}
+
+		      \item 2 variables: \(2 \times 2\).
+
+		      \item 3 variables: \(2 \times 4\).
+
+		      \item 4 variables: \(4 \times 4\).
+
+		      \item etc.
+
+	      \end{itemize}
+
+	\item \textbf{Fill in the K-Map:} Place 1's in the cells that correspond to the min-terms
+	      (where the function outputs 1). You may also include do not care conditions
+	      (usually denoted as \(X\)).
+
+	\item \textbf{Group the 1's:} Form groups (called \emph{implicants}) of 1's.
+	      The groups must follow these rules:
+
+	      \begin{itemize}
+
+		      \item Each group must contain \(1, 2, 4, 8, \ldots\) (powers of 2) 1's.
+
+		      \item Groups must be rectangular (e.g., \(1 \times 2\), \(2 \times 2\)).
+
+		      \item Groups can wrap around the edges of the K-Map.
+
+		      \item Try to form the largest groups possible to simplify the expression.
+
+		      \item Each 1 should be included in at least one group.
+
+	      \end{itemize}
 
 	\item \textbf{Write the Simplified Expression:} For each group:
 
-		  \begin{itemize}
+	      \begin{itemize}
 
-			\item Identify the variables that are constant (either always 0 or always 1) across the group.
+		      \item Identify the variables that are constant (either always 0 or always 1) across the group.
 
-			\item Write a product term (AND) using only the constant variables.
+		      \item Write a product term (AND) using only the constant variables.
 
-			\item Combine all product terms with OR operations to get the final simplified SOP (Sum of 
-				  Products) expression.
+		      \item Combine all product terms with OR operations to get the final simplified SOP (Sum of
+		            Products) expression.
 
-		\end{itemize}
+	      \end{itemize}
 
-	\end{enumerate}
+\end{enumerate}
 
 \section{Open Sentences}
 
-When writting statements we normally do not write the statement with concrete values, but instead define it in terms of variables like 
-\(x\) which is used to denote the members of a collection for which our statement holds or not holds. We denote this as 
+When writting statements we normally do not write the statement with concrete values, but instead define it in terms of variables like
+\(x\) which is used to denote the members of a collection for which our statement holds or not holds. We denote this as
 an \emph{open sentence}.
 
 \textbf{Example:}
@@ -688,11 +694,11 @@ where \(S\) is the set of the triangles for which \(P\) holds.
 
 \emph{Mathematical quantifiers} are symbols used as shorthand for common quantifying of elements when writting mathmatical statements.
 
-\subsection{Universal Quantifier \texorpdfstring{\(\forall\)}{}}  
+\subsection{Universal Quantifier \texorpdfstring{\(\forall\)}{}}
 
 Means \textbf{``for all''} or \textbf{``for every''}.
 
-\emph{Negation:} \(\neg (\forall x)\,P(x) \equiv (\exists x)\, \neg P(x)\) ``Not all'' is the same as 
+\emph{Negation:} \(\neg (\forall x)\,P(x) \equiv (\exists x)\, \neg P(x)\) ``Not all'' is the same as
 ``There exists one that does not''.
 
 \[
@@ -704,28 +710,28 @@ Means \textbf{``for all''} or \textbf{``for every''}.
 We want to prove that \(\neg (\forall i \in I : E(i)) \iff (\exists i \in I: \neg E(i))\), given \(I \neq \emptyset\)
 
 \begin{align*}
-	\neg (\forall i \in I : E(i)) &\iff \neg (I = \{i \in I \mid E(i)\})\\
-								  &\iff I \neq \{i \in I \mid E(i)\} \\
-								  &\iff \{i \in I \mid \neg E(i)\} \neq \emptyset \\
-								  &\iff (\exists i \in I : \neg E(i)
+	\neg (\forall i \in I : E(i)) & \iff \neg (I = \{i \in I \mid E(i)\})          \\
+	                              & \iff I \neq \{i \in I \mid E(i)\}              \\
+	                              & \iff \{i \in I \mid \neg E(i)\} \neq \emptyset \\
+	                              & \iff (\exists i \in I : \neg E(i)
 \end{align*}
 
 \QED
 
-\textbf{Example:} 
+\textbf{Example:}
 
 \(\forall x \in \R,\ x^2 \geq 0\) For all real numbers, the square is greater than or equal to zero.
 
-\textbf{Negated Example:} 
+\textbf{Negated Example:}
 
-\(\exists x \in \R,\ x^2 < 0\) There exists a real number whose square is less than zero — this is 
+\(\exists x \in \R,\ x^2 < 0\) There exists a real number whose square is less than zero — this is
 false.
 
-\subsection{Existential Quantifier \texorpdfstring{\(\exists\)}{}}  
-	
+\subsection{Existential Quantifier \texorpdfstring{\(\exists\)}{}}
+
 Means \textbf{``there exists at least one''}.
- 		
-\emph{Negation:}  \(\neg (\exists x)\,P(x) \equiv (\forall x)\, \neg P(x)\) ``There does not exist'' is 
+
+\emph{Negation:}  \(\neg (\exists x)\,P(x) \equiv (\forall x)\, \neg P(x)\) ``There does not exist'' is
 the same as ``For all, not''.
 
 \textbf{Proof:}
@@ -733,46 +739,46 @@ the same as ``For all, not''.
 We want to prove that \(\neg (\exists i \in I : E(i)) \iff (\forall i \in I: \neg E(i))\), given \(I \neq \emptyset\)
 
 \begin{align*}
-	\neg (\exists i \in I : E(i)) &\iff \neg (I = \{i \in I \mid E(i)\} \neq \emptyset)\\
-								  &\iff  I \neq \{i \in I \mid E(i)\} = \emptyset \\
-								  & \iff \forall i \in I: \neg E(i)
+	\neg (\exists i \in I : E(i)) & \iff \neg (I = \{i \in I \mid E(i)\} \neq \emptyset) \\
+	                              & \iff  I \neq \{i \in I \mid E(i)\} = \emptyset       \\
+	                              & \iff \forall i \in I: \neg E(i)
 \end{align*}
 
 \QED
 
-\textbf{Example:} 
+\textbf{Example:}
 
 \(\exists x \in \N,\ x > 10\) There exists a natural number greater than 10.
-			
-\textbf{Negated Example:}  
+
+\textbf{Negated Example:}
 
 \(\forall x \in \N,\ x \leq 10\) All natural numbers are less than or equal to 10 — this is false.
 
-\subsection{Unique Existential Quantifier \texorpdfstring{\(\exists ! \)}{}} 
-	
-Means \textbf{``there exists exactly one''}.
-		
-\emph{Negation:} ``Not exactly one'' means 
+\subsection{Unique Existential Quantifier \texorpdfstring{\(\exists ! \)}{}}
 
-\[ 
+Means \textbf{``there exists exactly one''}.
+
+\emph{Negation:} ``Not exactly one'' means
+
+\[
 	\neg (\exists! x)\, P(x) \equiv (\forall x)\, \neg P(x)\ \lor\ (\exists x_1 \neq x_2)\, P(x_1) \land  P(x_2)
-\] 
+\]
 
 Either no such \(x\) exists, or more than one does.
 
-\textbf{Example:} 
+\textbf{Example:}
 
 \(\exists! x \in \R,\ x + 5 = 0\) There exists exactly one real number such that \( x + 5 = 0 \).
 
-\textbf{Negated Example:}  
+\textbf{Negated Example:}
 
-\(\exists x_1 \neq x_2 \in \R,\ x_1^2 = 4 \land x_2^2 = 4\) There are multiple solutions to 
+\(\exists x_1 \neq x_2 \in \R,\ x_1^2 = 4 \land x_2^2 = 4\) There are multiple solutions to
 \( x^2 = 4 \).
 
 \subsection{Negations Remark}
 
-When dealing with proofs, it is not uncommon that we will need to negate an statement for the purpose of prooving 
-a simpler equivalent statement. For example: 
+When dealing with proofs, it is not uncommon that we will need to negate an statement for the purpose of prooving
+a simpler equivalent statement. For example:
 
 Note that \(p \implies q\) is logically equivalent to \(\neg p \lor q\). Hence, if would to prove its negation we can use the following equivalences:
 
@@ -783,37 +789,34 @@ Note that \(p \implies q\) is logically equivalent to \(\neg p \lor q\). Hence, 
 
 \subsection{Order Remark}
 
-When using quantifiers, \emph{the order matters}, it is not same to write 
+When using quantifiers, \emph{the order matters}, it is not same to write
 
 \[
 	\forall x \in M, \exists y \in N: \, E(x, y)
 \]
 
-and 
+and
 
 \[
 	\exists y \in N, \forall x \in M: \, E(x, y)
 \]
 
-Note that in the first example \(y\) can depend on \(x\) which means that for each \(x\) the may be different \(y\); while in the second example 
+Note that in the first example \(y\) can depend on \(x\) which means that for each \(x\) the may be different \(y\); while in the second example
 we declare one or more \(y\)'s which satisfy the condition for all \(x\).
 
 
 \section{Equivalence Reformulations}
 
-An \emph{equivalence reformulation} is when we trasnform a statement from one form to another which is \emph{logically equivalent}, it has the values in a truth table. 
+An \emph{equivalence reformulation} is when we trasnform a statement from one form to another which is \emph{logically equivalent}, it has the values in a truth table.
 
 \[
 	A \iff B
 \]
 
-We use them all the time during our proofs as the connectors when we want to rewrite a statement is form which more easier to work with. 
+We use them all the time during our proofs as the connectors when we want to rewrite a statement is form which more easier to work with.
 
 \textbf{Example:}
 
 \[
 	|x| \le y \iff (x \le y \land -x \le y) \iff -y \le x \le y
 \]
-
-
-

@@ -437,6 +437,48 @@ This rule guarantees that the algorithm terminates at the cost of not being as e
 
 \emph{Unbounded solutions} happen when the feasible region is not bounded. This is not dangerous since the simple method stops when a solution is found.
 
+\section{The Transportation Problem}
 
+The \emph{trasportation} problems originates from the situation of having a series of supply and demand locations and the transportation between a 
+supplier and a consumer has some cost \(c_{i, j}\). The function we want to optimize is given by
 
+\[
+    Z = \sum_{i} \sum_{j} c_{i,j} x_{i, j}
+\]
+
+where \(x_{i, j}\) represents the number of units from suppier \(i\) to demand \(j\), and 
+
+\[
+    \sum_j x_{i, j} = s_i, \quad \sum_i x_{i, j} = d_i
+\]
+
+are the sum of the supply and demand constraints. When the sum of the  amount of supply and demand is equal we have a \emph{balanced} transportation problem, 
+while when one of the last 2 is greater or less thant the other we need to modify our constraints.
+
+In a system of linear equations it will look like 
+
+\[
+    \begin{array}{c|ccc|ccc|ccc|c}
+        & x_{1,1} & \cdots & x_{1,m} & x_{2,1} & \cdots & x_{2,m} & x_{n,1} & \cdots & x_{n,m} & \\ \hline
+        \text{obj.} & c_{1,1} & \cdots & c_{1,m} & c_{2,1} & \cdots & c_{2,m} & c_{n,1} & \cdots & c_{n,m} & \min \\ \hline
+        % ---- supply rows: sum_j x_{i,j} = a_i ----
+        1   & 1 & \cdots & 1 & 0 & \cdots & 0 & 0 & \cdots & 0 & = s_1 \\
+        2   & 0 & \cdots & 0 & 1 & \cdots & 1 & 0 & \cdots & 0 & = s_2 \\
+        \vdots & & & & & \ddots & & & & & \vdots \\
+        n   & 0 & \cdots & 0 & 0 & \cdots & 0 & 1 & \cdots & 1 & = s_n \\ \hline
+        % ---- demand rows: sum_i x_{i,j} = b_j ----
+        1   & 1 & \cdots & 0 & 1 & \cdots & 0 & 1 & \cdots & 0 & = d_1 \\
+        \vdots & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+        m   & 0 & \cdots & 1 & 0 & \cdots & 1 & 0 & \cdots & 1 & = d_m
+    \end{array}
+\]
+
+\subsection{Dummy Destination and Sources}
+
+A \emph{dummy destination} can be use to absorb the exces supply and depending if the over production represents a lost or not to the current situation 
+assign a cost of zero a positive cost as penalty. 
+
+\emph{Dummy sources} are use to allow consumers to receive less than demanded. The have zero costs.
+
+They are both tricks used during the algorithm to handle \emph{unbalanced transportation problems}.
 

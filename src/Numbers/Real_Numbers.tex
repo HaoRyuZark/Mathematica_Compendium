@@ -115,6 +115,199 @@ For the second, let \(x = a^{-1}b\)
 
 \end{itemize}
 
+\section{Supremum, Infimum, Maximum and Minimum for Fields}
+
+The \emph{supremum} \(\sup\) of a set \(A \subseteq \field\) is the 
+least upper bound: the smallest real number \(s\) such that \(a \le s\) for all \(a \in A\).
+
+\[
+    x < s, \forall x \in A 
+\]
+
+\[
+    x < s', \forall x \in A \implies s' \ge s
+\]
+
+For the \emph{infimum} we have 
+
+\[
+    x > s, \forall x \in A 
+\]
+
+\[
+    x > s', \forall x \in A \implies s' \le s
+\]
+
+
+The \emph{maximum} is the largest element in the set, if it exists.
+
+The \emph{minimum} is the smallest element in the set, if it exists.
+
+Finally, we define \(\sup \emptyset := - \infty\) and \(\inf \emptyset := +\infty\).
+
+\textbf{Example I:}
+
+For \(A = (0,1)\):
+
+\begin{itemize}
+
+    \item \(\sup A = 1\) (not in \(A\)).
+
+    \item \(\inf A = 0\) (not in \(A\)).
+
+    \item \(\max A\) and \(\min A\) do not exist.
+
+\end{itemize}
+
+\textbf{Example II:}
+
+For \((0, 5)\) and \((0,5]\), the supremum is 5.
+
+\textbf{Example III:}
+
+For the real numbers we can define \(\sqrt{2}\) as the supremum of the set \(\{x \in \R \mid x^2 < 2\}\).
+
+The \emph{infimum} \(\inf\) of a set \(A\) is the greatest lower bound: 
+the largest number \(t\) such that \(a \ge t\) for all \(a \in A\). 
+
+\[
+    x \ge s, \forall x \in A 
+\]
+
+\[
+    x \ge s', \forall x \in A \implies s' \le s
+\]
+
+\textbf{Example IV:}
+
+Prove that \(\sup \left\{\frac{n}{n + 1} \mid n \in \N\right\} = 1\).  
+
+To prove this, we need to show that 1 is an upper bound, and then that for all \(\varepsilon > 0\), \(a - \varepsilon\) is not 
+an upper bound.
+
+\begin{align*}
+    1 &\ge \frac{n}{n + 1} \\ 
+    n + 1 &\ge n
+\end{align*}
+
+Thus, 1 is in fact an upper bound. 
+
+For the second part, let \(\varepsilon > 0\), and we want to prove that \(\exists n \in \N : \frac{n}{n + 1} > 1 - \varepsilon\).
+
+\begin{align*}
+    \frac{n}{n + 1} > 1 - \varepsilon \\ 
+    \varepsilon >  1 - \frac{n}{n + 1} \\ 
+    \varepsilon >  \frac{n + 1 - n}{n + 1} \\ 
+    \varepsilon >  \frac{1}{n + 1} \\ 
+    n + 1 >  \frac{1}{\varepsilon} \\ 
+    n  >  \frac{1}{\varepsilon}  - 1 
+\end{align*}
+
+By the Archimedean principle, we know that we can always find a larger natural number such that \(n > \frac{1}{\varepsilon} - 1\)
+
+Now we can reverse the steps in the inequality, and we will get our original inequality.
+
+\QED
+
+\subsection{Alternative Characterization of the Supremum}
+
+Given a non-empty set \(A \subseteq \field\). Then \(s \in \field\) is a supremum of \(A\) if and only if 
+
+\[
+    (\nexists s \in A, s < x) \land (s' \in \R, s' < s \implies !\exists x \in A, x > s')
+\]
+
+\section{Uniqueness of Suprema and Infima}
+
+Given a ordered field \(\field\). If it has a supremum or minimum they are unique.
+
+\textbf{Proof:}
+
+Let \(s_1\) and \(s_2\) be suprema of \(\field\) then \(s_1 > a\) for all \(a \in \field\) and by definition the upper bound \(s_1 \ge s_2\). By now taking 
+\(s_2\) as the supremum, then \(s_2 \ge s_2\); also \(s_1 = s_2\).
+
+\section{Properties of Suprema and Infima}
+
+For non-empty sets \(A, B \subseteq \R^+\):
+
+\begin{itemize}
+
+    \item \(\sup AB = \sup A \cdot \sup B\)
+
+    \item \(\inf AB = \inf A \cdot \inf B\)
+
+    \item \(\sup (A + B) = \sup A + \sup B \)
+
+    \item \(\inf (A + B) = \inf A + \inf B \)
+
+    \item \(\sup (A / B) = \sup(A) / \inf(B)\)
+     
+    \item \(\sup (-A) = - \inf A\)
+
+    \item \(\inf (-A) = - \sup A\)
+
+\end{itemize}
+
+For the sake of completeness, we will prove one of these properties: 
+
+\textbf{Proof:}
+
+By definition, \(\forall ab \in AB\) the following holds: 
+
+\[
+    ab \le \sup A \cdot \sup B \implies \sup AB \le \sup A \cdot \sup B
+\]
+
+Because \(\sup A\) and \(\sup B\) do not necessarily belong to \(A\) or \(B\). With this, we already have 
+half of the proof. Now we need to prove that \(\sup AB \ge \sup A \cdot \sup B\). 
+
+Start with 
+
+\begin{align*}
+    ab &\le \sup AB \\ 
+    a &\le \frac{\sup AB}{b} 
+\end{align*}
+
+Therefore, \(\frac{\sup AB}{b}\) is an upper bound of \(A\). This means that: 
+
+\[
+    \sup A \le \frac{\sup AB}{b} \implies \sup A \cdot b \le \sup AB
+\]
+
+From this we can also derive that 
+
+\[
+    \sup A \cdot b \le \sup AB \implies b \le \frac{\sup AB}{\sup A}
+\]
+
+Thus, because \(\frac{\sup AB}{\sup A}\) is an upper bound of \(B\) we have that:
+
+\[
+    \sup B \le \frac{\sup AB}{\sup A} \implies \sup A \cdot \sup B \le \sup AB
+\]
+
+Combining both parts of the proof we have that:
+
+\[
+    \sup AB = \sup A \cdot \sup B
+\]
+
+\QED 
+
+The other proofs can be proven using similar arguments.
+
+
+\section{Definition of Complete}
+
+Given a field \(\field\). If each upper-bounded, non-empty subset of \(\field\) has a supremum we denote \(\field\) as 
+\emph{complete}. 
+
+As a consequence, if all non-empty below-bounded subsets have an infimum then the set is also \emph{complete}.
+
+\textbf{Proof:}
+
+Due to the equivalence of \(x \le y\) and \(-y \le -x\), we can define \(M' = \{-x \mid x \in M\}\) with \(\sup M' = - \inf M\).
+
 \section{The Completeness Axiom}
 
 All non-empty upper-bounded subsets of the real numbers have a \emph{supremum} \(s \in \R\).
@@ -135,32 +328,32 @@ By definition \(s\) is less or greater than all the elements of the set \(A\).
 	-s &\ge -a, \forall a \in A
 \end{align*}
 
-Thus, \(-s = \text{sup}-A\). 
+Thus, \(-s = \sup-A\). 
 
-Now we want to prove that \(-\text{sup}-A\) is first, the lower bound of \(A\) and second, it is the greatest upper bound.
+Now we want to prove that \(-\sup-A\) is first, the lower bound of \(A\) and second, it is the greatest upper bound.
 
 For the first part 
 
 \begin{align*}
-	\text{sup}-A &\ge -a \forall a \in A \\ 
-	- \text{sup} -A &\le a \forall a \in A
+	\sup-A &\ge -a \forall a \in A \\ 
+	- \sup -A &\le a \forall a \in A
 \end{align*}
 
-Thus, \(-\text{sup}-A\) is in fact a lower bound of \(A\). For the second part let us 
-assume that there exists some element \(s\) such that \(s > -\text{sup}-A\) and \(s \le a, \forall a \in A\), then 
+Thus, \(-\sup-A\) is in fact a lower bound of \(A\). For the second part let us 
+assume that there exists some element \(s\) such that \(s > -\sup-A\) and \(s \le a, \forall a \in A\), then 
 
 \[
 	-s < \sup -A  \text{ and } -s \ge -a, \forall a \in A
 \]
 
 This is a contradiction because we have an upper bound, which is not an upper bound. Therefore, 
-\(-\text{sup}-A\) is the infimum of \(A\).
+\(-\sup-A\) is the infimum of \(A\).
 
 \QED
 
 \section{Approximation of the Supremum}
 
-Given a non-empty, upper-bounded set \(A \subseteq \R\) and \(s = \text{sup}A\). Then there is for each \(y < s\) 
+Given a non-empty, upper-bounded set \(A \subseteq \R\) and \(s = \sup A\). Then there is for each \(y < s\) 
 an \(x \in A\), such that 
 
 \[
@@ -183,7 +376,7 @@ the assumption that \(s\) is the supremum of \(A\).
 
 \textbf{Proof:}
 
-Assume \(a = \text{sup}\N\). Since \(\N \subset \R\) is not empty, it has an upper-bound by 
+Assume \(a = \sup\N\). Since \(\N \subset \R\) is not empty, it has an upper-bound by 
 the completeness axiom. 
 
 By the definition of the supremum, \(a - 1 \in \N\) is not an upper-bound of \(\N\), therefore 
