@@ -2,7 +2,7 @@
 
 \section{Divisor}
 
-Let \(a,b \in \Z\). We say that \(a\) \emph{divides} \(b\) if 
+Let \(a,b \in \Z\). We say that \(a\) \emph{divides} \(b\) if
 
 \[
 	a \mid b \iff \exists k \in \Z : b = ak.
@@ -20,7 +20,7 @@ A natural number \(a\) is a \emph{perfect square} if \(\sqrt{a} \in \N\).
 
 \section{General Divisibility Rules}
 
-For \(x, y, z, a, b \in \Z\) are the follwoing statements true: 
+For \(x, y, z, a, b \in \Z\) are the following statements true:
 
 \begin{itemize}
 
@@ -44,10 +44,10 @@ For \(x, y, z, a, b \in \Z\) are the follwoing statements true:
 
 \subsection*{Sum Rules}
 
-If the number \(a\) can be expressed as a sum and \(b\) is a common divisor of all the terms, 
+If the number \(a\) can be expressed as a sum and \(b\) is a common divisor of all the terms,
 then \(b\) is also a divisor of \(a\).
 
-\textbf{Example:} 
+\textbf{Example:}
 
 \( 742 = 700 + 42 \). Then 7, as a common divisor of 700 and 42, is a divisor of 742.
 
@@ -57,7 +57,7 @@ If the number \(a\) can be written as a product of two factors and \(b\) is a di
 
 \textbf{Example:}
 
-\( 1500 = 15 \cdot 100 \). Then 3 and 5 are divisors of 15, and 2, 4, 5, 10, 25, and 50 are divisors of 
+\( 1500 = 15 \cdot 100 \). Then 3 and 5 are divisors of 15, and 2, 4, 5, 10, 25, and 50 are divisors of
 100—thus, all are divisors of 1500.
 
 \subsubsection*{Divisor Pair Rules}
@@ -70,7 +70,7 @@ If the number \(a\) has \(b\) as a divisor, then \( \frac{a}{b} \) is also a div
 
 \subsection*{Divisor Rule}
 
-If the number \(a\) has \(b\) as a divisor, then every divisor of \(b\) is also a divisor of 
+If the number \(a\) has \(b\) as a divisor, then every divisor of \(b\) is also a divisor of
 \(a\).
 
 \textbf{Example:}
@@ -79,7 +79,7 @@ If the number \(a\) has \(b\) as a divisor, then every divisor of \(b\) is also 
 
 \subsection*{Difference Rule}
 
-If the number \(a\) can be expressed as a difference and \(b\) is a common divisor of the minuend 
+If the number \(a\) can be expressed as a difference and \(b\) is a common divisor of the minuend
 and subtrahend, then \(b\) is also a divisor of \(a\).
 
 \textbf{Example:}
@@ -88,12 +88,12 @@ and subtrahend, then \(b\) is also a divisor of \(a\).
 
 \subsection*{Relative Prime Rule}
 
-If the number \(a\) has two relatively prime numbers \(b\) and \( c \) as divisors, then their 
+If the number \(a\) has two relatively prime numbers \(b\) and \( c \) as divisors, then their
 product \( b \cdot c \) is also a divisor of \(a\).
 
 \textbf{Example:}
 
-1540 has the relatively prime numbers 7 and 11 as divisors. Then \( 77 = 7 \cdot 11 \) is also a divisor 
+1540 has the relatively prime numbers 7 and 11 as divisors. Then \( 77 = 7 \cdot 11 \) is also a divisor
 of 1540.
 
 \section{Using Modular Arithmetic to Find the n-th Digit of a Large Number}
@@ -105,7 +105,7 @@ Note that \(13 \mod 10 = 3\) and  \(13^2 \mod 10 =  ((13 \mod 10)  (13\mod 10)) 
 We can continue this process, and we will notice a pattern. After some iterations, we will know that
 
 \[
-    (13^{2020} 13) \mod 10 = 7.
+	(13^{2020} 13) \mod 10 = 7.
 \]
 
 \section{Gaussian Brackets}
@@ -114,16 +114,16 @@ The Gaussian brackets refer to two closely related functions used to round real 
 
 \subsection{Floor Function}
 
-The floor function, denoted by \(\lfloor x \rfloor\), gives the greatest integer less than or equal 
+The floor function, denoted by \(\lfloor x \rfloor\), gives the greatest integer less than or equal
 to a real number \(x\).
 
 \textbf{Example:}
 
 \(\lfloor 3.7 \rfloor = 3\), \(\lfloor -1.2 \rfloor = -2\)
 
-\subsection{Ceiling Function} 
-    
-The ceiling function, denoted by \(\lceil x \rceil\), gives the smallest integer greater than or 
+\subsection{Ceiling Function}
+
+The ceiling function, denoted by \(\lceil x \rceil\), gives the smallest integer greater than or
 equal to a real number \(x\).
 
 \textbf{Example:}
@@ -137,42 +137,42 @@ These functions are particularly useful in number theory, computer science, and 
 Given \(n \in \N\), we define the relation \(\sim_n\) for \(\Z\).
 
 \[
-    a \sim b \iff n \mid (a - b).
+	a \sim b \iff n \mid (a - b).
 \]
 
 Also, \(a / n\) and \(b / n\) have the same remainder.
 
-\subsection{Equivalence Class of \texorpdfstring{\(\Z\)}{}} 
+\subsection{Equivalence Class of \texorpdfstring{\(\Z\)}{}}
 
-For \(i, n \in \Z\) 
-
-\[
-    \overline{i} := i + n \Z = \{ i + na \mid a \in \Z\}
-\]
-
-and 
+For \(i, n \in \Z\)
 
 \[
-    \Z_N = \Z / n \Z = \{\overline{0}:= n \Z, \overline{1}:= 1 + n \Z, \dots, \overline{n - 1} := n - 1 + n \Z \},
+	\overline{i} := i + n \Z = \{ i + na \mid a \in \Z\}
 \]
 
-is the set of all equivalence classes for \(\Z\) with respect to the relation 
+and
+
+\[
+	\Z_N = \Z / n \Z = \{\overline{0}:= n \Z, \overline{1}:= 1 + n \Z, \dots, \overline{n - 1} := n - 1 + n \Z \},
+\]
+
+is the set of all equivalence classes for \(\Z\) with respect to the relation
 \(k \sim l \iff n \mid (k - l)\). We define the addition and multiplication for \(\Z / n \Z\) using the representatives:
 
 \[
-    (a  + n \Z) + (b + n \Z) := (a + b) + n\Z
+	(a  + n \Z) + (b + n \Z) := (a + b) + n\Z
 \]
 
-and 
+and
 
 \[
-    (a  + n \Z) \cdot (b + n \Z) := ab + n\Z
+	(a  + n \Z) \cdot (b + n \Z) := ab + n\Z
 \]
 
-For all \(a, b \in \Z\). Therefore, 
+For all \(a, b \in \Z\). Therefore,
 
 \[
-    \overline{a} + \overline{b} = \overline{a + b}, \quad \overline{a} \cdot \overline{b} = \overline{ab}.
+	\overline{a} + \overline{b} = \overline{a + b}, \quad \overline{a} \cdot \overline{b} = \overline{ab}.
 \]
 
 \section{Minimal Multiple}
@@ -181,13 +181,13 @@ For all integers \(a \in \Z_{\ge 0}\). 0 is the only multiple of \(a\) between \
 
 \textbf{Proof:}
 
-Let us suppose there exist an integer \(z\) with \(0 < z < a\) such that \(a \mid z\). Then 
+Let us suppose there exist an integer \(z\) with \(0 < z < a\) such that \(a \mid z\). Then
 
 \[
 	z = aq
 \]
 
-Since \(a > z\), if \(q > 0\), then \(aq > qz > z\), for \(q < 0\) we have that \(aq < qz < z\) and finally 
+Since \(a > z\), if \(q > 0\), then \(aq > qz > z\), for \(q < 0\) we have that \(aq < qz < z\) and finally
 for \(q = 0\) we get that \(z = 0\), thus we have a contradiction.
 
 \QED
@@ -196,22 +196,22 @@ This important for the next theorem.
 
 \section{Division Theorem}
 
-Given any two integers \(a\) and \(b\) with \(a > 0\), there exist unique integers \(q\) and \(r\) such that 
+Given any two integers \(a\) and \(b\) with \(a > 0\), there exist unique integers \(q\) and \(r\) such that
 \(a = qb + r\) with \(0 \ge r < b\).
 
-This is very important as it allows to write a number in terms of another with ease by just using our number a the left side and the other on the right side with 
+This is very important as it allows to write a number in terms of another with ease by just using our number a the left side and the other on the right side with
 the product and the residual \(\text{target}\, = q(\text{some number}) + r\). Of course, obeying the constraints that our target is greater or equal that our current number.
 
 \textbf{Proof:}
 
-We first will prove that such integers exists. We do this by first reduce our scope to \(b > 0\) and prove the 
-existence of \(r\) by constructing the following set. 
+We first will prove that such integers exists. We do this by first reduce our scope to \(b > 0\) and prove the
+existence of \(r\) by constructing the following set.
 
 \[
 	S = \{a - bq \mid q \in \Z, \, a - bx \ge 0\}
 \]
 
-Note that \(S\) is not empty since, for \(a \ge 0\) we can choose \(q = 0\) giving us 
+Note that \(S\) is not empty since, for \(a \ge 0\) we can choose \(q = 0\) giving us
 
 \[
 	a - 0 = a \in S
@@ -219,19 +219,19 @@ Note that \(S\) is not empty since, for \(a \ge 0\) we can choose \(q = 0\) givi
 
 and for \(a < 0\) we can choose \(q = a\) giving us since \(b > 0\)
 
-\[ 
+\[
 	a_{< 0}(1 - b)_{< 0} \ge 0.
-\] 
+\]
 
-Since \(S\) is not empty at it only contains positive integers we can apply the \emph{well-ordering-principle} which tells us that 
-every subset of the Natural has minimum which we will call \(r\). Hence \(r = a - bq \ge 0\). We now need to 
+Since \(S\) is not empty at it only contains positive integers we can apply the \emph{well-ordering-principle} which tells us that
+every subset of the Natural has minimum which we will call \(r\). Hence \(r = a - bq \ge 0\). We now need to
 show that \(0 \le r < b\), by contradiction.
 
-If \(r \ge b\), then 
+If \(r \ge b\), then
 
 \begin{align*}
-	a - qb &\ge b \\	
-	a - qb - b &= a - (q + 1)b \ge 0
+	a - qb     & \ge b                \\
+	a - qb - b & = a - (q + 1)b \ge 0
 \end{align*}
 
 Hence, \(r - b \in S\), but \(r - b < r\) and thus we have a contradiction since \(r\) is the minimum of \(S\).
@@ -244,12 +244,12 @@ Then from our equality we can get the following
 	b(q - q') = r' - r
 \]
 
-where \(0 \ge r' - r < b\) and the left-hand-side is a multiple of \(b\). Now now note, the only multiple of \(b\) which is between 
+where \(0 \ge r' - r < b\) and the left-hand-side is a multiple of \(b\). Now now note, the only multiple of \(b\) which is between
 \(b\) and zero without including \(b\) itself is \(0\) hence \(r = r'\) and because of the equality \(q = q'\).
 
 For \(b < 0\) we use the case of \(-b > 0\) and also use \(-q\) and do the same.
 
-\QED 
+\QED
 
 \section{Prime Numbers}
 
@@ -261,7 +261,7 @@ A \emph{prime number} \(p \in \N \setminus \{1\}\) fulfills the following condit
 
 \section{Composite Number}
 
-A number \(z \in \Z\) is \emph{composite} if 
+A number \(z \in \Z\) is \emph{composite} if
 
 \[
 	z = xy, \quad 1 < x,y < z.
@@ -269,7 +269,7 @@ A number \(z \in \Z\) is \emph{composite} if
 
 \section{Pythagorean Triplets}
 
-\emph{Pythagorean triplets} are 3 natural numbers such that 
+\emph{Pythagorean triplets} are 3 natural numbers such that
 
 \[
 	a^2 + b^2 = c^2.
@@ -277,7 +277,7 @@ A number \(z \in \Z\) is \emph{composite} if
 
 \section{Division}
 
-Given \(a,b \in \Z\). There exist unique \(q,r \in \Z\) such that 
+Given \(a,b \in \Z\). There exist unique \(q,r \in \Z\) such that
 
 \[
 	a = qb + r \quad 0 \le r < |b|.
@@ -301,9 +301,9 @@ If \(t = 1\), then \(a\) and \(b\) are said to be \emph{coprime} or \emph{relati
 
 \section{The Euclidean Algorithm}
 
-If \(a = bq + r\) then \(\gcd(a, b) = \gcd(b, r)\). 
+If \(a = bq + r\) then \(\gcd(a, b) = \gcd(b, r)\).
 
-\textbf{Input:} \(a, b \in \Z\), \(a \neq 0 \neq b\).  
+\textbf{Input:} \(a, b \in \Z\), \(a \neq 0 \neq b\).
 
 \textbf{Output:} The greatest common divisor \(t\) of \(a\) and \(b\).
 
@@ -315,30 +315,30 @@ If \(a = bq + r\) then \(\gcd(a, b) = \gcd(b, r)\).
 
 	\item Set \(r_1 := a\); \(r_2 := b\); \(k := 2\).
 
-	\item As long as \(r_k \neq 0\), define \(r_{k+1} := r_{k - 1} \mod r_k\) or equivalently and easier 
-	\[
-		r_{k + 1} = r_k - q r_{k - 1}, \quad q \in \Z
-	\]
+	\item As long as \(r_k \neq 0\), define \(r_{k+1} := r_{k - 1} \mod r_k\) or equivalently and easier
+	      \[
+		      r_{k + 1} = r_k - q r_{k - 1}, \quad q \in \Z
+	      \]
 
 	\item As soon as \(r_k = 0\), return \(r_{k-1}\).
 
 \end{enumerate}
 
 In simpler terms, as long as the remainder is not zero, we keep dividing the previous remainder by the current
-remainder and updating the remainders. When we reach a remainder of zero, the previous remainder is the gcd. 
+remainder and updating the remainders. When we reach a remainder of zero, the previous remainder is the gcd.
 
 \textbf{Proof:}
 
-Notice that the algorithm terminates because the sequence given \(r_n\) is monotone decreasing due to \(0 \le r < b\) and 
+Notice that the algorithm terminates because the sequence given \(r_n\) is monotone decreasing due to \(0 \le r < b\) and
 the well-ordering principle of the natural numbers.
 
 For the correctness: given is \(a = bq + r\) to show that \(\gcd(a, b) = \gcd(b, r)\). This is like saying:
 
 \begin{align*}
-	\gcd(a,b) & = \gcd(b, r) \\ 
-	\gcd(b,r) & = \gcd(r, r_1)\\
-	\gcd(r, r_1) & = \gcd(r_1, r_2) \\
-	& \vdots \\
+	\gcd(a,b)            & = \gcd(b, r)          \\
+	\gcd(b,r)            & = \gcd(r, r_1)        \\
+	\gcd(r, r_1)         & = \gcd(r_1, r_2)      \\
+	                     & \vdots                \\
 	\gcd(r_{n-1}, r_{n}) & = \gcd(r_n, 0) = r_n.
 \end{align*}
 
@@ -349,29 +349,29 @@ Let \(e\) be a common divisor of \(b\), \(r\). Then \(e \mid b\) and \(e \mid r\
 Thus, the set of common divisors of \(a\), \(b\) is the same as the set of common divisors of \(b\), \(r\),
 so their greatest common divisors are equal.
 
-\QED 
+\QED
 
 \textbf{Example:}
 
 Find \(\gcd(252, 198)\):
 
 \begin{align*}
-	252 & = 1 \cdot 198 + 54  \\
-	198 & = 3 \cdot 54 + 36   \\
-	54  & = 1 \cdot 36 + 18   \\
+	252 & = 1 \cdot 198 + 54 \\
+	198 & = 3 \cdot 54 + 36  \\
+	54  & = 1 \cdot 36 + 18  \\
 	36  & = 2 \cdot 18 + 0
 \end{align*}
 
-So, \(\gcd(252, 198) = 18\). 
+So, \(\gcd(252, 198) = 18\).
 
 \subsection{Euclidean Algorithm as Linear Map}
 
-Given \(E := \{(a,b)^T \mid a, b \in \Z, b \ne 0 \}\) and 
+Given \(E := \{(a,b)^T \mid a, b \in \Z, b \ne 0 \}\) and
 
 \[
-	\varepsilon: E \to \Z^{2 \times 1} : 
+	\varepsilon: E \to \Z^{2 \times 1} :
 	\begin{bmatrix}
-		a \\ 
+		a \\
 		b
 	\end{bmatrix}
 	\mapsto
@@ -387,12 +387,12 @@ component is zero. The first component at that point is the gcd.
 \[
 	\varepsilon^{k - 1}
 	\begin{bmatrix}
-		a \\ 
+		a \\
 		b
 	\end{bmatrix}
 	= \varepsilon \circ \cdots \circ \varepsilon
 	\begin{bmatrix}
-		t \\ 
+		t \\
 		0
 	\end{bmatrix}
 \]
@@ -404,21 +404,21 @@ Also, we can express \(\varepsilon\) as a matrix multiplication:
 \[
 	\varepsilon
 	\begin{bmatrix}
-		a \\ 
+		a \\
 		b
 	\end{bmatrix}
 	=
 	\begin{bmatrix}
-		0 & 1 \\
+		0 & 1  \\
 		1 & -q
 	\end{bmatrix}
 	\begin{bmatrix}
-		a \\ 
+		a \\
 		b
 	\end{bmatrix}
-	= 
+	=
 	\begin{bmatrix}
-		b \\ 
+		b \\
 		r
 	\end{bmatrix}
 \]
@@ -427,14 +427,14 @@ with \(a = qb + r\) and \(q \in \Z, 0 \le q < |b|\).
 
 \section{Bezout Identity}
 
-This is one of the most important properties of the \emph{gcd}. 
+This is one of the most important properties of the \emph{gcd}.
 Given \(a, b \in \Z\), not both zero, there exist integers \(x, y \in \Z\) such that
 
 \[
 	\gcd(a, b) = ax + by
 \]
 
-This equation comes directly from \emph{Euclid's Algorithm}. For the intuition, when writing your iterations 
+This equation comes directly from \emph{Euclid's Algorithm}. For the intuition, when writing your iterations
 you can manipulate them to arrive at the solution by substituting the previous reminders in to its form of \(r_{q} - kr_{k}\).
 
 \textbf{Proof:}
@@ -448,32 +448,32 @@ To prove this we will use a construction of a set
 We will prove that \(\min(M) = \gcd(a, b)\).
 
 
-We know that \(M\) is not empty because \(\alpha, \beta \in M\), and it has a minimum by the well-ordering principle 
-of the natural numbers which we will call \(d = a x_0 + b y_0\). Now we will use that fact any integer can be written as a product plus 
-reminder by writing \(a\) as 
+We know that \(M\) is not empty because \(\alpha, \beta \in M\), and it has a minimum by the well-ordering principle
+of the natural numbers which we will call \(d = a x_0 + b y_0\). Now we will use that fact any integer can be written as a product plus
+reminder by writing \(a\) as
 
 \[
 	a = qd + r
 \]
 
-Now we proceed to 
+Now we proceed to
 
-\begin{align*}	
-	a &= qd + r \\
-	r &= a - qd \\
-	&= a - q( a x_0 + b y_0)\\
-	&= a - qax_0 - bqy_0\\
-	&= a(1 - qx_0) + b (-qy_0)
+\begin{align*}
+	a & = qd + r                  \\
+	r & = a - qd                  \\
+	  & = a - q( a x_0 + b y_0)   \\
+	  & = a - qax_0 - bqy_0       \\
+	  & = a(1 - qx_0) + b (-qy_0)
 \end{align*}
 
-This is also a member of \(M\) since \(1 - qx_0\) and \(-qy_0\) are also integers. Also note that 
+This is also a member of \(M\) since \(1 - qx_0\) and \(-qy_0\) are also integers. Also note that
 
 \[
 	0 < a - qd < ax_0 + by_0
 \]
 
-But this would be a contradiction to the fact that \(d\) is the minimum of \(M\). Therefore, \(r = 0\) thus, 
-giving us \(d \mid a\). Using the same argument with \(q'\) and \(r'\) we would arrive at the same conclusion for \(b\). 
+But this would be a contradiction to the fact that \(d\) is the minimum of \(M\). Therefore, \(r = 0\) thus,
+giving us \(d \mid a\). Using the same argument with \(q'\) and \(r'\) we would arrive at the same conclusion for \(b\).
 Now we have a common divisor, leaving us with only proving that it is in fact the greatest.
 
 Let \(c\) be a common divisor of both \(a\) and \(b\). Then, \(c \mid ax_0 + by_0\). Note that any common divisor of \(a\) and \(b\)
@@ -486,29 +486,131 @@ also divides \(d\), hence it is the greatest common divisor.
 Find \(\gcd(252, 198)\) and the Bezout coefficients:
 
 \begin{align*}
-	252 & = 1 \cdot 198 + 54  \\
-	198 & = 3 \cdot 54 + 36   \\
-	54  & = 1 \cdot 36 + 18   \\
+	252 & = 1 \cdot 198 + 54 \\
+	198 & = 3 \cdot 54 + 36  \\
+	54  & = 1 \cdot 36 + 18  \\
 	36  & = 2 \cdot 18 + 0
 \end{align*}
 
-So, \(\gcd(252, 198) = 18\). Now we work backwards 
+So, \(\gcd(252, 198) = 18\). Now we work backwards
 
 
-\begin{align*}	
-	18 &= 54 - 36 \\
-	   &= 54 - (198 - 3(54)) \\
-	   &= -198 + 4(54)) \\
+\begin{align*}
+	18 & = 54 - 36            \\
+	   & = 54 - (198 - 3(54)) \\
+	   & = -198 + 4(54))      \\
 \end{align*}
 
 So, \(\alpha = 4\) and \(\beta = -1\).
 
+\section{Euclid's Lemma}
+
+Let \(p\) be a prime number and \(a, b \in \Z\). If \(p \mid ab\), then \(p \mid a\) or \(p \mid b\).
+
+\textbf{Proof:}
+
+Let, without lose of generality, \(p \mid ab\) \(p \mid b\) and \(p\) not divide \(a\).
+Then, by the Bezout identity, there exist integers \(x, y \in \Z\) such that
+
+\[
+	px + ay = 1
+\]
+
+we multiply both sides by \(b\) to get
+
+\[
+	pxb + ayb = b
+\]
+
+Since \(p \mid ab\) and \(p \mid pxb\), it follows that \(p \mid b\).
+
+\QED
+
+\section{Least Common Multiple}
+
+The least common multiple of \(a\) and \(b\), denoted \([a, b]\) or \(\lcm(a, b)\), is the smallest positive integer that is
+a multiple of both \(a\) and \(b\).
+
+\textbf{Example:}
+
+\[
+	[6, 4] = 12, \quad [33, 15] = 165
+\]
+
+\section{Multiplication Property of the Least Common Multiple}
+
+Let \(a, b \in \N\) with \(a, b \ne 0\). Then
+\[
+	\lcm(a, b) \cdot \gcd(a, b) = ab
+\]
+
+\textbf{Proof:}
+
+Let
+
+\[
+	m = \frac{ab}{\gcd(a, b)},
+\]
+
+we want to prove that \(m\) is multiple of \(ab\) and then that is is the smallest common of
+both \(a\) and \(b\).
+
+Let us first use the fact that \(d = \gcd(a, b)\), this means that \(a = a'd\) and that \(b = b'd\).
+We also know that for some integers \(x, y\) we can write \(d = ax + by\).
+
+Let us start by re-ordering our expression
+
+\[
+	m = \frac{ab}{\gcd(a, b)}
+\]
+
+We want to prove that \(m\) is both a common multiple of \(a\) and \(b\) and then to prove that it is fact the least common multiple.
+For the first part we use the fact that we can write both \(a\) and \(b\) in terms of their greatest common divisor.
+
+\[
+	m = \frac{ab}{d} = \frac{a'db}{d} =  a'b
+\]
+
+\[
+	m = \frac{ab}{d} = \frac{ab'd}{d} =  ab'
+\]
+
+Hence, in fact \(m\) is a common multiple of both. Now, let us have some common multiple \(c\) of \(a\) and \(b\).
+For \(c\) the following holds
+
+\[
+	c = ax' = by' \, x',y' \in \Z
+\]
+
+To show that \(m\) is less than any common multiple, we just need to show that in the fraction \(\frac{c}{m}\), \(c\) is always greater than \(m\), i.e.
+it is an integer.
+
+\begin{align*}
+	\frac{c}{m} & = \frac{c}{\frac{ab}{d}}           \\
+	            & = \frac{cd}{ab}                    \\
+	            & = \frac{c(ax + by)}{ab}            \\
+	            & = \frac{cax + cby}{ab}             \\
+	            & = \frac{cx}{b}  + \frac{cy}{a}     \\
+	            & = \frac{by'x}{b}  + \frac{ax'y}{a} \\
+	            & = y'x  + x'y \in \Z
+\end{align*}
+
+In fact, since \(c > 0\) and \(m > 0\), we have prooven that this number if the least common multiple.
+
+\QED
+
+\textbf{Example:}
+
+\[
+	\gcd(36, 90) = 18, \quad [36, 90] = 180, \quad 36 \cdot 90 = 32400 = 18 \cdot 180
+\]
+
 \section{Prime Field}
 
-Given \(p \in \N, p > 1\) is prime, then \(\Z / p \Z\) is a field with \(p\) elements. It can also 
+Given \(p \in \N, p > 1\) is prime, then \(\Z / p \Z\) is a field with \(p\) elements. It can also
 be noted \(\field_p\).
 
-\textbf{Proof:} 
+\textbf{Proof:}
 
 We need to show that for \(a + p \Z \ne p \Z\) there exists some \(b + p \Z\) such that \((a + p\Z))(b + p\Z) = 1 + p\Z\).
 
@@ -522,7 +624,7 @@ For \(a, b \in \Z\) and a prime number \(p\)
 	p \mid ab \implies (p \mid a ) \lor (p \mid b).
 \]
 
-\textbf{Proof:} 
+\textbf{Proof:}
 
 ``\(\Rightarrow\)'': Let \(p\) be a prime and \(a,b \in \Z\) with \(p \mid ab\). Assume \(p \nmid a\). Then there exist \(\alpha,\beta \in \Z\)
 with \(\alpha p + \beta a = 1\). Since \(p \mid ab\), it follows that \(p \mid \alpha p b + \beta ab = (\alpha p + \beta a)b = b\).
@@ -541,13 +643,13 @@ Every integer greater than 1 can be written in the form
 	p_1^{n_1}p_2^{n_2} \cdots p_k^{n_k},
 \]
 
-where \(n_i \geq 0\) and the \(p_i\) are distinct primes. The factorization is unique, except possibly for 
+where \(n_i \geq 0\) and the \(p_i\) are distinct primes. The factorization is unique, except possibly for
 the order of the factors.
 
 \textbf{Example:}
 
 \[
-	4312 = 2 \cdot 2156 = 2 \cdot 2 \cdot 1078 = 2 \cdot 2 \cdot 2 \cdot 539 = 2 \cdot 2 \cdot 2 \cdot 7 
+	4312 = 2 \cdot 2156 = 2 \cdot 2 \cdot 1078 = 2 \cdot 2 \cdot 2 \cdot 539 = 2 \cdot 2 \cdot 2 \cdot 7
 	\cdot 77 = 2 \cdot 2 \cdot 2 \cdot 7 \cdot 7 \cdot 11
 \]
 
@@ -557,68 +659,23 @@ That is,
 	4312 = 2^3 \cdot 7^2 \cdot 11
 \]
 
-\subsection{Least Common Multiple}
-
-The least common multiple of \(a\) and \(b\), denoted \([a, b]\), is the smallest positive integer that is 
-a multiple of both \(a\) and \(b\).
-
-\textbf{Example:}
-
-\[
-	[6, 4] = 12, \quad [33, 15] = 165
-\]
-
-\subsection{Multiplication Property of the Least Common Multiple}
-
-\[
-	[a, b] \cdot \gcd(a, b) = ab
-\]
-
-\textbf{Proof:}
-
-Let
-
-\[
-	a = p_1 \cdots p_lq_1 \cdots q_m, \quad b = q_1 \cdots q_mr_1 \cdots r_n,
-\]
-
-then
-
-\begin{align*}
-	\gcd(a, b) & = q_1 \cdots q_m                                 \\
-	[a, b]     & = p_1 \cdots p_lq_1 \cdots q_mr_1 \cdots r_n     \\
-	ab         & = p_1 \cdots p_lq_1^2 \cdots q_m^2r_1 \cdots r_n.
-\end{align*}
-
-So
-
-\[
-	[a, b] \cdot \gcd(a, b) = ab.
-\]
-
-\textbf{Example:}
-
-\[
-	\gcd(36, 90) = 18, \quad [36, 90] = 180, \quad 36 \cdot 90 = 32400 = 18 \cdot 180
-\]
-
 \section{Goldbach's Conjecture}
 
 Every even integer greater than 4 can be written as the sum of two primes.
 
 \section{Prime Factorization}
 
-To find the \emph{prime factorization} of a number \(a\), the algorithm goes as follows: 
+To find the \emph{prime factorization} of a number \(a\), the algorithm goes as follows:
 
 \begin{itemize}
 
-	\item Let \(n\) be the first prime number. 
+	\item Let \(n\) be the first prime number.
 
-	\item  Try dividing \(a\) by \(n\). If \(n \mid a\) note the number and set \(a = a \div n\) to repeat this step. If \(n\) 
-	did not divide \(a\) set \(n\) to the next prime number and repeat this step. 
+	\item  Try dividing \(a\) by \(n\). If \(n \mid a\) note the number and set \(a = a \div n\) to repeat this step. If \(n\)
+	      did not divide \(a\) set \(n\) to the next prime number and repeat this step.
 
-	\item When 1 was reached using the previous step then the algorithm terminates and the noted numbers are our prime factorization 
-	of \(a\).
+	\item When 1 was reached using the previous step then the algorithm terminates and the noted numbers are our prime factorization
+	      of \(a\).
 
 \end{itemize}
 
@@ -627,27 +684,27 @@ To find the \emph{prime factorization} of a number \(a\), the algorithm goes as 
 The \(\gcd\) of two or more numbers can also be found with the following algorithm.
 
 \begin{itemize}
-	
+
 	\item Find the prime factorization of all target numbers.
 
 	\item Note the numbers which appear in both prime factorizations, always taking the one with the least exponent.
-	
-	\item Multiply the noted prime factors together. 
-	
+
+	\item Multiply the noted prime factors together.
+
 \end{itemize}
 
 \section{Modular Arithmetic}
 
-We define an equivalence relation 
+We define an equivalence relation
 
 \[
-    a \equiv b \mod n \iff n | (a - b) \land  a,b \in \Z.
+	a \equiv b \mod n \iff n | (a - b) \land  a,b \in \Z.
 \]
 
-or equivalently 
+or equivalently
 
 \[
-    a \equiv b \mod n \iff  a - b = nk\, \land  a,b,k \in \Z.
+	a \equiv b \mod n \iff  a - b = nk\, \land  a,b,k \in \Z.
 \]
 
 This means that both have the \textbf{same remainder} when divided by \(n\).
@@ -655,26 +712,26 @@ This means that both have the \textbf{same remainder} when divided by \(n\).
 \subsection{Properties of Modular Arithmetic}
 
 \begin{itemize}
-    
-    \item  \emph{Addition}:
-    \[
-        (a + b) \mod n = (a \mod n + b \mod n) \mod n
-    \]
 
-    \item \emph{multiplication}:
-    \[
-        (a \cdot b) \mod n = (a \mod n \cdot b \mod n) \mod n
-    \]
+	\item  \emph{Addition}:
+	      \[
+		      (a + b) \mod n = (a \mod n + b \mod n) \mod n
+	      \]
 
-    \item \emph{Potenziation}:
-    \[
-        (a^m) \mod n = ({(a \mod n)}^m) \mod n
-    \]
+	\item \emph{multiplication}:
+	      \[
+		      (a \cdot b) \mod n = (a \mod n \cdot b \mod n) \mod n
+	      \]
 
-    \item \emph{Division}:
-    \[
-        \left(\frac{a}{b}\right) \mod n \ne  \frac{a \mod n}{b \mod n}
-    \]
+	\item \emph{Potenziation}:
+	      \[
+		      (a^m) \mod n = ({(a \mod n)}^m) \mod n
+	      \]
+
+	\item \emph{Division}:
+	      \[
+		      \left(\frac{a}{b}\right) \mod n \ne  \frac{a \mod n}{b \mod n}
+	      \]
 
 \end{itemize}
 
@@ -686,20 +743,20 @@ Because we have an equivalence relation, we can classify the partitions of our s
 \textbf{Example:}
 
 \[
-    [13]_7 + \{m \in \Z \mid m \equiv 13 \mod 7\}
+	[13]_7 + \{m \in \Z \mid m \equiv 13 \mod 7\}
 \]
 
-The set of all residual classes can be written as \(\Z / n \Z\), where \(n\) is the modulus. 
+The set of all residual classes can be written as \(\Z / n \Z\), where \(n\) is the modulus.
 
 \subsection{Addition and Multiplication}
 
-For the residual class rigns we can define 
+For the residual class rigns we can define
 
 \[
 	[a] + [b] = [a + b]
 \]
 
-and 
+and
 
 \[
 	[a] \cdot [b] = [a \cdot b]
@@ -709,13 +766,13 @@ which are both well defined functions.
 
 \textbf{Proof:}
 
-For \(a \in [a]\) and \(b \in [b]\) we have that 
+For \(a \in [a]\) and \(b \in [b]\) we have that
 
 \[
 	qp + r_1 + kp + r_2 = p(q + k) + r_1 + r_2
 \]
 
-which is member of a class on its onw \([a + b]\). Similar for the multiplication. 
+which is member of a class on its onw \([a + b]\). Similar for the multiplication.
 
 \QED
 

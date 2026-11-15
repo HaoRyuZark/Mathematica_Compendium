@@ -2,43 +2,43 @@
 \makeatletter
 \def\pld@CF@loop#1+{%
 \ifx\relax#1\else
-    \begingroup
-    \pld@AccuSetX11%
-    \def\pld@frac{{}{}}\let\pld@symbols\@empty\let\pld@vars\@empty
-    \pld@false
-    #1%
-    \let\pld@temp\@empty
-    \pld@AccuIfOne{}{\pld@AccuGet\pld@temp
-        \edef\pld@temp{\noexpand\pld@R\pld@temp}}%
-    \pld@if \pld@Extend\pld@temp{\expandafter\pld@F\pld@frac}\fi
+	\begingroup
+	\pld@AccuSetX11%
+	\def\pld@frac{{}{}}\let\pld@symbols\@empty\let\pld@vars\@empty
+	\pld@false
+	#1%
+	\let\pld@temp\@empty
+	\pld@AccuIfOne{}{\pld@AccuGet\pld@temp
+		\edef\pld@temp{\noexpand\pld@R\pld@temp}}%
+	\pld@if \pld@Extend\pld@temp{\expandafter\pld@F\pld@frac}\fi
 \expandafter\pld@CF@loop@\pld@symbols\relax\@empty
 \expandafter\pld@CF@loop@\pld@vars\relax\@empty
 \ifx\@empty\pld@temp
-    \def\pld@temp{\pld@R11}%
+	\def\pld@temp{\pld@R11}%
 \fi
 \global\let\@gtempa\pld@temp
 \endgroup
 \ifx\@empty\@gtempa\else
-    \pld@ExtendPoly\pld@tempoly\@gtempa
+	\pld@ExtendPoly\pld@tempoly\@gtempa
 \fi
 \expandafter\pld@CF@loop
 \fi}
 \def\pld@CMAddToTempoly{%
-    \pld@AccuGet\pld@temp\edef\pld@temp{\noexpand\pld@R\pld@temp}%
-    \pld@CondenseMonomials\pld@false\pld@symbols
-    \ifx\pld@symbols\@empty \else
-        \pld@ExtendPoly\pld@temp\pld@symbols
-    \fi
-    \ifx\pld@temp\@empty \else
-        \pld@if
-        \expandafter\pld@IfSum\expandafter{\pld@temp}%
-        {\expandafter\def\expandafter\pld@temp\expandafter
-            {\expandafter\pld@F\expandafter{\pld@temp}{}}}%
-        {}%
-    \fi
-    \pld@ExtendPoly\pld@tempoly\pld@temp
-    \pld@Extend\pld@tempoly{\pld@monom}%
-    \fi}
+	\pld@AccuGet\pld@temp\edef\pld@temp{\noexpand\pld@R\pld@temp}%
+	\pld@CondenseMonomials\pld@false\pld@symbols
+	\ifx\pld@symbols\@empty \else
+		\pld@ExtendPoly\pld@temp\pld@symbols
+	\fi
+	\ifx\pld@temp\@empty \else
+		\pld@if
+		\expandafter\pld@IfSum\expandafter{\pld@temp}%
+		{\expandafter\def\expandafter\pld@temp\expandafter
+			{\expandafter\pld@F\expandafter{\pld@temp}{}}}%
+		{}%
+	\fi
+	\pld@ExtendPoly\pld@tempoly\pld@temp
+	\pld@Extend\pld@tempoly{\pld@monom}%
+	\fi}
 \makeatother
 
 \newcommand{\QED}{\begin{flushright}\(\mathfrak{QED}\)\end{flushright}}
@@ -62,6 +62,7 @@
 \newcommand{\argmin}{\mathrm{argmin}}
 \newcommand{\dom}{\mathrm{dom}}
 \newcommand{\dig}{\mathrm{dig}}
+\newcommand{\lcm}{\mathrm{lcm}}
 \newcommand{\inner}[2]{\left\langle #1, #2\right\rangle}
 \newcommand{\metric}[1]{\left\| #1 \right\|}
 

@@ -7,10 +7,10 @@
 A \emph{list} is an ordered sequence of elements.
 
 \[
-    (a_1, a_2, \dots, a_n)
+	(a_1, a_2, \dots, a_n)
 \]
 
-Unlike sets, where the order of elements does not matter, in lists the order of elements is important. Hence, two 
+Unlike sets, where the order of elements does not matter, in lists the order of elements is important. Hence, two
 lists with the same elements but in different orders are considered different.
 
 \subsection{Length}
@@ -18,7 +18,7 @@ lists with the same elements but in different orders are considered different.
 A list can have a \emph{length}, which is the number of elements it contains.
 
 \[
-    \text{length}((a_1, a_2, \dots, a_n)) = n.
+	\text{length}((a_1, a_2, \dots, a_n)) = n.
 \]
 
 \subsection{Strings}
@@ -26,7 +26,7 @@ A list can have a \emph{length}, which is the number of elements it contains.
 A \emph{string} is a list where the elements are not separated by commas or parenthesis.
 
 \[
-    a_1 a_2 \dots a_n
+	a_1 a_2 \dots a_n
 \]
 
 \section{The Three Principles of Combinatorics}
@@ -35,67 +35,67 @@ The three principles of combinatorics are \emph{Addition}, \emph{Multiplication}
 
 \subsection{Principle of Multiplication}
 
-Suppose in making a list of length \(n\) there \(a_1\) possible choices for the first entry, \(a_2\) for the second choicesa, and 
+Suppose in making a list of length \(n\) there \(a_1\) possible choices for the first entry, \(a_2\) for the second choicesa, and
 so on. Then, the total number of possible lists is the product of the number of choices for each entry:
 
 \[
-    a_1 \cdot a_2 \cdot \dots \cdot a_n.
-\] 
+	a_1 \cdot a_2 \cdot \dots \cdot a_n.
+\]
 
-If repetition is allowed, then each entry can be chosen independently from the same set of possibilities, and the total number of possible lists 
+If repetition is allowed, then each entry can be chosen independently from the same set of possibilities, and the total number of possible lists
 is still given by the product formula:
 
 \[
-    a^n
+	a^n
 \]
 
 \subsection{Principle of Addition}
 
-Suppose a finite set \(X\) can be decomposed as a union \(X = X_1 \cup X_2 \cup \cdots \cup X_n\) where 
+Suppose a finite set \(X\) can be decomposed as a union \(X = X_1 \cup X_2 \cup \cdots \cup X_n\) where
 \(X_i \cap X_j = \emptyset\) whenever \(i \neq j\). Then, the total number of elements in \(X\) is the sum of the number of elements in each \(X_i\):
 
 \[
-    |X| = |X_1| + |X_2| + \cdots + |X_n|.
+	|X| = |X_1| + |X_2| + \cdots + |X_n|.
 \]
 
 \textbf{Example:}
 
-An example of this principle is given the following task: given the number from 0 to 9, how many strings including the 6 exactly one time 
+An example of this principle is given the following task: given the number from 0 to 9, how many strings including the 6 exactly one time
 are possible if this words are of length 3.
 
-We have the following cases: \(X_1 = 6,\_,\_\), \(X_2 = \_,6,\_\), \(X_3 = \_,\_,6\). Therefore, 
+We have the following cases: \(X_1 = 6,\_,\_\), \(X_2 = \_,6,\_\), \(X_3 = \_,\_,6\). Therefore,
 
 \[
-    |X_1| + |X_2| + |X_3| = 9^2 + 9^2 + 9^2 = 243
+	|X_1| + |X_2| + |X_3| = 9^2 + 9^2 + 9^2 = 243
 \]
 
-Note that if the 6 could occur more than once, we would have to consider additional cases where the 6 appears in multiple positions, which 
+Note that if the 6 could occur more than once, we would have to consider additional cases where the 6 appears in multiple positions, which
 would mean that we would use the inclusion-exclusion principle.
 
 \subsection{Principle of Subtraction}
 
-If \(X\) is a subset of a finite set \(U\), then \(|\bar{X}| = |U| - |X|\). In other words, 
+If \(X\) is a subset of a finite set \(U\), then \(|\bar{X}| = |U| - |X|\). In other words,
 
 \[
-    X \subseteq U \implies |U \setminus X | = |U| - |X|.
+	X \subseteq U \implies |U \setminus X | = |U| - |X|.
 \]
 
-This principle is used when we have overlapping sets, and we want to count the number of elements in their union accurately by correcting for the overcounting 
+This principle is used when we have overlapping sets, and we want to count the number of elements in their union accurately by correcting for the overcounting
 of elements in the intersections.
 
 \textbf{Example:}
 
-Let \(U\) be the set of all 3-digit strings formed from the digits 0 to 9, and let \(X\) be the set of strings that contain the digit 6 exactly once. 
+Let \(U\) be the set of all 3-digit strings formed from the digits 0 to 9, and let \(X\) be the set of strings that contain the digit 6 exactly once.
 Then, by the principle of subtraction, we have
 
 \[
-    |U| = 10^3, \quad |X| = 243
+	|U| = 10^3, \quad |X| = 243
 \]
 
-Therefore, 
+Therefore,
 
 \[
-    |\bar{X}| = |U| - |X| = 10^3 - 243 = 1000 - 243 = 757
+	|\bar{X}| = |U| - |X| = 10^3 - 243 = 1000 - 243 = 757
 \]
 
 \section{Inclusion-Exclusion Principle}
@@ -103,14 +103,14 @@ Therefore,
 Using the principles above, we can know state our \emph{principle of inclusion-exclusion}.
 
 \[
-    \left| \bigcup_{i=1}^n X_i \right| = \sum_{i=1}^n |X_i| - \sum_{1 \le i < j \le n} |X_i \cap X_j| + \sum_{1 \le i < j < k \le n} |X_i \cap X_j \cap X_k| - \cdots + (-1)^{n+1} |X_1 \cap X_2 \cap \cdots \cap X_n|.
+	\left| \bigcup_{i=1}^n X_i \right| = \sum_{i=1}^n |X_i| - \sum_{1 \le i < j \le n} |X_i \cap X_j| + \sum_{1 \le i < j < k \le n} |X_i \cap X_j \cap X_k| - \cdots + (-1)^{n+1} |X_1 \cap X_2 \cap \cdots \cap X_n|.
 \]
 
 \section{The Basic Counting Principle}
 
 For \(n\) outcomes of event \(A\) and \(m\) of \(B\), there are \(n \cdot m\) outcomes for event \(A\) and \(B\).
 
-In combinatorics we can model a lot of problems as having \(n\) elements from which we can take one at a time 
+In combinatorics we can model a lot of problems as having \(n\) elements from which we can take one at a time
 a certain number of times, and then we take into consideration if we allow repetition or the order matters or not.
 
 \textbf{Example:}
@@ -118,7 +118,7 @@ a certain number of times, and then we take into consideration if we allow repet
 A restaurant has 8 waiters and 5 types of steaks. How many ways of ordering a steak are there.
 
 \[
-    8 \cdot 5 = 40
+	8 \cdot 5 = 40
 \]
 
 \section{Permutation Without Repetition}
@@ -127,7 +127,7 @@ The \emph{permutation} counts the number of ways of ordering \(n\) distinct elem
 Of course, the order matters.
 
 \[
-    n!
+	n!
 \]
 
 \textbf{Example:}
@@ -135,51 +135,31 @@ Of course, the order matters.
 5 men and 4 women are ranked by heigjht. If the men are ordered among themselves and women as well, how many rankins are possible?
 
 \[
-    5! \cdot 4! = 120 \cdot 24 = 2880
+	5! \cdot 4! = 120 \cdot 24 = 2880
 \]
 
 For reach ranking, we consider the men and women separately, and then multiply the number of ways to order each group.
 
-\subsection{Permutation With Repetition}
+\section{Permutation With Repetition}
 
 The \emph{permutation with repetition} counts the number of ways of ordering \(n\) non-distinct elements. Here \(m_1, \dots, m_n\)
-is the number of times a specific item is repeated in the original set. By dividing by the respective amount of the 
+is the number of times a specific item is repeated in the original set. By dividing by the respective amount of the
 repeated non-distinct element, we eliminate the permutations where the identical elements swap their place.
 
 \[
-    \frac{n!}{m_1! \cdots m_n!}
+	\frac{n!}{m_1! \cdots m_n!}
 \]
-
-This formula comes from the \emph{multinomial coefficient} given by 
-
-\[
-    \binom{n}{n_1 n_2 \dots n_m} = \frac{n!}{n_1! \cdots n_m!},
-\]
-
-which comes from 
-
-\[
-    \binom{n}{n_1} \binom{n - n_1}{n_2}\binom{n - n_1 - n_2}{n_3} \dots \binom{n - n_1 - \cdots n_{m - 1}}{n_m}.
-\]
-
-This is also a kind of \emph{partition problem}, because it can be formulated as if you have 
-\(n\) different elements, and you want to divide them into \(m\) bins with capacities \(m_1, m_2, \cdots, m_m\), how 
-many possible ways are there for these partitions. 
-
-In this case, the order matters, but only for the different elements. 
-
-\textbf{Example:}
-
+In this case, the order matters, but only for the different elements.
 
 \section{Multisets}
 
 A \emph{multiset} is similar to a set, but we allow multiple occurrences of an elements, but the order does not matter unlike lists.
-We will use this multiset for combinations with repetition. 
+We will use this multiset for combinations with repetition.
 
-As an example: 
+As an example:
 
 \[
-    [1, 1, 2, 2, 2, 3]
+	[1, 1, 2, 2, 2, 3]
 \]
 
 \textbf{Example:}
@@ -187,40 +167,40 @@ As an example:
 Consider the multiset \(\{a, a, b, b, b, c\}\). The number of distinct permutations of this multiset is given by
 
 \[
-    \frac{6!}{2! \cdot 3! \cdot 1!} = \frac{720}{12} = 60.
+	\frac{6!}{2! \cdot 3! \cdot 1!} = \frac{720}{12} = 60.
 \]
 
 \section{Combination With Repetition}
 
-We can think of the \emph{combination} as having \(n\) types of objects, and we want 
+We can think of the \emph{combination} as having \(n\) types of objects, and we want
 to take with repetition until we fill our \(k\) slots.
 
 \[
-    \binom{n + k - 1}{n - 1} 
+	\binom{n + k - 1}{n - 1}
 \]
 
 For understanding, we have \(n\) types of objects, and because we want a combination of those objects, the order does not matter.
-Thus, we can put them together as contiguous groups. We have \(k\) slots and \(n\) types, thus we can separate our groups 
-with \(n - 1\) separators \(|\). The question becomes how many ways are there to put \(n - 1\) separators into \(n + k - 1\) slots. Note 
+Thus, we can put them together as contiguous groups. We have \(k\) slots and \(n\) types, thus we can separate our groups
+with \(n - 1\) separators \(|\). The question becomes how many ways are there to put \(n - 1\) separators into \(n + k - 1\) slots. Note
 that we have \(n + k - 1\) positions if we count the actual slots and the separator slots in between.
 
 \[
-    *|* * *|* *, \quad n = 6, \quad k = 2, \quad \text{positions in between } = 7
+	*|* * *|* *, \quad n = 6, \quad k = 2, \quad \text{positions in between } = 7
 \]
 
 This called the \emph{stars and bars} method. For this method we make the assumption that identical are next to each other, forming contiguous groups.
 
 \textbf{Example}
 
-We have 10 balls and 3 boxes, but we do not know how many ways are there to distribute the balls into the boxes. 
-We use the bars and stars method to represent the distribution of balls into boxes. Here, the balls are represented by stars and the separations between boxes are represented by bars. 
+We have 10 balls and 3 boxes, but we do not know how many ways are there to distribute the balls into the boxes.
+We use the bars and stars method to represent the distribution of balls into boxes. Here, the balls are represented by stars and the separations between boxes are represented by bars.
 
 We have 10 balls and 3 boxes, so we need 2 bars to separate the boxes.
 The total number of positions is \(10 + 2 = 12\), and we need to choose 2 positions for the bars.
-Thus, the number of ways to distribute the balls is 
+Thus, the number of ways to distribute the balls is
 
 \[
-    \binom{10 + 2}{2} = \binom{12}{2} = 66.
+	\binom{10 + 2}{2} = \binom{12}{2} = 66.
 \]
 
 \section{Variation}
@@ -228,16 +208,16 @@ Thus, the number of ways to distribute the balls is
 The \emph{variation} counts the ways of putting \(n\) objects in \(k\) slots with repetition. Here, the order does not matter.
 
 \[
-    n^k
+	n^k
 \]
 
 \section{Variation Without Repetition}
 
-This kind of \emph{variation}  counts the ways of putting \(n\) objects in \(k\) slots without repetition. Number of tuples with \(k\) 
+This kind of \emph{variation}  counts the ways of putting \(n\) objects in \(k\) slots without repetition. Number of tuples with \(k\)
 elements which can be selected from \(n\) elements, without repetition. The order matters.
 
 \[
-    \frac{n!}{(n - k)!}
+	\frac{n!}{(n - k)!}
 \]
 
 \section{Combination Without Repetition}
@@ -245,30 +225,45 @@ elements which can be selected from \(n\) elements, without repetition. The orde
 The \emph{combination} can be understood as choosing \(k\) objects of \(n\) elements. Or putting \(k\) elements from \(n\) into \(k\) slots where the order does not matter.
 
 \[
-    \binom{n}{k} = \frac{n!}{k!(n-k)!}
+	\binom{n}{k} = \frac{n!}{k!(n-k)!}
 \]
 
-Note that like in the variation we use \(\frac{n!}{(n - k)!}\) to limit our slots to \(k\). Then for the \(k\) objects 
-we choose we can arrange them in \(k!\) ways but because the order does not matter we divide by \(k!\) to get rid of the  
+Note that like in the variation we use \(\frac{n!}{(n - k)!}\) to limit our slots to \(k\). Then for the \(k\) objects
+we choose we can arrange them in \(k!\) ways but because the order does not matter we divide by \(k!\) to get rid of the
 repeated combinations.
 
 \section{Multinomial Coefficients}
 
-When using the binomial coefficient repeatedly, one after the other, we can abbreviate 
-these consecutive uses as 
+When using the binomial coefficient repeatedly, one after the other, we can abbreviate
+these consecutive uses as
 
 \[
-    \binom{n}{k_1, \dots, k_n}
+	\binom{n}{k_1, \dots, k_m}
 \]
 
-This is like from \(n\) choose \(k_1\), then from \(n - k_1\) choose \(k_2\), and so on.
+This is like from \(n\) choose \(k_1\), then from \(n - k_1\) choose \(k_2\), and so on. This is called
+the \emph{multinomial coefficient} and is given by the formula
+
+\[
+	\binom{n}{k_1 k_2 \dots k_m} = \frac{n!}{k_1! \cdots k_m!},
+\]
+
+which comes from
+
+\[
+	\binom{n}{n_1} \binom{n - k_1}{k_2}\binom{n - k_1 - k_2}{k_3} \dots \binom{n - k_1 - \cdots k_{m - 1}}{k_m} (n - k_1 - \cdots - k_m)!
+\]
+
+This is also a kind of \emph{partition problem}, because it can be formulated as if you have
+\(n\) different elements, and you want to divide them into \(k\) bins with capacities \(k_1, k_2, \cdots, k_m\), how
+many possible ways are there for these partitions.
 
 \subsection{Multinomial Theorem}
 
-Given \(x_1, \dots, x_r \in \R\) and \(\N\), then 
+Given \(x_1, \dots, x_r \in \R\) and \(\N\), then
 
 \[
-    (x_1 + \cdots + x_r)^n = \sum_{k_1 + \cdots + k_{r} = n}  \binom{n}{k_1, \dots, k_r} x_{1}^{k_1} \cdots x_{r}^{k_r}
+	(x_1 + \cdots + x_r)^n = \sum_{k_1 + \cdots + k_{r} = n}  \binom{n}{k_1, \dots, k_r} x_{1}^{k_1} \cdots x_{r}^{k_r}
 \]
 
 where \(k_1, \dots, k_p\) are less or equal to \(n\).
@@ -277,30 +272,30 @@ This can be better understood with an example.
 
 \textbf{Example:}
 
-Let us use the formula for \((x + y + z)^3\). 
+Let us use the formula for \((x + y + z)^3\).
 
 
 \[
-    \sum_{i, j, k, i + j + k = 4}^{4} \binom{4}{i, j, k}x^i y^j z^k
+	\sum_{i, j, k, i + j + k = 4}^{4} \binom{4}{i, j, k}x^i y^j z^k
 \]
 
 \textbf{Proof:}
 
 Let \(r = 1\) be our \emph{base case}, then \(x_1 = x_1\).
 
-We assume as our \emph{inductive hypothesis} that 
+We assume as our \emph{inductive hypothesis} that
 
 \[
-    (x_1 + \cdots + x_r)^n = \sum_{k_1 + \cdots + k_{r} = n}  \binom{n}{k_1, \dots, k_r} x_{1}^{k_1} \cdots x_{r}^{k_r}
+	(x_1 + \cdots + x_r)^n = \sum_{k_1 + \cdots + k_{r} = n}  \binom{n}{k_1, \dots, k_r} x_{1}^{k_1} \cdots x_{r}^{k_r}
 \]
 
 Now for our \emph{inductive step} we take \(n + 1\)
 
-\begin{align*} 
-    (x_1 + \cdots + x_{n} + x_{r + 1})^{n + 1} &= ((x_1 + \cdots + x_{n}) + x_{r + 1})^{n + 1} \\
-     &= \sum_{k = 0}^{n}\binom{n}{k} (x_1 + \cdots + x_{n} + x_n)^{k} x_{r + 1}^{n - k} \\
-     &= \sum_{k = 0}^{n}\binom{n}{k}  \left(\sum_{k_1 + \cdots + k_{r} = n}  \binom{n}{k_1, \dots, k_r} x_{1}^{k_1} \cdots x_{r}^{k_r} \right)x_{r + 1}^{n - k} \\
-     &= \sum_{k_1 + \cdots + k_{r + 1} = n}  \binom{n}{k_1, \dots, k_r + k_{r + 1}} x_{1}^{k_1} \cdots x_{r}^{k_r} x_{r + 1}^{k_{r + 1}}
+\begin{align*}
+	(x_1 + \cdots + x_{n} + x_{r + 1})^{n + 1} & = ((x_1 + \cdots + x_{n}) + x_{r + 1})^{n + 1}                                                                                                            \\
+	                                           & = \sum_{k = 0}^{n}\binom{n}{k} (x_1 + \cdots + x_{n} + x_n)^{k} x_{r + 1}^{n - k}                                                                         \\
+	                                           & = \sum_{k = 0}^{n}\binom{n}{k}  \left(\sum_{k_1 + \cdots + k_{r} = n}  \binom{n}{k_1, \dots, k_r} x_{1}^{k_1} \cdots x_{r}^{k_r} \right)x_{r + 1}^{n - k} \\
+	                                           & = \sum_{k_1 + \cdots + k_{r + 1} = n}  \binom{n}{k_1, \dots, k_r + k_{r + 1}} x_{1}^{k_1} \cdots x_{r}^{k_r} x_{r + 1}^{k_{r + 1}}
 \end{align*}
 
 Note that we used both the definition of the multinomial coefficient and the binomial theorem to get this result.
@@ -309,14 +304,14 @@ Note that we used both the definition of the multinomial coefficient and the bin
 
 \section{The Division Principle}
 
-Suppose \(n\) objets are placed into \(k\) boxes. Then at least one box contains \(\left\lceil \frac{n}{k} \right\rceil\) or more 
-objects and at least one box contains \(\left\lfloor \frac{n}{k} \right\rfloor\) or fewer objects. This is called 
+Suppose \(n\) objets are placed into \(k\) boxes. Then at least one box contains \(\left\lceil \frac{n}{k} \right\rceil\) or more
+objects and at least one box contains \(\left\lfloor \frac{n}{k} \right\rfloor\) or fewer objects. This is called
 the \emph{division principle}.
 
 \section{The Pigeonhole Principle}
 
-The \emph{pigeonhole principle} states that if \(n\) objects are placed into \(k\) boxes and \(n > k\), then 
-at least one box contains more than one objects. If \(n < k\), then at least one box is empty. This is a direct consecuence from the division 
+The \emph{pigeonhole principle} states that if \(n\) objects are placed into \(k\) boxes and \(n > k\), then
+at least one box contains more than one objects. If \(n < k\), then at least one box is empty. This is a direct consecuence from the division
 principle.
 
 \textbf{Example:}
@@ -325,18 +320,18 @@ Prove that under 8 different integer there exists at least two whose difference 
 
 \textbf{Prove}
 
-Let \(A = \{z_0, \dots, z_7\} \subsetneq \Z\) and \(R = \{0, \dots, 6\}\). Because the every integer can be writen as 
-\(z = 7q + r\) we now use the pigeonhole principle and note that \(|A| > |B|\), hence there are \(a, a' \in A\) such that \(\gamma(a) = \gamma(a')\). Thus, 
-under the function 
+Let \(A = \{z_0, \dots, z_7\} \subsetneq \Z\) and \(R = \{0, \dots, 6\}\). Because the every integer can be writen as
+\(z = 7q + r\) we now use the pigeonhole principle and note that \(|A| > |B|\), hence there are \(a, a' \in A\) such that \(\gamma(a) = \gamma(a')\). Thus,
+under the function
 
 \[
-    \gamma: A \to R
+	\gamma: A \to R
 \]
 
 which assigns every element from \(A\) to its corresponding residual class. Thus,
 
 \[
-    7q_1 + r - (7q_1 + r) = 7(q_1 - q_2)
+	7q_1 + r - (7q_1 + r) = 7(q_1 - q_2)
 \]
 
 Therefore, their difference is divisible by seven.
@@ -347,9 +342,9 @@ Therefore, their difference is divisible by seven.
 
 \subsection*{Defected Machines}
 
-A new delivery with 10 machines from which 2 are not working properly has to be tested. For that purpose a 
-man in charge selects 5 of the machines randomly, and then he proceeds to make a decision based on the number of faulty machines found 
-in the delivery. If among the 5 samples only 1 machine does not work it will be accepted otherwise it will be rejected. What is the 
+A new delivery with 10 machines from which 2 are not working properly has to be tested. For that purpose a
+man in charge selects 5 of the machines randomly, and then he proceeds to make a decision based on the number of faulty machines found
+in the delivery. If among the 5 samples only 1 machine does not work it will be accepted otherwise it will be rejected. What is the
 probability of a delivery being accepted?
 
 \textbf{Answer:}
@@ -358,15 +353,15 @@ Total cases: \(\binom{10}{5}\)
 
 \(\prob(\text{accepted}) = \frac{\binom{8}{5}}{\binom{10}{5}} + \frac{\binom{2}{1}\binom{8}{4}}{\binom{10}{5}}\)
 
-\(\binom{8}{5}\) represents no faulty machine in the choice; \(\binom{2}{1}\binom{8}{4}\) represents that only one machine does not work. 
+\(\binom{8}{5}\) represents no faulty machine in the choice; \(\binom{2}{1}\binom{8}{4}\) represents that only one machine does not work.
 
 \section{Disarray}
 
-A \emph{disarray} is the number of permutations in which no object ends in the same initial spot. It is also known as the 
+A \emph{disarray} is the number of permutations in which no object ends in the same initial spot. It is also known as the
 \emph{sub-factorial}.
 
 \[
-    !n = n! \sum_{k = 0}^{n} \left(\frac{{(-1)}^k}{k!}\right)
+	!n = n! \sum_{k = 0}^{n} \left(\frac{{(-1)}^k}{k!}\right)
 \]
 
 \section{Bell Numbers}
@@ -374,7 +369,7 @@ A \emph{disarray} is the number of permutations in which no object ends in the s
 The \emph{Bell numbers} count the number of ways of grouping \(n\) objects in an arbitrary number of slots.
 
 \[
-    B(N) = \sum_{k = 0}^{N-1}\binom{N}{K}B(K),
+	B(N) = \sum_{k = 0}^{N-1}\binom{N}{K}B(K),
 \]
 
 with \(B(1) = 1\) and \(B(2) = 2\).
@@ -385,7 +380,7 @@ The \emph{Ramanujan numbers} are the same as the Bell numbers, but all objects a
 to decompose a number.
 
 \[
-    R(N) \approx \frac{1}{4N\sqrt{3}} e^{2\pi \sqrt{\frac{N}{6}}}
+	R(N) \approx \frac{1}{4N\sqrt{3}} e^{2\pi \sqrt{\frac{N}{6}}}
 \]
 
 \section{Stirling Numbers I}
@@ -393,7 +388,7 @@ to decompose a number.
 The ways of permuting \(N\) items with \(K\) exchanges are given by the \emph{Stirling Numbers I}.
 
 \[
-    \genfrac{[}{]}{0pt}{}{N + 1}{K} = N \genfrac{[}{]}{0pt}{}{N}{K} + \genfrac{[}{]}{0pt}{}{N}{K - 1}
+	\genfrac{[}{]}{0pt}{}{N + 1}{K} = N \genfrac{[}{]}{0pt}{}{N}{K} + \genfrac{[}{]}{0pt}{}{N}{K - 1}
 \]
 
 \section{Stirling Numbers II}
@@ -401,7 +396,7 @@ The ways of permuting \(N\) items with \(K\) exchanges are given by the \emph{St
 The ways of grouping \(n\) items in \(k\) slots are given by the \emph{Stirling Numbers II}.
 
 \[
-    \genfrac{\{}{\}}{0pt}{}{N}{K} = \frac{1}{K!} \sum_{j=0}^{K} (-1)^{K - j} \binom{K}{j} j^N
+	\genfrac{\{}{\}}{0pt}{}{N}{K} = \frac{1}{K!} \sum_{j=0}^{K} (-1)^{K - j} \binom{K}{j} j^N
 \]
 
 \section{Lah Numbers}
@@ -409,8 +404,8 @@ The ways of grouping \(n\) items in \(k\) slots are given by the \emph{Stirling 
 The \emph{Lah numbers} represent the ways of building \(K\) lists with a set of \(N\) elements.
 
 \[
-    \genfrac{\lfloor}{\rfloor}{0pt}{}{N}{K} = \binom{N - 1}{K - 1} \frac{N!}{K!} = \sum_{j=0}^{K} 
-    \genfrac{[}{]}{0pt}{}{N}{K} \genfrac{\{}{\}}{0pt}{}{N}{K}
+	\genfrac{\lfloor}{\rfloor}{0pt}{}{N}{K} = \binom{N - 1}{K - 1} \frac{N!}{K!} = \sum_{j=0}^{K}
+	\genfrac{[}{]}{0pt}{}{N}{K} \genfrac{\{}{\}}{0pt}{}{N}{K}
 \]
 
 \section{Euler's Numbers}
@@ -419,7 +414,7 @@ The \emph{Euler's numbers} are the number of permutations of a set of \(N\) elem
 \(K\) elements are bigger than their previous element.
 
 \[
-    \genfrac{\langle}{\rangle}{0pt}{}{N}{K} = \sum_{j = 0}^{K} (-1)^j \binom{N + 1}{j} (K + 1 - j)^N.
+	\genfrac{\langle}{\rangle}{0pt}{}{N}{K} = \sum_{j = 0}^{K} (-1)^j \binom{N + 1}{j} (K + 1 - j)^N.
 \]
 
 \section{Catalan Numbers}
@@ -428,12 +423,12 @@ The \emph{Catalan numbers} have different applications like the number of ways o
 a polygon or the number of trees with \(N\) leaves.
 
 \[
-    \mathfrak{C}(N) = \binom{2N}{N} - \binom{2N}{N + 1}
+	\mathfrak{C}(N) = \binom{2N}{N} - \binom{2N}{N + 1}
 \]
 
 or
 
 \[
-    \mathfrak{C}(N) = \sum_{k=1}^{n}(k - 1) \mathfrak{C}(N - k).
+	\mathfrak{C}(N) = \sum_{k=1}^{n}(k - 1) \mathfrak{C}(N - k).
 \]
 

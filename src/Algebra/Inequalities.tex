@@ -1,58 +1,58 @@
 \chapter{Inequalities}
 
-\emph{Inequalities} play a big role in all of mathematics, but especially at the start of real analysis it is 
-of major importance to get familiar with them. 
+\emph{Inequalities} play a big role in all of mathematics, but especially at the start of real analysis it is
+of major importance to get familiar with them.
 
 \section{The Absolute Value}
 
 The \emph{absolute value} of a real number \(x\), denoted by \(|x|\), is defined as
 
 \[
-    |x| = 
-    \begin{cases} 
-        x & \text{if } x \ge 0, \\
-        -x & \text{if } x < 0.
-    \end{cases}
+	|x| =
+	\begin{cases}
+		x  & \text{if } x \ge 0, \\
+		-x & \text{if } x < 0.
+	\end{cases}
 \]
 
 \subsection{Properties of Absolute Value}
 
 \begin{itemize}
 
-    \item \(|x| \ge 0\)
+	\item \(|x| \ge 0\)
 
-    \item \(|x| = 0 \iff x = 0\)
+	\item \(|x| = 0 \iff x = 0\)
 
-    \item \(|-x| = |x|\)
+	\item \(|-x| = |x|\)
 
-    \item \(|xy| = |x| \cdot |y|\)
+	\item \(|xy| = |x| \cdot |y|\)
 
-    \item \(\left|\frac{x}{y}\right| = \frac{|x|}{|y|}, \quad y \ne 0\)
+	\item \(\left|\frac{x}{y}\right| = \frac{|x|}{|y|}, \quad y \ne 0\)
 
 \end{itemize}
 
 \subsection{Interval Property of the Absolute Value}
 
-Let \(a, b, x \in \R\) and assume that \(b \ge 0\). 
+Let \(a, b, x \in \R\) and assume that \(b \ge 0\).
 
 \[
-    |x - a| \le b \implies a - b \le x \le a + b
+	|x - a| \le b \implies a - b \le x \le a + b
 \]
 
 \textbf{Proof:}
 
-Assume that \(|x - a| \le b\). Now we have two cases. 
+Assume that \(|x - a| \le b\). Now we have two cases.
 
 If \(x - a \ge 0\), then \(0 \le x - a \le b\), which implies \(a \le x \le a + b\). Hence,
 
 \[
-   a - b \le x \le a + b.
+	a - b \le x \le a + b.
 \]
 
 If \(x - a < 0\), then \(|x - a| = -(x - a) = -x + a\), which implies \(0 \le -x + a \le b\), and hence \(a - b \le x \le a\). Therefore, combining both cases, we get the desired interval property.
 
 \[
-   a - b \le x \le a + b.
+	a - b \le x \le a + b.
 \]
 
 \QED
@@ -63,13 +63,13 @@ Let \(x, y \in \R\). The following inequalities hold:
 
 \begin{itemize}
 
-    \item \(|x + y| \le |x| + |y|\)
+	\item \(|x + y| \le |x| + |y|\)
 
-    \item \(|x - y| \ge |x| - |y|\)
+	\item \(|x - y| \ge |x| - |y|\)
 
-    \item \(||x| - |y|| \le |x - y|\)
+	\item \(||x| - |y|| \le |x - y|\)
 
-    \item \(xy \le |x| \cdot |y|\)
+	\item \(xy \le |x| \cdot |y|\)
 
 \end{itemize}
 
@@ -78,25 +78,25 @@ Let \(x, y \in \R\). The following inequalities hold:
 Let \(x \ge 0\) and \(y \ge 0\), then \(|x + y| = x + y\) and \(|x| = x, |y| = y\). Therefore,
 
 \[
-    |x + y| = x + y = |x| + |y|.
+	|x + y| = x + y = |x| + |y|.
 \]
 
 If \(x < 0\) and \(y < 0\), then \(|x + y| = -(x + y) = -x - y\) and \(|x| = -x, |y| = -y\). Therefore,
 
 \[
-    |x + y| = -x - y = |x| + |y|.
+	|x + y| = -x - y = |x| + |y|.
 \]
 
-If \(x \ge 0\) and \(y < 0\), then \(|x + y| = x + (-y) = x - y\) and \(|x| = x, -|y| = y\). Because 
+If \(x \ge 0\) and \(y < 0\), then \(|x + y| = x + (-y) = x - y\) and \(|x| = x, -|y| = y\). Because
 
 \[
-    -|y| < |y| \implies x - y < x + |y| = |x| + |y|.
+	-|y| < |y| \implies x - y < x + |y| = |x| + |y|.
 \]
 
-Similarly, for the case \(x < 0\) and \(y \ge 0\), then \(|x + y| = -x + y\) and \(|x| = -x, |y| = y\). Because 
+Similarly, for the case \(x < 0\) and \(y \ge 0\), then \(|x + y| = -x + y\) and \(|x| = -x, |y| = y\). Because
 
 \[
-    -|x| < |x| \implies -x + y < |x| + |y|.
+	-|x| < |x| \implies -x + y < |x| + |y|.
 \]
 
 \QED
@@ -104,7 +104,7 @@ Similarly, for the case \(x < 0\) and \(y \ge 0\), then \(|x + y| = -x + y\) and
 \section{Reciprocal Inequality}
 
 \[
-    a < b < c \implies \frac{1}{a} > \frac{1}{b} > \frac{1}{c}
+	a < b < c \implies \frac{1}{a} > \frac{1}{b} > \frac{1}{c}
 \]
 
 \section{Bernoulli Inequality}
@@ -112,59 +112,59 @@ Similarly, for the case \(x < 0\) and \(y \ge 0\), then \(|x + y| = -x + y\) and
 Given \(x \in \R, x \ge -1, x \ne 0\), then for \(n \in \N, n \ge 1\), we have
 
 \[
-    (1 + x)^n \ge 1 + nx
+	(1 + x)^n \ge 1 + nx
 \]
 
-This inequality is known as the \emph{Bernoulli inequality} and it is useful for proving that some functions are stricly greater than other 
+This inequality is known as the \emph{Bernoulli inequality} and it is useful for proving that some functions are stricly greater than other
 on some intervals of the real line, among other applications.
 
 \textbf{Proof:}
 
-Suppose \(a \ge -1\). 
+Suppose \(a \ge -1\).
 
 Let our \emph{base case} be \(n = 1\). Then \((1 + x)^1 = 1 + x\), which satisfies the inequality \(1 + x \ge 1 + x\).
 
 \emph{Induction hypothesis}: suppose the inequality holds for some \(n = k\), i.e.,
 
 \[
-    (1 + x)^k \ge 1 + kx
+	(1 + x)^k \ge 1 + kx
 \]
 
 \emph{Induction Step}: We want to prove that \((1 + x)^{k + 1} \ge 1 + (k  + 1)x\).
 
 \begin{align*}
-    (1 + x)^{k + 1} &= (1 + x)^k (1 + x) \\ 
-    &\ge (1 + xn)(1 + x) \\ 
-    &= 1 + x + xn + nx^2 \\ 
-    &= 1 + (k + 1)x + nx^2 \\ 
-    &\ge 1 + (k + 1)x
+	(1 + x)^{k + 1} & = (1 + x)^k (1 + x)   \\
+	                & \ge (1 + xn)(1 + x)   \\
+	                & = 1 + x + xn + nx^2   \\
+	                & = 1 + (k + 1)x + nx^2 \\
+	                & \ge 1 + (k + 1)x
 \end{align*}
 
-In this induction proof we could not just use the induction hypothesis directly and manipulate our expression; we had to multiply both sides by \(1 + x\) and then expand and 
+In this induction proof we could not just use the induction hypothesis directly and manipulate our expression; we had to multiply both sides by \(1 + x\) and then expand and
 simplify to show that the inequality still holds for \(n = k + 1\).
 
 \QED
 
 \section{Inequalities for Real Numbers}
 
-For \(x,y \in \R\) the following holds: 
+For \(x,y \in \R\) the following holds:
 
 \[
-    x < y + \varepsilon, \forall \varepsilon > 0 \iff x \le y
+	x < y + \varepsilon, \forall \varepsilon > 0 \iff x \le y
 \]
 
-and 
+and
 
 \[
-    |x| < \varepsilon, \forall \varepsilon > 0 \iff x = 0.
+	|x| < \varepsilon, \forall \varepsilon > 0 \iff x = 0.
 \]
 
 \textbf{Proof:}
 
-For the first, if \(x > y\), then I can choose some epsilon only at some point where \(y + \varepsilon > x\); therefore, 
+For the first, if \(x > y\), then I can choose some epsilon only at some point where \(y + \varepsilon > x\); therefore,
 not all epsilons satisfy the inequality.
 
-For the second one, if \(x \ne 0\), then \(|x| \ne 0 \land |x| > 0\); therefore, the only valid option is for 
+For the second one, if \(x \ne 0\), then \(|x| \ne 0 \land |x| > 0\); therefore, the only valid option is for
 \(x\) to be zero.
 
 \QED
@@ -174,29 +174,29 @@ For the second one, if \(x \ne 0\), then \(|x| \ne 0 \land |x| > 0\); therefore,
 For all \(x,y \in \R\), the following holds:
 
 \[
-    xy \le \frac{1}{2}x^2 + \frac{1}{2}y^2.
+	xy \le \frac{1}{2}x^2 + \frac{1}{2}y^2.
 \]
 
 And this implies:
 
 \[
-    \sqrt{xy} \le \frac{1}{2}x + \frac{1}{2}y, \quad \forall x,y \ge 0
+	\sqrt{xy} \le \frac{1}{2}x + \frac{1}{2}y, \quad \forall x,y \ge 0
 \]
 
 and
 
 \[
-    xy \le \frac{\varepsilon}{2}x^2 + \frac{1}{2\varepsilon}y^2, \quad \forall x,y \in \R, \varepsilon > 0.
+	xy \le \frac{\varepsilon}{2}x^2 + \frac{1}{2\varepsilon}y^2, \quad \forall x,y \in \R, \varepsilon > 0.
 \]
 
 \section{Inequalities With and Without Absolute Value}
 
-\emph{Inequalities} are like normal \emph{equalities}, but with ranges of solutions 
-instead of one particular solution. The inequalities without absolute value are straightforward 
-to solve, just like equations, with the particularity that when dividing both sides by a negative number, 
+\emph{Inequalities} are like normal \emph{equalities}, but with ranges of solutions
+instead of one particular solution. The inequalities without absolute value are straightforward
+to solve, just like equations, with the particularity that when dividing both sides by a negative number,
 the relation \(<, >, \ge, \le\) has to be converted to its opposite.
 
-The case with absolute value is similar, but here we have to account for different cases depending on the 
+The case with absolute value is similar, but here we have to account for different cases depending on the
 expression inside the \(|\circ|\).
 
 \textbf{Example:}
@@ -206,63 +206,63 @@ Solve \(|x + 1| \le 10 + |2x - 6|\).
 \textbf{Main cases:}
 
 \[
-    F_1: x + 1 \ge 0 \implies x \ge -1
+	F_1: x + 1 \ge 0 \implies x \ge -1
 \]
 
 \[
-    F_2: x + 1 < 0 \implies x < -1
+	F_2: x + 1 < 0 \implies x < -1
 \]
 
 \textbf{Sub-cases:}
 
 \[
-    F_{1,1}: 2x - 6 \ge 0  \implies x \ge 3
+	F_{1,1}: 2x - 6 \ge 0  \implies x \ge 3
 \]
 
 \begin{align*}
-    x + 1 &\ge 10 + 2x - 6 \\
-    x &\le 5 \\
-    \mathcal{L} &= [3; \infty )
+	x + 1       & \ge 10 + 2x - 6 \\
+	x           & \le 5           \\
+	\mathcal{L} & = [3; \infty )
 \end{align*}
 
 \[
-    F_{1,2}: 2x - 6 < 0  \implies x < 3
+	F_{1,2}: 2x - 6 < 0  \implies x < 3
 \]
 
 \begin{align*}
-    x + 1 &\ge 10 - (2x - 6) \\
-    x &\ge 5 \\
-    \mathcal{L} &= (-\infty; 3]
+	x + 1       & \ge 10 - (2x - 6) \\
+	x           & \ge 5             \\
+	\mathcal{L} & = (-\infty; 3]
 \end{align*}
 
 \[
-    F_{2,1}: 2x - 6 \ge 0 \implies x \ge 3
+	F_{2,1}: 2x - 6 \ge 0 \implies x \ge 3
 \]
 
 \begin{align*}
-   -(x + 1 ) &\ge 10 + 2x - 6 \\
-    x &\le \frac{-5}{3} \\
-    \mathcal{L} &= \emptyset
+	-(x + 1 )   & \ge 10 + 2x - 6  \\
+	x           & \le \frac{-5}{3} \\
+	\mathcal{L} & = \emptyset
 \end{align*}
 
 \[
-    F_{2,2}: 2x - 6 < 0 \implies x < 3
+	F_{2,2}: 2x - 6 < 0 \implies x < 3
 \]
 
 \begin{align*}
-   -(x + 1 ) &\ge 10 - (2x - 6) \\
-    x &\le 17 \\
-    \mathcal{L} &= (- \infty, 3)
+	-(x + 1 )   & \ge 10 - (2x - 6) \\
+	x           & \le 17            \\
+	\mathcal{L} & = (- \infty, 3)
 \end{align*}
 
 \textbf{Union of the solutions:}
 
 \[
-    \mathcal{L} = 
-    (-\infty; 3] \cup 
-    [3; \infty ) \cup 
-    \emptyset    \cup
-    (- \infty, 3) = (- \infty, \infty)
+	\mathcal{L} =
+	(-\infty; 3] \cup
+	[3; \infty ) \cup
+	\emptyset    \cup
+	(- \infty, 3) = (- \infty, \infty)
 \]
 
 

@@ -103,10 +103,10 @@ We know that any odd integer has the form
 and we have noticed the pattern \(b = a - 1\). Now let us assume that every odd integer can be written as \(a^2 - b^2\).
 
 \begin{align*}
-	z &= a^2 - b^2 \\
-	  &= a^2 - (a-1)^2 \\
-	  &= a^2 - (a^2 - 2a + 1) \\
-	  &= 2a - 1 \in \Z.
+	z & = a^2 - b^2            \\
+	  & = a^2 - (a-1)^2        \\
+	  & = a^2 - (a^2 - 2a + 1) \\
+	  & = 2a - 1 \in \Z.
 \end{align*}
 
 \QED
@@ -250,7 +250,7 @@ which is even, contradicting our assumption that \(x^2\) is odd. Therefore, \(x\
 
 \QED
 
-\section{Proof by Full Induction}
+\section{Proof by Induction}
 
 For all \(n \in \N\), \(A(n)\) is a statement. Then  the following holds
 
@@ -327,10 +327,10 @@ be true.
 By the inductive hypothesis, we have:
 
 \begin{align*}
-	\sum_{i = 1}^{n + 1} i &= \sum_{i = 1}^{n} i + (n + 1)\\
-	&= \frac{n(n+1)}{2} + (n + 1)\\
-	&= \frac{n(n+1) + 2(n + 1)}{2} \\
-	&= \frac{(n + 1)(n + 2)}{2}
+	\sum_{i = 1}^{n + 1} i & = \sum_{i = 1}^{n} i + (n + 1) \\
+	                       & = \frac{n(n+1)}{2} + (n + 1)   \\
+	                       & = \frac{n(n+1) + 2(n + 1)}{2}  \\
+	                       & = \frac{(n + 1)(n + 2)}{2}
 \end{align*}
 
 Thus, we have proven the statement for \( n + 1 \), completing the inductive step. By the principle of mathematical induction, the
@@ -350,7 +350,7 @@ Some variations of this principle due exists like:
 
 \end{itemize}
 
-\section{Strong Induction}
+\subsection{Strong Induction}
 
 \emph{Strong induction} is a form of mathematical induction where instead of assuming \(A(n)\) is true in our
 inductive hypothesis, we assume \(A(j)\) is true for \(1 \le j \le n\).
@@ -381,7 +381,7 @@ for both \(a\) and \(b\) we know that they can be written as the product of prim
 
 \QED
 
-\section{Forward-Backward Induction}
+\subsection{Forward-Backward Induction}
 
 Let \(S(n)\) denote a statement involving a variable \(n\). Suppose
 
@@ -393,12 +393,55 @@ Let \(S(n)\) denote a statement involving a variable \(n\). Suppose
 
 \end{itemize}
 
+\subsection{Induction Techniques}
+
+When dealing with induction proofs, some creativity is required for certain problems where the inductive step is not straightforward. Some techniques include:
+
+\begin{itemize}
+
+	\item \emph{Add and subtract the induction hypothesis}: This can come in handy for transforming the expression into a more manageable form or
+	      directly get the desired result. Like for example, \(1 + \cdots + (2n - 1) = n^2\) to \(1 + \cdots + (2n - 1) + (2n + 1) = n^2 + (2n + 1)\).
+
+	\item \emph{Factorization and algebraic manipulation}: This is the classic, one would use by applying, logarithms, sums, products, etc. to simplify the expression and get the desired result.
+
+	\item \emph{Multiplication or division by one or some clever term}: This is similar to the previous technique, but is like a preparation step.
+
+	\item \emph{Use the binomial theorem}: This formula appears in many induction proofs, especially when dealing with sums of powers or combinatorial identities.
+	      \[
+		      (a + b)^n = \sum_{k = 0}^{n} \binom{n}{k} a^{n-k} b^k
+	      \]
+
+	\item \emph{Telescoping sums}: A telescoping sum is a series where most terms cancel out, leaving only a few terms. This simplifies the evaluation and brings the sum to a closed form.
+
+	      \[
+		      \sum_{k = 1}^{n} (a_k - a_{k-1}) = a_n - a_0
+	      \]
+
+	\item \emph{Prove a helper inequality}: I some proves the inductive step will lead you to a result which is not exactly the one need for the induction hypothesis, but if it obeys some order relation with a
+	      known inequality, then w can use that inequality to prove the induction hypothesis.
+\end{itemize}
+
+\textbf{Example:}
+
+Prove that for all \(n \in \N\), \(\binom{2n}{n} > \frac{4^n}{2n}\). Let us jump directly to the inductive step, as the base case is trivial.
+
+\begin{align*}
+	\binom{2(n + 1)}{n + 1} & = \frac{(2n + 2)!}{(n + 1)!(n + 1)!}                                                        \\
+	                        & = \frac{(2n + 2)(2n + 1)(2n)!}{(n + 1)(n + 1)n!n!}                                          \\
+	                        & = \frac{(2n + 2)(2n + 1)}{(n + 1)(n + 1)} \cdot \binom{2n}{n} > \frac{4^{n + 1}}{2(n + 1)}  \\
+	                        & \iff \binom{2n}{n} \ge \frac{4^{n + 1}}{2n} \cdot \frac{(n + 1)(n + 1)}{(2n + 2)^2(2n + 1)} \\
+	                        & \iff \binom{2n}{n} \ge \frac{4^{n + 1}}{2n} \cdot \frac{(n + 1)^2}{4(n + 1)^2(2n + 1)}      \\
+	                        & \iff \binom{2n}{n} \ge \frac{4^n}{2n + 1}                                                   \\
+	                        & \iff \binom{2n}{n} \ge \frac{4^n}{2n} > \frac{4^n}{2n + 1}
+\end{align*}
+
 \section{Proof by Cases (Exhaustion)}
 
 In \emph{exhaustion}, we test all possible cases and their respective branches. This kinds of proofs tend
 to be lengthy and tedious, especially when the number of cases is large.
 
 \textbf{Example:}
+
 The only integer solutions to the equation \( x^2 + y^2 = 1 \) are \( (0, 1), (1, 0), (0, -1), (-1, 0) \).
 
 We will prove this theorem by exhaustion. We will check all possible integer values of \(x\) and
@@ -458,8 +501,11 @@ our writing tongue, but also it is essential to follow conventions and formulate
 For example, look at the following sentences:
 
 \begin{itemize}
+
 	\item ``The set \(A\) is empty.'' is good in contrast to ``\(A\) is empty'', what is \(A\)
+
 	\item ``Let \(x \in \R\) be such that \(x^2 = 4\).'' is good in contrast to ``\(x^2 = 4\)'', what is \(x\)?
+
 \end{itemize}
 
 Other rules which apply are
@@ -471,7 +517,7 @@ Other rules which apply are
 	\item Do not mix different notations for the same mathematical object. This is confusing.
 
 	\item Use the first person plural ``we'' when writing mathematical proofs, as it is the convention in mathematical writing. This
-	creates a connection between the author and the reader, making the exposition more engaging and easier to follow.
+	      creates a connection between the author and the reader, making the exposition more engaging and easier to follow.
 
 	\item Use the active voice.
 
@@ -494,30 +540,63 @@ Common patterns include:
 	\item Combining proof by contrapositive and proof by contradiction: In some situations, proving the contrapositive can simplify the argument, and contradiction can be used for the remaining cases.
 
 	\item Contrapositive for if and only if proofs where a direction is easier to prove by considering the contrapositive. This can simplify the argument for one direction,
-	while the other direction may be handled directly or by another technique.
+	      while the other direction may be handled directly or by another technique.
 
 	\item Negation of the if and only if statements.
 
 \end{itemize}
 
-\section{Typical Forms}
+\section{Common Patterns}
+
+This are the typical ways of proving patterns.
 
 \begin{center}
-	\begin{tabular}{|p{0.3\linewidth}|p{0.6\linewidth}|}
+	\begin{tabular}{|l|l|}
 		\hline
-		\textbf{Pattern} & \textbf{How to Prove} \\
+		\textbf{Pattern}           & \textbf{How to Prove}                                                                                                                                     \\
 		\hline
-		\(A \implies B\) & Assume \(A\) and show \(B\) or use the contrapositive or contradiction. \\
+		\(A \implies B\)           & Assume \(A\) and show \(B\) or use the contrapositive or contradiction.                                                                                   \\
 		\hline
-		\(A \iff B\) & Assume \(A\) and show \(B\), then assume \(B\) and show \(A\). The rules from above apply for both directions. You can also prove \(\neg A \iff \neg B\). \\
+		\(A \iff B\)               & Assume \(A\) and show \(B\), then assume \(B\) and show \(A\). The rules from above apply for both directions. You can also prove \(\neg A \iff \neg B\). \\
 		\hline
-		\(\forall x \in X: A(x)\) & Prove for some arbitrary \(x \in X\). \\
+		\(\forall x \in X: A(x)\)  & Prove for some arbitrary \(x \in X\).                                                                                                                     \\
 		\hline
-		\(\exists x \in X: A(x)\) & Find an \(x \in X\) such that \(A(x)\) holds. \\
+		\(\exists x \in X: A(x)\)  & Find an \(x \in X\) such that \(A(x)\) holds.                                                                                                             \\
 		\hline
-		\(A = B\) & Show \(A \subseteq B\) and \(B \subseteq A\). \\
+		\(A = B\)                  & Show \(A \subseteq B\) and \(B \subseteq A\).                                                                                                             \\
 		\hline
-		\(A(n)\ \forall n \in \N\) & Prove by induction on \(n\) or strong induction. \\
+		\(A(n)\ \forall n \in \N\) & Prove by induction on \(n\) or strong induction.                                                                                                          \\
+		\hline
+	\end{tabular}
+\end{center}
+
+\subsection{Common Statements}
+
+The following is only a small portion of patterns across mathematics which tend to appear in different kinds of proofs having similar
+ways of proving it.
+
+\begin{center}
+	\begin{tabular}{|l|l|}
+		\hline
+		\textbf{Statements}                  & \textbf{How to Prove}                                                                                           \\
+		\hline
+		\emph{Uniqueness}                    & Use declare that it is not unique and either arrive at a contradiction or prove that both are the same element. \\
+		\hline
+		\emph{Smallest}                      &                                                                                                                 \\
+		\hline
+		\emph{Maximum}                       &                                                                                                                 \\
+		\hline
+		\emph{Obeys certain properties}      &                                                                                                                 \\
+		\hline
+		\emph{Existence}                     &                                                                                                                 \\
+		\hline
+		\emph{Well-Definition}               &                                                                                                                 \\
+		\hline
+		\emph{Belonging to one specific set} &                                                                                                                 \\
+		\hline
+		\emph{Equivalence}                   &                                                                                                                 \\
+		\hline
+		\emph{Find numbers}                  &                                                                                                                 \\
 		\hline
 	\end{tabular}
 \end{center}
