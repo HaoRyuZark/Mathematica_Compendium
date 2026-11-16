@@ -1,21 +1,21 @@
 \chapter{Algebraic Structures}
 
-\emph{Algebraic structures} are mathematical systems consisting of a set equipped with one or more operations 
-that satisfy certain axioms. 
+\emph{Algebraic structures} are mathematical systems consisting of a set equipped with one or more operations
+that satisfy certain axioms.
 
 \section{Internal and External Operations}
 
-An \emph{internal composition law} is a binary operation that takes two elements from a set and returns another element in the same set. 
+An \emph{internal composition law} is a binary operation that takes two elements from a set and returns another element in the same set.
 Formally, for a set \(S\) and operation \(\circ\), we have:
 
 \[
-  \circ: S \times S \to S
+	\circ: S \times S \to S
 \]
 
 An \emph{external composition law} involves a second set acting on the structure, such as scalar multiplication in vector spaces:
 
 \[
-  \circ: \field \times V \to V
+	\circ: \field \times V \to V
 \]
 
 where \(\field\) is a field and \(V\) is a vector space.
@@ -25,17 +25,17 @@ where \(\field\) is a field and \(V\) is a vector space.
 Let \(\circ\) and \(\circledast\) be binary operations on a set \(S\). The most important properties include:
 
 \begin{itemize}
-    
-    \item \emph{Associativity:} \((a \circ b) \circ c  = a \circ (b \circ c)\) for all \(a,b,c \in S\).
-    
-    \item \emph{Commutativity:} \(a \circ b = b \circ a\) for all \(a,b \in S\).
-    
-    \item \emph{Identity Element:} There exists \(e \in S\) such that \(a \circ e = e \circ a = a\) for all \(a \in S\).
-    
-    \item \emph{Inverse Element:} For every \(a \in S\), there exists \(a^{-1} \in S\) such that \(a \circ a^{-1} = a^{-1} \circ a = e\).
-    
-    \item \emph{Distributivity:} \(a \odot (b \oplus c) = (a \odot b) \oplus (a \odot c)\) and/or \((b \oplus c) \odot a = (b \odot a) \oplus 
-    (c \odot a)\).
+
+	\item \emph{Associativity:} \((a \circ b) \circ c  = a \circ (b \circ c)\) for all \(a,b,c \in S\).
+
+	\item \emph{Commutativity:} \(a \circ b = b \circ a\) for all \(a,b \in S\).
+
+	\item \emph{Identity Element:} There exists \(e \in S\) such that \(a \circ e = e \circ a = a\) for all \(a \in S\).
+
+	\item \emph{Inverse Element:} For every \(a \in S\), there exists \(a^{-1} \in S\) such that \(a \circ a^{-1} = a^{-1} \circ a = e\).
+
+	\item \emph{Distributivity:} \(a \odot (b \oplus c) = (a \odot b) \oplus (a \odot c)\) and/or \((b \oplus c) \odot a = (b \odot a) \oplus
+	      (c \odot a)\).
 
 \end{itemize}
 
@@ -44,99 +44,121 @@ Let \(\circ\) and \(\circledast\) be binary operations on a set \(S\). The most 
 Let \((G, \oplus)\) and \((H, \oplus')\) be two algebraic structures.
 
 A \emph{homomorphism} is a function \(\varphi: G \to H\) such that:
-    
+
 \[
-  \varphi(a \oplus b) = \varphi(a) \oplus \varphi(b), \quad \forall a,b \in G
+	\varphi(a \oplus b) = \varphi(a) \oplus \varphi(b), \quad \forall a,b \in G
 \]
-    
-An \emph{isomorphism} is a bijective homomorphism. If such a map exists, we say the structures are \emph{isomorphic}, 
+
+An \emph{isomorphism} is a bijective homomorphism. If such a map exists, we say the structures are \emph{isomorphic},
 written as \(G \cong H\).
 
 \section{Lattice}
 
-A \emph{lattice} \((L, \land, \lor)\) is an algebraic structure with two binary, associative, and commutative operations, which satisfy 
+A \emph{lattice} \((L, \land, \lor)\) is an algebraic structure with two binary, associative, and commutative operations, which satisfy
 the following properties:
 
 \[
-    a \lor (a \land b) = a
+	a \lor (a \land b) = a
 \]
 
-and 
+and
 
 \[
-    a \land (a \lor b) = a
+	a \land (a \lor b) = a
 \]
 
 for all \(a,b \in L\).
- 
+
 \section{Semigroup \texorpdfstring{\((S, \oplus)\)}{}}
 
-A \emph{semigroup} is a set \(S\) equipped with a binary operation \(\oplus\) that is \emph{associative}. This means:
+A \emph{semigroup} \((S, \oplus)\) is a set \(S\) equipped with a binary operation \(\oplus\) that is \emph{associative}. This means:
 
 \[
-    (a \oplus b) \oplus c = a \oplus (b \oplus c) \quad \text{for all } a, b, c \in S.
+	(a \oplus b) \oplus c = a \oplus (b \oplus c) \quad \forall a, b, c \in S.
 \]
 
 \section{Monoid \texorpdfstring{\((M, \oplus)\)}{}}
 
-A \emph{monoid} builds on a semigroup by adding an \emph{identity element} \(e\) such that:
+A \emph{monoid} \((M, \oplus)\) builds on a semigroup by adding an \emph{identity element} \(e\) such that:
 
 \[
-    a \oplus e = e \oplus a = a \quad \text{for all } a \in M.
+	(a \oplus b) \oplus c = a \oplus (b \oplus c) \quad \forall a, b, c \in M.
+\]
+\[
+	a \oplus e = e \oplus a = a \quad \forall a \in M.
 \]
 
 This structure is useful when an operation must have a ``do nothing'' element, like \(0\) for addition or \(1\) for multiplication.
 
 \section{Group \texorpdfstring{\((G, \oplus)\)}{}}
 
-A \emph{group} is a monoid where every element has an \emph{inverse}:
+A \emph{group} \((G, \oplus)\) is a monoid where every element has an \emph{inverse}:
+
 
 \[
-    \text{For each } a \in G, \text{ there exists } a^{-1} \in G \text{ such that } a \oplus a^{-1} = a^{-1} \oplus a = e.
+	(a \oplus b) \oplus c = a \oplus (b \oplus c) \quad \forall a, b, c \in G.
+\]
+\[
+	a \oplus e = e \oplus a = a \quad \forall a \in G.
+\]
+\[
+	\forall \in G, \exists a^{-1} \in G: \, a \oplus a^{-1} = a^{-1} \oplus a = e.
 \]
 
 \section{Abelian Group \texorpdfstring{\((A, \oplus)\)}{}}
 
-An \emph{Abelian group} (or commutative group) is a group where the operation is \emph{commutative}:
+An \emph{Abelian group} \((A, \oplus)\) (or commutative group) is a group where the operation is \emph{commutative}:
+
 
 \[
-    a \oplus b = b \oplus a \quad \text{for all } a, b \in A.
+	(a \oplus b) \oplus c = a \oplus (b \oplus c) \quad \forall a, b, c \in A.
+\]
+
+\[
+	a \oplus e = e \oplus a = a \quad \forall a \in A.
+\]
+
+\[
+	\forall \in A, \exists a^{-1} \in A: \, a \oplus a^{-1} = a^{-1} \oplus a = e.
+\]
+
+\[
+	a \oplus b = b \oplus a \quad \forall a, b \in A.
 \]
 
 \section{Ring \texorpdfstring{\((R, \oplus, \odot)\)}{}}
 
-A \emph{ring} is a set with two operations:
+A \emph{ring} \((R, \oplus, \odot)\) is a set with two operations:
 
 \begin{itemize}
 
-    \item \((R, \oplus)\) is an Abelian group.
+	\item \((R, \oplus)\) is an Abelian group.
 
-    \item \((R, \odot)\) is a semigroup (associative multiplication).
-    
-    \item Multiplication distributes over addition:
-  
-    \[
-        a \odot (b \oplus c) = a \odot b \oplus a \odot c.
-    \]
+	\item \((R, \odot)\) is a semigroup (associative multiplication).
 
-  \end{itemize}
+	\item \emph{Multiplication distributes over addition}:
+
+	      \[
+		      a \odot (b \oplus c) = a \odot b \oplus a \odot c.
+	      \]
+\end{itemize}
 
 \section{Commutative Ring \texorpdfstring{\((R, \oplus, \odot)\)}{}}
 
-A \emph{commutative ring} is a ring where multiplication is also \emph{commutative}:
+A \emph{commutative ring} \((R, \oplus, \odot)\) is a ring where multiplication is also \emph{commutative}:
 
 \[
-    a \odot b = b \odot a \quad \text{for all } a, b \in R.
+	a \odot b = b \odot a \quad \text{for all } a, b \in R.
 \]
 
 This is the kind of ring most often encountered in basic algebra, such as the integers \(\Z\).
 
 \section{Field \texorpdfstring{\((\field, \oplus, \odot)\)}{}}
 
-A \emph{field} is a commutative ring where every nonzero element has a \emph{multiplicative inverse}:
+A \emph{field} \((\field, \oplus, \odot)\) is a commutative ring where every nonzero element has a \emph{multiplicative inverse}:
 
 \[
-    (\field \setminus \{0\}, \odot) \text{ is an Abelian group}.
+	(\field \setminus \{0\}, \odot) \text{ is an Abelian group}.
 \]
 
 Fields like \(\Q\), \(\R\), and \(\C\) allow division (except by zero), enabling the full range of arithmetic operations.
@@ -145,21 +167,21 @@ Fields like \(\Q\), \(\R\), and \(\C\) allow division (except by zero), enabling
 
 \subsubsection{Uniqueness of Differences}
 
-There exists exactly one \(x \in \field\) such that \(a + x = b\), \(x = b + (-a)\) also written 
+There exists exactly one \(x \in \field\) such that \(a + x = b\), \(x = b + (-a)\) also written
 \(x = b - a\).
 
-Let \(x, x' \in \field\) such that the property is satified then, 
+Let \(x, x' \in \field\) such that the property is satified then,
 
 \[
-    x = b - a \land x' = b - a \implies x = 'x.
+	x = b - a \land x' = b - a \implies x = 'x.
 \]
 
 \QED
 
-A special case of this property is when \(b = a\), which gives us that 
+A special case of this property is when \(b = a\), which gives us that
 
 \[
-    a + x = a \land a + x' = a \iff a + 0 = a \land a - 0 = a \implies 0 = -0.
+	a + x = a \land a + x' = a \iff a + 0 = a \land a - 0 = a \implies 0 = -0.
 \]
 
 \subsubsection{Distribution of Negative Signs}
@@ -169,18 +191,18 @@ For any \(a, b \in \field\) the following holds \(-(a + b)  = (-a) + (-b)\).
 Note that \(-(a + b)\) satisfies
 
 \[
-    (a + b) - (a + b) = 0
+	(a + b) - (a + b) = 0
 \]
 
-Now note that 
+Now note that
 
 \begin{align*}
-    (a + b) - a - b &=  (b + a) - a - b \\
-    &= b + (a - a) - b \\
-    &= b - b = 0
+	(a + b) - a - b & =  (b + a) - a - b \\
+	                & = b + (a - a) - b  \\
+	                & = b - b = 0
 \end{align*}
 
-Hence, \(-a - b\) also satisfies the same difference. By our previous propert we know that 
+Hence, \(-a - b\) also satisfies the same difference. By our previous propert we know that
 difference are unique hence, \(-(a + b) = (-a) + (-b)\).
 
 \QED
@@ -190,15 +212,15 @@ difference are unique hence, \(-(a + b) = (-a) + (-b)\).
 We know \(a + -a = 0\). Now let us say \(-a' \ne -a\) and \(a -a' = 0\).
 
 \begin{align*}
-    a + -a  &= a - a' \quad \mid - a \\ 
-        -a &= -a'
+	a + -a & = a - a' \quad \mid - a \\
+	-a     & = -a'
 \end{align*}
 
 This contradicts our initial assumption; therefore, they are the same. The proof is analogous for the multiplication:
 
 \begin{align*}
-    a \cdot a^{-1} &= a \cdot a'^{-1} \quad \mid * a^{-1} \\ 
-    a^{-1}  &= a'^{-1} 
+	a \cdot a^{-1} & = a \cdot a'^{-1} \quad \mid * a^{-1} \\
+	a^{-1}         & = a'^{-1}
 \end{align*}
 
 \QED
@@ -208,17 +230,17 @@ This contradicts our initial assumption; therefore, they are the same. The proof
 We know \(a + 0 = a\). Now let us say \(0' \ne 0\) and \(a + 0' = a\).
 
 \begin{align*}
-  a + 0 = a + (a - a) &=  a + 0' \\ 
-          a - a + a   &= a + 0' \\
-           a   &= a + 0' \quad \mid -a \\ 
-           0 &= 0'
+	a + 0 = a + (a - a) & =  a + 0'              \\
+	a - a + a           & = a + 0'               \\
+	a                   & = a + 0' \quad \mid -a \\
+	0                   & = 0'
 \end{align*}
 
-There is a contradiction to the assumption that there is more than one neutral element for the addition. Thus, 
+There is a contradiction to the assumption that there is more than one neutral element for the addition. Thus,
 it is well-defined.
 
-Neutral Element for the Multiplication is well-defined: This proof is 
-very similar to the previous one; thus, it will be skipped. 
+Neutral Element for the Multiplication is well-defined: This proof is
+very similar to the previous one; thus, it will be skipped.
 
 \QED
 
@@ -227,52 +249,52 @@ very similar to the previous one; thus, it will be skipped.
 We will prove that \(ab = (-a)(-b)\) for any two elements of a field.
 
 \begin{align*}
-	ab &= (-a)(-b) \\
-	ab + (-a)b &= (-a)(-b) + (-a)b \\ 
-	b(a + (-a)) &= (-a)((-b) + b) = 0\\
+	ab          & = (-a)(-b)           \\
+	ab + (-a)b  & = (-a)(-b) + (-a)b   \\
+	b(a + (-a)) & = (-a)((-b) + b) = 0 \\
 \end{align*}
 
 From that point, for the right side we can do the following:
 
 \begin{align*}
-	(-a)((-b) + b) &= 0\\
-	(-a)(-b) + (-a)b &= 0\\
-	(-a)(-b) &= -(-a)b\\
+	(-a)((-b) + b)   & = 0      \\
+	(-a)(-b) + (-a)b & = 0      \\
+	(-a)(-b)         & = -(-a)b \\
 \end{align*}
 
 Then, by looking at the left side of the original equality:
 
 \begin{align*}
-	b(a + (-a)) &= 0\\
-	ab + (-a)b &= 0\\
-	ab &= -(-a)b\\
+	b(a + (-a)) & = 0      \\
+	ab + (-a)b  & = 0      \\
+	ab          & = -(-a)b \\
 \end{align*}
 
 Thus, we have obtained our equality \(ab = (-a)(-b)\).
 
 \QED
 
-\section{Vector Space \texorpdfstring{\((V, \oplus, \cdot)\)}{}}
+\section{Vector Space \texorpdfstring{\((V, \field, \oplus, \cdot)\)}{}}
 
-A \emph{vector space} over a field \(\field\) consists of:
+A \emph{vector space} \((V, \field, \oplus, \cdot)\) consists of:
 
 \begin{itemize}
 
-    \item An Abelian group \((V, \oplus)\) for vector addition.
+	\item An Abelian group \((V, \oplus)\) for vector addition.
 
-    \item A scalar multiplication \(\cdot: \field \times V \to V\) satisfying:
+	\item Scalar multiplication \(\cdot: \field \times V \to V\) satisfying:
 
-    \begin{itemize}
+	      \begin{itemize}
 
-        \item Distributivity over vector addition: \(a \cdot (v_1 + v_2) = a \cdot v_1 + a \cdot v_2\)
-    
-        \item Distributivity over field addition: \((a + b) \cdot v = a \cdot v + b \cdot v\)
+		      \item \emph{Distributivity over vector addition}: \(a \cdot (v_1 + v_2) = a \cdot v_1 + a \cdot v_2\)
 
-        \item Associativity: \(a \cdot (b \cdot v) = (ab) \cdot v\)
-    
-        \item Identity: \(1 \cdot v = v\)
+		      \item \emph{Distributivity over field addition}: \((a + b) \cdot v = a \cdot v + b \cdot v\)
 
-  \end{itemize}
+		      \item \emph{Associativity over field multiplication}: \(a \cdot (b \cdot v) = (ab) \cdot v\)
+
+		      \item \emph{Identity}: \(1 \cdot v = v\)
+
+	      \end{itemize}
 
 \end{itemize}
 
@@ -280,35 +302,35 @@ Vector spaces provide the foundation for linear algebra, where scalars from a fi
 
 \section{Group Homomorphism}
 
-Given 
+Given
 
 \[
-    \varphi: G_1 \to G_2
+	\varphi: G_1 \to G_2
 \]
 
-a function between two groups, then \(\varphi\) is called a \emph{group homomorphism} and if for all 
-\(g_1, g_2 \in G_1\) the following holds: 
+a function between two groups, then \(\varphi\) is called a \emph{group homomorphism} and if for all
+\(g_1, g_2 \in G_1\) the following holds:
 
 \[
-    \varphi(g_1 \circ_{G_1} g_2) = \varphi(g_1) \circ_{G_2} \varphi (g_2)
+	\varphi(g_1 \circ_{G_1} g_2) = \varphi(g_1) \circ_{G_2} \varphi (g_2)
 \]
 
-then the \emph{kernel} of \(\varphi\) is the set 
+then the \emph{kernel} of \(\varphi\) is the set
 
 \[
-    \ker (\varphi) := \{g \in G_1 \mid \varphi(g) = e_{G_2}\}
+	\ker (\varphi) := \{g \in G_1 \mid \varphi(g) = e_{G_2}\}
 \]
 
-and the \emph{image} is the set 
+and the \emph{image} is the set
 
 \[
-    \img (\varphi) := \{x \in G_2 \mid \exists g \in G_1: \varphi(g) = x\}.
+	\img (\varphi) := \{x \in G_2 \mid \exists g \in G_1: \varphi(g) = x\}.
 \]
 
 \textbf{Example:}
 
-We take \(\exp: (\R, +) \to (\R, \cdot)\) with 
+We take \(\exp: (\R, +) \to (\R, \cdot)\) with
 
 \[
-    \exp(x + y) = \exp(x) \cdot \exp(y).
+	\exp(x + y) = \exp(x) \cdot \exp(y).
 \]

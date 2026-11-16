@@ -29,7 +29,15 @@ The \emph{absolute value} of a real number \(x\), denoted by \(|x|\), is defined
 
 	\item \(\left|\frac{x}{y}\right| = \frac{|x|}{|y|}, \quad y \ne 0\)
 
+	\item \(|a| \le b \iff -|a| \ge -b\)
+
+	\item \(|a| \le b \iff -b \le a \le b\)
+
 \end{itemize}
+
+\textbf{Proof VI: }
+
+\textbf{Proof VII: }
 
 \subsection{Interval Property of the Absolute Value}
 
@@ -118,7 +126,7 @@ Given \(x \in \R, x \ge -1, x \ne 0\), then for \(n \in \N, n \ge 1\), we have
 This inequality is known as the \emph{Bernoulli inequality} and it is useful for proving that some functions are stricly greater than other
 on some intervals of the real line, among other applications.
 
-\textbf{Proof:}
+\textbf{Proof I:}
 
 Suppose \(a \ge -1\).
 
@@ -133,15 +141,50 @@ Let our \emph{base case} be \(n = 1\). Then \((1 + x)^1 = 1 + x\), which satisfi
 \emph{Induction Step}: We want to prove that \((1 + x)^{k + 1} \ge 1 + (k  + 1)x\).
 
 \begin{align*}
-	(1 + x)^{k + 1} & = (1 + x)^k (1 + x)   \\
-	                & \ge (1 + xn)(1 + x)   \\
-	                & = 1 + x + xn + nx^2   \\
-	                & = 1 + (k + 1)x + nx^2 \\
+	(1 + x)^{k + 1} & = (1 + x)^k (1 + x) \text{ I.H.} \\
+	                & \ge (1 + xn)(1 + x)              \\
+	                & = 1 + x + xn + nx^2              \\
+	                & = 1 + (k + 1)x + nx^2            \\
 	                & \ge 1 + (k + 1)x
 \end{align*}
 
-In this induction proof we could not just use the induction hypothesis directly and manipulate our expression; we had to multiply both sides by \(1 + x\) and then expand and
-simplify to show that the inequality still holds for \(n = k + 1\).
+We have used the fact that \(nx^2 \ge 0\) because \(n \ge 1\) and \(x^2 \ge 0\) and also our inductive hypothesis by no
+substitution, but by the order it establishes.
+
+\QED
+
+\textbf{Proof II:}
+
+We can also prove the Bernoulli inequality without induction using the binomial theorem.
+
+See that
+
+\[
+	(1 + x)^n = \sum_{k = 0}^{n} \binom{n}{k} x^k = 1 + nx + \sum_{k = 2}^{n} \binom{n}{k} x^k	\ge 1 + nx
+\]
+\QED
+
+\textbf{Example:}
+
+Prove that \(\sqrt[n]{\log_3 (n + 1)} < \frac{3}{2}\).
+
+We first modify the expression to get rid of the root, which is equivalent to raising both sides to the power of \(n\):
+
+\[
+	\log_3 (n + 1) < \left(\frac{3}{2}\right)^n
+\]
+Now, note that we can write \(\left(\frac{3}{2}\right)^n = \left(1 + \frac{1}{2}\right)^n\).
+Now we can apply the Bernoulli inequality with \(x = \frac{1}{2}\) and \(n \in \N\):
+
+\[
+	\left(1 + \frac{1}{2}\right)^n \ge 1 + n \cdot \frac{1}{2} > \log_3 (n + 1)
+\]
+
+Therefore by the transitive property we have that
+
+\[
+	\log_3 (n + 1) < \left(\frac{3}{2}\right)^n
+\]
 
 \QED
 

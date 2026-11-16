@@ -299,6 +299,11 @@ We call it the \emph{greatest common divisor} (gcd) of \(a\) and \(b\), denoted 
 
 If \(t = 1\), then \(a\) and \(b\) are said to be \emph{coprime} or \emph{relatively prime}.
 
+For the intuition, the greatest common divisor is the largest number which if we apply
+\(\gcd(a, b) = \gcd(a, b - pa) = \dots = \gcd(r_n, r_{n + 1})\) we will eventually reach two identical numbers which is the greatest common divisor.
+An example given in one video treated \(a\) and \(b\) as two piles of blocks and we kept removing the smaller pile from the larger pile until
+we reached two identical piles which is the greatest common divisor.
+
 \section{The Euclidean Algorithm}
 
 If \(a = bq + r\) then \(\gcd(a, b) = \gcd(b, r)\).
@@ -348,6 +353,12 @@ Let \(e\) be a common divisor of \(b\), \(r\). Then \(e \mid b\) and \(e \mid r\
 
 Thus, the set of common divisors of \(a\), \(b\) is the same as the set of common divisors of \(b\), \(r\),
 so their greatest common divisors are equal.
+
+\QED
+
+Alternatively, we could also go from \(d \mid ((a - bq) = r)\) all the way down to show that it divides \(r_1, \dots\) using
+the fact the algorithm terminates and that if \(d\) divides \(a\) and \(b\), it also divides any combination of such numbers.
+Showing that it also divides \(r_n\); showing that it is in deed the greatest common divisor.
 
 \QED
 
@@ -472,7 +483,7 @@ This is also a member of \(M\) since \(1 - qx_0\) and \(-qy_0\) are also integer
 	0 < a - qd < ax_0 + by_0
 \]
 
-But this would be a contradiction to the fact that \(d\) is the minimum of \(M\). Therefore, \(r = 0\) thus,
+But this would be a contradiction to the fact that \(d\) is the minimum of \(M\). Therefore, \(r = 0 < d\) thus,
 giving us \(d \mid a\). Using the same argument with \(q'\) and \(r'\) we would arrive at the same conclusion for \(b\).
 Now we have a common divisor, leaving us with only proving that it is in fact the greatest.
 
@@ -599,11 +610,32 @@ In fact, since \(c > 0\) and \(m > 0\), we have prooven that this number if the 
 
 \QED
 
-\textbf{Example:}
+\textbf{Example I:}
 
 \[
 	\gcd(36, 90) = 18, \quad [36, 90] = 180, \quad 36 \cdot 90 = 32400 = 18 \cdot 180
 \]
+
+\textbf{Example II:}
+
+Prove that any two consecutive Fibonacci numbers are coprime.
+
+We show that \(\gcd(F_{n+1}, F_n) = 1\) for all \(n \ge 0\) by induction on \(n\).
+
+\textbf{Base case.} For \(n = 0\) we have \(\gcd(F_1, F_0) = \gcd(1, 0) = 1\).
+
+\textbf{Inductive step.} Suppose \(\gcd(F_{n+1}, F_n) = 1\) for some \(n \ge 0\). Let \(d > 0\) be a
+common divisor of \(F_{n+2}\) and \(F_{n+1}\). By the recurrence,
+\[
+	F_n = F_{n+2} - F_{n+1},
+\]
+so \(d\) also divides \(F_n\). Hence \(d\) is a common divisor of \(F_{n+1}\) and \(F_n\), which gives
+\(d \mid \gcd(F_{n+1}, F_n) = 1\), so \(d = 1\). Therefore \(\gcd(F_{n+2}, F_{n+1}) = 1\).
+
+By induction, \(\gcd(F_{n+1}, F_n) = 1\) for all \(n \ge 0\), so any two consecutive Fibonacci
+numbers are coprime.
+
+\QED
 
 \section{Prime Field}
 

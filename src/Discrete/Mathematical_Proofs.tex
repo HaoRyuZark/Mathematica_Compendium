@@ -419,9 +419,13 @@ When dealing with induction proofs, some creativity is required for certain prob
 
 	\item \emph{Prove a helper inequality}: I some proves the inductive step will lead you to a result which is not exactly the one need for the induction hypothesis, but if it obeys some order relation with a
 	      known inequality, then w can use that inequality to prove the induction hypothesis.
+
+	\item \emph{Use known inequalities}: This one can be convoluted, but if we write our expression in a form from another known inequality like the Bernoulli inequality, then we can use that inequality to prove
+	      the induction hypothesis.
+
 \end{itemize}
 
-\textbf{Example:}
+\textbf{Example I:}
 
 Prove that for all \(n \in \N\), \(\binom{2n}{n} > \frac{4^n}{2n}\). Let us jump directly to the inductive step, as the base case is trivial.
 
@@ -434,6 +438,34 @@ Prove that for all \(n \in \N\), \(\binom{2n}{n} > \frac{4^n}{2n}\). Let us jump
 	                        & \iff \binom{2n}{n} \ge \frac{4^n}{2n + 1}                                                   \\
 	                        & \iff \binom{2n}{n} \ge \frac{4^n}{2n} > \frac{4^n}{2n + 1}
 \end{align*}
+
+\QED
+
+\textbf{Example II:}
+
+Prove the arithmetic-geometric mean inequality: For all \(n \in \N\) and \(a_1, a_2, \dots, a_n \in \R^+\), we have
+
+\[
+	\alpha := \frac{a_1 + a_2 + \cdots + a_n}{n}
+\]
+
+Let
+
+\[
+	x := \frac{a_{n + 1} - \alpha}{(n + 1)\alpha} \ge 0, \text{ and } 1 + x = \frac{ n\alpha + a_{n + 1} }{(n + 1)\alpha} = \frac{a_1 + \cdots + a_{n + 1} }{(n + 1)\alpha}.
+\]
+
+Using the Bernoulli inequality, we have
+
+\[
+	\left( \frac{a_1 + \cdots + a_{n + 1} }{(n + 1)\alpha} \right)^{n + 1} = (1 + x)^{n + 1} \ge 1 + (n + 1)x = \frac{a_{n + 1}}{\alpha} = n.
+\]
+
+Using the inductive hypothesis \(\alpha^n \ge a_1 \cdot \dots \cdot a_n\), we have
+
+\[
+	\frac{a_1 + \cdots + a_{n + 1} }{(n + 1)} \ge \sqrt[n + 1]{a_1 \cdot \dots \cdot a_n \cdot a_{n + 1}}.
+\]
 
 \section{Proof by Cases (Exhaustion)}
 

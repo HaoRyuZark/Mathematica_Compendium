@@ -2,40 +2,40 @@
 
 \section{Axiom Definition}
 
-A way of defining the \emph{real numbers} is via the \emph{Cauchy sequences}. Another way is via 
+A way of defining the \emph{real numbers} is via the \emph{Cauchy sequences}. Another way is via
 the axioms of a field with the order axioms and the \emph{completeness axiom}.
 
 The following axioms apply for any \(a, b, c \in \R\):
 
 \begin{itemize}
 
-    \item \emph{Associativity:} \((a \odot b) \odot c = a \odot (b \odot c)\) for all \(a,b,c \in S\).
-    
-    \item \emph{Commutativity:} \(a \odot b = b \odot a\) for all \(a,b \in S\).
-    
-    \item \emph{Identity Element:} There exists \(e \in S\) such that \(a \odot e = e \odot a = a\) for all \(a \in S\).
-    
-    \item \emph{Inverse Element:} For every \(a \in S\), there exists \(a^{-1} \in S\) such that \(a \odot a^{-1} = a^{-1} \odot a = e\).
-    
-    \item \emph{Distributivity:} \(a \odot (b \oplus c) = (a \odot b) \oplus (a \odot c)\) and/or \((b \odot c) \oplus a = (b \odot a) \oplus (c \odot a)\).
+	\item \emph{Associativity:} \((a \odot b) \odot c = a \odot (b \odot c)\) for all \(a,b,c \in S\).
+
+	\item \emph{Commutativity:} \(a \odot b = b \odot a\) for all \(a,b \in S\).
+
+	\item \emph{Identity Element:} There exists \(e \in S\) such that \(a \odot e = e \odot a = a\) for all \(a \in S\).
+
+	\item \emph{Inverse Element:} For every \(a \in S\), there exists \(a^{-1} \in S\) such that \(a \odot a^{-1} = a^{-1} \odot a = e\).
+
+	\item \emph{Distributivity:} \(a \odot (b \oplus c) = (a \odot b) \oplus (a \odot c)\) and/or \((b \odot c) \oplus a = (b \odot a) \oplus (c \odot a)\).
 
 \end{itemize}
 
 We also refresh the order axioms:
 
 \begin{enumerate}[label=\Roman*.]
-    
+
 	\item \emph{Trichotomy:} Exactly one of the following holds:
- 
-		  \[
- 	   			a < b, \quad a = b, \quad a > b
-    	   \]
 
-    \item \emph{Transitivity:} If \( a < b \) and \( b < c \), then \( a < c \).
+	      \[
+		      a < b, \quad a = b, \quad a > b
+	      \]
 
-    \item \emph{Additive Compatibility:} If \( a < b \), then \( a + c < b + c \).
+	\item \emph{Transitivity:} If \( a < b \) and \( b < c \), then \( a < c \).
 
-    \item \emph{Multiplicative Compatibility:} If \( 0 < a \) and \( 0 < b \), then \( 0 < ab \).
+	\item \emph{Additive Compatibility:} If \( a < b \), then \( a + c < b + c \).
+
+	\item \emph{Multiplicative Compatibility:} If \( 0 < a \) and \( 0 < b \), then \( 0 < ab \).
 
 \end{enumerate}
 
@@ -49,14 +49,14 @@ We also refresh the order axioms:
 
 	\item \(a \ne 0\), \(ab = 1\) and \(ac = 1 \implies b = c\)
 
-	\item \(a \cdot 0 = 0\) 
+	\item \(a \cdot 0 = 0\)
 
 	\item \(-a = (-1)a\)
-	
+
 	\item \(-(-a) = a\)
 
 	\item \((-1)^2 = 1\)
-		
+
 	\item \(\left(a^{-1}\right)^{-1} = a, \forall \in \R, a \ne 0\)
 
 \end{itemize}
@@ -65,13 +65,13 @@ Some proofs of these properties can be found in the section about the algebraic 
 
 \section{Existence of Solutions}
 
-Given \(a,b \in \R\), then 
+Given \(a,b \in \R\), then
 
 \[
 	!\exists x \in \R, \text{ such that, } a + x = b
 \]
 
-Also, if \(a \ne 0\) 
+Also, if \(a \ne 0\)
 
 \[
 	!\exists x \in \R, \text{ such that, } ax = b
@@ -79,18 +79,18 @@ Also, if \(a \ne 0\)
 
 \textbf{Proof:}
 
-For the first proposition, let \(x = -a + b\) 
+For the first proposition, let \(x = -a + b\)
 
 \begin{align*}
-	a + x &= a -a + b \\
-		&= b
+	a + x & = a -a + b \\
+	      & = b
 \end{align*}
 
 For the second, let \(x = a^{-1}b\)
 
 \begin{align*}
-	ax &=  a a^{-1} b \\ 
-	   &= 1 \cdot b  
+	ax & =  a a^{-1} b \\
+	   & = 1 \cdot b
 \end{align*}
 
 \QED
@@ -117,25 +117,25 @@ For the second, let \(x = a^{-1}b\)
 
 \section{Supremum, Infimum, Maximum and Minimum for Fields}
 
-The \emph{supremum} \(\sup\) of a set \(A \subseteq \field\) is the 
+The \emph{supremum} \(\sup\) of a set \(A \subseteq \field\) is the
 least upper bound: the smallest real number \(s\) such that \(a \le s\) for all \(a \in A\).
 
 \[
-    x < s, \forall x \in A 
+	x < s, \forall x \in A
 \]
 
 \[
-    x < s', \forall x \in A \implies s' \ge s
+	x < s', \forall x \in A \implies s' \ge s
 \]
 
-For the \emph{infimum} we have 
+For the \emph{infimum} we have
 
 \[
-    x > s, \forall x \in A 
+	x > s, \forall x \in A
 \]
 
 \[
-    x > s', \forall x \in A \implies s' \le s
+	x > s', \forall x \in A \implies s' \le s
 \]
 
 
@@ -151,11 +151,11 @@ For \(A = (0,1)\):
 
 \begin{itemize}
 
-    \item \(\sup A = 1\) (not in \(A\)).
+	\item \(\sup A = 1\) (not in \(A\)).
 
-    \item \(\inf A = 0\) (not in \(A\)).
+	\item \(\inf A = 0\) (not in \(A\)).
 
-    \item \(\max A\) and \(\min A\) do not exist.
+	\item \(\max A\) and \(\min A\) do not exist.
 
 \end{itemize}
 
@@ -167,40 +167,40 @@ For \((0, 5)\) and \((0,5]\), the supremum is 5.
 
 For the real numbers we can define \(\sqrt{2}\) as the supremum of the set \(\{x \in \R \mid x^2 < 2\}\).
 
-The \emph{infimum} \(\inf\) of a set \(A\) is the greatest lower bound: 
-the largest number \(t\) such that \(a \ge t\) for all \(a \in A\). 
+The \emph{infimum} \(\inf\) of a set \(A\) is the greatest lower bound:
+the largest number \(t\) such that \(a \ge t\) for all \(a \in A\).
 
 \[
-    x \ge s, \forall x \in A 
+	x \ge s, \forall x \in A
 \]
 
 \[
-    x \ge s', \forall x \in A \implies s' \le s
+	x \ge s', \forall x \in A \implies s' \le s
 \]
 
 \textbf{Example IV:}
 
-Prove that \(\sup \left\{\frac{n}{n + 1} \mid n \in \N\right\} = 1\).  
+Prove that \(\sup \left\{\frac{n}{n + 1} \mid n \in \N\right\} = 1\).
 
-To prove this, we need to show that 1 is an upper bound, and then that for all \(\varepsilon > 0\), \(a - \varepsilon\) is not 
+To prove this, we need to show that 1 is an upper bound, and then that for all \(\varepsilon > 0\), \(a - \varepsilon\) is not
 an upper bound.
 
 \begin{align*}
-    1 &\ge \frac{n}{n + 1} \\ 
-    n + 1 &\ge n
+	1     & \ge \frac{n}{n + 1} \\
+	n + 1 & \ge n
 \end{align*}
 
-Thus, 1 is in fact an upper bound. 
+Thus, 1 is in fact an upper bound.
 
 For the second part, let \(\varepsilon > 0\), and we want to prove that \(\exists n \in \N : \frac{n}{n + 1} > 1 - \varepsilon\).
 
 \begin{align*}
-    \frac{n}{n + 1} > 1 - \varepsilon \\ 
-    \varepsilon >  1 - \frac{n}{n + 1} \\ 
-    \varepsilon >  \frac{n + 1 - n}{n + 1} \\ 
-    \varepsilon >  \frac{1}{n + 1} \\ 
-    n + 1 >  \frac{1}{\varepsilon} \\ 
-    n  >  \frac{1}{\varepsilon}  - 1 
+	\frac{n}{n + 1} > 1 - \varepsilon      \\
+	\varepsilon >  1 - \frac{n}{n + 1}     \\
+	\varepsilon >  \frac{n + 1 - n}{n + 1} \\
+	\varepsilon >  \frac{1}{n + 1}         \\
+	n + 1 >  \frac{1}{\varepsilon}         \\
+	n  >  \frac{1}{\varepsilon}  - 1
 \end{align*}
 
 By the Archimedean principle, we know that we can always find a larger natural number such that \(n > \frac{1}{\varepsilon} - 1\)
@@ -211,10 +211,10 @@ Now we can reverse the steps in the inequality, and we will get our original ine
 
 \subsection{Alternative Characterization of the Supremum}
 
-Given a non-empty set \(A \subseteq \field\). Then \(s \in \field\) is a supremum of \(A\) if and only if 
+Given a non-empty set \(A \subseteq \field\). Then \(s \in \field\) is a supremum of \(A\) if and only if
 
 \[
-    (\nexists s \in A, s < x) \land (s' \in \R, s' < s \implies !\exists x \in A, x > s')
+	(\nexists s \in A, s < x) \land (s' \in \R, s' < s \implies !\exists x \in A, x > s')
 \]
 
 \section{Uniqueness of Suprema and Infima}
@@ -223,7 +223,7 @@ Given a ordered field \(\field\). If it has a supremum or minimum they are uniqu
 
 \textbf{Proof:}
 
-Let \(s_1\) and \(s_2\) be suprema of \(\field\) then \(s_1 > a\) for all \(a \in \field\) and by definition the upper bound \(s_1 \ge s_2\). By now taking 
+Let \(s_1\) and \(s_2\) be suprema of \(\field\) then \(s_1 > a\) for all \(a \in \field\) and by definition the upper bound \(s_1 \ge s_2\). By now taking
 \(s_2\) as the supremum, then \(s_2 \ge s_2\); also \(s_1 = s_2\).
 
 \section{Properties of Suprema and Infima}
@@ -232,75 +232,75 @@ For non-empty sets \(A, B \subseteq \R^+\):
 
 \begin{itemize}
 
-    \item \(\sup AB = \sup A \cdot \sup B\)
+	\item \(\sup AB = \sup A \cdot \sup B\)
 
-    \item \(\inf AB = \inf A \cdot \inf B\)
+	\item \(\inf AB = \inf A \cdot \inf B\)
 
-    \item \(\sup (A + B) = \sup A + \sup B \)
+	\item \(\sup (A + B) = \sup A + \sup B \)
 
-    \item \(\inf (A + B) = \inf A + \inf B \)
+	\item \(\inf (A + B) = \inf A + \inf B \)
 
-    \item \(\sup (A / B) = \sup(A) / \inf(B)\)
-     
-    \item \(\sup (-A) = - \inf A\)
+	\item \(\sup (A / B) = \sup(A) / \inf(B)\)
 
-    \item \(\inf (-A) = - \sup A\)
+	\item \(\sup (-A) = - \inf A\)
+
+	\item \(\inf (-A) = - \sup A\)
 
 \end{itemize}
 
-For the sake of completeness, we will prove one of these properties: 
+For the sake of completeness, we will prove one of these properties:
 
 \textbf{Proof:}
 
-By definition, \(\forall ab \in AB\) the following holds: 
+By definition, \(\forall ab \in AB\) the following holds:
 
 \[
-    ab \le \sup A \cdot \sup B \implies \sup AB \le \sup A \cdot \sup B
+	ab \le \sup A \cdot \sup B \implies \sup AB \le \sup A \cdot \sup B
 \]
 
-Because \(\sup A\) and \(\sup B\) do not necessarily belong to \(A\) or \(B\). With this, we already have 
-half of the proof. Now we need to prove that \(\sup AB \ge \sup A \cdot \sup B\). 
+Because \(\sup A\) and \(\sup B\) do not necessarily belong to \(A\) or \(B\). With this, we already have
+half of the proof. Now we need to prove that \(\sup AB \ge \sup A \cdot \sup B\).
 
-Start with 
+Start with
 
 \begin{align*}
-    ab &\le \sup AB \\ 
-    a &\le \frac{\sup AB}{b} 
+	ab & \le \sup AB           \\
+	a  & \le \frac{\sup AB}{b}
 \end{align*}
 
-Therefore, \(\frac{\sup AB}{b}\) is an upper bound of \(A\). This means that: 
+Therefore, \(\frac{\sup AB}{b}\) is an upper bound of \(A\). This means that:
 
 \[
-    \sup A \le \frac{\sup AB}{b} \implies \sup A \cdot b \le \sup AB
+	\sup A \le \frac{\sup AB}{b} \implies \sup A \cdot b \le \sup AB
 \]
 
-From this we can also derive that 
+From this we can also derive that
 
 \[
-    \sup A \cdot b \le \sup AB \implies b \le \frac{\sup AB}{\sup A}
+	\sup A \cdot b \le \sup AB \implies b \le \frac{\sup AB}{\sup A}
 \]
 
 Thus, because \(\frac{\sup AB}{\sup A}\) is an upper bound of \(B\) we have that:
 
 \[
-    \sup B \le \frac{\sup AB}{\sup A} \implies \sup A \cdot \sup B \le \sup AB
+	\sup B \le \frac{\sup AB}{\sup A} \implies \sup A \cdot \sup B \le \sup AB
 \]
 
 Combining both parts of the proof we have that:
 
 \[
-    \sup AB = \sup A \cdot \sup B
+	\sup AB = \sup A \cdot \sup B
 \]
 
-\QED 
+\QED
 
 The other proofs can be proven using similar arguments.
 
 
 \section{Definition of Complete}
 
-Given a field \(\field\). If each upper-bounded, non-empty subset of \(\field\) has a supremum we denote \(\field\) as 
-\emph{complete}. 
+Given a field \(\field\). If each upper-bounded, non-empty subset of \(\field\) has a supremum we denote \(\field\) as
+\emph{complete}.
 
 As a consequence, if all non-empty below-bounded subsets have an infimum then the set is also \emph{complete}.
 
@@ -314,47 +314,47 @@ All non-empty upper-bounded subsets of the real numbers have a \emph{supremum} \
 
 \section{Minima in the Real Numbers}
 
-As a consequence of the \emph{completeness axiom}, each non-empty lower-bounded subset of real numbers has a minimum. 
+As a consequence of the \emph{completeness axiom}, each non-empty lower-bounded subset of real numbers has a minimum.
 
 \textbf{Proof:}
 
-The main idea is that the supremum times minus 1 of a set is the minimum of another set. 
+The main idea is that the supremum times minus 1 of a set is the minimum of another set.
 
-We define \(- A := \{-a \mid a \in A\}\), then \(-A \ne \emptyset\) and is upper-bounded. 
+We define \(- A := \{-a \mid a \in A\}\), then \(-A \ne \emptyset\) and is upper-bounded.
 By definition \(s\) is less or greater than all the elements of the set \(A\).
 
 \begin{align*}
-	s &\le a, \forall a \in A	\\ 
-	-s &\ge -a, \forall a \in A
+	s  & \le a, \forall a \in A  \\
+	-s & \ge -a, \forall a \in A
 \end{align*}
 
-Thus, \(-s = \sup-A\). 
+Thus, \(-s = \sup-A\).
 
 Now we want to prove that \(-\sup-A\) is first, the lower bound of \(A\) and second, it is the greatest upper bound.
 
-For the first part 
+For the first part
 
 \begin{align*}
-	\sup-A &\ge -a \forall a \in A \\ 
-	- \sup -A &\le a \forall a \in A
+	\sup-A    & \ge -a \forall a \in A \\
+	- \sup -A & \le a \forall a \in A
 \end{align*}
 
-Thus, \(-\sup-A\) is in fact a lower bound of \(A\). For the second part let us 
-assume that there exists some element \(s\) such that \(s > -\sup-A\) and \(s \le a, \forall a \in A\), then 
+Thus, \(-\sup-A\) is in fact a lower bound of \(A\). For the second part let us
+assume that there exists some element \(s\) such that \(s > -\sup-A\) and \(s \le a, \forall a \in A\), then
 
 \[
 	-s < \sup -A  \text{ and } -s \ge -a, \forall a \in A
 \]
 
-This is a contradiction because we have an upper bound, which is not an upper bound. Therefore, 
+This is a contradiction because we have an upper bound, which is not an upper bound. Therefore,
 \(-\sup-A\) is the infimum of \(A\).
 
 \QED
 
 \section{Approximation of the Supremum}
 
-Given a non-empty, upper-bounded set \(A \subseteq \R\) and \(s = \sup A\). Then there is for each \(y < s\) 
-an \(x \in A\), such that 
+Given a non-empty, upper-bounded set \(A \subseteq \R\) and \(s = \sup A\). Then there is for each \(y < s\)
+an \(x \in A\), such that
 
 \[
 	y < x \le s
@@ -364,8 +364,8 @@ An analogous theorem can be written for the minimum as well.
 
 \textbf{Proof:}
 
-If \(x \in A\), then the proof is completed. For the case \(s \notin A\), if there existed some 
-\(y^* \in \R\) where \(y^* < s\) and \(y^* \ge x\) for all \(x \in A\), then we still have a contradiction to 
+If \(x \in A\), then the proof is completed. For the case \(s \notin A\), if there existed some
+\(y^* \in \R\) where \(y^* < s\) and \(y^* \ge x\) for all \(x \in A\), then we still have a contradiction to
 the assumption that \(s\) is the supremum of \(A\).
 
 \QED
@@ -376,11 +376,11 @@ the assumption that \(s\) is the supremum of \(A\).
 
 \textbf{Proof:}
 
-Assume \(a = \sup\N\). Since \(\N \subset \R\) is not empty, it has an upper-bound by 
-the completeness axiom. 
+Assume \(a = \sup\N\). Since \(\N \subset \R\) is not empty, it has an upper-bound by
+the completeness axiom.
 
-By the definition of the supremum, \(a - 1 \in \N\) is not an upper-bound of \(\N\), therefore 
-\(a - 1 < k, k \in \N\). 
+By the definition of the supremum, \(a - 1 \in \N\) is not an upper-bound of \(\N\), therefore
+\(a - 1 < k, k \in \N\).
 
 Then, the following also applies
 
@@ -388,14 +388,14 @@ Then, the following also applies
 	a < k + 1.
 \]
 
-This is a contradiction to the assumption that \(a\) is our supremum, thus our assumption has been 
+This is a contradiction to the assumption that \(a\) is our supremum, thus our assumption has been
 proven false.
 
 \section{The Properties of Archimedes and Eudoxus}
 
 \emph{Archimedes}:
 
-For all pairs of positive real numbers \(x,y\), there exists some \(n \in \N\) such that: 
+For all pairs of positive real numbers \(x,y\), there exists some \(n \in \N\) such that:
 
 \[
 	nx > y.
@@ -403,7 +403,7 @@ For all pairs of positive real numbers \(x,y\), there exists some \(n \in \N\) s
 
 \emph{Eudoxus}:
 
-For all positive real numbers \(x\), there exists an \(n \in \N\) such that 
+For all positive real numbers \(x\), there exists an \(n \in \N\) such that
 
 \[
 	\frac{1}{n} < x.
@@ -411,14 +411,14 @@ For all positive real numbers \(x\), there exists an \(n \in \N\) such that
 
 \textbf{Proof Eudoxus:}
 
-\(x \in \R_{> 0} \implies \frac{1}{x} \in \R_{> 0}\). By the Archimedean property, \(\exists n \in \Z_{0 >}, \frac{1}{x} < n\). 
-Equivalently \(\frac{1}{n} < x\). 
+\(x \in \R_{> 0} \implies \frac{1}{x} \in \R_{> 0}\). By the Archimedean property, \(\exists n \in \Z_{0 >}, \frac{1}{x} < n\).
+Equivalently \(\frac{1}{n} < x\).
 
-\QED 
+\QED
 
 \section{Density of the Rationals in the Reals}
 
-For each pair \(a, b \in \R\) there exists some \(q \in \Q\) such that 
+For each pair \(a, b \in \R\) there exists some \(q \in \Q\) such that
 
 \[
 	a < q < b.
@@ -428,18 +428,18 @@ For each pair \(a, b \in \R\) there exists some \(q \in \Q\) such that
 
 Let \(q = \frac{m}{n}, m \in \Z, n \in \N\) to prove \(a < \frac{m}{n} < b\) equivalently \(an < m < bn\).
 
-For \(b - a > 0\), we know \(\frac{1}{n} < b - a\) or \(a < b - \frac{1}{n}\), by the Archimedean property. 
+For \(b - a > 0\), we know \(\frac{1}{n} < b - a\) or \(a < b - \frac{1}{n}\), by the Archimedean property.
 
-Next take the smallest \(m \in \Z\) such that \(m - 1 \le na < m\) or \(a < \frac{m}{n}\). This gives us the first half of 
+Next take the smallest \(m \in \Z\) such that \(m - 1 \le na < m\) or \(a < \frac{m}{n}\). This gives us the first half of
 our theorem.
 
-Finally, for the second half 
+Finally, for the second half
 
 \begin{align*}
-	m - 1 &\le na \\ 
-		&= na + 1 \\ 
-		&< n(b - \frac{1}{n}) + 1 \text{ using our result from the Archimedean property }\\ 
-		&= nb
+	m - 1 & \le na                                                                           \\
+	      & = na + 1                                                                         \\
+	      & < n(b - \frac{1}{n}) + 1 \text{ using our result from the Archimedean property } \\
+	      & = nb
 \end{align*}
 
 This tells us that \(m < nb \implies \frac{m}{n} < b\).
@@ -453,14 +453,14 @@ For each \(x \in [0, \infty], !\exists  r \in [0, \infty) \text{ s. d. } r^2  =x
 
 \textbf{Proof:}
 
-Let \(T = \{x \in [0, \infty) \mid x < y\}\) and let us define \(a = y^2\) as the supremum of \(T\). 
+Let \(T = \{x \in [0, \infty) \mid x < y\}\) and let us define \(a = y^2\) as the supremum of \(T\).
 
-To prove that the equality holds we will prove that the other order cases can not be true. 
+To prove that the equality holds we will prove that the other order cases can not be true.
 
-Assume \(a < y\), because \(a - y < 0\), we know that \(\frac{1}{n} < a - y\) and \( a + \frac{1}{n} < y\). Thus, \(a + \frac{1}{n} \in T\), but 
-because \(a\) is the supremum, this is a contradiction because our supremum is not the smallest upper-bound. 
+Assume \(a < y\), because \(a - y < 0\), we know that \(\frac{1}{n} < a - y\) and \( a + \frac{1}{n} < y\). Thus, \(a + \frac{1}{n} \in T\), but
+because \(a\) is the supremum, this is a contradiction because our supremum is not the smallest upper-bound.
 
-For the second case, assume \(a > y\), by applying the same reasoning with \(a - \frac{1}{n}\), we will arrive at a similar contradiction. 
+For the second case, assume \(a > y\), by applying the same reasoning with \(a - \frac{1}{n}\), we will arrive at a similar contradiction.
 
 Assume \(a > y\), then \(a - y > 0 \implies \frac{1}{n} < a - y, \implies a - \frac{1}{n} < y\)
 
@@ -477,7 +477,7 @@ Thus, by elimination \(a^2 = y\).
 
 \section{Absolute Value for Real Numbers}
 
-The \emph{absolute} is defined as 
+The \emph{absolute} is defined as
 
 \[
 	|x| := \sqrt{x \cdot x}.
@@ -486,9 +486,9 @@ The \emph{absolute} is defined as
 \subsection{Distance}
 
 \begin{itemize}
-	
+
 	\item \(|x| \ge 0, \forall x \in \R\)
-	
+
 	\item \(|x| = 0, \implies x = 0\)
 
 	\item \(|\alpha x| = |\alpha| |x|, \forall x, \alpha \in \R\)
@@ -497,7 +497,7 @@ The \emph{absolute} is defined as
 
 \end{itemize}
 
-We define the \emph{distance} between two real numbers as 
+We define the \emph{distance} between two real numbers as
 
 \[
 	d(x,y) = | x - y |
@@ -508,25 +508,25 @@ with the following properties:
 \begin{itemize}
 
 	\item \(d(x,y) \ge 0, \forall x,y \in \R\)
-	
+
 	\item \(d(x,y) = 0, \iff x = y \)
 
 	\item \(d(x,y) = d(y,x)\)
-	
+
 	\item \(d(x,y) \ge d(x,y) + d(z,y), \forall x,y \in \R\)
 
 \end{itemize}
 
 \section{Nested Interval Property}
 
-For each \(n \in \N\), assume we are given a closed interval  \(I_n = [a, b] = \{x \in \R \mid a_n \le x \le b_n\}\). 
+For each \(n \in \N\), assume we are given a closed interval  \(I_n = [a, b] = \{x \in \R \mid a_n \le x \le b_n\}\).
 Also assume each \(I_n\) contains \(I_{n + 1}\). Then the nested sequence of closed intervals \(I_1 \supseteq I_2 \supseteq I_3 \supseteq \ldots\)
-has a non-empty intersection. 
+has a non-empty intersection.
 
 \textbf{Proof:}
 
-By definition every \(I_n\) is non-empty, thus the sequences \((a_n)_{n \in \N}\) and \((b_n)_{n \in \N}\) are well-defined. 
-Also, every set \(A = \{a_n: n \in \N\}\) is bounded above by the corresponding \(b_n\), and this is guaranteed by 
+By definition every \(I_n\) is non-empty, thus the sequences \((a_n)_{n \in \N}\) and \((b_n)_{n \in \N}\) are well-defined.
+Also, every set \(A = \{a_n: n \in \N\}\) is bounded above by the corresponding \(b_n\), and this is guaranteed by
 the axiom of completeness.
 
 Let \(x = \sup A\). Then consider \(I_n = [a_n, b_n]\).
@@ -535,75 +535,75 @@ Let \(x = \sup A\). Then consider \(I_n = [a_n, b_n]\).
 	a_n \le x \le b_n, \forall n \in \N \implies x \in I_n
 \]
 
-Thus, \(x \in \bigcap_{n = 1}^{\infty} I_n\) and the intersection is non-empty. 
+Thus, \(x \in \bigcap_{n = 1}^{\infty} I_n\) and the intersection is non-empty.
 
 \QED
 
 \section{Definition as Cauchy Sequences}
- 
+
 Let \( \field \) be an ordered field. On the set
-		
+
 \[
 	\operatorname{ch}(\field) := \{ x : \N \to \field \mid x \text{ is a Cauchy sequence} \}
 \]
-		
+
 and on the set
-	
+
 \[
 	c(\field) := \{ x : \N \to \field \mid x \text{ is a convergent sequence} \}
 \]
 
 we can define an addition and a multiplication as follows:
 
-If \( x = {(x_n)}_{n \in \N} \) and \( y = {(y_n)}_{n \in \N} \) are Cauchy sequences 
+If \( x = {(x_n)}_{n \in \N} \) and \( y = {(y_n)}_{n \in \N} \) are Cauchy sequences
 (respectively, convergent sequences), then their sum is defined as
-	
+
 \[
 	x + y := {(x_n)}_{n \in \N} + {(y_n)}_{n \in \N} := {(x_n + y_n)}_{n \in \N}
 \]
-	
+
 and their product is defined as
 
 \[
-	x \cdot y := {(x_n)}_{n \in \N} \cdot {(y_n)}_{n \in \N} := {(x_n \cdot y_n)}_{n \in 
-	\N}
+	x \cdot y := {(x_n)}_{n \in \N} \cdot {(y_n)}_{n \in \N} := {(x_n \cdot y_n)}_{n \in
+			\N}
 \]
 
 The sum and product satisfy all field axioms except for the existence of the multiplicative inverse.
-The zero element is \( 0_{\N} = (0, 0, \ldots) \), the unit element is \( 1_{\N} = (1, 1, 
-\ldots) \), and the additive inverse of \( x = {(x_n)}_{n \in \N} \) is 
+The zero element is \( 0_{\N} = (0, 0, \ldots) \), the unit element is \( 1_{\N} = (1, 1,
+\ldots) \), and the additive inverse of \( x = {(x_n)}_{n \in \N} \) is
 \( -x = {(-x_n)}_{n \in \N} \). We demonstrate the distributive law as an example:
 
-Let \( x = {(x_n)}_{n \in \N}, y = {(y_n)}_{n \in \N}, z = {(z_n)}_{n \in \N} \) be 
+Let \( x = {(x_n)}_{n \in \N}, y = {(y_n)}_{n \in \N}, z = {(z_n)}_{n \in \N} \) be
 Cauchy sequences (convergent sequences). Then we have:
 
 \begin{align*}
-	x(y + z) &= {(x_n)}_{n \in \N} \cdot \left( {(y_n)}_{n \in \N} + {(z_n)}_{n \in \N} \right)\\
-	&= {(x_n)}_{n \in \N} \cdot {(y_n + z_n)}_{n \in \N}\\ 
-	&= {(x_n (y_n + z_n))}_{n \in \N}\\
-	&= {(x_n y_n + x_n z_n)}_{n \in \N}\\
-	&= {(x_n y_n)}_{n \in \N} + {(x_n z_n)}_{n \in \N}\\
-	&= xy + xz.
+	x(y + z) & = {(x_n)}_{n \in \N} \cdot \left( {(y_n)}_{n \in \N} + {(z_n)}_{n \in \N} \right) \\
+	         & = {(x_n)}_{n \in \N} \cdot {(y_n + z_n)}_{n \in \N}                               \\
+	         & = {(x_n (y_n + z_n))}_{n \in \N}                                                  \\
+	         & = {(x_n y_n + x_n z_n)}_{n \in \N}                                                \\
+	         & = {(x_n y_n)}_{n \in \N} + {(x_n z_n)}_{n \in \N}                                 \\
+	         & = xy + xz.
 \end{align*}
 
 We now aim to construct the ordered field \( \R \) of the real numbers; it will have the following properties:
 
 \begin{itemize}
-	
-	\item There exists an injective mapping \( j : \Q \to \R \) which respects addition, 
-    	  multiplication, and order, such that the following holds:
-		
-		For all \( z, w \in \R \) with \( z < w \), there exists an \( x \in \Q \) such that
-		
-		\[
-			z < j(x) < w
-		\]
+
+	\item There exists an injective mapping \( j : \Q \to \R \) which respects addition,
+	      multiplication, and order, such that the following holds:
+
+	      For all \( z, w \in \R \) with \( z < w \), there exists an \( x \in \Q \) such that
+
+	      \[
+		      z < j(x) < w
+	      \]
 
 	\item Every Cauchy sequence in \( \R \) converges.
 
 \end{itemize}
 
-Via \(j\), we identify \( \Q \) with \( j(\Q) \) and consider \( \Q \) as a 
+Via \(j\), we identify \( \Q \) with \( j(\Q) \) and consider \( \Q \) as a
 subset of \( \R \). In \( \R \), the following will additionally hold:
 
 \begin{itemize}
@@ -614,7 +614,7 @@ subset of \( \R \). In \( \R \), the following will additionally hold:
 
 \end{itemize}
 
-We define the following relation on the set \( \operatorname{ch}(\Q) \) of all Cauchy sequences 
+We define the following relation on the set \( \operatorname{ch}(\Q) \) of all Cauchy sequences
 in \( \Q \):
 
 \[
@@ -638,7 +638,7 @@ The set
 is called the set of real numbers.
 
 Analogous to the construction of the rational numbers, the real numbers consist of equivalence classes.
-Roughly speaking, an equivalence class consists of those Cauchy sequences in \( \Q \) that exhibit 
+Roughly speaking, an equivalence class consists of those Cauchy sequences in \( \Q \) that exhibit
 the same limit behavior.
 
 Equipped with the addition
@@ -653,6 +653,6 @@ and the multiplication
 	\cdot : \R \times \R \to \R, \quad [x], [y] \mapsto [x] \cdot [y] := [xy].
 \]
 
-\( \R \) is a field. The zero element is \( [0_{\N}] \), and the unit element is 
+\( \R \) is a field. The zero element is \( [0_{\N}] \), and the unit element is
 \( [1_{\N}] \).
 
