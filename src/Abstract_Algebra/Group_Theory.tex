@@ -1,23 +1,375 @@
 \chapter{Group Theory}
 
-A \emph{group} is a set \(G\) equipped with a binary operation \(\cdot: G \times G \to G\) satisfying the following axioms:
+A \emph{group} \((G, \oplus)\) is a monoid where every element has an \emph{inverse}:
+
+
+\[
+	(a \oplus b) \oplus c = a \oplus (b \oplus c) \quad \forall a, b, c \in G.
+\]
+\[
+	a \oplus e = e \oplus a = a \quad \forall a \in G.
+\]
+\[
+	\forall a \in G, \exists a^{-1} \in G: \, a \oplus a^{-1} = a^{-1} \oplus a = e.
+\]
+
+\section{Abelian Group \texorpdfstring{\((A, \oplus)\)}{}}
+
+An \emph{Abelian group} \((A, \oplus)\) (or commutative group) is a group where the operation is \emph{commutative}:
+
+
+\[
+	(a \oplus b) \oplus c = a \oplus (b \oplus c) \quad \forall a, b, c \in A.
+\]
+
+\[
+	a \oplus e = e \oplus a = a \quad \forall a \in A.
+\]
+
+\[
+	\forall a \in A, \exists a^{-1} \in A: \, a \oplus a^{-1} = a^{-1} \oplus a = e.
+\]
+
+\[
+	a \oplus b = b \oplus a \quad \forall a, b \in A.
+\]
+\section{Subgroups}
+
+A \emph{subgroup} \(H\) of a group \(G\) is a subset of \(G\) that is itself a group under the operation of \(G\). Formally, \(H \leq G\) if:
+
+\begin{itemize}
+
+	\item \(e_G \in H\) (the identity element of \(G\) is in \(H\)).
+
+	\item For all \(h_1, h_2 \in H\), \(h_1 \circ h_2 \in H\) (closure under the group operation).
+
+	\item For all \(h \in H\), \(h^{-1} \in H\) (closure under taking inverses).
+
+\end{itemize}
+
+\section{Group Homomorphism}
+
+Given two groups \((G_1, \circ_{G_1})\) and \((G_2, \circ_{G_2})\) and a function
+
+\[
+	\varphi: G_1 \to G_2
+\]
+
+a function between two groups, then \(\varphi\) is called a \emph{group homomorphism} and if for all
+\(g_1, g_2 \in G_1\) the following holds:
+
+\[
+	\varphi(g_1 \circ_{G_1} g_2) = \varphi(g_1) \circ_{G_2} \varphi (g_2)
+\]
+
+then the \emph{kernel} of \(\varphi\) is the set
+
+\[
+	\ker (\varphi) := \{g \in G_1 \mid \varphi(g) = e_{G_2}\}
+\]
+
+and the \emph{image} is the set
+
+\[
+	\img (\varphi) := \{x \in G_2 \mid \exists g \in G_1: \varphi(g) = x\}.
+\]
+
+If the function \(\varphi\) is bijective, then it is called a \emph{group isomorphism} and the two groups are said to be \emph{isomorphic}, denoted as \(G_1 \cong G_2\).
+
+\textbf{Remark:} Two groups with an homomorphism can be doneted as ``similar'', but if they are isomorphic, they are ``the same'' in terms of structure.
+
+\textbf{Example:}
+
+We take \(\exp: (\R, +) \to (\R, \cdot)\) with
+
+\[
+	\exp(x + y) = \exp(x) \cdot \exp(y).
+\]
+
+\subsection{Properties of Group Homomorphisms}
+
+Given a group homomorphism \(\varphi: G \to H\), the following properties hold:
+
+\begin{itemize}
+
+	\item \(\varphi(e_G) = e_H\)
+
+	\item \(\varphi(g^{-1}) = \varphi(g)^{-1}\) for all \(g \in G\)
+
+	\item The kernel \(\ker(\varphi)\) is a normal subgroup of \(G\).
+
+	\item The image \(\img(\varphi)\) is a subgroup of \(H\).
+
+\end{itemize}
+
+\section{Set of Group Homomorphisms}
+
+Given two groups \(G\) and \(H\), we define the set of group homomorphisms from \(G\) to \(H\) as:
+
+\[
+	\Hom(G, H) := \{\varphi: G \to H \mid \varphi \text{ is a group homomorphism}\}.
+\]
+If \(H = G\), then we call it the set of endomorphisms of \(G\):
+
+\[
+	\End(G) := \Hom(G, G).
+\]
+
+\section{Composition of Homomorphisms}
+
+Given a group \((G, \circ_G)\) and an Abelian group \((H, \circ_H)\), then \(\Hom(G, H)\) is an Abelian group with the operation defined as:
+
+\[
+	+: \Hom(G, H) \times \Hom(G, H) \to \Hom(G, H)
+\]
+
+with
+
+\[
+	(\varphi, \psi) \mapsto \varphi + \psi, \quad (\varphi + \psi)(g) := \varphi(g) \circ_H \psi(g), \quad \forall g \in G.
+\]
+
+Then neutral element is
+
+\[
+	\varphi_0: G \to H, \quad \varphi_0(g) := e_H, \quad \forall g \in G.
+\]
+
+\subsection{The Kernel and Image are Subgroups}
+
+For a group homomorphism \(\varphi: G \to H\), the kernel \(\ker(\varphi)\) and the image \(\img(\varphi)\) are subgroups of \(G\) and \(H\), respectively.
+Also \(\varphi\) is injective if an only if \(\ker(\varphi) = \{e_G\}\).
+
+The last statement is extremely important since it allows to determine the injectivity of a homomorphism by looking at its kernel only.
+
+\section{H-Coset}
+
+Given a group \(G\) and a subgroup \(H \leq G\), we define
+
+\[
+	gH = \{g \cdot h \mid h \in H\}, \quad \text{for some}\, g \in G
+\]
+
+as the \emph{left coset} of \(H\) in \(G\) with respect to \(g\). Similarly, we define the \emph{right coset} as
+
+\[
+	Hg = \{h \cdot g \mid h \in H\}, \quad \text{for some}\, g \in G.
+\]
+
+Note that for both cosets, they are disjoint with \(H\).
+
+\textbf{Example:}
+
+Prove that \(a \in Hb \implies Ha = Hb\).
+
+From \(a \in Hb\), we have \(h_1a = h_2b\) for some \(h_1, h_2 \in H\)
+
+\[
+	h_1 \cdot a = h_2 \cdot b \iff a = h_1^{-1} \cdot h_2 \cdot b \iff a = h_k \cdot b \implies a \in Hb
+\]
+
+Similarly, using the same expression, we can show that \(b \in Ha\)
+
+\[
+	h_1 \cdot a = h_2 \cdot b \iff h_2^{-1} a =  b \iff b = h_k \cdot a \implies b \in Ha
+\]
+and thus \(Ha = Hb\).
+
+\QED
+
+\section{Group Congruence}
+
+From the coset definiton, we can define an equivalence relation, \emph{congruence modulo \(H\)}:
+
+\[
+	g \equiv g' \mod H \iff gH = g'H
+\]
+
+for \(g, g' \in G\). The quatient space is written as \(G/H\).
+
+We can denote this relation as
+
+\[
+	gH = g'H \iff g^{-1}g' \in H \iff \exists h \in H: g' = gh.
+\]
+\textbf{Example:}
+
+Let \(G = (\Q, +)\) and \(H = (\Z, +)\), then
+
+\[
+	g_1 \equiv g_2 \mod H \iff g_2^{-1} \circ g_1 \in H \iff g_2 - g_1 \in \Z
+\]
+
+Also, two number are congruent module \(H\) if they have an integer difference.
+
+\section{Lagrange's Theorem}
+
+Given a finite group \(G\) and a subgroup \(H \leq G\), the order of \(H\) divides the order of \(G\):
+
+\[
+	|G| = [G : H] \cdot |H|
+\]
+
+\textbf{Proof:}
+
+Let \(|G| = n\). For the case where \(H = G\) and \(H = \{e\}\), the theorem holds trivially.
+
+Now let \(H\) be a proper subgroup of \(G\). We know that \(e \in H\), therefore, \(H\) is non-empty.
+We know that \(gH\) and \(H\) are disjoint for any \(g \notin H\) since else \(g \in H\).
+
+\[
+	g \cdot h_1 = h_2 \iff g = h_2 \cdot h_1^{-1} \in H\, \text{contradiction}
+\]
+
+We can partition \(G\) into disjoint left cosets of \(H\) where each coset has the
+same number of elements \(|H| = d\) as else we would have a contradiction. Suppose some
+cost \(gH\) have duplicates with \(h_1 \neq h_2\).
+
+\[
+	g \cdot h_1 = g \cdot h_2 \iff h_1 = g^{-1} \cdot g \cdot h_2 \iff h_1 = h_2 \, \text{contradiction}
+\]
+
+We denote the number of cosets as \([G : H]\). Therefore, we have
+\(dk = n\).
+
+\QED
+
+\section{Normal Subgroup}
+
+A subgroup \(N\) of a group \(G\) is called a \emph{normal subgroup} (or normal divisor) of \(G\)
+if for all \(g \in G\)
+
+\[
+	gN = Ng
+\]
+
+Equivalently, \(N\) is normal if for all \(g \in G\) and \(n \in N\), we have \(gng^{-1} \in N\); i.e.
+\(N\) is closed under \emph{conjugates} \(gng^{-1}\).
+
+We denote this as \(N \triangleleft G\). Normal subgroups are important because they allow the construction of quotient groups.
+
+As side note, the kernel of a group homomorphism is always a normal subgroup of the domain group.
+
+\textbf{Remark:} Another way of stating this, is that a subgroup \(N\) is normal if the cosets either left or right behave like a group.
+
+\[
+	N \leq G \land \text{ Cosets form a group } \implies  \varphi(g)^{-1} \cdot N \cdot \varphi(g) = N, \, \forall g \in G
+\]
+
+\textbf{Proof:}
+
+\(\Rightarrow\): Let \(N\) be a normal subgroup of \(G\). Then for all \(g \in G\) and \(n \in N\), we have \(gng^{-1} \in N\).
+Now let us take some \(gn \in gN\).
+
+\begin{align*}
+	x & = gn           \\
+	  & = gn(g^{-1}g)  \\
+	  & = (gng^{-1})g  \\
+	  & = n_k g \in Ng
+\end{align*}
+
+Therefore \(gN \subseteq Ng\). Now for \(y = ng\):
+
+\begin{align*}
+	y & = ng                                                             \\
+	  & = (gg^{-1})ng                                                    \\
+	  & = g(g^{-1}ng) \, \text{ note that this is also just a conjugate} \\
+	  & = g(g^{-1}ng) = gN_k \in gN
+\end{align*}
+
+Thus, \(Ng \subseteq gN\).
+
+\(\Leftarrow\): Since \(gN = Ng\), then \(gn = n'g\), which by multiplying both sides
+by the inverse of \(g\), yields \(gng^{-1} = n' \in H\), and so \(H\) is normal.
+
+\QED
+
+\section{Kernel of a Group Homomorphism is a Normal Subgroup}
+
+Let \(\varphi: G \to H\) be a group homomorphism. Then the kernel of \(\varphi\), denoted as \(\ker(\varphi)\),
+is a normal subgroup of \(G\).
+
+\textbf{Proof:}
+
+Let \(\varphi: G \to H\) be a group homomorphism and let \(N = \ker(\varphi)\). We want to show that \(N\) is a normal subgroup of \(G\).
+First we know that \(N\) is a subgroup of \(G\). Now we need to show that for all \(g \in G\), \(gN = Ng\).
+
+Let \(g \in G\) and \(n \in N\). Then we have:
+
+\[
+	\varphi(gng^{-1}) = \varphi(g)\varphi(n)\varphi(g^{-1}) = \varphi(g)e_H\varphi(g^{-1}) = \varphi(g)\varphi(g^{-1}) = e_H \implies gng^{-1} \in N
+\]
+
+Similarly, it works for the other side, thus \(gN = Ng\) and \(N\) is a normal subgroup of \(G\).
+
+\QED
+
+\section{Quotient Group}
+
+Given \(N \triangleleft G\) a normal subgroup of \(G\) the \emph{quotient group} \(G/N\) is the set of left cosets of
+\(N\) in \(G\) with the operation defined as:
+
+\[
+	[g] \cdot [h] := [g \cdot h], \quad \forall g, h \in G
+\]
+If \(G\) is Abelian, then \(G/N\) is also Abelian. We call \(G/N\) the \emph{factor group} of \(G\) by \(N\).
+
+\section{Homorphy Theorem for Groups}
+
+Given a group homomorphism \(\varphi: G \to H\) with \(N \triangleleft G\). The following
+statements are equivalent:
 
 \begin{enumerate}
 
-    \item \emph{Associativity:} For all \(a, b, c \in G\), \((a \cdot b) \cdot c = a \cdot (b \cdot c)\).
+	\item \(N \subseteq \ker(\varphi)\)
 
-    \item \emph{Identity element:} There exists an element \(e \in G\) such that for all \(a \in G\), \(e \cdot a = a \cdot e = a\).
+	\item There exists a unique group homomorphism \(\psi: G/N \to H\) such that \(\varphi = \psi \circ \pi\), where \(\pi: G \to G/N\) is the canonical projection.
 
-    \item \emph{Inverse element:} For each \(a \in G\), there exists an element \(a^{-1} \in G\) such that \(a \cdot a^{-1} = a^{-1} \cdot a = e\).
+\end{enumerate}
 
-\end{enumerate}o
+This means that the following diagram commutes:
+
+\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}[node distance=3cm, auto]
+		\node (G) {\(G\)};
+		\node (H) [right of=G] {\(H\)};
+		\node (G/H) [below right of=G] {\(G / H\)};
+
+		\draw[->, thick] (G) -- node[above] {\(\varphi\)} (H);
+		\draw[->, thick] (G) -- node[left] {\(\pi\)} (G/H);
+		\draw[->, thick] (G/H) -- node[below] {\(\psi\)} (H);
+	\end{tikzpicture}
+\end{figure}
+
+\section{Cyclic Group}
+
+A group \(G\) is called \emph{cyclic} if it can be generated by a single element \(g \in G\), called a \emph{generator}. Formally,
+\(G\) is cyclic if:
+
+\[
+	G = \langle g \rangle := \{g^n \mid n \in \Z\} \cup \{e\}
+\]
+
+This is means that you can reach any element and its inverse by applying the group operation to \(g\) repeatedly.
+
+\textbf{Remark:} There all only two types of cyclic groups: the integers modulo \(n\), the integers and the trivial group \(\{e\}\).
+It is still early to prove this.
+
+\textbf{Example:}
+
+The group \((\Z, +)\) is cyclic with generator \(1\) (or \(-1\)), since every integer can be expressed as a sum of \(1\)s or \(-1\)s.
+
+\section{Oder of an Element}
+
+Given a group \(G\) and an element \(g \in G\), the \emph{order} of \(g\), denoted \(|g|\), is the smallest positive integer \(n\) such that
+\(g^n = e\), where \(e\) is the identity element of \(G\). If no such \(n\) exists,  we say that \(g\) has infinite order.
 
 \section{Symmetric Group}
 
-Given a set \(G\). The set of all bijections from \(G\) to itself, denoted by \(S_G\), forms a group under composition of functions. 
-This group is called the \emph{symmetric group} on \(G\).
+The \emph{symmetric group} \(S_n\) is the group of all permutations of \(n\) elements, with the group operation being composition of permutations.
+The order of \(S_n\) is \(n!\).
 
-For \(G = \{1, 2, \dots, n\}\), the symmetric group on \(G\) is usually denoted by \(S_n\).
 
 
 

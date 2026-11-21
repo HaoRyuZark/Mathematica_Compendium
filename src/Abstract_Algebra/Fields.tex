@@ -1,0 +1,158 @@
+\chapter{Fields}
+
+A \emph{field} \((\field, \oplus, \odot)\) is a commutative ring where every nonzero element has a \emph{multiplicative inverse}:
+
+\[
+	(\field \setminus \{0\}, \odot) \text{ is an Abelian group}.
+\]
+
+Fields like \(\Q\), \(\R\), and \(\C\) allow division (except by zero), enabling the full range of arithmetic operations.
+
+\section{Field Properties}
+
+\begin{enumerate}
+
+	\item \emph{Neutral Elements are unique}: There exists exactly one additive identity \(0\) and one multiplicative identity \(1\) in a field.
+
+	\item \emph{Inverses are unique}: For each \(a \in \field\), there exists exactly one additive inverse \(-a\) and, for \(a \ne 0\), exactly one multiplicative inverse \(a^{-1}\).
+
+	\item \emph{Any element multiplied by zero is zero}: For any \(a \in \field\), \(a \cdot 0 = 0\).
+
+	\item \emph{Factorization of \(-1\)}: For any \(a \in \field\), \(-a= (-1)a\).
+
+	\item \emph{Distribution of negative signs for multiplication}: For any \(a, b \in \field\), \(-(ab) = (-a)b = a(-b)\).
+
+	\item \emph{Minus times minus is plus}: For any \(a, b \in \field\), \((-a)(-b) = ab\).
+
+	\item \emph{Uniqueness of differences}: For any \(a, b \in \field\), there exists exactly one \(x \in \field\) such that \(a + x = b\), denoted as \(x = b - a\).
+
+	\item \emph{Distribution of negative signs}: For any \(a, b \in \field\), \(-(a + b) = (-a) + (-b)\).
+
+	\item \emph{Zero Product}: For any \(a, b \in \field\), if \(ab = 0\), then either \(a = 0\) or \(b = 0\).
+
+\end{enumerate}
+
+\textbf{Proof I:}
+
+For \(a + 0 = a\). Now let us say \(0' \in \field\), such that \(a + 0' = a\). Then we have for \(a = 0\):
+
+\[
+	0 + 0' = 0 = 0' + 0 \implies 0' = 0
+\]
+
+For multiplicative neutral element, it is the same proof, but with the multiplicative operation. Hence
+both neutral elements are unique.
+
+\QED
+
+\textbf{Proof II:}
+
+Let \(a + -a = 0\). Now let us say \(a' \in \field\) such that \(a + a' = 0\). Then we have
+
+\begin{align*}
+	a + -a        & = a + a'        \\
+	(a + -a) + -a & = a + (a' + -a) \\
+	0 + -a        & = (a + -a) + a' \\
+	0 + -a        & = 0 + a'        \\
+	-a            & = a'
+\end{align*}
+
+Hence the additive inverse is unique. The proof for the multiplicative inverse is analogous.
+
+\QED
+
+\textbf{Proof III:}
+
+Let \(a \in \field\) and \(0 \in \field\) be the additive identity. Then we have
+
+\begin{align*}
+	a \cdot 0 & = (a \cdot 0) + 0                             \\
+	          & = (a \cdot 0) + ((a \cdot 0) + - (a \cdot 0)) \\
+	          & = ((a \cdot 0) + (a \cdot 0)) + - (a \cdot 0) \\
+	          & = a \cdot(0 + 0) + - (a \cdot 0)              \\
+	          & = a \cdot 0 + - (a \cdot 0)                   \\
+	          & = 0
+\end{align*}
+
+\QED
+
+\textbf{Proof IV:}
+
+Let \(-a \in \field\) then,
+
+\begin{align*}
+	(1 + -1)       & = 0  \\
+	x + (-1)x      & = 0  \\
+	x + (-1)x + -x & = -x \\
+	x + -x + (-1)x & = -x \\
+	0 + (-1)x      & = -x \\
+	(-1)x          & = -x
+\end{align*}
+
+\QED
+
+\textbf{Proof V:}
+
+Let \(a, b \in \field\) then,
+
+\[
+	-ab = ((-1)a)b \iff (-1)(ab) = -(ab)
+\]
+
+\QED
+
+\textbf{Proof VI:}
+
+Let \(a, b \in \field\) then, we know that \(ab + -(ab) = 0\). Therefore,
+
+\begin{align*}
+	ab + -(ab)            & = 0                                                \\
+	ab + -(ab) + -(-(ab)) & = 0 + -(-(ab))                                     \\
+	ab                    & = -(-(ab)) = (-1)(-(ab)) = (-1)(-1)(ab) = (-a)(-b)
+\end{align*}
+
+\QED
+
+\textbf{Proof VII:}
+
+There exists exactly one \(x \in \field\) such that \(a + x = b\), \(x = b + (-a)\) also written
+\(x = b - a\).
+
+Let \(x, x' \in \field\) such that the property is satified then,
+
+\[
+	x = b - a \land x' = b - a \implies x = x'.
+\]
+
+\QED
+
+A special case of this property is when \(b = a\), which gives us that
+
+\[
+	a + x = a \land a + x' = a \iff a + 0 = a \land a - 0 = a \implies 0 = -0.
+\]
+
+\textbf{Proof VIII:}
+
+For any \(a, b \in \field\) the following holds \(-(a + b)  = (-a) + (-b)\).
+
+Note that \(-(a + b)\) satisfies
+
+\[
+	(a + b) - (a + b) = 0
+\]
+
+Now note that
+
+\begin{align*}
+	(a + b) - a - b & =  (b + a) - a - b \\
+	                & = b + (a - a) - b  \\
+	                & = b - b = 0
+\end{align*}
+
+Hence, \(-a - b\) also satisfies the same difference. By our previous property we know that
+difference are unique hence, \(-(a + b) = (-a) + (-b)\).
+
+\QED
+
+

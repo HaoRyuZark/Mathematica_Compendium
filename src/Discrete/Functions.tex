@@ -661,17 +661,39 @@ For the surjectivity, if \(f \in 2^A\), and we let \(B = f^{-1}(0)\), then \(f =
 
 \section{Restriction Function}
 
-Let \(G\) be a graph and \(B \subseteq \dom(G)\) then we denote the \emph{restriction} of \(G\) as:
+Let \(f: X \to Y\) be a function and let \(A \subseteq X\). The \emph{restriction} of \(f\) to \(A\), denoted as \(f|_A\), is a function defined by:
 
 \[
-	G_{[B]} = \{(x, y) \mid (x, y) \in G \land x \in B\}.
+	f|_A: A \to Y, \quad f|_A(x) = f(x) \text{ for all } x \in A
 \]
 
-The range of this restricted map can be denoted as:
+The restriction function \(f|_A\) is obtained by limiting the domain of \(f\) to the subset \(A\). It retains the same output values as \(f\) for inputs in \(A\).
+Proving properties of the restriction can help generalize results about the original function \(f\) to its behavior on specific subsets of its domain.
+
+\textbf{Example:}
+
+Given \(A \neq \emptyset\) with a cardinality \(|A| = n\) and a function \(f: A \to A\) with the property  \(f \circ f = \id_{A}\). Prove that If \(n\) is odd, then \(f\)
+has a fixed point. And then follow up that \(n - |F|\) is an even number where \(F\) is the set of fixed points of \(f\).
+
+The key idea is to prove that if \(f\) either has fix-points or it pairs up elements. Let \(y = f(x)\), then
+\(f(f(x)) = x \neq y \implies y \text{ is not fix-point}\). Consider
 
 \[
-	G(B) = \{y \mid x \in \dom(B) \land )(x, y) \in G\}
+	A' = A \setminus F
 \]
+
+
+Let \(x \in A'\) if \(f|_A (x) = x\), then \(x \in F\) which is a contradiction. If \(f|_A (x) = y\) then \(f|_A(f|_A(x)) = x \neq y\), hence \(y \notin F\).
+Therefore, when we remove the fix-points from \(A\), we are left with a set which can be partitioned into pairs of elements that are mapped to each other by \(f\).
+
+Not let us prove that for \(n = 2k - 1\) there is always a fix-point.
+
+\emph{Induction start} \(k = 1\), then \(n = 1\) and \(f: A \to A\) is the identity function, hence there is a fix-point.
+
+\emph{Induction Hypothesis}: Assume that for \(n = 2k - 1\) there is always a fix-point.
+
+\emph{Induction Step}: Let \(n = 2k + 1\), then we apply our restriction function \(f|_A\) to \(A' = A \setminus F\). We know
+that \(|A'| = 2k + 1 - 2 = 2k - 1\) which is our induction hypothesis.
 
 \section{Even Function}
 

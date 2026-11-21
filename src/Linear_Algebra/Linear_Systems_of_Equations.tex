@@ -56,10 +56,10 @@ The solution set \( L(A, b) \) of the system of equations associated with \( (A,
     L(A, b) := \{ x \in \field^n \mid Ax = b \}.
 \]
 
-\section{Reduced Echelon Form}
+\section{Echelon Form}
 
-For a matrix \(A \in \field^{m \times n}\), we say it is in the \emph{reduced echelon form} if 
-there exits an \(r \in \N_0\) with \(r \le m\) with numbers \(s_0, s_1, \dots, s_r \in \N_0\) with 
+A matrix \(A \in \field^{m \times n}\) is in \emph{reduced echelon form} if
+there exist an \(r \in \N_0\) with \(r \le m\) and numbers \(s_0, s_1, \dots, s_r \in \N_0\) with
 
 \[
     0 = s_0 < s_1 < \dots < s_r \le n
@@ -69,11 +69,35 @@ such that:
 
 \begin{itemize}
 
-    \item \(a_{i, j} = 0\) for all \(i > r\) and all \(j\). Everything the main diagonal is zero.
+    \item \(a_{i,j} = 0\) for all \(i > r\) and all \(j\). Every row after the \(r\)-th row is a zero row.
 
-    \item \(a_{i, j} = 0\) for all \(i < r\) and all \(j < s_i\). Everything is zero before the element.
+    \item \(a_{i,j} = 0\) for all \(i \le r\) and all \(j < s_i\). The first non-zero entry in each non-zero row is to the right of the first non-zero entry in the previous row.
 
-    \item \(a_{i ,s_i} \neq 0\) for all \(i = 1, \dots, r\).
+    \item \(a_{i,s_i} \neq 0\) for all \(i = 1, \dots, r\). The pivots elements are non zero.
+
+\end{itemize}
+
+\section{Reduced Echelon Form}
+
+A matrix \(A \in \field^{m \times n}\) is in \emph{reduced echelon form} if
+there exist an \(r \in \N_0\) with \(r \le m\) and numbers \(s_0, s_1, \dots, s_r \in \N_0\) with
+
+\[
+    0 = s_0 < s_1 < \dots < s_r \le n
+\]
+
+such that:
+
+\begin{itemize}
+
+    \item \(a_{i,j} = 0\) for all \(i > r\) and all \(j\). Every row after the \(r\)-th row is a zero row.
+
+    \item \(a_{i,j} = 0\) for all \(i \le r\) and all \(j < s_i\). The first non-zero entry in each non-zero row is to the right of the first non-zero entry in the previous row.
+
+    \item \(a_{i,s_i} = 1\) for all \(i = 1, \dots, r\). The pivots elements are all equal to 1.
+
+    \item \(a_{k,s_i} = 0\) for all \(i = 1, \dots, r\) and all \(k \neq i\). Only pivots are not zero in their column.
+
 \end{itemize}
 
 \section{Solvability of a Linear System \texorpdfstring{\(Ax = b\)}{} via the Rank}

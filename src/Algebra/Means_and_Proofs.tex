@@ -81,7 +81,16 @@ Hence, by starting from \((\sqrt{a_1} - \sqrt{a_2})^2\) we arrive at our desired
 	G_{n + 1} & := \sqrt[n + 1]{a_1 a_2 \cdots a_n a_{n + 1}} = \sqrt[n + 1]{(a_1 a_2 \cdots a_n) a_{n + 1}}
 \end{align*}
 
-Now let us start with
+We start with
+
+\begin{align*}
+	G_{n + 1}                           & \le A_{n + 1}         \\
+	G_{n + 1}^{n + 1}                   & \le A_{n + 1}^{n + 1} \\
+	G_{n + 1}^{n + 1} A_{n + 1}^{n - 1} & \le A_{n + 1}^{2n}    \\
+\end{align*}
+
+Now, we can can work with this expression to prove the inequality. We can write \(G_{n + 1}^{n + 1} A_{n + 1}^{n - 1}\) as
+
 
 \begin{align*}
 	A_{n + 1}^{n - 1} & := \left(\frac{a_1 + a_2 + \cdots + a_{n + 1}}{n + 1}\right)^{n - 1}                                                                       \\

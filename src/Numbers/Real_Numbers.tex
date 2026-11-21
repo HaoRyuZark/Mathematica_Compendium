@@ -9,35 +9,21 @@ The following axioms apply for any \(a, b, c \in \R\):
 
 \begin{itemize}
 
-	\item \emph{Associativity:} \((a \odot b) \odot c = a \odot (b \odot c)\) for all \(a,b,c \in S\).
+	\item \emph{Associativity:} \((a \circ b) \circ c = a \circ (b \circ c)\) for all \(a,b,c \in \R\).
 
-	\item \emph{Commutativity:} \(a \odot b = b \odot a\) for all \(a,b \in S\).
+	\item \emph{Commutativity:} \(a \circ b = b \circ a\) for all \(a,b \in \R\).
 
-	\item \emph{Identity Element:} There exists \(e \in S\) such that \(a \odot e = e \odot a = a\) for all \(a \in S\).
+	\item \emph{Identity Element for multiplication:} There exists \(1 \in \R\) such that \(a \odot 1 = 1 \odot a = a\) for all \(a \in \R\).
 
-	\item \emph{Inverse Element:} For every \(a \in S\), there exists \(a^{-1} \in S\) such that \(a \odot a^{-1} = a^{-1} \odot a = e\).
+	\item \emph{Identity Element for addition:} There exists \(0 \in \R\) such that \(a \oplus 0 = 1 \oplus a = a\) for all \(a \in \R\).
+
+	\item \emph{Inverse Element for multiplication:} For every \(a \in \R\), there exists \(a^{-1} \in \R\) such that \(a \odot a^{-1} = a^{-1} \odot a = 1\).
+
+	\item \emph{Inverse Element for addition}: For every \(a \in \R\), there exists \(-a \in \R\) such that \(a \oplus -a = -a \oplus a = 0\).
 
 	\item \emph{Distributivity:} \(a \odot (b \oplus c) = (a \odot b) \oplus (a \odot c)\) and/or \((b \odot c) \oplus a = (b \odot a) \oplus (c \odot a)\).
 
 \end{itemize}
-
-We also refresh the order axioms:
-
-\begin{enumerate}[label=\Roman*.]
-
-	\item \emph{Trichotomy:} Exactly one of the following holds:
-
-	      \[
-		      a < b, \quad a = b, \quad a > b
-	      \]
-
-	\item \emph{Transitivity:} If \( a < b \) and \( b < c \), then \( a < c \).
-
-	\item \emph{Additive Compatibility:} If \( a < b \), then \( a + c < b + c \).
-
-	\item \emph{Multiplicative Compatibility:} If \( 0 < a \) and \( 0 < b \), then \( 0 < ab \).
-
-\end{enumerate}
 
 \subsection{Properties Derived from the Axioms}
 
@@ -46,8 +32,6 @@ We also refresh the order axioms:
 	\item The neutral and inverse elements of the addition and multiplication are well defined.
 
 	\item \(a + b = c\) and \(a + c = 0 \implies b = c\)
-
-	\item \(a \ne 0\), \(ab = 1\) and \(ac = 1 \implies b = c\)
 
 	\item \(a \cdot 0 = 0\)
 
@@ -61,7 +45,139 @@ We also refresh the order axioms:
 
 \end{itemize}
 
-Some proofs of these properties can be found in the section about the algebraic structures.
+The proofs of these statements are in the chapter about fields.
+
+\section{Order Axioms}
+
+We also define the following order axioms for the real numbers:
+
+\begin{enumerate}[label=\Roman*.]
+
+	\item \emph{Trichotomy:} Exactly one of the following holds:
+
+	      \[
+		      a < b, \quad a = b, \quad a > b
+	      \]
+
+	\item \emph{Transitivity:} If \( a < b \) and \( b < c \), then \( a < c \).
+
+	\item \emph{Additive Compatibility:} If \( a < b \), then \( a + c < b + c \).
+
+	\item \emph{Multiplicative Compatibility:} If \( a < b \) and \( c > 0 \), then \( ca < cb \).
+
+\end{enumerate}
+
+\subsection{Properties Derived from the Order Axioms}
+
+\begin{enumerate}
+
+	\item \(x < y \iff y - x > 0\)
+
+	\item \(x > 0 \iff -x < 0\)
+
+	\item \(x < y \iff -y < -x\)
+
+	\item \(xy > 0 \iff (x > 0 \land y > 0) \lor (x < 0 \land y < 0)\)
+
+	\item \(x \neq 0 'iff x^2 > 0\)
+
+	\item \((x < y) \land (z < 0) \implies (xz > yz)\)
+
+	\item \(x > 0 \iff \frac{1}{x} > 0\)
+
+	\item \(x^2 < y^2. x \ge 0. y > 0 \implies x < y\)
+
+	\item \((x < y) \land (z < w) \implies (x + z < y + w)\)
+
+\end{enumerate}
+
+\textbf{Proof I:}
+
+\[
+	x < y \iff x - x < y - x \iff 0 < y - x \iff y - x > 0
+\]
+
+\QED
+
+\textbf{Proof II:}
+
+\[
+	x > 0 \iff x - x > 0 - x \iff -x < 0
+\]
+
+\QED
+
+
+\textbf{Proof III:}
+
+\[
+	x < y \iff x - y < y - y \iff x - y < 0 \iff x - x  - y < 0 - x \iff -y < -x
+\]
+
+\QED
+
+
+\textbf{Proof IV:}
+
+From \(xy > 0 \), we know by the sign rules that either \(x > 0\) and \(y > 0\) or \(x < 0\) and \(y < 0\), a direct argument.
+From our other direction we can use the sign rules to prove that \(xy > 0\) if either \(x > 0\) and \(y > 0\) or \(x < 0\) and \(y < 0\).
+
+\QED
+
+\textbf{Proof V:}
+
+\(x \neq 0 \iff x < 0 \lor x > 0 \), and from the sign rules we know that \(x^2 > 0\) if either \(x < 0\) or \(x > 0\).
+The other direction uses the same argument.
+
+\QED
+
+\textbf{Proof VI:}
+
+Let \(x < y\) and \(z < 0\). To be able to use multiplication we need to multiply by a positive number, so we multiply by \(-z\) which is positive.
+Then we have
+
+\begin{align*}
+	x < y & \iff -y < -x             \\
+	      & \iff (-y)(-z) < (-x)(-z) \\
+	      & \iff yz < xz
+\end{align*}
+
+\QED
+
+\textbf{Proof VII:}
+
+\[
+	x > 0 \iff x x^{-1} > 0 x^{-1} \iff 1 > 0 x^{-1} \iff x^{-1} > 0
+\]
+
+\QED
+
+\textbf{Proof VIII:}
+
+For the case \(x = 0\) we have \(0^2 = 0\) and \(0^2 < y^2\) for any \(y > 0\).
+
+For the case \(x > 0\) we have:
+
+\begin{align*}
+	x^2 < y^2 & \iff x^2 +xy < y^2 + xy  \\
+	          & \iff x(x + y) < y(y + x) \\
+	          & \iff x < y
+\end{align*}
+
+Since both are positive and not zero, we can divide by \(x + y\) and \(y + x\).
+
+\QED
+
+\textbf{Proof IX:}
+
+\begin{align*}
+	x < y      & \iff x + z < y + z //
+	\iff x + z & < y + z < y + w
+\end{align*}
+
+By the transitivity of the order relation, we have \(x + z < y + w\).
+
+\QED
 
 \section{Existence of Solutions}
 
@@ -95,25 +211,10 @@ For the second, let \(x = a^{-1}b\)
 
 \QED
 
-\section{General Properties of Order For Real Numbers}
+\section{The Completeness Axiom}
 
-\begin{itemize}
-
-	\item \(a < b \implies ac < bc, \quad c > 0\)
-
-	\item \(a < b \implies a - c < b - c\)
-
-	\item \(a < b \implies -a > - b\)
-
-	\item \(a < b \implies \frac{1}{a} > \frac{1}{b}, \quad 0 < a < b\)
-
-	\item \(a < b \implies a + c < b + c\)
-
-	\item \(\frac{a}{c} < \frac{b}{c}, \quad c > 0\)
-
-	\item \(a < b \land b < c \implies a < c\)
-
-\end{itemize}
+All non-empty \emph{upper-bounded} subsets of the real numbers have a \emph{supremum} \(s \in \R\). We will
+explain what this means in the next section.
 
 \section{Supremum, Infimum, Maximum and Minimum for Fields}
 
@@ -151,34 +252,28 @@ For \(A = (0,1)\):
 
 \begin{itemize}
 
-	\item \(\sup A = 1\) (not in \(A\)).
+	\item \(\sup(A) = 1\) (not in \(A\)).
 
-	\item \(\inf A = 0\) (not in \(A\)).
+	\item \(\inf(A) = 0\) (not in \(A\)).
 
-	\item \(\max A\) and \(\min A\) do not exist.
+	\item \(\max(A)\) and \(\min(A)\) do not exist.
 
 \end{itemize}
 
+We can prove this in the following way:
+
+For the supremum, we can see that 1 satisfies the condition of being an upper bound, now we need to
+prove that it is the least upper bound. Let \(s' < 1\) be another upper bound, then we can take \(x = \frac{s' + 1}{2}\) which is
+an element of \(A\) and \(x > s'\). This means that \(s'\) is not an upper bound, and therefore 1 is the least upper bound.
+
+For the infimum, it is similar. We need to prove that \(k' > 0\) is not a lower bound, by using \(x = \frac{k' + 0}{2}\) which is an element of \(A\) and \(x < k'\).
+This means that \(k'\) is not a lower bound, and therefore 0 is the greatest lower bound.
+
+Since, both 0 and 1 are not in \(A\), then \(\max(A)\) and \(\min(A)\) do not exist.
+
+\QED
+
 \textbf{Example II:}
-
-For \((0, 5)\) and \((0,5]\), the supremum is 5.
-
-\textbf{Example III:}
-
-For the real numbers we can define \(\sqrt{2}\) as the supremum of the set \(\{x \in \R \mid x^2 < 2\}\).
-
-The \emph{infimum} \(\inf\) of a set \(A\) is the greatest lower bound:
-the largest number \(t\) such that \(a \ge t\) for all \(a \in A\).
-
-\[
-	x \ge s, \forall x \in A
-\]
-
-\[
-	x \ge s', \forall x \in A \implies s' \le s
-\]
-
-\textbf{Example IV:}
 
 Prove that \(\sup \left\{\frac{n}{n + 1} \mid n \in \N\right\} = 1\).
 
@@ -232,19 +327,19 @@ For non-empty sets \(A, B \subseteq \R^+\):
 
 \begin{itemize}
 
-	\item \(\sup AB = \sup A \cdot \sup B\)
+	\item \(\sup(AB) = \sup(A) \cdot \sup(B)\)
 
-	\item \(\inf AB = \inf A \cdot \inf B\)
+	\item \(\inf(AB) = \inf(A) \cdot \inf(B)\)
 
-	\item \(\sup (A + B) = \sup A + \sup B \)
+	\item \(\sup (A + B) = \sup(A) + \sup(B) \)
 
-	\item \(\inf (A + B) = \inf A + \inf B \)
+	\item \(\inf (A + B) = \inf(A) + \inf(B) \)
 
 	\item \(\sup (A / B) = \sup(A) / \inf(B)\)
 
-	\item \(\sup (-A) = - \inf A\)
+	\item \(\sup (-A) = - \inf (A)\)
 
-	\item \(\inf (-A) = - \sup A\)
+	\item \(\inf (-A) = - \sup (A)\)
 
 \end{itemize}
 
@@ -306,10 +401,6 @@ As a consequence, if all non-empty below-bounded subsets have an infimum then th
 \textbf{Proof:}
 
 Due to the equivalence of \(x \le y\) and \(-y \le -x\), we can define \(M' = \{-x \mid x \in M\}\) with \(\sup M' = - \inf M\).
-
-\section{The Completeness Axiom}
-
-All non-empty upper-bounded subsets of the real numbers have a \emph{supremum} \(s \in \R\).
 
 \section{Minima in the Real Numbers}
 
@@ -481,54 +572,111 @@ Equivalently \(\frac{1}{n} < x\).
 
 \section{Density of the Rationals in the Reals}
 
-For each pair \(a, b \in \R\) there exists some \(q \in \Q\) such that
+For each pair \(x, y \in \R\) there exists some \(\frac{m}{n} \in \Q\) such that
 
 \[
-	a < q < b.
+	x < \frac{m}{n} < y.
 \]
 
 \textbf{Proof:}
 
-Let \(q = \frac{m}{n}, m \in \Z, n \in \N\) to prove \(a < \frac{m}{n} < b\) equivalently \(an < m < bn\).
+Since \(y > x\), then \(y - x > 0\), by the Archimedean principle \(n(y - x) > 1\). Choose the smallest \(m \in \Z\)
+such that
 
-For \(b - a > 0\), we know \(\frac{1}{n} < b - a\) or \(a < b - \frac{1}{n}\), by the Archimedean property.
+\[
+	m - 1 \le nx < m \implies x < \frac{m}{n}
+\]
 
-Next take the smallest \(m \in \Z\) such that \(m - 1 \le na < m\) or \(a < \frac{m}{n}\). This gives us the first half of
-our theorem.
-
-Finally, for the second half
+For the second half, we need to prove that our \(m\) satisfies \(m < ny\) by using our stablished
+inequality \(m - 1 \le nx\) and the following reformulation of \(n(y - x) > 1\) to \(x < y - \frac{1}{n}\)
 
 \begin{align*}
-	m - 1 & \le na                                                                           \\
-	      & = na + 1                                                                         \\
-	      & < n(b - \frac{1}{n}) + 1 \text{ using our result from the Archimedean property } \\
-	      & = nb
+	m - 1 \le nx & \iff m \le nx + 1                     \\
+	             & \iff m < n (y - \frac{1}{n}) + 1 = ny
 \end{align*}
 
-This tells us that \(m < nb \implies \frac{m}{n} < b\).
+Hence we get \(\frac{m}{n} < y\).
 
 \QED
 
-\section{Existence of Square Roots}
+\section{Existence of Nth Roots}
 
-For each \(x \in [0, \infty], !\exists  r \in [0, \infty) \text{ s. d. } r^2  =x\). Also,
-\(\sqrt{x}:= r\) and we call \(x \mapsto \sqrt{x}\) the \emph{root function}.
+For each \(x \in (0, \infty), !\exists  r \in (0, \infty) \text{ s. d. } r^n  =x\). Also, \(\sqrt[n]{x}:= r\) and we call \(x \mapsto \sqrt{x}\) the \emph{root function}.
 
 \textbf{Proof:}
 
-Let \(T = \{x \in [0, \infty) \mid x < y\}\) and let us define \(a = y^2\) as the supremum of \(T\).
+\emph{Uniqueness}: Let \(r_1, r_2 \in \R^{+}\) such that \(r_1^n = r_2^n = x\) with \(r_1 < r_2 \implies r_1^n < r_2^n\), hence there
+is a contradiction and \(r_1 = r_2\). For the case \(r_1 > r_2\) the conclusion is the same.
 
-To prove that the equality holds we will prove that the other order cases can not be true.
+\emph{Equality}:
 
-Assume \(a < y\), because \(a - y < 0\), we know that \(\frac{1}{n} < a - y\) and \( a + \frac{1}{n} < y\). Thus, \(a + \frac{1}{n} \in T\), but
-because \(a\) is the supremum, this is a contradiction because our supremum is not the smallest upper-bound.
+Let \(T = \{r \in (0, \infty) \mid r^n < x\}\)
 
-For the second case, assume \(a > y\), by applying the same reasoning with \(a - \frac{1}{n}\), we will arrive at a similar contradiction.
+First to prove that the set \(T\) is not empty. By the density of the rationals in the reals we know that
+for any given \(0 = y < \frac{m}{n} < x\), we can find a rational in between, hence let \(r^n = \frac{m}{n}\).
+Therefore \(T\) has a supremum \(s\) such that \(s^n = x\). We will prove that the supremum can not be less or greater that the root
+of \(x\).
 
-Assume \(a > y\), then \(a - y > 0 \implies \frac{1}{n} < a - y, \implies a - \frac{1}{n} < y\)
+Let \(s^n < x\), then \(s \in T\), but since they are both real number we can apply the density principle again to find another
+real number which satisfies \(r^n < x\), hence our \(s\) is not an upper bound and we have a contradiction.
 
-But then \(a  - \frac{1}{n}\) is an upper bound and this contradicts our assumption.
-Thus, by elimination \(a^2 = y\).
+Let Let \(s^n > x\), then \(s \notin T\). Choose \(\varepsilon\) such that \((s - \varepsilon)^n < x \implies (s - \varepsilon) \in T\), then we have
+found a smaller lower-bound of \(T\); also leading contradiction.
+
+Hence, \(s^n = x\) and we call \(\sqrt[n]{x} = n\).
+
+
+\QED
+
+\section{Real Polynomials}
+
+A polynomial \(p\) of degree \(n\) is a function \(p: \R \to \R\) defined as
+
+\[
+	p(x) = a_n x^n + a_{n - 1} x^{n - 1} + \ldots + a_1 x + a_0 = \sum_{k = 0}^{n} a_k x^k
+\]
+
+\section{Order of Real Polynomials}
+
+For a polynomial \(p\) of degree \(n\) where \(a_n > 0\) and \(0 < \varepsilon < 1\), there is
+\(r \in \R_+\) such that
+
+\begin{enumerate}
+
+	\item \((1 - \varepsilon) a_n x^n \le p(x) \le (1 + \varepsilon) a_n x^n\) for all \(x \ge r\)
+
+	\item \((1 - (-1)^n \varepsilon) a_N x^n \le p(x) \le (1 + (-1)^n \varepsilon) a_n x^n\) for all \(x \le -r\)
+
+	\item \((1 - \varepsilon)|a_n||x|^n \le |p(x)| \le (1 + \varepsilon) |a_n| |x|^n\) for all \(|x| \ge r\)
+
+\end{enumerate}
+
+Also, there exists \(M > 0\) such that
+
+\[
+	|p(x)| \le M |x|^n, \quad \forall x \in \R, \, |x| \ge r
+\]
+\textbf{Proof I:}
+
+\begin{align*}
+	p(x) & \le |a_0| x^0 + |a_1| x^1 + \ldots + |a_{n - 1}|x^{n - 1} + a_n x^n                                \\
+	     & \le (|a_0| + |a_1| + \ldots + |a_{n - 1}|) x^{n - 1} + a_n x^n                                     \\
+	     & = a_n x^n \left(1 + \frac{|a_0| + \dots + |a_{n - 1}|}{a_n x}\right) \le (1 + \varepsilon) a_n x^n
+\end{align*}
+
+For the last inequality, we need to choose \(r\) such that \(\frac{|a_0| + \ldots + |a_{n - 1}|}{a_n x} \le \varepsilon\).
+
+\[
+	r = 1 + \frac{|a_0| + \ldots + |a_{n - 1}|}{\varepsilon a_n}
+\]
+
+For the other direction, we can use the same argument:
+
+\begin{align*}
+	p(x) & \ge -|a_0| x^0 - |a_1| x^1 - \ldots - |a_{n - 1}|x^{n - 1} + a_n x^n                               \\
+	     & \ge -(|a_0| + |a_1| + \ldots + |a_{n - 1}|) x^{n - 1} + a_n x^n                                    \\
+	     & = a_n x^n \left(1 - \frac{|a_0| + \dots + |a_{n - 1}|}{a_n x}\right) \ge (1 - \varepsilon) a_n x^n
+\end{align*}
 
 \QED
 
@@ -579,143 +727,4 @@ with the following properties:
 	\item \(d(x,y) \ge d(x,y) + d(z,y), \forall x,y \in \R\)
 
 \end{itemize}
-
-\section{Nested Interval Property}
-
-For each \(n \in \N\), assume we are given a closed interval  \(I_n = [a, b] = \{x \in \R \mid a_n \le x \le b_n\}\).
-Also assume each \(I_n\) contains \(I_{n + 1}\). Then the nested sequence of closed intervals \(I_1 \supseteq I_2 \supseteq I_3 \supseteq \ldots\)
-has a non-empty intersection.
-
-\textbf{Proof:}
-
-By definition every \(I_n\) is non-empty, thus the sequences \((a_n)_{n \in \N}\) and \((b_n)_{n \in \N}\) are well-defined.
-Also, every set \(A = \{a_n: n \in \N\}\) is bounded above by the corresponding \(b_n\), and this is guaranteed by
-the axiom of completeness.
-
-Let \(x = \sup A\). Then consider \(I_n = [a_n, b_n]\).
-
-\[
-	a_n \le x \le b_n, \forall n \in \N \implies x \in I_n
-\]
-
-Thus, \(x \in \bigcap_{n = 1}^{\infty} I_n\) and the intersection is non-empty.
-
-\QED
-
-\section{Definition as Cauchy Sequences}
-
-Let \( \field \) be an ordered field. On the set
-
-\[
-	\operatorname{ch}(\field) := \{ x : \N \to \field \mid x \text{ is a Cauchy sequence} \}
-\]
-
-and on the set
-
-\[
-	c(\field) := \{ x : \N \to \field \mid x \text{ is a convergent sequence} \}
-\]
-
-we can define an addition and a multiplication as follows:
-
-If \( x = {(x_n)}_{n \in \N} \) and \( y = {(y_n)}_{n \in \N} \) are Cauchy sequences
-(respectively, convergent sequences), then their sum is defined as
-
-\[
-	x + y := {(x_n)}_{n \in \N} + {(y_n)}_{n \in \N} := {(x_n + y_n)}_{n \in \N}
-\]
-
-and their product is defined as
-
-\[
-	x \cdot y := {(x_n)}_{n \in \N} \cdot {(y_n)}_{n \in \N} := {(x_n \cdot y_n)}_{n \in
-			\N}
-\]
-
-The sum and product satisfy all field axioms except for the existence of the multiplicative inverse.
-The zero element is \( 0_{\N} = (0, 0, \ldots) \), the unit element is \( 1_{\N} = (1, 1,
-\ldots) \), and the additive inverse of \( x = {(x_n)}_{n \in \N} \) is
-\( -x = {(-x_n)}_{n \in \N} \). We demonstrate the distributive law as an example:
-
-Let \( x = {(x_n)}_{n \in \N}, y = {(y_n)}_{n \in \N}, z = {(z_n)}_{n \in \N} \) be
-Cauchy sequences (convergent sequences). Then we have:
-
-\begin{align*}
-	x(y + z) & = {(x_n)}_{n \in \N} \cdot \left( {(y_n)}_{n \in \N} + {(z_n)}_{n \in \N} \right) \\
-	         & = {(x_n)}_{n \in \N} \cdot {(y_n + z_n)}_{n \in \N}                               \\
-	         & = {(x_n (y_n + z_n))}_{n \in \N}                                                  \\
-	         & = {(x_n y_n + x_n z_n)}_{n \in \N}                                                \\
-	         & = {(x_n y_n)}_{n \in \N} + {(x_n z_n)}_{n \in \N}                                 \\
-	         & = xy + xz.
-\end{align*}
-
-We now aim to construct the ordered field \( \R \) of the real numbers; it will have the following properties:
-
-\begin{itemize}
-
-	\item There exists an injective mapping \( j : \Q \to \R \) which respects addition,
-	      multiplication, and order, such that the following holds:
-
-	      For all \( z, w \in \R \) with \( z < w \), there exists an \( x \in \Q \) such that
-
-	      \[
-		      z < j(x) < w
-	      \]
-
-	\item Every Cauchy sequence in \( \R \) converges.
-
-\end{itemize}
-
-Via \(j\), we identify \( \Q \) with \( j(\Q) \) and consider \( \Q \) as a
-subset of \( \R \). In \( \R \), the following will additionally hold:
-
-\begin{itemize}
-
-	\item For all \( y > 0 \) and \( n \in \N \), the equation \( x^n = y \) has a solution.
-
-	\item Every bounded above subset of \( \R \) has a supremum.
-
-\end{itemize}
-
-We define the following relation on the set \( \operatorname{ch}(\Q) \) of all Cauchy sequences
-in \( \Q \):
-
-\[
-	x \sim y \quad \text{if and only if} \quad x - y \text{ is a null sequence}
-\]
-
-That is, \( {(x_n)}_{n \in \N} \sim {(y_n)}_{n \in \N} \) if and only if
-
-\[
-	x_n - y_n \to 0 \quad (n \to \infty)
-\]
-
-\subsection{Definition}
-
-The set
-
-\[
-	\R := \{ {[x]}_{\sim} : x \in \operatorname{ch}(\Q) \}
-\]
-
-is called the set of real numbers.
-
-Analogous to the construction of the rational numbers, the real numbers consist of equivalence classes.
-Roughly speaking, an equivalence class consists of those Cauchy sequences in \( \Q \) that exhibit
-the same limit behavior.
-
-Equipped with the addition
-
-\[
-	+ : \R \times \R \to \R, \quad [x], [y] \mapsto [x] + [y] := [x + y]
-\]
-
-and the multiplication
-
-\[
-	\cdot : \R \times \R \to \R, \quad [x], [y] \mapsto [x] \cdot [y] := [xy].
-\]
-
-\( \R \) is a field. The zero element is \( [0_{\N}] \), and the unit element is
-\( [1_{\N}] \).
 

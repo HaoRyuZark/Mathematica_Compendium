@@ -1,0 +1,337 @@
+\chapter{Ring Theory}
+
+A \emph{ring} \((R, \oplus, \odot)\) is a set with two operations:
+
+\begin{itemize}
+
+	\item \((R, \oplus)\) is an Abelian group.
+
+	\item \((R, \odot)\) is a semigroup (associative multiplication).
+
+	\item \emph{Multiplication distributes over addition}:
+
+	      \[
+		      a \odot (b \oplus c) = a \odot b \oplus a \odot c.
+	      \]
+\end{itemize}
+
+\section{Commutative Ring \texorpdfstring{\((R, \oplus, \odot)\)}{}}
+
+A \emph{commutative ring} \((R, \oplus, \odot)\) is a ring where multiplication is also \emph{commutative}:
+
+\[
+	a \odot b = b \odot a \quad \text{for all } a, b \in R.
+\]
+
+This is the kind of ring most often encountered in basic algebra, such as the integers \(\Z\).
+
+\section{Units}
+
+Given a ring \((R, \oplus, \odot)\), the set of \emph{units} in \(R\) is defined as:
+
+\[
+	R^\times := \{r \in R \mid \exists r' \in R: r \odot r' = r' \odot r = 1\}
+\]
+
+\section{Ring Homomorphisms}
+
+Given two rings \((R, \oplus, \odot)\) and \((S, \oplus', \odot')\), a function \(\varphi: R \to S\) is a \emph{ring homomorphism} if it preserves both operations:
+
+\[
+	\varphi(a \oplus b) = \varphi(a) \oplus' \varphi(b), \quad \varphi(a \odot b) = \varphi(a) \odot' \varphi(b), \quad \forall a, b \in R, \quad \varphi(1_R) = 1_S.
+\]
+
+\section{Polynomial Rings}
+
+Given a field \(\field\) with \(\field^{\Z_{\ge 0}}\), we define the multiplication
+
+\[
+	(a_0, a_1, \dots ) \cdot (b_0, b_1, \dots ) := (c_0, c_1, \dots)
+\]
+
+where
+
+\[
+	c_0 := a_0 b_0, \quad c_1:= a_0 b_1 + a_1 b_0, \quad c_2 := a_0 b_2 + a_1 b_1 + a_2 b_0
+\]
+
+In general, for \(n \ge 0\),
+
+\[
+	c_n := \sum_{i = 0}^{n} a_i b_{n - i} = a_0 b_{n} + a_1 b_{n - 1} + \cdots + a_n b_0
+\]
+
+and the addition as
+
+\[
+	(a_i)_{i \in \N} + (a_i)_{i \in \N} = (a_i + b_i)_{i \in \N}.
+\]
+
+This \((\field^{\Z_{\ge 0}}, +, \cdot)\) is also noted as \(\field[[\field]]\) and
+called the \emph{power-ring} over \(\field\). Also, instead of \((a_0, a_1, \dots)\), we write
+
+\[
+	f = \sum_{i=0}^{\infty} a_i X^i
+\]
+
+for \(X := (0, 1, 0, 0, \dots)\). We also call this ring the \emph{formal power series} over \(\field\).
+
+The members \(f = (a_0, a_1, \dots, ) \in \field [[X]]\) are called \emph{polynomials}.
+
+For the finite case, we write
+
+\[
+	f = \sum_{i=0}^{n} a_i X^i
+\]
+
+The set of all polynomials reachable via the multiplication vector-space properties of \(\field[[X]]\) is
+called the \emph{polynomial ring} \(\field[X]\). The field before the \([X]\) tells us which elements
+are allowed as coefficients.
+
+\textbf{Example:}
+
+For \(f := (1,2,3,4, \dots) = 1 + 2X + 3X^2 + 4X^3 \)
+
+\[
+	f \cdot 4 = (4,\,1,\,5,\,2,\,0,\,0,\,\ldots) = 4 + 1X + 5X^{2} + 2X^{3}
+\]
+
+\[
+	f \cdot 3X = (0,\,3,\,6,\,2,\,5,\,0,\,0,\,\ldots) = 3X + 6X^{2} + 2X^{3} + 5X^{4}
+\]
+
+\[
+	f \cdot 2X^{2} = (0,\,0,\,2,\,4,\,6,\,1,\,0,\,0,\,\ldots) = 2X^{2} + 4X^{3} + 6X^{4} + X^{5}
+\]
+
+\[
+	f \cdot X^{3} = (0,\,0,\,0,\,1,\,2,\,3,\,4,\,0,\,0,\,\ldots) = X^{3} + 2X^{4} + 3X^{5} + 4X^{6}
+\]
+
+\section{Degree of a Polynomial}
+
+The \emph{degree} of a polynomial is given by the \(n\) in \(\sum_{i = 0}^{n} a_i X^i\) with \(f \ne \vec{0}\).
+Also, note that we define \(\deg(0):= -\infty\).
+
+\emph{Degree Addition}
+
+For \(f,g \in \field[X] \setminus \{0\}\), the following holds
+
+\[
+	\deg(f + g) \le \max(\deg(f),\deg(g)).
+\]
+
+\emph{Degree Multiplication}
+
+For \(f,g \in \field[X] \setminus \{0\}\), the following holds
+
+\[
+	\deg(fg) \le \max(\deg(f) + \deg(g)).
+\]
+
+\subsection{Properties of the Polynomial Ring}
+
+\emph{Neutral Element}
+
+\[
+	1 := (1, 0, 0, \dots) \in \field[X]
+\]
+
+is the neutral element of the multiplication in \(\field[[X]]\) and \(\field[X]\).
+
+\emph{\(X_a\)}
+
+\[
+	X_a = (0, a_0, a_1, \dots) \quad \forall a \in \field [[X]].
+\]
+
+\emph{Multiplication}
+
+\[
+	X^i X^j = X^{i + j}, \text{ with } X^0 := 1.
+\]
+
+\emph{Identity}
+
+Given \(f \in \field[X]\) with degree \(n\) then
+
+\[
+	f = a_0 + a_1 X + \cdots + a_n X^n
+\]
+
+gives a clear identification of \(\field\) with
+
+\[
+	\{0\} \cup \{f \in \field [X] \mid \deg(f) = 0\}.
+\]
+
+\emph{Vector space}
+
+\[
+	\field[X]_{\deg < n} := \{0\} \cup \{f \in \field [X] \mid \deg(f) < n\}
+\]
+
+is a vector space.
+
+
+\section{Field Algebra}
+
+Given a ring \(R\) with a one that is also a vector space over the field \(\field\), we call
+\(R\) an \emph{associative algebra} with the one if and only if
+
+\[
+	a(rs) = (ar)s = r(as)
+\]
+
+for all \(r,s \in R\) and \(a \in \field\).
+
+\section{Division for Polynomials}
+
+Given the field \(\field\), then
+
+\begin{itemize}
+
+	\item  \(\field[X]\) is a commutative ring with one and exactly one commutative \(\field\)-algebra with 1.
+
+	\item For \(f, g \in \field[X]\) with \(g \ne 0\), there are well-defined \(q,r \in \field[X]\) with
+
+	      \[
+		      f = qg + r \text{ and } \deg(r) < \deg(g) \lor r = 0.
+	      \]
+
+\end{itemize}
+
+\textbf{Proof:}
+
+For the first lemma, to show that the multiplication is commutative, we just
+use the commutativity of our field \(\field\).
+
+The distributive property for \(f,g,h \in \field [X]\) and the scalar multiplication
+are also easy to show using our definitions. We will show the associativity.
+
+We will use induction: If \(\deg(h) = 0\), then \(h \in \field\) and the associativity holds because of the
+associativity for scalars.
+
+Let us assume that it holds for \(\deg(h) \le n\). If \(\deg(h) > 0\), then
+
+\[
+	h = \hat{h} + a_{n + 1}X^{n + 1} \text{ with } \hat{h} \in \field [X]
+\]
+
+is a polynomial of degree at most \(n\) or 0. Due to that fact, \((fg)\hat{h} = f(g\hat{h})\).
+
+Induction step:
+
+\begin{align*}
+	(fg)h & = (fg)(\hat{h} + a_{n + 1}X^{n + 1})  \\
+	      & = fg\hat{h} + fga_{n + 1}X^{n + 1})   \\
+	      & = fg\hat{h} + f(ga_{n + 1)}X^{n + 1}) \\
+	      & = f(g\hat{h} + ga_{n + 1}X^{n + 1}))  \\
+	      & = f(g(\hat{h} + a_{n + 1}X^{n + 1}))) \\
+	      & = f(gh)
+\end{align*}
+
+\QED
+
+As for the second lemma, given \(\deg(f) = m, \deg(g) = n, f = \sum_{i = 0}^{m} a_i X^i, g = \sum_{i = 0}^{n} b_i X^i\).
+If \(f = 0\) then \(q = 0\) and \(r = 0\). If \(m < n\) we are done, because \(q = 0, r = f\).
+
+For the case \(m \ge n\), we will show the existence of \(q,r\) by induction on \(m\). For
+\(m = 0\) and \(n = 0\), \(f = a_0\), \(g = b_0\). Set \(q = \frac{a_0}{q_0}\) and \(r = 0\), and we get
+\(f = qg + r\).
+
+Let \(m > 0\), and assume that for each polynomial \(h\) with \(\deg(h) \le m - 1\) there
+exist polynomials \(\hat{q}, \hat{r}\) such that \(\deg(\hat{r}) < \deg(g)\) and
+\(h = \hat{q}g + \hat{r}\).
+
+Define \(\hat{f} := f - \frac{a_m}{b_n}X^{m - n}g\). Then \(\deg(\hat{f}) \le m - 1\). There also
+exist \(\hat{q}, \hat{r}\) with \(\deg(\hat{r}) < \deg(g)\) and \(\hat{f} = \hat{q}g + \hat{r}\). Then
+
+\[
+	f = \hat{f} + \frac{a_m}{b_n} X^{m-n} g
+	= \hat{q} g + \hat{r} + \frac{a_m}{b_n} X^{m-n} g
+	= \left(\hat{q} + \frac{a_m}{b_n} X^{m-n}\right) g + \hat{r}.
+\]
+
+Hence, with \(q = \hat q + \frac{a_m}{b_n} X^{m-n}\) and \(r = \hat{r}\), existence is shown.
+
+For uniqueness: Let \(f = qg + r\) and \(f = \hat{q}g + \hat{r}\)
+with \(\deg(r) < \deg(g)\) and \(\deg(\hat{r}) < \deg(g)\). Then it follows that
+
+\[
+	r - \hat{r} = (q - \hat{q}) g .
+\]
+
+If \(q - \hat{q} \neq 0\), then \(\deg(r - \hat{r}) \ge \deg(g)\),
+which is a contradiction. Thus, \(q = \hat{q}\) and \(r = \hat{r}\).
+
+\QED
+
+\section{Greatest Common Divisor for Polynomials}
+
+For two polynomials \(f,g \in \field[X]\) with \((f,g) \ne (0,0)\), the polynomial \(t \in \field[X]\) with
+
+\begin{itemize}
+
+	\item \(t \mid f\) and \(t \mid g\)
+
+	\item For all \(c \in \field[X]\) with \(c \mid f\) and \(c \mid g\) holds \(c \mid t\)
+
+\end{itemize}
+
+is considered the \emph{greatest common divisor} of \(f\) and \(g\). If \(t = 1\),  then \(f,g\) are \emph{relatively prime}.
+
+\section{More Properties of Polynomials}
+
+\begin{itemize}
+
+	\item In \(\mathbb{Z}\) one has \(|ab| = |a||b|\); in \(\field[X]\) one has
+	      \(\deg(fg) = \deg(f) + \deg(g)\).
+
+	\item The gcd of two polynomials \(f, g \in \field[X]\) with \((f,g) \neq (0,0)\) is unique only up to factors in \(\field[X]^{\ast}\),
+	      that is, up to factors in \(\field[X]\) of degree \(0\). Notation: \(t = \gcd(f,g)\) actually also denotes every multiple \(a t\) with
+	      \(a \in \field \setminus \{0\}\) as a gcd of \(f\) and \(g\).
+
+	\item In both rings there is a division with remainder, and therefore \(\field[X]\) also has a Euclidean algorithm for computing
+	      the gcd and an extended Euclidean algorithm for determining Bézout coefficients. Here the degree of a polynomial plays the role of the
+	      absolute value in \(\Z\). We give the first part of the algorithm again.
+
+	\item Furthermore, one also has the analogue of prime numbers in \(\field[X]\), namely irreducible polynomials, and correspondingly a unique prime
+	      factorization for polynomials.
+
+\end{itemize}
+
+\section{Euclidean Algorithm for Polynomials}
+
+\textbf{Input:} \(f, g \in \field[X]\), \((f, g) \neq (0,0)\).
+
+\textbf{Output:} The greatest common divisor \(t\) of \(f\) and \(g\).
+
+\textbf{Algorithm:}
+
+\begin{enumerate}
+
+	\item If \(f = 0\), then return \(g\). If \(g = 0\), return \(f\).
+
+	\item Set \(r_1 := f\), \(r_2 := g\), \(k := 2\).
+
+	\item As long as \(r_k \neq 0\), define \(r_{k+1} := r_k\).
+
+	\item As soon as \(\deg(r_k) = 0\), return \(r_{k-1}\).
+
+\end{enumerate}
+
+\section{Reducible and Irreducible}
+
+A polynomial \(p \in \field[X] \setminus \{0\}\) is called \emph{irreducible} if \(p\) is not a unit (that is, \(p \notin \field[X]^{\ast}\)) and if for
+\(f, g \in \field[X]\) the following holds: \(p = f \cdot g \Rightarrow f \in \field[X]^{\ast} \,\vee\, g \in \field[X]^{\ast}\). An element \(h \in \field[X] \setminus \{0\}\) for which
+\(h = f \cdot g\) holds with \(f, g \in \field[X] \setminus \field[X]^{\ast}\)  is called \emph{reducible}.
+
+\section{Normalized}
+
+A polynomial \(f \in \field[X] \setminus \{0\}\) with \(f = \sum_{i = 0}^{n} a_i X^i\) is considered \emph{normalized} if \(a_n = 1\).
+
+\section{Factorization Property}
+
+Each polynomial \(f \in \field[X] \setminus \{0\}\) has, up to the order of the factors, a unique factorization into a normalized irreducible form and
+a unit.

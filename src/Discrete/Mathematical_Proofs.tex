@@ -585,20 +585,21 @@ This are the typical ways of proving patterns.
 \begin{center}
 	\begin{tabular}{|l|l|}
 		\hline
-		\textbf{Pattern}           & \textbf{How to Prove}                                                                                                                                     \\
+		\textbf{Pattern}             & \textbf{How to Prove}                                                                                                                                     \\
 		\hline
-		\(A \implies B\)           & Assume \(A\) and show \(B\) or use the contrapositive or contradiction.                                                                                   \\
+		\(A \implies B\)             & Assume \(A\) and show \(B\) or use the contrapositive or contradiction.                                                                                   \\
 		\hline
-		\(A \iff B\)               & Assume \(A\) and show \(B\), then assume \(B\) and show \(A\). The rules from above apply for both directions. You can also prove \(\neg A \iff \neg B\). \\
+		\(A \iff B\)                 & Assume \(A\) and show \(B\), then assume \(B\) and show \(A\). The rules from above apply for both directions. You can also prove \(\neg A \iff \neg B\). \\
 		\hline
-		\(\forall x \in X: A(x)\)  & Prove for some arbitrary \(x \in X\).                                                                                                                     \\
+		\(\forall x \in X: A(x)\)    & Prove for some arbitrary \(x \in X\).                                                                                                                     \\
 		\hline
-		\(\exists x \in X: A(x)\)  & Find an \(x \in X\) such that \(A(x)\) holds.                                                                                                             \\
+		\(\exists x \in X: A(x)\)    & Find an \(x \in X\) such that \(A(x)\) holds.                                                                                                             \\
 		\hline
-		\(A = B\)                  & Show \(A \subseteq B\) and \(B \subseteq A\).                                                                                                             \\
+		\(A = B\)                    & Show \(A \subseteq B\) and \(B \subseteq A\).                                                                                                             \\
 		\hline
-		\(A(n)\ \forall n \in \N\) & Prove by induction on \(n\) or strong induction.                                                                                                          \\
+		\(A(n)\ \forall n \in \N\)   & Prove by induction on \(n\) or strong induction.                                                                                                          \\
 		\hline
+		\(Is an algebraic strucure\) & Prove that it satisfies the respective axioms, and that the operation is well-defined                                                                     \\
 	\end{tabular}
 \end{center}
 
@@ -614,21 +615,19 @@ ways of proving it.
 		\hline
 		\emph{Uniqueness}                    & Use declare that it is not unique and either arrive at a contradiction or prove that both are the same element. \\
 		\hline
-		\emph{Smallest}                      &                                                                                                                 \\
+		\emph{Obeys certain properties}      & Go through all properties using elements of the set or find a counter example to disprove.                      \\
 		\hline
-		\emph{Maximum}                       &                                                                                                                 \\
+		\emph{Existence}                     & Use construction of sets with some property like the well-ordering principle or some axiom                      \\
 		\hline
-		\emph{Obeys certain properties}      &                                                                                                                 \\
+		\emph{Well-Definition}               & A function is well defined if it obeys that each input has only one ouput.                                      \\
 		\hline
-		\emph{Existence}                     &                                                                                                                 \\
+		\emph{Belonging to one specific set} & Either prove that the element, satisfies the condition, or use a contradiction argument                         \\
 		\hline
-		\emph{Well-Definition}               &                                                                                                                 \\
+		\emph{Upper-, Lower-bounds}          & Use the completness axiom for real numbers as well as the Archimedean property on the set.                      \\
 		\hline
-		\emph{Belonging to one specific set} &                                                                                                                 \\
+		\emph{Find \(0 < r < q\)}            & Use the completness axiom for real numbers as well as the Archimedean property on the set.                      \\
 		\hline
-		\emph{Equivalence}                   &                                                                                                                 \\
-		\hline
-		\emph{Find numbers}                  &                                                                                                                 \\
+		\emph{Approximation}                 & Use well-known inequalities, add zero, multiply by one or similars                                              \\
 		\hline
 	\end{tabular}
 \end{center}

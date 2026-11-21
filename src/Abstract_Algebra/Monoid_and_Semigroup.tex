@@ -1,0 +1,88 @@
+\chapter{Monoid and Semigroup}
+
+\emph{Algebraic structures} are mathematical systems consisting of a set equipped with one or more operations
+that satisfy certain axioms.
+
+\section{Internal and External Operations}
+
+An \emph{internal composition law} is a binary operation that takes two elements from a set and returns another element in the same set.
+Formally, for a set \(S\) and operation \(\circ\), we have:
+
+\[
+	\circ: S \times S \to S
+\]
+
+An \emph{external composition law} involves a second set acting on the structure, such as scalar multiplication in vector spaces:
+
+\[
+	\circ: \field \times V \to V
+\]
+
+where \(\field\) is a field and \(V\) is a vector space.
+
+\subsection{Properties of Operations}
+
+Let \(\circ\) and \(\odot\) be binary operations on a set \(S\). The most important properties include:
+
+\begin{itemize}
+
+	\item \emph{Associativity:} \((a \circ b) \circ c  = a \circ (b \circ c)\) for all \(a,b,c \in S\).
+
+	\item \emph{Commutativity:} \(a \circ b = b \circ a\) for all \(a,b \in S\).
+
+	\item \emph{Identity Element:} There exists \(e \in S\) such that \(a \circ e = e \circ a = a\) for all \(a \in S\).
+
+	\item \emph{Inverse Element:} For every \(a \in S\), there exists \(a^{-1} \in S\) such that \(a \circ a^{-1} = a^{-1} \circ a = e\).
+
+	\item \emph{Distributivity:} \(a \odot (b \oplus c) = (a \odot b) \oplus (a \odot c)\) and/or \((b \oplus c) \odot a = (b \odot a) \oplus
+	      (c \odot a)\).
+
+\end{itemize}
+
+\section{Semigroup \texorpdfstring{\((S, \oplus)\)}{}}
+
+A \emph{semigroup} \((S, \oplus)\) is a set \(S\) equipped with a binary operation \(\oplus\) that is \emph{associative}. This means:
+
+\[
+	(a \oplus b) \oplus c = a \oplus (b \oplus c) \quad \forall a, b, c \in S.
+\]
+
+\section{Monoid \texorpdfstring{\((M, \oplus)\)}{}}
+
+A \emph{monoid} \((M, \oplus)\) builds on a semigroup by adding an \emph{identity element} \(e\) such that:
+
+\[
+	(a \oplus b) \oplus c = a \oplus (b \oplus c) \quad \forall a, b, c \in M.
+\]
+\[
+	a \oplus e = e \oplus a = a \quad \forall a \in M.
+\]
+
+This structure is useful when an operation must have a ``do nothing'' element, like \(0\) for addition or \(1\) for multiplication.
+
+\section{Vector Space \texorpdfstring{\((V, \field, \oplus, \odot)\)}{}}
+
+A \emph{vector space} \((V, \field, \oplus, \odot)\) consists of:
+
+\begin{itemize}
+
+	\item An Abelian group \((V, \oplus)\) for vector addition.
+
+	\item Scalar multiplication \(\cdot: \field \times V \to V\) satisfying:
+
+	      \begin{itemize}
+
+		      \item \emph{Distributivity over vector addition}: \(a \cdot (v_1 + v_2) = a \cdot v_1 + a \cdot v_2\)
+
+		      \item \emph{Distributivity over field addition}: \((a + b) \cdot v = a \cdot v + b \cdot v\)
+
+		      \item \emph{Associativity over field multiplication}: \(a \cdot (b \cdot v) = (ab) \cdot v\)
+
+		      \item \emph{Identity}: \(1 \cdot v = v\)
+
+	      \end{itemize}
+
+\end{itemize}
+
+Vector spaces provide the foundation for linear algebra, where scalars from a field combine with vectors from a set.
+
